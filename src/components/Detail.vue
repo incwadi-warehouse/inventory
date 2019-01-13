@@ -5,7 +5,7 @@
     <p>{{book.genre}}</p>
     <p class="big">{{this.price(book.price)}} EUR</p>
     <p v-if="book.stocked">In Stock</p>
-    <p v-if="!book.stocked">Not in Stock</p>
+    <p v-if="!book.stocked">Out of Stock</p>
     <p>Added on {{formatDate(book.added)}}</p>
   </section>
 </template>

@@ -1,8 +1,8 @@
 <template>
   <section class="section section_default">
-    <h1>Fehler 404 - Seite nicht gefunden!</h1>
-    <p>Die gesuchte Seite wurde nicht gefunden! Wenn Du den Link in Deinen Bookmarks gespeichert hast ändere ihn bitte!</p>
-    <router-link :to="{name: 'index'}">Zur Startseite</router-link>
+    <h1>Error 404 - Page not found!</h1>
+    <p>The page could not be found! Please change references to this site!</p>
+    <router-link :to="{name: 'index'}">Go to homepage</router-link>
   </section>
 </template>
 

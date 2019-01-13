@@ -2,7 +2,7 @@
   <section>
     <search/>
     <section class="section section_default alignRight" v-if="searchTerm">
-      <router-link :to="{name: 'create'}">Neuer Eintrag</router-link>
+      <router-link :to="{name: 'create'}">New Entry</router-link>
     </section>
     <list/>
   </section>
