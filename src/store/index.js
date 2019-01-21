@@ -14,6 +14,7 @@ export default new Vuex.Store({
       genre: null,
       added: null,
       price: null,
+      currency: null,
       stocked: null
     },
     searchTerm: null,
