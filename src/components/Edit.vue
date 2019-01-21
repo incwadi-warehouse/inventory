@@ -37,7 +37,7 @@
       <div class="form_group">
         <div class="form_item">
           <label for="price" class="form_label">
-            Price in EUR
+            Price in {{currency}}
           </label>
         </div>
         <div class="form_item">
@@ -72,6 +72,7 @@ export default {
       title: '',
       author: '',
       price: '2.50',
+      currency: null,
       stocked: 0
     }
   },
@@ -87,6 +88,7 @@ export default {
         title: this.title,
         author: this.author,
         price: this.price,
+        currency: this.currency,
         genre: this.genre,
         stocked: this.stocked
       })
@@ -107,6 +109,7 @@ export default {
       this.title = this.$store.state.book.title
       this.author = this.$store.state.book.author
       this.price = this.$store.state.book.price
+      this.currency = this.$store.state.book.currency
       this.genre = this.$store.state.book.genre
       this.stocked = this.$store.state.book.stocked
     },

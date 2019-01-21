@@ -16,7 +16,7 @@
             <td><router-link :to="{ name: 'detail', params: { id: book.id } }">{{book.title}}</router-link></td>
             <td>{{book.author}}</td>
             <td>{{formatDate(book.added)}}</td>
-            <td>{{formatPrice(book.price)}} EUR</td>
+            <td>{{formatPrice(book.price)}} {{book.currency}}</td>
             <td><router-link :to="{ name: 'edit', params: { id: book.id } }">&#9998;</router-link></td>
           </tr>
         </tbody>

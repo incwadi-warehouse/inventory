@@ -27,6 +27,7 @@ function renderEntries(counter, offset) {
         "genre": "1",
         "id": i + parseInt(offset),
         "price": "1",
+        "currency": "EUR",
         "stocked": "1",
         "title": "Title"
       }
@@ -44,6 +45,7 @@ app.get('/book', (req, res) => {
       "genre": "1",
       "id": "1",
       "price": "1",
+      "currency": "EUR",
       "stocked": "1",
       "title": "Title"
     }
@@ -64,6 +66,7 @@ app.post('/create', (req, res) => {
       "genre": "1",
       "id": "1",
       "price": "1",
+      "currency": "EUR",
       "stocked": "1",
       "title": "Title"
     }
@@ -78,6 +81,7 @@ app.post('/update', (req, res) => {
       "genre": "1",
       "id": "1",
       "price": "1",
+      "currency": "EUR",
       "stocked": "1",
       "title": "Title"
     }

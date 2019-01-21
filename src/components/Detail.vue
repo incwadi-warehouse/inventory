@@ -3,7 +3,7 @@
     <h1>{{book.title}}</h1>
     <p>{{book.author}}</p>
     <p>{{book.genre}}</p>
-    <p class="big">{{this.price(book.price)}} EUR</p>
+    <p class="big">{{this.price(book.price)}} {{book.currency}}</p>
     <p v-if="book.stocked">In Stock</p>
     <p v-if="!book.stocked">Out of Stock</p>
     <p>Added on {{formatDate(book.added)}}</p>

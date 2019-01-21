@@ -37,7 +37,7 @@
       <div class="form_group">
         <div class="form_item">
           <label for="price" class="form_label">
-            Price in EUR
+            Price in {{currency}}
           </label>
         </div>
         <div class="form_item">
@@ -62,7 +62,8 @@ export default {
       genre: '',
       title: '',
       author: '',
-      price: '2.50'
+      price: '2.50',
+      currency: window.config.currency
     }
   },
   computed: {
@@ -77,6 +78,7 @@ export default {
         title: this.title,
         author: this.author,
         price: this.price,
+        currency: this.currency,
         sold: 0
       })
       this.$router.push({ name: 'index' })
