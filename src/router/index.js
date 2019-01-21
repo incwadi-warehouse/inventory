@@ -18,7 +18,7 @@ export default new Router({
       component: Index
     },
     {
-      path: '/new',
+      path: '/create',
       name: 'create',
       component: Create
     },
