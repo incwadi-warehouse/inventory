@@ -12,7 +12,6 @@
     "watch": "npm-run-all -p -c watch:*",
     "build": "npm-run-all -s build:*",
     "test": "jest",
-    "image": "svgo -f images/ -o src/images",
     "watch:vue": "NODE_ENV=development node_modules/.bin/webpack-dev-server --open --hot --config config/webpack.dev.js",
     "watch:server": "node db.js",
     "build:clean": "rimraf dist/",
