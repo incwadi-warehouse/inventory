@@ -59,6 +59,10 @@ export default {
   },
   watch: {
     '$store.state.searchTerm': function () {
+      if (this.$store.state.searchTerm === '') {
+        return this.$store.commit('books', [])
+      }
+
       this.$store.dispatch('search', {
         term: this.$store.state.searchTerm,
         offset: this.$store.state.offset
