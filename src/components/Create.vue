@@ -79,7 +79,7 @@ export default {
         author: this.author,
         price: this.price,
         currency: this.currency,
-        sold: 0
+        stocked: 1
       })
       this.$router.push({ name: 'index' })
     },
