@@ -3,7 +3,6 @@ import Router from 'vue-router'
 import Index from '../views/Index'
 import Create from '../views/Create'
 import Edit from '../views/Edit'
-import Detail from '../views/Detail'
 import NotFound from '../views/NotFound'
 
 Vue.use(Router)
@@ -26,12 +25,6 @@ export default new Router({
       path: '/edit/:id',
       name: 'edit',
       component: Edit,
-      props: true
-    },
-    {
-      path: '/detail/:id',
-      name: 'detail',
-      component: Detail,
       props: true
     },
     {

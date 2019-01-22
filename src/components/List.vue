@@ -13,7 +13,7 @@
           <tbody>
             <tr v-for="book in books" :key="book.id">
               <td>{{book.genre}}</td>
-              <td><router-link :to="{ name: 'detail', params: { id: book.id } }">{{book.title}}</router-link></td>
+              <td>{{book.title}}</td>
               <td>{{book.author}}</td>
               <td>{{formatDate(book.added)}}</td>
               <td>{{formatPrice(book.price)}} {{book.currency}}</td>
