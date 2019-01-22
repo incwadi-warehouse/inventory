@@ -85,11 +85,11 @@ export default {
     update: function () {
       this.$store.dispatch('update', {
         id: this.id,
+        genre: this.genre,
         title: this.title,
         author: this.author,
         price: this.price,
         currency: this.currency,
-        genre: this.genre,
         stocked: this.stocked
       })
       this.$router.push({ name: 'index' })
