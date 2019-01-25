@@ -9,9 +9,7 @@
           </label>
         </div>
         <div class="form_item">
-          <select id="genre" class="form_input" v-model="genre">
-            <option v-for="genre in genres" :key="genre.id" :value="genre.id">{{genre.name}}</option>
-          </select>
+          <genres-select :genre="genre"/>
         </div>
       </div>
       <div class="form_group">
@@ -63,9 +61,14 @@
 </template>
 
 <script>
+import GenresSelect from './GenresSelect'
+
 export default {
   name: 'edit',
   props: ['id'],
+  components: {
+    GenresSelect
+  },
   data () {
     return {
       genre: '',
@@ -74,11 +77,6 @@ export default {
       price: '2.50',
       currency: null,
       stocked: 0
-    }
-  },
-  computed: {
-    genres: function () {
-      return this.$store.state.genres
     }
   },
   methods: {
@@ -100,7 +98,6 @@ export default {
   },
   mounted: function () {
     this.$store.dispatch('book', this.id)
-    this.$store.dispatch('genres')
   },
   watch: {
     '$store.state.book': function () {
