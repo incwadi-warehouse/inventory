@@ -34,9 +34,9 @@ Change the path and the options to fit you needs.
 
 ## Options
 
-baseUrl - The url to your api.
-base - The path to your app.
-currency - The default currency used in the app.
+- baseUrl - The url to your api.
+- base - The path to your app.
+- currency - The default currency used in the app.
 
 ## Dev
 
