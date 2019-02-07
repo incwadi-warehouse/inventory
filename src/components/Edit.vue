@@ -46,7 +46,7 @@
         <div class="form_item">
           <input type="checkbox" id="stocked" v-model="stocked">
           <label for="stocked" class="form_label">
-            Sold
+            Stocked
           </label>
         </div>
       </div>
