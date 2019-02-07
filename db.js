@@ -9,7 +9,8 @@ const bodyParser = require('body-parser');
 
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, Content-Type, Accept");
+  res.header("Access-Control-Allow-Headers", "Origin, Content-Type, Accept, PHP_AUTH_USER, PHP_AUTH_PW");
+  res.header("Access-Control-Allow-Methods", "GET, OPTIONS, POST, PUT, PATCH, DELETE");
   next();
 });
 
@@ -37,7 +38,7 @@ function renderEntries(counter, offset) {
   return entries;
 }
 
-app.get('/book', (req, res) => {
+app.get(/\/book\/(\d)/, (req, res) => {
   return res.json(
     {
       "added": "1545496807",
@@ -52,7 +53,7 @@ app.get('/book', (req, res) => {
   );
 })
 
-app.get('/find', (req, res) => {
+app.get('/book/find', (req, res) => {
   return res.json(
     renderEntries(20, req.query.offset)
   );
@@ -73,9 +74,9 @@ app.post('/create', (req, res) => {
   );
 })
 
-app.post('/update', (req, res) => {
+app.put(/\/book\/(\d)/, (req, res) => {
   return res.json(
-    data = {
+    {
       "added": "1545496807",
       "author": "Author",
       "genre": "1",
@@ -88,7 +89,7 @@ app.post('/update', (req, res) => {
   );
 })
 
-app.get('/genres', (req, res) => {
+app.get('/genre/', (req, res) => {
   return res.json(
     [
       {
