@@ -38,7 +38,7 @@ function renderEntries(counter, offset) {
   return entries;
 }
 
-app.get(/\/book\/(\d)/, (req, res) => {
+app.get(/\/v1\/book\/(\d)/, (req, res) => {
   return res.json(
     {
       "added": "1545496807",
@@ -53,13 +53,13 @@ app.get(/\/book\/(\d)/, (req, res) => {
   );
 })
 
-app.get('/book/find', (req, res) => {
+app.get('/v1/book/find', (req, res) => {
   return res.json(
     renderEntries(20, req.query.offset)
   );
 })
 
-app.post('/create', (req, res) => {
+app.post('/v1/create', (req, res) => {
   return res.json(
     {
       "added": "1545496807",
@@ -74,7 +74,7 @@ app.post('/create', (req, res) => {
   );
 })
 
-app.put(/\/book\/(\d)/, (req, res) => {
+app.put(/\/v1\/book\/(\d)/, (req, res) => {
   return res.json(
     {
       "added": "1545496807",
@@ -89,7 +89,7 @@ app.put(/\/book\/(\d)/, (req, res) => {
   );
 })
 
-app.get('/genre/', (req, res) => {
+app.get('/v1/genre/', (req, res) => {
   return res.json(
     [
       {

@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const axiosInstance = function () {
   return axios.create({
-    baseURL: window.config.baseUrl,
+    baseURL: window.config.baseUrl + '/v1',
     timeout: 50000,
     headers: {
       'Content-Type': 'application/json',
