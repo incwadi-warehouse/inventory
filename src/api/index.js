@@ -5,7 +5,9 @@ const axiosInstance = function () {
     baseURL: window.config.baseUrl,
     timeout: 50000,
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'PHP_AUTH_USER': 'admin',
+      'PHP_AUTH_PW': 'password'
     }
   })
 }
