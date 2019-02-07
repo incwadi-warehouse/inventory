@@ -3,7 +3,7 @@ import api from '../api'
 export default {
   book (context, id) {
     api
-      .get('/book', { params: { id: id } })
+      .get('/book/' + id)
       .then(function (response) {
         context.commit('book', response.data)
       })
@@ -13,7 +13,7 @@ export default {
   },
   search (context, data) {
     api
-      .get('/find', { params: data })
+      .get('/book/find', { params: data })
       .then(function (response) {
         if (data.offset >= 1) {
           let books = context.state.books
@@ -31,7 +31,7 @@ export default {
   },
   create (context, data) {
     api
-      .post('/create', {
+      .post('/book/new', {
         title: data.title,
         author: data.author,
         price: data.price,
@@ -46,7 +46,7 @@ export default {
   },
   update (context, data) {
     api
-      .post('/update', data)
+      .put('/book/' + data.id, data.params)
       .then(function (response) {
         console.log(response)
       })
@@ -56,7 +56,7 @@ export default {
   },
   genres (context) {
     api
-      .get('/genres')
+      .get('/genre/')
       .then(function (response) {
         context.commit('genres', response.data)
       })
