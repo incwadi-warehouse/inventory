@@ -1,9 +1,6 @@
 <template>
   <section>
     <search/>
-    <section class="section section_default alignRight" v-if="searchTerm">
-      <router-link :to="{ name: 'create' }">New Entry</router-link>
-    </section>
     <list/>
   </section>
 </template>
@@ -17,11 +14,6 @@ export default {
   components: {
     Search,
     List
-  },
-  computed: {
-    searchTerm: function () {
-      return this.$store.state.searchTerm
-    }
   }
 }
 </script>

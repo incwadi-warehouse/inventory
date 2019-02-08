@@ -1,12 +1,20 @@
 <template>
   <div id="app">
-    <router-view/>
+    <heading/>
+    <main class="content" role="main">
+      <router-view/>
+    </main>
   </div>
 </template>
 
 <script>
+import Heading from './components/Header'
+
 export default {
   name: 'app',
+  components: {
+    Heading
+  },
   mounted: function () {
     if (localStorage.getItem('user') === null || localStorage.getItem('pass') === null) {
       this.$router.push({ name: 'login' })
