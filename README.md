@@ -22,8 +22,8 @@ Also add the following scripts.
 <script>
   window.config = window.config || {};
   config = {
-    baseUrl: "http://localhost:3000",
-    base: '/',
+    path: '/',
+    api: "http://localhost:3000",
     currency: "EUR"
   }
 </script>
@@ -34,8 +34,8 @@ Change the path and the options to fit you needs.
 
 ## Options
 
-- baseUrl - The url to your api.
-- base - The path to your app.
+- api - The url to your api.
+- path - The path to your app.
 - currency - The default currency used in the app.
 
 ## Dev
