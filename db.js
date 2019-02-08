@@ -9,7 +9,7 @@ const bodyParser = require('body-parser');
 
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, Content-Type, Accept, PHP_AUTH_USER, PHP_AUTH_PW");
+  res.header("Access-Control-Allow-Headers", "Origin, Content-Type, Accept, Authorization");
   res.header("Access-Control-Allow-Methods", "GET, OPTIONS, POST, PUT, PATCH, DELETE");
   next();
 });
