@@ -36,7 +36,8 @@ export default {
         title: data.title,
         author: data.author,
         price: data.price,
-        genre: data.genre
+        genre: data.genre,
+        stocked: data.stocked
       })
       .then(function (response) {
         console.log(response)

@@ -76,7 +76,7 @@ export default {
         genre: this.$store.state.genre,
         price: this.price,
         currency: this.currency,
-        stocked: 1
+        stocked: true
       })
       this.$router.push({ name: 'index' })
     },
