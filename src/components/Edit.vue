@@ -9,7 +9,7 @@
           </label>
         </div>
         <div class="form_item">
-          <genres-select :genre="genre"/>
+          <genres-select/>
         </div>
       </div>
       <div class="form_group">
@@ -71,7 +71,6 @@ export default {
   },
   data () {
     return {
-      genre: '',
       title: '',
       author: '',
       price: '2.50',
@@ -84,7 +83,7 @@ export default {
       this.$store.dispatch('update', {
         id: this.id,
         params: {
-          genre: this.genre,
+          genre: this.$store.state.genre,
           title: this.title,
           author: this.author,
           price: this.price,
@@ -108,7 +107,6 @@ export default {
       this.author = this.$store.state.book.author
       this.price = this.$store.state.book.price
       this.currency = this.$store.state.book.currency
-      this.genre = this.$store.state.book.genre
       this.stocked = this.$store.state.book.stocked
     },
     price: function (price) {

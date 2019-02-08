@@ -13,5 +13,8 @@ export default {
   },
   genres (state, genres) {
     state.genres = genres
+  },
+  genre (state, genre) {
+    state.genre = genre
   }
 }

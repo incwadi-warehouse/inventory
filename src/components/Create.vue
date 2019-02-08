@@ -71,9 +71,9 @@ export default {
   methods: {
     add: function () {
       this.$store.dispatch('create', {
-        genre: this.genre,
         title: this.title,
         author: this.author,
+        genre: this.$store.state.genre,
         price: this.price,
         currency: this.currency,
         stocked: 1

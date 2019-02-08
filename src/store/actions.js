@@ -6,6 +6,7 @@ export default {
       .get('/book/' + id)
       .then(function (response) {
         context.commit('book', response.data)
+        context.commit('genre', response.data.genre)
       })
       .catch(function (error) {
         console.log(error)

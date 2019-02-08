@@ -9,10 +9,17 @@
 <script>
 export default {
   name: 'genres-select',
-  props: ['genre'],
   computed: {
     genres: function () {
       return this.$store.state.genres
+    },
+    genre: {
+      get: function () {
+        return this.$store.state.genre
+      },
+      set: function (value) {
+        this.$store.commit('genre', value)
+      }
     }
   },
   mounted: function () {
