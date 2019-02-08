@@ -1,5 +1,5 @@
 <template>
-  <section class="section section_default">
+  <section class="section section_fixed">
     <h1>Edit Book</h1>
     <form class="form">
       <div class="form_group">

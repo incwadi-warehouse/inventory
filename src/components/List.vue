@@ -1,5 +1,5 @@
 <template>
-  <section class="section section_default" v-if="counter">
+  <section class="section section_fixed" v-if="counter">
     <div class="card">
       <div class="card_item" v-for="book in books" :key="book.id">
         <h2 class="card_title">
