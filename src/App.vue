@@ -6,7 +6,12 @@
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  mounted: function () {
+    if (localStorage.getItem('user') === null || localStorage.getItem('pass') === null) {
+      this.$router.push({ name: 'login' })
+    }
+  }
 }
 </script>
 
