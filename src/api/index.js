@@ -5,9 +5,11 @@ const axiosInstance = function () {
     baseURL: window.config.baseUrl + '/v1',
     timeout: 50000,
     headers: {
-      'Content-Type': 'application/json',
-      'PHP_AUTH_USER': 'admin',
-      'PHP_AUTH_PW': 'password'
+      'Content-Type': 'application/json'
+    },
+    auth: {
+      username: localStorage.getItem('user'),
+      password: localStorage.getItem('pass')
     }
   })
 }
