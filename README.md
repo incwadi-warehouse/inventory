@@ -24,7 +24,8 @@ Also add the following scripts.
   config = {
     path: '/',
     api: "http://localhost:3000",
-    currency: "EUR"
+    currency: "EUR",
+    steps: 0.5
   }
 </script>
 <script src="/dist/main.js"></script>
@@ -37,6 +38,7 @@ Change the path and the options to fit you needs.
 - api - The url to your api.
 - path - The path to your app.
 - currency - The default currency used in the app.
+- steps - Steps in which the prices can be raised and lowered.
 
 ## Dev
 

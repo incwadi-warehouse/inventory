@@ -39,7 +39,7 @@
           </label>
         </div>
         <div class="form_item">
-          <input type="number" id="price" class="form_input" step="0.5" v-model="price">
+          <input type="number" id="price" class="form_input" :step="steps" v-model="price">
         </div>
       </div>
       <div class="form_group">
@@ -76,6 +76,11 @@ export default {
       price: '2.50',
       currency: null,
       stocked: 0
+    }
+  },
+  computed: {
+    steps: function () {
+      return window.config.steps
     }
   },
   methods: {
