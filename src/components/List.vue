@@ -9,7 +9,7 @@
           {{book.genre}} - {{book.author}} - {{formatDate(book.added)}}
         </div>
         <p class="card_text alignRight">
-          {{formatPrice(book.price)}} {{book.currency}}
+          {{formatPrice(book.price)}} {{currency}}
         </p>
         <ul class="card_options">
           <li class="card_option">
@@ -30,6 +30,11 @@
 <script>
 export default {
   name: 'list',
+  data () {
+    return {
+      currency: window.config.currency
+    }
+  },
   computed: {
     books: function () {
       return this.$store.state.books

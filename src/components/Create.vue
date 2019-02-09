@@ -80,7 +80,6 @@ export default {
         author: this.author,
         genre: this.$store.state.genre,
         price: this.price,
-        currency: this.currency,
         stocked: true
       })
       this.$router.push({ name: 'index' })

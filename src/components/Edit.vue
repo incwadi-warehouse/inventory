@@ -74,7 +74,7 @@ export default {
       title: '',
       author: '',
       price: '2.50',
-      currency: null,
+      currency: window.config.currency,
       stocked: 0
     }
   },
@@ -111,7 +111,6 @@ export default {
       this.title = this.$store.state.book.title
       this.author = this.$store.state.book.author
       this.price = this.$store.state.book.price
-      this.currency = this.$store.state.book.currency
       this.stocked = this.$store.state.book.stocked
     },
     price: function (price) {
