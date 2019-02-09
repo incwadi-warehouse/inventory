@@ -4,7 +4,7 @@ incwadi is a book database to manage a lot of books.
 
 ![incwadi](screenshot.png)
 
-# How it was made
+## How it was made
 
 An article can be found here https://medium.com/@A.Baldeweg/i-was-trying-new-things-accf33792e86
 
