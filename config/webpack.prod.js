@@ -4,6 +4,7 @@ const path = require('path')
 const webpack = require('webpack')
 const { VueLoaderPlugin } = require('vue-loader')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/main.js',
@@ -11,7 +12,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './../dist'),
     publicPath: '/dist/',
-    filename: 'main.min.js'
+    filename: 'main.[hash:8].min.js'
   },
   module: {
     rules: [
@@ -69,6 +70,10 @@ module.exports = {
     }),
     new webpack.LoaderOptionsPlugin({
       minimize: true
+    }),
+    new HtmlWebpackPlugin({
+      template: 'index.html',
+      minify: true
     })
   ],
   optimization: {
