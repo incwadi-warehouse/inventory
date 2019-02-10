@@ -11,7 +11,8 @@ module.exports = {
   mode: 'production',
   output: {
     path: path.resolve(__dirname, './../dist'),
-    filename: 'main.[hash:8].min.js'
+    publicPath: '/',
+    filename: '/main.[hash:8].min.js'
   },
   module: {
     rules: [
