@@ -24,3 +24,9 @@ export default {
 </script>
 
 <style src="../node_modules/baldeweg_ui/dist/style.min.css"></style>
+
+<style>
+:root {
+  --color-brand: #e1661e;
+}
+</style>
