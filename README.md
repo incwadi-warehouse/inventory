@@ -19,6 +19,20 @@ I hope people will help in testing out the app as users oder getting involved in
 - Download the files from https://gitlab.com/a.baldeweg/incwadi_staff
 - The files in dest/ should be located in your web root.
 - Change the options in index.html, so they fit your needs
+- Configure your webserver to redirect all requests to the index.html
+
+Example for Apache
+
+```apache
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
+```
 
 ## Update
 
