@@ -3,11 +3,13 @@
 const path = require('path')
 const { VueLoaderPlugin } = require('vue-loader')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: './src/main.js',
   mode: 'development',
   output: {
+    path: path.resolve(__dirname, './dist'),
     publicPath: '/',
     filename: 'main.js'
   },
@@ -67,6 +69,9 @@ module.exports = {
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
       template: 'index.html'
+    }),
+    new Dotenv({
+      path: './.env'
     })
   ]
 }

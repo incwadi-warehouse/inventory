@@ -5,6 +5,7 @@ const webpack = require('webpack')
 const { VueLoaderPlugin } = require('vue-loader')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: './src/main.js',
@@ -73,7 +74,11 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: 'index.html',
+      favicon: 'src/assets/favicon.ico',
       minify: true
+    }),
+    new Dotenv({
+      path: './.env.production'
     })
   ],
   optimization: {
