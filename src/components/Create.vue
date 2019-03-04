@@ -65,12 +65,12 @@ export default {
       title: '',
       author: '',
       price: '2.50',
-      currency: window.config.currency
+      currency: process.env.CURRENCY
     }
   },
   computed: {
     steps: function () {
-      return window.config.steps
+      return process.env.STEPS
     }
   },
   methods: {

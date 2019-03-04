@@ -32,7 +32,7 @@ export default {
   name: 'list',
   data () {
     return {
-      currency: window.config.currency
+      currency: process.env.CURRENCY
     }
   },
   computed: {

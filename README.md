@@ -18,7 +18,6 @@ I hope people will help in testing out the app as users oder getting involved in
 
 - Download the files from https://gitlab.com/a.baldeweg/incwadi_staff
 - The files in dest/ should be located in your web root.
-- Change the options in index.html, so they fit your needs
 - Configure your webserver to redirect all requests to the index.html
 
 Example for Apache
@@ -37,14 +36,6 @@ Example for Apache
 ## Update
 
 - Download the files like you would install the app and overwrite the existing ones.
-- Make sure you have a backup of the previous index.html, especially your options.
-
-## Options
-
-- api - The url to your api.
-- path - The path to your app.
-- currency - The default currency used in the app.
-- steps - Steps in which the prices can be raised and lowered.
 
 ## Dev
 
