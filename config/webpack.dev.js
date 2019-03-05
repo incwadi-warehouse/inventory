@@ -66,12 +66,12 @@ module.exports = {
   },
   devtool: '#eval-source-map',
   plugins: [
+    new Dotenv({
+      path: './.env'
+    }),
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
       template: 'index.html'
-    }),
-    new Dotenv({
-      path: './.env'
     })
   ]
 }

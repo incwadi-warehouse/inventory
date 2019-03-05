@@ -6,6 +6,8 @@ const { VueLoaderPlugin } = require('vue-loader')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+const WebappWebpackPlugin = require('webapp-webpack-plugin');
+const version = require('./../package.json').version;
 
 module.exports = {
   entry: './src/main.js',
@@ -63,6 +65,9 @@ module.exports = {
   },
   devtool: '#source-map',
   plugins: [
+    new Dotenv({
+      path: './.env.production'
+    }),
     new VueLoaderPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
@@ -74,12 +79,43 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: 'index.html',
-      favicon: 'src/assets/favicon.ico',
       minify: true
     }),
-    new Dotenv({
-      path: './.env.production'
-    })
+    new WebappWebpackPlugin({
+      logo: './src/assets/icon.png',
+      prefix: 'assets/',
+      inject: true,
+      favicons: {
+        path: "/",
+        appName: 'incwadi',
+        appShortName: 'incwadi',
+        appDescription: 'incwadi is a book database to manage a lot of books.',
+        developerName: null,
+        developerURL: null,
+        dir: "auto",
+        lang: "en-US",
+        background: "#ffffff",
+        theme_color: "#e1661e",
+        appleStatusBarStyle: "default",
+        display: "standalone",
+        orientation: "any",
+        scope: "/",
+        start_url: "/",
+        version: version,
+        logging: false,
+        pixel_art: false,
+        loadManifestWithCredentials: false,
+        icons: {
+          android: true,
+          appleIcon: false,
+          appleStartup: false,
+          coast: false,
+          favicons: true,
+          firefox: false,
+          windows: false,
+          yandex: false
+      }
+    }})
   ],
   optimization: {
     minimizer: [
