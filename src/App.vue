@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Heading from './components/Header'
+import Heading from './components/Heading'
 
 export default {
   name: 'app',
