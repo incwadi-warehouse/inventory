@@ -9,6 +9,7 @@ const Dotenv = require('dotenv-webpack');
 const WebappWebpackPlugin = require('webapp-webpack-plugin');
 const version = require('./../package.json').version;
 const { GenerateSW } = require('workbox-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   entry: './src/main.js',
@@ -66,6 +67,7 @@ module.exports = {
   },
   devtool: '#source-map',
   plugins: [
+    new CleanWebpackPlugin(),
     new Dotenv({
       path: './.env.production'
     }),
