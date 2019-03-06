@@ -8,6 +8,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 const WebappWebpackPlugin = require('webapp-webpack-plugin');
 const version = require('./../package.json').version;
+const { GenerateSW } = require('workbox-webpack-plugin');
 
 module.exports = {
   entry: './src/main.js',
@@ -114,8 +115,17 @@ module.exports = {
           firefox: false,
           windows: false,
           yandex: false
+        }
       }
-    }})
+    }),
+    new GenerateSW({
+      swDest: 'sw.js',
+      importWorkboxFrom: 'local',
+      importsDirectory: 'workbox',
+      clientsClaim: true,
+      skipWaiting: true,
+      offlineGoogleAnalytics: false
+    })
   ],
   optimization: {
     minimizer: [
