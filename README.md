@@ -10,9 +10,9 @@ An article can be found here https://medium.com/@A.Baldeweg/i-was-trying-new-thi
 
 ## Future
 
-The first goal is to make a minimum viable product (mvp). It delivers only the features actually needed to be usable. As soon as this is done version 1.0.0 will be released. After that I will start developing new features. The development will follow the principles of lean development. Building small features, try it and decide weather it makes sense to invest time more into it.
+The first goal is to make a minimum viable product (MVP). It delivers only the features actually needed to be usable. As soon as this is done version 1.0.0 will be released. After that I will start developing new features. The development will follow the principles of lean development. Building small features, try it and decide weather it makes sense to invest more time into it.
 
-I hope people will help in testing out the app as users oder getting involved into development. Since the languages (PHP, JavaScript) and the used tools are widespread, it should be easy to getting onboard.
+I hope people will help in testing out the app as users or getting involved into development. Since the languages (PHP, JavaScript) and the used tools are widespread, it should be easy to getting onboard.
 
 ## Getting Started
 
@@ -35,23 +35,23 @@ Example for Apache
 
 ## Update
 
-- Download the files like you would install the app and overwrite the existing ones.
+- Remove the old files and download the new ones like you would install the app.
 
 ## Dev
 
-Run `yarn run watch` to start the development environment.
+Run `yarn watch` to start the development environment.
+
+## Tests
+
+The command `yarn test` runs the unit tests.
 
 ## Build
 
-Run `yarn run build` to start a new build process.
-
-## Update
-
-- Remove the old files and download the new ones like you would install the app.
+Run `yarn build` to build the script.
 
 ## .env
 
-The .env files specify default vars. You can overwrite them for production by creating a more specific .env.production file.
+The .env files specify default vars. You must define them for production by creating a more specific .env.production file.
 
 ```shell
 touch .env.production
@@ -59,6 +59,4 @@ touch .env.production
 
 ### Options
 
-API - Defines the URL to you API.
-CURRENCY - The currency used in the app.
-STEPS - In which steps the prices can be increased and decreased.
+API - Defines the URL to your API.
