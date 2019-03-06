@@ -44,3 +44,21 @@ Run `yarn run watch` to start the development environment.
 ## Build
 
 Run `yarn run build` to start a new build process.
+
+## Update
+
+- Remove the old files and download the new ones like you would install the app.
+
+## .env
+
+The .env files specify default vars. You can overwrite them for production by creating a more specific .env.production file.
+
+```shell
+touch .env.production
+```
+
+### Options
+
+API - Defines the URL to you API.
+CURRENCY - The currency used in the app.
+STEPS - In which steps the prices can be increased and decreased.
