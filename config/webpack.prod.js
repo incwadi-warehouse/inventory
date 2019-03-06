@@ -95,7 +95,7 @@ module.exports = {
         developerURL: null,
         dir: "auto",
         lang: "en-US",
-        background: "#ffffff",
+        background: "#e1661e",
         theme_color: "#e1661e",
         appleStatusBarStyle: "default",
         display: "standalone",
