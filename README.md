@@ -10,15 +10,42 @@ An article can be found here https://medium.com/@A.Baldeweg/i-was-trying-new-thi
 
 ## Future
 
-The first goal is to make a minimum viable product (MVP). It delivers only the features actually needed to be usable. As soon as this is done version 1.0.0 will be released. After that I will start developing new features. The development will follow the principles of lean development. Building small features, try it and decide weather it makes sense to invest more time into it.
-
-I hope people will help in testing out the app as users or getting involved into development. Since the languages (PHP, JavaScript) and the used tools are widespread, it should be easy to getting onboard.
+The first goal is to make a minimum viable product (MVP). It delivers only the features actually needed to be usable. As soon as this is done version 1.0.0 will be released. After that I will start developing new features. The development will follow the principles of lean development. Building small features, try it and decide wether it makes sense to invest more time into it.
 
 ## Getting Started
 
-- Download the files from https://gitlab.com/a.baldeweg/incwadi_staff
-- The files in dest/ should be located in your web root.
-- Configure your webserver to redirect all requests to the index.html
+Download the files from the repository.
+
+```shell
+git clone https://gitlab.com/a.baldeweg/incwadi_staff
+```
+
+The .env files specify vars. You must define them for production by creating a .env.production file.
+
+```shell
+touch .env.production
+```
+
+The file looks like:
+
+```shell
+API=URL
+CURRENCY=EUR
+STEPS=0.5
+BRAND_COLOR=#000000
+```
+
+Please change the values to your needs. For more informations, refer to the section Options.
+
+Start the build process.
+
+```shell
+yarn build
+```
+
+The files in dest/ should be located in your web root.
+
+Configure your webserver to redirect all requests to the index.html file.
 
 Example for Apache
 
@@ -35,28 +62,26 @@ Example for Apache
 
 ## Update
 
-- Remove the old files and download the new ones like you would install the app.
+Remove the old files and download the new ones like you would install the app.
 
-## Dev
-
-Run `yarn watch` to start the development environment.
-
-## Tests
-
-The command `yarn test` runs the unit tests.
-
-## Build
-
-Run `yarn build` to build the script.
-
-## .env
-
-The .env files specify default vars. You must define them for production by creating a more specific .env.production file.
+If you still have the cloned repository and the .env files, you can pull for updates and start the build process.
 
 ```shell
-touch .env.production
+git pull
+yarn build
 ```
 
-### Options
+## Options
 
-API - Defines the URL to your API.
+These options are used in the .env files.
+
+- API - Defines the URL to your API.
+- CURRENCY - The currency shown in the app.
+- STEPS - In which steps the price will be increased and decreased.
+- BRAND_COLOR - The hex code of your desired color.
+
+## CLI
+
+- yarn watch - Starts the development environment.
+- yarn test - Runs the unit tests.
+- yarn build - Builds the app.
