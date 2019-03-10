@@ -16,6 +16,11 @@ export default {
     Heading
   },
   mounted: function () {
+    document.documentElement.style.setProperty(
+      '--color-brand',
+      process.env.BRAND_COLOR
+    )
+
     if (localStorage.getItem('user') === null || localStorage.getItem('pass') === null) {
       this.$router.push({ name: 'login' })
     }
@@ -24,9 +29,3 @@ export default {
 </script>
 
 <style src="../node_modules/baldeweg_ui/dist/style.min.css"></style>
-
-<style>
-:root {
-  --color-brand: #e1661e;
-}
-</style>
