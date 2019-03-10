@@ -5,11 +5,15 @@ const webpack = require('webpack')
 const { VueLoaderPlugin } = require('vue-loader')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const Dotenv = require('dotenv-webpack');
+const DotenvPlugin = require('dotenv-webpack');
 const WebappWebpackPlugin = require('webapp-webpack-plugin');
 const version = require('./../package.json').version;
 const { GenerateSW } = require('workbox-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+
+require('dotenv').config({
+  path: './.env.production'
+});
 
 module.exports = {
   entry: './src/main.js',
@@ -68,7 +72,7 @@ module.exports = {
   devtool: '#source-map',
   plugins: [
     new CleanWebpackPlugin(),
-    new Dotenv({
+    new DotenvPlugin({
       path: './.env.production'
     }),
     new VueLoaderPlugin(),
@@ -95,8 +99,8 @@ module.exports = {
         developerURL: null,
         dir: "auto",
         lang: "en-US",
-        background: "#e1661e",
-        theme_color: "#e1661e",
+        background: process.env.BRAND_COLOR,
+        theme_color: process.env.BRAND_COLOR,
         appleStatusBarStyle: "default",
         display: "standalone",
         orientation: "any",
