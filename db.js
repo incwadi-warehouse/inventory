@@ -58,7 +58,7 @@ app.get('/v1/book/find', (req, res) => {
   );
 })
 
-app.post('/v1/create', (req, res) => {
+app.post('/v1/book/new', (req, res) => {
   return res.json(
     {
       "added": "1545496807",
