@@ -75,6 +75,16 @@
       </div>
       <div class="form_group">
         <div class="form_item">
+          <label for="added" class="form_label">
+            Added
+          </label>
+        </div>
+        <div class="form_item">
+          <input type="date" id="added" class="form_input" v-model="added">
+        </div>
+      </div>
+      <div class="form_group">
+        <div class="form_item">
           <input type="checkbox" id="stocked" v-model="stocked">
           <label for="stocked" class="form_label">
             Stocked
@@ -109,7 +119,8 @@ export default {
       stocked: 0,
       yearOfPublication: null,
       type: null,
-      premium: null
+      premium: null,
+      added: null
     }
   },
   computed: {
@@ -129,7 +140,8 @@ export default {
           stocked: this.stocked,
           yearOfPublication: 2019,
           type: 'paperback',
-          premium: false
+          premium: false,
+          added: new Date(this.added).getTime() / 1000
         }
       })
       this.$router.push({ name: 'index' })
@@ -152,6 +164,16 @@ export default {
       this.yearOfPublication = this.$store.state.book.yearOfPublication
       this.type = this.$store.state.book.type
       this.premium = this.$store.state.book.premium
+      let added = new Date(this.$store.state.book.added * 1000)
+      let month = added.getMonth() + 1
+      if (month < 10) {
+        month = '0' + month
+      }
+      let day = added.getDay()
+      if (day < 10) {
+        day = '0' + day
+      }
+      this.added = added.getFullYear() + '-' + month + '-' + day
     },
     price: function (price) {
       this.price = Number.parseFloat(price).toFixed(2)
