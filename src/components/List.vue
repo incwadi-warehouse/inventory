@@ -7,7 +7,7 @@
           {{book.title}}
         </h2>
         <div class="card_meta">
-          {{book.genre}} - {{book.author}} - {{formatDate(book.added)}}
+          {{book.genre.name}} - {{book.author}} - {{formatDate(book.added)}}
         </div>
         <p class="card_text alignRight">
           {{formatPrice(book.price)}} {{currency}}

@@ -26,7 +26,10 @@ function renderEntries(counter, offset) {
       {
         "added": "1545496807",
         "author": "Author",
-        "genre": "1",
+        "genre": {
+          "id": 1,
+          "name": "name"
+        },
         "id": i + parseInt(offset),
         "price": "1",
         "stocked": "1",
@@ -43,7 +46,10 @@ app.get(/\/v1\/book\/(\d)/, (req, res) => {
     {
       "added": "1545496807",
       "author": "Author",
-      "genre": "1",
+      "genre": {
+        "id": 1,
+        "name": "name"
+      },
       "id": "1",
       "price": "1",
       "stocked": "1",
@@ -66,7 +72,10 @@ app.post('/v1/book/new', (req, res) => {
     {
       "added": "1545496807",
       "author": "Author",
-      "genre": "1",
+      "genre": {
+        "id": 1,
+        "name": "name"
+      },
       "id": "1",
       "price": "1",
       "stocked": "1",
@@ -80,7 +89,10 @@ app.put(/\/v1\/book\/(\d)/, (req, res) => {
     {
       "added": "1545496807",
       "author": "Author",
-      "genre": "1",
+      "genre": {
+        "id": 1,
+        "name": "name"
+      },
       "id": "1",
       "price": "1",
       "stocked": "1",

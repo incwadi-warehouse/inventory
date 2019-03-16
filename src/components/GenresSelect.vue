@@ -15,7 +15,7 @@ export default {
     },
     genre: {
       get: function () {
-        return this.$store.state.genre
+        return this.$store.state.genre ? this.$store.state.genre : null
       },
       set: function (value) {
         this.$store.commit('genre', value)
