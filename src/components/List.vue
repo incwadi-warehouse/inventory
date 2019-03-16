@@ -57,6 +57,7 @@ export default {
       this.$store.commit('offset', this.$store.state.offset + 20)
       this.$store.dispatch('search', {
         term: this.$store.state.searchTerm,
+        limit: 20,
         offset: this.$store.state.offset
       })
     }
@@ -69,6 +70,7 @@ export default {
 
       this.$store.dispatch('search', {
         term: this.$store.state.searchTerm,
+        limit: 20,
         offset: this.$store.state.offset
       })
     }
