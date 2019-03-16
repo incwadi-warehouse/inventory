@@ -54,7 +54,10 @@ app.get(/\/v1\/book\/(\d)/, (req, res) => {
 
 app.get('/v1/book/find', (req, res) => {
   return res.json(
-    renderEntries(20, req.query.offset)
+    {
+      "counter": 40,
+      "books": renderEntries(20, req.query.offset)
+    }
   );
 })
 

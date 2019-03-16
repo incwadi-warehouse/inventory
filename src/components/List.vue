@@ -1,5 +1,6 @@
 <template>
   <section class="section section_fixed" v-if="counter">
+    <p>Ergbnisse: {{ counter }}</p>
     <div class="card">
       <div class="card_item" v-for="book in books" :key="book.id">
         <h2 class="card_title">
@@ -37,10 +38,10 @@ export default {
   },
   computed: {
     books: function () {
-      return this.$store.state.books
+      return this.$store.state.books.books
     },
     counter: function () {
-      return this.$store.state.books.length
+      return this.$store.state.books.counter
     }
   },
   methods: {
