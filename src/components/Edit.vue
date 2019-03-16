@@ -34,6 +34,37 @@
       </div>
       <div class="form_group">
         <div class="form_item">
+          <label for="author" class="form_label">
+            Year of publication
+          </label>
+        </div>
+        <div class="form_item">
+          <input type="number" id="author" class="form_input" v-model="yearOfPublication">
+        </div>
+      </div>
+      <div class="form_group">
+        <div class="form_item">
+          <label for="author" class="form_label">
+            Type
+          </label>
+        </div>
+        <div class="form_item">
+          <select id="type" class="form_input" v-model="type">
+            <option value="paperback">Paperback</option>
+            <option value="hardcover">Hardcover</option>
+          </select>
+        </div>
+      </div>
+      <div class="form_group">
+        <div class="form_item">
+          <input type="checkbox" id="premium" v-model="premium">
+          <label for="premium" class="form_label">
+            Premium
+          </label>
+        </div>
+      </div>
+      <div class="form_group">
+        <div class="form_item">
           <label for="price" class="form_label">
             Price in {{currency}}
           </label>
@@ -75,7 +106,10 @@ export default {
       author: '',
       price: '2.50',
       currency: process.env.CURRENCY,
-      stocked: 0
+      stocked: 0,
+      yearOfPublication: null,
+      type: null,
+      premium: null
     }
   },
   computed: {
@@ -92,7 +126,10 @@ export default {
           title: this.title,
           author: this.author,
           price: this.price,
-          stocked: this.stocked
+          stocked: this.stocked,
+          yearOfPublication: 2019,
+          type: 'paperback',
+          premium: false
         }
       })
       this.$router.push({ name: 'index' })
@@ -112,6 +149,9 @@ export default {
       this.author = this.$store.state.book.author
       this.price = this.$store.state.book.price
       this.stocked = this.$store.state.book.stocked
+      this.yearOfPublication = this.$store.state.book.yearOfPublication
+      this.type = this.$store.state.book.type
+      this.premium = this.$store.state.book.premium
     },
     price: function (price) {
       this.price = Number.parseFloat(price).toFixed(2)

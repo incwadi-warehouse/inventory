@@ -37,7 +37,10 @@ export default {
         author: data.author,
         price: data.price,
         genre: data.genre,
-        stocked: data.stocked
+        stocked: data.stocked,
+        yearOfPublication: data.yearOfPublication,
+        type: data.type,
+        premium: data.premium
       })
       .then(function (response) {
         console.log(response)

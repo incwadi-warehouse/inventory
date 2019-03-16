@@ -33,7 +33,10 @@ function renderEntries(counter, offset) {
         "id": i + parseInt(offset),
         "price": "1",
         "stocked": "1",
-        "title": "Title"
+        "title": "Title",
+        "yearOfYear": 2019,
+        "type": "paperback",
+        "premium": false
       }
     );
   }
@@ -53,7 +56,10 @@ app.get(/\/v1\/book\/(\d)/, (req, res) => {
       "id": "1",
       "price": "1",
       "stocked": "1",
-      "title": "Title"
+      "title": "Title",
+      "yearOfYear": 2019,
+      "type": "paperback",
+      "premium": false
     }
   );
 })
@@ -79,7 +85,10 @@ app.post('/v1/book/new', (req, res) => {
       "id": "1",
       "price": "1",
       "stocked": "1",
-      "title": "Title"
+      "title": "Title",
+      "yearOfYear": 2019,
+      "type": "paperback",
+      "premium": false
     }
   );
 })
@@ -96,7 +105,10 @@ app.put(/\/v1\/book\/(\d)/, (req, res) => {
       "id": "1",
       "price": "1",
       "stocked": "1",
-      "title": "Title"
+      "title": "Title",
+      "yearOfYear": 2019,
+      "type": "paperback",
+      "premium": false
     }
   );
 })
