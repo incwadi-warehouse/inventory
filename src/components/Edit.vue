@@ -138,9 +138,9 @@ export default {
           author: this.author,
           price: this.price,
           stocked: this.stocked,
-          yearOfPublication: 2019,
-          type: 'paperback',
-          premium: false,
+          yearOfPublication: this.yearOfPublication,
+          type: this.type,
+          premium: this.premium,
           added: new Date(this.added).getTime() / 1000
         }
       })
