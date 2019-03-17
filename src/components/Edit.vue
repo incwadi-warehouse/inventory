@@ -169,7 +169,7 @@ export default {
       if (month < 10) {
         month = '0' + month
       }
-      let day = added.getDay()
+      let day = added.getDate()
       if (day < 10) {
         day = '0' + day
       }
