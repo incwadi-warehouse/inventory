@@ -117,7 +117,8 @@ export default {
         stocked: true,
         yearOfPublication: this.yearOfPublication,
         type: this.type,
-        premium: this.premium
+        premium: this.premium,
+        added: Math.round(new Date().getTime() / 1000)
       })
       this.$router.push({ name: 'index' })
     },

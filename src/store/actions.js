@@ -40,7 +40,8 @@ export default {
         stocked: data.stocked,
         yearOfPublication: data.yearOfPublication,
         type: data.type,
-        premium: data.premium
+        premium: data.premium,
+        added: data.added
       })
       .then(function (response) {
         console.log(response)
