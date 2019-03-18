@@ -9,7 +9,15 @@
         <div class="form_group">
           <div class="form_item">
             <input type="checkbox" id="stocked" v-model="stocked">
-            <label for="stocked">Stocked</label>
+            <label for="stocked" class="form_label">Stocked</label>
+          </div>
+        </div>
+        <div class="form_group">
+          <div class="form_item">
+            <label for="older" class="form_label">Older then x months</label>
+          </div>
+          <div class="form_item">
+            <input type="number" id="older" class="form_input" v-model="older">
           </div>
         </div>
         <div class="form_group">
@@ -28,7 +36,8 @@ export default {
   data () {
     return {
       filter: false,
-      stocked: true
+      stocked: true,
+      older: 0
     }
   },
   methods: {
@@ -36,11 +45,14 @@ export default {
       this.filter = !this.filter
     },
     find: function () {
+      let added = new Date()
+      added.setMonth(added.getMonth() - this.older)
       this.$store.dispatch('search', {
         term: this.$store.state.searchTerm,
         limit: 20,
         offset: this.$store.state.offset,
-        stocked: this.stocked ? 1 : 0
+        stocked: this.stocked ? 1 : 0,
+        added: Math.round(added.getTime() / 1000)
       })
     }
   }
