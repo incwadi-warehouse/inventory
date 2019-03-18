@@ -8,16 +8,16 @@
       <form class="form" @submit.prevent="find">
         <div class="form_group">
           <div class="form_item">
-            <input type="checkbox" id="stocked" v-model="stocked">
-            <label for="stocked" class="form_label">Stocked</label>
-          </div>
-        </div>
-        <div class="form_group">
-          <div class="form_item">
             <label for="older" class="form_label">Older then x months</label>
           </div>
           <div class="form_item">
             <input type="number" id="older" class="form_input" v-model="older">
+          </div>
+        </div>
+        <div class="form_group">
+          <div class="form_item">
+            <input type="checkbox" id="stocked" v-model="stocked">
+            <label for="stocked">Stocked</label>
           </div>
         </div>
         <div class="form_group">
