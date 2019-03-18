@@ -34,6 +34,18 @@
         </div>
         <div class="form_group">
           <div class="form_item">
+            <label for="genre" class="form_label">Genre</label>
+          </div>
+          <div class="form_item">
+            <select id="genre" class="form_input" v-model="genre">
+              <option v-for="genre in genres" :key="genre.id" :value="genre.id">
+                {{genre.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="form_group">
+          <div class="form_item">
             <button class="btn btn_secondary">Find</button>
           </div>
         </div>
@@ -50,12 +62,16 @@ export default {
       filter: false,
       stocked: true,
       older: 0,
-      branch: null
+      branch: null,
+      genre: null
     }
   },
   computed: {
     branches: function () {
       return this.$store.state.branches
+    },
+    genres: function () {
+      return this.$store.state.genres
     }
   },
   methods: {
@@ -71,12 +87,14 @@ export default {
         offset: this.$store.state.offset,
         stocked: this.stocked ? 1 : 0,
         added: Math.round(added.getTime() / 1000),
-        branch: this.branch
+        branch: this.branch,
+        genre: this.genre
       })
     }
   },
   mounted: function () {
     this.$store.dispatch('branches')
+    this.$store.dispatch('genres')
   }
 }
 </script>
