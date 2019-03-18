@@ -19,5 +19,8 @@ export default {
   },
   branches (state, branches) {
     state.branches = branches
+  },
+  me (state, me) {
+    state.me = me
   }
 }

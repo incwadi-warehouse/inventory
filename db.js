@@ -148,4 +148,21 @@ app.get('/v1/genre/', (req, res) => {
   );
 })
 
+app.get('/v1/me', (req, res) => {
+  return res.json(
+    {
+      "id": 1,
+      "username": "admin",
+      "roles": [
+        "ROLE_ADMIN",
+        "ROLE_USER"
+      ],
+      "branch": {
+        "id": 1,
+        "name": "test"
+      }
+    }
+  );
+})
+
 app.listen(port, () => console.log('App listening on http://localhost:' + port))

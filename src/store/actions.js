@@ -79,5 +79,15 @@ export default {
       .catch(function (error) {
         console.log(error)
       })
+  },
+  me (context) {
+    api
+      .get('/me')
+      .then(function (response) {
+        context.commit('me', response.data)
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
   }
 }

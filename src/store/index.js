@@ -20,7 +20,8 @@ export default new Vuex.Store({
     offset: 0,
     genres: [],
     genre: null,
-    branches: null
+    branches: null,
+    me: null
   },
   mutations,
   actions

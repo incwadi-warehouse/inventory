@@ -24,6 +24,10 @@ export default {
     if (localStorage.getItem('user') === null || localStorage.getItem('pass') === null) {
       this.$router.push({ name: 'login' })
     }
+
+    if (localStorage.getItem('user') && localStorage.getItem('pass')) {
+      this.$store.dispatch('me')
+    }
   }
 }
 </script>
