@@ -16,5 +16,8 @@ export default {
   },
   genre (state, genre) {
     state.genre = genre
+  },
+  branches (state, branches) {
+    state.branches = branches
   }
 }

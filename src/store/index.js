@@ -19,7 +19,8 @@ export default new Vuex.Store({
     searchTerm: null,
     offset: 0,
     genres: [],
-    genre: null
+    genre: null,
+    branches: null
   },
   mutations,
   actions

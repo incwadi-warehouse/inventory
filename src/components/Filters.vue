@@ -22,6 +22,18 @@
         </div>
         <div class="form_group">
           <div class="form_item">
+            <label for="branches" class="form_label">Branches</label>
+          </div>
+          <div class="form_item">
+            <select id="branches" class="form_input" v-model="branch">
+              <option v-for="branch in branches" :key="branch.id" :value="branch.id">
+                {{branch.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="form_group">
+          <div class="form_item">
             <button class="btn btn_secondary">Find</button>
           </div>
         </div>
@@ -37,7 +49,13 @@ export default {
     return {
       filter: false,
       stocked: true,
-      older: 0
+      older: 0,
+      branch: null
+    }
+  },
+  computed: {
+    branches: function () {
+      return this.$store.state.branches
     }
   },
   methods: {
@@ -52,9 +70,13 @@ export default {
         limit: 20,
         offset: this.$store.state.offset,
         stocked: this.stocked ? 1 : 0,
-        added: Math.round(added.getTime() / 1000)
+        added: Math.round(added.getTime() / 1000),
+        branch: this.branch
       })
     }
+  },
+  mounted: function () {
+    this.$store.dispatch('branches')
   }
 }
 </script>

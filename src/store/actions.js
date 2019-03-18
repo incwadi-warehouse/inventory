@@ -69,5 +69,15 @@ export default {
       .catch(function (error) {
         console.log(error)
       })
+  },
+  branches (context) {
+    api
+      .get('/branch/')
+      .then(function (response) {
+        context.commit('branches', response.data)
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
   }
 }
