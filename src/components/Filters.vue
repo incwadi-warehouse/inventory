@@ -16,6 +16,14 @@
         </div>
         <div class="form_group">
           <div class="form_item">
+            <label for="lending" class="form_label">Lend more then x months</label>
+          </div>
+          <div class="form_item">
+            <input type="number" id="lending" class="form_input" v-model="lending">
+          </div>
+        </div>
+        <div class="form_group">
+          <div class="form_item">
             <input type="checkbox" id="stocked" v-model="stocked">
             <label for="stocked">Stocked</label>
           </div>
@@ -63,7 +71,8 @@ export default {
       stocked: true,
       older: 0,
       branch: null,
-      genre: null
+      genre: null,
+      lending: 0
     }
   },
   computed: {
@@ -81,6 +90,8 @@ export default {
     find: function () {
       let added = new Date()
       added.setMonth(added.getMonth() - this.older)
+      let lending = new Date()
+      lending.setMonth(lending.getMonth() - this.lending)
       this.$store.dispatch('search', {
         term: this.$store.state.searchTerm,
         limit: 20,
@@ -88,7 +99,8 @@ export default {
         stocked: this.stocked ? 1 : 0,
         added: Math.round(added.getTime() / 1000),
         branch: this.branch,
-        genre: this.genre
+        genre: this.genre,
+        lending: Math.round(lending / 1000)
       })
     }
   },
