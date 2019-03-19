@@ -1,6 +1,7 @@
 <template>
   <section>
     <section class="section section_default alignRight">
+      <button class="btn btn_secondary" @click="toggleOrder">Order</button>
       <button class="btn btn_secondary" @click="toggleFilter">Filter</button>
     </section>
 
@@ -73,6 +74,38 @@
         </div>
       </form>
     </section>
+
+    <section class="section section_default" v-if="order">
+      <form class="form" @submit.prevent>
+        <div class="form_group">
+          <div class="form_item">
+            <label for="ordering" class="form_label">Ordering</label>
+          </div>
+          <div class="form_item">
+            <select id="genre" class="form_input" @change="find" v-model="ordering">
+              <option value="asc">Ascending</option>
+              <option value="desc">Descending</option>
+              <option value="genre_asc">Genre Ascending</option>
+              <option value="genre_desc">Genre Descending</option>
+              <option value="added_asc">Added Ascending</option>
+              <option value="added_desc">Added Descending</option>
+              <option value="title_asc">Title Ascending</option>
+              <option value="title_desc">Title Descending</option>
+              <option value="author_asc">Author Ascending</option>
+              <option value="author_desc">Author Descending</option>
+              <option value="price_asc">Price Ascending</option>
+              <option value="price_desc">Price Descending</option>
+              <option value="yearOfPublication_asc">Year of Publication Ascending</option>
+              <option value="yearOfPublication_desc">Year of Publication Descending</option>
+              <option value="type_asc">Type Ascending</option>
+              <option value="type_desc">Type Descending</option>
+              <option value="premium_asc">Premium Ascending</option>
+              <option value="premium_desc">Premium Descending</option>
+            </select>
+          </div>
+        </div>
+      </form>
+    </section>
   </section>
 </template>
 
@@ -82,11 +115,13 @@ export default {
   data () {
     return {
       filter: false,
+      order: false,
       stocked: true,
       older: 0,
       branch: null,
       genre: 'any',
-      lending: 0
+      lending: 0,
+      ordering: 'asc'
     }
   },
   computed: {
@@ -100,6 +135,11 @@ export default {
   methods: {
     toggleFilter: function () {
       this.filter = !this.filter
+      this.order = false
+    },
+    toggleOrder: function () {
+      this.order = !this.order
+      this.filter = false
     },
     find: function () {
       let added = new Date()
@@ -112,15 +152,21 @@ export default {
         offset: this.$store.state.offset,
         stocked: this.stocked ? 1 : 0,
         added: Math.round(added.getTime() / 1000),
-        branch: this.branch.join(','),
-        genre: this.genre.join(','),
-        lending: Math.round(lending / 1000)
+        branch: this.branch ? this.branch.join(',') : null,
+        genre: this.genre !== 'any' ? this.genre.join(',') : null,
+        lending: Math.round(lending / 1000),
+        sort: this.ordering
       })
     }
   },
   mounted: function () {
     this.$store.dispatch('branches')
     this.$store.dispatch('genres')
+  },
+  watch: {
+    ordering: function () {
+      this.find()
+    }
   }
 }
 </script>
