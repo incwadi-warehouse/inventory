@@ -24,19 +24,20 @@
         </div>
         <div class="form_group">
           <div class="form_item">
-            <input type="checkbox" id="stocked" v-model="stocked">
-            <label for="stocked">Stocked</label>
-          </div>
-        </div>
-        <div class="form_group">
-          <div class="form_item">
             <label for="branches" class="form_label">Branches</label>
           </div>
           <div class="form_item">
-            <select id="branches" class="form_input" v-model="branch">
-              <option v-for="branch in branches" :key="branch.id" :value="branch.id">
-                {{branch.name}}
-              </option>
+            <select id="branches" class="form_input" multiple v-model="branch">
+              <option value=""></option>
+              <optgroup label="General">
+                <option value="none">None</option>
+                <option value="any">Any</option>
+              </optgroup>
+              <optgroup label="Branches">
+                <option v-for="branch in branches" :key="branch.id" :value="branch.id">
+                  {{branch.name}}
+                </option>
+              </optgroup>
             </select>
           </div>
         </div>
@@ -45,15 +46,28 @@
             <label for="genre" class="form_label">Genre</label>
           </div>
           <div class="form_item">
-            <select id="genre" class="form_input" v-model="genre">
-              <option v-for="genre in genres" :key="genre.id" :value="genre.id">
-                {{genre.name}}
-              </option>
+            <select id="genre" class="form_input" multiple v-model="genre">
+              <option value=""></option>
+              <optgroup label="General">
+                <option value="none">None</option>
+                <option value="any">Any</option>
+              </optgroup>
+              <optgroup label="Genres">
+                <option v-for="genre in genres" :key="genre.id" :value="genre.id">
+                  {{genre.name}}
+                </option>
+              </optgroup>
             </select>
           </div>
         </div>
         <div class="form_group">
           <div class="form_item">
+            <input type="checkbox" id="stocked" v-model="stocked">
+            <label for="stocked">Stocked</label>
+          </div>
+        </div>
+        <div class="form_group">
+          <div class="form_item alignRight">
             <button class="btn btn_secondary">Find</button>
           </div>
         </div>
@@ -71,7 +85,7 @@ export default {
       stocked: true,
       older: 0,
       branch: null,
-      genre: null,
+      genre: 'any',
       lending: 0
     }
   },
@@ -98,8 +112,8 @@ export default {
         offset: this.$store.state.offset,
         stocked: this.stocked ? 1 : 0,
         added: Math.round(added.getTime() / 1000),
-        branch: this.branch,
-        genre: this.genre,
+        branch: this.branch.join(','),
+        genre: this.genre.join(','),
         lending: Math.round(lending / 1000)
       })
     }
