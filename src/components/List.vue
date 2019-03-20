@@ -3,7 +3,7 @@
     <spinner/>
 
     <section class="section section_fixed" v-if="counter">
-      <p>Ergbnisse: {{ counter }}</p>
+      <p>Results: {{ counter }}</p>
       <div class="card">
         <div class="card_item" v-for="book in books" :key="book.id">
           <h2 class="card_title">
