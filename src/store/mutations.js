@@ -22,5 +22,8 @@ export default {
   },
   me (state, me) {
     state.me = me
+  },
+  isLoading (state, isLoading) {
+    state.isLoading = isLoading
   }
 }

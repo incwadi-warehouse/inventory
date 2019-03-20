@@ -21,7 +21,8 @@ export default new Vuex.Store({
     genres: [],
     genre: null,
     branches: null,
-    me: null
+    me: null,
+    isLoading: false
   },
   mutations,
   actions

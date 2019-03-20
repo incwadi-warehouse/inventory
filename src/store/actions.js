@@ -13,6 +13,7 @@ export default {
       })
   },
   search (context, data) {
+    context.commit('isLoading', true)
     api
       .get('/book/find', { params: data })
       .then(function (response) {
@@ -25,6 +26,7 @@ export default {
         } else {
           context.commit('books', response.data)
         }
+        context.commit('isLoading', false)
       })
       .catch(function (error) {
         console.log(error)
