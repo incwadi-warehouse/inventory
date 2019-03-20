@@ -4,6 +4,7 @@ import Login from '../views/Login'
 import Index from '../views/Index'
 import Create from '../views/Create'
 import Edit from '../views/Edit'
+import About from '../views/About'
 import NotFound from '../views/NotFound'
 
 Vue.use(Router)
@@ -31,6 +32,11 @@ export default new Router({
       name: 'edit',
       component: Edit,
       props: true
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: About
     },
     {
       path: '*',
