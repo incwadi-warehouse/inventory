@@ -1,114 +1,120 @@
 <template>
-  <section class="section section_fixed">
-    <h1>Edit Book</h1>
-    <form class="form">
-      <div class="form_group">
-        <div class="form_item">
-          <label for="genre" class="form_label">
-            Genre
-          </label>
+  <section>
+    <spinner/>
+
+    <section class="section section_fixed" v-if="!isLoading">
+      <h1>Edit Book</h1>
+      <form class="form">
+        <div class="form_group">
+          <div class="form_item">
+            <label for="genre" class="form_label">
+              Genre
+            </label>
+          </div>
+          <div class="form_item">
+            <genres-select/>
+          </div>
         </div>
-        <div class="form_item">
-          <genres-select/>
+        <div class="form_group">
+          <div class="form_item">
+            <label for="title" class="form_label">
+              Title
+            </label>
+          </div>
+          <div class="form_item">
+            <input type="text" id="title" class="form_input" v-model="title">
+          </div>
         </div>
-      </div>
-      <div class="form_group">
-        <div class="form_item">
-          <label for="title" class="form_label">
-            Title
-          </label>
+        <div class="form_group">
+          <div class="form_item">
+            <label for="author" class="form_label">
+              Author
+            </label>
+          </div>
+          <div class="form_item">
+            <input type="text" id="author" class="form_input" v-model="author">
+          </div>
         </div>
-        <div class="form_item">
-          <input type="text" id="title" class="form_input" v-model="title">
+        <div class="form_group">
+          <div class="form_item">
+            <label for="author" class="form_label">
+              Year of publication
+            </label>
+          </div>
+          <div class="form_item">
+            <input type="number" id="author" class="form_input" v-model="yearOfPublication">
+          </div>
         </div>
-      </div>
-      <div class="form_group">
-        <div class="form_item">
-          <label for="author" class="form_label">
-            Author
-          </label>
+        <div class="form_group">
+          <div class="form_item">
+            <label for="author" class="form_label">
+              Type
+            </label>
+          </div>
+          <div class="form_item">
+            <select id="type" class="form_input" v-model="type">
+              <option value="paperback">Paperback</option>
+              <option value="hardcover">Hardcover</option>
+            </select>
+          </div>
         </div>
-        <div class="form_item">
-          <input type="text" id="author" class="form_input" v-model="author">
+        <div class="form_group">
+          <div class="form_item">
+            <input type="checkbox" id="premium" v-model="premium">
+            <label for="premium" class="form_label">
+              Premium
+            </label>
+          </div>
         </div>
-      </div>
-      <div class="form_group">
-        <div class="form_item">
-          <label for="author" class="form_label">
-            Year of publication
-          </label>
+        <div class="form_group">
+          <div class="form_item">
+            <label for="price" class="form_label">
+              Price in {{currency}}
+            </label>
+          </div>
+          <div class="form_item">
+            <input type="number" id="price" class="form_input" :step="steps" v-model="price">
+          </div>
         </div>
-        <div class="form_item">
-          <input type="number" id="author" class="form_input" v-model="yearOfPublication">
+        <div class="form_group">
+          <div class="form_item">
+            <label for="added" class="form_label">
+              Added
+            </label>
+          </div>
+          <div class="form_item">
+            <input type="date" id="added" class="form_input" v-model="added">
+          </div>
         </div>
-      </div>
-      <div class="form_group">
-        <div class="form_item">
-          <label for="author" class="form_label">
-            Type
-          </label>
+        <div class="form_group">
+          <div class="form_item">
+            <input type="checkbox" id="stocked" v-model="stocked">
+            <label for="stocked" class="form_label">
+              Stocked
+            </label>
+          </div>
         </div>
-        <div class="form_item">
-          <select id="type" class="form_input" v-model="type">
-            <option value="paperback">Paperback</option>
-            <option value="hardcover">Hardcover</option>
-          </select>
+        <div class="form_group">
+          <div class="form_item alignRight">
+            <button class="btn btn_secondary" @click.prevent="cancel">Cancel</button>
+            <button class="btn btn_branded" @click.prevent="update">Update</button>
+          </div>
         </div>
-      </div>
-      <div class="form_group">
-        <div class="form_item">
-          <input type="checkbox" id="premium" v-model="premium">
-          <label for="premium" class="form_label">
-            Premium
-          </label>
-        </div>
-      </div>
-      <div class="form_group">
-        <div class="form_item">
-          <label for="price" class="form_label">
-            Price in {{currency}}
-          </label>
-        </div>
-        <div class="form_item">
-          <input type="number" id="price" class="form_input" :step="steps" v-model="price">
-        </div>
-      </div>
-      <div class="form_group">
-        <div class="form_item">
-          <label for="added" class="form_label">
-            Added
-          </label>
-        </div>
-        <div class="form_item">
-          <input type="date" id="added" class="form_input" v-model="added">
-        </div>
-      </div>
-      <div class="form_group">
-        <div class="form_item">
-          <input type="checkbox" id="stocked" v-model="stocked">
-          <label for="stocked" class="form_label">
-            Stocked
-          </label>
-        </div>
-      </div>
-      <div class="form_group">
-        <div class="form_item alignRight">
-          <button class="btn btn_secondary" @click.prevent="cancel">Cancel</button>
-          <button class="btn btn_branded" @click.prevent="update">Update</button>
-        </div>
-      </div>
-    </form>
+      </form>
+    </section>
   </section>
 </template>
 
 <script>
 import GenresSelect from './GenresSelect'
+import Spinner from './Spinner'
 
 export default {
   name: 'edit',
   props: ['id'],
   components: {
-    GenresSelect
+    GenresSelect,
+    Spinner
   },
   data () {
     return {
@@ -126,6 +132,9 @@ export default {
   computed: {
     steps: function () {
       return process.env.STEPS
+    },
+    isLoading: function () {
+      return this.$store.state.isLoading
     }
   },
   methods: {

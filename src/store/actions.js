@@ -2,11 +2,13 @@ import api from '../api'
 
 export default {
   book (context, id) {
+    context.commit('isLoading', true)
     api
       .get('/book/' + id)
       .then(function (response) {
         context.commit('book', response.data)
         context.commit('genre', response.data.genre.id)
+        context.commit('isLoading', false)
       })
       .catch(function (error) {
         console.log(error)
