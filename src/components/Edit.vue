@@ -73,7 +73,7 @@
             </label>
           </div>
           <div class="form_item">
-            <input type="number" id="price" class="form_input" :step="steps" v-model="price">
+            <input type="number" id="price" class="form_input" :step="steps" @change="formatPrice" v-model="price">
           </div>
         </div>
         <div class="form_group">
@@ -157,6 +157,9 @@ export default {
     },
     cancel: function () {
       this.$router.push({ name: 'index' })
+    },
+    formatPrice: function () {
+      this.price = Number.parseFloat(this.price).toFixed(2)
     }
   },
   mounted: function () {
@@ -183,9 +186,6 @@ export default {
         day = '0' + day
       }
       this.added = added.getFullYear() + '-' + month + '-' + day
-    },
-    price: function (price) {
-      this.price = Number.parseFloat(price).toFixed(2)
     }
   }
 }
