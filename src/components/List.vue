@@ -1,6 +1,6 @@
 <template>
   <section class="section section_fixed" v-if="counter">
-    <p v-if="counter">Results: {{ counter }}</p>
+    <p class="noprint" v-if="counter">Results: {{ counter }}</p>
 
     <div class="table_wrapper">
       <table class="table">
@@ -11,7 +11,7 @@
             <th>Genre</th>
             <th>Added</th>
             <th class="alignRight">{{currency}}</th>
-            <th></th>
+            <th class="noprint"></th>
           </tr>
         </thead>
         <tbody>
@@ -21,13 +21,13 @@
             <td>{{book.genre.name}}</td>
             <td>{{formatDate(book.added)}}</td>
             <td class="alignRight">{{formatPrice(book.price)}}</td>
-            <td class="alignRight"><router-link :to="{ name: 'edit', params: { id: book.id } }">Edit</router-link></td>
+            <td class="alignRight noprint"><router-link :to="{ name: 'edit', params: { id: book.id } }">Edit</router-link></td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <div class="alignCenter">
+    <div class="alignCenter noprint">
       <button class="btn btn_secondary" @click="reload" v-if="counter > 10">
         Load more
       </button>
@@ -68,3 +68,13 @@ export default {
   }
 }
 </script>
+
+<style>
+@media print {
+  .header,
+  .search,
+  .noprint {
+    display: none;
+  }
+}
+</style>

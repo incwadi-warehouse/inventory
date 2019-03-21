@@ -1,11 +1,11 @@
 <template>
   <section>
-    <section class="section section_default alignRight">
+    <section class="section section_default alignRight noprint">
       <button class="btn btn_secondary" @click="toggleOrder">Order</button>
       <button class="btn btn_secondary" @click="toggleFilter">Filter</button>
     </section>
 
-    <section class="section section_default" v-if="filter">
+    <section class="section section_default noprint" v-if="filter">
       <form class="form" @submit.prevent="find">
         <div class="form_group">
           <div class="form_item">
