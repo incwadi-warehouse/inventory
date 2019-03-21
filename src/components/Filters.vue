@@ -1,8 +1,9 @@
 <template>
   <section>
-    <section class="section section_default alignRight">
-      <button class="btn btn_secondary" @click="toggleOrder">Order</button>
-      <button class="btn btn_secondary" @click="toggleFilter">Filter</button>
+    <section class="section section_default">
+      <button class="btn btn_secondary floatRight" @click="toggleFilter">Filter</button>
+      <button class="btn btn_secondary floatRight" @click="toggleOrder">Order</button>
+      <p v-if="counter">Results: {{ counter }}</p>
     </section>
 
     <section class="section section_default" v-if="filter">
@@ -130,6 +131,9 @@ export default {
     },
     genres: function () {
       return this.$store.state.genres
+    },
+    counter: function () {
+      return this.$store.state.books.counter
     }
   },
   methods: {
@@ -146,17 +150,13 @@ export default {
       added.setMonth(added.getMonth() - this.older)
       let lending = new Date()
       lending.setMonth(lending.getMonth() - this.lending)
-      this.$store.dispatch('search', {
-        term: this.$store.state.searchTerm,
-        limit: 20,
-        offset: this.$store.state.offset,
-        stocked: this.stocked ? 1 : 0,
-        added: Math.round(added.getTime() / 1000),
-        branch: this.branch ? this.branch.join(',') : null,
-        genre: this.genre !== 'any' ? this.genre.join(',') : null,
-        lending: Math.round(lending / 1000),
-        sort: this.ordering
-      })
+      this.$store.state('stocked', this.stocked ? 1 : 0)
+      this.$store.state('added', Math.round(added.getTime() / 1000))
+      this.$store.state('branch', this.branch ? this.branch.join(',') : null)
+      this.$store.state('genreFilter', this.genre !== 'any' ? this.genre.join(',') : null)
+      this.$store.state('lending', Math.round(lending / 1000))
+      this.$store.state('sort', this.ordering)
+      this.$store.state('search')
     }
   },
   mounted: function () {

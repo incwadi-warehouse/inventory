@@ -1,45 +1,35 @@
 <template>
-  <section>
-    <spinner/>
-
-    <section class="section section_fixed" v-if="counter">
-      <p>Results: {{ counter }}</p>
-      <div class="card">
-        <div class="card_item" v-for="book in books" :key="book.id">
-          <h2 class="card_title">
-            {{book.title}}
-          </h2>
-          <div class="card_meta">
-            {{book.genre.name}} - {{book.author}} - {{formatDate(book.added)}}
-          </div>
-          <p class="card_text alignRight">
-            {{formatPrice(book.price)}} {{currency}}
-          </p>
-          <ul class="card_options">
-            <li class="card_option">
-              <router-link :to="{ name: 'edit', params: { id: book.id } }">&#9998;</router-link>
-            </li>
-          </ul>
+  <section class="section section_fixed" v-if="counter">
+    <div class="card">
+      <div class="card_item" v-for="book in books" :key="book.id">
+        <h2 class="card_title">
+          {{book.title}}
+        </h2>
+        <div class="card_meta">
+          {{book.genre.name}} - {{book.author}} - {{formatDate(book.added)}}
         </div>
+        <p class="card_text alignRight">
+          {{formatPrice(book.price)}} {{currency}}
+        </p>
+        <ul class="card_options">
+          <li class="card_option">
+            <router-link :to="{ name: 'edit', params: { id: book.id } }">Edit</router-link>
+          </li>
+        </ul>
       </div>
+    </div>
 
-      <div class="alignCenter">
-        <button class="btn btn_secondary" @click="reload" v-if="counter> 10">
-          Load more
-        </button>
-      </div>
-    </section>
+    <div class="alignCenter">
+      <button class="btn btn_secondary" @click="reload" v-if="counter > 10">
+        Load more
+      </button>
+    </div>
   </section>
 </template>
 
 <script>
-import Spinner from './Spinner'
-
 export default {
   name: 'list',
-  components: {
-    Spinner
-  },
   data () {
     return {
       currency: process.env.CURRENCY
@@ -55,33 +45,17 @@ export default {
   },
   methods: {
     formatDate: function (timestamp) {
-      let date = new Date(timestamp * 1000)
-
-      return date.toLocaleDateString()
+      return new Date(timestamp * 1000).toLocaleDateString()
     },
     formatPrice: function (price) {
       return Number.parseFloat(price).toFixed(2)
     },
     reload: function () {
-      this.$store.commit('offset', this.$store.state.offset + 20)
-      this.$store.dispatch('search', {
-        term: this.$store.state.searchTerm,
-        limit: 20,
-        offset: this.$store.state.offset
-      })
-    }
-  },
-  watch: {
-    '$store.state.searchTerm': function () {
-      if (this.$store.state.searchTerm === '') {
-        return this.$store.commit('books', [])
-      }
-
-      this.$store.dispatch('search', {
-        term: this.$store.state.searchTerm,
-        limit: 20,
-        offset: this.$store.state.offset
-      })
+      this.$store.commit(
+        'offset',
+        this.$store.state.offset + this.$store.state.limit
+      )
+      this.$store.dispatch('search')
     }
   }
 }

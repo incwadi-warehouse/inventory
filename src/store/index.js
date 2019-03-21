@@ -7,6 +7,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    // Books
     books: [],
     book: {
       title: null,
@@ -16,12 +17,24 @@ export default new Vuex.Store({
       price: null,
       stocked: null
     },
-    searchTerm: null,
-    offset: 0,
+    // Genres
     genres: [],
     genre: null,
+    // Branches
     branches: null,
+    // User
     me: null,
+    // Filter
+    searchTerm: null,
+    offset: 0,
+    limit: 20,
+    stocked: null,
+    added: null,
+    branch: null,
+    genreFilter: null,
+    lending: null,
+    sort: null,
+    // Spinner
     isLoading: false
   },
   mutations,

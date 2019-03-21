@@ -1,6 +1,7 @@
 import api from '../api'
 
 export default {
+  // Books
   book (context, id) {
     context.commit('isLoading', true)
     api
@@ -14,12 +15,24 @@ export default {
         console.log(error)
       })
   },
-  search (context, data) {
+  search (context) {
     context.commit('isLoading', true)
     api
-      .get('/book/find', { params: data })
+      .get('/book/find', {
+        params: {
+          term: context.state.searchTerm,
+          limit: context.state.limit,
+          offset: context.state.offset,
+          stocked: context.state.stocked,
+          added: context.state.added,
+          branch: context.state.branch,
+          genreFilter: context.state.genreFilter,
+          lending: context.state.lending,
+          sort: context.state.sort
+        }
+      })
       .then(function (response) {
-        if (data.offset >= 1) {
+        if (context.state.offset >= 1) {
           let books = context.state.books
           response.data.forEach(book => {
             books.push(book)
@@ -64,6 +77,7 @@ export default {
         console.log(error)
       })
   },
+  // Genres
   genres (context) {
     api
       .get('/genre/')
@@ -74,6 +88,7 @@ export default {
         console.log(error)
       })
   },
+  // Branches
   branches (context) {
     api
       .get('/branch/')
@@ -84,6 +99,7 @@ export default {
         console.log(error)
       })
   },
+  // User
   me (context) {
     api
       .get('/me')
