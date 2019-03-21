@@ -57,6 +57,7 @@ export default {
 }
 .search_options {
   padding: 0;
+  width: 100%;
 }
 .search_input {
   border: 0 hidden;
@@ -65,5 +66,11 @@ export default {
 }
 .search_btn {
   border-radius: 0;
+  width: 100%;
+}
+@media all and (min-width: 500px) {
+  .search_options {
+    width: auto;
+  }
 }
 </style>
