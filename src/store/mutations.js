@@ -38,7 +38,7 @@ export default {
     state.branch = branch
   },
   genreFilter (state, genre) {
-    state.genre = genre
+    state.genreFilter = genre
   },
   lending (state, lending) {
     state.lending = lending

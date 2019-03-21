@@ -1,9 +1,8 @@
 <template>
   <section>
-    <section class="section section_default">
-      <button class="btn btn_secondary floatRight" @click="toggleFilter">Filter</button>
-      <button class="btn btn_secondary floatRight" @click="toggleOrder">Order</button>
-      <p v-if="counter">Results: {{ counter }}</p>
+    <section class="section section_default alignRight">
+      <button class="btn btn_secondary" @click="toggleOrder">Order</button>
+      <button class="btn btn_secondary" @click="toggleFilter">Filter</button>
     </section>
 
     <section class="section section_default" v-if="filter">
@@ -119,8 +118,8 @@ export default {
       order: false,
       stocked: true,
       older: 0,
-      branch: null,
-      genre: 'any',
+      branch: [],
+      genre: ['any'],
       lending: 0,
       ordering: 'asc'
     }
@@ -150,13 +149,14 @@ export default {
       added.setMonth(added.getMonth() - this.older)
       let lending = new Date()
       lending.setMonth(lending.getMonth() - this.lending)
-      this.$store.state('stocked', this.stocked ? 1 : 0)
-      this.$store.state('added', Math.round(added.getTime() / 1000))
-      this.$store.state('branch', this.branch ? this.branch.join(',') : null)
-      this.$store.state('genreFilter', this.genre !== 'any' ? this.genre.join(',') : null)
-      this.$store.state('lending', Math.round(lending / 1000))
-      this.$store.state('sort', this.ordering)
-      this.$store.state('search')
+      this.$store.commit('stocked', this.stocked ? null : 0)
+      this.$store.commit('added', this.older !== 0 ? Math.round(added.getTime() / 1000) : null)
+      this.$store.commit('branch', this.branch.length >= 1 ? this.branch.join(',') : null)
+      console.log(this.genre.length)
+      this.$store.commit('genreFilter', this.genre.length >= 1 ? this.genre.join(',') : null)
+      this.$store.commit('lending', this.lending !== 0 ? Math.round(lending / 1000) : null)
+      this.$store.commit('sort', this.ordering !== 'asc' ? this.ordering : null)
+      this.$store.dispatch('search')
     }
   },
   mounted: function () {

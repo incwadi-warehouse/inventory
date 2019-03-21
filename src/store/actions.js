@@ -26,7 +26,7 @@ export default {
           stocked: context.state.stocked,
           added: context.state.added,
           branch: context.state.branch,
-          genreFilter: context.state.genreFilter,
+          genre: context.state.genreFilter,
           lending: context.state.lending,
           sort: context.state.sort
         }
