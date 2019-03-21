@@ -1,24 +1,30 @@
 <template>
   <section class="section section_fixed" v-if="counter">
     <p v-if="counter">Results: {{ counter }}</p>
-    <hr>
-    <div class="card">
-      <div class="card_item" v-for="book in books" :key="book.id">
-        <h2 class="card_title">
-          {{book.title}}
-        </h2>
-        <div class="card_meta">
-          {{book.genre.name}} - {{book.author}} - {{formatDate(book.added)}}
-        </div>
-        <p class="card_text alignRight">
-          {{formatPrice(book.price)}} {{currency}}
-        </p>
-        <ul class="card_options">
-          <li class="card_option">
-            <router-link :to="{ name: 'edit', params: { id: book.id } }">Edit</router-link>
-          </li>
-        </ul>
-      </div>
+
+    <div class="table_wrapper">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Genre</th>
+            <th>Added</th>
+            <th class="alignRight">{{currency}}</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="book in books" :key="book.id">
+            <td>{{book.title}}</td>
+            <td>{{book.author}}</td>
+            <td>{{book.genre.name}}</td>
+            <td>{{formatDate(book.added)}}</td>
+            <td class="alignRight">{{formatPrice(book.price)}}</td>
+            <td class="alignRight"><router-link :to="{ name: 'edit', params: { id: book.id } }">Edit</router-link></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
     <div class="alignCenter">
