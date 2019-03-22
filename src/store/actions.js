@@ -88,6 +88,18 @@ export default {
         console.log(error)
       })
   },
+  createGenre (context, name) {
+    api
+      .post('/genre/new', {
+        name: name
+      })
+      .then(function (response) {
+        context.dispatch('genres')
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
+  },
   // Branches
   branches (context) {
     api

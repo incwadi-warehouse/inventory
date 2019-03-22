@@ -5,6 +5,7 @@ import Index from '../views/Index'
 import Create from '../views/Create'
 import Edit from '../views/Edit'
 import About from '../views/About'
+import Genre from '../views/Genre'
 import NotFound from '../views/NotFound'
 
 Vue.use(Router)
@@ -37,6 +38,11 @@ export default new Router({
       path: '/about',
       name: 'about',
       component: About
+    },
+    {
+      path: '/genres',
+      name: 'genre',
+      component: Genre
     },
     {
       path: '*',
