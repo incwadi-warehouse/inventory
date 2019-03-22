@@ -1,5 +1,5 @@
 <template>
-  <section class="section section_fixed">
+  <section class="section section_fixed" v-if="showForm">
     <h2>Neu</h2>
     <form class="form" @submit.prevent="create">
       <div class="form_group">
@@ -30,7 +30,14 @@ export default {
   methods: {
     create: function () {
       this.$store.dispatch('createGenre', this.name)
+    },
+    showForm: function () {
+      if (!this.$store.state.me) return
+      return this.$store.state.me.roles.indexOf('ROLE_ADMIN') !== -1
     }
+  },
+  mounted: function () {
+    this.$store.dispatch('me')
   }
 }
 </script>
