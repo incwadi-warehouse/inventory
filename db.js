@@ -165,4 +165,23 @@ app.get('/v1/me', (req, res) => {
   );
 })
 
+app.get('/v1/branch/', (req, res) => {
+  return res.json(
+    [
+      {
+        "id": 1,
+        "name": "Branch 1"
+      },
+      {
+        "id": 2,
+        "name": "Branch 2"
+      },
+      {
+        "id": 3,
+        "name": "Branch 3"
+      }
+    ]
+  );
+})
+
 app.listen(port, () => console.log('App listening on http://localhost:' + port))
