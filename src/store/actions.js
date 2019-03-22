@@ -79,12 +79,10 @@ export default {
   },
   // Genres
   genres (context) {
-    context.commit('isLoading', true)
     api
       .get('/genre/')
       .then(function (response) {
         context.commit('genres', response.data)
-        context.commit('isLoading', false)
       })
       .catch(function (error) {
         console.log(error)
