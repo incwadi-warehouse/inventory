@@ -30,6 +30,7 @@ export default {
   methods: {
     create: function () {
       this.$store.dispatch('genres/createGenre', this.name)
+      this.name = null
     },
     showForm: function () {
       if (!this.$store.state.me) return
