@@ -12,11 +12,11 @@ export default {
   name: 'genre',
   computed: {
     genres: function () {
-      return this.$store.state.genres
+      return this.$store.state.genres.genres
     }
   },
   mounted: function () {
-    this.$store.dispatch('genres')
+    this.$store.dispatch('genres/genres')
   }
 }
 </script>

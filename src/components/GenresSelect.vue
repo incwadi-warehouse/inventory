@@ -11,19 +11,19 @@ export default {
   name: 'genres-select',
   computed: {
     genres: function () {
-      return this.$store.state.genres
+      return this.$store.state.genres.genres
     },
     genre: {
       get: function () {
-        return this.$store.state.genre ? this.$store.state.genre : null
+        return this.$store.state.genres.genre ? this.$store.state.genres.genre : null
       },
       set: function (value) {
-        this.$store.commit('genre', value)
+        this.$store.commit('filter/genre', value)
       }
     }
   },
   mounted: function () {
-    this.$store.dispatch('genres')
+    this.$store.dispatch('genres/genres')
   }
 }
 </script>

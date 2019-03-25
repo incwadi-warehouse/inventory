@@ -109,10 +109,10 @@ export default {
   },
   methods: {
     add: function () {
-      this.$store.dispatch('create', {
+      this.$store.dispatch('books/create', {
         title: this.title,
         author: this.author,
-        genre: this.$store.state.genre,
+        genre: this.$store.state.genres.genre,
         price: this.price,
         stocked: true,
         yearOfPublication: this.yearOfPublication,

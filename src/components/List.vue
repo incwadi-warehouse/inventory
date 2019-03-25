@@ -45,10 +45,10 @@ export default {
   },
   computed: {
     books: function () {
-      return this.$store.state.books.books
+      return this.$store.state.books.books.books
     },
     counter: function () {
-      return this.$store.state.books.counter
+      return this.$store.state.books.books.counter
     }
   },
   methods: {
@@ -60,10 +60,10 @@ export default {
     },
     reload: function () {
       this.$store.commit(
-        'offset',
-        this.$store.state.offset + this.$store.state.limit
+        'filter/offset',
+        this.$store.state.filter.offset + this.$store.state.filter.limit
       )
-      this.$store.dispatch('search')
+      this.$store.dispatch('books/search')
     }
   }
 }

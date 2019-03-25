@@ -126,13 +126,13 @@ export default {
   },
   computed: {
     branches: function () {
-      return this.$store.state.branches
+      return this.$store.state.branches.branches
     },
     genres: function () {
-      return this.$store.state.genres
+      return this.$store.state.genres.genres
     },
     counter: function () {
-      return this.$store.state.books.counter
+      return this.$store.state.books.books.counter
     }
   },
   methods: {
@@ -149,19 +149,19 @@ export default {
       added.setMonth(added.getMonth() - this.older)
       let lending = new Date()
       lending.setMonth(lending.getMonth() - this.lending)
-      this.$store.commit('stocked', this.stocked ? null : 0)
-      this.$store.commit('added', this.older !== 0 ? Math.round(added.getTime() / 1000) : null)
-      this.$store.commit('branch', this.branch.length >= 1 ? this.branch.join(',') : null)
+      this.$store.commit('filter/stocked', this.stocked ? null : 0)
+      this.$store.commit('filter/added', this.older !== 0 ? Math.round(added.getTime() / 1000) : null)
+      this.$store.commit('filter/branch', this.branch.length >= 1 ? this.branch.join(',') : null)
       console.log(this.genre.length)
-      this.$store.commit('genreFilter', this.genre.length >= 1 ? this.genre.join(',') : null)
-      this.$store.commit('lending', this.lending !== 0 ? Math.round(lending / 1000) : null)
-      this.$store.commit('sort', this.ordering !== 'asc' ? this.ordering : null)
-      this.$store.dispatch('search')
+      this.$store.commit('filter/genreFilter', this.genre.length >= 1 ? this.genre.join(',') : null)
+      this.$store.commit('filter/lending', this.lending !== 0 ? Math.round(lending / 1000) : null)
+      this.$store.commit('filter/sort', this.ordering !== 'asc' ? this.ordering : null)
+      this.$store.dispatch('books/search')
     }
   },
   mounted: function () {
-    this.$store.dispatch('branches')
-    this.$store.dispatch('genres')
+    this.$store.dispatch('branches/branches')
+    this.$store.dispatch('genres/genres')
   },
   watch: {
     ordering: function () {

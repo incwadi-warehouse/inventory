@@ -26,16 +26,16 @@ export default {
   computed: {
     searchTerm: {
       get: function () {
-        return this.$store.state.searchTerm
+        return this.$store.state.filter.searchTerm
       },
       set: function (searchTerm) {
-        this.$store.commit('searchTerm', searchTerm)
+        this.$store.commit('filter/searchTerm', searchTerm)
       }
     }
   },
   methods: {
     search: function () {
-      this.$store.dispatch('search')
+      this.$store.dispatch('books/search')
     }
   }
 }

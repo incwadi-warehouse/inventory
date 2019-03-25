@@ -139,10 +139,10 @@ export default {
   },
   methods: {
     update: function () {
-      this.$store.dispatch('update', {
+      this.$store.dispatch('books/update', {
         id: this.id,
         params: {
-          genre: this.$store.state.genre,
+          genre: this.$store.state.genres.genre,
           title: this.title,
           author: this.author,
           price: this.price,
@@ -163,20 +163,20 @@ export default {
     }
   },
   mounted: function () {
-    this.$store.dispatch('book', this.id)
+    this.$store.dispatch('books/book', this.id)
   },
   watch: {
-    '$store.state.book': function () {
-      if (!this.$store.state.book) return
+    '$store.state.books.book': function () {
+      if (!this.$store.state.books.book) return
 
-      this.title = this.$store.state.book.title
-      this.author = this.$store.state.book.author
-      this.price = this.$store.state.book.price
-      this.stocked = this.$store.state.book.stocked
-      this.yearOfPublication = this.$store.state.book.yearOfPublication
-      this.type = this.$store.state.book.type
-      this.premium = this.$store.state.book.premium
-      let added = new Date(this.$store.state.book.added * 1000)
+      this.title = this.$store.state.books.book.title
+      this.author = this.$store.state.books.book.author
+      this.price = this.$store.state.books.book.price
+      this.stocked = this.$store.state.books.book.stocked
+      this.yearOfPublication = this.$store.state.books.book.yearOfPublication
+      this.type = this.$store.state.books.book.type
+      this.premium = this.$store.state.books.book.premium
+      let added = new Date(this.$store.state.books.book.added * 1000)
       let month = added.getMonth() + 1
       if (month < 10) {
         month = '0' + month
