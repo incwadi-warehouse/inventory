@@ -1,16 +1,16 @@
 <template>
   <section class="section section_fixed" v-if="counter">
-    <p class="noprint" v-if="counter">Results: {{ counter }}</p>
+    <p class="noprint" v-if="counter">{{ $t('results') }}: {{ counter }}</p>
 
     <div class="table_wrapper">
       <table class="table">
         <thead>
           <tr>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Genre</th>
-            <th>Added</th>
-            <th class="alignRight">{{currency}}</th>
+            <th class="isSortable" @click="filter('title')">{{ $t('title') }}</th>
+            <th class="isSortable" @click="filter('author')">{{ $t('author') }}</th>
+            <th class="isSortable" @click="filter('genre')">{{ $t('genre') }}</th>
+            <th class="isSortable" @click="filter('added')">{{ $t('added') }}</th>
+            <th class="alignRight isSortable" @click="filter('price')">{{currency}}</th>
             <th class="noprint"></th>
           </tr>
         </thead>
@@ -21,7 +21,7 @@
             <td>{{book.genre.name}}</td>
             <td>{{formatDate(book.added)}}</td>
             <td class="alignRight">{{formatPrice(book.price)}}</td>
-            <td class="alignRight noprint"><router-link :to="{ name: 'edit', params: { id: book.id } }">Edit</router-link></td>
+            <td class="alignRight noprint"><router-link :to="{ name: 'edit', params: { id: book.id } }">{{ $t('edit') }}</router-link></td>
           </tr>
         </tbody>
       </table>
@@ -29,7 +29,7 @@
 
     <div class="alignCenter noprint">
       <button class="btn btn_secondary" @click="reload" v-if="counter > 10">
-        Load more
+        {{ $t('load_more') }}
       </button>
     </div>
   </section>
@@ -64,12 +64,30 @@ export default {
         this.$store.state.filter.offset + this.$store.state.filter.limit
       )
       this.$store.dispatch('books/search')
+    },
+    filter: function (type) {
+      let ordering = this.$store.state.filter.sort
+
+      if (ordering === type + '_desc') {
+        this.$store.commit('filter/sort', 'asc')
+      }
+      if (ordering === type + '_asc') {
+        this.$store.commit('filter/sort', type + '_desc')
+      }
+      if (ordering !== type + '_asc' && ordering !== type + '_desc') {
+        this.$store.commit('filter/sort', type + '_asc')
+      }
+      this.$store.dispatch('books/search')
     }
   }
 }
 </script>
 
 <style>
+.isSortable {
+  cursor: pointer;
+}
+
 @media print {
   .header,
   .search,

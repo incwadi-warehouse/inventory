@@ -3,23 +3,23 @@
     <form class="form" @submit.prevent="save">
       <div class="form_group">
         <div class="form_item">
-          <label for="user">User</label>
+          <label for="user">{{ $t('user') }}</label>
         </div>
         <div class="form_item">
-          <input type="text" id="user" class="form_input" placeholder="Username" v-model="user"/>
+          <input type="text" id="user" class="form_input" :placeholder="$t('username')" v-model="user"/>
         </div>
       </div>
       <div class="form_group">
         <div class="form_item">
-          <label for="pass">Pass</label>
+          <label for="pass">{{ $t('password') }}</label>
         </div>
         <div class="form_item">
-          <input type="password" id="pass" class="form_input" placeholder="Password" v-model="pass"/>
+          <input type="password" id="pass" class="form_input" :placeholder="$t('password')" v-model="pass"/>
         </div>
       </div>
       <div class="form_group">
         <div class="form_item alignRight">
-          <button class="btn btn_branded" @click.prevent="save">Save</button>
+          <button class="btn btn_branded" @click.prevent="save">{{ $t('save') }}</button>
         </div>
       </div>
     </form>

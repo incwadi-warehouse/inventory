@@ -1,11 +1,11 @@
 <template>
   <section class="section section_fixed">
-    <h1>Add Book</h1>
+    <h1>{{ $t('add_book') }}</h1>
     <form class="form">
       <div class="form_group">
         <div class="form_item">
           <label for="genre" class="form_label">
-            Genre
+            {{ $t('genre') }}
           </label>
         </div>
         <div class="form_item">
@@ -15,7 +15,7 @@
       <div class="form_group">
         <div class="form_item">
           <label for="title" class="form_label">
-            Title
+            {{ $t('title') }}
           </label>
         </div>
         <div class="form_item">
@@ -25,7 +25,7 @@
       <div class="form_group">
         <div class="form_item">
           <label for="author" class="form_label">
-            Author
+            {{ $t('author') }}
           </label>
         </div>
         <div class="form_item">
@@ -35,7 +35,7 @@
       <div class="form_group">
         <div class="form_item">
           <label for="author" class="form_label">
-            Year of publication
+            {{ $t('release_year') }}
           </label>
         </div>
         <div class="form_item">
@@ -45,13 +45,13 @@
       <div class="form_group">
         <div class="form_item">
           <label for="author" class="form_label">
-            Type
+            {{ $t('type') }}
           </label>
         </div>
         <div class="form_item">
           <select id="type" class="form_input" v-model="type">
-            <option value="paperback">Paperback</option>
-            <option value="hardcover">Hardcover</option>
+            <option value="paperback">{{ $t('paperback') }}</option>
+            <option value="hardcover">{{ $t('hardcover') }}</option>
           </select>
         </div>
       </div>
@@ -59,14 +59,14 @@
         <div class="form_item">
           <input type="checkbox" id="premium" v-model="premium">
           <label for="premium" class="form_label">
-            Premium
+            {{ $t('premium') }}
           </label>
         </div>
       </div>
       <div class="form_group">
         <div class="form_item">
           <label for="price" class="form_label">
-            Price in {{currency}}
+            {{ $t('price') }} ({{currency}})
           </label>
         </div>
         <div class="form_item">
@@ -75,8 +75,8 @@
       </div>
       <div class="form_group">
         <div class="form_item alignRight">
-          <button class="btn btn_secondary" @click.prevent="cancel">Cancel</button>
-          <button class="btn btn_branded" @click.prevent="add">Add</button>
+          <button class="btn btn_secondary" @click.prevent="cancel">{{ $t('cancel') }}</button>
+          <button class="btn btn_branded" @click.prevent="add">{{ $t('add') }}</button>
         </div>
       </div>
     </form>

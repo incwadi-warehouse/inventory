@@ -1,6 +1,6 @@
 <template>
   <section class="section section_fixed">
-    <h1>Genres</h1>
+    <h1>{{ $t('genres') }}</h1>
     <ul class="list">
       <li v-for="genre in genres" :key="genre.id">{{genre.name}}</li>
     </ul>

@@ -1,10 +1,10 @@
 <template>
   <section class="section section_fixed" v-if="showForm">
-    <h2>Neu</h2>
+    <h2>{{ $t('new') }}</h2>
     <form class="form" @submit.prevent="create">
       <div class="form_group">
         <div class="form_item">
-          <label for="name" class="form_label">Name</label>
+          <label for="name" class="form_label">{{ $t('name') }}</label>
         </div>
         <div class="form_item">
           <input type="text" id="name" class="form_input" v-model="name">
@@ -12,7 +12,7 @@
       </div>
       <div class="form_group">
         <div class="form_item alignRight">
-          <button class="btn btn_secondary" @click.prevent="create">Create</button>
+          <button class="btn btn_secondary" @click.prevent="create">{{ $t('create') }}</button>
         </div>
       </div>
     </form>

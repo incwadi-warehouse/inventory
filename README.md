@@ -39,6 +39,7 @@ CURRENCY=EUR
 STEPS=0.5
 BRAND_COLOR=#000000
 LOGO=src/assets/logo.png
+LOCALE=en
 ```
 
 Please change the values to your needs. For more informations, refer to the section Options.
@@ -86,6 +87,7 @@ These options are used in the .env files.
 - STEPS - In which steps the price will be increased and decreased.
 - BRAND_COLOR - The hex code of your desired color.
 - LOGO - Path to your custom logo.
+- LOCALE - Choose your language
 
 ## CLI
 

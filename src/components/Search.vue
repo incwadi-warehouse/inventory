@@ -3,18 +3,18 @@
     <form class="search" @submit.prevent="search">
       <div class="search_main">
         <label for="searchTerm" class="form_label visuallyHidden">
-          Search
+          {{ $t('search') }}
         </label>
         <input
           type="search"
           id="searchTerm"
           class="search_input"
-          placeholder="Search for title or author"
+          :placeholder="$t('search_for_title_or_author')"
           autofocus
           v-model="searchTerm">
       </div>
       <div class="search_options">
-        <button class="btn btn_branded search_btn" @click.prevent="search">Find</button>
+        <button class="btn btn_branded search_btn" @click.prevent="search">{{ $t('find') }}</button>
       </div>
     </form>
   </section>

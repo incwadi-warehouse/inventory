@@ -40,15 +40,15 @@ export default {
       api
         .get('/book/find', {
           params: {
-            term: context.state.searchTerm,
-            limit: context.state.limit,
-            offset: context.state.offset,
-            stocked: context.state.stocked,
-            added: context.state.added,
-            branch: context.state.branch,
-            genre: context.state.genreFilter,
-            lending: context.state.lending,
-            sort: context.state.sort
+            term: context.rootState.filter.searchTerm,
+            limit: context.rootState.filter.limit,
+            offset: context.rootState.filter.offset,
+            stocked: context.rootState.filter.stocked,
+            added: context.rootState.filter.added,
+            branch: context.rootState.filter.branch,
+            genre: context.rootState.filter.genreFilter,
+            lending: context.rootState.filter.lending,
+            sort: context.rootState.filter.sort
           }
         })
         .then(function (response) {
