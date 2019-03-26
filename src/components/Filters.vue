@@ -112,7 +112,6 @@ export default {
       this.$store.commit('filter/stocked', this.stocked ? null : 0)
       this.$store.commit('filter/added', this.older !== 0 ? Math.round(added.getTime() / 1000) : null)
       this.$store.commit('filter/branch', this.branch.length >= 1 ? this.branch.join(',') : null)
-      console.log(this.genre.length)
       this.$store.commit('filter/genreFilter', this.genre.length >= 1 ? this.genre.join(',') : null)
       this.$store.commit('filter/lending', this.lending !== 0 ? Math.round(lending / 1000) : null)
       this.$store.dispatch('books/search')
