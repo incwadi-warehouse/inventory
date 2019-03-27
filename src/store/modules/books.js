@@ -23,20 +23,20 @@ export default {
   },
   actions: {
     book (context, id) {
-      context.commit('isLoading', true)
+      context.commit('isLoading', true, { root: true })
       api
         .get('/book/' + id)
         .then(function (response) {
           context.commit('book', response.data)
           context.commit('genre', response.data.genre.id)
-          context.commit('isLoading', false)
+          context.commit('isLoading', false, { root: true })
         })
         .catch(function (error) {
           console.log(error)
         })
     },
     search (context) {
-      context.commit('isLoading', true)
+      context.commit('isLoading', true, { root: true })
       api
         .get('/book/find', {
           params: {
@@ -61,7 +61,7 @@ export default {
           } else {
             context.commit('books', response.data)
           }
-          context.commit('isLoading', false)
+          context.commit('isLoading', false, { root: true })
         })
         .catch(function (error) {
           console.log(error)
