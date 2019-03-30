@@ -2,7 +2,7 @@
   <header class="header">
     <div class="header_left">
       <div class="header_item">
-        <router-link :to="{ name: 'index' }"><img :src=logo></router-link>
+        <router-link :to="{ name: 'index' }"><img :src=logo alt="incwadi"></router-link>
       </div>
     </div>
     <div class="header_right">
