@@ -12,6 +12,8 @@ Vue.use(Router)
 
 export default new Router({
   mode: 'history',
+  linkActiveClass: '',
+  linkExactActiveClass: '',
   routes: [
     {
       path: '/login',
