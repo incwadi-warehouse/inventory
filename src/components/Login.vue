@@ -6,7 +6,7 @@
           <label for="user">{{ $t('user') }}</label>
         </div>
         <div class="form_item">
-          <input type="text" id="user" class="form_input" :placeholder="$t('username')" v-model="user"/>
+          <input type="text" id="user" class="form_input" :placeholder="$t('user')" v-model="user"/>
         </div>
       </div>
       <div class="form_group">
