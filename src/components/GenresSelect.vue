@@ -18,7 +18,7 @@ export default {
         return this.$store.state.genres.genre ? this.$store.state.genres.genre : null
       },
       set: function (value) {
-        this.$store.commit('filter/genre', value)
+        this.$store.commit('genres/genre', value)
       }
     }
   },
