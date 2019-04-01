@@ -5,11 +5,8 @@ const axiosInstance = function () {
     baseURL: process.env.API,
     timeout: 50000,
     headers: {
-      'Content-Type': 'application/json'
-    },
-    auth: {
-      username: localStorage.getItem('user'),
-      password: localStorage.getItem('pass')
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + localStorage.getItem('token')
     }
   })
 }

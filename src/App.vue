@@ -21,7 +21,7 @@ export default {
       process.env.BRAND_COLOR
     )
 
-    if (localStorage.getItem('user') === null || localStorage.getItem('pass') === null) {
+    if (localStorage.getItem('token') === null) {
       this.$router.push({ name: 'login' })
     }
   }

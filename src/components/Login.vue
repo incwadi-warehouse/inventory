@@ -37,14 +37,12 @@ export default {
   },
   methods: {
     save: function () {
-      localStorage.setItem('user', this.user)
-      localStorage.setItem('pass', this.pass)
+      this.$store.dispatch('login', {
+        user: this.user,
+        password: this.pass
+      })
       this.$router.push({ name: 'index' })
     }
-  },
-  mounted: function () {
-    this.user = localStorage.getItem('user')
-    this.pass = localStorage.getItem('pass')
   }
 }
 </script>

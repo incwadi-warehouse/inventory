@@ -13,7 +13,7 @@ export default {
   actions: {
     branches (context) {
       api
-        .get('/branch/')
+        .get('/v1/branch/')
         .then(function (response) {
           context.commit('branches', response.data)
         })

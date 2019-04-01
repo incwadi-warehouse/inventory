@@ -28,9 +28,22 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    login (context, data) {
+      api
+        .post('/api/login_check', {
+          username: data.user,
+          password: data.password
+        })
+        .then(function (response) {
+          localStorage.setItem('token', response.data.token)
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+    },
     me (context) {
       api
-        .get('/me')
+        .get('/v1/me')
         .then(function (response) {
           context.commit('me', response.data)
         })

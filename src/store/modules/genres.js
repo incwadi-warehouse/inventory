@@ -17,7 +17,7 @@ export default {
   actions: {
     genres (context) {
       api
-        .get('/genre/')
+        .get('/v1/genre/')
         .then(function (response) {
           context.commit('genres', response.data)
         })
@@ -27,7 +27,7 @@ export default {
     },
     createGenre (context, name) {
       api
-        .post('/genre/new', {
+        .post('/v1/genre/new', {
           name: name
         })
         .then(function (response) {
