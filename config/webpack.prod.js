@@ -10,6 +10,7 @@ const WebappWebpackPlugin = require('webapp-webpack-plugin');
 const version = require('./../package.json').version;
 const { GenerateSW } = require('workbox-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 require('dotenv').config({
   path: './.env.production'
@@ -129,7 +130,10 @@ module.exports = {
       clientsClaim: true,
       skipWaiting: true,
       offlineGoogleAnalytics: false
-    })
+    }),
+    new CopyPlugin([
+      { from: 'robots.txt', to: 'robots.txt' },
+    ])
   ],
   optimization: {
     minimizer: [
