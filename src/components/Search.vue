@@ -2,14 +2,12 @@
   <section class="section section_fixed">
     <form class="search" @submit.prevent="search">
       <div class="search_main">
-        <label for="searchTerm" class="form_label visuallyHidden">
-          {{ $t('search') }}
-        </label>
         <input
           type="search"
           id="searchTerm"
           class="search_input"
           :placeholder="$t('search_for_title_or_author')"
+          :aria-label="$t('search')"
           autofocus
           v-model="searchTerm">
       </div>
