@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Login from '../views/Login'
 import Index from '../views/Index'
-import Create from '../views/Create'
 import Edit from '../views/Edit'
 import About from '../views/About'
 import Genre from '../views/Genre'
@@ -24,11 +23,6 @@ export default new Router({
       path: '/',
       name: 'index',
       component: Index
-    },
-    {
-      path: '/create',
-      name: 'create',
-      component: Create
     },
     {
       path: '/edit/:id',

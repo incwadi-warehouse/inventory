@@ -4,9 +4,6 @@
       <router-link :to="{ name: 'index' }">{{ $t('home') }}</router-link>
     </li>
     <li class="nav_item">
-      <router-link :to="{ name: 'create' }">{{ $t('create') }}</router-link>
-    </li>
-    <li class="nav_item">
       <router-link :to="{ name: 'genre' }">{{ $t('genres') }}</router-link>
     </li>
     <li class="nav_item">
