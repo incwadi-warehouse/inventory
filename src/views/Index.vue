@@ -1,6 +1,10 @@
 <template>
   <section>
     <search/>
+    <section class="section section_default alignRight noprint">
+      <button class="btn btn_secondary" @click="toggleFilter">{{ $t('filter') }}</button>
+      <button class="btn btn_secondary" @click="toggleShowCreate">{{ $t('create') }}</button>
+    </section>
     <filters/>
     <spinner/>
     <transition name="fade">
@@ -29,6 +33,14 @@ export default {
   computed: {
     showCreate: function () {
       return this.$store.state.showCreate
+    }
+  },
+  methods: {
+    toggleFilter: function () {
+      this.filter = !this.filter
+    },
+    toggleShowCreate: function () {
+      this.$store.dispatch('toggleShowCreate')
     }
   }
 }
