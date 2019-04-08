@@ -2,6 +2,7 @@
   <section>
     <section class="section section_default alignRight noprint">
       <button class="btn btn_secondary" @click="toggleFilter">{{ $t('filter') }}</button>
+      <button class="btn btn_secondary" @click="toggleShowCreate">{{ $t('create') }}</button>
     </section>
 
     <section class="section section_default noprint" v-if="filter">
@@ -115,6 +116,9 @@ export default {
       this.$store.commit('filter/genreFilter', this.genre.length >= 1 ? this.genre.join(',') : null)
       this.$store.commit('filter/lending', this.lending !== 0 ? Math.round(lending / 1000) : null)
       this.$store.dispatch('books/search')
+    },
+    toggleShowCreate: function () {
+      this.$store.dispatch('toggleShowCreate')
     }
   },
   mounted: function () {

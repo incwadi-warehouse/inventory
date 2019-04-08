@@ -17,7 +17,8 @@ export default new Vuex.Store({
   },
   state: {
     me: null,
-    isLoading: false
+    isLoading: false,
+    showCreate: false
   },
   mutations: {
     me (state, me) {
@@ -25,6 +26,9 @@ export default new Vuex.Store({
     },
     isLoading (state, isLoading) {
       state.isLoading = isLoading
+    },
+    showCreate (state, showCreate) {
+      state.showCreate = showCreate
     }
   },
   actions: {
@@ -50,6 +54,9 @@ export default new Vuex.Store({
         .catch(function (error) {
           console.log(error)
         })
+    },
+    toggleShowCreate (context) {
+      context.commit('showCreate', !context.state.showCreate)
     }
   }
 })
