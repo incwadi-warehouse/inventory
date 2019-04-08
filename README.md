@@ -28,10 +28,11 @@ git clone https://gitlab.com/a.baldeweg/incwadi_staff
 The .env files specify vars. You must define them for production by creating a .env.production file.
 
 ```shell
+touch .env
 touch .env.production
 ```
 
-The file looks like:
+The files are looking like:
 
 ```shell
 API=URL
