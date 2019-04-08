@@ -123,7 +123,7 @@ export default {
       this.$router.push({ name: 'index' })
     },
     cancel: function () {
-      this.$router.push({ name: 'index' })
+      this.$store.dispatch('toggleShowCreate')
     },
     formatPrice: function () {
       this.price = Number.parseFloat(this.price).toFixed(2)
