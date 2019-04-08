@@ -18,6 +18,7 @@ export default new Vuex.Store({
   state: {
     me: null,
     isLoading: false,
+    showFilters: false,
     showCreate: false
   },
   mutations: {
@@ -26,6 +27,9 @@ export default new Vuex.Store({
     },
     isLoading (state, isLoading) {
       state.isLoading = isLoading
+    },
+    showFilters (state, showFilters) {
+      state.showFilters = showFilters
     },
     showCreate (state, showCreate) {
       state.showCreate = showCreate
@@ -54,6 +58,9 @@ export default new Vuex.Store({
         .catch(function (error) {
           console.log(error)
         })
+    },
+    toggleFilters (context) {
+      context.commit('showFilters', !context.state.showFilters)
     },
     toggleShowCreate (context) {
       context.commit('showCreate', !context.state.showCreate)

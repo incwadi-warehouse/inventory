@@ -1,5 +1,5 @@
 <template>
-  <section class="section section_default noprint" v-if="filter">
+  <section class="section section_default noprint" v-if="showFilters">
     <form class="form" @submit.prevent="find">
       <div class="form_group">
         <div class="form_item">
@@ -92,6 +92,9 @@ export default {
     },
     counter: function () {
       return this.$store.state.books.books.counter
+    },
+    showFilters: function () {
+      return this.$store.state.showFilters
     }
   },
   methods: {

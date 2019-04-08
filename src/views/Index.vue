@@ -5,7 +5,9 @@
       <button class="btn btn_secondary" @click="toggleFilter">{{ $t('filter') }}</button>
       <button class="btn btn_secondary" @click="toggleShowCreate">{{ $t('create') }}</button>
     </section>
-    <filters/>
+    <transition name="fade">
+      <filters/>
+    </transition>
     <spinner/>
     <transition name="fade">
       <create class="noprint" v-if="showCreate"/>
@@ -37,7 +39,7 @@ export default {
   },
   methods: {
     toggleFilter: function () {
-      this.filter = !this.filter
+      this.$store.dispatch('toggleFilters')
     },
     toggleShowCreate: function () {
       this.$store.dispatch('toggleShowCreate')
