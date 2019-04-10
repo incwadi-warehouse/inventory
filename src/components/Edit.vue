@@ -37,12 +37,12 @@
         </div>
         <div class="form_group">
           <div class="form_item">
-            <label for="author" class="form_label">
-              {{ $t('author') }}
+            <label for="year_of_publication" class="form_label">
+              {{ $t('release_year') }}
             </label>
           </div>
           <div class="form_item">
-            <input type="number" id="author" class="form_input" min="1000" max="9999" required v-model="yearOfPublication">
+            <input type="number" id="year_of_publication" class="form_input" min="1000" max="9999" required v-model="yearOfPublication">
           </div>
         </div>
         <div class="form_group">
@@ -152,9 +152,6 @@ export default {
           added: new Date(this.added).getTime() / 1000
         }
       })
-      this.$router.push({ name: 'index' })
-    },
-    cancel: function () {
       this.$router.push({ name: 'index' })
     },
     formatPrice: function () {
