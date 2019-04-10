@@ -1,5 +1,5 @@
 <template>
-  <select id="genre" class="form_input" v-model="genre">
+  <select id="genre" class="form_input" required v-model="genre">
     <option v-for="genre in genres" :key="genre.id" :value="genre.id">
       {{genre.name}}
     </option>

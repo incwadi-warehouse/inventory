@@ -4,7 +4,7 @@
 
     <section class="section section_fixed" v-if="!isLoading">
       <h1>{{ $t('edit_book') }}</h1>
-      <form class="form">
+      <form class="form" @submit.prevent="update">
         <div class="form_group">
           <div class="form_item">
             <label for="genre" class="form_label">
@@ -22,7 +22,7 @@
             </label>
           </div>
           <div class="form_item">
-            <input type="text" id="title" class="form_input" v-model="title">
+            <input type="text" id="title" class="form_input" maxlength="255" required v-model="title">
           </div>
         </div>
         <div class="form_group">
@@ -32,7 +32,7 @@
             </label>
           </div>
           <div class="form_item">
-            <input type="text" id="author" class="form_input" v-model="author">
+            <input type="text" id="author" class="form_input" maxlength="255" required v-model="author">
           </div>
         </div>
         <div class="form_group">
@@ -42,7 +42,7 @@
             </label>
           </div>
           <div class="form_item">
-            <input type="number" id="author" class="form_input" v-model="yearOfPublication">
+            <input type="number" id="author" class="form_input" min="1000" max="9999" required v-model="yearOfPublication">
           </div>
         </div>
         <div class="form_group">
@@ -73,7 +73,7 @@
             </label>
           </div>
           <div class="form_item">
-            <input type="number" id="price" class="form_input" :step="steps" @change="formatPrice" v-model="price">
+            <input type="number" id="price" class="form_input" :step="steps" @change="formatPrice" required v-model="price">
           </div>
         </div>
         <div class="form_group">
@@ -96,8 +96,7 @@
         </div>
         <div class="form_group">
           <div class="form_item alignRight">
-            <button class="btn btn_secondary" @click.prevent="cancel">{{ $t('cancel') }}</button>
-            <button class="btn btn_branded" @click.prevent="update">{{ $t('update') }}</button>
+            <button class="btn btn_branded">{{ $t('update') }}</button>
           </div>
         </div>
       </form>

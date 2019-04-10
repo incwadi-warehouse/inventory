@@ -1,7 +1,7 @@
 <template>
   <section class="section section_fixed">
     <h1>{{ $t('add_book') }}</h1>
-    <form class="form">
+    <form class="form" @submit.prevent="add">
       <div class="form_group">
         <div class="form_item">
           <label for="genre" class="form_label">
@@ -19,7 +19,7 @@
           </label>
         </div>
         <div class="form_item">
-          <input type="text" id="title" class="form_input" v-model="title">
+          <input type="text" id="title" class="form_input" maxlength="255" required v-model="title">
         </div>
       </div>
       <div class="form_group">
@@ -29,7 +29,7 @@
           </label>
         </div>
         <div class="form_item">
-          <input type="text" id="author" class="form_input" v-model="author">
+          <input type="text" id="author" class="form_input" maxlength="255" required v-model="author">
         </div>
       </div>
       <div class="form_group">
@@ -39,7 +39,7 @@
           </label>
         </div>
         <div class="form_item">
-          <input type="number" id="author" class="form_input" v-model="yearOfPublication">
+          <input type="number" id="author" class="form_input" min="1000" max="9999" required v-model="yearOfPublication">
         </div>
       </div>
       <div class="form_group">
@@ -70,13 +70,12 @@
           </label>
         </div>
         <div class="form_item">
-          <input type="number" id="price" class="form_input" :step="steps" @change="formatPrice" v-model="price">
+          <input type="number" id="price" class="form_input" :step="steps" @change="formatPrice" required v-model="price">
         </div>
       </div>
       <div class="form_group">
         <div class="form_item alignRight">
-          <button class="btn btn_secondary" @click.prevent="cancel">{{ $t('cancel') }}</button>
-          <button class="btn btn_branded" @click.prevent="add">{{ $t('add') }}</button>
+          <button type="submit" class="btn btn_branded">{{ $t('add') }}</button>
         </div>
       </div>
     </form>
@@ -93,8 +92,8 @@ export default {
   },
   data () {
     return {
-      title: '',
-      author: '',
+      title: null,
+      author: null,
       price: '2.50',
       currency: process.env.CURRENCY,
       yearOfPublication: 2019,
@@ -120,9 +119,6 @@ export default {
         premium: this.premium,
         added: Math.round(new Date().getTime() / 1000)
       })
-      this.$router.push({ name: 'index' })
-    },
-    cancel: function () {
       this.$store.dispatch('toggleShowCreate')
     },
     formatPrice: function () {
