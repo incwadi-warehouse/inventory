@@ -77,7 +77,7 @@ const messages = {
     contribution: 'Feedback ist sehr Willkommen!',
     add_book: 'Buch hinzufügen',
     release_year: 'Erscheinungsjahr',
-    type: 'Type',
+    type: 'Typ',
     paperback: 'Taschenbuch',
     hardcover: 'Gebundenes Buch',
     premium: 'Premium',
