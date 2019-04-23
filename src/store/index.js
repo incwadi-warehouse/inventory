@@ -19,7 +19,8 @@ export default new Vuex.Store({
     me: null,
     isLoading: false,
     showFilters: false,
-    showCreate: false
+    showCreate: false,
+    token: localStorage.getItem('token')
   },
   mutations: {
     me (state, me) {
@@ -33,24 +34,28 @@ export default new Vuex.Store({
     },
     showCreate (state, showCreate) {
       state.showCreate = showCreate
+    },
+    token (state, token) {
+      state.token = token
     }
   },
   actions: {
     login (context, data) {
-      api
+      api(context.state.token)
         .post('/api/login_check', {
           username: data.user,
           password: data.password
         })
         .then(function (response) {
           localStorage.setItem('token', response.data.token)
+          context.commit('token', response.data.token)
         })
         .catch(function (error) {
           console.log(error)
         })
     },
     me (context) {
-      api
+      api(context.state.token)
         .get('/v1/me')
         .then(function (response) {
           context.commit('me', response.data)

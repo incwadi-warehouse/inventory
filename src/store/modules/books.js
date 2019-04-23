@@ -24,7 +24,7 @@ export default {
   actions: {
     book (context, id) {
       context.commit('isLoading', true, { root: true })
-      api
+      api(context.rootState.token)
         .get('/v1/book/' + id)
         .then(function (response) {
           context.commit('book', response.data)
@@ -37,7 +37,7 @@ export default {
     },
     search (context) {
       context.commit('isLoading', true, { root: true })
-      api
+      api(context.rootState.token)
         .get('/v1/book/find', {
           params: {
             term: context.rootState.filter.searchTerm,
@@ -68,7 +68,7 @@ export default {
         })
     },
     create (context, data) {
-      api
+      api(context.rootState.token)
         .post('/v1/book/new', {
           title: data.title,
           author: data.author,
@@ -88,7 +88,7 @@ export default {
         })
     },
     update (context, data) {
-      api
+      api(context.rootState.token)
         .put('/v1/book/' + data.id, data.params)
         .then(function (response) {
           console.log(response)
