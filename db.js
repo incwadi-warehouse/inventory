@@ -25,7 +25,10 @@ function renderEntries(counter, offset) {
     entries.push(
       {
         "added": "1545496807",
-        "author": "Author",
+        "author": {
+          "firstname": "Firstname",
+          "lastname": "Lastname"
+        },
         "genre": {
           "id": 1,
           "name": "name"
@@ -48,7 +51,10 @@ app.get(/\/v1\/book\/(\d)/, (req, res) => {
   return res.json(
     {
       "added": "1545496807",
-      "author": "Author",
+      "author": {
+        "firstname": "Firstname",
+        "lastname": "Lastname"
+      },
       "genre": {
         "id": 1,
         "name": "name"
@@ -77,7 +83,10 @@ app.post('/v1/book/new', (req, res) => {
   return res.json(
     {
       "added": "1545496807",
-      "author": "Author",
+      "author": {
+          "firstname": "Firstname",
+          "lastname": "Lastname"
+        },
       "genre": {
         "id": 1,
         "name": "name"
@@ -97,7 +106,10 @@ app.put(/\/v1\/book\/(\d)/, (req, res) => {
   return res.json(
     {
       "added": "1545496807",
-      "author": "Author",
+      "author": {
+        "firstname": "Firstname",
+        "lastname": "Lastname"
+      },
       "genre": {
         "id": 1,
         "name": "name"
