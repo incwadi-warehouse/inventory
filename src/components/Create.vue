@@ -23,15 +23,25 @@
         </div>
       </div>
       <div class="form_group">
-        <div class="form_item">
-          <label for="author" class="form_label">
-            {{ $t('author') }}
-          </label>
+          <div class="form_item">
+            <label for="firstname" class="form_label">
+              {{ $t('firstname') }}
+            </label>
+          </div>
+          <div class="form_item">
+            <input type="text" id="firstname" class="form_input" maxlength="255" required v-model="firstname">
+          </div>
         </div>
-        <div class="form_item">
-          <input type="text" id="author" class="form_input" maxlength="255" required v-model="author">
+        <div class="form_group">
+          <div class="form_item">
+            <label for="lastname" class="form_label">
+              {{ $t('lastname') }}
+            </label>
+          </div>
+          <div class="form_item">
+            <input type="text" id="lastname" class="form_input" maxlength="255" required v-model="lastname">
+          </div>
         </div>
-      </div>
       <div class="form_group">
         <div class="form_item">
           <label for="author" class="form_label">
@@ -93,7 +103,8 @@ export default {
   data () {
     return {
       title: null,
-      author: null,
+      firstname: '',
+      lastname: '',
       price: '2.50',
       currency: process.env.CURRENCY,
       yearOfPublication: 2019,
@@ -110,7 +121,7 @@ export default {
     add: function () {
       this.$store.dispatch('books/create', {
         title: this.title,
-        author: this.author,
+        author: this.lastname + ',' + this.firstname,
         genre: this.$store.state.genres.genre,
         price: this.price,
         stocked: true,

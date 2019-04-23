@@ -17,7 +17,8 @@
         <tbody>
           <tr v-for="book in books" :key="book.id">
             <td>{{book.title}}</td>
-            <td>{{book.author}}</td>
+            <td v-if="book.author">{{book.author.lastname}}, {{book.author.firstname}}</td>
+            <td v-else></td>
             <td>{{book.genre.name}}</td>
             <td>{{formatDate(book.added)}}</td>
             <td class="alignRight">{{formatPrice(book.price)}}</td>

@@ -48,7 +48,9 @@ const messages = {
     none: 'none',
     any: 'any',
     search_for_title_or_author: 'Search for title or author',
-    general: 'General'
+    general: 'General',
+    firstname: 'Firstname',
+    lastname: 'Lastname'
   },
   de: {
     results: 'Ergebnisse',
@@ -94,7 +96,9 @@ const messages = {
     none: 'ohne',
     any: 'alle',
     search_for_title_or_author: 'Suche in Titel oder Autor',
-    general: 'Allgemein'
+    general: 'Allgemein',
+    firstname: 'Vorname',
+    lastname: 'Nachname'
   }
 }
 

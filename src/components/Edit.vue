@@ -27,12 +27,22 @@
         </div>
         <div class="form_group">
           <div class="form_item">
-            <label for="author" class="form_label">
-              {{ $t('author') }}
+            <label for="firstname" class="form_label">
+              {{ $t('firstname') }}
             </label>
           </div>
           <div class="form_item">
-            <input type="text" id="author" class="form_input" maxlength="255" required v-model="author">
+            <input type="text" id="firstname" class="form_input" maxlength="255" required v-model="firstname">
+          </div>
+        </div>
+        <div class="form_group">
+          <div class="form_item">
+            <label for="lastname" class="form_label">
+              {{ $t('lastname') }}
+            </label>
+          </div>
+          <div class="form_item">
+            <input type="text" id="lastname" class="form_input" maxlength="255" required v-model="lastname">
           </div>
         </div>
         <div class="form_group">
@@ -118,7 +128,8 @@ export default {
   data () {
     return {
       title: '',
-      author: '',
+      firstname: '',
+      lastname: '',
       price: '2.50',
       currency: process.env.CURRENCY,
       stocked: 0,
@@ -143,7 +154,7 @@ export default {
         params: {
           genre: this.$store.state.genres.genre,
           title: this.title,
-          author: this.author,
+          author: this.lastname + ',' + this.firstname,
           price: this.price,
           stocked: this.stocked,
           yearOfPublication: this.yearOfPublication,
@@ -166,7 +177,8 @@ export default {
       if (!this.$store.state.books.book) return
 
       this.title = this.$store.state.books.book.title
-      this.author = this.$store.state.books.book.author
+      this.firstname = this.$store.state.books.book.author.firstname
+      this.lastname = this.$store.state.books.book.author.lastname
       this.price = this.$store.state.books.book.price
       this.stocked = this.$store.state.books.book.stocked
       this.yearOfPublication = this.$store.state.books.book.yearOfPublication
