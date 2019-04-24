@@ -5,6 +5,7 @@ import genres from './modules/genres'
 import branches from './modules/branches'
 import filter from './modules/filter'
 import api from '../api'
+import Cookies from 'js-cookie'
 
 Vue.use(Vuex)
 
@@ -20,7 +21,7 @@ export default new Vuex.Store({
     isLoading: false,
     showFilters: false,
     showCreate: false,
-    token: localStorage.getItem('token')
+    token: Cookies.get('token')
   },
   mutations: {
     me (state, me) {
@@ -47,8 +48,8 @@ export default new Vuex.Store({
           password: data.password
         })
         .then(function (response) {
-          localStorage.setItem('token', response.data.token)
           context.commit('token', response.data.token)
+          Cookies.set('token', response.data.token, { expires: 7 })
         })
         .catch(function (error) {
           console.log(error)

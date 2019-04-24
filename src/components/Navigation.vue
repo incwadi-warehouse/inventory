@@ -16,11 +16,13 @@
 </template>
 
 <script>
+import Cookies from 'js-cookie'
+
 export default {
   name: 'navigation',
   methods: {
     logout: function () {
-      localStorage.removeItem('token')
+      Cookies.remove('token')
       this.$router.push({ name: 'login' })
     }
   }

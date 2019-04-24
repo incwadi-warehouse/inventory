@@ -9,6 +9,7 @@
 
 <script>
 import Heading from './components/Heading'
+import Cookies from 'js-cookie'
 
 export default {
   name: 'app',
@@ -21,7 +22,7 @@ export default {
       process.env.BRAND_COLOR
     )
 
-    if (localStorage.getItem('token') === null) {
+    if (Cookies.get('token') === undefined) {
       this.$router.push({ name: 'login' })
     }
   }
