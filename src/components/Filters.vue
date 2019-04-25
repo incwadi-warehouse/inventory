@@ -67,6 +67,12 @@
         </div>
       </div>
     </form>
+
+    <p>{{ $t('limit') }}</p>
+    <button class="btn btn_link" @click="setLimit(10)">10</button>
+    <button class="btn btn_link" @click="setLimit(20)">20</button>
+    <button class="btn btn_link" @click="setLimit(50)">50</button>
+    <button class="btn btn_link" @click="setLimit(100)">100</button>
   </section>
 </template>
 
@@ -108,6 +114,10 @@ export default {
       this.$store.commit('filter/branch', this.branch.length >= 1 ? this.branch.join(',') : null)
       this.$store.commit('filter/genreFilter', this.genre.length >= 1 ? this.genre.join(',') : null)
       this.$store.commit('filter/lending', this.lending !== 0 ? Math.round(lending / 1000) : null)
+      this.$store.dispatch('books/search')
+    },
+    setLimit: function (limit) {
+      this.$store.commit('filter/limit', limit)
       this.$store.dispatch('books/search')
     }
   },

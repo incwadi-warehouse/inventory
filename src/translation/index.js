@@ -50,7 +50,8 @@ const messages = {
     search_for_title_or_author: 'Search for title or author',
     general: 'General',
     firstname: 'Firstname',
-    lastname: 'Lastname'
+    lastname: 'Lastname',
+    limit: 'Limit'
   },
   de: {
     results: 'Ergebnisse',
@@ -98,7 +99,8 @@ const messages = {
     search_for_title_or_author: 'Suche in Titel oder Autor',
     general: 'Allgemein',
     firstname: 'Vorname',
-    lastname: 'Nachname'
+    lastname: 'Nachname',
+    limit: 'Limit'
   }
 }
 

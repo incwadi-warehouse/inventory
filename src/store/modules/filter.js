@@ -35,6 +35,9 @@ export default {
     },
     sort (state, sort) {
       state.sort = sort
+    },
+    limit (state, limit) {
+      state.limit = limit
     }
   },
   actions: {}
