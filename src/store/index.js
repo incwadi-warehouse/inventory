@@ -49,7 +49,7 @@ export default new Vuex.Store({
         })
         .then(function (response) {
           context.commit('token', response.data.token)
-          Cookies.set('token', response.data.token, { expires: 7 })
+          Cookies.set('token', response.data.token, { expires: 1 })
         })
         .catch(function (error) {
           console.log(error)
