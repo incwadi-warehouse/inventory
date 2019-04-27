@@ -57,6 +57,26 @@
       </div>
       <div class="form_group">
         <div class="form_item">
+          <label for="orderBy" class="form_label">{{ $t('orderBy') }}</label>
+        </div>
+        <div class="form_item">
+          <select id="orderBy" class="form_input" v-model="orderBy">
+            <option value=""></option>
+            <option value="title_asc">{{ $t('title') }} {{ $t('asc') }}</option>
+            <option value="title_desc">{{ $t('title') }} {{ $t('desc') }}</option>
+            <option value="author_asc">{{ $t('author') }} {{ $t('asc') }}</option>
+            <option value="author_desc">{{ $t('author') }} {{ $t('desc') }}</option>
+            <option value="genre_asc">{{ $t('genre') }} {{ $t('asc') }}</option>
+            <option value="genre_desc">{{ $t('genre') }} {{ $t('desc') }}</option>
+            <option value="added_asc">{{ $t('added') }} {{ $t('asc') }}</option>
+            <option value="added_desc">{{ $t('added') }} {{ $t('desc') }}</option>
+            <option value="price_asc">{{ $t('price') }} {{ $t('asc') }}</option>
+            <option value="price_desc">{{ $t('price') }} {{ $t('desc') }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form_group">
+        <div class="form_item">
           <input type="checkbox" id="stocked" v-model="stocked">
           <label for="stocked">{{ $t('stocked') }}</label>
         </div>
@@ -86,7 +106,8 @@ export default {
       older: 0,
       branch: [],
       genre: ['any'],
-      lending: 0
+      lending: 0,
+      orderBy: null
     }
   },
   computed: {
@@ -114,6 +135,7 @@ export default {
       this.$store.commit('filter/branch', this.branch.length >= 1 ? this.branch.join(',') : null)
       this.$store.commit('filter/genreFilter', this.genre.length >= 1 ? this.genre.join(',') : null)
       this.$store.commit('filter/lending', this.lending !== 0 ? Math.round(lending / 1000) : null)
+      this.$store.commit('filter/sort', this.orderBy)
       this.$store.dispatch('books/search')
     },
     setLimit: function (limit) {

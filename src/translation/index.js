@@ -51,7 +51,10 @@ const messages = {
     general: 'General',
     firstname: 'Firstname',
     lastname: 'Lastname',
-    limit: 'Limit'
+    limit: 'Limit',
+    orderBy: 'Order by',
+    asc: 'ascending',
+    desc: 'descending'
   },
   de: {
     results: 'Ergebnisse',
@@ -100,7 +103,10 @@ const messages = {
     general: 'Allgemein',
     firstname: 'Vorname',
     lastname: 'Nachname',
-    limit: 'Limit'
+    limit: 'Limit',
+    orderBy: 'Sortiere nach',
+    asc: 'aufsteigend',
+    desc: 'absteigend'
   }
 }
 
