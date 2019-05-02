@@ -105,6 +105,29 @@
           </div>
         </div>
         <div class="form_group">
+          <div class="form_item">
+            <label for="lendTo" class="form_label">
+              {{ $t('lendTo') }}
+            </label>
+          </div>
+          <div class="form_item">
+            <select id="lendTo" class="form_input" v-model="lendTo">
+              <option value=""></option>
+              <option v-for="customer in customers" :key="customer.id" :value="customer.id">{{ customer.name }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form_group">
+          <div class="form_item">
+            <label for="lendOn" class="form_label">
+              {{ $t('lendOn') }}
+            </label>
+          </div>
+          <div class="form_item">
+            <input type="date" id="lendOn" class="form_input" v-model="lendOn">
+          </div>
+        </div>
+        <div class="form_group">
           <div class="form_item alignRight">
             <button class="btn btn_branded">{{ $t('update') }}</button>
           </div>
@@ -136,7 +159,9 @@ export default {
       yearOfPublication: null,
       type: null,
       premium: null,
-      added: null
+      added: null,
+      lendTo: null,
+      lendOn: null
     }
   },
   computed: {
@@ -145,6 +170,9 @@ export default {
     },
     isLoading: function () {
       return this.$store.state.isLoading
+    },
+    customers: function () {
+      return this.$store.state.customers
     }
   },
   methods: {
@@ -160,7 +188,9 @@ export default {
           yearOfPublication: this.yearOfPublication,
           type: this.type,
           premium: this.premium,
-          added: new Date(this.added).getTime() / 1000
+          added: new Date(this.added).getTime() / 1000,
+          lendTo: this.lending,
+          lendOn: this.lendOn
         }
       })
       this.$router.push({ name: 'index' })
@@ -171,6 +201,7 @@ export default {
   },
   mounted: function () {
     this.$store.dispatch('books/book', this.id)
+    this.$store.dispatch('customers')
   },
   watch: {
     '$store.state.books.book': function () {
@@ -185,15 +216,27 @@ export default {
       this.type = this.$store.state.books.book.type
       this.premium = this.$store.state.books.book.premium
       let added = new Date(this.$store.state.books.book.added * 1000)
-      let month = added.getMonth() + 1
-      if (month < 10) {
-        month = '0' + month
+      let addedMonth = added.getMonth() + 1
+      if (addedMonth < 10) {
+        addedMonth = '0' + addedMonth
       }
-      let day = added.getDate()
-      if (day < 10) {
-        day = '0' + day
+      let addedDay = added.getDate()
+      if (addedDay < 10) {
+        addedDay = '0' + addedDay
       }
-      this.added = added.getFullYear() + '-' + month + '-' + day
+      this.added = added.getFullYear() + '-' + addedMonth + '-' + addedDay
+      this.lendTo = this.$store.state.books.book.lendTo
+      this.premium = this.$store.state.books.book.premium
+      let lendOn = new Date(this.$store.state.books.book.lendOn * 1000)
+      let lendOnMonth = lendOn.getMonth() + 1
+      if (lendOnMonth < 10) {
+        lendOnMonth = '0' + lendOnMonth
+      }
+      let lendOnDay = lendOn.getDate()
+      if (lendOnDay < 10) {
+        lendOnDay = '0' + lendOnDay
+      }
+      this.lendOn = lendOn.getFullYear() + '-' + lendOnMonth + '-' + lendOnDay
     }
   }
 }

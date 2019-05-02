@@ -21,7 +21,8 @@ export default new Vuex.Store({
     isLoading: false,
     showFilters: false,
     showCreate: false,
-    token: Cookies.get('token')
+    token: Cookies.get('token'),
+    customers: null
   },
   mutations: {
     me (state, me) {
@@ -38,6 +39,9 @@ export default new Vuex.Store({
     },
     token (state, token) {
       state.token = token
+    },
+    customers (state, customers) {
+      state.customers = customers
     }
   },
   actions: {
@@ -60,6 +64,16 @@ export default new Vuex.Store({
         .get('/v1/me')
         .then(function (response) {
           context.commit('me', response.data)
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+    },
+    customers (context) {
+      api(context.state.token)
+        .get('/v1/customer/')
+        .then(function (response) {
+          context.commit('customers', response.data)
         })
         .catch(function (error) {
           console.log(error)

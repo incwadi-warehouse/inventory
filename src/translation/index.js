@@ -54,7 +54,9 @@ const messages = {
     limit: 'Limit',
     orderBy: 'Order by',
     asc: 'ascending',
-    desc: 'descending'
+    desc: 'descending',
+    lendTo: 'Lend to',
+    lendOn: 'Lend on'
   },
   de: {
     results: 'Ergebnisse',
@@ -106,7 +108,9 @@ const messages = {
     limit: 'Limit',
     orderBy: 'Sortiere nach',
     asc: 'aufsteigend',
-    desc: 'absteigend'
+    desc: 'absteigend',
+    lendTo: 'Verliehen an',
+    lendOn: 'Verliehen am'
   }
 }
 
