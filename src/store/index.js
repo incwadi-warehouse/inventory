@@ -79,6 +79,18 @@ export default new Vuex.Store({
           console.log(error)
         })
     },
+    createCustomer (context, name) {
+      api(context.rootState.token)
+        .post('/v1/customer/new', {
+          name: name
+        })
+        .then(function (response) {
+          context.dispatch('customers')
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+    },
     toggleFilters (context) {
       context.commit('showFilters', !context.state.showFilters)
     },

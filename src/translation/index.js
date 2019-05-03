@@ -56,7 +56,8 @@ const messages = {
     asc: 'ascending',
     desc: 'descending',
     lendTo: 'Lend to',
-    lendOn: 'Lend on'
+    lendOn: 'Lend on',
+    customers: 'Customers'
   },
   de: {
     results: 'Ergebnisse',
@@ -110,7 +111,8 @@ const messages = {
     asc: 'aufsteigend',
     desc: 'absteigend',
     lendTo: 'Verliehen an',
-    lendOn: 'Verliehen am'
+    lendOn: 'Verliehen am',
+    customers: 'Kunden'
   }
 }
 

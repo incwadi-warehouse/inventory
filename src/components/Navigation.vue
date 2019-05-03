@@ -7,6 +7,9 @@
       <router-link :to="{ name: 'genre' }">{{ $t('genres') }}</router-link>
     </li>
     <li class="nav_item">
+      <router-link :to="{ name: 'customer' }">{{ $t('customers') }}</router-link>
+    </li>
+    <li class="nav_item">
       <router-link :to="{ name: 'about' }">{{ $t('about') }}</router-link>
     </li>
     <li class="nav_item">
