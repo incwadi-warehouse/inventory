@@ -6,11 +6,11 @@
       <table class="table">
         <thead>
           <tr>
-            <th class="isSortable" @click="filter('title')">{{ $t('title') }}</th>
-            <th class="isSortable" @click="filter('author')">{{ $t('author') }}</th>
-            <th class="isSortable" @click="filter('genre')">{{ $t('genre') }}</th>
-            <th class="isSortable" @click="filter('added')">{{ $t('added') }}</th>
-            <th class="alignRight isSortable" @click="filter('price')">{{currency}}</th>
+            <th class="isSortable" @click="filter('title')">{{ $t('title') }} <span v-if="sort === 'title_asc'">&#9650;</span><span v-if="sort === 'title_desc'">&#9660;</span></th>
+            <th class="isSortable" @click="filter('author')">{{ $t('author') }} <span v-if="sort === 'author_asc'">&#9650;</span><span v-if="sort === 'author_desc'">&#9660;</span></th>
+            <th class="isSortable" @click="filter('genre')">{{ $t('genre') }} <span v-if="sort === 'genre_asc'">&#9650;</span><span v-if="sort === 'genre_desc'">&#9660;</span></th>
+            <th class="isSortable" @click="filter('added')">{{ $t('added') }} <span v-if="sort === 'added_asc'">&#9650;</span><span v-if="sort === 'added_desc'">&#9660;</span></th>
+            <th class="alignRight isSortable" @click="filter('price')">{{currency}} <span v-if="sort === 'price_asc'">&#9650;</span><span v-if="sort === 'price_desc'">&#9660;</span></th>
             <th class="noprint"></th>
           </tr>
         </thead>
@@ -50,6 +50,9 @@ export default {
     },
     counter: function () {
       return this.$store.state.books.books.counter
+    },
+    sort: function () {
+      return this.$store.state.filter.sort
     }
   },
   methods: {
