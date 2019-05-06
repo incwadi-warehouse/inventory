@@ -12,7 +12,11 @@
             </label>
           </div>
           <div class="form_item">
-            <genres-select/>
+            <select id="genre" class="form_input" required v-model="genre">
+              <option v-for="genre in genres" :key="genre.id" :value="genre.id">
+                {{genre.name}}
+              </option>
+            </select>
           </div>
         </div>
         <div class="form_group">
@@ -138,14 +142,12 @@
 </template>
 
 <script>
-import GenresSelect from './GenresSelect'
 import Spinner from './Spinner'
 
 export default {
   name: 'edit',
   props: ['id'],
   components: {
-    GenresSelect,
     Spinner
   },
   data () {
@@ -161,7 +163,8 @@ export default {
       premium: null,
       added: null,
       lendTo: null,
-      lendOn: null
+      lendOn: null,
+      genre: null
     }
   },
   computed: {
@@ -173,6 +176,9 @@ export default {
     },
     customers: function () {
       return this.$store.state.customers
+    },
+    genres: function () {
+      return this.$store.state.genres.genres
     }
   },
   methods: {
@@ -180,7 +186,7 @@ export default {
       this.$store.dispatch('books/update', {
         id: this.id,
         params: {
-          genre: this.$store.state.genres.genre,
+          genre: this.genre,
           title: this.title,
           author: this.lastname + ',' + this.firstname,
           price: this.price,
@@ -189,8 +195,8 @@ export default {
           type: this.type,
           premium: this.premium,
           added: new Date(this.added).getTime() / 1000,
-          lendTo: this.lending,
-          lendOn: new Date(this.lendOn).getTime() / 1000
+          lendTo: this.lendTo,
+          lendOn: this.lendOn === '' ? null : new Date(this.lendOn).getTime() / 1000
         }
       })
       this.$router.push({ name: 'index' })
@@ -202,6 +208,7 @@ export default {
   mounted: function () {
     this.$store.dispatch('books/book', this.id)
     this.$store.dispatch('customers')
+    this.$store.dispatch('genres/genres')
   },
   watch: {
     '$store.state.books.book': function () {
@@ -237,6 +244,7 @@ export default {
         lendOnDay = '0' + lendOnDay
       }
       this.lendOn = lendOn.getFullYear() + '-' + lendOnMonth + '-' + lendOnDay
+      this.genre = this.$store.state.books.book.genre.id
     }
   }
 }

@@ -9,7 +9,11 @@
           </label>
         </div>
         <div class="form_item">
-          <genres-select/>
+          <select id="genre" class="form_input" required v-model="genre">
+            <option v-for="genre in genres" :key="genre.id" :value="genre.id">
+              {{genre.name}}
+            </option>
+          </select>
         </div>
       </div>
       <div class="form_group">
@@ -93,13 +97,8 @@
 </template>
 
 <script>
-import GenresSelect from './GenresSelect'
-
 export default {
   name: 'create',
-  components: {
-    GenresSelect
-  },
   data () {
     return {
       title: null,
@@ -109,12 +108,16 @@ export default {
       currency: process.env.CURRENCY,
       yearOfPublication: 2019,
       type: 'paperback',
-      premium: false
+      premium: false,
+      genre: null
     }
   },
   computed: {
     steps: function () {
       return process.env.STEPS
+    },
+    genres: function () {
+      return this.$store.state.genres.genres
     }
   },
   methods: {
@@ -122,7 +125,7 @@ export default {
       this.$store.dispatch('books/create', {
         title: this.title,
         author: this.lastname + ',' + this.firstname,
-        genre: this.$store.state.genres.genre,
+        genre: this.genre,
         price: this.price,
         stocked: true,
         yearOfPublication: this.yearOfPublication,
@@ -135,6 +138,9 @@ export default {
     formatPrice: function () {
       this.price = Number.parseFloat(this.price).toFixed(2)
     }
+  },
+  mounted: function () {
+    this.$store.dispatch('genres/genres')
   }
 }
 </script>
