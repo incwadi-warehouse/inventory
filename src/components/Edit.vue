@@ -87,7 +87,7 @@
             </label>
           </div>
           <div class="form_item">
-            <input type="number" id="price" class="form_input" :step="steps" @change="formatPrice" required v-model="price">
+            <input type="number" id="price" class="form_input" :step="steps" min="0.00" @change="formatPrice" required v-model="price">
           </div>
         </div>
         <div class="form_group">
