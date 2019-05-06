@@ -234,16 +234,20 @@ export default {
       this.added = added.getFullYear() + '-' + addedMonth + '-' + addedDay
       this.lendTo = this.$store.state.books.book.lendTo
       this.premium = this.$store.state.books.book.premium
-      let lendOn = new Date(this.$store.state.books.book.lendOn * 1000)
-      let lendOnMonth = lendOn.getMonth() + 1
-      if (lendOnMonth < 10) {
-        lendOnMonth = '0' + lendOnMonth
+      if (this.$store.state.books.book.lendOn !== null) {
+        let lendOn = new Date(this.$store.state.books.book.lendOn * 1000)
+        let lendOnMonth = lendOn.getMonth() + 1
+        if (lendOnMonth < 10) {
+          lendOnMonth = '0' + lendOnMonth
+        }
+        let lendOnDay = lendOn.getDate()
+        if (lendOnDay < 10) {
+          lendOnDay = '0' + lendOnDay
+        }
+        this.lendOn = lendOn.getFullYear() + '-' + lendOnMonth + '-' + lendOnDay
+      } else {
+        this.lendOn = null
       }
-      let lendOnDay = lendOn.getDate()
-      if (lendOnDay < 10) {
-        lendOnDay = '0' + lendOnDay
-      }
-      this.lendOn = lendOn.getFullYear() + '-' + lendOnMonth + '-' + lendOnDay
       this.genre = this.$store.state.books.book.genre.id
     }
   }
