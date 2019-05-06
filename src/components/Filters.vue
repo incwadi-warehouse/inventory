@@ -3,6 +3,25 @@
     <form class="form" @submit.prevent="find">
       <div class="form_group">
         <div class="form_item">
+          <label for="genre" class="form_label">{{ $t('genre') }}</label>
+        </div>
+        <div class="form_item">
+          <select id="genre" class="form_input" multiple v-model="genre">
+            <option value=""></option>
+            <optgroup :label="$t('general')">
+              <option value="none">{{ $t('none') }}</option>
+              <option value="any">{{ $t('any') }}</option>
+            </optgroup>
+            <optgroup :label="$t('genres')">
+              <option v-for="genre in genres" :key="genre.id" :value="genre.id">
+                {{genre.name}}
+              </option>
+            </optgroup>
+          </select>
+        </div>
+      </div>
+      <div class="form_group">
+        <div class="form_item">
           <label for="older" class="form_label">{{ $t('older_then_x_months') }}</label>
         </div>
         <div class="form_item">
@@ -38,21 +57,8 @@
       </div>
       <div class="form_group">
         <div class="form_item">
-          <label for="genre" class="form_label">{{ $t('genre') }}</label>
-        </div>
-        <div class="form_item">
-          <select id="genre" class="form_input" multiple v-model="genre">
-            <option value=""></option>
-            <optgroup :label="$t('general')">
-              <option value="none">{{ $t('none') }}</option>
-              <option value="any">{{ $t('any') }}</option>
-            </optgroup>
-            <optgroup :label="$t('genres')">
-              <option v-for="genre in genres" :key="genre.id" :value="genre.id">
-                {{genre.name}}
-              </option>
-            </optgroup>
-          </select>
+          <input type="checkbox" id="stocked" v-model="stocked">
+          <label for="stocked">{{ $t('stocked') }}</label>
         </div>
       </div>
       <div class="form_group">
@@ -73,12 +79,6 @@
             <option value="price_asc">{{ $t('price') }} {{ $t('asc') }}</option>
             <option value="price_desc">{{ $t('price') }} {{ $t('desc') }}</option>
           </select>
-        </div>
-      </div>
-      <div class="form_group">
-        <div class="form_item">
-          <input type="checkbox" id="stocked" v-model="stocked">
-          <label for="stocked">{{ $t('stocked') }}</label>
         </div>
       </div>
       <div class="form_group">
