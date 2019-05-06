@@ -190,7 +190,7 @@ export default {
           premium: this.premium,
           added: new Date(this.added).getTime() / 1000,
           lendTo: this.lending,
-          lendOn: this.lendOn
+          lendOn: new Date(this.lendOn).getTime() / 1000
         }
       })
       this.$router.push({ name: 'index' })
