@@ -39,7 +39,9 @@ function renderEntries(counter, offset) {
         "title": "Title",
         "yearOfYear": 2019,
         "type": "paperback",
-        "premium": false
+        "premium": false,
+        "lendTo": 1,
+        "lendOn": 1557168763
       }
     );
   }
@@ -65,7 +67,9 @@ app.get(/\/v1\/book\/(\d)/, (req, res) => {
       "title": "Title",
       "yearOfYear": 2019,
       "type": "paperback",
-      "premium": false
+      "premium": false,
+      "lendTo": 1,
+      "lendOn": 1557168763
     }
   );
 })
@@ -97,7 +101,9 @@ app.post('/v1/book/new', (req, res) => {
       "title": "Title",
       "yearOfYear": 2019,
       "type": "paperback",
-      "premium": false
+      "premium": false,
+      "lendTo": 1,
+      "lendOn": 1557168763
     }
   );
 })
@@ -120,7 +126,9 @@ app.put(/\/v1\/book\/(\d)/, (req, res) => {
       "title": "Title",
       "yearOfYear": 2019,
       "type": "paperback",
-      "premium": false
+      "premium": false,
+      "lendTo": 1,
+      "lendOn": 1557168763
     }
   );
 })
