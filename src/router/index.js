@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Login from '../views/Login'
 import Index from '../views/Index'
 import Edit from '../views/Edit'
 import About from '../views/About'
@@ -15,11 +14,6 @@ export default new Router({
   linkActiveClass: '',
   linkExactActiveClass: '',
   routes: [
-    {
-      path: '/login',
-      name: 'login',
-      component: Login
-    },
     {
       path: '/',
       name: 'index',

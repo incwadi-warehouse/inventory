@@ -2,7 +2,8 @@
   <div id="app">
     <heading/>
     <main class="content" role="main">
-      <router-view/>
+      <router-view v-if="isAuthenticated"/>
+      <login v-if="!isAuthenticated"/>
     </main>
   </div>
 </template>
@@ -10,11 +11,18 @@
 <script>
 import Heading from './components/Heading'
 import Cookies from 'js-cookie'
+import Login from './components/Login'
 
 export default {
   name: 'app',
   components: {
-    Heading
+    Heading,
+    Login
+  },
+  computed: {
+    isAuthenticated: function () {
+      return this.$store.state.isAuthenticated
+    }
   },
   mounted: function () {
     document.documentElement.style.setProperty(
@@ -22,8 +30,8 @@ export default {
       process.env.BRAND_COLOR
     )
 
-    if (Cookies.get('token') === undefined) {
-      this.$router.push({ name: 'login' })
+    if (Cookies.get('token') !== undefined) {
+      this.$store.commit('isAuthenticated', true)
     }
   }
 }

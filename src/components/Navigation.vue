@@ -25,8 +25,9 @@ export default {
   name: 'navigation',
   methods: {
     logout: function () {
+      this.$store.commit('isAuthenticated', false)
       Cookies.remove('token')
-      this.$router.push({ name: 'login' })
+      this.$router.push({ name: 'index' })
     }
   }
 }

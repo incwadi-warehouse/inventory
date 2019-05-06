@@ -41,7 +41,6 @@ export default {
         user: this.user,
         password: this.pass
       })
-      this.$router.push({ name: 'index' })
     }
   }
 }

@@ -22,7 +22,8 @@ export default new Vuex.Store({
     showFilters: false,
     showCreate: false,
     token: Cookies.get('token'),
-    customers: null
+    customers: null,
+    isAuthenticated: false
   },
   mutations: {
     me (state, me) {
@@ -42,6 +43,9 @@ export default new Vuex.Store({
     },
     customers (state, customers) {
       state.customers = customers
+    },
+    isAuthenticated (state, status) {
+      state.isAuthenticated = status
     }
   },
   actions: {
@@ -54,6 +58,7 @@ export default new Vuex.Store({
         .then(function (response) {
           context.commit('token', response.data.token)
           Cookies.set('token', response.data.token, { expires: 7 })
+          context.commit('isAuthenticated', true)
         })
         .catch(function (error) {
           console.log(error)
