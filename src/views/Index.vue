@@ -18,7 +18,7 @@
 
 <script>
 import Search from '../components/book/Search'
-import Filters from '../components/Filters'
+import Filters from '../components/book/Filters'
 import List from '../components/book/List'
 import Spinner from '../components/Spinner'
 import Create from '../components/book/Create'
