@@ -17,11 +17,11 @@
 </template>
 
 <script>
-import Search from '../components/Search'
+import Search from '../components/book/Search'
 import Filters from '../components/Filters'
-import List from '../components/List'
+import List from '../components/book/List'
 import Spinner from '../components/Spinner'
-import Create from '../components/Create'
+import Create from '../components/book/Create'
 
 export default {
   name: 'index-view',

@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import List from '../components/Genre'
-import Edit from '../components/EditGenre'
+import List from '../components/genre/Genre'
+import Edit from '../components/genre/EditGenre'
 
 export default {
   name: 'genre-view',

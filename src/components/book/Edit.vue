@@ -142,7 +142,7 @@
 </template>
 
 <script>
-import Spinner from './Spinner'
+import Spinner from './../Spinner'
 
 export default {
   name: 'edit',

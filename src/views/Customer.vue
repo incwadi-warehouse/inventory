@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import List from '../components/Customer'
-import Edit from '../components/EditCustomer'
+import List from '../components/customer/Customer'
+import Edit from '../components/customer/EditCustomer'
 
 export default {
   name: 'customer-view',

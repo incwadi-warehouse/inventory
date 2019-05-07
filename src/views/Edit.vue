@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import Edit from '../components/Edit'
+import Edit from '../components/book/Edit'
 
 export default {
   name: 'edit-view',
