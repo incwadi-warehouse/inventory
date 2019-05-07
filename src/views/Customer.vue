@@ -7,7 +7,7 @@
 
 <script>
 import List from '../components/customer/Customer'
-import Edit from '../components/customer/EditCustomer'
+import Edit from '../components/customer/Create'
 
 export default {
   name: 'customer-view',
