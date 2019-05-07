@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Index from '../views/Index'
-import Edit from '../views/Edit'
+import Books from '../views/Books'
+import EditBook from '../views/EditBook'
 import About from '../views/About'
 import Genre from '../views/Genre'
 import Customer from '../views/Customer'
@@ -17,12 +17,12 @@ export default new Router({
     {
       path: '/',
       name: 'index',
-      component: Index
+      component: Books
     },
     {
       path: '/edit/:id',
       name: 'edit',
-      component: Edit,
+      component: EditBook,
       props: true
     },
     {
