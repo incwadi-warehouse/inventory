@@ -115,7 +115,7 @@
             </label>
           </div>
           <div class="form_item">
-            <select id="lendTo" class="form_input" v-model="lendTo">
+            <select id="lendTo" class="form_input" v-model="lendTo" @change="setLendTo">
               <option value=""></option>
               <option v-for="customer in customers" :key="customer.id" :value="customer.id">{{ customer.name }}</option>
             </select>
@@ -203,6 +203,22 @@ export default {
     },
     formatPrice: function () {
       this.price = Number.parseFloat(this.price).toFixed(2)
+    },
+    setLendTo: function () {
+      if (this.lendTo === null) {
+        this.lendOn = null
+      } else {
+        let lendOn = new Date()
+        let lendOnMonth = lendOn.getMonth() + 1
+        if (lendOnMonth < 10) {
+          lendOnMonth = '0' + lendOnMonth
+        }
+        let lendOnDay = lendOn.getDate()
+        if (lendOnDay < 10) {
+          lendOnDay = '0' + lendOnDay
+        }
+        this.lendOn = lendOn.getFullYear() + '-' + lendOnMonth + '-' + lendOnDay
+      }
     }
   },
   mounted: function () {
