@@ -28,7 +28,7 @@ export default {
         .get('/v1/book/' + id)
         .then(function (response) {
           context.commit('book', response.data)
-          context.commit('genre', response.data.genre.id)
+          context.commit('genres/genre', response.data.genre.id, { root: true })
           context.commit('isLoading', false, { root: true })
         })
         .catch(function (error) {
