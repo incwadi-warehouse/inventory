@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import List from '../components/customer/Customer'
+import List from '../components/customer/List'
 import Edit from '../components/customer/Create'
 
 export default {

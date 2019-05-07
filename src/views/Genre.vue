@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import List from '../components/genre/Genre'
+import List from '../components/genre/List'
 import Edit from '../components/genre/Create'
 
 export default {
