@@ -168,6 +168,15 @@ app.get('/v1/genre/', (req, res) => {
   );
 })
 
+app.post('/v1/genre/new', (req, res) => {
+  return res.json(
+    {
+      "id": "1",
+      "name": "Crime"
+    }
+  );
+})
+
 app.get('/v1/me', (req, res) => {
   return res.json(
     {
@@ -201,6 +210,56 @@ app.get('/v1/branch/', (req, res) => {
         "name": "Branch 3"
       }
     ]
+  );
+})
+
+app.get('/v1/customer/', (req, res) => {
+  return res.json(
+    [
+      {
+        "id": 1,
+        "name": "name",
+        "notes": "notes",
+        "books": [],
+        "branch": {
+          "id": 1,
+          "name": "Branch 1"
+        }
+      },
+      {
+        "id": 2,
+        "name": "name",
+        "notes": "notes",
+        "books": [],
+        "branch": {
+          "id": 1,
+          "name": "Branch 1"
+        }
+      }
+    ]
+  );
+})
+
+app.post('/v1/customer/new/', (req, res) => {
+  return res.json(
+    {
+      "id": 1,
+      "name": "name",
+      "notes": "notes",
+      "books": [],
+      "branch": {
+        "id": 1,
+        "name": "Branch 1"
+      }
+    }
+  );
+})
+
+app.post('/api/login_check/', (req, res) => {
+  return res.json(
+    {
+      "token": "token"
+    }
   );
 })
 
