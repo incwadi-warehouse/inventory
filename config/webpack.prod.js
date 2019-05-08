@@ -22,7 +22,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './../dist'),
     publicPath: '/',
-    filename: 'main.[hash:8].min.js'
+    filename: '[name].[contenthash:8].min.js'
   },
   module: {
     rules: [
@@ -147,6 +147,21 @@ module.exports = {
         },
         sourceMap: true
       })
-    ]
+    ],
+    splitChunks: {
+      cacheGroups: {
+        vendors: {
+          name: 'vendor',
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10
+        },
+        default: {
+          name: 'common',
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true
+        }
+      }
+    }
   }
 }
