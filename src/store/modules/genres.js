@@ -19,7 +19,7 @@ export default {
       api(context.rootState.token)
         .get('/v1/genre/')
         .then(function (response) {
-          context.commit('genres', response.data)
+          context.commit('genres', response.data.genres)
         })
         .catch(function (error) {
           console.log(error)

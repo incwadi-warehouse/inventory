@@ -135,36 +135,38 @@ app.put(/\/v1\/book\/(\d)/, (req, res) => {
 
 app.get('/v1/genre/', (req, res) => {
   return res.json(
-    [
-      {
-        "id": "1",
-        "name": "Crime"
-      },
-      {
-        "id": "2",
-        "name": "Novel"
-      },
-      {
-        "id": "3",
-        "name": "History"
-      },
-      {
-        "id": "4",
-        "name": "Politics"
-      },
-      {
-        "id": "5",
-        "name": "Languages"
-      },
-      {
-        "id": "6",
-        "name": "Foreign Language Books"
-      },
-      {
-        "id": "7",
-        "name": "Landscape"
-      }
-    ]
+    {
+      "genres": [
+        {
+          "id": "1",
+          "name": "Crime"
+        },
+        {
+          "id": "2",
+          "name": "Novel"
+        },
+        {
+          "id": "3",
+          "name": "History"
+        },
+        {
+          "id": "4",
+          "name": "Politics"
+        },
+        {
+          "id": "5",
+          "name": "Languages"
+        },
+        {
+          "id": "6",
+          "name": "Foreign Language Books"
+        },
+        {
+          "id": "7",
+          "name": "Landscape"
+        }
+      ]
+    }
   );
 })
 
@@ -196,47 +198,51 @@ app.get('/v1/me', (req, res) => {
 
 app.get('/v1/branch/', (req, res) => {
   return res.json(
-    [
-      {
-        "id": 1,
-        "name": "Branch 1"
-      },
-      {
-        "id": 2,
-        "name": "Branch 2"
-      },
-      {
-        "id": 3,
-        "name": "Branch 3"
-      }
-    ]
+    {
+      "branches": [
+        {
+          "id": 1,
+          "name": "Branch 1"
+        },
+        {
+          "id": 2,
+          "name": "Branch 2"
+        },
+        {
+          "id": 3,
+          "name": "Branch 3"
+        }
+      ]
+    }
   );
 })
 
 app.get('/v1/customer/', (req, res) => {
   return res.json(
-    [
-      {
-        "id": 1,
-        "name": "name",
-        "notes": "notes",
-        "books": [],
-        "branch": {
+    {
+      "customers": [
+        {
           "id": 1,
-          "name": "Branch 1"
+          "name": "name",
+          "notes": "notes",
+          "books": [],
+          "branch": {
+            "id": 1,
+            "name": "Branch 1"
+          }
+        },
+        {
+          "id": 2,
+          "name": "name",
+          "notes": "notes",
+          "books": [],
+          "branch": {
+            "id": 1,
+            "name": "Branch 1"
+          }
         }
-      },
-      {
-        "id": 2,
-        "name": "name",
-        "notes": "notes",
-        "books": [],
-        "branch": {
-          "id": 1,
-          "name": "Branch 1"
-        }
-      }
-    ]
+      ]
+    }
   );
 })
 

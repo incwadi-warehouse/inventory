@@ -78,7 +78,7 @@ export default new Vuex.Store({
       api(context.state.token)
         .get('/v1/customer/')
         .then(function (response) {
-          context.commit('customers', response.data)
+          context.commit('customers', response.data.customers)
         })
         .catch(function (error) {
           console.log(error)

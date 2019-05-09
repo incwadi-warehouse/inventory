@@ -15,7 +15,7 @@ export default {
       api(context.rootState.token)
         .get('/v1/branch/')
         .then(function (response) {
-          context.commit('branches', response.data)
+          context.commit('branches', response.data.branches)
         })
         .catch(function (error) {
           console.log(error)
