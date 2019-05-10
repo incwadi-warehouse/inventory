@@ -149,6 +149,7 @@ module.exports = {
       })
     ],
     splitChunks: {
+      chunks: "all",
       cacheGroups: {
         vendors: {
           name: 'vendor',
