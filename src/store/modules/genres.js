@@ -36,6 +36,16 @@ export default {
         .catch(function (error) {
           console.log(error)
         })
+    },
+    removeGenre (context, id) {
+      api(context.rootState.token)
+        .delete('/v1/genre/' + id)
+        .then(function (response) {
+          context.dispatch('genres')
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
     }
   }
 }
