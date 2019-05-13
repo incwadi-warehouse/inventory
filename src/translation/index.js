@@ -57,7 +57,8 @@ const messages = {
     desc: 'descending',
     lendTo: 'Lend to',
     lendOn: 'Lend on',
-    customers: 'Customers'
+    customers: 'Customers',
+    remove: 'Remove'
   },
   de: {
     results: 'Ergebnisse',
@@ -112,7 +113,8 @@ const messages = {
     desc: 'absteigend',
     lendTo: 'Verliehen an',
     lendOn: 'Verliehen am',
-    customers: 'Kunden'
+    customers: 'Kunden',
+    remove: 'Löschen'
   }
 }
 

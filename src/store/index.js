@@ -96,6 +96,16 @@ export default new Vuex.Store({
           console.log(error)
         })
     },
+    removeCustomer (context, id) {
+      api(context.rootState.token)
+        .delete('/v1/customer/' + id)
+        .then(function (response) {
+          context.dispatch('customers')
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+    },
     toggleFilters (context) {
       context.commit('showFilters', !context.state.showFilters)
     },
