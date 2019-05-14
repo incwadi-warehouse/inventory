@@ -37,6 +37,31 @@ export default {
     },
     search (context) {
       context.commit('isLoading', true, { root: true })
+
+      let added = null
+      if (context.rootState.filter.added) {
+        let date = new Date()
+        date.setMonth(added.getMonth() - context.rootState.filter.added)
+        added = context.rootState.filter.added !== 0 ? Math.round(date.getTime() / 1000) : null
+      }
+
+      let branch = null
+      if (context.rootState.filter.branch) {
+        branch = context.rootState.filter.branch.length >= 1 ? context.rootState.filter.branch.join(',') : null
+      }
+
+      let genre = null
+      if (context.rootState.filter.genreFilter) {
+        genre = context.rootState.filter.genreFilter.length >= 1 ? context.rootState.filter.genreFilter.join(',') : null
+      }
+
+      let lending = null
+      if (context.rootState.filter.lending) {
+        lending = new Date()
+        lending.setMonth(lending.getMonth() - context.rootState.filter.lending)
+        lending = context.rootState.filter.lending !== 0 ? Math.round(lending / 1000) : null
+      }
+
       api(context.rootState.token)
         .get('/v1/book/find', {
           params: {
@@ -44,10 +69,10 @@ export default {
             limit: context.rootState.filter.limit,
             offset: context.rootState.filter.offset,
             stocked: context.rootState.filter.stocked,
-            added: context.rootState.filter.added,
-            branch: context.rootState.filter.branch,
-            genre: context.rootState.filter.genreFilter,
-            lending: context.rootState.filter.lending,
+            added: added,
+            branch: branch,
+            genre: genre,
+            lending: lending,
             sort: context.rootState.filter.sort
           }
         })

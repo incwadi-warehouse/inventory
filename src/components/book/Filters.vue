@@ -81,11 +81,6 @@
           </select>
         </div>
       </div>
-      <div class="form_group">
-        <div class="form_item alignRight">
-          <button class="btn btn_secondary">{{ $t('find') }}</button>
-        </div>
-      </div>
     </form>
 
     <p>{{ $t('limit') }}</p>
@@ -102,11 +97,6 @@ export default {
   data () {
     return {
       filter: false,
-      stocked: true,
-      older: 0,
-      branch: [],
-      genre: ['any'],
-      lending: 0,
       orderBy: null
     }
   },
@@ -122,22 +112,57 @@ export default {
     },
     showFilters: function () {
       return this.$store.state.showFilters
+    },
+    stocked: {
+      get: function () {
+        return this.$store.state.filter.stocked || true
+      },
+      set: function (stocked) {
+        this.$store.commit('filter/stocked', stocked ? 1 : 0)
+      }
+    },
+    older: {
+      get: function () {
+        return this.$store.state.filter.added || 0
+      },
+      set: function (older) {
+        this.$store.commit('filter/added', older)
+      }
+    },
+    branch: {
+      get: function () {
+        return this.$store.state.filter.branch || []
+      },
+      set: function (branch) {
+        this.$store.commit('filter/branch', branch)
+      }
+    },
+    genre: {
+      get: function () {
+        return this.$store.state.filter.genreFilter || ['any']
+      },
+      set: function (genre) {
+        this.$store.commit('filter/genreFilter', genre)
+      }
+    },
+    lending: {
+      get: function () {
+        return this.$store.state.filter.lending || 0
+      },
+      set: function (lending) {
+        this.$store.commit('filter/lending', lending)
+      }
+    },
+    sort: {
+      get: function () {
+        return this.$store.state.filter.sort
+      },
+      set: function (sort) {
+        this.$store.commit('filter/sort', this.orderBy)
+      }
     }
   },
   methods: {
-    find: function () {
-      let added = new Date()
-      added.setMonth(added.getMonth() - this.older)
-      let lending = new Date()
-      lending.setMonth(lending.getMonth() - this.lending)
-      this.$store.commit('filter/stocked', this.stocked ? null : 0)
-      this.$store.commit('filter/added', this.older !== 0 ? Math.round(added.getTime() / 1000) : null)
-      this.$store.commit('filter/branch', this.branch.length >= 1 ? this.branch.join(',') : null)
-      this.$store.commit('filter/genreFilter', this.genre.length >= 1 ? this.genre.join(',') : null)
-      this.$store.commit('filter/lending', this.lending !== 0 ? Math.round(lending / 1000) : null)
-      this.$store.commit('filter/sort', this.orderBy)
-      this.$store.dispatch('books/search')
-    },
     setLimit: function (limit) {
       this.$store.commit('filter/limit', limit)
       this.$store.dispatch('books/search')
