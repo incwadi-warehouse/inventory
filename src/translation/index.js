@@ -58,7 +58,8 @@ const messages = {
     lendTo: 'Lend to',
     lendOn: 'Lend on',
     customers: 'Customers',
-    remove: 'Remove'
+    remove: 'Remove',
+    login: 'Login'
   },
   de: {
     results: 'Ergebnisse',
@@ -114,7 +115,8 @@ const messages = {
     lendTo: 'Verliehen an',
     lendOn: 'Verliehen am',
     customers: 'Kunden',
-    remove: 'Löschen'
+    remove: 'Löschen',
+    login: 'Login'
   }
 }
 

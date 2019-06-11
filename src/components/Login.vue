@@ -19,7 +19,7 @@
       </div>
       <div class="form_group">
         <div class="form_item alignRight">
-          <button class="btn btn_branded" @click.prevent="save">{{ $t('save') }}</button>
+          <button class="btn btn_branded" @click.prevent="login">{{ $t('login') }}</button>
         </div>
       </div>
     </form>
@@ -36,7 +36,7 @@ export default {
     }
   },
   methods: {
-    save: function () {
+    login: function () {
       this.$store.dispatch('login', {
         user: this.user,
         password: this.pass
