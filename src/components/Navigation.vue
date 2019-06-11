@@ -1,5 +1,5 @@
 <template>
-  <ul class="nav">
+  <ul class="nav" v-if="isAuthenticated">
     <li class="nav_item">
       <router-link :to="{ name: 'index' }">{{ $t('home') }}</router-link>
     </li>
@@ -23,6 +23,11 @@ import Cookies from 'js-cookie'
 
 export default {
   name: 'navigation',
+  computed: {
+    isAuthenticated: function () {
+      return this.$store.state.isAuthenticated
+    }
+  },
   methods: {
     logout: function () {
       this.$store.commit('isAuthenticated', false)
