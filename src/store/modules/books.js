@@ -73,7 +73,9 @@ export default {
             branch: branch,
             genre: genre,
             lending: lending,
-            sort: context.rootState.filter.sort
+            sort: context.rootState.filter.sort,
+            yearOfPublication: context.rootState.filter.yearOfPublication,
+            type: context.rootState.filter.type
           }
         })
         .then(function (response) {

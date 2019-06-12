@@ -73,6 +73,26 @@
           </select>
         </div>
       </div>
+      <div class="form_group">
+        <div class="form_item">
+          <label for="older" class="form_label">{{ $t('release_year') }}</label>
+        </div>
+        <div class="form_item">
+          <input type="number" id="older" class="form_input" v-model="yearOfPublication">
+        </div>
+      </div>
+      <div class="form_group">
+        <div class="form_item">
+          <label for="orderBy" class="form_label">{{ $t('type') }}</label>
+        </div>
+        <div class="form_item">
+          <select id="orderBy" class="form_input" v-model="type">
+            <option value=""></option>
+            <option value="paperback">{{ $t('paperback') }}</option>
+            <option value="hardcover">{{ $t('hardcover') }}</option>
+          </select>
+        </div>
+      </div>
     </form>
 
     <p>{{ $t('limit') }}</p>
@@ -151,6 +171,22 @@ export default {
       },
       set: function (sort) {
         this.$store.commit('filter/sort', this.orderBy)
+      }
+    },
+    yearOfPublication: {
+      get: function () {
+        return this.$store.state.filter.yearOfPublication
+      },
+      set: function (yearOfPublication) {
+        this.$store.commit('filter/yearOfPublication', yearOfPublication)
+      }
+    },
+    type: {
+      get: function () {
+        return this.$store.state.filter.type
+      },
+      set: function (type) {
+        this.$store.commit('filter/type', type)
       }
     }
   },

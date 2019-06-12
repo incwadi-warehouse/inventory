@@ -9,7 +9,9 @@ export default {
     branch: null,
     genreFilter: null,
     lending: null,
-    sort: null
+    sort: null,
+    yearOfPublication: null,
+    type: null
   },
   mutations: {
     searchTerm (state, searchTerm) {
@@ -38,6 +40,12 @@ export default {
     },
     limit (state, limit) {
       state.limit = limit
+    },
+    yearOfPublication (state, yearOfPublication) {
+      state.yearOfPublication = yearOfPublication
+    },
+    type (state, type) {
+      state.type = type
     }
   },
   actions: {}
