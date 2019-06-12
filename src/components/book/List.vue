@@ -10,7 +10,9 @@
             <th class="isSortable" @click="filter('author')">{{ $t('author') }} <span v-if="sort === 'author_asc'">&#9650;</span><span v-if="sort === 'author_desc'">&#9660;</span></th>
             <th class="isSortable" @click="filter('genre')">{{ $t('genre') }} <span v-if="sort === 'genre_asc'">&#9650;</span><span v-if="sort === 'genre_desc'">&#9660;</span></th>
             <th class="isSortable" @click="filter('added')">{{ $t('added') }} <span v-if="sort === 'added_asc'">&#9650;</span><span v-if="sort === 'added_desc'">&#9660;</span></th>
+            <th class="isSortable" @click="filter('type')">{{$t('type') }} <span v-if="sort === 'type_asc'">&#9650;</span><span v-if="sort === 'type_desc'">&#9660;</span></th>
             <th class="alignRight isSortable" @click="filter('price')">{{currency}} <span v-if="sort === 'price_asc'">&#9650;</span><span v-if="sort === 'price_desc'">&#9660;</span></th>
+            <th class="alignRight isSortable" @click="filter('yearOfPublication')">{{ $t('release_year') }} <span v-if="sort === 'yearOfPublication_asc'">&#9650;</span><span v-if="sort === 'yearOfPublication_desc'">&#9660;</span></th>
             <th class="noprint"></th>
           </tr>
         </thead>
@@ -21,7 +23,9 @@
             <td v-else></td>
             <td>{{book.genre.name}}</td>
             <td>{{formatDate(book.added)}}</td>
+            <td>{{book.type}}</td>
             <td class="alignRight">{{formatPrice(book.price)}}</td>
+            <td class="alignRight">{{book.yearOfPublication}}</td>
             <td class="alignRight noprint"><router-link :to="{ name: 'edit', params: { id: book.id } }">{{ $t('edit') }}</router-link></td>
           </tr>
         </tbody>
