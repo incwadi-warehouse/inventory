@@ -6,18 +6,14 @@
           <label for="genre" class="form_label">{{ $t('genre') }}</label>
         </div>
         <div class="form_item">
-          <select id="genre" class="form_input" multiple v-model="genre">
-            <option value=""></option>
-            <optgroup :label="$t('general')">
-              <option value="none">{{ $t('none') }}</option>
-              <option value="any">{{ $t('any') }}</option>
-            </optgroup>
-            <optgroup :label="$t('genres')">
-              <option v-for="genre in genres" :key="genre.id" :value="genre.id">
-                {{genre.name}}
-              </option>
-            </optgroup>
-          </select>
+          <input type="checkbox" value="none" id="none" v-model="genre">
+          <label for="none" class="form_label">{{ $t('none') }}</label>
+          <input type="checkbox" value="any" id="any" v-model="genre">
+          <label for="any" class="form_label">{{ $t('any') }}</label>
+          <span v-for="item in genres" :key="item.id">
+            <input type="checkbox" :value="item.id" :id="'genre-' + item.id" v-model="genre">
+            <label :for="'genre-' + item.id" class="form_label">{{item.name}}</label>
+          </span>
         </div>
       </div>
       <div class="form_group">
@@ -41,18 +37,14 @@
           <label for="branches" class="form_label">{{ $t('branches') }}</label>
         </div>
         <div class="form_item">
-          <select id="branches" class="form_input" multiple v-model="branch">
-            <option value=""></option>
-            <optgroup :label="$t('general')">
-              <option value="none">{{ $t('none') }}</option>
-              <option value="any">{{ $t('any') }}</option>
-            </optgroup>
-            <optgroup :label="$t('branches')">
-              <option v-for="branch in branches" :key="branch.id" :value="branch.id">
-                {{branch.name}}
-              </option>
-            </optgroup>
-          </select>
+          <input type="checkbox" name="branch" id="none" value="none" v-model="branch">
+          <label for="none" class="form_label">{{ $t('none') }}</label>
+          <input type="checkbox" name="branch" id="any" value="any" v-model="branch">
+          <label for="any" class="form_label">{{ $t('any') }}</label>
+          <span v-for="item in branches" :key="item.id">
+            <input type="checkbox" name="branch" :id="'branch-' + item.id" :value="item.id" v-model="branch">
+            <label :for="'branch-' + item.id" class="form_label">{{item.name}}</label>
+          </span>
         </div>
       </div>
       <div class="form_group">
