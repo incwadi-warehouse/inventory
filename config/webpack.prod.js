@@ -3,7 +3,6 @@
 const path = require('path')
 const webpack = require('webpack')
 const { VueLoaderPlugin } = require('vue-loader')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const DotenvPlugin = require('dotenv-webpack');
 const WebappWebpackPlugin = require('webapp-webpack-plugin');
@@ -11,6 +10,7 @@ const version = require('./../package.json').version;
 const { GenerateSW } = require('workbox-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 require('dotenv').config({
   path: './.env.production'
@@ -136,18 +136,7 @@ module.exports = {
     ])
   ],
   optimization: {
-    minimizer: [
-      new UglifyJsPlugin({
-        cache: true,
-        parallel: true,
-        uglifyOptions: {
-          compress: false,
-          ecma: 6,
-          mangle: true
-        },
-        sourceMap: true
-      })
-    ],
+    minimizer: [new TerserPlugin()],
     splitChunks: {
       chunks: "all",
       cacheGroups: {
