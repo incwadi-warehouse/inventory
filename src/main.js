@@ -3,6 +3,7 @@ import App from './App'
 import router from './router'
 import store from './store'
 import i18n from './translation'
+import 'es6-promise/auto'
 
 Vue.config.productionTip = false
 
