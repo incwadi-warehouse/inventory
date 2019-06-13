@@ -202,6 +202,10 @@ export default {
       this.$router.push({ name: 'index' })
     },
     formatPrice: function () {
+      if (!Number.parseFloat) {
+        this.price = window.parseFloat(this.price).toFixed(2)
+      }
+
       this.price = Number.parseFloat(this.price).toFixed(2)
     },
     setLendTo: function () {

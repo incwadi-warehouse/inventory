@@ -136,6 +136,10 @@ export default {
       this.$store.dispatch('toggleShowCreate')
     },
     formatPrice: function () {
+      if (!Number.parseFloat) {
+        this.price = window.parseFloat(this.price).toFixed(2)
+      }
+
       this.price = Number.parseFloat(this.price).toFixed(2)
     }
   },
