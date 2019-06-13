@@ -4,6 +4,13 @@ import router from './router'
 import store from './store'
 import i18n from './translation'
 import 'es6-promise/auto'
+import cssVars from 'css-vars-ponyfill'
+
+cssVars({
+  variables: {
+    'color-brand': process.env.BRAND_COLOR
+  }
+})
 
 Vue.config.productionTip = false
 
