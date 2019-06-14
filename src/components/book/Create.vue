@@ -84,7 +84,7 @@
           </label>
         </div>
         <div class="form_item">
-          <input type="number" id="price" class="form_input" :step="steps" min="0.00" @change="formatPrice" required v-model="price">
+          <input type="number" id="price" class="form_input" :step="steps" min="0.00" pattern="^\d+(\.|\,)\d{2}$" required v-model="price">
         </div>
       </div>
       <div class="form_group">
@@ -134,13 +134,6 @@ export default {
         added: Math.round(new Date().getTime() / 1000)
       })
       this.$store.dispatch('toggleShowCreate')
-    },
-    formatPrice: function () {
-      if (!Number.parseFloat) {
-        this.price = window.parseFloat(this.price).toFixed(2)
-      }
-
-      this.price = Number.parseFloat(this.price).toFixed(2)
     }
   },
   mounted: function () {

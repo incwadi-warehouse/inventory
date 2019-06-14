@@ -65,10 +65,22 @@ export default {
     },
     formatPrice: function (price) {
       if (!Number.parseFloat) {
-        return window.parseFloat(price).toFixed(2)
+        return window.parseFloat(price).toLocaleString(
+          undefined,
+          {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+          }
+        )
       }
 
-      return Number.parseFloat(price).toFixed(2)
+      return Number.parseFloat(price).toLocaleString(
+        undefined,
+        {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        }
+      )
     },
     reload: function () {
       this.$store.commit(
