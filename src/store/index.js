@@ -23,7 +23,9 @@ export default new Vuex.Store({
     showCreate: false,
     token: Cookies.get('token'),
     customers: null,
-    isAuthenticated: false
+    isAuthenticated: false,
+    isLoggingIn: false,
+    hasLoginError: false
   },
   mutations: {
     me (state, me) {
@@ -46,10 +48,17 @@ export default new Vuex.Store({
     },
     isAuthenticated (state, status) {
       state.isAuthenticated = status
+    },
+    isLoggingIn (state, status) {
+      state.isLoggingIn = status
+    },
+    hasLoginError (state, status) {
+      state.hasLoginError = status
     }
   },
   actions: {
     login (context, data) {
+      context.commit('isLoggingIn', true)
       api(context.state.token)
         .post('/api/login_check', {
           username: data.user,
@@ -59,9 +68,14 @@ export default new Vuex.Store({
           context.commit('token', response.data.token)
           Cookies.set('token', response.data.token, { expires: 7 })
           context.commit('isAuthenticated', true)
+          context.commit('hasLoginError', false)
         })
         .catch(function (error) {
           console.log(error)
+          context.commit('hasLoginError', true)
+        })
+        .finally(function () {
+          context.commit('isLoggingIn', false)
         })
     },
     me (context) {

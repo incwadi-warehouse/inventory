@@ -1,5 +1,9 @@
 <template>
   <section class="section section_fixed">
+    <aside class="notice notice_red" v-if="hasLoginError">
+      <p class="notice_entry">{{ $t('wrong_credentials') }}</p>
+    </aside>
+
     <form class="form" @submit.prevent="save">
       <div class="form_group">
         <div class="form_item">
@@ -19,7 +23,10 @@
       </div>
       <div class="form_group">
         <div class="form_item alignRight">
-          <button class="btn btn_branded" @click.prevent="login">{{ $t('login') }}</button>
+          <button class="btn btn_branded" @click.prevent="login" v-if="!isLoggingIn">{{ $t('login') }}</button>
+          <button class="btn btn_secondary" v-if="isLoggingIn">
+            <div class="spinner spinner-s"></div>
+          </button>
         </div>
       </div>
     </form>
@@ -33,6 +40,14 @@ export default {
     return {
       user: null,
       pass: null
+    }
+  },
+  computed: {
+    hasLoginError: function () {
+      return this.$store.state.hasLoginError
+    },
+    isLoggingIn: function () {
+      return this.$store.state.isLoggingIn
     }
   },
   methods: {

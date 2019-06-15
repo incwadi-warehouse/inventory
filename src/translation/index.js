@@ -59,7 +59,8 @@ const messages = {
     lendOn: 'Lend on',
     customers: 'Customers',
     remove: 'Remove',
-    login: 'Login'
+    login: 'Login',
+    wrong_credentials: 'Please check your credentials!'
   },
   de: {
     results: 'Ergebnisse',
@@ -116,7 +117,8 @@ const messages = {
     lendOn: 'Verliehen am',
     customers: 'Kunden',
     remove: 'Löschen',
-    login: 'Login'
+    login: 'Login',
+    wrong_credentials: 'Bitte prüfe die Zugangsdaten!'
   }
 }
 
