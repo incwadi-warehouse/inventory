@@ -11,7 +11,9 @@ export default {
       added: null,
       price: null,
       stocked: null
-    }
+    },
+    hasCreateError: false,
+    hasUpdateError: false
   },
   mutations: {
     books (state, books) {
@@ -19,6 +21,12 @@ export default {
     },
     book (state, book) {
       state.book = book
+    },
+    hasCreateError (state, status) {
+      state.hasCreateError = status
+    },
+    hasUpdateError (state, status) {
+      state.hasUpdateError = status
     }
   },
   actions: {
@@ -109,9 +117,12 @@ export default {
         })
         .then(function (response) {
           console.log(response)
+          context.commit('hasCreateError', false)
+          context.dispatch('toggleShowCreate', null, { root: true })
         })
         .catch(function (error) {
           console.log(error)
+          context.commit('hasCreateError', true)
         })
     },
     update (context, data) {
@@ -119,9 +130,11 @@ export default {
         .put('/v1/book/' + data.id, data.params)
         .then(function (response) {
           console.log(response)
+          context.commit('hasUpdateError', false)
         })
         .catch(function (error) {
           console.log(error)
+          context.commit('hasUpdateError', true)
         })
     }
   }

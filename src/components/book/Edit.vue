@@ -1,5 +1,13 @@
 <template>
   <section>
+    <section class="section section_fixed">
+      <aside class="notice notice_red" v-if="hasUpdateError">
+        <p class="notice_entry">
+          {{ $t('book_not_valid') }}
+        </p>
+      </aside>
+    </section>
+
     <spinner/>
 
     <section class="section section_fixed" v-if="!isLoading">
@@ -179,6 +187,9 @@ export default {
     },
     genres: function () {
       return this.$store.state.genres.genres
+    },
+    hasUpdateError: function () {
+      return this.$store.state.books.hasUpdateError
     }
   },
   methods: {
@@ -199,7 +210,6 @@ export default {
           lendOn: this.lendOn === '' ? null : new Date(this.lendOn).getTime() / 1000
         }
       })
-      this.$router.push({ name: 'index' })
     },
     setLendTo: function () {
       if (this.lendTo === null) {

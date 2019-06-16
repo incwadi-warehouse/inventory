@@ -1,5 +1,11 @@
 <template>
   <section class="section section_fixed">
+    <aside class="notice notice_red" v-if="hasCreateError">
+      <p class="notice_entry">
+        {{ $t('book_not_valid') }}
+      </p>
+    </aside>
+
     <h1>{{ $t('add_book') }}</h1>
     <form class="form" @submit.prevent="add">
       <div class="form_group">
@@ -118,6 +124,9 @@ export default {
     },
     genres: function () {
       return this.$store.state.genres.genres
+    },
+    hasCreateError: function () {
+      return this.$store.state.books.hasCreateError
     }
   },
   methods: {
@@ -133,7 +142,6 @@ export default {
         premium: this.premium,
         added: Math.round(new Date().getTime() / 1000)
       })
-      this.$store.dispatch('toggleShowCreate')
     }
   },
   mounted: function () {

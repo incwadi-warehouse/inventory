@@ -60,7 +60,8 @@ const messages = {
     customers: 'Customers',
     remove: 'Remove',
     login: 'Login',
-    wrong_credentials: 'Please check your credentials!'
+    wrong_credentials: 'Please check your credentials!',
+    book_not_valid: 'There was an error saving the book!'
   },
   de: {
     results: 'Ergebnisse',
@@ -118,7 +119,8 @@ const messages = {
     customers: 'Kunden',
     remove: 'Löschen',
     login: 'Login',
-    wrong_credentials: 'Bitte prüfe die Zugangsdaten!'
+    wrong_credentials: 'Bitte prüfe die Zugangsdaten!',
+    book_not_valid: 'Das Buch konnte nicht gespeichert werden!'
   }
 }
 
