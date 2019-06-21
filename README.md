@@ -16,6 +16,7 @@ The first goal is to make a minimum viable product (MVP). It delivers only the f
 
 - NodeJS 10LTS
 - Yarn
+- A modern browser
 
 ## Getting Started
 
