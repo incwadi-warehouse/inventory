@@ -1,4 +1,5 @@
 import api from '../../api'
+import router from '../../router'
 
 export default {
   namespaced: true,
@@ -136,6 +137,7 @@ export default {
         .then(function (response) {
           console.log(response)
           context.commit('hasUpdateError', false)
+          router.push({ name: 'index' })
         })
         .catch(function (error) {
           console.log(error)
