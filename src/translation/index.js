@@ -61,7 +61,8 @@ const messages = {
     remove: 'Remove',
     login: 'Login',
     wrong_credentials: 'Please check your credentials!',
-    book_not_valid: 'There was an error saving the book!'
+    book_not_valid: 'There was an error saving the book!',
+    book_not_valid_duplicate: 'Can\'t save the book, because it\'s a duplicate!'
   },
   de: {
     results: 'Ergebnisse',
@@ -120,7 +121,8 @@ const messages = {
     remove: 'Löschen',
     login: 'Login',
     wrong_credentials: 'Bitte prüfe die Zugangsdaten!',
-    book_not_valid: 'Das Buch konnte nicht gespeichert werden!'
+    book_not_valid: 'Das Buch konnte nicht gespeichert werden!',
+    book_not_valid_duplicate: 'Das Buch konnte nicht gespeichert werden, da es ein Duplikat ist!'
   }
 }
 

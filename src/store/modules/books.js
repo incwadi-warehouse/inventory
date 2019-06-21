@@ -15,7 +15,8 @@ export default {
       stocked: null
     },
     hasCreateError: false,
-    hasUpdateError: false
+    hasUpdateError: false,
+    isDuplicate: false
   },
   mutations: {
     books (state, books) {
@@ -32,6 +33,9 @@ export default {
     },
     hasUpdateError (state, status) {
       state.hasUpdateError = status
+    },
+    isDuplicate (state, status) {
+      state.isDuplicate = status
     }
   },
   actions: {
@@ -124,11 +128,15 @@ export default {
         .then(function (response) {
           console.log(response)
           context.commit('hasCreateError', false)
+          context.commit('isDuplicate', false)
           context.dispatch('toggleShowCreate', null, { root: true })
         })
         .catch(function (error) {
           console.log(error)
           context.commit('hasCreateError', true)
+          if (error.response.status === 409) {
+            context.commit('isDuplicate', true)
+          }
         })
     },
     update (context, data) {
@@ -137,11 +145,15 @@ export default {
         .then(function (response) {
           console.log(response)
           context.commit('hasUpdateError', false)
+          context.commit('isDuplicate', false)
           router.push({ name: 'index' })
         })
         .catch(function (error) {
           console.log(error)
           context.commit('hasUpdateError', true)
+          if (error.response.status === 409) {
+            context.commit('isDuplicate', true)
+          }
         })
     }
   }

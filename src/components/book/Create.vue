@@ -1,8 +1,11 @@
 <template>
   <section class="section section_fixed">
     <aside class="notice notice_red" v-if="hasCreateError">
-      <p class="notice_entry">
+      <p class="notice_entry" v-if="!isDuplicate">
         {{ $t('book_not_valid') }}
+      </p>
+      <p class="notice_entry" v-if="isDuplicate">
+        {{ $t('book_not_valid_duplicate') }}
       </p>
     </aside>
 
@@ -127,6 +130,9 @@ export default {
     },
     hasCreateError: function () {
       return this.$store.state.books.hasCreateError
+    },
+    isDuplicate: function () {
+      return this.$store.state.books.isDuplicate
     }
   },
   methods: {

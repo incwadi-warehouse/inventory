@@ -2,8 +2,11 @@
   <section>
     <section class="section section_fixed">
       <aside class="notice notice_red" v-if="hasUpdateError">
-        <p class="notice_entry">
-          {{ $t('book_not_valid') }}
+        <p class="notice_entry" v-if="!isDuplicate">
+        {{ $t('book_not_valid') }}
+        </p>
+        <p class="notice_entry" v-if="isDuplicate">
+          {{ $t('book_not_valid_duplicate') }}
         </p>
       </aside>
     </section>
@@ -190,6 +193,9 @@ export default {
     },
     hasUpdateError: function () {
       return this.$store.state.books.hasUpdateError
+    },
+    isDuplicate: function () {
+      return this.$store.state.books.isDuplicate
     }
   },
   methods: {
