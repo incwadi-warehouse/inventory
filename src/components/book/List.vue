@@ -50,10 +50,10 @@ export default {
   },
   computed: {
     books: function () {
-      return this.$store.state.books.books.books
+      return this.$store.state.books.books
     },
     counter: function () {
-      return this.$store.state.books.books.counter
+      return this.$store.state.books.counter
     },
     sort: function () {
       return this.$store.state.filter.sort

@@ -4,6 +4,7 @@ export default {
   namespaced: true,
   state: {
     books: [],
+    counter: 0,
     book: {
       title: null,
       author: null,
@@ -18,6 +19,9 @@ export default {
   mutations: {
     books (state, books) {
       state.books = books
+    },
+    counter (state, counter) {
+      state.counter = counter
     },
     book (state, book) {
       state.book = book
@@ -87,14 +91,15 @@ export default {
           }
         })
         .then(function (response) {
-          if (context.state.offset >= 1) {
+          if (context.rootState.filter.offset >= 1) {
             let books = context.state.books
-            response.data.forEach(book => {
+            response.data.books.forEach(book => {
               books.push(book)
             })
             context.commit('books', books)
           } else {
-            context.commit('books', response.data)
+            context.commit('books', response.data.books)
+            context.commit('counter', response.data.counter)
           }
           context.commit('isLoading', false, { root: true })
         })
