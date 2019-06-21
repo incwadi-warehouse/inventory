@@ -12,7 +12,7 @@
             <th class="isSortable" @click="filter('added')">{{ $t('added') }} <span v-if="sort === 'added_asc'">&#9650;</span><span v-if="sort === 'added_desc'">&#9660;</span></th>
             <th class="isSortable" @click="filter('type')">{{$t('type') }} <span v-if="sort === 'type_asc'">&#9650;</span><span v-if="sort === 'type_desc'">&#9660;</span></th>
             <th class="alignRight isSortable" @click="filter('price')">{{currency}} <span v-if="sort === 'price_asc'">&#9650;</span><span v-if="sort === 'price_desc'">&#9660;</span></th>
-            <th class="alignRight isSortable" @click="filter('yearOfPublication')">{{ $t('release_year') }} <span v-if="sort === 'yearOfPublication_asc'">&#9650;</span><span v-if="sort === 'yearOfPublication_desc'">&#9660;</span></th>
+            <th class="alignRight isSortable" @click="filter('yearOfPublication')">{{ $t('released') }} <span v-if="sort === 'yearOfPublication_asc'">&#9650;</span><span v-if="sort === 'yearOfPublication_desc'">&#9660;</span></th>
             <th class="noprint"></th>
           </tr>
         </thead>
