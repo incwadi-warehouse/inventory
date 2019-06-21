@@ -55,26 +55,6 @@
       </div>
       <div class="form_group">
         <div class="form_item">
-          <label for="orderBy" class="form_label">{{ $t('orderBy') }}</label>
-        </div>
-        <div class="form_item">
-          <select id="orderBy" class="form_input" v-model="orderBy">
-            <option value=""></option>
-            <option value="title_asc">{{ $t('title') }} {{ $t('asc') }}</option>
-            <option value="title_desc">{{ $t('title') }} {{ $t('desc') }}</option>
-            <option value="author_asc">{{ $t('author') }} {{ $t('asc') }}</option>
-            <option value="author_desc">{{ $t('author') }} {{ $t('desc') }}</option>
-            <option value="genre_asc">{{ $t('genre') }} {{ $t('asc') }}</option>
-            <option value="genre_desc">{{ $t('genre') }} {{ $t('desc') }}</option>
-            <option value="added_asc">{{ $t('added') }} {{ $t('asc') }}</option>
-            <option value="added_desc">{{ $t('added') }} {{ $t('desc') }}</option>
-            <option value="price_asc">{{ $t('price') }} {{ $t('asc') }}</option>
-            <option value="price_desc">{{ $t('price') }} {{ $t('desc') }}</option>
-          </select>
-        </div>
-      </div>
-      <div class="form_group">
-        <div class="form_item">
           <label for="older" class="form_label">{{ $t('release_year') }}</label>
         </div>
         <div class="form_item">
@@ -90,6 +70,26 @@
             <option value=""></option>
             <option value="paperback">{{ $t('paperback') }}</option>
             <option value="hardcover">{{ $t('hardcover') }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form_group">
+        <div class="form_item">
+          <label for="orderBy" class="form_label">{{ $t('orderBy') }}</label>
+        </div>
+        <div class="form_item">
+          <select id="orderBy" class="form_input" v-model="orderBy">
+            <option value=""></option>
+            <option value="title_asc">{{ $t('title') }} {{ $t('asc') }}</option>
+            <option value="title_desc">{{ $t('title') }} {{ $t('desc') }}</option>
+            <option value="author_asc">{{ $t('author') }} {{ $t('asc') }}</option>
+            <option value="author_desc">{{ $t('author') }} {{ $t('desc') }}</option>
+            <option value="genre_asc">{{ $t('genre') }} {{ $t('asc') }}</option>
+            <option value="genre_desc">{{ $t('genre') }} {{ $t('desc') }}</option>
+            <option value="added_asc">{{ $t('added') }} {{ $t('asc') }}</option>
+            <option value="added_desc">{{ $t('added') }} {{ $t('desc') }}</option>
+            <option value="price_asc">{{ $t('price') }} {{ $t('asc') }}</option>
+            <option value="price_desc">{{ $t('price') }} {{ $t('desc') }}</option>
           </select>
         </div>
       </div>
