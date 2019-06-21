@@ -1,6 +1,6 @@
 <template>
   <section class="section section_fixed" v-if="counter">
-    <p class="noprint" v-if="counter">{{ $t('results') }}: {{ counter }}</p>
+    <p class="noprint" v-if="counter">{{ $t('results') }}: {{ books.length }}/{{ counter }}</p>
 
     <div class="table_wrapper">
       <table class="table">
@@ -33,7 +33,7 @@
     </div>
 
     <div class="alignCenter noprint">
-      <button class="btn btn_secondary" @click="reload" v-if="counter > 10">
+      <button class="btn btn_secondary" @click="reload" v-if="showLoadMore">
         {{ $t('load_more') }}
       </button>
     </div>
@@ -57,6 +57,9 @@ export default {
     },
     sort: function () {
       return this.$store.state.filter.sort
+    },
+    showLoadMore: function () {
+      return this.books.length < this.counter
     }
   },
   methods: {
