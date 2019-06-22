@@ -6,10 +6,6 @@
           <label for="genre" class="form_label">{{ $t('genre') }}</label>
         </div>
         <div class="form_item">
-          <input type="checkbox" value="none" id="none" v-model="genre">
-          <label for="none" class="form_label">{{ $t('none') }}</label>
-          <input type="checkbox" value="any" id="any" v-model="genre">
-          <label for="any" class="form_label">{{ $t('any') }}</label>
           <span v-for="item in genres" :key="item.id">
             <input type="checkbox" :value="item.id" :id="'genre-' + item.id" v-model="genre">
             <label :for="'genre-' + item.id" class="form_label">{{item.name}}</label>
