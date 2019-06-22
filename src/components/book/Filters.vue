@@ -37,12 +37,8 @@
           <label for="branches" class="form_label">{{ $t('branches') }}</label>
         </div>
         <div class="form_item">
-          <input type="checkbox" name="branch" id="none" value="none" v-model="branch">
-          <label for="none" class="form_label">{{ $t('none') }}</label>
-          <input type="checkbox" name="branch" id="any" value="any" v-model="branch">
-          <label for="any" class="form_label">{{ $t('any') }}</label>
           <span v-for="item in branches" :key="item.id">
-            <input type="checkbox" name="branch" :id="'branch-' + item.id" :value="item.id" v-model="branch">
+            <input type="checkbox" :id="'branch-' + item.id" :value="item.id" v-model="branch">
             <label :for="'branch-' + item.id" class="form_label">{{item.name}}</label>
           </span>
         </div>
@@ -143,7 +139,7 @@ export default {
     },
     branch: {
       get: function () {
-        return this.$store.state.filter.branch || []
+        return this.$store.state.filter.branch || (this.$store.state.me ? [this.$store.state.me.branch.id] : [])
       },
       set: function (branch) {
         this.$store.commit('filter/branch', branch)
@@ -199,6 +195,7 @@ export default {
   mounted: function () {
     this.$store.dispatch('branches/branches')
     this.$store.dispatch('genres/genres')
+    this.$store.dispatch('me')
   }
 }
 </script>
