@@ -113,6 +113,7 @@ export default {
       let id = books.indexOf(book)
       books.splice(id, 1)
       this.$store.commit('books/books', books)
+      this.$store.commit('filter/offset', this.$store.state.filter.offset - 1)
       this.$store.dispatch('books/toggleStocking', book.id)
     }
   }
