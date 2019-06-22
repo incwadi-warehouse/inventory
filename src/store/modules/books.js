@@ -155,6 +155,17 @@ export default {
             context.commit('isDuplicate', true)
           }
         })
+    },
+    toggleStocking (context, id) {
+      api(context.rootState.token)
+        .put('/v1/book/toggleStocking/' + id)
+        .then(function (response) {
+          console.log(response)
+          router.push({ name: 'index' })
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
     }
   }
 }

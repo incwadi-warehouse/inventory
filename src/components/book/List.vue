@@ -14,6 +14,7 @@
             <th class="alignRight isSortable" @click="filter('price')">{{currency}} <span v-if="sort === 'price_asc'">&#9650;</span><span v-if="sort === 'price_desc'">&#9660;</span></th>
             <th class="alignRight isSortable" @click="filter('yearOfPublication')">{{ $t('released') }} <span v-if="sort === 'yearOfPublication_asc'">&#9650;</span><span v-if="sort === 'yearOfPublication_desc'">&#9660;</span></th>
             <th class="noprint"></th>
+            <th class="noprint"></th>
           </tr>
         </thead>
         <tbody>
@@ -27,6 +28,7 @@
             <td class="alignRight">{{formatPrice(book.price)}}</td>
             <td class="alignRight">{{book.yearOfPublication}}</td>
             <td class="alignRight noprint"><router-link :to="{ name: 'edit', params: { id: book.id } }">{{ $t('edit') }}</router-link></td>
+            <td class="alignRight noprint"><button class="btn btn_link" @click="toggleStocking(book.id)">{{ $t('sold') }}</button></td>
           </tr>
         </tbody>
       </table>
@@ -105,6 +107,9 @@ export default {
         this.$store.commit('filter/sort', type + '_asc')
       }
       this.$store.dispatch('books/search')
+    },
+    toggleStocking: function (book) {
+      this.$store.dispatch('books/toggleStocking', book)
     }
   }
 }
