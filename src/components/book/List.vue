@@ -28,7 +28,7 @@
             <td class="alignRight">{{formatPrice(book.price)}}</td>
             <td class="alignRight">{{book.yearOfPublication}}</td>
             <td class="alignRight noprint"><router-link :to="{ name: 'edit', params: { id: book.id } }">{{ $t('edit') }}</router-link></td>
-            <td class="alignRight noprint"><button class="btn btn_link" @click="toggleStocking(book.id)">{{ $t('sold') }}</button></td>
+            <td class="alignRight noprint"><button class="btn btn_link" @click="toggleStocking(book)" v-if="book.stocked">{{ $t('sold') }}</button></td>
           </tr>
         </tbody>
       </table>
@@ -109,7 +109,11 @@ export default {
       this.$store.dispatch('books/search')
     },
     toggleStocking: function (book) {
-      this.$store.dispatch('books/toggleStocking', book)
+      let books = this.books
+      let id = books.indexOf(book)
+      books.splice(id, 1)
+      this.$store.commit('books/books', books)
+      this.$store.dispatch('books/toggleStocking', book.id)
     }
   }
 }
