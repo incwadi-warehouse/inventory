@@ -15,7 +15,7 @@ export default {
     List,
     Create
   },
-  methods: {
+  computed: {
     showForm: function () {
       if (!this.$store.state.me) return
       return this.$store.state.me.roles.indexOf('ROLE_ADMIN') !== -1
