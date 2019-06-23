@@ -1,6 +1,7 @@
 <template>
-  <section class="section section_fixed" v-if="showForm">
+  <section class="section section_fixed">
     <h2>{{ $t('new') }}</h2>
+
     <form class="form" @submit.prevent="create">
       <div class="form_group">
         <div class="form_item">
@@ -12,7 +13,9 @@
       </div>
       <div class="form_group">
         <div class="form_item alignRight">
-          <button class="btn btn_secondary" @click.prevent="create">{{ $t('create') }}</button>
+          <button class="btn btn_secondary" @click.prevent="create">
+            {{ $t('create') }}
+          </button>
         </div>
       </div>
     </form>
@@ -31,14 +34,7 @@ export default {
     create: function () {
       this.$store.dispatch('genres/createGenre', this.name)
       this.name = null
-    },
-    showForm: function () {
-      if (!this.$store.state.me) return
-      return this.$store.state.me.roles.indexOf('ROLE_ADMIN') !== -1
     }
-  },
-  mounted: function () {
-    this.$store.dispatch('me')
   }
 }
 </script>
