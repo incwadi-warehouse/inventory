@@ -47,6 +47,5 @@ export default {
     type (state, type) {
       state.type = type
     }
-  },
-  actions: {}
+  }
 }

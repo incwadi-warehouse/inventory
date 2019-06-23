@@ -17,9 +17,6 @@ export default {
         .then(function (response) {
           context.commit('branches', response.data.branches)
         })
-        .catch(function (error) {
-          console.log(error)
-        })
     }
   }
 }

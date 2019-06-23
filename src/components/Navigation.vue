@@ -1,19 +1,29 @@
 <template>
   <ul class="nav" v-if="isAuthenticated">
     <li class="nav_item">
-      <router-link :to="{ name: 'index' }">{{ $t('home') }}</router-link>
+      <router-link :to="{ name: 'book' }">
+        {{ $t('home') }}
+      </router-link>
     </li>
     <li class="nav_item">
-      <router-link :to="{ name: 'genre' }">{{ $t('genres') }}</router-link>
+      <router-link :to="{ name: 'genre' }">
+        {{ $t('genres') }}
+      </router-link>
     </li>
     <li class="nav_item">
-      <router-link :to="{ name: 'customer' }">{{ $t('customers') }}</router-link>
+      <router-link :to="{ name: 'customer' }">
+        {{ $t('customers') }}
+      </router-link>
     </li>
     <li class="nav_item">
-      <router-link :to="{ name: 'about' }">{{ $t('about') }}</router-link>
+      <router-link :to="{ name: 'about' }">
+        {{ $t('about') }}
+      </router-link>
     </li>
     <li class="nav_item">
-      <a href="/logout" @click.prevent="logout">Logout</a>
+      <a href="/logout" @click.prevent="logout">
+        Logout
+      </a>
     </li>
   </ul>
 </template>
@@ -32,7 +42,7 @@ export default {
     logout: function () {
       this.$store.commit('isAuthenticated', false)
       Cookies.remove('token')
-      this.$router.push({ name: 'index' })
+      this.$router.push({ name: 'book' })
     }
   }
 }

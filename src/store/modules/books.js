@@ -146,7 +146,7 @@ export default {
           console.log(response)
           context.commit('hasUpdateError', false)
           context.commit('isDuplicate', false)
-          router.push({ name: 'index' })
+          router.push({ name: 'book' })
         })
         .catch(function (error) {
           console.log(error)
@@ -161,7 +161,7 @@ export default {
         .put('/v1/book/toggleStocking/' + id)
         .then(function (response) {
           console.log(response)
-          router.push({ name: 'index' })
+          router.push({ name: 'book' })
         })
         .catch(function (error) {
           console.log(error)

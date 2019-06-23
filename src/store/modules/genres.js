@@ -21,9 +21,6 @@ export default {
         .then(function (response) {
           context.commit('genres', response.data.genres)
         })
-        .catch(function (error) {
-          console.log(error)
-        })
     },
     createGenre (context, name) {
       api(context.rootState.token)
@@ -33,18 +30,12 @@ export default {
         .then(function (response) {
           context.dispatch('genres')
         })
-        .catch(function (error) {
-          console.log(error)
-        })
     },
     removeGenre (context, id) {
       api(context.rootState.token)
         .delete('/v1/genre/' + id)
         .then(function (response) {
           context.dispatch('genres')
-        })
-        .catch(function (error) {
-          console.log(error)
         })
     }
   }

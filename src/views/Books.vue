@@ -1,17 +1,22 @@
 <template>
   <section>
     <search/>
+
     <section class="section section_default alignRight noprint">
       <button class="btn btn_secondary" @click="toggleFilter">{{ $t('filter') }}</button>
       <button class="btn btn_secondary" @click="toggleShowCreate">{{ $t('create') }}</button>
     </section>
+
     <transition name="fade">
       <filters/>
     </transition>
+
     <spinner/>
+
     <transition name="fade">
       <create class="noprint" v-if="showCreate"/>
     </transition>
+
     <list/>
   </section>
 </template>
@@ -24,7 +29,7 @@ import Spinner from '../components/Spinner'
 import Create from '../components/book/Create'
 
 export default {
-  name: 'index-view',
+  name: 'book-view',
   components: {
     Search,
     Filters,

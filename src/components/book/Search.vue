@@ -12,7 +12,9 @@
           v-model="searchTerm">
       </div>
       <div class="search_options">
-        <button class="btn btn_branded search_btn" @click.prevent="search">{{ $t('find') }}</button>
+        <button class="btn btn_branded search_btn" @click.prevent="search">
+          {{ $t('find') }}
+        </button>
       </div>
     </form>
   </section>

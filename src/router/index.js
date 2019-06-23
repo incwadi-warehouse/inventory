@@ -16,7 +16,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'index',
+      name: 'book',
       component: Books
     },
     {
