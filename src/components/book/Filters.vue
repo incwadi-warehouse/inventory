@@ -17,7 +17,7 @@
           <label for="older" class="form_label">{{ $t('older_then_x_months') }}</label>
         </div>
         <div class="form_item">
-          <input type="number" id="older" class="form_input" v-model="older">
+          <input type="number" id="older" class="form_input" min="0" v-model="older">
         </div>
       </div>
       <div class="form_group">
@@ -25,7 +25,7 @@
           <label for="lending" class="form_label">{{ $t('lend_more_then_x_months') }}</label>
         </div>
         <div class="form_item">
-          <input type="number" id="lending" class="form_input" v-model="lending">
+          <input type="number" id="lending" class="form_input" min="0" v-model="lending">
         </div>
       </div>
       <div class="form_group">
