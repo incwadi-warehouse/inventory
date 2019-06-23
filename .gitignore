@@ -1,5 +1,5 @@
-node_modules/
-.env.production
 dist/
 custom/
+node_modules/
 .env
+.env.production
