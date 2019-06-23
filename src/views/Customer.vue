@@ -1,19 +1,28 @@
 <template>
   <section>
     <list/>
-    <edit/>
+    <create v-if="showForm"/>
   </section>
 </template>
 
 <script>
 import List from '../components/customer/List'
-import Edit from '../components/customer/Create'
+import Create from '../components/customer/Create'
 
 export default {
   name: 'customer-view',
   components: {
     List,
-    Edit
+    Create
+  },
+  methods: {
+    showForm: function () {
+      if (!this.$store.state.me) return
+      return this.$store.state.me.roles.indexOf('ROLE_ADMIN') !== -1
+    }
+  },
+  mounted: function () {
+    this.$store.dispatch('me')
   }
 }
 </script>
