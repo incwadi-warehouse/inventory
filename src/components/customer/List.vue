@@ -2,7 +2,9 @@
   <section class="section section_fixed">
     <h1>{{ $t('customers') }}</h1>
     <ul class="list">
-      <li v-for="customer in customers" :key="customer.id">{{customer.name}} <button class="btn btn_link" @click="remove(customer.id)">{{ $t('remove') }}</button></li>
+      <li v-for="customer in customers" :key="customer.id">
+        {{customer.name}} <button class="btn btn_link" @click="remove(customer.id)">{{ $t('remove') }}</button>
+      </li>
     </ul>
   </section>
 </template>

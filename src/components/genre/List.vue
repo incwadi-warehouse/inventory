@@ -2,7 +2,9 @@
   <section class="section section_fixed">
     <h1>{{ $t('genres') }}</h1>
     <ul class="list">
-      <li v-for="genre in genres" :key="genre.id">{{genre.name}} <button class="btn btn_link" @click="remove(genre.id)">{{ $t('remove') }}</button></li>
+      <li v-for="genre in genres" :key="genre.id">
+        {{genre.name}} <button class="btn btn_link" @click="remove(genre.id)">{{ $t('remove') }}</button>
+      </li>
     </ul>
   </section>
 </template>

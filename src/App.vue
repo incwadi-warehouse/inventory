@@ -10,8 +10,8 @@
 
 <script>
 import Heading from './components/Heading'
-import Cookies from 'js-cookie'
 import Login from './components/Login'
+import Cookies from 'js-cookie'
 
 export default {
   name: 'app',
