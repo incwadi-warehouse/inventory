@@ -11,7 +11,9 @@
       <filters/>
     </transition>
 
-    <spinner/>
+    <section class="section section_fixed" v-if="isLoading">
+      <div class="spinner spinner-l"></div>
+    </section>
 
     <transition name="fade">
       <create class="noprint" v-if="showCreate"/>
@@ -25,7 +27,6 @@
 import Search from '../components/book/Search'
 import Filters from '../components/book/Filters'
 import List from '../components/book/List'
-import Spinner from '../components/Spinner'
 import Create from '../components/book/Create'
 
 export default {
@@ -34,12 +35,14 @@ export default {
     Search,
     Filters,
     List,
-    Spinner,
     Create
   },
   computed: {
     showCreate: function () {
       return this.$store.state.showCreate
+    },
+    isLoading: function () {
+      return this.$store.state.isLoading
     }
   },
   methods: {

@@ -11,7 +11,9 @@
       </aside>
     </section>
 
-    <spinner/>
+    <section class="section section_fixed" v-if="isLoading">
+      <div class="spinner spinner-l"></div>
+    </section>
 
     <section class="section section_fixed" v-if="!isLoading">
       <h1>{{ $t('edit_book') }}</h1>
@@ -153,14 +155,9 @@
 </template>
 
 <script>
-import Spinner from './../Spinner'
-
 export default {
   name: 'edit',
   props: ['id'],
-  components: {
-    Spinner
-  },
   data () {
     return {
       title: '',
