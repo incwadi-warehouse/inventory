@@ -8,7 +8,7 @@ const DotenvPlugin = require('dotenv-webpack');
 const WebappWebpackPlugin = require('webapp-webpack-plugin');
 const version = require('./../package.json').version;
 const { GenerateSW } = require('workbox-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
