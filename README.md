@@ -23,10 +23,10 @@ The first goal is to make a minimum viable product (MVP). It delivers only the f
 Download the files from the repository.
 
 ```shell
-git clone https://gitlab.com/a.baldeweg/incwadi_staff
+git clone https://gitlab.com/incwadi/staff.git
 ```
 
-The .env files specify vars. You must define them for production by creating a .env.production file.
+The `.env` files specify variables. You must define them for production by creating a `.env.production` file.
 
 ```shell
 touch .env
@@ -43,7 +43,7 @@ LOGO=src/assets/logo.png
 LOCALE=en
 ```
 
-Please change the values to your needs. For more informations, refer to the section Options.
+Please change the values to your needs. For more informations refer to the section Options.
 
 Start the build process.
 
@@ -51,9 +51,9 @@ Start the build process.
 yarn build
 ```
 
-The files in dest/ should be located in your web root.
+The files in `dest/` should be located in your web root.
 
-Configure your webserver to redirect all requests to the index.html file.
+Configure your webserver to redirect all requests to the `index.html` file.
 
 Example for Apache
 
@@ -72,7 +72,7 @@ Example for Apache
 
 Remove the old files and download the new ones like you would install the app.
 
-If you still have the cloned repository and the .env files, you can pull for updates and start the build process.
+If you still have the cloned repository and the `.env` files, you can pull for updates and start the build process.
 
 ```shell
 git pull
@@ -81,7 +81,7 @@ yarn build
 
 ## Options
 
-These options are used in the .env files.
+These options are used in the `.env` files.
 
 - API - Defines the URL to your API.
 - CURRENCY - The currency shown in the app.
