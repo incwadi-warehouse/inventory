@@ -11,7 +11,8 @@ export default {
       genre: null,
       added: null,
       price: null,
-      stocked: null
+      stocked: null,
+      tab: null
     },
     counter: 0,
     hasCreateError: false,
@@ -36,6 +37,9 @@ export default {
     },
     isDuplicate (state, status) {
       state.isDuplicate = status
+    },
+    tab (state, tab) {
+      state.tab = tab
     }
   },
   actions: {

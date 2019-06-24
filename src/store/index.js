@@ -19,15 +19,11 @@ export default new Vuex.Store({
     user: user
   },
   state: {
-    isLoading: false,
-    tab: null
+    isLoading: false
   },
   mutations: {
     isLoading (state, isLoading) {
       state.isLoading = isLoading
-    },
-    tab (state, tab) {
-      state.tab = tab
     }
   }
 })

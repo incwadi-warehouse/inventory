@@ -44,7 +44,7 @@ export default {
       return this.$store.state.isLoading
     },
     tab: function () {
-      return this.$store.state.tab
+      return this.$store.state.book.tab
     }
   },
   methods: {
@@ -55,11 +55,11 @@ export default {
       this.$store.dispatch('toggleShowCreate')
     },
     setTab: function (tab) {
-      if (tab === this.$store.state.tab) {
-        this.$store.commit('tab', null)
+      if (tab === this.$store.state.book.tab) {
+        this.$store.commit('book/tab', null)
         return
       }
-      this.$store.commit('tab', tab)
+      this.$store.commit('book/tab', tab)
     }
   }
 }
