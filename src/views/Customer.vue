@@ -22,7 +22,7 @@ export default {
     }
   },
   mounted: function () {
-    this.$store.dispatch('me')
+    this.$store.dispatch('user/me')
   }
 }
 </script>

@@ -12,14 +12,14 @@ export default {
   },
   actions: {
     customers (context) {
-      api(context.state.token)
+      api(context.rootState.user.token)
         .get('/v1/customer/')
         .then(function (response) {
           context.commit('customers', response.data.customers)
         })
     },
     createCustomer (context, name) {
-      api(context.rootState.token)
+      api(context.rootState.user.token)
         .post('/v1/customer/new', {
           name: name
         })
@@ -28,7 +28,7 @@ export default {
         })
     },
     removeCustomer (context, id) {
-      api(context.rootState.token)
+      api(context.rootState.user.token)
         .delete('/v1/customer/' + id)
         .then(function (response) {
           context.dispatch('customers')

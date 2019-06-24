@@ -21,7 +21,7 @@ export default {
   },
   computed: {
     isAuthenticated: function () {
-      return this.$store.state.isAuthenticated
+      return this.$store.state.user.isAuthenticated
     }
   },
   mounted: function () {
@@ -31,7 +31,7 @@ export default {
     )
 
     if (Cookies.get('token') !== undefined) {
-      this.$store.commit('isAuthenticated', true)
+      this.$store.commit('user/isAuthenticated', true)
     }
   }
 }

@@ -46,15 +46,15 @@ export default {
   },
   computed: {
     hasLoginError: function () {
-      return this.$store.state.hasLoginError
+      return this.$store.state.user.hasLoginError
     },
     isLoggingIn: function () {
-      return this.$store.state.isLoggingIn
+      return this.$store.state.user.isLoggingIn
     }
   },
   methods: {
     login: function () {
-      this.$store.dispatch('login', {
+      this.$store.dispatch('user/login', {
         user: this.user,
         password: this.pass
       })

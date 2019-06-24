@@ -41,7 +41,7 @@ export default {
   actions: {
     book (context, id) {
       context.commit('isLoading', true, { root: true })
-      api(context.rootState.token)
+      api(context.rootState.user.token)
         .get('/v1/book/' + id)
         .then(function (response) {
           context.commit('book', response.data)
@@ -75,7 +75,7 @@ export default {
         lending = context.rootState.filter.lending !== 0 ? Math.round(lending / 1000) : null
       }
 
-      api(context.rootState.token)
+      api(context.rootState.user.token)
         .get('/v1/book/find', {
           params: {
             term: context.rootState.filter.searchTerm,
@@ -106,7 +106,7 @@ export default {
         })
     },
     create (context, data) {
-      api(context.rootState.token)
+      api(context.rootState.user.token)
         .post('/v1/book/new', {
           title: data.title,
           author: data.author,
@@ -130,7 +130,7 @@ export default {
         })
     },
     update (context, data) {
-      api(context.rootState.token)
+      api(context.rootState.user.token)
         .put('/v1/book/' + data.id, data.params)
         .then(function (response) {
           context.commit('hasUpdateError', false)
@@ -145,7 +145,7 @@ export default {
         })
     },
     toggleStocking (context, id) {
-      api(context.rootState.token)
+      api(context.rootState.user.token)
         .put('/v1/book/toggleStocking/' + id)
         .then(function (response) {
           router.push({ name: 'book' })
