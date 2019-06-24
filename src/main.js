@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
-import i18n from './translation'
+import i18n from './i18n'
 import cssVars from 'css-vars-ponyfill'
 import 'es6-promise/auto'
 

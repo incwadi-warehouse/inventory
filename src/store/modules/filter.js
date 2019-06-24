@@ -5,7 +5,7 @@ export default {
     offset: 0,
     limit: 20,
     stocked: null,
-    olderThenXMonths: null,
+    added: null,
     branch: null,
     genreFilter: null,
     lending: null,
@@ -23,8 +23,8 @@ export default {
     stocked (state, stocked) {
       state.stocked = stocked
     },
-    olderThenXMonths (state, olderThenXMonths) {
-      state.olderThenXMonths = olderThenXMonths
+    added (state, added) {
+      state.added = added
     },
     branch (state, branch) {
       state.branch = branch

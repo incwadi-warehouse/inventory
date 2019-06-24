@@ -14,10 +14,10 @@
       </div>
       <div class="form_group">
         <div class="form_item">
-          <label for="olderThenXMonths" class="form_label">{{ $t('older_then_x_months') }}</label>
+          <label for="added" class="form_label">{{ $t('older_then_x_months') }}</label>
         </div>
         <div class="form_item">
-          <input type="number" id="olderThenXMonths" class="form_input" min="0" v-model="olderThenXMonths">
+          <input type="number" id="added" class="form_input" min="0" v-model="added">
         </div>
       </div>
       <div class="form_group">
@@ -92,12 +92,12 @@ export default {
         this.$store.commit('filter/stocked', stocked ? 1 : 0)
       }
     },
-    olderThenXMonths: {
+    added: {
       get: function () {
-        return this.$store.state.filter.olderThenXMonths || 0
+        return this.$store.state.filter.added || 0
       },
-      set: function (olderThenXMonths) {
-        this.$store.commit('filter/olderThenXMonths', olderThenXMonths)
+      set: function (added) {
+        this.$store.commit('filter/added', added)
       }
     },
     branch: {

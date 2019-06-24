@@ -14,8 +14,8 @@
             <option value="author_desc">{{ $t('author') }} {{ $t('desc') }}</option>
             <option value="genre_asc">{{ $t('genre') }} {{ $t('asc') }}</option>
             <option value="genre_desc">{{ $t('genre') }} {{ $t('desc') }}</option>
-            <option value="olderThenXMonths_asc">{{ $t('olderThenXMonths') }} {{ $t('asc') }}</option>
-            <option value="olderThenXMonths_desc">{{ $t('olderThenXMonths') }} {{ $t('desc') }}</option>
+            <option value="added_asc">{{ $t('added') }} {{ $t('asc') }}</option>
+            <option value="added_desc">{{ $t('added') }} {{ $t('desc') }}</option>
             <option value="price_asc">{{ $t('price') }} {{ $t('asc') }}</option>
             <option value="price_desc">{{ $t('price') }} {{ $t('desc') }}</option>
             <option value="type_asc">{{ $t('type') }} {{ $t('asc') }}</option>
