@@ -146,7 +146,7 @@ export default {
         yearOfPublication: this.yearOfPublication,
         type: this.type,
         premium: this.premium,
-        added: Math.round(new Date().getTime() / 1000)
+        olderThenXMonths: Math.round(new Date().getTime() / 1000)
       })
     }
   },

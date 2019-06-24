@@ -3,21 +3,18 @@
     <search/>
 
     <section class="section section_default alignRight noprint">
-      <button class="btn btn_secondary" @click="toggleFilter">{{ $t('filter') }}</button>
-      <button class="btn btn_secondary" @click="toggleShowCreate">{{ $t('create') }}</button>
+      <button class="btn btn_secondary" @click="setTab('filter')">{{ $t('filter') }}</button>
+      <button class="btn btn_secondary" @click="setTab('limit')">{{ $t('limit') }}</button>
+      <button class="btn btn_secondary" @click="setTab('create')">{{ $t('create') }}</button>
     </section>
 
-    <transition name="fade">
-      <filters/>
-    </transition>
+    <filters class="noprint" v-if="tab === 'filter'"/>
+    <limit  class="noprint" v-if="tab === 'limit'"/>
+    <create class="noprint" v-if="tab === 'create'"/>
 
     <section class="section section_fixed" v-if="isLoading">
       <div class="spinner spinner-l"></div>
     </section>
-
-    <transition name="fade">
-      <create class="noprint" v-if="showCreate"/>
-    </transition>
 
     <list/>
   </section>
@@ -28,6 +25,7 @@ import Search from '../components/book/Search'
 import Filters from '../components/book/Filters'
 import List from '../components/book/List'
 import Create from '../components/book/Create'
+import Limit from '../components/book/Limit'
 
 export default {
   name: 'book-view',
@@ -35,7 +33,8 @@ export default {
     Search,
     Filters,
     List,
-    Create
+    Create,
+    Limit
   },
   computed: {
     showCreate: function () {
@@ -43,6 +42,9 @@ export default {
     },
     isLoading: function () {
       return this.$store.state.isLoading
+    },
+    tab: function () {
+      return this.$store.state.tab
     }
   },
   methods: {
@@ -51,6 +53,13 @@ export default {
     },
     toggleShowCreate: function () {
       this.$store.dispatch('toggleShowCreate')
+    },
+    setTab: function (tab) {
+      if (tab === this.$store.state.tab) {
+        this.$store.commit('tab', null)
+        return
+      }
+      this.$store.commit('tab', tab)
     }
   }
 }

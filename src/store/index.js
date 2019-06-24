@@ -25,7 +25,8 @@ export default new Vuex.Store({
     customers: null,
     isAuthenticated: false,
     isLoggingIn: false,
-    hasLoginError: false
+    hasLoginError: false,
+    tab: null
   },
   mutations: {
     me (state, me) {
@@ -54,6 +55,9 @@ export default new Vuex.Store({
     },
     hasLoginError (state, status) {
       state.hasLoginError = status
+    },
+    tab (state, tab) {
+      state.tab = tab
     }
   },
   actions: {

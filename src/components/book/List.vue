@@ -9,7 +9,7 @@
             <th class="isSortable" @click="filter('title')">{{ $t('title') }} <span v-if="sort === 'title_asc'">&#9650;</span><span v-if="sort === 'title_desc'">&#9660;</span></th>
             <th class="isSortable" @click="filter('author')">{{ $t('author') }} <span v-if="sort === 'author_asc'">&#9650;</span><span v-if="sort === 'author_desc'">&#9660;</span></th>
             <th class="isSortable" @click="filter('genre')">{{ $t('genre') }} <span v-if="sort === 'genre_asc'">&#9650;</span><span v-if="sort === 'genre_desc'">&#9660;</span></th>
-            <th class="isSortable" @click="filter('added')">{{ $t('added') }} <span v-if="sort === 'added_asc'">&#9650;</span><span v-if="sort === 'added_desc'">&#9660;</span></th>
+            <th class="isSortable" @click="filter('olderThenXMonths')">{{ $t('olderThenXMonths') }} <span v-if="sort === 'olderThenXMonths_asc'">&#9650;</span><span v-if="sort === 'olderThenXMonths_desc'">&#9660;</span></th>
             <th class="isSortable" @click="filter('type')">{{$t('type') }} <span v-if="sort === 'type_asc'">&#9650;</span><span v-if="sort === 'type_desc'">&#9660;</span></th>
             <th class="alignRight isSortable" @click="filter('price')">{{currency}} <span v-if="sort === 'price_asc'">&#9650;</span><span v-if="sort === 'price_desc'">&#9660;</span></th>
             <th class="alignRight isSortable" @click="filter('yearOfPublication')">{{ $t('released') }} <span v-if="sort === 'yearOfPublication_asc'">&#9650;</span><span v-if="sort === 'yearOfPublication_desc'">&#9660;</span></th>
@@ -23,7 +23,7 @@
             <td v-if="book.author">{{book.author.lastname}}, {{book.author.firstname}}</td>
             <td v-else></td>
             <td>{{book.genre.name}}</td>
-            <td>{{formatDate(book.added)}}</td>
+            <td>{{formatDate(book.olderThenXMonths)}}</td>
             <td>{{book.type}}</td>
             <td class="alignRight">{{formatPrice(book.price)}}</td>
             <td class="alignRight">{{book.yearOfPublication}}</td>

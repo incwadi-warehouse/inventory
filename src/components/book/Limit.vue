@@ -1,0 +1,53 @@
+<template>
+  <section class="section section_default">
+    <form class="form" @submit.prevent="find">
+      <div class="form_group">
+        <div class="form_item">
+          <label for="orderBy" class="form_label">{{ $t('orderBy') }}</label>
+        </div>
+        <div class="form_item">
+          <select id="orderBy" class="form_input" v-model="orderBy">
+            <option value=""></option>
+            <option value="title_asc">{{ $t('title') }} {{ $t('asc') }}</option>
+            <option value="title_desc">{{ $t('title') }} {{ $t('desc') }}</option>
+            <option value="author_asc">{{ $t('author') }} {{ $t('asc') }}</option>
+            <option value="author_desc">{{ $t('author') }} {{ $t('desc') }}</option>
+            <option value="genre_asc">{{ $t('genre') }} {{ $t('asc') }}</option>
+            <option value="genre_desc">{{ $t('genre') }} {{ $t('desc') }}</option>
+            <option value="olderThenXMonths_asc">{{ $t('olderThenXMonths') }} {{ $t('asc') }}</option>
+            <option value="olderThenXMonths_desc">{{ $t('olderThenXMonths') }} {{ $t('desc') }}</option>
+            <option value="price_asc">{{ $t('price') }} {{ $t('asc') }}</option>
+            <option value="price_desc">{{ $t('price') }} {{ $t('desc') }}</option>
+            <option value="type_asc">{{ $t('type') }} {{ $t('asc') }}</option>
+            <option value="type_desc">{{ $t('type') }} {{ $t('desc') }}</option>
+            <option value="yearOfPublication_asc">{{ $t('release_year') }} {{ $t('asc') }}</option>
+            <option value="yearOfPublication_desc">{{ $t('release_year') }} {{ $t('desc') }}</option>
+          </select>
+        </div>
+      </div>
+    </form>
+
+    <p>{{ $t('limit') }}</p>
+    <button class="btn btn_link" @click="setLimit(10)">10</button>
+    <button class="btn btn_link" @click="setLimit(20)">20</button>
+    <button class="btn btn_link" @click="setLimit(50)">50</button>
+    <button class="btn btn_link" @click="setLimit(100)">100</button>
+  </section>
+</template>
+
+<script>
+export default {
+  name: 'limit',
+  data () {
+    return {
+      orderBy: null
+    }
+  },
+  methods: {
+    setLimit: function (limit) {
+      this.$store.commit('filter/limit', limit)
+      this.$store.dispatch('books/search')
+    }
+  }
+}
+</script>

@@ -1,5 +1,5 @@
 <template>
-  <section class="section section_default noprint" v-if="showFilters">
+  <section class="section section_default">
     <form class="form" @submit.prevent="find">
       <div class="form_group">
         <div class="form_item">
@@ -14,10 +14,10 @@
       </div>
       <div class="form_group">
         <div class="form_item">
-          <label for="older" class="form_label">{{ $t('older_then_x_months') }}</label>
+          <label for="olderThenXMonths" class="form_label">{{ $t('older_then_x_months') }}</label>
         </div>
         <div class="form_item">
-          <input type="number" id="older" class="form_input" min="0" v-model="older">
+          <input type="number" id="olderThenXMonths" class="form_input" min="0" v-model="olderThenXMonths">
         </div>
       </div>
       <div class="form_group">
@@ -47,10 +47,10 @@
       </div>
       <div class="form_group">
         <div class="form_item">
-          <label for="older" class="form_label">{{ $t('release_year') }}</label>
+          <label for="yearOfPublication" class="form_label">{{ $t('release_year') }}</label>
         </div>
         <div class="form_item">
-          <input type="number" id="older" class="form_input" v-model="yearOfPublication">
+          <input type="number" id="yearOfPublication" class="form_input" v-model="yearOfPublication">
         </div>
       </div>
       <div class="form_group">
@@ -65,33 +65,7 @@
           </select>
         </div>
       </div>
-      <div class="form_group">
-        <div class="form_item">
-          <label for="orderBy" class="form_label">{{ $t('orderBy') }}</label>
-        </div>
-        <div class="form_item">
-          <select id="orderBy" class="form_input" v-model="orderBy">
-            <option value=""></option>
-            <option value="title_asc">{{ $t('title') }} {{ $t('asc') }}</option>
-            <option value="title_desc">{{ $t('title') }} {{ $t('desc') }}</option>
-            <option value="author_asc">{{ $t('author') }} {{ $t('asc') }}</option>
-            <option value="author_desc">{{ $t('author') }} {{ $t('desc') }}</option>
-            <option value="genre_asc">{{ $t('genre') }} {{ $t('asc') }}</option>
-            <option value="genre_desc">{{ $t('genre') }} {{ $t('desc') }}</option>
-            <option value="added_asc">{{ $t('added') }} {{ $t('asc') }}</option>
-            <option value="added_desc">{{ $t('added') }} {{ $t('desc') }}</option>
-            <option value="price_asc">{{ $t('price') }} {{ $t('asc') }}</option>
-            <option value="price_desc">{{ $t('price') }} {{ $t('desc') }}</option>
-          </select>
-        </div>
-      </div>
     </form>
-
-    <p>{{ $t('limit') }}</p>
-    <button class="btn btn_link" @click="setLimit(10)">10</button>
-    <button class="btn btn_link" @click="setLimit(20)">20</button>
-    <button class="btn btn_link" @click="setLimit(50)">50</button>
-    <button class="btn btn_link" @click="setLimit(100)">100</button>
   </section>
 </template>
 
@@ -100,8 +74,7 @@ export default {
   name: 'filters',
   data () {
     return {
-      filter: false,
-      orderBy: null
+      filter: false
     }
   },
   computed: {
@@ -111,12 +84,6 @@ export default {
     genres: function () {
       return this.$store.state.genres.genres
     },
-    counter: function () {
-      return this.$store.state.books.books.counter
-    },
-    showFilters: function () {
-      return this.$store.state.showFilters
-    },
     stocked: {
       get: function () {
         return this.$store.state.filter.stocked || true
@@ -125,12 +92,12 @@ export default {
         this.$store.commit('filter/stocked', stocked ? 1 : 0)
       }
     },
-    older: {
+    olderThenXMonths: {
       get: function () {
-        return this.$store.state.filter.added || 0
+        return this.$store.state.filter.olderThenXMonths || 0
       },
-      set: function (older) {
-        this.$store.commit('filter/added', older)
+      set: function (olderThenXMonths) {
+        this.$store.commit('filter/olderThenXMonths', olderThenXMonths)
       }
     },
     branch: {
@@ -157,14 +124,6 @@ export default {
         this.$store.commit('filter/lending', lending)
       }
     },
-    sort: {
-      get: function () {
-        return this.$store.state.filter.sort
-      },
-      set: function (sort) {
-        this.$store.commit('filter/sort', this.orderBy)
-      }
-    },
     yearOfPublication: {
       get: function () {
         return this.$store.state.filter.yearOfPublication
@@ -182,16 +141,9 @@ export default {
       }
     }
   },
-  methods: {
-    setLimit: function (limit) {
-      this.$store.commit('filter/limit', limit)
-      this.$store.dispatch('books/search')
-    }
-  },
   mounted: function () {
     this.$store.dispatch('branches/branches')
     this.$store.dispatch('genres/genres')
-    this.$store.dispatch('me')
   }
 }
 </script>

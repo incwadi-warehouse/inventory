@@ -10,7 +10,7 @@ export default {
       title: null,
       author: null,
       genre: null,
-      added: null,
+      olderThenXMonths: null,
       price: null,
       stocked: null
     },
@@ -55,11 +55,11 @@ export default {
     search (context) {
       context.commit('isLoading', true, { root: true })
 
-      let added = null
-      if (context.rootState.filter.added) {
+      let olderThenXMonths = null
+      if (context.rootState.filter.olderThenXMonths) {
         let date = new Date()
-        date.setMonth(added.getMonth() - context.rootState.filter.added)
-        added = context.rootState.filter.added !== 0 ? Math.round(date.getTime() / 1000) : null
+        date.setMonth(olderThenXMonths.getMonth() - context.rootState.filter.olderThenXMonths)
+        olderThenXMonths = context.rootState.filter.olderThenXMonths !== 0 ? Math.round(date.getTime() / 1000) : null
       }
 
       let branch = null
@@ -86,7 +86,7 @@ export default {
             limit: context.rootState.filter.limit,
             offset: context.rootState.filter.offset,
             stocked: context.rootState.filter.stocked,
-            added: added,
+            olderThenXMonths: olderThenXMonths,
             branch: branch,
             genre: genre,
             lending: lending,
@@ -123,7 +123,7 @@ export default {
           yearOfPublication: data.yearOfPublication,
           type: data.type,
           premium: data.premium,
-          added: data.added
+          olderThenXMonths: data.olderThenXMonths
         })
         .then(function (response) {
           console.log(response)

@@ -105,12 +105,12 @@
         </div>
         <div class="form_group">
           <div class="form_item">
-            <label for="added" class="form_label">
-              {{ $t('added') }}
+            <label for="olderThenXMonths" class="form_label">
+              {{ $t('olderThenXMonths') }}
             </label>
           </div>
           <div class="form_item">
-            <input type="date" id="added" class="form_input" v-model="added">
+            <input type="date" id="olderThenXMonths" class="form_input" v-model="olderThenXMonths">
           </div>
         </div>
         <div class="form_group">
@@ -169,7 +169,7 @@ export default {
       yearOfPublication: null,
       type: null,
       premium: null,
-      added: null,
+      olderThenXMonths: null,
       lendTo: null,
       lendOn: null,
       genre: null
@@ -208,7 +208,7 @@ export default {
           yearOfPublication: this.yearOfPublication,
           type: this.type,
           premium: this.premium,
-          added: new Date(this.added).getTime() / 1000,
+          olderThenXMonths: new Date(this.olderThenXMonths).getTime() / 1000,
           lendTo: this.lendTo,
           lendOn: this.lendOn === '' ? null : new Date(this.lendOn).getTime() / 1000
         }
@@ -248,16 +248,16 @@ export default {
       this.yearOfPublication = this.$store.state.books.book.yearOfPublication
       this.type = this.$store.state.books.book.type
       this.premium = this.$store.state.books.book.premium
-      let added = new Date(this.$store.state.books.book.added * 1000)
-      let addedMonth = added.getMonth() + 1
-      if (addedMonth < 10) {
-        addedMonth = '0' + addedMonth
+      let olderThenXMonths = new Date(this.$store.state.books.book.olderThenXMonths * 1000)
+      let olderThenXMonthsMonth = olderThenXMonths.getMonth() + 1
+      if (olderThenXMonthsMonth < 10) {
+        olderThenXMonthsMonth = '0' + olderThenXMonthsMonth
       }
-      let addedDay = added.getDate()
-      if (addedDay < 10) {
-        addedDay = '0' + addedDay
+      let olderThenXMonthsDay = olderThenXMonths.getDate()
+      if (olderThenXMonthsDay < 10) {
+        olderThenXMonthsDay = '0' + olderThenXMonthsDay
       }
-      this.added = added.getFullYear() + '-' + addedMonth + '-' + addedDay
+      this.olderThenXMonths = olderThenXMonths.getFullYear() + '-' + olderThenXMonthsMonth + '-' + olderThenXMonthsDay
       this.lendTo = this.$store.state.books.book.lendTo
       this.premium = this.$store.state.books.book.premium
       if (this.$store.state.books.book.lendOn !== null) {
