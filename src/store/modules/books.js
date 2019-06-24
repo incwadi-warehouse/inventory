@@ -5,7 +5,6 @@ export default {
   namespaced: true,
   state: {
     books: [],
-    counter: 0,
     book: {
       title: null,
       author: null,
@@ -14,6 +13,7 @@ export default {
       price: null,
       stocked: null
     },
+    counter: 0,
     hasCreateError: false,
     hasUpdateError: false,
     isDuplicate: false
@@ -45,11 +45,7 @@ export default {
         .get('/v1/book/' + id)
         .then(function (response) {
           context.commit('book', response.data)
-          context.commit('genres/genre', response.data.genre.id, { root: true })
           context.commit('isLoading', false, { root: true })
-        })
-        .catch(function (error) {
-          console.log(error)
         })
     },
     search (context) {
@@ -108,9 +104,6 @@ export default {
           }
           context.commit('isLoading', false, { root: true })
         })
-        .catch(function (error) {
-          console.log(error)
-        })
     },
     create (context, data) {
       api(context.rootState.token)
@@ -126,13 +119,10 @@ export default {
           added: data.added
         })
         .then(function (response) {
-          console.log(response)
           context.commit('hasCreateError', false)
           context.commit('isDuplicate', false)
-          context.dispatch('toggleShowCreate', null, { root: true })
         })
         .catch(function (error) {
-          console.log(error)
           context.commit('hasCreateError', true)
           if (error.response.status === 409) {
             context.commit('isDuplicate', true)
@@ -143,13 +133,11 @@ export default {
       api(context.rootState.token)
         .put('/v1/book/' + data.id, data.params)
         .then(function (response) {
-          console.log(response)
           context.commit('hasUpdateError', false)
           context.commit('isDuplicate', false)
           router.push({ name: 'book' })
         })
         .catch(function (error) {
-          console.log(error)
           context.commit('hasUpdateError', true)
           if (error.response.status === 409) {
             context.commit('isDuplicate', true)
@@ -160,11 +148,7 @@ export default {
       api(context.rootState.token)
         .put('/v1/book/toggleStocking/' + id)
         .then(function (response) {
-          console.log(response)
           router.push({ name: 'book' })
-        })
-        .catch(function (error) {
-          console.log(error)
         })
     }
   }
