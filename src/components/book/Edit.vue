@@ -183,7 +183,7 @@ export default {
       return this.$store.state.isLoading
     },
     customers: function () {
-      return this.$store.state.customers
+      return this.$store.state.customer.customers
     },
     genres: function () {
       return this.$store.state.genres.genres
@@ -233,7 +233,7 @@ export default {
   },
   mounted: function () {
     this.$store.dispatch('books/book', this.id)
-    this.$store.dispatch('customers')
+    this.$store.dispatch('customer/customers')
     this.$store.dispatch('genres/genres')
   },
   watch: {

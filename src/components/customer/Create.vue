@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     create: function () {
-      this.$store.dispatch('createCustomer', this.name)
+      this.$store.dispatch('customer/createCustomer', this.name)
       this.name = null
     }
   }

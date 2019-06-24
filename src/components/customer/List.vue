@@ -14,16 +14,16 @@ export default {
   name: 'customer',
   computed: {
     customers: function () {
-      return this.$store.state.customers
+      return this.$store.state.customer.customers
     }
   },
   methods: {
     remove: function (id) {
-      this.$store.dispatch('removeCustomer', id)
+      this.$store.dispatch('customer/removeCustomer', id)
     }
   },
   mounted: function () {
-    this.$store.dispatch('customers')
+    this.$store.dispatch('customer/customers')
   }
 }
 </script>
