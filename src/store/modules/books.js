@@ -129,6 +129,7 @@ export default {
         .then(function (response) {
           context.commit('hasCreateError', false)
           context.commit('isDuplicate', false)
+          context.commit('tab', null)
         })
         .catch(function (error) {
           context.commit('hasCreateError', true)
