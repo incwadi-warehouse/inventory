@@ -38,9 +38,15 @@
 <script>
 export default {
   name: 'limit',
-  data () {
-    return {
-      orderBy: null
+  computed: {
+    orderBy: {
+      get: function () {
+        return this.$store.state.filter.sort
+      },
+      set: function (sort) {
+        this.$store.commit('filter/sort', sort)
+        this.$store.dispatch('books/search')
+      }
     }
   },
   methods: {
