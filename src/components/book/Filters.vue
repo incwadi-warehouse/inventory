@@ -102,7 +102,7 @@ export default {
     },
     branch: {
       get: function () {
-        return this.$store.state.filter.branch || (this.$store.state.me ? [this.$store.state.me.branch.id] : [])
+        return this.$store.state.filter.branch || (this.$store.state.user.me ? [this.$store.state.user.me.branch.id] : [])
       },
       set: function (branch) {
         this.$store.commit('filter/branch', branch)
@@ -144,6 +144,7 @@ export default {
   mounted: function () {
     this.$store.dispatch('branches/branches')
     this.$store.dispatch('genres/genres')
+    this.$store.dispatch('user/me')
   }
 }
 </script>
