@@ -11,19 +11,11 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   modules: {
-    books: books,
-    genres: genres,
-    branches: branches,
-    filter: filter,
-    customer: customer,
-    user: user
-  },
-  state: {
-    isLoading: false
-  },
-  mutations: {
-    isLoading (state, isLoading) {
-      state.isLoading = isLoading
-    }
+    books,
+    genres,
+    branches,
+    filter,
+    customer,
+    user
   }
 })

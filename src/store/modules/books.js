@@ -11,13 +11,14 @@ export default {
       genre: null,
       added: null,
       price: null,
-      stocked: null,
-      tab: null
+      stocked: null
     },
     counter: 0,
     hasCreateError: false,
     hasUpdateError: false,
-    isDuplicate: false
+    isDuplicate: false,
+    tab: null,
+    isLoading: false
   },
   mutations: {
     books (state, books) {
@@ -40,20 +41,23 @@ export default {
     },
     tab (state, tab) {
       state.tab = tab
+    },
+    isLoading (state, isLoading) {
+      state.isLoading = isLoading
     }
   },
   actions: {
     book (context, id) {
-      context.commit('isLoading', true, { root: true })
+      context.commit('isLoading', true)
       api(context.rootState.user.token)
         .get('/v1/book/' + id)
         .then(function (response) {
           context.commit('book', response.data)
-          context.commit('isLoading', false, { root: true })
+          context.commit('isLoading', false)
         })
     },
     search (context) {
-      context.commit('isLoading', true, { root: true })
+      context.commit('isLoading', true)
 
       let added = null
       if (context.rootState.filter.added) {
@@ -106,7 +110,7 @@ export default {
             context.commit('books', response.data.books)
             context.commit('counter', response.data.counter)
           }
-          context.commit('isLoading', false, { root: true })
+          context.commit('isLoading', false)
         })
     },
     create (context, data) {

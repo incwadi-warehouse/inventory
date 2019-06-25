@@ -41,25 +41,19 @@ export default {
       return this.$store.state.showCreate
     },
     isLoading: function () {
-      return this.$store.state.isLoading
+      return this.$store.state.books.isLoading
     },
     tab: function () {
-      return this.$store.state.book.tab
+      return this.$store.state.books.tab
     }
   },
   methods: {
-    toggleFilter: function () {
-      this.$store.dispatch('toggleFilters')
-    },
-    toggleShowCreate: function () {
-      this.$store.dispatch('toggleShowCreate')
-    },
     setTab: function (tab) {
-      if (tab === this.$store.state.book.tab) {
-        this.$store.commit('book/tab', null)
+      if (tab === this.$store.state.books.tab) {
+        this.$store.commit('books/tab', null)
         return
       }
-      this.$store.commit('book/tab', tab)
+      this.$store.commit('books/tab', tab)
     }
   }
 }

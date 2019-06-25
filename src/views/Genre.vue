@@ -17,8 +17,8 @@ export default {
   },
   computed: {
     showForm: function () {
-      if (!this.$store.state.me) return
-      return this.$store.state.me.roles.indexOf('ROLE_ADMIN') !== -1
+      if (!this.$store.state.user.me) return
+      return this.$store.state.user.me.roles.indexOf('ROLE_ADMIN') !== -1
     }
   },
   mounted: function () {

@@ -35,12 +35,12 @@ export default {
   name: 'navigation',
   computed: {
     isAuthenticated: function () {
-      return this.$store.state.isAuthenticated
+      return this.$store.state.user.isAuthenticated
     }
   },
   methods: {
     logout: function () {
-      this.$store.commit('isAuthenticated', false)
+      this.$store.commit('user/isAuthenticated', false)
       Cookies.remove('token')
       this.$router.push({ name: 'book' })
     }

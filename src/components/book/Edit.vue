@@ -180,7 +180,7 @@ export default {
       return process.env.STEPS
     },
     isLoading: function () {
-      return this.$store.state.isLoading
+      return this.$store.state.books.isLoading
     },
     customers: function () {
       return this.$store.state.customer.customers

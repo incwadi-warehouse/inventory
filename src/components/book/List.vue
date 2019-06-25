@@ -76,7 +76,7 @@
 
     <section class="section section_fixed" v-if="showLoadMore">
       <div class="alignCenter noprint">
-        <button class="btn btn_secondary" @click="reload">
+        <button class="btn btn_secondary" style="width: 100%;" @click="reload">
           {{ $t('load_more') }}
         </button>
       </div>
