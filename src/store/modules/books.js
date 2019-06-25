@@ -61,9 +61,9 @@ export default {
 
       let added = null
       if (context.rootState.filter.added) {
-        let date = new Date()
-        date.setMonth(added.getMonth() - context.rootState.filter.added)
-        added = context.rootState.filter.added !== 0 ? Math.round(date.getTime() / 1000) : null
+        added = new Date()
+        added.setMonth(added.getMonth() - context.rootState.filter.added)
+        added = context.rootState.filter.added !== 0 ? Math.round(added.getTime() / 1000) : null
       }
 
       let branch = null
@@ -80,7 +80,7 @@ export default {
       if (context.rootState.filter.lending) {
         lending = new Date()
         lending.setMonth(lending.getMonth() - context.rootState.filter.lending)
-        lending = context.rootState.filter.lending !== 0 ? Math.round(lending / 1000) : null
+        lending = context.rootState.filter.lending !== 0 ? Math.round(lending.getTime() / 1000) : null
       }
 
       api(context.rootState.user.token)
