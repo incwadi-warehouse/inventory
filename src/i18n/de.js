@@ -24,7 +24,7 @@ export default {
   contribution: 'Feedback ist willkommen!',
   add_book: 'Buch hinzufügen',
   release_year: 'Erscheinungsjahr',
-  released: 'Erschienen',
+  year: 'Jahr',
   type: 'Typ',
   paperback: 'Taschenbuch',
   hardcover: 'Gebundenes Buch',

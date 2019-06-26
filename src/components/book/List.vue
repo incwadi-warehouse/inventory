@@ -28,7 +28,7 @@
                 {{currency}} <span v-if="sort === 'price_asc'">&#9650;</span><span v-if="sort === 'price_desc'">&#9660;</span>
               </th>
               <th class="alignRight isSortable" @click="filter('yearOfPublication')">
-                {{ $t('released') }} <span v-if="sort === 'yearOfPublication_asc'">&#9650;</span><span v-if="sort === 'yearOfPublication_desc'">&#9660;</span>
+                {{ $t('year') }} <span v-if="sort === 'yearOfPublication_asc'">&#9650;</span><span v-if="sort === 'yearOfPublication_desc'">&#9660;</span>
               </th>
               <th class="noprint"></th>
               <th class="noprint"></th>

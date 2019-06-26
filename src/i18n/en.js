@@ -24,7 +24,7 @@ export default {
   contribution: 'Ideas and bug reports are welcome!',
   add_book: 'Add Book',
   release_year: 'Release Year',
-  released: 'Released',
+  year: 'Year',
   type: 'Type',
   paperback: 'Paperback',
   hardcover: 'Hardcover',
