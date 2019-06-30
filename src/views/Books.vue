@@ -9,7 +9,7 @@
     </section>
 
     <filters class="noprint" v-if="tab === 'filter'"/>
-    <limit  class="noprint" v-if="tab === 'limit'"/>
+    <limit class="noprint" v-if="tab === 'limit'"/>
     <create class="noprint" v-if="tab === 'create'"/>
 
     <section class="section section_fixed" v-if="isLoading">
