@@ -25,13 +25,20 @@
           </select>
         </div>
       </div>
+      <div class="formGroup">
+        <fieldset>
+          <div class="form_item">
+            <legend>{{ $t('limit') }}</legend>
+          </div>
+          <div class="form_item">
+            <button class="btn btn_link" @click="setLimit(10)">10</button>
+            <button class="btn btn_link" @click="setLimit(20)">20</button>
+            <button class="btn btn_link" @click="setLimit(50)">50</button>
+            <button class="btn btn_link" @click="setLimit(100)">100</button>
+          </div>
+        </fieldset>
+      </div>
     </form>
-
-    <p>{{ $t('limit') }}</p>
-    <button class="btn btn_link" @click="setLimit(10)">10</button>
-    <button class="btn btn_link" @click="setLimit(20)">20</button>
-    <button class="btn btn_link" @click="setLimit(50)">50</button>
-    <button class="btn btn_link" @click="setLimit(100)">100</button>
   </section>
 </template>
 
