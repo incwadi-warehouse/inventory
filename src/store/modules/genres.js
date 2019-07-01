@@ -4,7 +4,8 @@ export default {
   namespaced: true,
   state: {
     genres: [],
-    genre: null
+    genre: null,
+    name: ''
   },
   mutations: {
     genres (state, genres) {
@@ -12,6 +13,9 @@ export default {
     },
     genre (state, genre) {
       state.genre = genre
+    },
+    name (state, name) {
+      state.name = name
     }
   },
   actions: {
@@ -22,12 +26,13 @@ export default {
           context.commit('genres', response.data.genres)
         })
     },
-    createGenre (context, name) {
+    createGenre (context) {
       api(context.rootState.user.token)
         .post('/v1/genre/new', {
-          name: name
+          name: context.state.name
         })
         .then(function (response) {
+          context.commit('name', '')
           context.dispatch('genres')
         })
     },

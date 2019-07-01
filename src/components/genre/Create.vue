@@ -25,15 +25,19 @@
 <script>
 export default {
   name: 'create-genre',
-  data () {
-    return {
-      name: null
+  computed: {
+    name: {
+      get: function () {
+        return this.$store.state.genres.name
+      },
+      set: function (name) {
+        this.$store.commit('genres/name', name)
+      }
     }
   },
   methods: {
     create: function () {
       this.$store.dispatch('genres/createGenre', this.name)
-      this.name = null
     }
   }
 }
