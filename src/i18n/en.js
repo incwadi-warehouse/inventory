@@ -53,5 +53,6 @@ export default {
   wrong_credentials: 'Please check your credentials!',
   book_not_valid: 'There was an error saving the book!',
   book_not_valid_duplicate: 'Can\'t save the book, because it\'s a duplicate!',
-  sold: 'Sold'
+  sold: 'Sold',
+  catalog: 'Catalogue'
 }

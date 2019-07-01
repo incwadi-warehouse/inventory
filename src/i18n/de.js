@@ -53,5 +53,6 @@ export default {
   wrong_credentials: 'Bitte prüfe die Zugangsdaten!',
   book_not_valid: 'Das Buch konnte nicht gespeichert werden!',
   book_not_valid_duplicate: 'Das Buch konnte nicht gespeichert werden, da es ein Duplikat ist!',
-  sold: 'Verkauft'
+  sold: 'Verkauft',
+  catalog: 'Katalogisieren'
 }
