@@ -10,25 +10,25 @@
           <thead>
             <tr>
               <th class="isSortable" @click="filter('title')">
-                {{ $t('title') }} <span v-if="sort === 'title_asc'">&#9650;</span><span v-if="sort === 'title_desc'">&#9660;</span>
+                {{ $t('title') }} <indicator orderBy="title"/>
               </th>
               <th class="isSortable" @click="filter('author')">
-                {{ $t('author') }} <span v-if="sort === 'author_asc'">&#9650;</span><span v-if="sort === 'author_desc'">&#9660;</span>
+                {{ $t('author') }} <indicator orderBy="author"/>
               </th>
               <th class="isSortable" @click="filter('genre')">
-                {{ $t('genre') }} <span v-if="sort === 'genre_asc'">&#9650;</span><span v-if="sort === 'genre_desc'">&#9660;</span>
+                {{ $t('genre') }} <indicator orderBy="genre"/>
               </th>
               <th class="isSortable" @click="filter('added')">
-                {{ $t('added') }} <span v-if="sort === 'added_asc'">&#9650;</span><span v-if="sort === 'added_desc'">&#9660;</span>
+                {{ $t('added') }} <indicator orderBy="added"/>
               </th>
               <th class="isSortable" @click="filter('type')">
-                {{$t('type') }} <span v-if="sort === 'type_asc'">&#9650;</span><span v-if="sort === 'type_desc'">&#9660;</span>
+                {{$t('type') }} <indicator orderBy="type"/>
               </th>
               <th class="alignRight isSortable" @click="filter('price')">
-                {{currency}} <span v-if="sort === 'price_asc'">&#9650;</span><span v-if="sort === 'price_desc'">&#9660;</span>
+                {{currency}} <indicator orderBy="price"/>
               </th>
               <th class="alignRight isSortable" @click="filter('yearOfPublication')">
-                {{ $t('year') }} <span v-if="sort === 'yearOfPublication_asc'">&#9650;</span><span v-if="sort === 'yearOfPublication_desc'">&#9660;</span>
+                {{ $t('year') }} <indicator orderBy="yearOfPublication"/>
               </th>
               <th class="noprint"></th>
               <th class="noprint"></th>
@@ -85,8 +85,13 @@
 </template>
 
 <script>
+import Indicator from './orderByIndicator'
+
 export default {
   name: 'list',
+  components: {
+    Indicator
+  },
   data () {
     return {
       currency: process.env.CURRENCY
@@ -98,9 +103,6 @@ export default {
     },
     counter: function () {
       return this.$store.state.books.counter
-    },
-    sort: function () {
-      return this.$store.state.filter.sort
     },
     showLoadMore: function () {
       return this.books.length < this.counter
