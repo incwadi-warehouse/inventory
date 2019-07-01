@@ -3,9 +3,17 @@
     <search/>
 
     <section class="section section_default alignRight noprint">
-      <button class="btn btn_secondary" @click="setTab('filter')">{{ $t('filter') }}</button>
-      <button class="btn btn_secondary" @click="setTab('limit')">{{ $t('limit') }}</button>
-      <button class="btn btn_secondary" @click="setTab('create')">{{ $t('create') }}</button>
+      <ul class="tabs">
+        <li :class="tabsClass('filter')">
+          <button class="btn btn_link" @click="setTab('filter')">{{ $t('filter') }}</button>
+        </li>
+        <li :class="tabsClass('limit')">
+          <button class="btn btn_link" @click="setTab('limit')">{{ $t('limit') }}</button>
+        </li>
+        <li :class="tabsClass('create')">
+          <button class="btn btn_link" @click="setTab('create')">{{ $t('catalog') }}</button>
+        </li>
+      </ul>
     </section>
 
     <filters class="noprint" v-if="tab === 'filter'"/>
@@ -54,6 +62,12 @@ export default {
         return
       }
       this.$store.commit('books/tab', tab)
+    },
+    tabsClass: function (active) {
+      return {
+        tabs_item: true,
+        isActive: this.tab === active
+      }
     }
   }
 }
@@ -67,5 +81,24 @@ export default {
 .fade-enter,
 .fade-leave-to  {
   opacity: 0;
+}
+.tabs {
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+list-style: none;
+padding: 0;
+}
+.tabs_item {
+  border-bottom: 2px solid var(--color-background);
+  width: 100%;
+  text-align: center;
+}
+.tabs_item.isActive,
+.tabs_item:hover {
+  border-bottom: 2px solid var(--color-brand);
+}
+.tabs .btn {
+  width: 100%;
 }
 </style>
