@@ -117,15 +117,7 @@ export default {
   name: 'create',
   data () {
     return {
-      title: null,
-      firstname: null,
-      lastname: null,
-      price: '2.50',
-      currency: process.env.CURRENCY,
-      yearOfPublication: 2019,
-      type: 'paperback',
-      premium: false,
-      genre: null
+      currency: process.env.CURRENCY
     }
   },
   computed: {
@@ -137,21 +129,75 @@ export default {
     },
     isDuplicate: function () {
       return this.$store.state.books.isDuplicate
+    },
+    title: {
+      get: function () {
+        return this.$store.state.books.title
+      },
+      set: function (title) {
+        this.$store.commit('books/title', title)
+      }
+    },
+    firstname: {
+      get: function () {
+        return this.$store.state.books.firstname
+      },
+      set: function (firstname) {
+        this.$store.commit('books/firstname', firstname)
+      }
+    },
+    lastname: {
+      get: function () {
+        return this.$store.state.books.lastname
+      },
+      set: function (lastname) {
+        this.$store.commit('books/lastname', lastname)
+      }
+    },
+    price: {
+      get: function () {
+        return this.$store.state.books.price
+      },
+      set: function (price) {
+        this.$store.commit('books/price', price)
+      }
+    },
+    yearOfPublication: {
+      get: function () {
+        return this.$store.state.books.yearOfPublication
+      },
+      set: function (yearOfPublication) {
+        this.$store.commit('books/yearOfPublication', yearOfPublication)
+      }
+    },
+    type: {
+      get: function () {
+        return this.$store.state.books.type
+      },
+      set: function (type) {
+        this.$store.commit('books/type', type)
+      }
+    },
+    premium: {
+      get: function () {
+        return this.$store.state.books.premium
+      },
+      set: function (premium) {
+        this.$store.commit('books/premium', premium)
+      }
+    },
+    genre: {
+      get: function () {
+        return this.$store.state.books.genre
+      },
+      set: function (genre) {
+        this.$store.commit('books/genre', genre)
+      }
     }
   },
   methods: {
     create: function () {
-      this.$store.dispatch('books/create', {
-        title: this.title,
-        author: this.lastname + ',' + this.firstname,
-        genre: this.genre,
-        price: this.price,
-        stocked: true,
-        yearOfPublication: this.yearOfPublication,
-        type: this.type,
-        premium: this.premium,
-        added: Math.round(new Date().getTime() / 1000)
-      })
+      this.$store.dispatch('books/create')
     }
   },
   mounted: function () {

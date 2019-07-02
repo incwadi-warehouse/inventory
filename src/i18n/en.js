@@ -54,5 +54,6 @@ export default {
   book_not_valid: 'There was an error saving the book!',
   book_not_valid_duplicate: 'Can\'t save the book, because it\'s a duplicate!',
   sold: 'Sold',
-  catalog: 'Catalogue'
+  catalog: 'Catalogue',
+  close: 'Close'
 }

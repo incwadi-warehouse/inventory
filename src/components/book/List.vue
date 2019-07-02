@@ -31,7 +31,6 @@
                 {{ $t('year') }} <indicator orderBy="yearOfPublication"/>
               </th>
               <th class="noprint"></th>
-              <th class="noprint"></th>
             </tr>
           </thead>
           <tbody>
@@ -58,15 +57,8 @@
               <td class="alignRight">
                 {{book.yearOfPublication}}
               </td>
-              <td class="alignRight noprint">
-                <router-link :to="{ name: 'edit', params: { id: book.id } }">
-                  {{ $t('edit') }}
-                </router-link>
-              </td>
-              <td class="alignRight noprint">
-                <button class="btn btn_link" @click="toggleStocking(book)" v-if="book.stocked">
-                  {{ $t('sold') }}
-                </button>
+              <td class="noprint">
+                <context-menu :book="book"/>
               </td>
             </tr>
           </tbody>
@@ -86,11 +78,13 @@
 
 <script>
 import Indicator from './orderByIndicator'
+import ContextMenu from './ContextMenu'
 
 export default {
   name: 'list',
   components: {
-    Indicator
+    Indicator,
+    ContextMenu
   },
   data () {
     return {
@@ -145,14 +139,6 @@ export default {
         this.$store.commit('filter/sort', type + '_asc')
       }
       this.$store.dispatch('books/search')
-    },
-    toggleStocking: function (book) {
-      let books = this.books
-      let id = books.indexOf(book)
-      books.splice(id, 1)
-      this.$store.commit('books/books', books)
-      this.$store.commit('filter/offset', this.$store.state.filter.offset - 1)
-      this.$store.dispatch('books/toggleStocking', book.id)
     }
   }
 }
