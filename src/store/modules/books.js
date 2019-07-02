@@ -18,7 +18,15 @@ export default {
     hasUpdateError: false,
     isDuplicate: false,
     tab: null,
-    isLoading: false
+    isLoading: false,
+    title: null,
+    firstname: null,
+    lastname: null,
+    price: '2.50',
+    yearOfPublication: 2019,
+    type: 'paperback',
+    premium: false,
+    genre: null
   },
   mutations: {
     books (state, books) {
@@ -44,6 +52,30 @@ export default {
     },
     isLoading (state, isLoading) {
       state.isLoading = isLoading
+    },
+    title (state, title) {
+      state.title = title
+    },
+    firstname (state, firstname) {
+      state.firstname = firstname
+    },
+    lastname (state, lastname) {
+      state.lastname = lastname
+    },
+    price (state, price) {
+      state.price = price
+    },
+    yearOfPublication (state, yearOfPublication) {
+      state.yearOfPublication = yearOfPublication
+    },
+    type (state, type) {
+      state.type = type
+    },
+    premium (state, premium) {
+      state.premium = premium
+    },
+    genre (state, genre) {
+      state.genre = genre
     }
   },
   actions: {
@@ -116,20 +148,29 @@ export default {
     create (context, data) {
       api(context.rootState.user.token)
         .post('/v1/book/new', {
-          title: data.title,
-          author: data.author,
-          price: data.price,
-          genre: data.genre,
-          stocked: data.stocked,
-          yearOfPublication: data.yearOfPublication,
-          type: data.type,
-          premium: data.premium,
-          added: data.added
+          title: context.state.title,
+          author: context.state.lastname + ',' + context.state.firstname,
+          price: context.state.price,
+          genre: context.state.genre,
+          stocked: true,
+          yearOfPublication: context.state.yearOfPublication,
+          type: context.state.type,
+          premium: context.state.premium,
+          added: Math.round(new Date().getTime() / 1000)
         })
         .then(function (response) {
           context.commit('hasCreateError', false)
           context.commit('isDuplicate', false)
           context.commit('tab', null)
+
+          context.commit('title', null)
+          context.commit('firstname', null)
+          context.commit('lastname', null)
+          context.commit('price', '2.50')
+          context.commit('genre', null)
+          context.commit('yearOfPublication', 2019)
+          context.commit('type', 'paperback')
+          context.commit('premium', false)
         })
         .catch(function (error) {
           context.commit('hasCreateError', true)
