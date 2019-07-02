@@ -38,3 +38,23 @@ export default {
 </script>
 
 <style src="../node_modules/baldeweg_ui/dist/style.min.css"></style>
+
+<style>
+.header,
+.hamburger_item {
+  height: 66px;
+}
+.hamburger_item {
+  margin-top: 20px;
+}
+.hamburger_item:hover .hamburger_secondary,
+.hamburger_item.isActive .hamburger_secondary {
+  top: 66px;
+}
+.hamburger_secondary_item {
+  text-align: left;
+}
+.content {
+  margin-top: 66px;
+}
+</style>
