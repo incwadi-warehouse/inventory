@@ -2,7 +2,7 @@
   <section>
     <search/>
 
-    <section class="section section_default alignRight noprint">
+    <section class="section section_fixed alignRight noprint">
       <button class="btn btn_secondary" @click="setTab('filter')">{{ $t('filter') }}</button>
       <button class="btn btn_secondary" @click="setTab('limit')">{{ $t('limit') }}</button>
       <button class="btn btn_secondary" @click="setTab('create')">{{ $t('catalog') }}</button>
