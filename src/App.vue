@@ -38,3 +38,12 @@ export default {
 </script>
 
 <style src="../node_modules/baldeweg_ui/dist/style.min.css"></style>
+
+<style>
+.header {
+  height: 96px;
+}
+.content {
+  margin-top: 96px;
+}
+</style>
