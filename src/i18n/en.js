@@ -9,7 +9,6 @@ export default {
   not_found: 'Error 404 - Page not found!',
   not_found_desc: 'The page could not be found! Please change references to this site!',
   go_to_homepage: 'Go to homepage',
-  home: 'Home',
   create: 'Create',
   genres: 'Genres',
   about: 'About',

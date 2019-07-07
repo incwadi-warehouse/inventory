@@ -2,7 +2,7 @@
   <ul class="nav" v-if="isAuthenticated">
     <li class="nav_item">
       <router-link :to="{ name: 'book' }">
-        {{ $t('home') }}
+        {{ $t('search') }}
       </router-link>
     </li>
     <li class="nav_item">

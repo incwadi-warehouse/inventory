@@ -9,7 +9,6 @@ export default {
   not_found: 'Error 404 - Seite nicht gefunden!',
   not_found_desc: 'Die gewünschte Seite konnte nicht gefunden werden.',
   go_to_homepage: 'Zur Startseite',
-  home: 'Start',
   create: 'Hinzufügen',
   genres: 'Rubriken',
   about: 'Über',
