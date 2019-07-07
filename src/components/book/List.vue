@@ -50,7 +50,7 @@
                 {{formatDate(book.added)}}
               </td>
               <td>
-                {{book.type}}
+                {{ $t(book.type) }}
               </td>
               <td class="alignRight">
                 {{formatPrice(book.price)}}
