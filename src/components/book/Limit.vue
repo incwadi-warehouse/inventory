@@ -1,5 +1,5 @@
 <template>
-  <section class="section section_default">
+  <section class="section section_fixed">
     <form class="form" @submit.prevent="find">
       <div class="form_group">
         <div class="form_item">
