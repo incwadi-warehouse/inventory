@@ -27,7 +27,7 @@
               <th class="alignRight isSortable" @click="filter('price')">
                 {{currency}} <indicator orderBy="price"/>
               </th>
-              <th class="alignRight isSortable" @click="filter('yearOfPublication')">
+              <th class="alignRight isSortable" :title="$t('release_year')" @click="filter('yearOfPublication')">
                 {{ $t('year') }} <indicator orderBy="yearOfPublication"/>
               </th>
               <th class="noprint"></th>
