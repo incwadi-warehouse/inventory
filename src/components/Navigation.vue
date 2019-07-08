@@ -6,7 +6,9 @@
       </svg>
       <div class="hamburger_secondary">
         <ul class="hamburger_box">
-          <li class="hamburger_secondary_item">{{ $t('menu') }}</li>
+          <li class="hamburger_secondary_item">
+            {{ $t('menu') }}
+          </li>
           <li class="hamburger_secondary_item">
             <router-link :to="{ name: 'book' }">
               {{ $t('search') }}
@@ -17,19 +19,25 @@
               {{ $t('genres') }}
             </router-link>
           </li>
-          <li class="hamburger_secondary_item"><router-link :to="{ name: 'customer' }">
+          <li class="hamburger_secondary_item">
+            <router-link :to="{ name: 'customer' }">
               {{ $t('customers') }}
             </router-link>
           </li>
-          <li class="hamburger_secondary_item"><router-link :to="{ name: 'about' }">
+          <li class="hamburger_secondary_item">
+            <router-link :to="{ name: 'about' }">
               {{ $t('about') }}
             </router-link>
           </li>
         </ul>
         <ul class="hamburger_box">
-          <li class="hamburger_secondary_item">{{ $t('profile') }}</li>
           <li class="hamburger_secondary_item">
-            <a href="/logout" @click.prevent="logout">{{ $t('logout') }}</a>
+            {{ $t('profile') }}
+          </li>
+          <li class="hamburger_secondary_item">
+            <a href="/logout" @click.prevent="logout">
+              {{ $t('logout') }}
+            </a>
           </li>
         </ul>
       </div>
