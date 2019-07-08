@@ -3,7 +3,7 @@
     <div class="header_left">
       <div class="header_item">
         <router-link :to="{ name: 'book' }">
-          <img :src=logo alt="incwadi" loading="lazy">
+          <img :src=logo width="210" alt="incwadi" loading="lazy">
         </router-link>
       </div>
     </div>
