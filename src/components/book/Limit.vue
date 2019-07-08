@@ -3,7 +3,7 @@
     <form class="form" @submit.prevent="find">
       <div class="form_group">
         <div class="form_item">
-          <label for="orderBy" class="form_label">{{ $t('orderBy') }}</label>
+          <label for="orderBy" class="form_label">{{ $t('order_by') }}</label>
         </div>
         <div class="form_item">
           <select id="orderBy" class="form_input" v-model="orderBy">

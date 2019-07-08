@@ -124,7 +124,7 @@
         <div class="form_group">
           <div class="form_item">
             <label for="lendTo" class="form_label">
-              {{ $t('lendTo') }}
+              {{ $t('lend_to') }}
             </label>
           </div>
           <div class="form_item">
@@ -137,7 +137,7 @@
         <div class="form_group">
           <div class="form_item">
             <label for="lendOn" class="form_label">
-              {{ $t('lendOn') }}
+              {{ $t('lend_on') }}
             </label>
           </div>
           <div class="form_item">
