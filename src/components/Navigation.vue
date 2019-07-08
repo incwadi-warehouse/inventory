@@ -9,7 +9,7 @@
           <li class="hamburger_secondary_item">{{ $t('menu') }}</li>
           <li class="hamburger_secondary_item">
             <router-link :to="{ name: 'book' }">
-              {{ $t('home') }}
+              {{ $t('search') }}
             </router-link>
           </li>
           <li class="hamburger_secondary_item">
