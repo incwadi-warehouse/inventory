@@ -2,7 +2,7 @@
   <ul class="hamburger">
     <li class="hamburger_item">
       <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25.000001 25.000001">
-        <path d="M2 2h21v4H2zm0 16h21v4H2zm0-8h21v4H2z" fill="#333"/>
+        <path d="M0 2h25v4H0zm0 16h25v4H0zm0-8h25v4H0z" class="icon"/>
       </svg>
       <div class="hamburger_secondary">
         <ul class="hamburger_box">
@@ -64,3 +64,9 @@ export default {
   }
 }
 </script>
+
+<style>
+.icon {
+  fill: var(--color-fontDark);
+}
+</style>
