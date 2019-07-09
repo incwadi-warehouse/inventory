@@ -12,7 +12,7 @@ export default {
   create: 'Create',
   genres: 'Genres',
   about: 'About',
-  user: 'User',
+  username: 'Username',
   password: 'Password',
   search: 'Search',
   find: 'Find',

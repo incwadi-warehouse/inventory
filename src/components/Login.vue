@@ -9,18 +9,18 @@
     <form class="form" @submit.prevent="save">
       <div class="form_group">
         <div class="form_item">
-          <label for="user">{{ $t('user') }}</label>
+          <label for="username">{{ $t('username') }}</label>
         </div>
         <div class="form_item">
-          <input type="text" id="user" class="form_input" :placeholder="$t('user')" autofocus v-model="user"/>
+          <input type="text" id="username" class="form_input" :placeholder="$t('username')" autofocus v-model="username"/>
         </div>
       </div>
       <div class="form_group">
         <div class="form_item">
-          <label for="pass">{{ $t('password') }}</label>
+          <label for="password">{{ $t('password') }}</label>
         </div>
         <div class="form_item">
-          <input type="password" id="pass" class="form_input" :placeholder="$t('password')" v-model="pass"/>
+          <input type="password" id="password" class="form_input" :placeholder="$t('password')" v-model="password"/>
         </div>
       </div>
       <div class="form_group">
@@ -38,30 +38,37 @@
 <script>
 export default {
   name: 'login',
-  data () {
-    return {
-      user: null,
-      pass: null
-    }
-  },
   computed: {
     hasLoginError: function () {
       return this.$store.state.user.hasLoginError
     },
     isLoggingIn: function () {
       return this.$store.state.user.isLoggingIn
+    },
+    username: {
+      get: function () {
+        return this.$store.state.user.username
+      },
+      set: function (username) {
+        this.$store.commit('user/username', username)
+      }
+    },
+    password: {
+      get: function () {
+        return this.$store.state.user.password
+      },
+      set: function (password) {
+        this.$store.commit('user/password', password)
+      }
     }
   },
   methods: {
     login: function () {
-      this.$store.dispatch('user/login', {
-        user: this.user,
-        password: this.pass
-      })
+      this.$store.dispatch('user/login')
     }
   },
   mounted: function () {
-    document.getElementById('user').focus()
+    document.getElementById('username').focus()
   }
 }
 </script>

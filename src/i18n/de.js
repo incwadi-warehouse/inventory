@@ -12,7 +12,7 @@ export default {
   create: 'Hinzufügen',
   genres: 'Rubriken',
   about: 'Über',
-  user: 'Nutzer',
+  username: 'Nutzername',
   password: 'Passwort',
   search: 'Suche',
   find: 'Finden',
