@@ -56,5 +56,6 @@ export default {
   catalog: 'Catalogue',
   menu: 'Menu',
   profile: 'Profile',
-  logout: 'Logout'
+  logout: 'Logout',
+  close: 'Close'
 }
