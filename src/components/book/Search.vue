@@ -37,6 +37,9 @@ export default {
     search: function () {
       this.$store.dispatch('books/search')
     }
+  },
+  mounted: function () {
+    document.getElementById('searchTerm').focus()
   }
 }
 </script>
