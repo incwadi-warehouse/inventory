@@ -1,6 +1,6 @@
 <template>
   <ul class="hamburger">
-    <li class="hamburger_item">
+    <li :class="menu" @click="toggleMenu">
       <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25.000001 25.000001">
         <path d="M0 2h25v4H0zm0 16h25v4H0zm0-8h25v4H0z" class="icon"/>
       </svg>
@@ -50,9 +50,20 @@ import Cookies from 'js-cookie'
 
 export default {
   name: 'navigation',
+  data () {
+    return {
+      showMenu: false
+    }
+  },
   computed: {
     isAuthenticated: function () {
       return this.$store.state.user.isAuthenticated
+    },
+    menu: function () {
+      return {
+        hamburger_item: true,
+        isActive: this.showMenu
+      }
     }
   },
   methods: {
@@ -60,6 +71,9 @@ export default {
       this.$store.commit('user/isAuthenticated', false)
       Cookies.remove('token')
       this.$router.push({ name: 'book' })
+    },
+    toggleMenu: function () {
+      this.showMenu = !this.showMenu
     }
   }
 }
