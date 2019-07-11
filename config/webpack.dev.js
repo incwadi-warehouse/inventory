@@ -41,12 +41,23 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        test: /\.(svg)(\?.*)?$/,
         loader: 'url-loader',
         options: {
           limit: 10000,
           name: path.posix.join('img/[name].[hash:7].[ext]')
         }
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: path.posix.join('img/[name].[hash:7].[ext]')
+            },
+          },
+        ],
       }
     ]
   },
