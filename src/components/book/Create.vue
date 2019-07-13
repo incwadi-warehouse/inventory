@@ -48,7 +48,7 @@
             </label>
           </div>
           <div class="form_item">
-            <input type="text" id="firstname" class="form_input" maxlength="255" required v-model="firstname">
+            <input type="text" id="firstname" class="form_input" maxlength="255" v-model="firstname">
           </div>
         </div>
         <div class="form_group">

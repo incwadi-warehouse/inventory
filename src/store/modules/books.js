@@ -20,7 +20,7 @@ export default {
     tab: null,
     isLoading: false,
     title: null,
-    firstname: null,
+    firstname: '',
     lastname: null,
     price: '2.50',
     yearOfPublication: 2019,

@@ -39,7 +39,7 @@
                 {{book.title}}
               </td>
               <td v-if="book.author">
-                {{book.author.lastname}}, {{book.author.firstname}}
+                {{ author(book.author) }}
               </td>
               <td v-else></td>
               <td>
@@ -139,6 +139,12 @@ export default {
         this.$store.commit('filter/sort', type + '_asc')
       }
       this.$store.dispatch('books/search')
+    },
+    author: function (author) {
+      if (author.firstname === '') {
+        return author.lastname
+      }
+      return author.lastname + ', ' + author.firstname
     }
   }
 }
