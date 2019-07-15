@@ -39,7 +39,7 @@ export default {
   branches: 'Branches',
   search_for_title_or_author: 'Search for title or author',
   firstname: 'Firstname',
-  lastname: 'Lastname',
+  surname: 'Surname',
   limit: 'Limit',
   order_by: 'Order by',
   asc: 'ascending',

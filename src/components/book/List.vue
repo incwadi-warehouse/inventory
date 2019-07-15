@@ -142,9 +142,9 @@ export default {
     },
     author: function (author) {
       if (author.firstname === '') {
-        return author.lastname
+        return author.surname
       }
-      return author.lastname + ', ' + author.firstname
+      return author.surname + ', ' + author.firstname
     }
   }
 }

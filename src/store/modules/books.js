@@ -21,7 +21,7 @@ export default {
     isLoading: false,
     title: null,
     firstname: '',
-    lastname: null,
+    surname: null,
     price: '2.50',
     yearOfPublication: 2019,
     type: 'paperback',
@@ -59,8 +59,8 @@ export default {
     firstname (state, firstname) {
       state.firstname = firstname
     },
-    lastname (state, lastname) {
-      state.lastname = lastname
+    surname (state, surname) {
+      state.surname = surname
     },
     price (state, price) {
       state.price = price
@@ -149,7 +149,7 @@ export default {
       api(context.rootState.user.token)
         .post('/v1/book/new', {
           title: context.state.title,
-          author: context.state.lastname + ',' + context.state.firstname,
+          author: context.state.surname + ',' + context.state.firstname,
           price: context.state.price,
           genre: context.state.genre,
           stocked: true,
@@ -165,7 +165,7 @@ export default {
 
           context.commit('title', null)
           context.commit('firstname', null)
-          context.commit('lastname', null)
+          context.commit('surname', null)
           context.commit('price', '2.50')
           context.commit('genre', null)
           context.commit('yearOfPublication', 2019)

@@ -54,12 +54,12 @@
         </div>
         <div class="form_group">
           <div class="form_item">
-            <label for="lastname" class="form_label">
-              {{ $t('lastname') }}
+            <label for="surname" class="form_label">
+              {{ $t('surname') }}
             </label>
           </div>
           <div class="form_item">
-            <input type="text" id="lastname" class="form_input" maxlength="255" required v-model="lastname">
+            <input type="text" id="surname" class="form_input" maxlength="255" required v-model="surname">
           </div>
         </div>
         <div class="form_group">
@@ -162,7 +162,7 @@ export default {
     return {
       title: '',
       firstname: '',
-      lastname: '',
+      surname: '',
       price: '2.50',
       currency: process.env.CURRENCY,
       stocked: 0,
@@ -202,7 +202,7 @@ export default {
         params: {
           genre: this.genre,
           title: this.title,
-          author: this.lastname + ',' + this.firstname,
+          author: this.surname + ',' + this.firstname,
           price: this.price,
           stocked: this.stocked,
           yearOfPublication: this.yearOfPublication,
@@ -242,7 +242,7 @@ export default {
 
       this.title = this.$store.state.books.book.title
       this.firstname = this.$store.state.books.book.author.firstname
-      this.lastname = this.$store.state.books.book.author.lastname
+      this.surname = this.$store.state.books.book.author.surname
       this.price = this.$store.state.books.book.price
       this.stocked = this.$store.state.books.book.stocked
       this.yearOfPublication = this.$store.state.books.book.yearOfPublication

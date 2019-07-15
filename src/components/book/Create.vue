@@ -53,12 +53,12 @@
         </div>
         <div class="form_group">
           <div class="form_item">
-            <label for="lastname" class="form_label">
-              {{ $t('lastname') }}
+            <label for="surname" class="form_label">
+              {{ $t('surname') }}
             </label>
           </div>
           <div class="form_item">
-            <input type="text" id="lastname" class="form_input" maxlength="255" required v-model="lastname">
+            <input type="text" id="surname" class="form_input" maxlength="255" required v-model="surname">
           </div>
         </div>
         <div class="form_group">
@@ -146,12 +146,12 @@ export default {
         this.$store.commit('books/firstname', firstname)
       }
     },
-    lastname: {
+    surname: {
       get: function () {
-        return this.$store.state.books.lastname
+        return this.$store.state.books.surname
       },
-      set: function (lastname) {
-        this.$store.commit('books/lastname', lastname)
+      set: function (surname) {
+        this.$store.commit('books/surname', surname)
       }
     },
     price: {

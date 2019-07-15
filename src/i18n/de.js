@@ -39,7 +39,7 @@ export default {
   branches: 'Filialen',
   search_for_title_or_author: 'Suche in Titel oder Autor',
   firstname: 'Vorname',
-  lastname: 'Nachname',
+  surname: 'Nachname',
   limit: 'Limit',
   order_by: 'Sortiere nach',
   asc: 'aufsteigend',
