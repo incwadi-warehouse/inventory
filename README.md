@@ -10,7 +10,7 @@ An article can be found here https://medium.com/@A.Baldeweg/i-was-trying-new-thi
 
 ## Future
 
-The first goal is to make a minimum viable product (MVP). It delivers only the features actually needed to be usable. As soon as this is done version 1.0.0 will be released. After that I will start developing new features. The development will follow the principles of lean development. Building small features, try it and decide wether it makes sense to invest more time into it.
+The first objective is to make a minimum viable product (MVP). It delivers only the features actually needed to be usable. As soon as this is done version 1.0.0 will be released. After that I will start developing new features. The development will follow the principles of lean development. Building small features, try it and decide wether it makes sense to invest more time into it.
 
 ## Requirements
 
