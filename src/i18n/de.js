@@ -58,5 +58,7 @@ export default {
   profile: 'Profil',
   logout: 'Logout',
   close: 'Schließen',
-  reset: 'Zurücksetzen'
+  reset: 'Zurücksetzen',
+  storage_options: 'Lager-Optionen',
+  status: 'Status'
 }

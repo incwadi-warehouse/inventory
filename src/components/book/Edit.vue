@@ -115,14 +115,6 @@
         </div>
         <div class="form_group">
           <div class="form_item">
-            <input type="checkbox" id="stocked" v-model="stocked">
-            <label for="stocked" class="form_label">
-              {{ $t('stocked')}}
-            </label>
-          </div>
-        </div>
-        <div class="form_group">
-          <div class="form_item">
             <label for="lendTo" class="form_label">
               {{ $t('lend_to') }}
             </label>
@@ -150,6 +142,17 @@
           </div>
         </div>
       </form>
+    </section>
+
+    <section class="section section_fixed">
+      <h2>{{ $t('storage_options') }}</h2>
+      <p>{{ $t('status') }}: {{ stocked ? $t('stocked') : $t('sold') }}</p>
+      <button class="btn btn_secondary" @click="toggleStocking(book)" v-if="stocked">
+        {{ $t('sold') }}
+      </button>
+      <button class="btn btn_secondary" @click="toggleStocking(book)" v-if="!stocked">
+        {{ $t('stocked') }}
+      </button>
     </section>
   </section>
 </template>
@@ -193,6 +196,9 @@ export default {
     },
     isDuplicate: function () {
       return this.$store.state.books.isDuplicate
+    },
+    book: function () {
+      return this.$store.state.books.book
     }
   },
   methods: {
@@ -229,6 +235,10 @@ export default {
         }
         this.lendOn = lendOn.getFullYear() + '-' + lendOnMonth + '-' + lendOnDay
       }
+    },
+    toggleStocking: function (book) {
+      this.$store.dispatch('books/toggleStocking', book.id)
+      this.$store.dispatch('books/book', this.id)
     }
   },
   mounted: function () {

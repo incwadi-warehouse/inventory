@@ -197,9 +197,6 @@ export default {
     toggleStocking (context, id) {
       api(context.rootState.user.token)
         .put('/v1/book/toggleStocking/' + id)
-        .then(function (response) {
-          router.push({ name: 'book' })
-        })
     }
   }
 }
