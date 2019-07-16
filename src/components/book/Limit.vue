@@ -48,10 +48,10 @@ export default {
   computed: {
     orderBy: {
       get: function () {
-        return this.$store.state.filter.sort
+        return this.$store.state.filter.orderBy
       },
-      set: function (sort) {
-        this.$store.commit('filter/sort', sort)
+      set: function (orderBy) {
+        this.$store.commit('filter/orderBy', orderBy)
         this.$store.dispatch('books/search')
       }
     }

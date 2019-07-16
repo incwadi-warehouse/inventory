@@ -1,20 +1,20 @@
 <template>
-  <span v-if="sort === orderBy + '_asc' || sort === orderBy + '_desc'" v-html="icon"/>
+  <span v-if="orderBy === column + '_asc' || orderBy === column + '_desc'" v-html="icon"/>
 </template>
 
 <script>
 export default {
   name: 'order-by-indicator',
-  props: ['orderBy'],
+  props: ['column'],
   computed: {
-    sort: function () {
-      return this.$store.state.filter.sort
+    orderBy: function () {
+      return this.$store.state.filter.orderBy
     },
     icon: function () {
-      if (this.sort === this.orderBy + '_asc') {
+      if (this.orderBy === this.column + '_asc') {
         return '&#9650;'
       }
-      if (this.sort === this.orderBy + '_desc') {
+      if (this.orderBy === this.column + '_desc') {
         return '&#9660;'
       }
 

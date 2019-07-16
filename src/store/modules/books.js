@@ -126,7 +126,7 @@ export default {
             branch: branch,
             genre: genre,
             lending: lending,
-            sort: context.rootState.filter.sort,
+            orderBy: context.rootState.filter.orderBy,
             releaseYear: context.rootState.filter.releaseYear,
             type: context.rootState.filter.type
           }

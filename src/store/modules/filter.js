@@ -9,7 +9,7 @@ export default {
     branch: null,
     genreFilter: null,
     lending: null,
-    sort: null,
+    orderBy: null,
     releaseYear: null,
     type: null
   },
@@ -35,8 +35,8 @@ export default {
     lending (state, lending) {
       state.lending = lending
     },
-    sort (state, sort) {
-      state.sort = sort
+    orderBy (state, orderBy) {
+      state.orderBy = orderBy
     },
     limit (state, limit) {
       state.limit = limit

@@ -10,25 +10,25 @@
           <thead>
             <tr>
               <th class="isSortable" @click="filter('title')">
-                {{ $t('title') }} <indicator orderBy="title"/>
+                {{ $t('title') }} <indicator column="title"/>
               </th>
               <th class="isSortable" @click="filter('author')">
-                {{ $t('author') }} <indicator orderBy="author"/>
+                {{ $t('author') }} <indicator column="author"/>
               </th>
               <th class="isSortable" @click="filter('genre')">
-                {{ $t('genre') }} <indicator orderBy="genre"/>
+                {{ $t('genre') }} <indicator column="genre"/>
               </th>
               <th class="isSortable" @click="filter('added')">
-                {{ $t('added') }} <indicator orderBy="added"/>
+                {{ $t('added') }} <indicator column="added"/>
               </th>
               <th class="isSortable" @click="filter('type')">
-                {{$t('type') }} <indicator orderBy="type"/>
+                {{$t('type') }} <indicator column="type"/>
               </th>
               <th class="alignRight isSortable" @click="filter('price')">
-                {{currency}} <indicator orderBy="price"/>
+                {{currency}} <indicator column="price"/>
               </th>
               <th class="alignRight isSortable" :title="$t('release_year')" @click="filter('releaseYear')">
-                {{ $t('year') }} <indicator orderBy="releaseYear"/>
+                {{ $t('year') }} <indicator column="releaseYear"/>
               </th>
               <th class="noprint"></th>
             </tr>
@@ -127,16 +127,16 @@ export default {
       this.$store.dispatch('books/search')
     },
     filter: function (type) {
-      let ordering = this.$store.state.filter.sort
+      let ordering = this.$store.state.filter.orderBy
 
       if (ordering === type + '_desc') {
-        this.$store.commit('filter/sort', 'asc')
+        this.$store.commit('filter/orderBy', 'asc')
       }
       if (ordering === type + '_asc') {
-        this.$store.commit('filter/sort', type + '_desc')
+        this.$store.commit('filter/orderBy', type + '_desc')
       }
       if (ordering !== type + '_asc' && ordering !== type + '_desc') {
-        this.$store.commit('filter/sort', type + '_asc')
+        this.$store.commit('filter/orderBy', type + '_asc')
       }
       this.$store.dispatch('books/search')
     },
