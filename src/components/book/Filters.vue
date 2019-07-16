@@ -93,6 +93,7 @@ export default {
       },
       set: function (stocked) {
         this.$store.commit('filter/stocked', stocked ? 1 : 0)
+        this.$store.dispatch('books/search')
       }
     },
     added: {
@@ -101,6 +102,7 @@ export default {
       },
       set: function (added) {
         this.$store.commit('filter/added', added)
+        this.$store.dispatch('books/search')
       }
     },
     branch: {
@@ -109,6 +111,7 @@ export default {
       },
       set: function (branch) {
         this.$store.commit('filter/branch', branch)
+        this.$store.dispatch('books/search')
       }
     },
     genre: {
@@ -117,6 +120,7 @@ export default {
       },
       set: function (genre) {
         this.$store.commit('filter/genreFilter', genre)
+        this.$store.dispatch('books/search')
       }
     },
     lending: {
@@ -125,6 +129,7 @@ export default {
       },
       set: function (lending) {
         this.$store.commit('filter/lending', lending)
+        this.$store.dispatch('books/search')
       }
     },
     releaseYear: {
@@ -133,6 +138,7 @@ export default {
       },
       set: function (releaseYear) {
         this.$store.commit('filter/releaseYear', releaseYear)
+        this.$store.dispatch('books/search')
       }
     },
     type: {
@@ -141,6 +147,7 @@ export default {
       },
       set: function (type) {
         this.$store.commit('filter/type', type)
+        this.$store.dispatch('books/search')
       }
     }
   },
