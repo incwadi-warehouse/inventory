@@ -1,7 +1,7 @@
 <template>
   <ul class="hamburger">
-    <li :class="menu" @click="toggleMenu">
-      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25.000001 25.000001">
+    <li :class="menu">
+      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25.000001 25.000001" @click="toggleMenu">
         <path d="M0 2h25v4H0zm0 16h25v4H0zm0-8h25v4H0z" class="icon"/>
       </svg>
       <div class="hamburger_secondary">
