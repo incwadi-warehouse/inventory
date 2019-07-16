@@ -1,5 +1,8 @@
 <template>
   <section class="section section_fixed">
+    <button class="btn btn_link floatRight" @click="resetFilters">
+      {{ $t('reset') }}
+    </button>
     <form class="form" @submit.prevent="find">
       <div class="form_group">
         <div class="form_item">
@@ -139,6 +142,11 @@ export default {
       set: function (type) {
         this.$store.commit('filter/type', type)
       }
+    }
+  },
+  methods: {
+    resetFilters: function () {
+      this.$store.dispatch('filter/reset')
     }
   },
   mounted: function () {

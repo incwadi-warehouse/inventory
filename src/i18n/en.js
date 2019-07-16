@@ -57,5 +57,6 @@ export default {
   menu: 'Menu',
   profile: 'Profile',
   logout: 'Logout',
-  close: 'Close'
+  close: 'Close',
+  reset: 'Reset'
 }

@@ -1,5 +1,8 @@
 <template>
   <section class="section section_fixed">
+    <button class="btn btn_link floatRight" @click="resetFilters">
+      {{ $t('reset') }}
+    </button>
     <form class="form" @submit.prevent="find">
       <div class="form_group">
         <div class="form_item">
@@ -60,6 +63,9 @@ export default {
     setLimit: function (limit) {
       this.$store.commit('filter/limit', limit)
       this.$store.dispatch('books/search')
+    },
+    resetFilters: function () {
+      this.$store.dispatch('filter/reset')
     }
   }
 }

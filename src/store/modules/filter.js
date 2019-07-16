@@ -4,7 +4,7 @@ export default {
     searchTerm: null,
     offset: 0,
     limit: 20,
-    stocked: null,
+    stocked: true,
     added: null,
     branch: null,
     genreFilter: null,
@@ -46,6 +46,21 @@ export default {
     },
     type (state, type) {
       state.type = type
+    }
+  },
+  actions: {
+    reset (context) {
+      context.commit('searchTerm', null)
+      context.commit('offset', 0)
+      context.commit('limit', 20)
+      context.commit('stocked', true)
+      context.commit('added', null)
+      context.commit('branch', null)
+      context.commit('genreFilter', null)
+      context.commit('lending', null)
+      context.commit('orderBy', null)
+      context.commit('releaseYear', null)
+      context.commit('type', null)
     }
   }
 }
