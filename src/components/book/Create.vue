@@ -68,7 +68,7 @@
             </label>
           </div>
           <div class="form_item">
-            <input type="number" id="author" class="form_input" min="1000" max="9999" required v-model="yearOfPublication">
+            <input type="number" id="author" class="form_input" min="1000" max="9999" required v-model="releaseYear">
           </div>
         </div>
         <div class="form_group">
@@ -162,12 +162,12 @@ export default {
         this.$store.commit('books/price', price)
       }
     },
-    yearOfPublication: {
+    releaseYear: {
       get: function () {
-        return this.$store.state.books.yearOfPublication
+        return this.$store.state.books.releaseYear
       },
-      set: function (yearOfPublication) {
-        this.$store.commit('books/yearOfPublication', yearOfPublication)
+      set: function (releaseYear) {
+        this.$store.commit('books/releaseYear', releaseYear)
       }
     },
     type: {

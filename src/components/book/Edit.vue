@@ -69,7 +69,7 @@
             </label>
           </div>
           <div class="form_item">
-            <input type="number" id="year_of_publication" class="form_input" min="1000" max="9999" required v-model="yearOfPublication">
+            <input type="number" id="year_of_publication" class="form_input" min="1000" max="9999" required v-model="releaseYear">
           </div>
         </div>
         <div class="form_group">
@@ -166,7 +166,7 @@ export default {
       price: '2.50',
       currency: process.env.CURRENCY,
       stocked: 0,
-      yearOfPublication: null,
+      releaseYear: null,
       type: null,
       premium: null,
       added: null,
@@ -205,7 +205,7 @@ export default {
           author: this.surname + ',' + this.firstname,
           price: this.price,
           stocked: this.stocked,
-          yearOfPublication: this.yearOfPublication,
+          releaseYear: this.releaseYear,
           type: this.type,
           premium: this.premium,
           added: new Date(this.added).getTime() / 1000,
@@ -245,7 +245,7 @@ export default {
       this.surname = this.$store.state.books.book.author.surname
       this.price = this.$store.state.books.book.price
       this.stocked = this.$store.state.books.book.stocked
-      this.yearOfPublication = this.$store.state.books.book.yearOfPublication
+      this.releaseYear = this.$store.state.books.book.releaseYear
       this.type = this.$store.state.books.book.type
       this.premium = this.$store.state.books.book.premium
       let added = new Date(this.$store.state.books.book.added * 1000)

@@ -47,10 +47,10 @@
       </div>
       <div class="form_group">
         <div class="form_item">
-          <label for="yearOfPublication" class="form_label">{{ $t('release_year') }}</label>
+          <label for="releaseYear" class="form_label">{{ $t('release_year') }}</label>
         </div>
         <div class="form_item">
-          <input type="number" id="yearOfPublication" class="form_input" v-model="yearOfPublication">
+          <input type="number" id="releaseYear" class="form_input" v-model="releaseYear">
         </div>
       </div>
       <div class="form_group">
@@ -124,12 +124,12 @@ export default {
         this.$store.commit('filter/lending', lending)
       }
     },
-    yearOfPublication: {
+    releaseYear: {
       get: function () {
-        return this.$store.state.filter.yearOfPublication
+        return this.$store.state.filter.releaseYear
       },
-      set: function (yearOfPublication) {
-        this.$store.commit('filter/yearOfPublication', yearOfPublication)
+      set: function (releaseYear) {
+        this.$store.commit('filter/releaseYear', releaseYear)
       }
     },
     type: {

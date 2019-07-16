@@ -23,7 +23,7 @@ export default {
     firstname: '',
     surname: null,
     price: '2.50',
-    yearOfPublication: 2019,
+    releaseYear: 2019,
     type: 'paperback',
     premium: false,
     genre: null
@@ -65,8 +65,8 @@ export default {
     price (state, price) {
       state.price = price
     },
-    yearOfPublication (state, yearOfPublication) {
-      state.yearOfPublication = yearOfPublication
+    releaseYear (state, releaseYear) {
+      state.releaseYear = releaseYear
     },
     type (state, type) {
       state.type = type
@@ -127,7 +127,7 @@ export default {
             genre: genre,
             lending: lending,
             sort: context.rootState.filter.sort,
-            yearOfPublication: context.rootState.filter.yearOfPublication,
+            releaseYear: context.rootState.filter.releaseYear,
             type: context.rootState.filter.type
           }
         })
@@ -153,7 +153,7 @@ export default {
           price: context.state.price,
           genre: context.state.genre,
           stocked: true,
-          yearOfPublication: context.state.yearOfPublication,
+          releaseYear: context.state.releaseYear,
           type: context.state.type,
           premium: context.state.premium,
           added: Math.round(new Date().getTime() / 1000)
@@ -168,7 +168,7 @@ export default {
           context.commit('surname', null)
           context.commit('price', '2.50')
           context.commit('genre', null)
-          context.commit('yearOfPublication', 2019)
+          context.commit('releaseYear', 2019)
           context.commit('type', 'paperback')
           context.commit('premium', false)
         })

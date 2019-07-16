@@ -10,7 +10,7 @@ export default {
     genreFilter: null,
     lending: null,
     sort: null,
-    yearOfPublication: null,
+    releaseYear: null,
     type: null
   },
   mutations: {
@@ -41,8 +41,8 @@ export default {
     limit (state, limit) {
       state.limit = limit
     },
-    yearOfPublication (state, yearOfPublication) {
-      state.yearOfPublication = yearOfPublication
+    releaseYear (state, releaseYear) {
+      state.releaseYear = releaseYear
     },
     type (state, type) {
       state.type = type

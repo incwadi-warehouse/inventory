@@ -27,8 +27,8 @@
               <th class="alignRight isSortable" @click="filter('price')">
                 {{currency}} <indicator orderBy="price"/>
               </th>
-              <th class="alignRight isSortable" :title="$t('release_year')" @click="filter('yearOfPublication')">
-                {{ $t('year') }} <indicator orderBy="yearOfPublication"/>
+              <th class="alignRight isSortable" :title="$t('release_year')" @click="filter('releaseYear')">
+                {{ $t('year') }} <indicator orderBy="releaseYear"/>
               </th>
               <th class="noprint"></th>
             </tr>
@@ -55,7 +55,7 @@
                 {{formatPrice(book.price)}}
               </td>
               <td class="alignRight">
-                {{book.yearOfPublication}}
+                {{book.releaseYear}}
               </td>
               <td class="noprint">
                 <context-menu :book="book"/>

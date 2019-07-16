@@ -20,8 +20,8 @@
             <option value="price_desc">{{ $t('price') }} {{ $t('desc') }}</option>
             <option value="type_asc">{{ $t('type') }} {{ $t('asc') }}</option>
             <option value="type_desc">{{ $t('type') }} {{ $t('desc') }}</option>
-            <option value="yearOfPublication_asc">{{ $t('release_year') }} {{ $t('asc') }}</option>
-            <option value="yearOfPublication_desc">{{ $t('release_year') }} {{ $t('desc') }}</option>
+            <option value="releaseYear_asc">{{ $t('release_year') }} {{ $t('asc') }}</option>
+            <option value="releaseYear_desc">{{ $t('release_year') }} {{ $t('desc') }}</option>
           </select>
         </div>
       </div>
