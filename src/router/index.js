@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Books from '../views/Books'
+import Search from '../views/Search'
 import EditBook from '../views/EditBook'
 import About from '../views/About'
 import Genre from '../views/Genre'
@@ -17,7 +17,7 @@ export default new Router({
     {
       path: '/',
       name: 'book',
-      component: Books
+      component: Search
     },
     {
       path: '/edit/:id',

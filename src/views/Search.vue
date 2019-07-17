@@ -21,11 +21,11 @@
 </template>
 
 <script>
-import Search from '../components/book/Search'
-import Filters from '../components/book/Filters'
-import List from '../components/book/List'
+import Search from '../components/search/Search'
+import Filters from '../components/search/Filters'
+import List from '../components/search/List'
 import Create from '../components/book/Create'
-import Limit from '../components/book/Limit'
+import Limit from '../components/search/Limit'
 
 export default {
   name: 'book-view',
