@@ -31,7 +31,7 @@ export default {
   price: 'Preis',
   add: 'Hinzufügen',
   edit_book: 'Buch bearbeiten',
-  stocked: 'Auf Lager',
+  stocked: 'Im Regal',
   update: 'Aktualisieren',
   filter: 'Filter',
   older_then_x_months: 'Älter als X Monate',
