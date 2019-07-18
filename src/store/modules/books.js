@@ -121,7 +121,7 @@ export default {
             term: context.rootState.filter.searchTerm,
             limit: context.rootState.filter.limit,
             offset: context.rootState.filter.offset,
-            stocked: context.rootState.filter.stocked,
+            stocked: context.rootState.filter.stocked ? '1' : '0',
             added: added,
             branch: branch,
             genre: genre,

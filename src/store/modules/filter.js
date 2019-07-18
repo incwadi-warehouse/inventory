@@ -4,7 +4,7 @@ export default {
     searchTerm: null,
     offset: 0,
     limit: 20,
-    stocked: 1,
+    stocked: true,
     added: null,
     branch: null,
     genreFilter: null,
@@ -21,7 +21,7 @@ export default {
       state.offset = offset
     },
     stocked (state, stocked) {
-      state.stocked = stocked
+      state.stocked = stocked === 1
     },
     added (state, added) {
       state.added = added
@@ -53,7 +53,7 @@ export default {
       context.commit('searchTerm', null)
       context.commit('offset', 0)
       context.commit('limit', 20)
-      context.commit('stocked', 1)
+      context.commit('stocked', true)
       context.commit('added', null)
       context.commit('branch', null)
       context.commit('genreFilter', null)
