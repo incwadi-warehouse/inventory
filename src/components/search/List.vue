@@ -161,5 +161,8 @@ export default {
   .noprint {
     display: none;
   }
+  .table {
+    font-size: 0.7em;
+  }
 }
 </style>
