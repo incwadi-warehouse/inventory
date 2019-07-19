@@ -32,7 +32,6 @@ export default {
   add: 'Add',
   edit_book: 'Edit Book',
   sold: 'Sold',
-  not_sold: 'Not sold',
   update: 'Update',
   filter: 'Filter',
   older_then_x_months: 'Older then x months',
@@ -59,6 +58,6 @@ export default {
   logout: 'Logout',
   close: 'Close',
   reset: 'Reset',
-  storage_options: 'Storage Options',
-  status: 'Status'
+  status: 'Status',
+  removed: 'Removed'
 }

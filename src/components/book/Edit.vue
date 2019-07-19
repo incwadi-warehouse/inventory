@@ -105,6 +105,22 @@
         </div>
         <div class="form_group">
           <div class="form_item">
+            <input type="checkbox" id="sold" v-model="sold">
+            <label for="sold" class="form_label">
+              {{ $t('sold') }}
+            </label>
+          </div>
+        </div>
+        <div class="form_group">
+          <div class="form_item">
+            <input type="checkbox" id="removed" v-model="removed">
+            <label for="removed" class="form_label">
+              {{ $t('removed') }}
+            </label>
+          </div>
+        </div>
+        <div class="form_group">
+          <div class="form_item">
             <label for="added" class="form_label">
               {{ $t('added') }}
             </label>
@@ -143,17 +159,6 @@
         </div>
       </form>
     </section>
-
-    <section class="section section_fixed">
-      <h2>{{ $t('storage_options') }}</h2>
-      <p>{{ $t('status') }}: {{ sold ? $t('sold') : $t('not_sold') }}</p>
-      <button class="btn btn_secondary" @click="sell(book)" v-if="sold">
-        {{ $t('sold') }}
-      </button>
-      <button class="btn btn_secondary" @click="sell(book)" v-if="!sold">
-        {{ $t('sold') }}
-      </button>
-    </section>
   </section>
 </template>
 
@@ -169,6 +174,7 @@ export default {
       price: '2.50',
       currency: process.env.CURRENCY,
       sold: 0,
+      removed: 0,
       releaseYear: null,
       type: null,
       premium: null,
@@ -211,6 +217,7 @@ export default {
           author: this.surname + ',' + this.firstname,
           price: this.price,
           sold: this.sold,
+          removed: this.removed,
           releaseYear: this.releaseYear,
           type: this.type,
           premium: this.premium,
@@ -255,6 +262,7 @@ export default {
       this.surname = this.$store.state.books.book.author.surname
       this.price = this.$store.state.books.book.price
       this.sold = this.$store.state.books.book.sold
+      this.removed = this.$store.state.books.book.removed
       this.releaseYear = this.$store.state.books.book.releaseYear
       this.type = this.$store.state.books.book.type
       this.premium = this.$store.state.books.book.premium
