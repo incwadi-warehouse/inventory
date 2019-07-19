@@ -11,7 +11,7 @@ export default {
       genre: null,
       added: null,
       price: null,
-      stocked: null
+      sold: null
     },
     counter: 0,
     hasCreateError: false,
@@ -121,7 +121,7 @@ export default {
             term: context.rootState.filter.searchTerm,
             limit: context.rootState.filter.limit,
             offset: context.rootState.filter.offset,
-            stocked: context.rootState.filter.stocked ? '1' : '0',
+            sold: context.rootState.filter.sold ? '1' : '0',
             added: added,
             branch: branch,
             genre: genre,
@@ -152,7 +152,7 @@ export default {
           author: context.state.surname + ',' + context.state.firstname,
           price: context.state.price,
           genre: context.state.genre,
-          stocked: true,
+          sold: false,
           releaseYear: context.state.releaseYear,
           type: context.state.type,
           premium: context.state.premium,
@@ -194,9 +194,9 @@ export default {
           }
         })
     },
-    toggleStocking (context, id) {
+    sell (context, id) {
       api(context.rootState.user.token)
-        .put('/v1/book/toggleStocking/' + id)
+        .put('/v1/book/sell/' + id)
     }
   }
 }

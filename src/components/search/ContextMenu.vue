@@ -12,7 +12,7 @@
         </router-link>
       </li>
       <li class="contextMenu_item">
-        <button class="btn btn_link" @click="toggleStocking(book)" v-if="book.stocked">
+        <button class="btn btn_link" @click="sell(book)" v-if="book.sold">
           {{ $t('sold') }}
         </button>
       </li>
@@ -52,13 +52,13 @@ export default {
     closeContextMenu: function (event) {
       this.showContextMenu = false
     },
-    toggleStocking: function (book) {
+    sell: function (book) {
       let books = this.books
       let id = books.indexOf(book)
       books.splice(id, 1)
       this.$store.commit('books/books', books)
       this.$store.commit('filter/offset', this.$store.state.filter.offset - 1)
-      this.$store.dispatch('books/toggleStocking', book.id)
+      this.$store.dispatch('books/sell', book.id)
     }
   }
 }

@@ -146,12 +146,12 @@
 
     <section class="section section_fixed">
       <h2>{{ $t('storage_options') }}</h2>
-      <p>{{ $t('status') }}: {{ stocked ? $t('stocked') : $t('sold') }}</p>
-      <button class="btn btn_secondary" @click="toggleStocking(book)" v-if="stocked">
+      <p>{{ $t('status') }}: {{ sold ? $t('sold') : $t('not_sold') }}</p>
+      <button class="btn btn_secondary" @click="sell(book)" v-if="sold">
         {{ $t('sold') }}
       </button>
-      <button class="btn btn_secondary" @click="toggleStocking(book)" v-if="!stocked">
-        {{ $t('stocked') }}
+      <button class="btn btn_secondary" @click="sell(book)" v-if="!sold">
+        {{ $t('sold') }}
       </button>
     </section>
   </section>
@@ -168,7 +168,7 @@ export default {
       surname: '',
       price: '2.50',
       currency: process.env.CURRENCY,
-      stocked: 0,
+      sold: 0,
       releaseYear: null,
       type: null,
       premium: null,
@@ -210,7 +210,7 @@ export default {
           title: this.title,
           author: this.surname + ',' + this.firstname,
           price: this.price,
-          stocked: this.stocked,
+          sold: this.sold,
           releaseYear: this.releaseYear,
           type: this.type,
           premium: this.premium,
@@ -236,8 +236,8 @@ export default {
         this.lendOn = lendOn.getFullYear() + '-' + lendOnMonth + '-' + lendOnDay
       }
     },
-    toggleStocking: function (book) {
-      this.$store.dispatch('books/toggleStocking', book.id)
+    sell: function (book) {
+      this.$store.dispatch('books/sell', book.id)
       this.$store.dispatch('books/book', this.id)
     }
   },
@@ -254,7 +254,7 @@ export default {
       this.firstname = this.$store.state.books.book.author.firstname
       this.surname = this.$store.state.books.book.author.surname
       this.price = this.$store.state.books.book.price
-      this.stocked = this.$store.state.books.book.stocked
+      this.sold = this.$store.state.books.book.sold
       this.releaseYear = this.$store.state.books.book.releaseYear
       this.type = this.$store.state.books.book.type
       this.premium = this.$store.state.books.book.premium

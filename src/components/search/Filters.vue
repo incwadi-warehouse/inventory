@@ -44,8 +44,8 @@
       </div>
       <div class="form_group">
         <div class="form_item">
-          <input type="checkbox" id="stocked" v-model="stocked">
-          <label for="stocked">{{ $t('stocked') }}</label>
+          <input type="checkbox" id="sold" v-model="sold">
+          <label for="sold">{{ $t('sold') }}</label>
         </div>
       </div>
       <div class="form_group">
@@ -87,12 +87,12 @@ export default {
     genres: function () {
       return this.$store.state.genres.genres
     },
-    stocked: {
+    sold: {
       get: function () {
-        return this.$store.state.filter.stocked || true
+        return this.$store.state.filter.sold || true
       },
-      set: function (stocked) {
-        this.$store.commit('filter/stocked', stocked ? 1 : 0)
+      set: function (sold) {
+        this.$store.commit('filter/sold', sold ? 1 : 0)
         this.$store.dispatch('books/search')
       }
     },
