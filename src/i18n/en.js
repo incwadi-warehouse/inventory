@@ -59,5 +59,6 @@ export default {
   close: 'Close',
   reset: 'Reset',
   status: 'Status',
-  removed: 'Removed'
+  removed: 'Removed',
+  sell: 'Sell'
 }

@@ -197,6 +197,10 @@ export default {
     sell (context, id) {
       api(context.rootState.user.token)
         .put('/v1/book/sell/' + id)
+    },
+    remove (context, id) {
+      api(context.rootState.user.token)
+        .put('/v1/book/remove/' + id)
     }
   }
 }

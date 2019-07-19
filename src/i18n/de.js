@@ -59,5 +59,6 @@ export default {
   close: 'Schließen',
   reset: 'Zurücksetzen',
   status: 'Status',
-  removed: 'Entfernt'
+  removed: 'Entfernt',
+  sell: 'Verkaufen'
 }
