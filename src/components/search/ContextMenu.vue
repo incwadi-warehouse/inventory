@@ -42,7 +42,7 @@ export default {
   },
   computed: {
     books: function () {
-      return this.$store.state.books.books
+      return this.$store.state.book.books
     }
   },
   methods: {
@@ -61,17 +61,17 @@ export default {
       let books = this.books
       let id = books.indexOf(book)
       books.splice(id, 1)
-      this.$store.commit('books/books', books)
+      this.$store.commit('book/books', books)
       this.$store.commit('filter/offset', this.$store.state.filter.offset - 1)
-      this.$store.dispatch('books/sell', book.id)
+      this.$store.dispatch('book/sell', book.id)
     },
     remove: function (book) {
       let books = this.books
       let id = books.indexOf(book)
       books.splice(id, 1)
-      this.$store.commit('books/books', books)
+      this.$store.commit('book/books', books)
       this.$store.commit('filter/offset', this.$store.state.filter.offset - 1)
-      this.$store.dispatch('books/remove', book.id)
+      this.$store.dispatch('book/remove', book.id)
     }
   }
 }

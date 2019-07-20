@@ -30,7 +30,7 @@ export default {
   },
   mutations: {
     books (state, books) {
-      state.books = books
+      state.book = books
     },
     counter (state, counter) {
       state.counter = counter
@@ -133,7 +133,7 @@ export default {
         })
         .then(function (response) {
           if (context.rootState.filter.offset >= 1) {
-            let books = context.state.books
+            let books = context.state.book
             response.data.books.forEach(book => {
               books.push(book)
             })

@@ -189,27 +189,27 @@ export default {
       return process.env.STEPS
     },
     isLoading: function () {
-      return this.$store.state.books.isLoading
+      return this.$store.state.book.isLoading
     },
     customers: function () {
       return this.$store.state.customer.customers
     },
     genres: function () {
-      return this.$store.state.genres.genres
+      return this.$store.state.genre.genres
     },
     hasUpdateError: function () {
-      return this.$store.state.books.hasUpdateError
+      return this.$store.state.book.hasUpdateError
     },
     isDuplicate: function () {
-      return this.$store.state.books.isDuplicate
+      return this.$store.state.book.isDuplicate
     },
     book: function () {
-      return this.$store.state.books.book
+      return this.$store.state.book.book
     }
   },
   methods: {
     update: function () {
-      this.$store.dispatch('books/update', {
+      this.$store.dispatch('book/update', {
         id: this.id,
         params: {
           genre: this.genre,
@@ -244,29 +244,29 @@ export default {
       }
     },
     sell: function (book) {
-      this.$store.dispatch('books/sell', book.id)
-      this.$store.dispatch('books/book', this.id)
+      this.$store.dispatch('book/sell', book.id)
+      this.$store.dispatch('book/book', this.id)
     }
   },
   mounted: function () {
-    this.$store.dispatch('books/book', this.id)
+    this.$store.dispatch('book/book', this.id)
     this.$store.dispatch('customer/customers')
-    this.$store.dispatch('genres/genres')
+    this.$store.dispatch('genre/genres')
   },
   watch: {
-    '$store.state.books.book': function () {
-      if (!this.$store.state.books.book) return
+    '$store.state.book.book': function () {
+      if (!this.$store.state.book.book) return
 
-      this.title = this.$store.state.books.book.title
-      this.firstname = this.$store.state.books.book.author.firstname
-      this.surname = this.$store.state.books.book.author.surname
-      this.price = this.$store.state.books.book.price
-      this.sold = this.$store.state.books.book.sold
-      this.removed = this.$store.state.books.book.removed
-      this.releaseYear = this.$store.state.books.book.releaseYear
-      this.type = this.$store.state.books.book.type
-      this.premium = this.$store.state.books.book.premium
-      let added = new Date(this.$store.state.books.book.added * 1000)
+      this.title = this.$store.state.book.book.title
+      this.firstname = this.$store.state.book.book.author.firstname
+      this.surname = this.$store.state.book.book.author.surname
+      this.price = this.$store.state.book.book.price
+      this.sold = this.$store.state.book.book.sold
+      this.removed = this.$store.state.book.book.removed
+      this.releaseYear = this.$store.state.book.book.releaseYear
+      this.type = this.$store.state.book.book.type
+      this.premium = this.$store.state.book.book.premium
+      let added = new Date(this.$store.state.book.book.added * 1000)
       let addedMonth = added.getMonth() + 1
       if (addedMonth < 10) {
         addedMonth = '0' + addedMonth
@@ -276,10 +276,10 @@ export default {
         addedDay = '0' + addedDay
       }
       this.added = added.getFullYear() + '-' + addedMonth + '-' + addedDay
-      this.lendTo = this.$store.state.books.book.lendTo
-      this.premium = this.$store.state.books.book.premium
-      if (this.$store.state.books.book.lendOn !== null) {
-        let lendOn = new Date(this.$store.state.books.book.lendOn * 1000)
+      this.lendTo = this.$store.state.book.book.lendTo
+      this.premium = this.$store.state.book.book.premium
+      if (this.$store.state.book.book.lendOn !== null) {
+        let lendOn = new Date(this.$store.state.book.book.lendOn * 1000)
         let lendOnMonth = lendOn.getMonth() + 1
         if (lendOnMonth < 10) {
           lendOnMonth = '0' + lendOnMonth
@@ -292,7 +292,7 @@ export default {
       } else {
         this.lendOn = null
       }
-      this.genre = this.$store.state.books.book.genre.id
+      this.genre = this.$store.state.book.book.genre.id
     }
   }
 }

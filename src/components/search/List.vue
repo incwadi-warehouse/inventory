@@ -93,10 +93,10 @@ export default {
   },
   computed: {
     books: function () {
-      return this.$store.state.books.books
+      return this.$store.state.book.books
     },
     counter: function () {
-      return this.$store.state.books.counter
+      return this.$store.state.book.counter
     },
     showLoadMore: function () {
       return this.books.length < this.counter
@@ -124,7 +124,7 @@ export default {
         'filter/offset',
         this.$store.state.filter.offset + this.$store.state.filter.limit
       )
-      this.$store.dispatch('books/search')
+      this.$store.dispatch('book/search')
     },
     filter: function (type) {
       let ordering = this.$store.state.filter.orderBy
@@ -138,7 +138,7 @@ export default {
       if (ordering !== type + '_asc' && ordering !== type + '_desc') {
         this.$store.commit('filter/orderBy', type + '_asc')
       }
-      this.$store.dispatch('books/search')
+      this.$store.dispatch('book/search')
     },
     author: function (author) {
       if (author.firstname === '') {

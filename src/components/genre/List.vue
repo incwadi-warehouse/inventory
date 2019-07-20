@@ -14,16 +14,16 @@ export default {
   name: 'genre',
   computed: {
     genres: function () {
-      return this.$store.state.genres.genres
+      return this.$store.state.genre.genres
     }
   },
   methods: {
     remove: function (id) {
-      this.$store.dispatch('genres/removeGenre', id)
+      this.$store.dispatch('genre/removeGenre', id)
     }
   },
   mounted: function () {
-    this.$store.dispatch('genres/genres')
+    this.$store.dispatch('genre/genres')
   }
 }
 </script>

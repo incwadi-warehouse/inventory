@@ -28,16 +28,16 @@ export default {
   computed: {
     name: {
       get: function () {
-        return this.$store.state.genres.name
+        return this.$store.state.genre.name
       },
       set: function (name) {
-        this.$store.commit('genres/name', name)
+        this.$store.commit('genre/name', name)
       }
     }
   },
   methods: {
     create: function () {
-      this.$store.dispatch('genres/createGenre', this.name)
+      this.$store.dispatch('genre/createGenre', this.name)
     }
   }
 }

@@ -122,86 +122,86 @@ export default {
   },
   computed: {
     genres: function () {
-      return this.$store.state.genres.genres
+      return this.$store.state.genre.genres
     },
     hasCreateError: function () {
-      return this.$store.state.books.hasCreateError
+      return this.$store.state.book.hasCreateError
     },
     isDuplicate: function () {
-      return this.$store.state.books.isDuplicate
+      return this.$store.state.book.isDuplicate
     },
     title: {
       get: function () {
-        return this.$store.state.books.title
+        return this.$store.state.book.title
       },
       set: function (title) {
-        this.$store.commit('books/title', title)
+        this.$store.commit('book/title', title)
       }
     },
     firstname: {
       get: function () {
-        return this.$store.state.books.firstname
+        return this.$store.state.book.firstname
       },
       set: function (firstname) {
-        this.$store.commit('books/firstname', firstname)
+        this.$store.commit('book/firstname', firstname)
       }
     },
     surname: {
       get: function () {
-        return this.$store.state.books.surname
+        return this.$store.state.book.surname
       },
       set: function (surname) {
-        this.$store.commit('books/surname', surname)
+        this.$store.commit('book/surname', surname)
       }
     },
     price: {
       get: function () {
-        return this.$store.state.books.price
+        return this.$store.state.book.price
       },
       set: function (price) {
-        this.$store.commit('books/price', price)
+        this.$store.commit('book/price', price)
       }
     },
     releaseYear: {
       get: function () {
-        return this.$store.state.books.releaseYear
+        return this.$store.state.book.releaseYear
       },
       set: function (releaseYear) {
-        this.$store.commit('books/releaseYear', releaseYear)
+        this.$store.commit('book/releaseYear', releaseYear)
       }
     },
     type: {
       get: function () {
-        return this.$store.state.books.type
+        return this.$store.state.book.type
       },
       set: function (type) {
-        this.$store.commit('books/type', type)
+        this.$store.commit('book/type', type)
       }
     },
     premium: {
       get: function () {
-        return this.$store.state.books.premium
+        return this.$store.state.book.premium
       },
       set: function (premium) {
-        this.$store.commit('books/premium', premium)
+        this.$store.commit('book/premium', premium)
       }
     },
     genre: {
       get: function () {
-        return this.$store.state.books.genre
+        return this.$store.state.book.genre
       },
       set: function (genre) {
-        this.$store.commit('books/genre', genre)
+        this.$store.commit('book/genre', genre)
       }
     }
   },
   methods: {
     create: function () {
-      this.$store.dispatch('books/create')
+      this.$store.dispatch('book/create')
     }
   },
   mounted: function () {
-    this.$store.dispatch('genres/genres')
+    this.$store.dispatch('genre/genres')
   }
 }
 </script>

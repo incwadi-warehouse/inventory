@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     search: function () {
-      this.$store.dispatch('books/search')
+      this.$store.dispatch('book/search')
       this.$store.commit('filter/offset', 0)
     }
   },

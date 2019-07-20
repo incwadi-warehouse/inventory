@@ -82,10 +82,10 @@ export default {
   },
   computed: {
     branches: function () {
-      return this.$store.state.branches.branches
+      return this.$store.state.branch.branches
     },
     genres: function () {
-      return this.$store.state.genres.genres
+      return this.$store.state.genre.genres
     },
     sold: {
       get: function () {
@@ -93,7 +93,7 @@ export default {
       },
       set: function (sold) {
         this.$store.commit('filter/sold', sold ? 1 : 0)
-        this.$store.dispatch('books/search')
+        this.$store.dispatch('book/search')
       }
     },
     added: {
@@ -102,7 +102,7 @@ export default {
       },
       set: function (added) {
         this.$store.commit('filter/added', added)
-        this.$store.dispatch('books/search')
+        this.$store.dispatch('book/search')
       }
     },
     branch: {
@@ -111,7 +111,7 @@ export default {
       },
       set: function (branch) {
         this.$store.commit('filter/branch', branch)
-        this.$store.dispatch('books/search')
+        this.$store.dispatch('book/search')
       }
     },
     genre: {
@@ -120,7 +120,7 @@ export default {
       },
       set: function (genre) {
         this.$store.commit('filter/genreFilter', genre)
-        this.$store.dispatch('books/search')
+        this.$store.dispatch('book/search')
       }
     },
     lending: {
@@ -129,7 +129,7 @@ export default {
       },
       set: function (lending) {
         this.$store.commit('filter/lending', lending)
-        this.$store.dispatch('books/search')
+        this.$store.dispatch('book/search')
       }
     },
     releaseYear: {
@@ -138,7 +138,7 @@ export default {
       },
       set: function (releaseYear) {
         this.$store.commit('filter/releaseYear', releaseYear)
-        this.$store.dispatch('books/search')
+        this.$store.dispatch('book/search')
       }
     },
     type: {
@@ -147,7 +147,7 @@ export default {
       },
       set: function (type) {
         this.$store.commit('filter/type', type)
-        this.$store.dispatch('books/search')
+        this.$store.dispatch('book/search')
       }
     }
   },
@@ -157,8 +157,8 @@ export default {
     }
   },
   mounted: function () {
-    this.$store.dispatch('branches/branches')
-    this.$store.dispatch('genres/genres')
+    this.$store.dispatch('branch/branches')
+    this.$store.dispatch('genre/genres')
     this.$store.dispatch('user/me')
   }
 }

@@ -41,19 +41,19 @@ export default {
       return this.$store.state.showCreate
     },
     isLoading: function () {
-      return this.$store.state.books.isLoading
+      return this.$store.state.book.isLoading
     },
     tab: function () {
-      return this.$store.state.books.tab
+      return this.$store.state.book.tab
     }
   },
   methods: {
     setTab: function (tab) {
-      if (tab === this.$store.state.books.tab) {
-        this.$store.commit('books/tab', null)
+      if (tab === this.$store.state.book.tab) {
+        this.$store.commit('book/tab', null)
         return
       }
-      this.$store.commit('books/tab', tab)
+      this.$store.commit('book/tab', tab)
     },
     tabsClass: function (active) {
       return {
