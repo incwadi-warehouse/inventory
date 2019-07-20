@@ -28,7 +28,7 @@ import Create from '../components/book/Create'
 import Limit from '../components/search/Limit'
 
 export default {
-  name: 'book-view',
+  name: 'search-view',
   components: {
     Search,
     Filters,
