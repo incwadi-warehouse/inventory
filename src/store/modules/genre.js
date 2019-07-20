@@ -9,7 +9,7 @@ export default {
   },
   mutations: {
     genres (state, genres) {
-      state.genre = genres
+      state.genres = genres
     },
     genre (state, genre) {
       state.genre = genre
