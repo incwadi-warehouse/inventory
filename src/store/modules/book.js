@@ -89,6 +89,7 @@ export default {
         })
     },
     search (context) {
+      if (!context.rootState.filter.searchTerm) return
       context.commit('isLoading', true)
 
       let added = null
