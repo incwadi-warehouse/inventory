@@ -3,7 +3,7 @@
     <h1>{{ $t('genres') }}</h1>
     <ul class="list">
       <li v-for="genre in genres" :key="genre.id">
-        {{genre.name}} <button class="btn btn_link" @click="remove(genre.id)">{{ $t('remove') }}</button>
+        {{genre.name}} <button class="btn btn_link" @click="remove(genre.id)" v-if="isAdmin">{{ $t('remove') }}</button>
       </li>
     </ul>
   </section>
@@ -15,6 +15,10 @@ export default {
   computed: {
     genres: function () {
       return this.$store.state.genre.genres
+    },
+    isAdmin: function () {
+      if (!this.$store.state.user.me) return
+      return this.$store.state.user.me.roles.indexOf('ROLE_ADMIN') !== -1
     }
   },
   methods: {
