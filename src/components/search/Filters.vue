@@ -50,6 +50,12 @@
       </div>
       <div class="form_group">
         <div class="form_item">
+          <input type="checkbox" id="removed" v-model="removed">
+          <label for="removed">{{ $t('removed') }}</label>
+        </div>
+      </div>
+      <div class="form_group">
+        <div class="form_item">
           <label for="releaseYear" class="form_label">{{ $t('release_year') }}</label>
         </div>
         <div class="form_item">
@@ -89,10 +95,19 @@ export default {
     },
     sold: {
       get: function () {
-        return this.$store.state.filter.sold || true
+        return this.$store.state.filter.sold || false
       },
       set: function (sold) {
         this.$store.commit('filter/sold', sold ? 1 : 0)
+        this.$store.dispatch('book/search')
+      }
+    },
+    removed: {
+      get: function () {
+        return this.$store.state.filter.removed || false
+      },
+      set: function (removed) {
+        this.$store.commit('filter/removed', removed ? 1 : 0)
         this.$store.dispatch('book/search')
       }
     },

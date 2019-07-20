@@ -4,7 +4,8 @@ export default {
     searchTerm: null,
     offset: 0,
     limit: 20,
-    sold: true,
+    sold: false,
+    removed: false,
     added: null,
     branch: null,
     genreFilter: null,
@@ -22,6 +23,9 @@ export default {
     },
     sold (state, sold) {
       state.sold = sold === 1
+    },
+    removed (state, removed) {
+      state.removed = removed === 1
     },
     added (state, added) {
       state.added = added
@@ -54,6 +58,7 @@ export default {
       context.commit('offset', 0)
       context.commit('limit', 20)
       context.commit('sold', false)
+      context.commit('removed', false)
       context.commit('added', null)
       context.commit('branch', null)
       context.commit('genreFilter', null)

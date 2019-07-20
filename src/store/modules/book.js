@@ -122,6 +122,7 @@ export default {
             limit: context.rootState.filter.limit,
             offset: context.rootState.filter.offset,
             sold: context.rootState.filter.sold ? '1' : '0',
+            removed: context.rootState.filter.removed ? '1' : '0',
             added: added,
             branch: branch,
             genre: genre,
