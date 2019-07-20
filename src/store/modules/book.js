@@ -30,7 +30,7 @@ export default {
   },
   mutations: {
     books (state, books) {
-      state.book = books
+      state.books = books
     },
     counter (state, counter) {
       state.counter = counter
