@@ -23,7 +23,7 @@ The first objective is to make a minimum viable product (MVP). It delivers only 
 Download the files from the repository.
 
 ```shell
-git clone https://gitlab.com/incwadi/staff.git
+git clone https://gitlab.com/incwadi/inventory.git
 ```
 
 The `.env` files specify variables. You must define them for production by creating a `.env.production` file.
