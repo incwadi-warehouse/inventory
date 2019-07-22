@@ -5,6 +5,7 @@ import EditBook from '../views/EditBook'
 import About from '../views/About'
 import Genre from '../views/Genre'
 import Customer from '../views/Customer'
+import Stats from '../views/Stats'
 import NotFound from '../views/NotFound'
 
 Vue.use(Router)
@@ -39,6 +40,11 @@ export default new Router({
       path: '/customer',
       name: 'customer',
       component: Customer
+    },
+    {
+      path: '/stats',
+      name: 'stats',
+      component: Stats
     },
     {
       path: '*',

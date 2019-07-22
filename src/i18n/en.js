@@ -60,5 +60,10 @@ export default {
   reset: 'Reset',
   status: 'Status',
   removed: 'Removed',
-  sell: 'Sell'
+  sell: 'Sell',
+  stats: 'Statistics',
+  all_books: 'books in sum',
+  available_books: 'available book',
+  sold_books: 'sold books',
+  removed_books: 'removed books'
 }

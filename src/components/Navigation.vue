@@ -29,6 +29,11 @@
               {{ $t('about') }}
             </router-link>
           </li>
+          <li class="hamburger_secondary_item">
+            <router-link :to="{ name: 'stats' }">
+              {{ $t('stats') }}
+            </router-link>
+          </li>
         </ul>
         <ul class="hamburger_box">
           <li class="hamburger_secondary_item">

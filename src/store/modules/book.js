@@ -26,7 +26,8 @@ export default {
     releaseYear: 2019,
     type: 'paperback',
     premium: false,
-    genre: null
+    genre: null,
+    stats: null
   },
   mutations: {
     books (state, books) {
@@ -76,6 +77,9 @@ export default {
     },
     genre (state, genre) {
       state.genre = genre
+    },
+    stats (state, stats) {
+      state.stats = stats
     }
   },
   actions: {
@@ -203,6 +207,13 @@ export default {
     remove (context, id) {
       api(context.rootState.user.token)
         .put('/v1/book/remove/' + id)
+    },
+    stats (context) {
+      api(context.rootState.user.token)
+        .get('/v1/book/stats')
+        .then(function (response) {
+          context.commit('stats', response.data)
+        })
     }
   }
 }

@@ -1,0 +1,24 @@
+<template>
+  <section class="section section_fixed" v-if="stats">
+    <ul class="list">
+      <li><b>{{ stats.all }}</b> {{ $t('all_books') }}</li>
+      <li><b>{{ stats.available }}</b> {{ $t('available_books') }}</li>
+      <li><b>{{ stats.sold }}</b> {{ $t('sold_books') }}</li>
+      <li><b>{{ stats.removed }}</b> {{ $t('removed_books') }}</li>
+    </ul>
+  </section>
+</template>
+
+<script>
+export default {
+  name: 'stats',
+  computed: {
+    stats: function () {
+      return this.$store.state.book.stats
+    }
+  },
+  mounted: function () {
+    this.$store.dispatch('book/stats')
+  }
+}
+</script>

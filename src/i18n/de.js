@@ -60,5 +60,10 @@ export default {
   reset: 'Zurücksetzen',
   status: 'Status',
   removed: 'Entfernt',
-  sell: 'Verkaufen'
+  sell: 'Verkaufen',
+  stats: 'Statistiken',
+  all_books: 'Bücher insgesamt',
+  available_books: 'verfügbare Bücher',
+  sold_books: 'verkaufte Bücher',
+  removed_books: 'entferne Bücher'
 }
