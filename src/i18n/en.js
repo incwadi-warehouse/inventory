@@ -65,5 +65,7 @@ export default {
   all_books: 'books in sum',
   available_books: 'available book',
   sold_books: 'sold books',
-  removed_books: 'removed books'
+  removed_books: 'removed books',
+  book_created: 'The book was created successfully.',
+  book_updated: 'The book was updated successfully.'
 }

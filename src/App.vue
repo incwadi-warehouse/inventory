@@ -2,6 +2,7 @@
   <div id="app">
     <heading/>
     <main class="content" role="main">
+      <notice v-if="isAuthenticated"/>
       <router-view v-if="isAuthenticated"/>
       <login v-if="!isAuthenticated"/>
     </main>
@@ -11,13 +12,15 @@
 <script>
 import Heading from './components/Heading'
 import Login from './components/Login'
+import Notice from './components/Notice'
 import Cookies from 'js-cookie'
 
 export default {
   name: 'app',
   components: {
     Heading,
-    Login
+    Login,
+    Notice
   },
   computed: {
     isAuthenticated: function () {

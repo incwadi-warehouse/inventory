@@ -6,6 +6,7 @@ import branch from './modules/branch'
 import filter from './modules/filter'
 import customer from './modules/customer'
 import user from './modules/user'
+import notice from './modules/notice'
 
 Vue.use(Vuex)
 
@@ -16,6 +17,7 @@ export default new Vuex.Store({
     branch,
     filter,
     customer,
-    user
+    user,
+    notice
   }
 })
