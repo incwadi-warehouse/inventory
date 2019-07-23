@@ -9,6 +9,7 @@
           :placeholder="$t('search_for_title_or_author')"
           :aria-label="$t('search')"
           autofocus
+          @input="search"
           v-model="searchTerm">
       </div>
       <div class="search_options">
