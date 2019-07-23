@@ -94,6 +94,7 @@ export default {
     },
     search (context) {
       if (!context.rootState.filter.searchTerm) return
+
       context.commit('isLoading', true)
 
       let added = null
@@ -151,7 +152,7 @@ export default {
           context.commit('isLoading', false)
         })
     },
-    create (context, data) {
+    create (context) {
       api(context.rootState.user.token)
         .post('/v1/book/new', {
           title: context.state.title,
@@ -164,7 +165,7 @@ export default {
           premium: context.state.premium,
           added: Math.round(new Date().getTime() / 1000)
         })
-        .then(function (response) {
+        .then(function () {
           context.dispatch('notice/add', 'book_created', { root: true })
           context.commit('hasCreateError', false)
           context.commit('isDuplicate', false)
@@ -189,7 +190,7 @@ export default {
     update (context, data) {
       api(context.rootState.user.token)
         .put('/v1/book/' + data.id, data.params)
-        .then(function (response) {
+        .then(function () {
           context.dispatch('notice/add', 'book_updated', { root: true })
           context.commit('hasUpdateError', false)
           context.commit('isDuplicate', false)
