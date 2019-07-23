@@ -74,8 +74,15 @@ export default {
   methods: {
     logout: function () {
       this.$store.commit('user/isAuthenticated', false)
+      this.$store.commit('user/username', null)
+      this.$store.commit('user/password', null)
+      this.$store.commit('user/me', null)
+      this.$store.commit('book/tab', null)
+      this.$store.commit('book/books', [])
+      this.$store.commit('filter/searchTerm', null)
       Cookies.remove('token')
       this.$router.push({ name: 'book' })
+      this.$store.dispatch('filter/reset')
     },
     toggleMenu: function () {
       this.showMenu = !this.showMenu
