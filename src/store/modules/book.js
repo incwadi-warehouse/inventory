@@ -136,6 +136,9 @@ export default {
     },
     search (context) {
       if (!context.rootState.filter.searchTerm) return
+      let isReleaseYearInRange = context.rootState.filter.releaseYear === null || (context.rootState.filter.releaseYear >= 1000 && context.rootState.filter.releaseYear <= 9999)
+      if (!isReleaseYearInRange) return
+
       context.commit('isLoading', true)
 
       let added = null
