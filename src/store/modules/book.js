@@ -8,25 +8,38 @@ export default {
     book: {
       title: null,
       author: null,
-      genre: null,
-      added: null,
+      firstname: '',
+      surname: null,
       price: null,
-      sold: null
+      sold: false,
+      removed: false,
+      releaseYear: 2019,
+      type: 'paperpack',
+      premium: false,
+      added: null,
+      lendTo: null,
+      lendOn: null,
+      genre: null,
+      genre_id: null
     },
+    title: null,
+    author: null,
+    firstname: '',
+    surname: null,
+    genre: null,
+    added: null,
+    price: '2.50',
+    sold: null,
+    releaseYear: 2019,
+    type: 'paperback',
+    premium: false,
+
     counter: 0,
     hasCreateError: false,
     hasUpdateError: false,
     isDuplicate: false,
     tab: null,
     isLoading: false,
-    title: null,
-    firstname: '',
-    surname: null,
-    price: '2.50',
-    releaseYear: 2019,
-    type: 'paperback',
-    premium: false,
-    genre: null,
     stats: null
   },
   mutations: {
@@ -55,31 +68,57 @@ export default {
       state.isLoading = isLoading
     },
     title (state, title) {
+      state.book.title = title
       state.title = title
     },
     firstname (state, firstname) {
+      state.book.firstname = firstname
       state.firstname = firstname
     },
     surname (state, surname) {
+      state.book.surname = surname
       state.surname = surname
     },
     price (state, price) {
+      state.book.price = price
       state.price = price
     },
     releaseYear (state, releaseYear) {
+      state.book.releaseYear = releaseYear
       state.releaseYear = releaseYear
     },
     type (state, type) {
+      state.book.type = type
       state.type = type
     },
     premium (state, premium) {
+      state.book.premium = premium
       state.premium = premium
     },
     genre (state, genre) {
+      state.book.genre = genre
       state.genre = genre
+    },
+    genre_id (state, genre) {
+      state.book.genre_id = genre
     },
     stats (state, stats) {
       state.stats = stats
+    },
+    sold (state, sold) {
+      state.book.sold = sold
+    },
+    added (state, added) {
+      state.book.added = added
+    },
+    lendTo (state, lendTo) {
+      state.book.lendTo = lendTo
+    },
+    lendOn (state, lendOn) {
+      state.book.lendOn = lendOn
+    },
+    removed (state, status) {
+      state.book.removed = status
     }
   },
   actions: {
@@ -89,6 +128,9 @@ export default {
         .get('/v1/book/' + id)
         .then(function (response) {
           context.commit('book', response.data)
+          context.commit('genre_id', response.data.genre.id)
+          context.commit('firstname', response.data.author.firstname)
+          context.commit('surname', response.data.author.surname)
           context.commit('isLoading', false)
         })
     },
@@ -186,9 +228,22 @@ export default {
           }
         })
     },
-    update (context, data) {
+    update (context, id) {
       api(context.rootState.user.token)
-        .put('/v1/book/' + data.id, data.params)
+        .put('/v1/book/' + id, {
+          genre: context.state.book.genre_id,
+          title: context.state.book.title,
+          author: context.state.book.surname + ',' + context.state.firstname,
+          price: context.state.book.price,
+          sold: context.state.book.sold,
+          removed: context.state.book.removed,
+          releaseYear: context.state.book.releaseYear,
+          type: context.state.book.type,
+          premium: context.state.book.premium,
+          added: new Date(context.state.book.added).getTime() / 1000,
+          lendTo: context.state.book.lendTo,
+          lendOn: context.state.book.lendOn === '' ? null : new Date(context.state.book.lendOn).getTime() / 1000
+        })
         .then(function () {
           context.dispatch('notice/add', 'book_updated', { root: true })
           context.commit('hasUpdateError', false)

@@ -25,7 +25,7 @@
             </label>
           </div>
           <div class="form_item">
-            <select id="genre" class="form_input" required v-model="genre">
+            <select id="genre" class="form_input" required v-model="genre_id">
               <option v-for="genre in genres" :key="genre.id" :value="genre.id">
                 {{genre.name}}
               </option>
@@ -168,34 +168,19 @@ export default {
   props: ['id'],
   data () {
     return {
-      title: '',
-      firstname: '',
-      surname: '',
-      price: '2.50',
-      currency: process.env.CURRENCY,
-      sold: 0,
-      removed: 0,
-      releaseYear: null,
-      type: null,
-      premium: null,
-      added: null,
-      lendTo: null,
-      lendOn: null,
-      genre: null
+      currency: process.env.CURRENCY
     }
   },
   computed: {
-    steps: function () {
-      return process.env.STEPS
-    },
-    isLoading: function () {
-      return this.$store.state.book.isLoading
-    },
     customers: function () {
       return this.$store.state.customer.customers
     },
     genres: function () {
       return this.$store.state.genre.genres
+    },
+
+    isLoading: function () {
+      return this.$store.state.book.isLoading
     },
     hasUpdateError: function () {
       return this.$store.state.book.hasUpdateError
@@ -203,29 +188,115 @@ export default {
     isDuplicate: function () {
       return this.$store.state.book.isDuplicate
     },
-    book: function () {
-      return this.$store.state.book.book
+
+    title: {
+      get: function () {
+        return this.$store.state.book.book.title
+      },
+      set: function (title) {
+        this.$store.commit('book/title', title)
+      }
+    },
+    firstname: {
+      get: function () {
+        return this.$store.state.book.book.firstname
+      },
+      set: function (firstname) {
+        this.$store.commit('book/firstname', firstname)
+      }
+    },
+    surname: {
+      get: function () {
+        return this.$store.state.book.book.surname
+      },
+      set: function (surname) {
+        this.$store.commit('book/surname', surname)
+      }
+    },
+    price: {
+      get: function () {
+        return this.$store.state.book.book.price
+      },
+      set: function (price) {
+        this.$store.commit('book/price', price)
+      }
+    },
+    sold: {
+      get: function () {
+        return this.$store.state.book.book.sold
+      },
+      set: function (sold) {
+        this.$store.commit('book/sold', sold)
+      }
+    },
+    removed: {
+      get: function () {
+        return this.$store.state.book.book.removed
+      },
+      set: function (removed) {
+        this.$store.commit('book/removed', removed)
+      }
+    },
+    releaseYear: {
+      get: function () {
+        return this.$store.state.book.book.releaseYear
+      },
+      set: function (releaseYear) {
+        this.$store.commit('book/releaseYear', releaseYear)
+      }
+    },
+    type: {
+      get: function () {
+        return this.$store.state.book.book.type
+      },
+      set: function (type) {
+        this.$store.commit('book/type', type)
+      }
+    },
+    premium: {
+      get: function () {
+        return this.$store.state.book.book.premium
+      },
+      set: function (premium) {
+        this.$store.commit('book/premium', premium)
+      }
+    },
+    added: {
+      get: function () {
+        return this.$store.state.book.book.added
+      },
+      set: function (added) {
+        this.$store.commit('book/added', added)
+      }
+    },
+    lendTo: {
+      get: function () {
+        return this.$store.state.book.book.lendTo
+      },
+      set: function (lendTo) {
+        this.$store.commit('book/lendTo', lendTo)
+      }
+    },
+    lendOn: {
+      get: function () {
+        return this.$store.state.book.book.lendOn
+      },
+      set: function (lendOn) {
+        this.$store.commit('book/lendOn', lendOn)
+      }
+    },
+    genre_id: {
+      get: function () {
+        return this.$store.state.book.book.genre_id
+      },
+      set: function (genreId) {
+        this.$store.commit('book/genre_id', genreId)
+      }
     }
   },
   methods: {
     update: function () {
-      this.$store.dispatch('book/update', {
-        id: this.id,
-        params: {
-          genre: this.genre,
-          title: this.title,
-          author: this.surname + ',' + this.firstname,
-          price: this.price,
-          sold: this.sold,
-          removed: this.removed,
-          releaseYear: this.releaseYear,
-          type: this.type,
-          premium: this.premium,
-          added: new Date(this.added).getTime() / 1000,
-          lendTo: this.lendTo,
-          lendOn: this.lendOn === '' ? null : new Date(this.lendOn).getTime() / 1000
-        }
-      })
+      this.$store.dispatch('book/update', this.id)
     },
     setLendTo: function () {
       if (this.lendTo === null) {
@@ -242,10 +313,6 @@ export default {
         }
         this.lendOn = lendOn.getFullYear() + '-' + lendOnMonth + '-' + lendOnDay
       }
-    },
-    sell: function (book) {
-      this.$store.dispatch('book/sell', book.id)
-      this.$store.dispatch('book/book', this.id)
     }
   },
   mounted: function () {
@@ -257,15 +324,6 @@ export default {
     '$store.state.book.book': function () {
       if (!this.$store.state.book.book) return
 
-      this.title = this.$store.state.book.book.title
-      this.firstname = this.$store.state.book.book.author.firstname
-      this.surname = this.$store.state.book.book.author.surname
-      this.price = this.$store.state.book.book.price
-      this.sold = this.$store.state.book.book.sold
-      this.removed = this.$store.state.book.book.removed
-      this.releaseYear = this.$store.state.book.book.releaseYear
-      this.type = this.$store.state.book.book.type
-      this.premium = this.$store.state.book.book.premium
       let added = new Date(this.$store.state.book.book.added * 1000)
       let addedMonth = added.getMonth() + 1
       if (addedMonth < 10) {
@@ -276,8 +334,7 @@ export default {
         addedDay = '0' + addedDay
       }
       this.added = added.getFullYear() + '-' + addedMonth + '-' + addedDay
-      this.lendTo = this.$store.state.book.book.lendTo
-      this.premium = this.$store.state.book.book.premium
+
       if (this.$store.state.book.book.lendOn !== null) {
         let lendOn = new Date(this.$store.state.book.book.lendOn * 1000)
         let lendOnMonth = lendOn.getMonth() + 1
@@ -292,7 +349,6 @@ export default {
       } else {
         this.lendOn = null
       }
-      this.genre = this.$store.state.book.book.genre.id
     }
   }
 }
