@@ -11,6 +11,7 @@ import notice from './modules/notice'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  strict: process.env.NODE_ENV !== 'production',
   modules: {
     book,
     genre,
