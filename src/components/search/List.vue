@@ -18,8 +18,14 @@
               <th class="isSortable" @click="filter('genre')">
                 {{ $t('genre') }} <indicator column="genre"/>
               </th>
-              <th class="isSortable" @click="filter('added')">
+              <th class="isSortable" @click="filter('added')" v-if="sold == false && removed == false">
                 {{ $t('added') }} <indicator column="added"/>
+              </th>
+              <th class="isSortable" @click="filter('sold')" v-if="sold == true">
+                {{ $t('sold') }} <indicator column="sold"/>
+              </th>
+              <th class="isSortable" @click="filter('removed')" v-if="removed == true">
+                {{ $t('removed') }} <indicator column="removed"/>
               </th>
               <th class="isSortable" @click="filter('type')">
                 {{$t('type') }} <indicator column="type"/>
@@ -45,8 +51,14 @@
               <td>
                 {{book.genre.name}}
               </td>
-              <td>
+              <td v-if="sold == false && removed == false">
                 {{formatDate(book.added)}}
+              </td>
+              <td v-if="sold == true">
+                {{formatDate(book.sold)}}
+              </td>
+              <td v-if="removed == true">
+                {{formatDate(book.removed)}}
               </td>
               <td>
                 {{ $t(book.type) }}
@@ -100,6 +112,12 @@ export default {
     },
     showLoadMore: function () {
       return this.books.length < this.counter
+    },
+    sold: function () {
+      return this.$store.state.filter.sold
+    },
+    removed: function () {
+      return this.$store.state.filter.removed
     }
   },
   methods: {
