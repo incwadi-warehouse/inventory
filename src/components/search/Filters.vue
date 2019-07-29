@@ -131,7 +131,7 @@ export default {
     },
     genre: {
       get: function () {
-        return this.$store.state.filter.genreFilter || ['any']
+        return this.$store.state.filter.genreFilter || []
       },
       set: function (genre) {
         this.$store.commit('filter/genreFilter', genre)
