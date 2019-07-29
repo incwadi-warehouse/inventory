@@ -7,7 +7,7 @@ export default {
   },
   mutations: {
     branches (state, branches) {
-      state.branch = branches
+      state.branches = branches
     }
   },
   actions: {
