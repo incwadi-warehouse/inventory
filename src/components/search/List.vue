@@ -1,6 +1,6 @@
 <template>
   <section>
-    <section class="section section_fixed" v-if="counter">
+    <section class="section section_fixed noprint" v-if="counter">
       <p class="noprint">{{ $t('results') }}: {{ books.length }}/{{ counter }}</p>
     </section>
 
