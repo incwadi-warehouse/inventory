@@ -163,6 +163,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'edit',
   props: ['id'],
@@ -172,22 +174,14 @@ export default {
     }
   },
   computed: {
-    customers: function () {
-      return this.$store.state.customer.customers
-    },
-    genres: function () {
-      return this.$store.state.genre.genres
-    },
+    ...mapState('book', [
+      'customers',
+      'genres',
 
-    isLoading: function () {
-      return this.$store.state.book.isLoading
-    },
-    hasUpdateError: function () {
-      return this.$store.state.book.hasUpdateError
-    },
-    isDuplicate: function () {
-      return this.$store.state.book.isDuplicate
-    },
+      'isLoading',
+      'hasUpdateError',
+      'isDuplicate'
+    ]),
 
     title: {
       get: function () {
