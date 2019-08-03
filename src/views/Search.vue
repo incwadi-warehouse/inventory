@@ -1,6 +1,6 @@
 <template>
   <section>
-    <search/>
+    <search class="noprint"/>
 
     <section class="section section_fixed alignRight noprint">
       <button class="btn btn_secondary" @click="setTab('filter')">{{ $t('filter') }}</button>

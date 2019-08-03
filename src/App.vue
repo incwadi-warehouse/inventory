@@ -2,7 +2,7 @@
   <div id="app">
     <heading/>
     <main class="content" role="main">
-      <notice v-if="isAuthenticated"/>
+      <notice class="noprint" v-if="isAuthenticated"/>
       <router-view v-if="isAuthenticated"/>
       <login v-if="!isAuthenticated"/>
     </main>
@@ -59,5 +59,14 @@ export default {
 }
 .content {
   margin-top: 66px;
+}
+
+@media print {
+  .header {
+    height: 0;
+  }
+  .content {
+    margin-top: 0;
+  }
 }
 </style>
