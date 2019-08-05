@@ -296,7 +296,7 @@ export default {
       if (this.lendTo === null) {
         this.lendOn = null
       } else {
-        let lendOn = new Date()
+        const lendOn = new Date()
         let lendOnMonth = lendOn.getMonth() + 1
         if (lendOnMonth < 10) {
           lendOnMonth = '0' + lendOnMonth
@@ -318,7 +318,7 @@ export default {
     '$store.state.book.book': function () {
       if (!this.$store.state.book.book) return
 
-      let added = new Date(this.$store.state.book.book.added * 1000)
+      const added = new Date(this.$store.state.book.book.added * 1000)
       let addedMonth = added.getMonth() + 1
       if (addedMonth < 10) {
         addedMonth = '0' + addedMonth
@@ -330,7 +330,7 @@ export default {
       this.added = added.getFullYear() + '-' + addedMonth + '-' + addedDay
 
       if (this.$store.state.book.book.lendOn !== null) {
-        let lendOn = new Date(this.$store.state.book.book.lendOn * 1000)
+        const lendOn = new Date(this.$store.state.book.book.lendOn * 1000)
         let lendOnMonth = lendOn.getMonth() + 1
         if (lendOnMonth < 10) {
           lendOnMonth = '0' + lendOnMonth

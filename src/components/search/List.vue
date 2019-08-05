@@ -145,7 +145,7 @@ export default {
       this.$store.dispatch('book/search')
     },
     filter: function (type) {
-      let ordering = this.$store.state.filter.orderBy
+      const ordering = this.$store.state.filter.orderBy
 
       if (ordering === type + '_desc') {
         this.$store.commit('filter/orderBy', 'asc')

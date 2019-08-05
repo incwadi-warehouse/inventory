@@ -6,7 +6,7 @@ export default function (token) {
     timeout: 50000,
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + token
+      Authorization: 'Bearer ' + token
     }
   })
 }
