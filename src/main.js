@@ -5,6 +5,7 @@ import store from './store'
 import i18n from './i18n'
 import cssVars from 'css-vars-ponyfill'
 import 'core-js/features/promise'
+import 'core-js/features/number/parse-float'
 
 Vue.config.productionTip = false
 
