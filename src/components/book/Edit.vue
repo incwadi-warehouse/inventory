@@ -174,10 +174,13 @@ export default {
     }
   },
   computed: {
+    genres: function () {
+      return this.$store.state.genre.genres
+    },
+    customers: function () {
+      return this.$store.state.customer.customers
+    },
     ...mapState('book', [
-      'customers',
-      'genres',
-
       'isLoading',
       'hasUpdateError',
       'isDuplicate'
