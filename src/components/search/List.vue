@@ -125,10 +125,6 @@ export default {
       return new Date(timestamp * 1000).toLocaleDateString()
     },
     formatPrice: function (price) {
-      if (!Number.parseFloat) {
-        Number.parseFloat = window.parseFLoat()
-      }
-
       return Number.parseFloat(price).toLocaleString(
         undefined,
         {
