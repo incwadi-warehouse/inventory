@@ -25,13 +25,13 @@
             </router-link>
           </li>
           <li class="hamburger_secondary_item">
-            <router-link :to="{ name: 'about' }">
-              {{ $t('about') }}
+            <router-link :to="{ name: 'stats' }">
+              {{ $t('stats') }}
             </router-link>
           </li>
           <li class="hamburger_secondary_item">
-            <router-link :to="{ name: 'stats' }">
-              {{ $t('stats') }}
+            <router-link :to="{ name: 'about' }">
+              {{ $t('about') }}
             </router-link>
           </li>
         </ul>
