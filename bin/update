@@ -1,0 +1,15 @@
+#!/bin/bash
+
+tags=${1:-"0"}
+
+if [ "$tags" == 1 ]
+  then
+    git fetch
+    tag=$(git describe --tags "$(git rev-list --tags --max-count=1)")
+    git checkout "$tag"
+  else
+    git pull origin master
+fi
+
+yarn install
+yarn build
