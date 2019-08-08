@@ -3,7 +3,7 @@
     <button class="btn btn_link floatRight" @click="resetFilters">
       {{ $t('reset') }}
     </button>
-    <form class="form" @submit.prevent="find">
+    <form class="form" @submit.prevent>
       <div class="form_group">
         <div class="form_item">
           <label for="orderBy" class="form_label">{{ $t('order_by') }}</label>
