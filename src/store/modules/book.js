@@ -46,6 +46,9 @@ export default {
     books (state, books) {
       state.books = books
     },
+    addBook (state, book) {
+      state.books.push(book)
+    },
     counter (state, counter) {
       state.counter = counter
     },
@@ -184,11 +187,9 @@ export default {
         })
         .then(function (response) {
           if (context.rootState.filter.offset >= 1) {
-            const books = context.state.book
             response.data.books.forEach(book => {
-              books.push(book)
+              context.commit('addBook', book)
             })
-            context.commit('books', books)
           } else {
             context.commit('books', response.data.books)
             context.commit('counter', response.data.counter)
