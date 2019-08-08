@@ -79,6 +79,7 @@ export default {
       this.$store.commit('user/me', null)
       this.$store.commit('book/tab', null)
       this.$store.commit('book/books', [])
+      this.$store.commit('book/counter', 0)
       this.$store.commit('filter/searchTerm', null)
       Cookies.remove('token')
       this.$router.push({ name: 'book' })
