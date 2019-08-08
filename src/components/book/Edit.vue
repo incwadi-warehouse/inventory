@@ -296,7 +296,7 @@ export default {
       this.$store.dispatch('book/update', this.id)
     },
     setLendTo: function () {
-      if (this.lendTo === null) {
+      if (this.lendTo === '') {
         this.lendOn = null
       } else {
         const lendOn = new Date()
