@@ -1,7 +1,7 @@
 <template>
   <section>
-    <section class="section section_fixed">
-      <aside class="notice notice_red" v-if="hasUpdateError">
+    <section class="section section_fixed" v-if="hasUpdateError">
+      <aside class="notice notice_red">
         <p class="notice_entry" v-if="!isDuplicate">
         {{ $t('book_not_valid') }}
         </p>
