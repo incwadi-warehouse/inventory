@@ -58,18 +58,12 @@ export default {
       this.showContextMenu = false
     },
     sell: function (book) {
-      const books = this.books
-      const id = books.indexOf(book)
-      books.splice(id, 1)
-      this.$store.commit('book/books', books)
+      this.$store.commit('book/removeBook', book)
       this.$store.commit('filter/offset', this.$store.state.filter.offset - 1)
       this.$store.dispatch('book/sell', book.id)
     },
     remove: function (book) {
-      const books = this.books
-      const id = books.indexOf(book)
-      books.splice(id, 1)
-      this.$store.commit('book/books', books)
+      this.$store.commit('book/removeBook', book)
       this.$store.commit('filter/offset', this.$store.state.filter.offset - 1)
       this.$store.dispatch('book/remove', book.id)
     }

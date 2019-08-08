@@ -49,6 +49,10 @@ export default {
     addBook (state, book) {
       state.books.push(book)
     },
+    removeBook (state, book) {
+      const id = state.books.indexOf(book)
+      state.books.splice(id, 1)
+    },
     counter (state, counter) {
       state.counter = counter
     },
