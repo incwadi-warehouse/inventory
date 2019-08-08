@@ -26,7 +26,7 @@
           </div>
           <div class="form_item">
             <select id="genre" class="form_input" required v-model="genre_id">
-              <option v-for="genre in genres" :key="genre.id" :value="genre.id">
+              <option v-for="genre in genres" :key="genre.id" :value="genre ? genre.id : null">
                 {{genre.name}}
               </option>
             </select>
