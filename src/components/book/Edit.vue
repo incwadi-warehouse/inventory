@@ -100,7 +100,7 @@
             </label>
           </div>
           <div class="form_item">
-            <input type="text" id="price" class="form_input" pattern="^\d+(\.|,)\d{2}$" required v-model="price">
+            <input type="text" id="price" class="form_input" pattern="^\d+(\.|,)?\d{0,2}$" required v-model="price">
           </div>
         </div>
         <div class="form_group">
