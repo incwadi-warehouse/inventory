@@ -67,5 +67,6 @@ export default {
   sold_books: 'sold books',
   removed_books: 'removed books',
   book_created: 'The book was created successfully.',
-  book_updated: 'The book was updated successfully.'
+  book_updated: 'The book was updated successfully.',
+  removing_customer_not_possible: 'The customer could not be removed. Make sure there is no lend active.'
 }

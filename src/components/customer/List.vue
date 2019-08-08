@@ -2,6 +2,12 @@
   <section class="section section_fixed">
     <h1>{{ $t('customers') }}</h1>
 
+    <aside class="notice notice_red" v-if="hasRemoveError">
+      <p class="notice_entry">
+        {{ $t('removing_customer_not_possible') }}
+      </p>
+    </aside>
+
     <div class="card">
       <div class="card_item" v-for="customer in customers" :key="customer.id">
         <ul class="card_options" v-if="isAdmin">
@@ -31,6 +37,9 @@ export default {
     isAdmin: function () {
       if (!this.$store.state.user.me) return
       return this.$store.state.user.me.roles.indexOf('ROLE_ADMIN') !== -1
+    },
+    hasRemoveError: function () {
+      return this.$store.state.customer.hasRemoveError
     }
   },
   methods: {

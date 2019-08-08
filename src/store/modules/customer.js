@@ -3,11 +3,15 @@ import api from '../../api'
 export default {
   namespaced: true,
   state: {
-    customers: null
+    customers: null,
+    hasRemoveError: false
   },
   mutations: {
     customers (state, customers) {
       state.customers = customers
+    },
+    hasRemoveError (state, status) {
+      state.hasRemoveError = status
     }
   },
   actions: {
@@ -32,6 +36,9 @@ export default {
         .delete('/v1/customer/' + id)
         .then(function (response) {
           context.dispatch('customers')
+        })
+        .catch(function () {
+          context.commit('hasRemoveError', true)
         })
     }
   }
