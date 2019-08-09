@@ -47,35 +47,11 @@ export default {
 </script>
 
 <style>
-.search {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  border: 2px solid var(--color-brand);
-  border-radius: 5px;
-  overflow: auto;
-}
-.search_main {
-  flex-grow: 1;
-}
-.search_options {
-  padding: 0;
-  width: 100%;
-}
-.search_input {
-  border: 0 hidden;
-  width: 100%;
-  font-size: 26px;
-}
 .search_btn {
   border-radius: 0;
-  width: 100%;
 }
-@media all and (min-width: 500px) {
-  .search_options {
-    width: auto;
-  }
+.search_btn:hover,
+.search_btn:focus {
+  transform: scale(1);
 }
 </style>
