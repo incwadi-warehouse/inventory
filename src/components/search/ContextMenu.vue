@@ -1,8 +1,8 @@
 <template>
   <span>
     <button class="btn btn_link" @click="toggleContextMenu">
-      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25.000001 25.000001">
-        <path d="M10 2h5v5h-5zm0 16h5v5h-5zm0-8h5v5h-5z" class="icon"/>
+      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25.000001 25.000001" class="icon">
+        <path d="M10 2h5v5h-5zm0 16h5v5h-5zm0-8h5v5h-5z"/>
       </svg>
     </button>
     <ul class="contextMenu" :style="style" v-if="showContextMenu" @mouseleave="closeContextMenu">
