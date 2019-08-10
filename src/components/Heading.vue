@@ -1,16 +1,12 @@
 <template>
-  <header class="header">
-    <div class="header_left">
-      <div class="header_item">
-        <router-link :to="{ name: 'book' }">
-          <img :src=logo width="210" alt="incwadi" loading="lazy">
-        </router-link>
-      </div>
+  <header class="masthead">
+    <div class="masthead_logo">
+      <router-link :to="{ name: 'book' }">
+        <img :src=logo width="210" alt="incwadi" loading="lazy">
+      </router-link>
     </div>
-    <div class="header_right">
-      <div class="header_item">
-        <navigation/>
-      </div>
+    <div class="masthead_nav">
+      <navigation/>
     </div>
   </header>
 </template>
