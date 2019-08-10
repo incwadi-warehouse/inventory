@@ -13,7 +13,7 @@
           v-model="searchTerm">
       </div>
       <div class="search_options">
-        <button class="btn btn_branded search_btn" @click.prevent="search">
+        <button class="search_btn" @click.prevent="search">
           {{ $t('find') }}
         </button>
       </div>
@@ -45,13 +45,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.search_btn {
-  border-radius: 0;
-}
-.search_btn:hover,
-.search_btn:focus {
-  transform: scale(1);
-}
-</style>
