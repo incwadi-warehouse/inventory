@@ -32,6 +32,10 @@ export default {
       '--color-brand',
       process.env.BRAND_COLOR
     )
+    document.documentElement.style.setProperty(
+      '--masthead-height',
+      '66px'
+    )
 
     if (Cookies.get('token') !== undefined) {
       this.$store.commit('user/isAuthenticated', true)
@@ -43,24 +47,6 @@ export default {
 <style src="../node_modules/baldeweg_ui/dist/style.min.css"></style>
 
 <style>
-.header,
-.hamburger_item {
-  height: 66px;
-}
-.hamburger_item {
-  margin-top: 20px;
-}
-.hamburger_item:hover .hamburger_secondary,
-.hamburger_item.isActive .hamburger_secondary {
-  top: 66px;
-}
-.hamburger_secondary_item {
-  text-align: left;
-}
-.content {
-  margin-top: 66px;
-}
-
 @media print {
   .header {
     height: 0;
