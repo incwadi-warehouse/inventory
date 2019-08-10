@@ -12,17 +12,17 @@
         </router-link>
       </li>
       <li class="contextMenu_item">
-        <button class="btn btn_link" @click="sell(book)" v-if="!book.sold">
+        <button class="contextMenu_btn" @click="sell(book)" v-if="!book.sold">
           {{ $t('sell') }}
         </button>
       </li>
       <li class="contextMenu_item">
-        <button class="btn btn_link" @click="remove(book)" v-if="!book.removed">
+        <button class="contextMenu_btn" @click="remove(book)" v-if="!book.removed">
           {{ $t('remove') }}
         </button>
       </li>
       <li class="contextMenu_item">
-        <button class="btn btn_link" @click="closeContextMenu">
+        <button class="contextMenu_btn" @click="closeContextMenu">
           {{ $t('close') }}
         </button>
       </li>
@@ -70,3 +70,9 @@ export default {
   }
 }
 </script>
+
+<style>
+.contextMenu a {
+  color: var(--color-fontDark);
+}
+</style>
