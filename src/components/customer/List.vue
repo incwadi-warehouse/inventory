@@ -52,9 +52,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.icon {
-  fill: var(--color-fontDark);
-}
-</style>
