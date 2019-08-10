@@ -6,22 +6,28 @@
       </router-link>
     </div>
     <div class="masthead_nav">
-      <navigation/>
+      <ul class="nav">
+        <li class="nav_item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25.000001 25.000001" class="icon" @click="toggleMenu">
+            <path d="M0 2h25v4H0zm0 16h25v4H0zm0-8h25v4H0z"/>
+          </svg>
+        </li>
+      </ul>
     </div>
   </header>
 </template>
 
 <script>
-import Navigation from './Navigation'
-
 export default {
   name: 'heading',
-  components: {
-    Navigation
-  },
   computed: {
     logo: function () {
       return require('../../' + process.env.LOGO)
+    }
+  },
+  methods: {
+    toggleMenu: function () {
+      this.$store.dispatch('navigation/toggleOffCanvas')
     }
   }
 }

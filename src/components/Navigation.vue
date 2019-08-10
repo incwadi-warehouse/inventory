@@ -1,53 +1,47 @@
 <template>
-  <ul class="hamburger" v-if="isAuthenticated">
-    <li :class="menu">
-      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25.000001 25.000001" class="icon" @click="toggleMenu">
-        <path d="M0 2h25v4H0zm0 16h25v4H0zm0-8h25v4H0z"/>
+  <div :class="{offcanvas: true, isActive: showOffCanvas}" v-if="isAuthenticated">
+    <div class="offcanvas_header">
+      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 50 50" class="icon floatRight" @click="toggleCanvas">
+        <path
+          d="M44.987 9.643l-15.35 15.349 15.35 15.35-4.685 4.684-15.349-15.35-15.35 15.35-4.629-4.63 15.35-15.349-15.35-15.35L9.66 5.014l15.35 15.35 15.348-15.35z" />
       </svg>
-      <div class="hamburger_secondary" @click="closeMenu">
-        <ul class="hamburger_box">
-          <li class="hamburger_secondary_item">
-            {{ $t('menu') }}
-          </li>
-          <li class="hamburger_secondary_item">
-            <router-link :to="{ name: 'book' }">
-              {{ $t('search') }}
-            </router-link>
-          </li>
-          <li class="hamburger_secondary_item">
-            <router-link :to="{ name: 'genre' }">
-              {{ $t('genres') }}
-            </router-link>
-          </li>
-          <li class="hamburger_secondary_item">
-            <router-link :to="{ name: 'customer' }">
-              {{ $t('customers') }}
-            </router-link>
-          </li>
-          <li class="hamburger_secondary_item">
-            <router-link :to="{ name: 'stats' }">
-              {{ $t('stats') }}
-            </router-link>
-          </li>
-          <li class="hamburger_secondary_item">
-            <router-link :to="{ name: 'about' }">
-              {{ $t('about') }}
-            </router-link>
-          </li>
-        </ul>
-        <ul class="hamburger_box">
-          <li class="hamburger_secondary_item">
-            {{ $t('profile') }}
-          </li>
-          <li class="hamburger_secondary_item">
-            <a href="/logout" @click.prevent="logout">
-              {{ $t('logout') }}
-            </a>
-          </li>
-        </ul>
-      </div>
-    </li>
-  </ul>
+    </div>
+    <ul class="offcanvas_nav">
+      <li class="offcanvas_item">
+        <router-link :to="{ name: 'book' }">
+          {{ $t('search') }}
+        </router-link>
+      </li>
+      <li class="offcanvas_item">
+        <router-link :to="{ name: 'genre' }">
+          {{ $t('genres') }}
+        </router-link>
+      </li>
+      <li class="offcanvas_item">
+        <router-link :to="{ name: 'customer' }">
+          {{ $t('customers') }}
+        </router-link>
+      </li>
+      <li class="offcanvas_item">
+        <router-link :to="{ name: 'stats' }">
+          {{ $t('stats') }}
+        </router-link>
+      </li>
+      <li class="offcanvas_item">
+        <router-link :to="{ name: 'about' }">
+          {{ $t('about') }}
+        </router-link>
+      </li>
+    </ul>
+    <hr>
+    <ul class="offcanvas_nav">
+      <li class="offcanvas_item">
+        <a href="/logout" @click.prevent="logout">
+          {{ $t('logout') }}
+        </a>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -66,9 +60,12 @@ export default {
     },
     menu: function () {
       return {
-        hamburger_item: true,
+        offcanvas_item: true,
         isActive: this.showMenu
       }
+    },
+    showOffCanvas: function () {
+      return this.$store.state.navigation.showOffCanvas
     }
   },
   methods: {
@@ -91,6 +88,9 @@ export default {
     closeMenu: function () {
       if (!this.showMenu) return
       this.showMenu = false
+    },
+    toggleCanvas: function () {
+      this.$store.dispatch('navigation/toggleOffCanvas')
     }
   }
 }

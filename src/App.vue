@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <heading/>
+    <navigation/>
     <main class="content" role="main">
       <notice class="noprint" v-if="isAuthenticated"/>
       <router-view v-if="isAuthenticated"/>
@@ -13,6 +14,7 @@
 import Heading from './components/Heading'
 import Login from './components/Login'
 import Notice from './components/Notice'
+import Navigation from './components/Navigation'
 import Cookies from 'js-cookie'
 
 export default {
@@ -20,7 +22,8 @@ export default {
   components: {
     Heading,
     Login,
-    Notice
+    Notice,
+    Navigation
   },
   computed: {
     isAuthenticated: function () {
