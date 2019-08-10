@@ -78,9 +78,10 @@ export default {
       this.$store.commit('book/books', [])
       this.$store.commit('book/counter', 0)
       this.$store.commit('filter/searchTerm', null)
+      this.$store.dispatch('filter/reset')
+      this.$store.commit('navigation/showOffCanvas', false)
       Cookies.remove('token')
       this.$router.push({ name: 'book' })
-      this.$store.dispatch('filter/reset')
     },
     toggleMenu: function () {
       this.showMenu = !this.showMenu
