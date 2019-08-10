@@ -25,8 +25,8 @@
       </div>
       <div class="form_group">
         <div class="form_item alignRight">
-          <button class="btn btn_branded" @click.prevent="login" v-if="!isLoggingIn">{{ $t('login') }}</button>
-          <button class="btn btn_secondary" v-if="isLoggingIn">
+          <button class="btn btn_primary" @click.prevent="login" v-if="!isLoggingIn">{{ $t('login') }}</button>
+          <button class="btn btn_outline" v-if="isLoggingIn">
             <div class="spinner spinner-s"></div>
           </button>
         </div>

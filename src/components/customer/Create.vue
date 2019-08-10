@@ -13,7 +13,7 @@
       </div>
       <div class="form_group">
         <div class="form_item alignRight">
-          <button class="btn btn_secondary" @click.prevent="create">
+          <button class="btn btn_outline" @click.prevent="create">
             {{ $t('create') }}
           </button>
         </div>

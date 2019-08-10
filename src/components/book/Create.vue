@@ -104,7 +104,7 @@
         </div>
         <div class="form_group">
           <div class="form_item alignRight">
-            <button type="submit" class="btn btn_branded">{{ $t('add') }}</button>
+            <button type="submit" class="btn btn_primary">{{ $t('add') }}</button>
           </div>
         </div>
       </form>
