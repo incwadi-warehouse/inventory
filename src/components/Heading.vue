@@ -5,7 +5,7 @@
         <img :src=logo width="210" alt="incwadi" loading="lazy">
       </router-link>
     </div>
-    <div class="masthead_nav">
+    <div class="masthead_nav" v-if="isAuthenticated">
       <ul class="nav">
         <li class="nav_item">
           <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25.000001 25.000001" class="icon" @click="toggleMenu">
@@ -23,6 +23,9 @@ export default {
   computed: {
     logo: function () {
       return require('../../' + process.env.LOGO)
+    },
+    isAuthenticated: function () {
+      return this.$store.state.user.isAuthenticated
     }
   },
   methods: {
