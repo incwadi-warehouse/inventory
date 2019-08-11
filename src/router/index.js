@@ -7,10 +7,11 @@ import Genre from '../views/Genre'
 import Customer from '../views/Customer'
 import Stats from '../views/Stats'
 import NotFound from '../views/NotFound'
+import store from '../store'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   linkActiveClass: '',
   linkExactActiveClass: '',
@@ -52,3 +53,10 @@ export default new Router({
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  store.commit('navigation/showOffCanvas', false)
+  next()
+})
+
+export default router
