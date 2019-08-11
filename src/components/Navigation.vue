@@ -81,7 +81,6 @@ export default {
       this.$store.dispatch('filter/reset')
       this.$store.commit('navigation/showOffCanvas', false)
       Cookies.remove('token')
-      this.$router.push({ name: 'book' })
     },
     toggleMenu: function () {
       this.showMenu = !this.showMenu
