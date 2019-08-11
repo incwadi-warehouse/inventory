@@ -1,10 +1,5 @@
 <template>
   <header class="masthead">
-    <div class="masthead_logo">
-      <router-link :to="{ name: 'book' }">
-        <img :src=logo width="210" alt="incwadi" loading="lazy">
-      </router-link>
-    </div>
     <div class="masthead_nav" v-if="isAuthenticated">
       <ul class="nav">
         <li class="nav_item">
@@ -13,6 +8,18 @@
           </svg>
         </li>
       </ul>
+    </div>
+    <div class="masthead_logo">
+      <router-link :to="{ name: 'book' }">
+        <img :src=logo width="210" alt="incwadi" loading="lazy">
+      </router-link>
+    </div>
+    <div class="masthead_settings">
+      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 50 50" class="icon">
+        <g>
+          <path d="M20 4h10v10H20zM20 36h10v10H20zM20 20h10v10H20z"/>
+        </g>
+      </svg>
     </div>
   </header>
 </template>
@@ -35,3 +42,17 @@ export default {
   }
 }
 </script>
+
+<style>
+  .masthead_nav {
+    float: left;
+  }
+  .masthead_logo {
+    flex-grow: 2;
+    text-align: center;
+  }
+  .masthead_settings {
+    float: right;
+    margin: 0 20px;
+  }
+</style>
