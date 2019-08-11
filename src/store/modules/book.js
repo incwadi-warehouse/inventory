@@ -197,6 +197,7 @@ export default {
           } else {
             context.commit('books', response.data.books)
             context.commit('counter', response.data.counter)
+            context.commit('filter/offset', context.rootState.book.books.length, { root: true })
           }
           context.commit('isLoading', false)
         })
