@@ -14,7 +14,7 @@
       </div>
       <div class="search_options">
         <button class="search_btn" @click.prevent="search">
-          {{ $t('find') }}
+          {{ $t('search') }}
         </button>
       </div>
     </form>

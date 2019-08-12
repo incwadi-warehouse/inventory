@@ -15,7 +15,6 @@ export default {
   username: 'Username',
   password: 'Password',
   search: 'Search',
-  find: 'Find',
   new: 'New',
   name: 'Name',
   license: 'This project is made by André Baldeweg an is MIT-licensed',
