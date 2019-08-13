@@ -1,5 +1,5 @@
 <template>
-  <section class="section section_fixed">
+  <section class="container container_m">
     <h2>{{ $t('new') }}</h2>
 
     <form class="form" @submit.prevent="create">

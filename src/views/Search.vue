@@ -2,7 +2,7 @@
   <section>
     <search class="noprint"/>
 
-    <section class="section section_fixed alignRight noprint">
+    <section class="container container_m alignRight noprint">
       <button class="btn btn_outline" @click="setTab('filter')">{{ $t('filter') }}</button>
       <button class="btn btn_outline" @click="setTab('limit')">{{ $t('limit') }}</button>
       <button class="btn btn_outline" @click="setTab('create')">{{ $t('catalog') }}</button>
@@ -12,7 +12,7 @@
     <limit class="noprint" v-if="tab === 'limit'"/>
     <create class="noprint" v-if="tab === 'create'"/>
 
-    <section class="section section_fixed" v-if="isLoading">
+    <section class="container container_m" v-if="isLoading">
       <div class="spinner spinner-l"></div>
     </section>
 

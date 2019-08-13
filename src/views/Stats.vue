@@ -1,6 +1,6 @@
 <template>
   <section>
-    <section class="section section_fixed">
+    <section class="container container_m">
       <h1>{{ $t('stats') }}</h1>
     </section>
 

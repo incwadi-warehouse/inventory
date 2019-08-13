@@ -1,5 +1,5 @@
 <template>
-  <section class="section section_fixed">
+  <section class="container container_m">
     <button class="btn btn_link floatRight" @click="resetFilters">
       {{ $t('reset') }}
     </button>

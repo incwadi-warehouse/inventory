@@ -1,5 +1,5 @@
 <template>
-  <section class="section section_fixed">
+  <section class="container container_m">
     <h1>{{ $t('genres') }}</h1>
 
     <div class="card">

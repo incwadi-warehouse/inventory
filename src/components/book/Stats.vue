@@ -1,5 +1,5 @@
 <template>
-  <section class="section section_fixed" v-if="stats">
+  <section class="container container_m" v-if="stats">
     <ul class="list">
       <li><b>{{ stats.all }}</b> {{ $t('all_books') }}</li>
       <li><b>{{ stats.available }}</b> {{ $t('available_books') }}</li>

@@ -1,5 +1,5 @@
 <template>
-  <section class="section section_fixed">
+  <section class="container container_m">
     <h1>{{ $t('login') }}</h1>
 
     <aside class="notice notice_red" v-if="hasLoginError">

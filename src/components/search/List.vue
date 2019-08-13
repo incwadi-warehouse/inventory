@@ -1,10 +1,10 @@
 <template>
   <section>
-    <section class="section section_fixed noprint" v-if="counter">
+    <section class="container container_m noprint" v-if="counter">
       <p class="noprint">{{ $t('results') }}: {{ books.length }}/{{ counter }}</p>
     </section>
 
-    <section class="section section_fixed" v-if="counter">
+    <section class="container container_m" v-if="counter">
       <div class="table_wrapper">
         <table class="table">
           <thead>
@@ -78,7 +78,7 @@
       </div>
     </section>
 
-    <section class="section section_fixed" v-if="showLoadMore">
+    <section class="container container_m" v-if="showLoadMore">
       <div class="alignCenter noprint">
         <button class="btn btn_outline btn_outline_wide" @click="reload">
           {{ $t('load_more') }}

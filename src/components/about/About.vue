@@ -1,5 +1,5 @@
 <template>
-  <section class="section section_fixed">
+  <section class="container container_m">
     <h1>incwadi</h1>
     <p>{{ $t('license') }}</p>
     <p>{{ $t('repo') }}</p>

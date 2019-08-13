@@ -1,6 +1,6 @@
 <template>
   <section>
-    <section class="section section_fixed" v-if="hasUpdateError">
+    <section class="container container_m" v-if="hasUpdateError">
       <aside class="notice notice_red">
         <p class="notice_entry" v-if="!isDuplicate">
         {{ $t('book_not_valid') }}
@@ -11,11 +11,11 @@
       </aside>
     </section>
 
-    <section class="section section_fixed" v-if="isLoading">
+    <section class="container container_m" v-if="isLoading">
       <div class="spinner spinner-l"></div>
     </section>
 
-    <section class="section section_fixed" v-if="!isLoading">
+    <section class="container container_m" v-if="!isLoading">
       <h1>{{ $t('edit_book') }}</h1>
       <form class="form" @submit.prevent="update">
         <div class="form_group">

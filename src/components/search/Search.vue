@@ -1,5 +1,5 @@
 <template>
-  <section class="section section_fixed">
+  <section class="container container_m">
     <form class="search" @submit.prevent="search">
       <div class="search_main">
         <input
