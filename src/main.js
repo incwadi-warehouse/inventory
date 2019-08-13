@@ -11,7 +11,7 @@ Vue.config.productionTip = false
 
 cssVars({
   variables: {
-    'color-brand': process.env.BRAND_COLOR
+    'color-primary': process.env.BRAND_COLOR
   }
 })
 
