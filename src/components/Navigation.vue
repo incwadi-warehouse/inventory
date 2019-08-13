@@ -1,7 +1,7 @@
 <template>
-  <section>
+  <div class="offcanvas">
     <div :class="{offcanvas_overlay: true, isActive: showOffCanvas}" @click="toggleCanvas"></div>
-    <div :class="{offcanvas: true, isActive: showOffCanvas}" v-if="isAuthenticated">
+    <div :class="{offcanvas_container: true, isActive: showOffCanvas}" v-if="isAuthenticated">
       <div class="offcanvas_header">
         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 50 50" class="icon floatRight" @click="toggleCanvas">
           <path
@@ -44,7 +44,7 @@
         </li>
       </ul>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>
@@ -98,21 +98,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.offcanvas_overlay {
-  visibility: hidden;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: var(--color-backgroundDark);
-  opacity: 0;
-  transition: visibility 0.2s, opacity 0.2s;
-}
-.offcanvas_overlay.isActive {
-  visibility: visible;
-  opacity: 0.7;
-}
-</style>

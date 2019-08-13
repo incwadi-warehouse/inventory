@@ -42,17 +42,3 @@ export default {
   }
 }
 </script>
-
-<style>
-  .masthead_nav {
-    float: left;
-  }
-  .masthead_logo {
-    flex-grow: 2;
-    text-align: center;
-  }
-  .masthead_settings {
-    float: right;
-    margin: 0 20px;
-  }
-</style>

@@ -18,17 +18,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.notifications {
-  max-width: 500px;
-}
-.notification {
-  background: var(--color-background);
-}
-@media all and (min-width: 500px) {
-  .notifications {
-    margin-left: -250px;
-  }
-}
-</style>

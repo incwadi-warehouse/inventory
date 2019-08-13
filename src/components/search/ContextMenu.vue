@@ -70,9 +70,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.contextMenu a {
-  color: var(--color-fontDark);
-}
-</style>
