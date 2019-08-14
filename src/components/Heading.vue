@@ -15,7 +15,7 @@
       </router-link>
     </div>
     <div class="masthead_settings">
-      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 50 50" class="icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 50 50" class="icon" @click="logout">
         <g>
           <path d="M20 4h10v10H20zM20 36h10v10H20zM20 20h10v10H20z"/>
         </g>
@@ -25,6 +25,8 @@
 </template>
 
 <script>
+import Cookies from 'js-cookie'
+
 export default {
   name: 'heading',
   computed: {
@@ -38,6 +40,19 @@ export default {
   methods: {
     toggleMenu: function () {
       this.$store.dispatch('navigation/toggleOffCanvas')
+    },
+    logout: function () {
+      this.$store.commit('user/isAuthenticated', false)
+      this.$store.commit('user/username', null)
+      this.$store.commit('user/password', null)
+      this.$store.commit('user/me', null)
+      this.$store.commit('book/tab', null)
+      this.$store.commit('book/books', [])
+      this.$store.commit('book/counter', 0)
+      this.$store.commit('filter/searchTerm', null)
+      this.$store.dispatch('filter/reset')
+      this.$store.commit('navigation/showOffCanvas', false)
+      Cookies.remove('token')
     }
   }
 }
