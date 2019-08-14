@@ -14,7 +14,7 @@
         <img :src=logo width="210" alt="incwadi" loading="lazy">
       </router-link>
     </div>
-    <div class="masthead_settings">
+    <div class="masthead_settings" v-if="isAuthenticated">
       <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 50 50" class="icon" @click="logout">
         <g>
           <path d="M20 4h10v10H20zM20 36h10v10H20zM20 20h10v10H20z"/>
