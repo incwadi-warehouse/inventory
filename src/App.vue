@@ -46,6 +46,12 @@ export default {
 <style src="../node_modules/baldeweg_ui/dist/style.min.css"></style>
 
 <style>
+input[type=search]::-ms-clear {
+  display: none;
+  width : 0;
+  height: 0;
+}
+
 @media print {
   .header {
     height: 0;
