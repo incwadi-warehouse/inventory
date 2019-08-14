@@ -35,10 +35,6 @@ export default {
       '--color-primary',
       process.env.BRAND_COLOR
     )
-    document.documentElement.style.setProperty(
-      '--masthead-height',
-      '66px'
-    )
 
     if (Cookies.get('token') !== undefined) {
       this.$store.commit('user/isAuthenticated', true)
