@@ -8,10 +8,6 @@ incwadi is a book database to manage a lot of books.
 
 An article can be found here https://medium.com/@A.Baldeweg/i-was-trying-new-things-accf33792e86
 
-## Future
-
-The first objective is to make a minimum viable product (MVP). It delivers only the features actually needed to be usable. As soon as this is done version 1.0.0 will be released. After that I will start developing new features. The development will follow the principles of lean development. Building small features, try it and decide wether it makes sense to invest more time into it.
-
 ## Requirements
 
 - NodeJS 10LTS
@@ -43,7 +39,7 @@ LOGO=src/assets/logo.png
 LOCALE=en
 ```
 
-Please change the values to your needs. For more informations refer to the section Options.
+Please change the values to your needs. For more informations refer to the section "Options".
 
 Start the build process.
 
@@ -87,7 +83,7 @@ These options are used in the `.env` files.
 - CURRENCY - The currency shown in the app.
 - BRAND_COLOR - The hex code of your desired color.
 - LOGO - Path to your custom logo.
-- LOCALE - Choose your language
+- LOCALE - Choose your language (en, de)
 
 ## CLI
 
