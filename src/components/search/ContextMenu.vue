@@ -40,11 +40,6 @@ export default {
       style: {}
     }
   },
-  computed: {
-    books: function () {
-      return this.$store.state.book.books
-    }
-  },
   methods: {
     toggleContextMenu: function (event) {
       this.showContextMenu = !this.showContextMenu
