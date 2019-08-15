@@ -5,7 +5,7 @@ export default {
   state: {
     genres: [],
     genre: null,
-    name: ''
+    name: null
   },
   mutations: {
     genres (state, genres) {
@@ -26,17 +26,17 @@ export default {
           context.commit('genres', response.data.genres)
         })
     },
-    createGenre (context) {
+    create (context) {
       api(context.rootState.user.token)
         .post('/v1/genre/new', {
           name: context.state.name
         })
         .then(function () {
-          context.commit('name', '')
+          context.commit('name', null)
           context.dispatch('genres')
         })
     },
-    removeGenre (context, id) {
+    remove (context, id) {
       api(context.rootState.user.token)
         .delete('/v1/genre/' + id)
         .then(function () {

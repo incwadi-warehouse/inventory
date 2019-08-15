@@ -36,7 +36,7 @@ export default {
   },
   methods: {
     remove: function (id) {
-      this.$store.dispatch('genre/removeGenre', id)
+      this.$store.dispatch('genre/remove', id)
     }
   },
   created: function () {
