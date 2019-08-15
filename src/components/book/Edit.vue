@@ -16,7 +16,6 @@
     </section>
 
     <section class="container container_m" v-if="!isLoading">
-      <h1>{{ $t('edit_book') }}</h1>
       <form class="form" @submit.prevent="update">
         <div class="form_group">
           <div class="form_item">

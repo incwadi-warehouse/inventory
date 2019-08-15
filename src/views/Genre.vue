@@ -1,5 +1,8 @@
 <template>
   <section>
+    <section class="container container_m">
+      <h1>{{ $t('genres') }}</h1>
+    </section>
     <list/>
     <create v-if="showForm"/>
   </section>

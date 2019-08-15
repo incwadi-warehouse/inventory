@@ -1,7 +1,5 @@
 <template>
   <section class="container container_m">
-    <h1>{{ $t('customers') }}</h1>
-
     <aside class="notice notice_red" v-if="hasRemoveError">
       <p class="notice_entry">
         {{ $t('removing_customer_not_possible') }}

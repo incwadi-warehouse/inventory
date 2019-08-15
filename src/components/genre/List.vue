@@ -1,7 +1,5 @@
 <template>
   <section class="container container_m">
-    <h1>{{ $t('genres') }}</h1>
-
     <div class="card">
       <div class="card_item" v-for="genre in genres" :key="genre.id">
         <ul class="card_options" v-if="isAdmin">
