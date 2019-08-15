@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     openOffCanvas: function () {
-      this.$store.dispatch('navigation/showOffCanvas', true)
+      this.$store.commit('navigation/showOffCanvas', true)
     },
     logout: function () {
       this.$store.commit('user/isAuthenticated', false)

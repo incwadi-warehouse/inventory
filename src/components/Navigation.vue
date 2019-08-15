@@ -75,7 +75,7 @@ export default {
       Cookies.remove('token')
     },
     closeOffCanvas: function () {
-      this.$store.dispatch('navigation/showOffCanvas', false)
+      this.$store.commit('navigation/showOffCanvas', false)
     }
   }
 }
