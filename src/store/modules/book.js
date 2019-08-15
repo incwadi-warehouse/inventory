@@ -276,7 +276,7 @@ export default {
     },
     stats (context) {
       api(context.rootState.user.token)
-        .get('/v1/book/stats')
+        .get('/v1/stats/')
         .then(function (response) {
           context.commit('stats', response.data)
         })
