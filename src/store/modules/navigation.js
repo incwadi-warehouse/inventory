@@ -7,10 +7,5 @@ export default {
     showOffCanvas (state, status) {
       state.showOffCanvas = status
     }
-  },
-  actions: {
-    toggleOffCanvas (context) {
-      context.commit('showOffCanvas', !context.state.showOffCanvas)
-    }
   }
 }

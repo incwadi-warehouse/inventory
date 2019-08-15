@@ -3,7 +3,7 @@
     <div class="masthead_nav" v-if="isAuthenticated">
       <ul class="nav">
         <li class="nav_item">
-          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25.000001 25.000001" class="icon" @click="toggleMenu">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25.000001 25.000001" class="icon" @click="openOffCanvas">
             <path d="M0 2h25v4H0zm0 16h25v4H0zm0-8h25v4H0z"/>
           </svg>
         </li>
@@ -38,8 +38,8 @@ export default {
     }
   },
   methods: {
-    toggleMenu: function () {
-      this.$store.dispatch('navigation/toggleOffCanvas')
+    openOffCanvas: function () {
+      this.$store.dispatch('navigation/showOffCanvas', true)
     },
     logout: function () {
       this.$store.commit('user/isAuthenticated', false)
