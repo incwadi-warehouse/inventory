@@ -4,20 +4,26 @@ import Cookies from 'js-cookie'
 export default {
   namespaced: true,
   state: {
-    me: null,
     token: Cookies.get('token'),
+    username: null,
+    password: null,
+    me: null,
     isAuthenticated: false,
     isLoggingIn: false,
-    hasLoginError: false,
-    username: null,
-    password: null
+    hasLoginError: false
   },
   mutations: {
-    me (state, me) {
-      state.me = me
-    },
     token (state, token) {
       state.token = token
+    },
+    username (state, username) {
+      state.username = username
+    },
+    password (state, password) {
+      state.password = password
+    },
+    me (state, me) {
+      state.me = me
     },
     isAuthenticated (state, status) {
       state.isAuthenticated = status
@@ -27,12 +33,6 @@ export default {
     },
     hasLoginError (state, status) {
       state.hasLoginError = status
-    },
-    username (state, username) {
-      state.username = username
-    },
-    password (state, password) {
-      state.password = password
     }
   },
   actions: {
@@ -44,15 +44,14 @@ export default {
           password: context.state.password
         })
         .then(function (response) {
-          context.commit('token', response.data.token)
           Cookies.set('token', response.data.token, { expires: 7 })
-          context.commit('isAuthenticated', true)
-          context.commit('hasLoginError', false)
+          context.commit('token', response.data.token)
           context.commit('username', null)
           context.commit('password', null)
+          context.commit('isAuthenticated', true)
+          context.commit('hasLoginError', false)
         })
-        .catch(function (error) {
-          console.log(error)
+        .catch(function () {
           context.commit('hasLoginError', true)
         })
         .finally(function () {
