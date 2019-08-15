@@ -30,6 +30,7 @@ export default {
     },
     isAdmin: function () {
       if (!this.$store.state.user.me) return
+
       return this.$store.state.user.me.roles.indexOf('ROLE_ADMIN') !== -1
     }
   },
@@ -38,7 +39,7 @@ export default {
       this.$store.dispatch('genre/removeGenre', id)
     }
   },
-  mounted: function () {
+  created: function () {
     this.$store.dispatch('genre/genres')
   }
 }

@@ -1,7 +1,6 @@
 <template>
   <section class="container container_m">
     <h2>{{ $t('new') }}</h2>
-
     <form class="form" @submit.prevent="create">
       <div class="form_group">
         <div class="form_item">

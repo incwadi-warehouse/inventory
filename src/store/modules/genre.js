@@ -31,7 +31,7 @@ export default {
         .post('/v1/genre/new', {
           name: context.state.name
         })
-        .then(function (response) {
+        .then(function () {
           context.commit('name', '')
           context.dispatch('genres')
         })
@@ -39,7 +39,7 @@ export default {
     removeGenre (context, id) {
       api(context.rootState.user.token)
         .delete('/v1/genre/' + id)
-        .then(function (response) {
+        .then(function () {
           context.dispatch('genres')
         })
     }

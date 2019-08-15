@@ -27,7 +27,7 @@ export default {
         .post('/v1/customer/new', {
           name: name
         })
-        .then(function (response) {
+        .then(function () {
           context.dispatch('customers')
         })
     },

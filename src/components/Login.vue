@@ -6,7 +6,7 @@
       <p class="notice_entry">{{ $t('wrong_credentials') }}</p>
     </aside>
 
-    <form class="form" @submit.prevent="save">
+    <form class="form" @submit.prevent="login">
       <div class="form_group">
         <div class="form_item">
           <label for="username">{{ $t('username') }}</label>

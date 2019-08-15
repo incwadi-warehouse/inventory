@@ -52,20 +52,9 @@ import Cookies from 'js-cookie'
 
 export default {
   name: 'navigation',
-  data () {
-    return {
-      showMenu: false
-    }
-  },
   computed: {
     isAuthenticated: function () {
       return this.$store.state.user.isAuthenticated
-    },
-    menu: function () {
-      return {
-        offcanvas_item: true,
-        isActive: this.showMenu
-      }
     },
     showOffCanvas: function () {
       return this.$store.state.navigation.showOffCanvas
@@ -84,13 +73,6 @@ export default {
       this.$store.dispatch('filter/reset')
       this.$store.commit('navigation/showOffCanvas', false)
       Cookies.remove('token')
-    },
-    toggleMenu: function () {
-      this.showMenu = !this.showMenu
-    },
-    closeMenu: function () {
-      if (!this.showMenu) return
-      this.showMenu = false
     },
     toggleCanvas: function () {
       this.$store.dispatch('navigation/toggleOffCanvas')

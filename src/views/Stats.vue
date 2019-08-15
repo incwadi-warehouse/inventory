@@ -3,7 +3,6 @@
     <section class="container container_m">
       <h1>{{ $t('stats') }}</h1>
     </section>
-
     <stats/>
   </section>
 </template>

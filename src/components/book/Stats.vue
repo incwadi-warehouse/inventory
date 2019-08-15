@@ -17,7 +17,7 @@ export default {
       return this.$store.state.book.stats
     }
   },
-  mounted: function () {
+  created: function () {
     this.$store.dispatch('book/stats')
   }
 }

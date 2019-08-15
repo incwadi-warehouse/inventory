@@ -12,7 +12,7 @@
           @input="search"
           v-model="searchTerm">
       </div>
-      <div class="search_options" v-if="searchTerm != null">
+      <div class="search_options" v-if="null != searchTerm">
         <button type="reset" class="search_btn search_btn_reset" @click="reset">
           <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 50 50" class="icon">
             <path
