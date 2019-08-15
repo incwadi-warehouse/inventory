@@ -4,11 +4,15 @@ export default {
   namespaced: true,
   state: {
     customers: null,
+    name: null,
     hasRemoveError: false
   },
   mutations: {
     customers (state, customers) {
       state.customers = customers
+    },
+    name (state, name) {
+      state.name = name
     },
     hasRemoveError (state, status) {
       state.hasRemoveError = status
@@ -22,19 +26,19 @@ export default {
           context.commit('customers', response.data.customers)
         })
     },
-    createCustomer (context, name) {
+    create (context) {
       api(context.rootState.user.token)
         .post('/v1/customer/new', {
-          name: name
+          name: context.state.name
         })
         .then(function () {
           context.dispatch('customers')
         })
     },
-    removeCustomer (context, id) {
+    remove (context, id) {
       api(context.rootState.user.token)
         .delete('/v1/customer/' + id)
-        .then(function (response) {
+        .then(function () {
           context.dispatch('customers')
         })
         .catch(function () {

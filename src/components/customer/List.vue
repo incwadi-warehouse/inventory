@@ -45,7 +45,7 @@ export default {
   },
   methods: {
     remove: function (id) {
-      this.$store.dispatch('customer/removeCustomer', id)
+      this.$store.dispatch('customer/remove', id)
     }
   },
   created: function () {

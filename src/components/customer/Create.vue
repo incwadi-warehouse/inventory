@@ -24,15 +24,19 @@
 <script>
 export default {
   name: 'create-customer',
-  data () {
-    return {
-      name: null
+  computed: {
+    name: {
+      get: function () {
+        return this.$store.state.customer.name
+      },
+      set: function (name) {
+        this.$store.commit('customer/name', name)
+      }
     }
   },
   methods: {
     create: function () {
-      this.$store.dispatch('customer/createCustomer', this.name)
-      this.name = null
+      this.$store.dispatch('customer/create')
     }
   }
 }
