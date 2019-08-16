@@ -3,7 +3,7 @@
     <heading/>
     <navigation/>
     <main class="content" role="main">
-      <notice class="noprint" v-if="isAuthenticated"/>
+      <notification class="noprint" v-if="isAuthenticated"/>
       <router-view v-if="isAuthenticated"/>
       <login v-if="!isAuthenticated"/>
     </main>
@@ -13,7 +13,7 @@
 <script>
 import Heading from './components/Heading'
 import Login from './components/Login'
-import Notice from './components/Notice'
+import Notification from './components/Notification'
 import Navigation from './components/Navigation'
 import Cookies from 'js-cookie'
 
@@ -22,7 +22,7 @@ export default {
   components: {
     Heading,
     Login,
-    Notice,
+    Notification,
     Navigation
   },
   computed: {

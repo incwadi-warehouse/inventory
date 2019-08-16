@@ -1,14 +1,14 @@
 export default {
   namespaced: true,
   state: {
-    notices: []
+    notifications: []
   },
   mutations: {
-    notices (state, notices) {
-      state.notices = notices
+    notifications (state, notifications) {
+      state.notifications = notifications
     },
-    add (state, notice) {
-      state.notices.push(notice)
+    add (state, notification) {
+      state.notifications.push(notification)
     }
   },
   actions: {
@@ -22,7 +22,7 @@ export default {
       }, 5000)
     },
     reset (context) {
-      context.commit('notices', [])
+      context.commit('notifications', [])
     }
   }
 }

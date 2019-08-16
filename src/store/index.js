@@ -6,7 +6,7 @@ import branch from './modules/branch'
 import filter from './modules/filter'
 import customer from './modules/customer'
 import user from './modules/user'
-import notice from './modules/notice'
+import notification from './modules/notification'
 import navigation from './modules/navigation'
 import stats from './modules/stats'
 
@@ -21,7 +21,7 @@ export default new Vuex.Store({
     filter,
     customer,
     user,
-    notice,
+    notification,
     navigation,
     stats
   }
