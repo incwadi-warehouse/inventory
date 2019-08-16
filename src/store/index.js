@@ -8,6 +8,7 @@ import customer from './modules/customer'
 import user from './modules/user'
 import notice from './modules/notice'
 import navigation from './modules/navigation'
+import stats from './modules/stats'
 
 Vue.use(Vuex)
 
@@ -21,6 +22,7 @@ export default new Vuex.Store({
     customer,
     user,
     notice,
-    navigation
+    navigation,
+    stats
   }
 })

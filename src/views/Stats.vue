@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Stats from './../components/book/Stats'
+import Stats from './../components/stats/Stats'
 
 export default {
   name: 'stats-view',

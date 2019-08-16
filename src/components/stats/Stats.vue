@@ -14,11 +14,11 @@ export default {
   name: 'stats',
   computed: {
     stats: function () {
-      return this.$store.state.book.stats
+      return this.$store.state.stats.stats
     }
   },
   created: function () {
-    this.$store.dispatch('book/stats')
+    this.$store.dispatch('stats/stats')
   }
 }
 </script>

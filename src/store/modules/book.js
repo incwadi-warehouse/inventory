@@ -39,8 +39,7 @@ export default {
     hasUpdateError: false,
     isDuplicate: false,
     tab: null,
-    isLoading: false,
-    stats: null
+    isLoading: false
   },
   mutations: {
     books (state, books) {
@@ -108,9 +107,6 @@ export default {
     },
     genre_id (state, genre) {
       state.book.genre_id = genre
-    },
-    stats (state, stats) {
-      state.stats = stats
     },
     sold (state, sold) {
       state.book.sold = sold
@@ -273,13 +269,6 @@ export default {
     remove (context, id) {
       api(context.rootState.user.token)
         .put('/v1/book/remove/' + id)
-    },
-    stats (context) {
-      api(context.rootState.user.token)
-        .get('/v1/stats/')
-        .then(function (response) {
-          context.commit('stats', response.data)
-        })
     }
   }
 }
