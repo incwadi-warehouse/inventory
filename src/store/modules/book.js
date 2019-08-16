@@ -212,7 +212,7 @@ export default {
           added: Math.round(new Date().getTime() / 1000)
         })
         .then(function () {
-          context.dispatch('notification/add', 'book_created', { root: true })
+          context.dispatch('notification/add', { msg: 'book_created', state: 'success' }, { root: true })
           context.commit('hasCreateError', false)
           context.commit('isDuplicate', false)
           context.commit('tab', null)
@@ -250,7 +250,7 @@ export default {
           lendOn: context.state.book.lendOn === '' ? null : new Date(context.state.book.lendOn).getTime() / 1000
         })
         .then(function () {
-          context.dispatch('notification/add', 'book_updated', { root: true })
+          context.dispatch('notification/add', { msg: 'book_updated', state: 'success' }, { root: true })
           context.commit('hasUpdateError', false)
           context.commit('isDuplicate', false)
           router.push({ name: 'book' })

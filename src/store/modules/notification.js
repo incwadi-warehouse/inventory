@@ -12,10 +12,11 @@ export default {
     }
   },
   actions: {
-    add (context, msg) {
+    add (context, data) {
       context.commit('add', {
         id: new Date().getTime(),
-        msg: msg
+        msg: data.msg,
+        state: data.state || 'neutral'
       })
       setTimeout(() => {
         context.dispatch('reset')
