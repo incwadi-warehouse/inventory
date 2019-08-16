@@ -27,9 +27,7 @@ export default {
       return this.$store.state.genre.genres
     },
     isAdmin: function () {
-      if (!this.$store.state.user.me) return
-
-      return this.$store.state.user.me.roles.indexOf('ROLE_ADMIN') !== -1
+      return this.$store.getters['user/isAdmin']
     }
   },
   methods: {

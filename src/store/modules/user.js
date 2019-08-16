@@ -12,6 +12,13 @@ export default {
     isLoggingIn: false,
     hasLoginError: false
   },
+  getters: {
+    isAdmin: (state) => {
+      if (!state.me) return
+
+      return state.me.roles.indexOf('ROLE_ADMIN') !== -1
+    }
+  },
   mutations: {
     token (state, token) {
       state.token = token

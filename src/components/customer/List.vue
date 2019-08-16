@@ -33,9 +33,7 @@ export default {
       return this.$store.state.customer.customers
     },
     isAdmin: function () {
-      if (!this.$store.state.user.me) return
-
-      return this.$store.state.user.me.roles.indexOf('ROLE_ADMIN') !== -1
+      return this.$store.getters['user/isAdmin']
     },
     hasRemoveError: function () {
       return this.$store.state.customer.hasRemoveError
