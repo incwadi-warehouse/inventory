@@ -71,8 +71,10 @@
     "node": ">= 10.0"
   },
   "browserslist": [
-    "> 1%",
-    "last 2 versions",
+    "last 2 chrome versions",
+    "last 2 and_chr versions",
+    "last 2 firefox versions",
+    "last 2 and_ff versions",
     "ie 11"
   ]
 }
