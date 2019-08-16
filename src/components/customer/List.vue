@@ -26,14 +26,16 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'customer',
   computed: {
+    ...mapGetters('user', [
+      'isAdmin'
+    ]),
     customers: function () {
       return this.$store.state.customer.customers
-    },
-    isAdmin: function () {
-      return this.$store.getters['user/isAdmin']
     },
     hasRemoveError: function () {
       return this.$store.state.customer.hasRemoveError

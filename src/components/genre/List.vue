@@ -20,14 +20,16 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'genre',
   computed: {
+    ...mapGetters('user', [
+      'isAdmin'
+    ]),
     genres: function () {
       return this.$store.state.genre.genres
-    },
-    isAdmin: function () {
-      return this.$store.getters['user/isAdmin']
     }
   },
   methods: {
