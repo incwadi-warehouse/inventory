@@ -48,8 +48,6 @@
 </template>
 
 <script>
-import Cookies from 'js-cookie'
-
 export default {
   name: 'navigation',
   computed: {
@@ -62,17 +60,7 @@ export default {
   },
   methods: {
     logout: function () {
-      this.$store.commit('user/isAuthenticated', false)
-      this.$store.commit('user/username', null)
-      this.$store.commit('user/password', null)
-      this.$store.commit('user/me', null)
-      this.$store.commit('book/tab', null)
-      this.$store.commit('book/books', [])
-      this.$store.commit('book/counter', 0)
-      this.$store.commit('filter/searchTerm', null)
-      this.$store.dispatch('filter/reset')
-      this.$store.commit('navigation/showOffCanvas', false)
-      Cookies.remove('token')
+      this.$store.dispatch('user/logout')
     },
     closeOffCanvas: function () {
       this.$store.commit('navigation/showOffCanvas', false)

@@ -64,6 +64,19 @@ export default {
         .then(function (response) {
           context.commit('me', response.data)
         })
+    },
+    logout (context) {
+      context.commit('isAuthenticated', false)
+      context.commit('username', null)
+      context.commit('password', null)
+      context.commit('me', null)
+      context.commit('book/tab', null, { root: true })
+      context.commit('book/books', [], { root: true })
+      context.commit('book/counter', 0, { root: true })
+      context.commit('filter/searchTerm', null, { root: true })
+      context.dispatch('filter/reset', null, { root: true })
+      context.commit('navigation/showOffCanvas', false, { root: true })
+      Cookies.remove('token')
     }
   }
 }
