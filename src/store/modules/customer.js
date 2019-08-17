@@ -39,6 +39,26 @@ export default {
         .then(function () {
           context.dispatch('customers')
           context.commit('name', null)
+          context.dispatch(
+            'notification/add',
+            {
+              msg: 'customer_create_success',
+              state: 'success'
+            },
+            {
+              root: true
+            })
+        })
+        .catch(function () {
+          context.dispatch(
+            'notification/add',
+            {
+              msg: 'customer_create_error',
+              state: 'error'
+            },
+            {
+              root: true
+            })
         })
         .finally(function () {
           context.commit('isProcessing', false)
@@ -49,9 +69,27 @@ export default {
         .delete('/v1/customer/' + id)
         .then(function () {
           context.dispatch('customers')
+          context.dispatch(
+            'notification/add',
+            {
+              msg: 'customer_remove_success',
+              state: 'success'
+            },
+            {
+              root: true
+            })
         })
         .catch(function () {
           context.commit('hasRemoveError', true)
+          context.dispatch(
+            'notification/add',
+            {
+              msg: 'customer_remove_error',
+              state: 'error'
+            },
+            {
+              root: true
+            })
         })
     }
   }

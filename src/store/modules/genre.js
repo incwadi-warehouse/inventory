@@ -39,6 +39,26 @@ export default {
         .then(function () {
           context.commit('name', null)
           context.dispatch('genres')
+          context.dispatch(
+            'notification/add',
+            {
+              msg: 'genre_create_success',
+              state: 'success'
+            },
+            {
+              root: true
+            })
+        })
+        .catch(function () {
+          context.dispatch(
+            'notification/add',
+            {
+              msg: 'genre_create_error',
+              state: 'error'
+            },
+            {
+              root: true
+            })
         })
         .finally(function () {
           context.commit('isProcessing', false)
@@ -49,6 +69,26 @@ export default {
         .delete('/v1/genre/' + id)
         .then(function () {
           context.dispatch('genres')
+          context.dispatch(
+            'notification/add',
+            {
+              msg: 'genre_remove_success',
+              state: 'success'
+            },
+            {
+              root: true
+            })
+        })
+        .catch(function () {
+          context.dispatch(
+            'notification/add',
+            {
+              msg: 'genre_remove_error',
+              state: 'error'
+            },
+            {
+              root: true
+            })
         })
     }
   }

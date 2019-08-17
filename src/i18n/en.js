@@ -74,5 +74,13 @@ export default {
   author_edit_successful: 'The author was edited successfully.',
   author_edit_error: 'Sorry, author could not be saved. Try again later.',
   author_remove_successful: 'The author was removed successfully.',
-  author_remove_error: 'Sorry, author could not be removed. Try again later.'
+  author_remove_error: 'Sorry, author could not be removed. Try again later.',
+  customer_create_success: 'The customer was created successfully.',
+  customer_create_error: 'Sorry, customer could not be created. Try again later.',
+  customer_remove_success: 'The customer was removed successfully.',
+  customer_remove_error: 'Sorry, customer could not be removed. Try again later.',
+  genre_create_success: 'The genre was created successfully.',
+  genre_create_error: 'Sorry, genre could not be created. Try again later.',
+  genre_remove_success: 'The genre was removed successfully.',
+  genre_remove_error: 'Sorry, genre could not be removed. Try again later.'
 }
