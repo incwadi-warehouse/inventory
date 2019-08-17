@@ -67,7 +67,6 @@ export default {
   removed_books: 'entferne Bücher',
   book_created: 'Das Buch wurde erfolgreich gespeichert.',
   book_updated: 'Das Buch wurde erfolgreich aktualisiert.',
-  removing_customer_not_possible: 'Der Kunde konnte nicht gelöscht werden. Stellen Sie sicher, dass keine Ausleihe aktiv ist.',
   authors: 'Autoren',
   edit_author: 'Autor bearbeiten',
   save: 'Speichern',

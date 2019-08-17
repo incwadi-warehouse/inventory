@@ -5,7 +5,6 @@ export default {
   state: {
     customers: null,
     name: null,
-    hasRemoveError: false,
     isProcessing: false
   },
   mutations: {
@@ -14,9 +13,6 @@ export default {
     },
     name (state, name) {
       state.name = name
-    },
-    hasRemoveError (state, status) {
-      state.hasRemoveError = status
     },
     isProcessing (state, status) {
       state.isProcessing = status
@@ -80,7 +76,6 @@ export default {
             })
         })
         .catch(function () {
-          context.commit('hasRemoveError', true)
           context.dispatch(
             'notification/add',
             {

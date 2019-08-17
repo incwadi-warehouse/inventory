@@ -1,11 +1,5 @@
 <template>
   <section class="container container_m">
-    <aside class="notice notice_red" v-if="hasRemoveError">
-      <p class="notice_entry">
-        {{ $t('removing_customer_not_possible') }}
-      </p>
-    </aside>
-
     <div class="card">
       <div class="card_item" v-for="customer in customers" :key="customer.id">
         <ul class="card_options" v-if="isAdmin">
@@ -36,9 +30,6 @@ export default {
     ]),
     customers: function () {
       return this.$store.state.customer.customers
-    },
-    hasRemoveError: function () {
-      return this.$store.state.customer.hasRemoveError
     }
   },
   methods: {
