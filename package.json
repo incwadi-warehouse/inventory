@@ -1,7 +1,7 @@
 {
   "name": "incwadi_inventory",
   "version": "1.0.0",
-  "description": "incwadi is a book database to manage a lot of books.",
+  "description": "incwadi is a book database to manages your books.",
   "repository": {
     "type": "git",
     "url": "https://gitlab.com/incwadi/inventory.git"
