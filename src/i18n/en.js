@@ -77,7 +77,7 @@ export default {
   customer_create_success: 'The customer was created successfully.',
   customer_create_error: 'Sorry, customer could not be created. Try again later.',
   customer_remove_success: 'The customer was removed successfully.',
-  customer_remove_error: 'Sorry, customer could not be removed. Try again later.',
+  customer_remove_error: 'Sorry, customer could not be removed. Try again later and make sure there is no lend active.',
   genre_create_success: 'The genre was created successfully.',
   genre_create_error: 'Sorry, genre could not be created. Try again later.',
   genre_remove_success: 'The genre was removed successfully.',

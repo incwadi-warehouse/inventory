@@ -77,7 +77,7 @@ export default {
   customer_create_success: 'Der Kunde wurde erfolgreich angelegt.',
   customer_create_error: 'Der Kunde konnte leider nicht angelegt werden. Versuche es später erneut.',
   customer_remove_success: 'Der Kunde wurde erfolgreich gelöscht.',
-  customer_remove_error: 'Der Kunde konnte leider nicht gelöscht werden. Versuche es später erneut.',
+  customer_remove_error: 'Der Kunde konnte leider nicht gelöscht werden. Versuche es später erneut und stelle sicher, dass keine Leihe aktiv ist.',
   genre_create_success: 'Die Rubrik wurde erfolgreich angelegt.',
   genre_create_error: 'Die Rubrik konnte leider nicht angelegt werden. Versuche es später erneut.',
   genre_remove_success: 'Die Rubrik wurde erfolgreich gelöscht.',
