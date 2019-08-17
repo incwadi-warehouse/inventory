@@ -12,7 +12,7 @@
       </ul>
     </div>
     <div class="masthead_logo">
-      <router-link :to="{ name: 'book' }">
+      <router-link :to="{ name: 'index' }">
         <img :src=logo width="210" alt="incwadi" loading="lazy">
       </router-link>
     </div>

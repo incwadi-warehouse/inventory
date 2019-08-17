@@ -55,7 +55,7 @@ export default {
           surname: context.state.surname
         })
         .then(function () {
-          router.push({ name: 'book' })
+          router.push({ name: 'index' })
           context.dispatch(
             'notification/add',
             {

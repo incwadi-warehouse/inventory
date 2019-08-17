@@ -254,7 +254,7 @@ export default {
           context.dispatch('notification/add', { msg: 'book_updated', state: 'success' }, { root: true })
           context.commit('hasUpdateError', false)
           context.commit('isDuplicate', false)
-          router.push({ name: 'book' })
+          router.push({ name: 'index' })
         })
         .catch(function (error) {
           context.commit('hasUpdateError', true)

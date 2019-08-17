@@ -12,7 +12,7 @@
       </div>
       <ul class="offcanvas_nav">
         <li class="offcanvas_item">
-          <router-link :to="{ name: 'book' }">
+          <router-link :to="{ name: 'index' }">
             {{ $t('search') }}
           </router-link>
         </li>
