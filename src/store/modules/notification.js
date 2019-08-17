@@ -9,21 +9,23 @@ export default {
     },
     add (state, notification) {
       state.notifications.push(notification)
+    },
+    remove (state, notification) {
+      const id = state.notifications.indexOf(notification)
+      state.notifications.splice(id, 1)
     }
   },
   actions: {
     add (context, data) {
-      context.commit('add', {
+      const notification = {
         id: new Date().getTime(),
         msg: data.msg,
         state: data.state || 'neutral'
-      })
+      }
+      context.commit('add', notification)
       setTimeout(() => {
-        context.dispatch('reset')
+        context.commit('remove', notification)
       }, 5000)
-    },
-    reset (context) {
-      context.commit('notifications', [])
     }
   }
 }
