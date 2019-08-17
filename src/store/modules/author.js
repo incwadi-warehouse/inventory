@@ -4,7 +4,7 @@ import router from '../../router'
 export default {
   namespaced: true,
   state: {
-    authors: [],
+    authors: null,
     firstname: null,
     surname: null
   },

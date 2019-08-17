@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
   name: 'author',
@@ -30,9 +30,9 @@ export default {
     ...mapGetters('user', [
       'isAdmin'
     ]),
-    authors: function () {
-      return this.$store.state.author.authors
-    }
+    ...mapState('author', [
+      'authors'
+    ])
   },
   methods: {
     remove: function (id) {
