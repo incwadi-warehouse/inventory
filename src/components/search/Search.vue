@@ -44,8 +44,8 @@ export default {
   },
   methods: {
     search: function () {
-      this.$store.dispatch('book/search')
       this.$store.commit('filter/offset', 0)
+      this.$store.dispatch('book/search')
     },
     reset: function () {
       this.$store.commit('filter/searchTerm', null)
