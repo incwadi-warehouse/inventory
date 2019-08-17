@@ -33,6 +33,7 @@ export default {
         })
         .then(function () {
           context.dispatch('customers')
+          context.commit('name', null)
         })
     },
     remove (context, id) {
