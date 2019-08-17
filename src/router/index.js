@@ -23,7 +23,7 @@ const router = new Router({
       component: Search
     },
     {
-      path: '/edit/:id',
+      path: '/book/edit/:id',
       name: 'edit',
       component: EditBook,
       props: true
@@ -34,7 +34,7 @@ const router = new Router({
       component: About
     },
     {
-      path: '/genres',
+      path: '/genre',
       name: 'genre',
       component: Genre
     },
