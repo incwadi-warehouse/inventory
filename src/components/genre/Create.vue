@@ -12,8 +12,11 @@
       </div>
       <div class="form_group">
         <div class="form_item alignRight">
-          <button class="btn btn_outline" @click.prevent="create">
+          <button class="btn btn_outline" @click.prevent="create" v-if="!isProcessing">
             {{ $t('create') }}
+          </button>
+          <button class="btn btn_outline" v-if="isProcessing">
+            <div class="spinner spinner-s"></div>
           </button>
         </div>
       </div>
@@ -32,6 +35,9 @@ export default {
       set: function (name) {
         this.$store.commit('genre/name', name)
       }
+    },
+    isProcessing: function () {
+      return this.$store.state.genre.isProcessing
     }
   },
   methods: {

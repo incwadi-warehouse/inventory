@@ -5,7 +5,8 @@ export default {
   state: {
     genres: [],
     genre: null,
-    name: null
+    name: null,
+    isProcessing: false
   },
   mutations: {
     genres (state, genres) {
@@ -16,6 +17,9 @@ export default {
     },
     name (state, name) {
       state.name = name
+    },
+    isProcessing (state, status) {
+      state.isProcessing = status
     }
   },
   actions: {
@@ -27,6 +31,7 @@ export default {
         })
     },
     create (context) {
+      context.commit('isProcessing', true)
       api(context.rootState.user.token)
         .post('/v1/genre/new', {
           name: context.state.name
@@ -34,6 +39,9 @@ export default {
         .then(function () {
           context.commit('name', null)
           context.dispatch('genres')
+        })
+        .finally(function () {
+          context.commit('isProcessing', false)
         })
     },
     remove (context, id) {

@@ -5,7 +5,8 @@ export default {
   state: {
     customers: null,
     name: null,
-    hasRemoveError: false
+    hasRemoveError: false,
+    isProcessing: false
   },
   mutations: {
     customers (state, customers) {
@@ -16,6 +17,9 @@ export default {
     },
     hasRemoveError (state, status) {
       state.hasRemoveError = status
+    },
+    isProcessing (state, status) {
+      state.isProcessing = status
     }
   },
   actions: {
@@ -27,6 +31,7 @@ export default {
         })
     },
     create (context) {
+      context.commit('isProcessing', true)
       api(context.rootState.user.token)
         .post('/v1/customer/new', {
           name: context.state.name
@@ -34,6 +39,9 @@ export default {
         .then(function () {
           context.dispatch('customers')
           context.commit('name', null)
+        })
+        .finally(function () {
+          context.commit('isProcessing', false)
         })
     },
     remove (context, id) {
