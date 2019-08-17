@@ -196,6 +196,7 @@ export default {
             context.commit('filter/offset', context.rootState.book.books.length, { root: true })
           }
           context.commit('isLoading', false)
+          context.dispatch('author/authors', null, { root: true })
         })
     },
     create (context) {

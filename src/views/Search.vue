@@ -17,6 +17,7 @@
     </section>
 
     <list/>
+    <author-list/>
   </section>
 </template>
 
@@ -24,6 +25,7 @@
 import Search from '../components/search/Search'
 import Filters from '../components/search/Filters'
 import List from '../components/search/List'
+import AuthorList from '../components/author/List'
 import Create from '../components/book/Create'
 import Limit from '../components/search/Limit'
 
@@ -33,6 +35,7 @@ export default {
     Search,
     Filters,
     List,
+    AuthorList,
     Create,
     Limit
   },

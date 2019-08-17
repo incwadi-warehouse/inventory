@@ -9,6 +9,7 @@ import user from './modules/user'
 import notification from './modules/notification'
 import navigation from './modules/navigation'
 import stats from './modules/stats'
+import author from './modules/author'
 
 Vue.use(Vuex)
 
@@ -23,6 +24,7 @@ export default new Vuex.Store({
     user,
     notification,
     navigation,
-    stats
+    stats,
+    author
   }
 })

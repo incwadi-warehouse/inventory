@@ -7,6 +7,7 @@ import Genre from '../views/Genre'
 import Customer from '../views/Customer'
 import Stats from '../views/Stats'
 import NotFound from '../views/NotFound'
+import EditAuthor from '../views/EditAuthor'
 import store from '../store'
 
 Vue.use(Router)
@@ -46,6 +47,12 @@ const router = new Router({
       path: '/stats',
       name: 'stats',
       component: Stats
+    },
+    {
+      path: '/author/edit/:id',
+      name: 'edit-author',
+      component: EditAuthor,
+      props: true
     },
     {
       path: '*',

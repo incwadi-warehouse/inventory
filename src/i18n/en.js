@@ -67,5 +67,12 @@ export default {
   removed_books: 'removed books',
   book_created: 'The book was created successfully.',
   book_updated: 'The book was updated successfully.',
-  removing_customer_not_possible: 'The customer could not be removed. Make sure there is no lend active.'
+  removing_customer_not_possible: 'The customer could not be removed. Make sure there is no lend active.',
+  authors: 'Authors',
+  edit_author: 'Edit Author',
+  save: 'Save',
+  author_edit_successful: 'The author was edited successfully.',
+  author_edit_error: 'Sorry, author could not be saved. Try again later.',
+  author_remove_successful: 'The author was removed successfully.',
+  author_remove_error: 'Sorry, author could not be removed. Try again later.'
 }
