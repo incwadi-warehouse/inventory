@@ -3,13 +3,15 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'order-by-indicator',
   props: ['column'],
   computed: {
-    orderBy: function () {
-      return this.$store.state.filter.orderBy
-    },
+    ...mapState('filter', [
+      'orderBy'
+    ]),
     icon: function () {
       if (this.orderBy === this.column + '_asc') {
         return '&#9650;'

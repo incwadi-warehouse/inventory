@@ -50,15 +50,17 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'navigation',
   computed: {
-    isAuthenticated: function () {
-      return this.$store.state.user.isAuthenticated
-    },
-    showOffCanvas: function () {
-      return this.$store.state.navigation.showOffCanvas
-    }
+    ...mapState('user', [
+      'isAuthenticated'
+    ]),
+    ...mapState('navigation', [
+      'showOffCanvas'
+    ])
   },
   methods: {
     logout: function () {

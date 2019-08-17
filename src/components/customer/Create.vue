@@ -25,6 +25,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'create-customer',
   computed: {
@@ -36,9 +38,9 @@ export default {
         this.$store.commit('customer/name', name)
       }
     },
-    isProcessing: function () {
-      return this.$store.state.customer.isProcessing
-    }
+    ...mapState('customer', [
+      'isProcessing'
+    ])
   },
   methods: {
     create: function () {

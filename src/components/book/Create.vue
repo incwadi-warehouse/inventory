@@ -113,6 +113,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'create',
   data () {
@@ -121,15 +123,13 @@ export default {
     }
   },
   computed: {
-    genres: function () {
-      return this.$store.state.genre.genres
-    },
-    hasCreateError: function () {
-      return this.$store.state.book.hasCreateError
-    },
-    isDuplicate: function () {
-      return this.$store.state.book.isDuplicate
-    },
+    ...mapState('genre', [
+      'genres'
+    ]),
+    ...mapState('book', [
+      'hasCreateError',
+      'isDuplicate'
+    ]),
     title: {
       get: function () {
         return this.$store.state.book.title

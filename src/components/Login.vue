@@ -36,15 +36,15 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'login',
   computed: {
-    hasLoginError: function () {
-      return this.$store.state.user.hasLoginError
-    },
-    isLoggingIn: function () {
-      return this.$store.state.user.isLoggingIn
-    },
+    ...mapState('user', [
+      'hasLoginError',
+      'isLoggingIn'
+    ]),
     username: {
       get: function () {
         return this.$store.state.user.username

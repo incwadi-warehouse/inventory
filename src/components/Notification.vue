@@ -9,12 +9,14 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'notification',
   computed: {
-    notifications: function () {
-      return this.$store.state.notification.notifications
-    }
+    ...mapState('notification', [
+      'notifications'
+    ])
   },
   methods: {
     getClass: (notification) => {

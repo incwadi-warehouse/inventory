@@ -173,12 +173,12 @@ export default {
     }
   },
   computed: {
-    genres: function () {
-      return this.$store.state.genre.genres
-    },
-    customers: function () {
-      return this.$store.state.customer.customers
-    },
+    ...mapState('genre', [
+      'genres'
+    ]),
+    ...mapState('customer', [
+      'customers'
+    ]),
     ...mapState('book', [
       'isLoading',
       'hasUpdateError',

@@ -91,6 +91,7 @@
 <script>
 import Indicator from './orderByIndicator'
 import ContextMenu from './ContextMenu'
+import { mapState } from 'vuex'
 
 export default {
   name: 'list',
@@ -104,20 +105,16 @@ export default {
     }
   },
   computed: {
-    books: function () {
-      return this.$store.state.book.books
-    },
-    counter: function () {
-      return this.$store.state.book.counter
-    },
+    ...mapState('book', [
+      'books',
+      'counter'
+    ]),
+    ...mapState('filter', [
+      'sold',
+      'removed'
+    ]),
     showLoadMore: function () {
       return this.books.length < this.counter
-    },
-    sold: function () {
-      return this.$store.state.filter.sold
-    },
-    removed: function () {
-      return this.$store.state.filter.removed
     }
   },
   methods: {

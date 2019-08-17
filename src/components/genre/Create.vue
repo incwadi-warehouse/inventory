@@ -25,6 +25,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'create-genre',
   computed: {
@@ -36,9 +38,9 @@ export default {
         this.$store.commit('genre/name', name)
       }
     },
-    isProcessing: function () {
-      return this.$store.state.genre.isProcessing
-    }
+    ...mapState('genre', [
+      'isProcessing'
+    ])
   },
   methods: {
     create: function () {

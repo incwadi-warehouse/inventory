@@ -18,12 +18,14 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'stats',
   computed: {
-    stats: function () {
-      return this.$store.state.stats.stats
-    }
+    ...mapState('stats', [
+      'stats'
+    ])
   },
   created: function () {
     this.$store.dispatch('stats/stats')

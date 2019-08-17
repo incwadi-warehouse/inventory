@@ -79,6 +79,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'filters',
   data () {
@@ -87,12 +89,12 @@ export default {
     }
   },
   computed: {
-    branches: function () {
-      return this.$store.state.branch.branches
-    },
-    genres: function () {
-      return this.$store.state.genre.genres
-    },
+    ...mapState('branch', [
+      'branches'
+    ]),
+    ...mapState('genre', [
+      'genres'
+    ]),
     sold: {
       get: function () {
         return this.$store.state.filter.sold || false

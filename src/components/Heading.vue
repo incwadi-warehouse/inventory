@@ -29,14 +29,16 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'heading',
   computed: {
+    ...mapState('user', [
+      'isAuthenticated'
+    ]),
     logo: function () {
       return require('../../' + process.env.LOGO)
-    },
-    isAuthenticated: function () {
-      return this.$store.state.user.isAuthenticated
     }
   },
   methods: {

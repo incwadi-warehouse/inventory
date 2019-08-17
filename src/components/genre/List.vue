@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
   name: 'genre',
@@ -28,9 +28,9 @@ export default {
     ...mapGetters('user', [
       'isAdmin'
     ]),
-    genres: function () {
-      return this.$store.state.genre.genres
-    }
+    ...mapState('genre', [
+      'genres'
+    ])
   },
   methods: {
     remove: function (id) {
