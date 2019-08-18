@@ -17,12 +17,10 @@
       </router-link>
     </div>
     <div class="masthead_settings" v-if="isAuthenticated">
-      <button class="btn btn_text" @click="logout">
-      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 50 50" class="icon">
-        <g>
-          <path d="M20 4h10v10H20zM20 36h10v10H20zM20 20h10v10H20z"/>
-        </g>
-      </svg>
+      <button class="btn btn_text" @click="catalog">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 50 50" class="icon">
+          <path d="M28.254 0v21.707h21.707v6.625H28.254v21.707h-6.547V28.332H0v-6.625h21.707V0z"/>
+        </svg>
       </button>
     </div>
   </header>
@@ -45,8 +43,8 @@ export default {
     openOffCanvas: function () {
       this.$store.commit('navigation/showOffCanvas', true)
     },
-    logout: function () {
-      this.$store.dispatch('user/logout')
+    catalog: function () {
+      this.$router.push({ name: 'create-book' })
     }
   }
 }
