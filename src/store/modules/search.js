@@ -6,7 +6,8 @@ export default {
     books: [],
     counter: 0,
     isLoading: false,
-    authors: null
+    authors: null,
+    tab: null
   },
   mutations: {
     books (state, books) {
@@ -34,6 +35,9 @@ export default {
         const id = state.authors.indexOf(author)
         state.authors.splice(id, 1)
       })
+    },
+    tab (state, tab) {
+      state.tab = tab
     }
   },
   actions: {

@@ -4,17 +4,6 @@
       <h1>{{ $t('add_book') }}</h1>
     </section>
 
-    <section class="container container_m" v-if="hasCreateError">
-      <aside class="notice notice_red">
-        <p class="notice_entry" v-if="!isDuplicate">
-          {{ $t('book_not_valid') }}
-        </p>
-        <p class="notice_entry" v-if="isDuplicate">
-          {{ $t('book_not_valid_duplicate') }}
-        </p>
-      </aside>
-    </section>
-
     <section class="container container_m">
       <form class="form" @submit.prevent="create">
         <div class="form_group">
@@ -125,10 +114,6 @@ export default {
   computed: {
     ...mapState('genre', [
       'genres'
-    ]),
-    ...mapState('book', [
-      'hasCreateError',
-      'isDuplicate'
     ]),
     title: {
       get: function () {

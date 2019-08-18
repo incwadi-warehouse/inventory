@@ -77,7 +77,7 @@ export default {
       context.commit('username', null)
       context.commit('password', null)
       context.commit('me', null)
-      context.commit('book/tab', null, { root: true })
+      context.commit('search/tab', null, { root: true })
       context.commit('search/books', [], { root: true })
       context.commit('search/counter', 0, { root: true })
       context.commit('filter/searchTerm', null, { root: true })

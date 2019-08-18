@@ -33,27 +33,11 @@ export default {
     type: 'paperback',
     premium: false,
 
-    hasCreateError: false,
-    hasUpdateError: false,
-    isDuplicate: false,
-    tab: null,
     isLoading: false
   },
   mutations: {
     book (state, book) {
       state.book = book
-    },
-    hasCreateError (state, status) {
-      state.hasCreateError = status
-    },
-    hasUpdateError (state, status) {
-      state.hasUpdateError = status
-    },
-    isDuplicate (state, status) {
-      state.isDuplicate = status
-    },
-    tab (state, tab) {
-      state.tab = tab
     },
     isLoading (state, isLoading) {
       state.isLoading = isLoading
@@ -137,9 +121,7 @@ export default {
         })
         .then(function () {
           context.dispatch('notification/add', { msg: 'book_created', state: 'success' }, { root: true })
-          context.commit('hasCreateError', false)
-          context.commit('isDuplicate', false)
-          context.commit('tab', null)
+          context.commit('search/tab', null, { root: true })
 
           context.commit('title', null)
           context.commit('firstname', null)
@@ -151,9 +133,9 @@ export default {
           context.commit('premium', false)
         })
         .catch(function (error) {
-          context.commit('hasCreateError', true)
+          context.commit('notification/add', { msg: 'book_not_valid', state: 'error' }, { root: true })
           if (error.response.status === 409) {
-            context.commit('isDuplicate', true)
+            context.dispatch('notification/add', { msg: 'book_not_valid_duplicate', state: 'error' }, { root: true })
           }
         })
     },
@@ -175,14 +157,12 @@ export default {
         })
         .then(function () {
           context.dispatch('notification/add', { msg: 'book_updated', state: 'success' }, { root: true })
-          context.commit('hasUpdateError', false)
-          context.commit('isDuplicate', false)
           router.push({ name: 'index' })
         })
         .catch(function (error) {
-          context.commit('hasUpdateError', true)
+          context.dispatch('notification/add', { msg: 'book_not_valid', state: 'error' }, { root: true })
           if (error.response.status === 409) {
-            context.commit('isDuplicate', true)
+            context.dispatch('notification/add', { msg: 'book_not_valid_duplicate', state: 'error' }, { root: true })
           }
         })
     },

@@ -47,16 +47,16 @@ export default {
       return this.$store.state.search.isLoading
     },
     tab: function () {
-      return this.$store.state.book.tab
+      return this.$store.state.search.tab
     }
   },
   methods: {
     setTab: function (tab) {
-      if (tab === this.$store.state.book.tab) {
-        this.$store.commit('book/tab', null)
+      if (tab === this.$store.state.search.tab) {
+        this.$store.commit('search/tab', null)
         return
       }
-      this.$store.commit('book/tab', tab)
+      this.$store.commit('search/tab', tab)
     },
     tabsClass: function (active) {
       return {
