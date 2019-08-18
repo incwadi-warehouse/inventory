@@ -105,7 +105,7 @@ export default {
     }
   },
   computed: {
-    ...mapState('book', [
+    ...mapState('search', [
       'books',
       'counter'
     ]),
@@ -135,7 +135,7 @@ export default {
         'filter/offset',
         this.$store.state.filter.offset + this.$store.state.filter.limit
       )
-      this.$store.dispatch('book/search')
+      this.$store.dispatch('search/search')
     },
     filter: function (type) {
       const ordering = this.$store.state.filter.orderBy
@@ -149,7 +149,7 @@ export default {
       if (ordering !== type + '_asc' && ordering !== type + '_desc') {
         this.$store.commit('filter/orderBy', type + '_asc')
       }
-      this.$store.dispatch('book/search')
+      this.$store.dispatch('search/search')
     },
     author: function (author) {
       if (author.firstname === '') {

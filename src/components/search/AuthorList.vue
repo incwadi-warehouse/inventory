@@ -30,13 +30,13 @@ export default {
     ...mapGetters('user', [
       'isAdmin'
     ]),
-    ...mapState('author', [
+    ...mapState('search', [
       'authors'
     ])
   },
   methods: {
     remove: function (id) {
-      this.$store.dispatch('author/remove', id)
+      this.$store.dispatch('search/remove', id)
     }
   },
   created: function () {

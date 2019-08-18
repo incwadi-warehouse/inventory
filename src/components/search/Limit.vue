@@ -53,14 +53,14 @@ export default {
       },
       set: function (orderBy) {
         this.$store.commit('filter/orderBy', orderBy)
-        this.$store.dispatch('book/search')
+        this.$store.dispatch('search/search')
       }
     }
   },
   methods: {
     setLimit: function (limit) {
       this.$store.commit('filter/limit', limit)
-      this.$store.dispatch('book/search')
+      this.$store.dispatch('search/search')
     },
     resetFilters: function () {
       this.$store.dispatch('filter/reset')

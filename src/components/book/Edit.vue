@@ -179,8 +179,10 @@ export default {
     ...mapState('customer', [
       'customers'
     ]),
+    ...mapState('search', [
+      'isLoading'
+    ]),
     ...mapState('book', [
-      'isLoading',
       'hasUpdateError',
       'isDuplicate'
     ]),

@@ -25,7 +25,7 @@
 import Search from '../components/search/Search'
 import Filters from '../components/search/Filters'
 import List from '../components/search/List'
-import AuthorList from '../components/author/List'
+import AuthorList from '../components/search/AuthorList'
 import Create from '../components/book/Create'
 import Limit from '../components/search/Limit'
 
@@ -44,7 +44,7 @@ export default {
       return this.$store.state.showCreate
     },
     isLoading: function () {
-      return this.$store.state.book.isLoading
+      return this.$store.state.search.isLoading
     },
     tab: function () {
       return this.$store.state.book.tab

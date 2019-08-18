@@ -4,21 +4,10 @@ import router from '../../router'
 export default {
   namespaced: true,
   state: {
-    authors: null,
     firstname: null,
     surname: null
   },
   mutations: {
-    authors (state, authors) {
-      state.authors = authors
-    },
-    removeAuthor (state, id) {
-      const authors = state.authors.filter(author => author.id === id)
-      authors.forEach((author) => {
-        const id = state.authors.indexOf(author)
-        state.authors.splice(id, 1)
-      })
-    },
     firstname (state, firstname) {
       state.firstname = firstname
     },
@@ -27,19 +16,6 @@ export default {
     }
   },
   actions: {
-    authors (context) {
-      if (!context.rootState.filter.searchTerm) return
-
-      api(context.rootState.user.token)
-        .get('/v1/author/find', {
-          params: {
-            term: context.rootState.filter.searchTerm
-          }
-        })
-        .then(function (response) {
-          context.commit('authors', response.data.authors)
-        })
-    },
     show (context, id) {
       api(context.rootState.user.token)
         .get('/v1/author/' + id)
@@ -84,7 +60,6 @@ export default {
       api(context.rootState.user.token)
         .delete('/v1/author/' + id)
         .then(function () {
-          context.commit('removeAuthor', id)
           context.dispatch(
             'notification/add',
             {

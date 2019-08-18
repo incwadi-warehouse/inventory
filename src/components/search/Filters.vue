@@ -101,7 +101,7 @@ export default {
       },
       set: function (sold) {
         this.$store.commit('filter/sold', sold ? 1 : 0)
-        this.$store.dispatch('book/search')
+        this.$store.dispatch('search/search')
       }
     },
     removed: {
@@ -110,7 +110,7 @@ export default {
       },
       set: function (removed) {
         this.$store.commit('filter/removed', removed ? 1 : 0)
-        this.$store.dispatch('book/search')
+        this.$store.dispatch('search/search')
       }
     },
     added: {
@@ -119,7 +119,7 @@ export default {
       },
       set: function (added) {
         this.$store.commit('filter/added', added)
-        this.$store.dispatch('book/search')
+        this.$store.dispatch('search/search')
       }
     },
     branch: {
@@ -128,7 +128,7 @@ export default {
       },
       set: function (branch) {
         this.$store.commit('filter/branch', branch)
-        this.$store.dispatch('book/search')
+        this.$store.dispatch('search/search')
       }
     },
     genre: {
@@ -137,7 +137,7 @@ export default {
       },
       set: function (genre) {
         this.$store.commit('filter/genreFilter', genre)
-        this.$store.dispatch('book/search')
+        this.$store.dispatch('search/search')
       }
     },
     lending: {
@@ -146,7 +146,7 @@ export default {
       },
       set: function (lending) {
         this.$store.commit('filter/lending', lending)
-        this.$store.dispatch('book/search')
+        this.$store.dispatch('search/search')
       }
     },
     releaseYear: {
@@ -155,7 +155,7 @@ export default {
       },
       set: function (releaseYear) {
         this.$store.commit('filter/releaseYear', releaseYear)
-        this.$store.dispatch('book/search')
+        this.$store.dispatch('search/search')
       }
     },
     type: {
@@ -164,7 +164,7 @@ export default {
       },
       set: function (type) {
         this.$store.commit('filter/type', type)
-        this.$store.dispatch('book/search')
+        this.$store.dispatch('search/search')
       }
     }
   },
