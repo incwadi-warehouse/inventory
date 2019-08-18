@@ -300,6 +300,9 @@ export default {
     this.$store.dispatch('book/show', this.id)
     this.$store.dispatch('customer/customers')
     this.$store.dispatch('genre/genres')
+  },
+  beforeDestroy: function () {
+    this.$store.dispatch('book/reset')
   }
 }
 </script>

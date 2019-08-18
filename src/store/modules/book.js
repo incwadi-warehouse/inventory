@@ -117,17 +117,7 @@ export default {
               root: true
             }
           )
-          context.commit('search/tab', null, { root: true })
-          context.commit('added', null)
-          context.commit('title', null)
-          context.commit('authorFirstname', null)
-          context.commit('authorSurname', null)
-          context.commit('genreId', null)
-          context.commit('price', '2.50')
-          context.commit('sold', false)
-          context.commit('releaseYear', 2019)
-          context.commit('type', 'paperback')
-          context.commit('premium', false)
+          context.dispatch('reset')
         })
         .catch(function (error) {
           context.commit(
@@ -263,6 +253,19 @@ export default {
             }
           )
         })
+    },
+    reset (context) {
+      context.commit('search/tab', null, { root: true })
+      context.commit('added', null)
+      context.commit('title', null)
+      context.commit('authorFirstname', null)
+      context.commit('authorSurname', null)
+      context.commit('genreId', null)
+      context.commit('price', '2.50')
+      context.commit('sold', false)
+      context.commit('releaseYear', 2019)
+      context.commit('type', 'paperback')
+      context.commit('premium', false)
     }
   }
 }
