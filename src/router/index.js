@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Search from '../views/Search'
 import EditBook from '../views/EditBook'
+import CreateBook from '../views/CreateBook'
 import About from '../views/About'
 import Genre from '../views/Genre'
 import Customer from '../views/Customer'
@@ -21,6 +22,12 @@ const router = new Router({
       path: '/',
       name: 'index',
       component: Search
+    },
+    {
+      path: '/book/new',
+      name: 'create-book',
+      component: CreateBook,
+      props: true
     },
     {
       path: '/book/edit/:id',

@@ -17,6 +17,11 @@
           </router-link>
         </li>
         <li class="offcanvas_item">
+          <router-link :to="{ name: 'create-book' }">
+            {{ $t('catalog') }}
+          </router-link>
+        </li>
+        <li class="offcanvas_item">
           <router-link :to="{ name: 'genre' }">
             {{ $t('genres') }}
           </router-link>
