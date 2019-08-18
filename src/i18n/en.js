@@ -81,5 +81,9 @@ export default {
   genre_create_success: 'The genre was created successfully.',
   genre_create_error: 'Sorry, genre could not be created. Try again later.',
   genre_remove_success: 'The genre was removed successfully.',
-  genre_remove_error: 'Sorry, genre could not be removed. Try again later.'
+  genre_remove_error: 'Sorry, genre could not be removed. Try again later.',
+  book_sell_success: 'The book was sold successfully.',
+  book_sell_error: 'Sorry, book could not be sold. Try again later.',
+  book_remove_success: 'The book was removed successfully.',
+  book_remove_error: 'Sorry, book could not be removed. Try again later.'
 }

@@ -81,5 +81,9 @@ export default {
   genre_create_success: 'Die Rubrik wurde erfolgreich angelegt.',
   genre_create_error: 'Die Rubrik konnte leider nicht angelegt werden. Versuche es später erneut.',
   genre_remove_success: 'Die Rubrik wurde erfolgreich gelöscht.',
-  genre_remove_error: 'Die Rubrik konnte leider nicht gelöscht werden. Versuche es später erneut.'
+  genre_remove_error: 'Die Rubrik konnte leider nicht gelöscht werden. Versuche es später erneut.',
+  book_sell_success: 'Das Buch wurde erfolgreich verkauft.',
+  book_sell_error: 'Das Buch konnte leider nicht verkauft werden. Versuche es später erneut.',
+  book_remove_success: 'Das Buch wurde erfolgreich gelöscht.',
+  book_remove_error: 'Das Buch konnte leider nicht gelöscht werden. Versuche es später erneut.'
 }
