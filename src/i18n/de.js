@@ -87,5 +87,6 @@ export default {
   book_remove_success: 'Das Buch wurde erfolgreich gelöscht.',
   book_remove_error: 'Das Buch konnte leider nicht gelöscht werden. Versuche es später erneut.',
   password_successful: 'Das Passwort wurde erfolgreich geändert.',
-  password_error: 'Das Passwort konnte leider nicht geändert werden. Versuche es später erneut.'
+  password_error: 'Das Passwort konnte leider nicht geändert werden. Versuche es später erneut.',
+  dark_mode: 'Dunkelmodus'
 }
