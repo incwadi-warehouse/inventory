@@ -35,6 +35,14 @@ export default {
       '--color-primary-10',
       process.env.BRAND_COLOR
     )
+    document.documentElement.style.setProperty(
+      '--color-primary-05',
+      '#eeab84'
+    )
+    document.documentElement.style.setProperty(
+      '--color-primary-00',
+      '#fcf1ea'
+    )
 
     if (Cookies.get('token') !== undefined) {
       this.$store.commit('user/isAuthenticated', true)
