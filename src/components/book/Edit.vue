@@ -1,6 +1,6 @@
 <template>
   <section class="container container_m">
-    <form class="form" @submit.prevent="update">
+    <form class="form" @submit.prevent="update(id)">
       <div class="form_group">
         <div class="form_item">
           <label for="genre" class="form_label">
@@ -139,7 +139,7 @@
       </div>
       <div class="form_group">
         <div class="form_item alignRight">
-          <button class="btn btn_primary">
+          <button class="btn btn_primary" @click="update(id)">
             {{ $t('update') }}
           </button>
         </div>
@@ -149,7 +149,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'edit',
@@ -272,9 +272,9 @@ export default {
     }
   },
   methods: {
-    update: function () {
-      this.$store.dispatch('book/update', this.id)
-    },
+    ...mapActions('book', [
+      'update'
+    ]),
     lending: function () {
       if (this.$store.state.book.lendTo) {
         this.$store.commit('book/lendOn', this.formatDate())

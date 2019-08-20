@@ -98,7 +98,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'create',
@@ -177,9 +177,9 @@ export default {
     }
   },
   methods: {
-    create: function () {
-      this.$store.dispatch('book/create')
-    }
+    ...mapActions('book', [
+      'create'
+    ])
   },
   mounted: function () {
     this.$store.dispatch('genre/genres')

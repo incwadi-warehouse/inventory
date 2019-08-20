@@ -44,6 +44,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   name: 'limit',
   computed: {
@@ -62,9 +64,9 @@ export default {
       this.$store.commit('filter/limit', limit)
       this.$store.dispatch('search/search')
     },
-    resetFilters: function () {
-      this.$store.dispatch('filter/reset')
-    }
+    ...mapActions('filter', {
+      resetFilters: 'reset'
+    })
   }
 }
 </script>

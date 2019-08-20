@@ -31,6 +31,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   name: 'contextMenu',
   props: ['book'],
@@ -52,16 +54,10 @@ export default {
     closeContextMenu: function (event) {
       this.showContextMenu = false
     },
-    sell: function (book) {
-      this.$store.commit('search/removeBook', book)
-      this.$store.commit('filter/offset', this.$store.state.filter.offset - 1)
-      this.$store.dispatch('book/sell', book.id)
-    },
-    remove: function (book) {
-      this.$store.commit('search/removeBook', book)
-      this.$store.commit('filter/offset', this.$store.state.filter.offset - 1)
-      this.$store.dispatch('book/remove', book.id)
-    }
+    ...mapActions('book', [
+      'sell',
+      'remove'
+    ])
   }
 }
 </script>

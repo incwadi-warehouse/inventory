@@ -79,7 +79,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'filters',
@@ -169,9 +169,9 @@ export default {
     }
   },
   methods: {
-    resetFilters: function () {
-      this.$store.dispatch('filter/reset')
-    }
+    ...mapActions('filter', {
+      resetFilters: 'reset'
+    })
   },
   mounted: function () {
     this.$store.dispatch('branch/branches')

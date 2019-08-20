@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'login',
@@ -63,9 +63,9 @@ export default {
     }
   },
   methods: {
-    login: function () {
-      this.$store.dispatch('user/login')
-    }
+    ...mapActions('user', [
+      'login'
+    ])
   },
   mounted: function () {
     document.getElementById('username').focus()

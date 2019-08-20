@@ -1,6 +1,6 @@
 <template>
   <section class="container container_m">
-    <form class="form" @submit.prevent="edit">
+    <form class="form" @submit.prevent="edit(id)">
       <div class="form_group">
         <div class="form_item">
           <label for="firstname" class="form_label">{{ $t('firstname') }}</label>
@@ -19,7 +19,7 @@
       </div>
       <div class="form_group">
         <div class="form_item alignRight">
-          <button class="btn btn_primary" @click.prevent="edit">
+          <button class="btn btn_primary" @click.prevent="edit(id)">
             {{ $t('save') }}
           </button>
         </div>
@@ -29,6 +29,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   name: 'edit-author',
   props: ['id'],
@@ -51,9 +53,9 @@ export default {
     }
   },
   methods: {
-    edit: function () {
-      this.$store.dispatch('author/edit', this.id)
-    }
+    ...mapActions('author', [
+      'edit'
+    ])
   },
   created: function () {
     this.$store.dispatch('author/show', this.id)

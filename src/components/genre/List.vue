@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
+import { mapState, mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'genre',
@@ -33,9 +33,9 @@ export default {
     ])
   },
   methods: {
-    remove: function (id) {
-      this.$store.dispatch('genre/remove', id)
-    }
+    ...mapActions('genre', [
+      'remove'
+    ])
   },
   created: function () {
     this.$store.dispatch('genre/genres')

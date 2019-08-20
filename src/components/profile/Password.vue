@@ -19,18 +19,24 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   name: 'password',
-  data () {
-    return {
-      password: null
+  computed: {
+    password: {
+      get: function () {
+        return this.$store.state.user.password
+      },
+      set: function (password) {
+        this.$store.commit('user/password', password)
+      }
     }
   },
   methods: {
-    save: function () {
-      this.$store.dispatch('user/password', this.password)
-      this.password = null
-    }
+    ...mapActions('user', {
+      save: 'password'
+    })
   }
 }
 </script>

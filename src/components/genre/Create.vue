@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'create-genre',
@@ -43,9 +43,9 @@ export default {
     ])
   },
   methods: {
-    create: function () {
-      this.$store.dispatch('genre/create', this.name)
-    }
+    ...mapActions('genre', [
+      'create'
+    ])
   }
 }
 </script>

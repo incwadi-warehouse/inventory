@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
+import { mapState, mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'author',
@@ -35,9 +35,9 @@ export default {
     ])
   },
   methods: {
-    remove: function (id) {
-      this.$store.dispatch('search/remove', id)
-    }
+    ...mapActions('search', [
+      'remove'
+    ])
   },
   created: function () {
     this.$store.dispatch('user/me')

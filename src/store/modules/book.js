@@ -198,10 +198,12 @@ export default {
           }
         })
     },
-    sell (context, id) {
+    sell (context, book) {
       api(context.rootState.user.token)
-        .put('/v1/book/sell/' + id)
+        .put('/v1/book/sell/' + book.id)
         .then(function () {
+          context.commit('search/removeBook', book, { root: true })
+          context.commit('filter/offset', context.rootState.filter.offset - 1, { root: true })
           context.dispatch(
             'notification/add',
             {
@@ -226,10 +228,12 @@ export default {
           )
         })
     },
-    remove (context, id) {
+    remove (context, book) {
       api(context.rootState.user.token)
-        .put('/v1/book/remove/' + id)
+        .put('/v1/book/remove/' + book.id)
         .then(function () {
+          context.commit('search/removeBook', book, { root: true })
+          context.commit('filter/offset', context.rootState.filter.offset - 1, { root: true })
           context.dispatch(
             'notification/add',
             {

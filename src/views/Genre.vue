@@ -4,13 +4,14 @@
       <h1>{{ $t('genres') }}</h1>
     </section>
     <list/>
-    <create v-if="showForm"/>
+    <create v-if="isAdmin"/>
   </section>
 </template>
 
 <script>
 import List from '../components/genre/List'
 import Create from '../components/genre/Create'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'genre-view',
@@ -19,11 +20,9 @@ export default {
     Create
   },
   computed: {
-    showForm: function () {
-      if (!this.$store.state.user.me) return
-
-      return this.$store.state.user.me.roles.indexOf('ROLE_ADMIN') !== -1
-    }
+    ...mapGetters('user', [
+      'isAdmin'
+    ])
   },
   mounted: function () {
     this.$store.dispatch('user/me')

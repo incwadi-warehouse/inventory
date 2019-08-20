@@ -1,7 +1,7 @@
 <template>
   <header class="masthead">
     <div class="masthead_nav" v-if="isAuthenticated">
-      <button class="btn btn_text" @click="openOffCanvas">
+      <button class="btn btn_text" @click="showOffCanvas(true)">
       <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25.000001 25.000001" class="icon">
         <path d="M0 2h25v4H0zm0 16h25v4H0zm0-8h25v4H0z"/>
       </svg>
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 
 export default {
   name: 'heading',
@@ -36,9 +36,9 @@ export default {
     }
   },
   methods: {
-    openOffCanvas: function () {
-      this.$store.commit('navigation/showOffCanvas', true)
-    },
+    ...mapMutations('navigation', [
+      'showOffCanvas'
+    ]),
     catalog: function () {
       this.$router.push({ name: 'create-book' })
     }

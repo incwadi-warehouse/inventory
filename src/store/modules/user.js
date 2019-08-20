@@ -1,4 +1,5 @@
 import api from '../../api'
+import router from '../../router'
 import Cookies from 'js-cookie'
 
 export default {
@@ -88,7 +89,7 @@ export default {
     password (context, password) {
       api(context.state.token)
         .put('/v1/password', {
-          password: password
+          password: context.state.password
         })
         .then(function () {
           context.dispatch(
@@ -100,6 +101,8 @@ export default {
             {
               root: true
             })
+          router.push({ name: 'index' })
+          context.commit('password', null)
         })
         .catch(function () {
           context.dispatch(

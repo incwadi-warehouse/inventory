@@ -16,6 +16,7 @@ import Login from './components/Login'
 import Notification from './components/Notification'
 import Navigation from './components/Navigation'
 import Cookies from 'js-cookie'
+import { mapState } from 'vuex'
 
 export default {
   name: 'app',
@@ -26,9 +27,9 @@ export default {
     Navigation
   },
   computed: {
-    isAuthenticated: function () {
-      return this.$store.state.user.isAuthenticated
-    }
+    ...mapState('user', [
+      'isAuthenticated'
+    ])
   },
   mounted: function () {
     document.documentElement.style.setProperty(
