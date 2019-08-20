@@ -45,7 +45,7 @@ export default {
       '#fcf1ea'
     )
 
-    if (Cookies.get('token') !== undefined) {
+    if (undefined !== Cookies.get('token')) {
       this.$store.commit('user/isAuthenticated', true)
     }
   }
