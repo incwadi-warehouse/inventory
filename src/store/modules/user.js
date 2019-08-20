@@ -10,8 +10,7 @@ export default {
     password: null,
     me: null,
     isAuthenticated: false,
-    isLoggingIn: false,
-    hasLoginError: false
+    isLoggingIn: false
   },
   getters: {
     isAdmin: (state) => {
@@ -38,9 +37,6 @@ export default {
     },
     isLoggingIn (state, status) {
       state.isLoggingIn = status
-    },
-    hasLoginError (state, status) {
-      state.hasLoginError = status
     }
   },
   actions: {
@@ -57,10 +53,18 @@ export default {
           context.commit('username', null)
           context.commit('password', null)
           context.commit('isAuthenticated', true)
-          context.commit('hasLoginError', false)
         })
         .catch(function () {
-          context.commit('hasLoginError', true)
+          context.dispatch(
+            'notification/add',
+            {
+              msg: 'wrong_credentials',
+              state: 'error'
+            },
+            {
+              root: true
+            }
+          )
         })
         .finally(function () {
           context.commit('isLoggingIn', false)

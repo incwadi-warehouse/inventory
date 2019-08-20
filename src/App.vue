@@ -3,7 +3,7 @@
     <heading/>
     <navigation/>
     <main class="content" role="main">
-      <notification class="noprint" v-if="isAuthenticated"/>
+      <notification class="noprint"/>
       <router-view v-if="isAuthenticated"/>
       <login v-if="!isAuthenticated"/>
     </main>

@@ -1,11 +1,6 @@
 <template>
   <section class="container container_s">
     <h1>{{ $t('login') }}</h1>
-
-    <aside class="notice notice_red" v-if="hasLoginError">
-      <p class="notice_entry">{{ $t('wrong_credentials') }}</p>
-    </aside>
-
     <form class="form" @submit.prevent="login">
       <div class="form_group">
         <div class="form_item">
@@ -42,7 +37,6 @@ export default {
   name: 'login',
   computed: {
     ...mapState('user', [
-      'hasLoginError',
       'isLoggingIn'
     ]),
     username: {
