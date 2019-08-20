@@ -1,15 +1,11 @@
 <template>
   <header class="masthead">
     <div class="masthead_nav" v-if="isAuthenticated">
-      <ul class="nav">
-        <li class="nav_item">
-          <button class="btn btn_text" @click="openOffCanvas">
-          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25.000001 25.000001" class="icon">
-            <path d="M0 2h25v4H0zm0 16h25v4H0zm0-8h25v4H0z"/>
-          </svg>
-          </button>
-        </li>
-      </ul>
+      <button class="btn btn_text" @click="openOffCanvas">
+      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25.000001 25.000001" class="icon">
+        <path d="M0 2h25v4H0zm0 16h25v4H0zm0-8h25v4H0z"/>
+      </svg>
+      </button>
     </div>
     <div class="masthead_logo">
       <router-link :to="{ name: 'index' }">
