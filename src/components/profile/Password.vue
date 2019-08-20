@@ -3,7 +3,7 @@
     <form class="form" @submit.prevent="save">
       <div class="form_group">
         <div class="form_item">
-          <label for="password" class="form_label">Password</label>
+          <label for="password" class="form_label">{{ $t('password') }}</label>
         </div>
         <div class="form_item">
           <input type="password" id="password" class="form_input" v-model="password">
@@ -11,7 +11,7 @@
       </div>
       <div class="form_group">
         <div class="form_item">
-          <button class="btn btn_primary floatRight" @submit.prevent="save">Save</button>
+          <button class="btn btn_primary floatRight" @submit.prevent="save">{{ $t('save') }}</button>
         </div>
       </div>
     </form>

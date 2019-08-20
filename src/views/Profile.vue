@@ -1,7 +1,7 @@
 <template>
   <section>
     <section class="container container_m">
-      <h1>Profile</h1>
+      <h1>{{ $t('profile') }}</h1>
     </section>
     <password/>
   </section>
