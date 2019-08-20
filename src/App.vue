@@ -32,7 +32,7 @@ export default {
   },
   mounted: function () {
     document.documentElement.style.setProperty(
-      '--color-primary',
+      '--color-primary-10',
       process.env.BRAND_COLOR
     )
 
