@@ -85,5 +85,7 @@ export default {
   book_sell_success: 'Das Buch wurde erfolgreich verkauft.',
   book_sell_error: 'Das Buch konnte leider nicht verkauft werden. Versuche es später erneut.',
   book_remove_success: 'Das Buch wurde erfolgreich gelöscht.',
-  book_remove_error: 'Das Buch konnte leider nicht gelöscht werden. Versuche es später erneut.'
+  book_remove_error: 'Das Buch konnte leider nicht gelöscht werden. Versuche es später erneut.',
+  password_successful: 'Das Passwort wurde erfolgreich geändert.',
+  password_error: 'Das Passwort konnte leider nicht geändert werden. Versuche es später erneut.'
 }

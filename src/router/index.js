@@ -9,6 +9,7 @@ import Customer from '../views/Customer'
 import Stats from '../views/Stats'
 import NotFound from '../views/NotFound'
 import EditAuthor from '../views/EditAuthor'
+import Profile from '../views/Profile'
 import store from '../store'
 
 Vue.use(Router)
@@ -60,6 +61,11 @@ const router = new Router({
       name: 'edit-author',
       component: EditAuthor,
       props: true
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      component: Profile
     },
     {
       path: '*',

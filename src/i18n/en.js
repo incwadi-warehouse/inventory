@@ -85,5 +85,7 @@ export default {
   book_sell_success: 'The book was sold successfully.',
   book_sell_error: 'Sorry, book could not be sold. Try again later.',
   book_remove_success: 'The book was removed successfully.',
-  book_remove_error: 'Sorry, book could not be removed. Try again later.'
+  book_remove_error: 'Sorry, book could not be removed. Try again later.',
+  password_successful: 'The password was changed successfully.',
+  password_error: 'Sorry, password could not be changed. Try again later.'
 }

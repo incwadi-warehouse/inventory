@@ -45,6 +45,11 @@
       <hr>
       <ul class="offcanvas_nav">
         <li class="offcanvas_item">
+          <router-link :to="{ name: 'profile' }">
+            {{ $t('profile') }}
+          </router-link>
+        </li>
+        <li class="offcanvas_item">
           <a href="/logout" @click.prevent="logout">
             {{ $t('logout') }}
           </a>

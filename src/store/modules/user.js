@@ -84,6 +84,34 @@ export default {
       context.dispatch('filter/reset', null, { root: true })
       context.commit('navigation/showOffCanvas', false, { root: true })
       Cookies.remove('token')
+    },
+    password (context, password) {
+      api(context.state.token)
+        .put('/v1/password', {
+          password: password
+        })
+        .then(function () {
+          context.dispatch(
+            'notification/add',
+            {
+              msg: 'password_successful',
+              state: 'success'
+            },
+            {
+              root: true
+            })
+        })
+        .catch(function () {
+          context.dispatch(
+            'notification/add',
+            {
+              msg: 'password_error',
+              state: 'error'
+            },
+            {
+              root: true
+            })
+        })
     }
   }
 }
