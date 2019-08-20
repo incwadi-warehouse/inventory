@@ -1,6 +1,6 @@
 <template>
   <section class="container container_m">
-    <button class="btn btn_link floatRight" @click="resetFilters">
+    <button class="btn btn_text floatRight" @click="resetFilters">
       {{ $t('reset') }}
     </button>
     <form class="form" @submit.prevent="find">

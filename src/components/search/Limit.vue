@@ -1,6 +1,6 @@
 <template>
   <section class="container container_m">
-    <button class="btn btn_link floatRight" @click="resetFilters">
+    <button class="btn btn_text floatRight" @click="resetFilters">
       {{ $t('reset') }}
     </button>
     <form class="form" @submit.prevent>
@@ -33,10 +33,10 @@
           <legend>{{ $t('limit') }}</legend>
         </div>
         <div class="form_item">
-          <button class="btn btn_link" @click="setLimit(10)">10</button>
-          <button class="btn btn_link" @click="setLimit(20)">20</button>
-          <button class="btn btn_link" @click="setLimit(50)">50</button>
-          <button class="btn btn_link" @click="setLimit(100)">100</button>
+          <button class="btn btn_text" @click="setLimit(10)">10</button>
+          <button class="btn btn_text" @click="setLimit(20)">20</button>
+          <button class="btn btn_text" @click="setLimit(50)">50</button>
+          <button class="btn btn_text" @click="setLimit(100)">100</button>
         </div>
       </fieldset>
     </form>
