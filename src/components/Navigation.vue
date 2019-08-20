@@ -12,32 +12,32 @@
       </div>
       <ul class="offcanvas_nav">
         <li class="offcanvas_item">
-          <router-link :to="{ name: 'index' }">
+          <router-link :to="{ name: 'index' }" class="offcanvas_link">
             {{ $t('search') }}
           </router-link>
         </li>
         <li class="offcanvas_item">
-          <router-link :to="{ name: 'create-book' }">
+          <router-link :to="{ name: 'create-book' }" class="offcanvas_link">
             {{ $t('catalog') }}
           </router-link>
         </li>
         <li class="offcanvas_item">
-          <router-link :to="{ name: 'genre' }">
+          <router-link :to="{ name: 'genre' }" class="offcanvas_link">
             {{ $t('genres') }}
           </router-link>
         </li>
         <li class="offcanvas_item">
-          <router-link :to="{ name: 'customer' }">
+          <router-link :to="{ name: 'customer' }" class="offcanvas_link">
             {{ $t('customers') }}
           </router-link>
         </li>
         <li class="offcanvas_item">
-          <router-link :to="{ name: 'stats' }">
+          <router-link :to="{ name: 'stats' }" class="offcanvas_link">
             {{ $t('stats') }}
           </router-link>
         </li>
         <li class="offcanvas_item">
-          <router-link :to="{ name: 'about' }">
+          <router-link :to="{ name: 'about' }" class="offcanvas_link">
             {{ $t('about') }}
           </router-link>
         </li>
@@ -45,12 +45,12 @@
       <hr>
       <ul class="offcanvas_nav">
         <li class="offcanvas_item">
-          <router-link :to="{ name: 'profile' }">
+          <router-link :to="{ name: 'profile' }" class="offcanvas_link">
             {{ $t('profile') }}
           </router-link>
         </li>
         <li class="offcanvas_item">
-          <a href="/logout" @click.prevent="logout">
+          <a href="/logout" @click.prevent="logout" class="offcanvas_link">
             {{ $t('logout') }}
           </a>
         </li>
