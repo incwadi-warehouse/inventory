@@ -8,7 +8,6 @@
         :placeholder="$t('search_for_title_or_author')"
         :aria-label="$t('search')"
         autofocus
-        @input="search"
         v-model="searchTerm">
       <button type="reset" class="search_btn search_btn_reset" @click="reset" v-if="null != searchTerm">
         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 50 50" class="icon">
@@ -33,6 +32,7 @@ export default {
       },
       set: function (searchTerm) {
         this.$store.commit('filter/searchTerm', searchTerm)
+        this.search()
       }
     }
   },
