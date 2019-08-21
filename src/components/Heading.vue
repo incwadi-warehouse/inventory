@@ -2,9 +2,11 @@
   <header class="masthead">
     <div class="masthead_nav" v-if="isAuthenticated">
       <button class="btn btn_text" @click="showOffCanvas(true)">
-      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25.000001 25.000001" class="icon">
-        <path d="M0 2h25v4H0zm0 16h25v4H0zm0-8h25v4H0z"/>
-      </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 50 50" class="icon">
+          <g>
+            <path d="M0 3h50v8.8H0zM0 38.2h50V47H0zM0 20.6h50v8.8H0z"/>
+          </g>
+        </svg>
       </button>
     </div>
     <div class="masthead_logo">
