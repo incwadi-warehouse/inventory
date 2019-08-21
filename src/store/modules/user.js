@@ -1,6 +1,7 @@
 import api from '../../api'
 import router from '../../router'
 import Cookies from 'js-cookie'
+import notification from '../../notification'
 
 export default {
   namespaced: true,
@@ -55,16 +56,7 @@ export default {
           context.commit('isAuthenticated', true)
         })
         .catch(function () {
-          context.dispatch(
-            'notification/add',
-            {
-              msg: 'wrong_credentials',
-              state: 'error'
-            },
-            {
-              root: true
-            }
-          )
+          notification('wrong_credentials', 'error')
         })
         .finally(function () {
           context.commit('isLoggingIn', false)
@@ -96,28 +88,12 @@ export default {
           password: context.state.password
         })
         .then(function () {
-          context.dispatch(
-            'notification/add',
-            {
-              msg: 'password_successful',
-              state: 'success'
-            },
-            {
-              root: true
-            })
+          notification('password_successful', 'success')
           router.push({ name: 'index' })
           context.commit('password', null)
         })
         .catch(function () {
-          context.dispatch(
-            'notification/add',
-            {
-              msg: 'password_error',
-              state: 'error'
-            },
-            {
-              root: true
-            })
+          notification('password_error', 'error')
         })
     }
   }

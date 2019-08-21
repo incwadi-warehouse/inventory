@@ -1,5 +1,6 @@
 import api from '../../api'
 import router from '../../router'
+import notification from '../../notification'
 
 const formatDate = function (data) {
   const date = new Date(data)
@@ -107,40 +108,13 @@ export default {
           premium: context.state.premium
         })
         .then(function () {
-          context.dispatch(
-            'notification/add',
-            {
-              msg: 'book_created',
-              state: 'success'
-            },
-            {
-              root: true
-            }
-          )
+          notification('book_created', 'success')
           context.dispatch('reset')
         })
         .catch(function (error) {
-          context.commit(
-            'notification/add',
-            {
-              msg: 'book_not_valid',
-              state: 'error'
-            },
-            {
-              root: true
-            }
-          )
+          notification('book_not_valid', 'error')
           if (error.response.status === 409) {
-            context.dispatch(
-              'notification/add',
-              {
-                msg: 'book_not_valid_duplicate',
-                state: 'error'
-              },
-              {
-                root: true
-              }
-            )
+            notification('book_not_valid_duplicate', 'error')
           }
         })
     },
@@ -162,39 +136,12 @@ export default {
         })
         .then(function () {
           router.push({ name: 'index' })
-          context.dispatch(
-            'notification/add',
-            {
-              msg: 'book_updated',
-              state: 'success'
-            },
-            {
-              root: true
-            }
-          )
+          notification('book_updated', 'success')
         })
         .catch(function (error) {
-          context.dispatch(
-            'notification/add',
-            {
-              msg: 'book_not_valid',
-              state: 'error'
-            },
-            {
-              root: true
-            }
-          )
+          notification('book_not_valid', 'error')
           if (error.response.status === 409) {
-            context.dispatch(
-              'notification/add',
-              {
-                msg: 'book_not_valid_duplicate',
-                state: 'error'
-              },
-              {
-                root: true
-              }
-            )
+            notification('book_not_valid_duplicate', 'error')
           }
         })
     },
@@ -204,28 +151,10 @@ export default {
         .then(function () {
           context.commit('search/removeBook', book, { root: true })
           context.commit('filter/offset', context.rootState.filter.offset - 1, { root: true })
-          context.dispatch(
-            'notification/add',
-            {
-              msg: 'book_sell_success',
-              state: 'success'
-            },
-            {
-              root: true
-            }
-          )
+          notification('book_sell_success', 'success')
         })
         .catch(function () {
-          context.dispatch(
-            'notification/add',
-            {
-              msg: 'book_sell_error',
-              state: 'error'
-            },
-            {
-              root: true
-            }
-          )
+          notification('book_sell_error', 'error')
         })
     },
     remove (context, book) {
@@ -234,28 +163,10 @@ export default {
         .then(function () {
           context.commit('search/removeBook', book, { root: true })
           context.commit('filter/offset', context.rootState.filter.offset - 1, { root: true })
-          context.dispatch(
-            'notification/add',
-            {
-              msg: 'book_remove_success',
-              state: 'success'
-            },
-            {
-              root: true
-            }
-          )
+          notification('book_remove_success', 'success')
         })
         .catch(function () {
-          context.dispatch(
-            'notification/add',
-            {
-              msg: 'book_remove_error',
-              state: 'error'
-            },
-            {
-              root: true
-            }
-          )
+          notification('book_remove_error', 'error')
         })
     },
     reset (context) {

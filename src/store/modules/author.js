@@ -1,5 +1,6 @@
 import api from '../../api'
 import router from '../../router'
+import notification from '../../notification'
 
 export default {
   namespaced: true,
@@ -32,57 +33,20 @@ export default {
         })
         .then(function () {
           router.push({ name: 'index' })
-          context.dispatch(
-            'notification/add',
-            {
-              msg: 'author_edit_successful',
-              state: 'success'
-            },
-            {
-              root: true
-            }
-          )
+          notification('author_edit_successful', 'success')
         })
         .catch(function () {
-          context.dispatch(
-            'notification/add',
-            {
-              msg: 'author_edit_error',
-              state: 'error'
-            },
-            {
-              root: true
-            }
-          )
+          notification('author_edit_error', 'error')
         })
     },
     remove (context, id) {
       api(context.rootState.user.token)
         .delete('/v1/author/' + id)
         .then(function () {
-          context.dispatch(
-            'notification/add',
-            {
-              msg: 'author_remove_successful',
-              state: 'success'
-            },
-            {
-              root: true
-            }
-          )
+          notification('author_remove_successful', 'success')
         })
-        .catch(function (error) {
-          console.error(error)
-          context.dispatch(
-            'notification/add',
-            {
-              msg: 'author_remove_error',
-              state: 'error'
-            },
-            {
-              root: true
-            }
-          )
+        .catch(function () {
+          notification('author_remove_error', 'error')
         })
     }
   }

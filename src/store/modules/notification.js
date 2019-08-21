@@ -16,16 +16,11 @@ export default {
     }
   },
   actions: {
-    add (context, data) {
-      const notification = {
-        id: new Date().getTime(),
-        msg: data.msg,
-        state: data.state || 'neutral'
-      }
+    add (context, notification) {
       context.commit('add', notification)
       setTimeout(() => {
         context.commit('remove', notification)
-      }, 5000)
+      }, notification.timer)
     }
   }
 }

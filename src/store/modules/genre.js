@@ -1,4 +1,5 @@
 import api from '../../api'
+import notification from '../../notification'
 
 export default {
   namespaced: true,
@@ -39,26 +40,10 @@ export default {
         .then(function () {
           context.commit('name', null)
           context.dispatch('genres')
-          context.dispatch(
-            'notification/add',
-            {
-              msg: 'genre_create_success',
-              state: 'success'
-            },
-            {
-              root: true
-            })
+          notification('genre_create_success', 'success')
         })
         .catch(function () {
-          context.dispatch(
-            'notification/add',
-            {
-              msg: 'genre_create_error',
-              state: 'error'
-            },
-            {
-              root: true
-            })
+          notification('genre_create_error', 'error')
         })
         .finally(function () {
           context.commit('isProcessing', false)
@@ -69,26 +54,10 @@ export default {
         .delete('/v1/genre/' + id)
         .then(function () {
           context.dispatch('genres')
-          context.dispatch(
-            'notification/add',
-            {
-              msg: 'genre_remove_success',
-              state: 'success'
-            },
-            {
-              root: true
-            })
+          notification('genre_remove_success', 'success')
         })
         .catch(function () {
-          context.dispatch(
-            'notification/add',
-            {
-              msg: 'genre_remove_error',
-              state: 'error'
-            },
-            {
-              root: true
-            })
+          notification('genre_remove_error', 'error')
         })
     }
   }
