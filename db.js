@@ -179,23 +179,6 @@ app.post('/v1/genre/new', (req, res) => {
   );
 })
 
-app.get('/v1/me', (req, res) => {
-  return res.json(
-    {
-      "id": 1,
-      "username": "admin",
-      "roles": [
-        "ROLE_ADMIN",
-        "ROLE_USER"
-      ],
-      "branch": {
-        "id": 1,
-        "name": "test"
-      }
-    }
-  );
-})
-
 app.get('/v1/branch/', (req, res) => {
   return res.json(
     {
@@ -265,6 +248,31 @@ app.post('/api/login_check/', (req, res) => {
   return res.json(
     {
       "token": "token"
+    }
+  );
+})
+
+app.get('/v1/me', (req, res) => {
+  return res.json(
+    {
+      "id": 1,
+      "username": "admin",
+      "roles": [
+        "ROLE_ADMIN",
+        "ROLE_USER"
+      ],
+      "branch": {
+        "id": 1,
+        "name": "test"
+      }
+    }
+  );
+})
+
+app.put('/v1/password/', (req, res) => {
+  return res.json(
+    {
+      "msg": "Password changed successfully!"
     }
   );
 })

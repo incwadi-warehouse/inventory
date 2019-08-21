@@ -70,13 +70,6 @@ export default {
           context.commit('isLoggingIn', false)
         })
     },
-    me (context) {
-      api(context.state.token)
-        .get('/v1/me')
-        .then(function (response) {
-          context.commit('me', response.data)
-        })
-    },
     logout (context) {
       context.commit('isAuthenticated', false)
       context.commit('username', null)
@@ -90,7 +83,14 @@ export default {
       context.commit('navigation/showOffCanvas', false, { root: true })
       Cookies.remove('token')
     },
-    password (context, password) {
+    me (context) {
+      api(context.state.token)
+        .get('/v1/me')
+        .then(function (response) {
+          context.commit('me', response.data)
+        })
+    },
+    password (context) {
       api(context.state.token)
         .put('/v1/password', {
           password: context.state.password
