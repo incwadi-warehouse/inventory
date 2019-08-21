@@ -76,5 +76,11 @@
     "last 2 firefox versions",
     "last 2 and_ff versions",
     "ie 11"
-  ]
+  ],
+  "config": {
+    "appName": "incwadi",
+    "appShortName": "incwadi",
+    "color": "#e1661e",
+    "lang": "de-DE"
+  }
 }

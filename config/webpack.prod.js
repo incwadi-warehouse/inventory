@@ -2,15 +2,15 @@
 
 const path = require('path')
 const webpack = require('webpack')
+const Dotenv = require('dotenv-webpack')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { GenerateSW } = require('workbox-webpack-plugin')
+const WebappWebpackPlugin = require('webapp-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const DotenvPlugin = require('dotenv-webpack');
-const WebappWebpackPlugin = require('webapp-webpack-plugin');
-const version = require('./../package.json').version;
-const { GenerateSW } = require('workbox-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
+const pkg = require('./../package.json')
 
 require('dotenv').config({
   path: './.env.production'
@@ -84,13 +84,10 @@ module.exports = {
   devtool: '#source-map',
   plugins: [
     new CleanWebpackPlugin(),
-    new DotenvPlugin({
+    new Dotenv({
       path: './.env.production'
     }),
     new VueLoaderPlugin(),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
-    }),
     new webpack.LoaderOptionsPlugin({
       minimize: true
     }),
@@ -104,21 +101,21 @@ module.exports = {
       inject: true,
       favicons: {
         path: "/",
-        appName: 'incwadi',
-        appShortName: 'incwadi',
-        appDescription: 'incwadi is a book database to manage a lot of books.',
+        appName: pkg.config.appName,
+        appShortName: pkg.config.appShortName,
+        appDescription: pkg.description,
         developerName: null,
         developerURL: null,
-        dir: "auto",
-        lang: "en-US",
-        background: process.env.BRAND_COLOR,
-        theme_color: process.env.BRAND_COLOR,
-        appleStatusBarStyle: "default",
-        display: "standalone",
-        orientation: "any",
-        scope: "/",
-        start_url: "/",
-        version: version,
+        dir: 'auto',
+        lang: pkg.config.lang,
+        background: pkg.config.color,
+        theme_color: pkg.config.color,
+        appleStatusBarStyle: 'default',
+        display: 'standalone',
+        orientation: 'any',
+        scope: '/',
+        start_url: '/',
+        version: pkg.version,
         logging: false,
         pixel_art: false,
         loadManifestWithCredentials: false,
