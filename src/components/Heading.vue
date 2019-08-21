@@ -11,7 +11,7 @@
     </div>
     <div class="masthead_logo">
       <router-link :to="{ name: 'index' }">
-        <img :src=logo width="210" alt="incwadi" loading="lazy">
+        <img :src=logo alt="incwadi" loading="lazy">
       </router-link>
     </div>
     <div class="masthead_settings" v-if="isAuthenticated">
@@ -47,3 +47,15 @@ export default {
   }
 }
 </script>
+
+<style>
+.masthead_logo img {
+  width: 110px;
+}
+
+@media all and (min-width: 410px) {
+  .masthead_logo img {
+    width: 200px;
+  }
+}
+</style>

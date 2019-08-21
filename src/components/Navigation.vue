@@ -10,6 +10,12 @@
         </svg>
         </button>
       </div>
+      <div class="offcanvas_nav">
+        <li class="offcanvas_item">
+          <img :src=logo alt="Feed" loading="lazy">
+        </li>
+      </div>
+      <hr class="divider">
       <ul class="offcanvas_nav">
         <li class="offcanvas_item">
           <router-link :to="{ name: 'index' }" class="offcanvas_link">
@@ -65,6 +71,9 @@ import { mapState, mapActions, mapMutations } from 'vuex'
 export default {
   name: 'navigation',
   computed: {
+    logo: function () {
+      return require('../../' + process.env.LOGO)
+    },
     ...mapState('user', [
       'isAuthenticated'
     ]),
