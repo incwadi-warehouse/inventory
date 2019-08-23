@@ -72,10 +72,7 @@ module.exports = {
     noInfo: true,
     overlay: true
   },
-  performance: {
-    hints: false
-  },
-  devtool: '#eval-source-map',
+  devtool: '#cheap-module-eval-source-map',
   plugins: [
     new Dotenv({
       path: './.env'

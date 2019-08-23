@@ -2,7 +2,7 @@
 
 const path = require('path')
 const webpack = require('webpack')
-const Dotenv = require('dotenv-webpack')
+const DotenvPlugin = require('dotenv-webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { GenerateSW } = require('workbox-webpack-plugin')
@@ -55,8 +55,8 @@ module.exports = {
         test: /\.(svg)(\?.*)?$/,
         loader: 'url-loader',
         options: {
-          limit: 10000,
-          name: path.posix.join('img/[name].[hash:7].[ext]')
+          limit: 4096,
+          name: path.posix.join('img/[name].[hash:8].[ext]')
         }
       },
       {
@@ -65,7 +65,7 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: path.posix.join('img/[name].[hash:7].[ext]')
+              name: path.posix.join('img/[name].[hash:8].[ext]')
             },
           },
         ],
@@ -78,13 +78,10 @@ module.exports = {
     },
     extensions: ['*', '.js', '.vue', '.json']
   },
-  performance: {
-    hints: false
-  },
-  devtool: '#source-map',
+  devtool: false,
   plugins: [
     new CleanWebpackPlugin(),
-    new Dotenv({
+    new DotenvPlugin({
       path: './.env.production'
     }),
     new VueLoaderPlugin(),
@@ -93,10 +90,20 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: 'index.html',
-      minify: true
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeScriptTypeAttributes: true,
+        removeAttributeQuotes: true,
+        collapseBooleanAttributes: true,
+        removeRedundantAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        useShortDoctype: true,
+        decodeEntities: true
+      }
     }),
     new WebappWebpackPlugin({
-      logo: './src/assets/icon.png',
+      logo: './src/assets/icon.svg',
       prefix: 'assets/',
       inject: true,
       favicons: {
