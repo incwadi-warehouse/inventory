@@ -1,15 +1,14 @@
 <template>
-  <section class="container container_m">
-    <h1>{{ $t('not_found') }}</h1>
-    <p>{{ $t('not_found_desc') }}</p>
-    <router-link :to="{ name: 'index' }">
-      {{ $t('go_to_homepage') }}
-    </router-link>
-  </section>
+  <not-found/>
 </template>
 
 <script>
+import NotFound from '../components/notFound/NotFound'
+
 export default {
-  name: 'not-found-view'
+  name: 'not-found-view',
+  components: {
+    NotFound
+  }
 }
 </script>
