@@ -88,5 +88,8 @@ export default {
   book_remove_error: 'Das Buch konnte leider nicht gelöscht werden. Versuche es später erneut.',
   password_successful: 'Das Passwort wurde erfolgreich geändert.',
   password_error: 'Das Passwort konnte leider nicht geändert werden. Versuche es später erneut.',
-  dark_mode: 'Dunkelmodus'
+  dark_mode: 'Dunkelmodus',
+  dark_mode_explanation: 'Der Dunkelmodus stellt das UI in dunkleren Farben dar, dies kann angenehmer für die Augen sein.',
+  activate_dark_mode: 'Aktiviere Dunkelmodus',
+  deactivate_dark_mode: 'Deaktiviere Dunkelmodus',
 }

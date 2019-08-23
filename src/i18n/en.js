@@ -88,5 +88,8 @@ export default {
   book_remove_error: 'Sorry, book could not be removed. Try again later.',
   password_successful: 'The password was changed successfully.',
   password_error: 'Sorry, password could not be changed. Try again later.',
-  dark_mode: 'Dark Mode'
+  dark_mode: 'Dark Mode',
+  dark_mode_explanation: 'The dark mode shows the ui in darker colors, that could be more pleasant to the eyes.',
+  activate_dark_mode: 'Activate Dark Mode',
+  deactivate_dark_mode: 'Deactivate Dark Mode',
 }
