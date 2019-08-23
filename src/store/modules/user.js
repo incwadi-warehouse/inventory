@@ -1,7 +1,7 @@
 import api from '../../api'
 import router from '../../router'
 import Cookies from 'js-cookie'
-import notification from '../../notification'
+import notification from '../../util/notification'
 
 export default {
   namespaced: true,

@@ -1,6 +1,6 @@
 import api from '../../api'
 import router from '../../router'
-import notification from '../../notification'
+import notification from '../../util/notification'
 
 const formatDate = function (data) {
   const date = new Date(data)

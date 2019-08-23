@@ -1,5 +1,5 @@
 import api from '../../api'
-import notification from '../../notification'
+import notification from '../../util/notification'
 
 export default {
   namespaced: true,
