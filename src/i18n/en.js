@@ -91,5 +91,5 @@ export default {
   dark_mode: 'Dark Mode',
   dark_mode_explanation: 'The dark mode shows the ui in darker colors, that could be more pleasant to the eyes.',
   activate_dark_mode: 'Activate Dark Mode',
-  deactivate_dark_mode: 'Deactivate Dark Mode',
+  deactivate_dark_mode: 'Deactivate Dark Mode'
 }
