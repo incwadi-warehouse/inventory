@@ -2,7 +2,7 @@
 
 const path = require('path')
 const webpack = require('webpack')
-const DotenvPlugin = require('dotenv-webpack')
+const Dotenv = require('dotenv-webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { GenerateSW } = require('workbox-webpack-plugin')
@@ -81,7 +81,7 @@ module.exports = {
   devtool: false,
   plugins: [
     new CleanWebpackPlugin(),
-    new DotenvPlugin({
+    new Dotenv({
       path: './.env.production'
     }),
     new VueLoaderPlugin(),
