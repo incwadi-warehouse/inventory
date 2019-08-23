@@ -103,7 +103,7 @@ module.exports = {
       }
     }),
     new WebappWebpackPlugin({
-      logo: './src/assets/icon.svg',
+      logo: './src/assets/icon.png',
       prefix: 'assets/',
       inject: true,
       favicons: {
