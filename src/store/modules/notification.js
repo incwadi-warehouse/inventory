@@ -14,13 +14,5 @@ export default {
       const id = state.notifications.indexOf(notification)
       state.notifications.splice(id, 1)
     }
-  },
-  actions: {
-    add (context, notification) {
-      context.commit('add', notification)
-      setTimeout(() => {
-        context.commit('remove', notification)
-      }, notification.timer)
-    }
   }
 }

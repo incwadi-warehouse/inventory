@@ -11,18 +11,19 @@ function getClass (state) {
 }
 
 export default function (msg, state, timer, undo) {
-  store.dispatch(
+  const notification = {
+    id: new Date().getTime(),
+    msg: msg,
+    state: state || 'neutral',
+    class: getClass(state),
+    timer: timer || 5000,
+    undo: undo
+  }
+  store.commit(
     'notification/add',
-    {
-      id: new Date().getTime(),
-      msg: msg,
-      state: state || 'neutral',
-      class: getClass(state),
-      timer: timer || 5000,
-      undo: undo
-    },
-    {
-      root: true
-    }
+    notification
   )
+  setTimeout(() => {
+    store.commit('notification/remove', notification)
+  }, notification.timer)
 }
