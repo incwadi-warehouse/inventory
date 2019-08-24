@@ -91,5 +91,6 @@ export default {
   dark_mode: 'Dunkelmodus',
   dark_mode_explanation: 'Der Dunkelmodus stellt das UI in dunkleren Farben dar, dies kann angenehmer für die Augen sein.',
   activate_dark_mode: 'Aktiviere Dunkelmodus',
-  deactivate_dark_mode: 'Deaktiviere Dunkelmodus'
+  deactivate_dark_mode: 'Deaktiviere Dunkelmodus',
+  undo: 'Rückgängig'
 }

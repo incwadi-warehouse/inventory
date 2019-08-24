@@ -10,7 +10,7 @@ function getClass (state) {
   }
 }
 
-export default function (msg, state, timer) {
+export default function (msg, state, timer, undo) {
   store.dispatch(
     'notification/add',
     {
@@ -18,7 +18,8 @@ export default function (msg, state, timer) {
       msg: msg,
       state: state || 'neutral',
       class: getClass(state),
-      timer: timer || 5000
+      timer: timer || 5000,
+      undo: undo
     },
     {
       root: true
