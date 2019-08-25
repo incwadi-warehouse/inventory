@@ -45,7 +45,7 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: path.posix.join('img/[name].[hash:7].[ext]')
+          name: path.posix.join('img/[name].[hash:8].[ext]')
         }
       },
       {
@@ -54,7 +54,7 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: path.posix.join('img/[name].[hash:7].[ext]')
+              name: path.posix.join('img/[name].[hash:8].[ext]')
             },
           },
         ],
