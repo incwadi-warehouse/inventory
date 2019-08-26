@@ -11,7 +11,8 @@ export default {
     password: null,
     me: null,
     isAuthenticated: false,
-    isLoggingIn: false
+    isLoggingIn: false,
+    isChangingPassword: false
   },
   getters: {
     isAdmin: (state) => {
@@ -38,6 +39,9 @@ export default {
     },
     isLoggingIn (state, status) {
       state.isLoggingIn = status
+    },
+    isChangingPassword(state, status) {
+      state.isChangingPassword = status
     }
   },
   actions: {
@@ -83,6 +87,7 @@ export default {
         })
     },
     password (context) {
+      context.commit('isChangingPassword', true)
       api(context.state.token)
         .put('/v1/password', {
           password: context.state.password
@@ -94,6 +99,9 @@ export default {
         })
         .catch(function () {
           notification('password_error', 'error')
+        })
+        .finally(function () {
+          context.commit('isChangingPassword', false)
         })
     }
   }

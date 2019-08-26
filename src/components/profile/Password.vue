@@ -11,7 +11,10 @@
       </div>
       <div class="form_group">
         <div class="form_item">
-          <button class="btn btn_primary floatRight" @submit.prevent="save">{{ $t('save') }}</button>
+          <button class="btn btn_primary floatRight" v-if="!isChangingPassword">{{ $t('save') }}</button>
+          <button class="btn btn_outline floatRight" v-if="isChangingPassword">
+            <div class="spinner spinner-s"></div>
+          </button>
         </div>
       </div>
     </form>
@@ -19,11 +22,14 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'password',
   computed: {
+    ...mapState('user', [
+      'isChangingPassword'
+    ]),
     password: {
       get: function () {
         return this.$store.state.user.password
