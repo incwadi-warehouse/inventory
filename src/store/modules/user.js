@@ -40,7 +40,7 @@ export default {
     isLoggingIn (state, status) {
       state.isLoggingIn = status
     },
-    isChangingPassword(state, status) {
+    isChangingPassword (state, status) {
       state.isChangingPassword = status
     }
   },
