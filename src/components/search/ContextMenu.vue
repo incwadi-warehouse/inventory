@@ -51,7 +51,7 @@ export default {
         left: (event.clientX - 200) + 'px'
       }
     },
-    closeContextMenu: function (event) {
+    closeContextMenu: function () {
       this.showContextMenu = false
     },
     ...mapActions('book', [
