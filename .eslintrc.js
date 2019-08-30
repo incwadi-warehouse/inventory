@@ -1,8 +1,11 @@
 module.exports = {
   extends: [
-    'plugin:vue/essential',
-    'standard'
+    'eslint:recommended',
+    'plugin:vue/essential'
   ],
+  env: {
+    'node': true
+  },
   rules: {
     'no-new': 0
   }
