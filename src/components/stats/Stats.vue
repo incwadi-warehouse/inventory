@@ -23,11 +23,9 @@ import { mapState } from 'vuex'
 export default {
   name: 'stats',
   computed: {
-    ...mapState('stats', [
-      'stats'
-    ])
+    ...mapState('stats', ['stats'])
   },
-  created: function () {
+  created: function() {
     this.$store.dispatch('stats/stats')
   }
 }

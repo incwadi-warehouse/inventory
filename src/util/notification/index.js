@@ -1,6 +1,6 @@
 import store from '../../store'
 
-function getClass (state) {
+function getClass(state) {
   return {
     notification: true,
     notification_neutral: state === 'neutral',
@@ -10,7 +10,7 @@ function getClass (state) {
   }
 }
 
-export default function (msg, state, timer, undo) {
+export default function(msg, state, timer, undo) {
   const notification = {
     id: new Date().getTime(),
     msg: msg,
@@ -19,10 +19,7 @@ export default function (msg, state, timer, undo) {
     timer: timer || 5000,
     undo: undo
   }
-  store.commit(
-    'notification/add',
-    notification
-  )
+  store.commit('notification/add', notification)
   setTimeout(() => {
     store.commit('notification/remove', notification)
   }, notification.timer)

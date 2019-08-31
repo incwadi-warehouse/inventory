@@ -4,13 +4,13 @@ export default {
     notifications: []
   },
   mutations: {
-    notifications (state, notifications) {
+    notifications(state, notifications) {
       state.notifications = notifications
     },
-    add (state, notification) {
+    add(state, notification) {
       state.notifications.push(notification)
     },
-    remove (state, notification) {
+    remove(state, notification) {
       const id = state.notifications.indexOf(notification)
       state.notifications.splice(id, 1)
     }

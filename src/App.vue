@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-    <heading/>
-    <navigation/>
+    <heading />
+    <navigation />
     <main class="content" role="main">
-      <notification class="noprint"/>
-      <router-view v-if="isAuthenticated"/>
-      <login v-if="!isAuthenticated"/>
+      <notification class="noprint" />
+      <router-view v-if="isAuthenticated" />
+      <login v-if="!isAuthenticated" />
     </main>
   </div>
 </template>
@@ -27,23 +27,15 @@ export default {
     Navigation
   },
   computed: {
-    ...mapState('user', [
-      'isAuthenticated'
-    ])
+    ...mapState('user', ['isAuthenticated'])
   },
-  mounted: function () {
+  mounted: function() {
     document.documentElement.style.setProperty(
       '--color-primary-10',
       process.env.BRAND_COLOR
     )
-    document.documentElement.style.setProperty(
-      '--color-primary-05',
-      '#eeab84'
-    )
-    document.documentElement.style.setProperty(
-      '--color-primary-00',
-      '#fcf1ea'
-    )
+    document.documentElement.style.setProperty('--color-primary-05', '#eeab84')
+    document.documentElement.style.setProperty('--color-primary-00', '#fcf1ea')
 
     if (undefined !== Cookies.get('token')) {
       this.$store.commit('user/isAuthenticated', true)
@@ -55,9 +47,9 @@ export default {
 <style src="../node_modules/baldeweg_ui/dist/style.min.css"></style>
 
 <style>
-input[type=search]::-ms-clear {
+input[type='search']::-ms-clear {
   display: none;
-  width : 0;
+  width: 0;
   height: 0;
 }
 

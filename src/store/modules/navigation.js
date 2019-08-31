@@ -4,7 +4,7 @@ export default {
     showOffCanvas: false
   },
   mutations: {
-    showOffCanvas (state, status) {
+    showOffCanvas(state, status) {
       state.showOffCanvas = status
     }
   }

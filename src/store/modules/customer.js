@@ -9,50 +9,50 @@ export default {
     isProcessing: false
   },
   mutations: {
-    customers (state, customers) {
+    customers(state, customers) {
       state.customers = customers
     },
-    name (state, name) {
+    name(state, name) {
       state.name = name
     },
-    isProcessing (state, status) {
+    isProcessing(state, status) {
       state.isProcessing = status
     }
   },
   actions: {
-    customers (context) {
+    customers(context) {
       api(context.rootState.user.token)
         .get('/v1/customer/')
-        .then(function (response) {
+        .then(function(response) {
           context.commit('customers', response.data.customers)
         })
     },
-    create (context) {
+    create(context) {
       context.commit('isProcessing', true)
       api(context.rootState.user.token)
         .post('/v1/customer/new', {
           name: context.state.name
         })
-        .then(function () {
+        .then(function() {
           context.dispatch('customers')
           context.commit('name', null)
           notification('customer_create_success', 'success')
         })
-        .catch(function () {
+        .catch(function() {
           notification('customer_create_error', 'error')
         })
-        .finally(function () {
+        .finally(function() {
           context.commit('isProcessing', false)
         })
     },
-    remove (context, id) {
+    remove(context, id) {
       api(context.rootState.user.token)
         .delete('/v1/customer/' + id)
-        .then(function () {
+        .then(function() {
           context.dispatch('customers')
           notification('customer_remove_success', 'success')
         })
-        .catch(function () {
+        .catch(function() {
           notification('customer_remove_error', 'error')
         })
     }

@@ -9,12 +9,12 @@ export default {
     isDarkModeActive: false
   },
   mutations: {
-    isDarkModeActive (state, isDarkModeActive) {
+    isDarkModeActive(state, isDarkModeActive) {
       state.isDarkModeActive = isDarkModeActive
     }
   },
   actions: {
-    toggleDarkMode (context) {
+    toggleDarkMode(context) {
       if (document.documentElement.hasAttribute('dark')) {
         document.documentElement.removeAttribute('dark')
         context.commit('isDarkModeActive', false)

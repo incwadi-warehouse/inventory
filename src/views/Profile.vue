@@ -3,8 +3,8 @@
     <section class="container container_m">
       <h1>{{ $t('profile') }}</h1>
     </section>
-    <password/>
-    <dark-mode/>
+    <password />
+    <dark-mode />
   </section>
 </template>
 

@@ -3,7 +3,7 @@
     <section class="container container_m">
       <h1>{{ $t('edit_author') }}</h1>
     </section>
-    <edit :id="id"/>
+    <edit :id="id" />
   </section>
 </template>
 

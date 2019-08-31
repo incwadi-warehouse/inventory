@@ -6,15 +6,15 @@ export default {
     stats: null
   },
   mutations: {
-    stats (state, stats) {
+    stats(state, stats) {
       state.stats = stats
     }
   },
   actions: {
-    stats (context) {
+    stats(context) {
       api(context.rootState.user.token)
         .get('/v1/stats/')
-        .then(function (response) {
+        .then(function(response) {
           context.commit('stats', response.data)
         })
     }

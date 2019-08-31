@@ -15,45 +15,45 @@ export default {
     type: null
   },
   mutations: {
-    searchTerm (state, searchTerm) {
+    searchTerm(state, searchTerm) {
       state.searchTerm = searchTerm
     },
-    offset (state, offset) {
+    offset(state, offset) {
       state.offset = offset
     },
-    sold (state, sold) {
+    sold(state, sold) {
       state.sold = sold === 1
     },
-    removed (state, removed) {
+    removed(state, removed) {
       state.removed = removed === 1
     },
-    added (state, added) {
+    added(state, added) {
       state.added = added
     },
-    branch (state, branch) {
+    branch(state, branch) {
       state.branch = branch
     },
-    genreFilter (state, genre) {
+    genreFilter(state, genre) {
       state.genreFilter = genre
     },
-    lending (state, lending) {
+    lending(state, lending) {
       state.lending = lending
     },
-    orderBy (state, orderBy) {
+    orderBy(state, orderBy) {
       state.orderBy = orderBy
     },
-    limit (state, limit) {
+    limit(state, limit) {
       state.limit = limit
     },
-    releaseYear (state, releaseYear) {
+    releaseYear(state, releaseYear) {
       state.releaseYear = releaseYear
     },
-    type (state, type) {
+    type(state, type) {
       state.type = type
     }
   },
   actions: {
-    reset (context) {
+    reset(context) {
       context.commit('searchTerm', null)
       context.commit('offset', 0)
       context.commit('limit', 20)

@@ -6,15 +6,15 @@ export default {
     branches: null
   },
   mutations: {
-    branches (state, branches) {
+    branches(state, branches) {
       state.branches = branches
     }
   },
   actions: {
-    branches (context) {
+    branches(context) {
       api(context.rootState.user.token)
         .get('/v1/branch/')
-        .then(function (response) {
+        .then(function(response) {
           context.commit('branches', response.data.branches)
         })
     }

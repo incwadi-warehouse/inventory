@@ -1,12 +1,20 @@
 module.exports = {
   extends: [
-    'eslint:recommended',
-    'plugin:vue/essential'
+    "plugin:vue/essential",
+    "prettier/vue",
+    "plugin:prettier/recommended",
+    "eslint:recommended",
   ],
   env: {
-    'node': true
+    "node": true
   },
   rules: {
-    'no-new': 0
+    "no-new": 0,
+    "prettier/prettier": [
+      "error", {
+        "singleQuote": true,
+        "semi": false
+      }
+    ]
   }
 }

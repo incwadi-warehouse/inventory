@@ -17,7 +17,8 @@ export default {
   search: 'Suche',
   new: 'Neu',
   name: 'Name',
-  license: 'Dieses Projekt wurde von André Baldeweg entwickelt und steht unter MIT-Lizenz.',
+  license:
+    'Dieses Projekt wurde von André Baldeweg entwickelt und steht unter MIT-Lizenz.',
   repo: 'Der Code befindet sich im Gitlab-Repository.',
   contribution: 'Feedback ist willkommen!',
   add_book: 'Buch hinzufügen',
@@ -50,7 +51,8 @@ export default {
   login: 'Login',
   wrong_credentials: 'Bitte prüfe die Zugangsdaten!',
   book_not_valid: 'Das Buch konnte nicht gespeichert werden!',
-  book_not_valid_duplicate: 'Das Buch konnte nicht gespeichert werden, da es ein Duplikat ist!',
+  book_not_valid_duplicate:
+    'Das Buch konnte nicht gespeichert werden, da es ein Duplikat ist!',
   catalog: 'Katalogisieren',
   menu: 'Menü',
   profile: 'Profil',
@@ -71,25 +73,35 @@ export default {
   edit_author: 'Autor bearbeiten',
   save: 'Speichern',
   author_edit_successful: 'Der Autor wurde erfolgreich bearbeitet.',
-  author_edit_error: 'Der Autor konnte leider nicht bearbeitet werden. Versuche es später erneut.',
+  author_edit_error:
+    'Der Autor konnte leider nicht bearbeitet werden. Versuche es später erneut.',
   author_remove_successful: 'Der Autor wurde erfolgreich gelöscht.',
-  author_remove_error: 'Der Autor konnte leider nicht gelöscht werden. Versuche es später erneut.',
+  author_remove_error:
+    'Der Autor konnte leider nicht gelöscht werden. Versuche es später erneut.',
   customer_create_success: 'Der Kunde wurde erfolgreich angelegt.',
-  customer_create_error: 'Der Kunde konnte leider nicht angelegt werden. Versuche es später erneut.',
+  customer_create_error:
+    'Der Kunde konnte leider nicht angelegt werden. Versuche es später erneut.',
   customer_remove_success: 'Der Kunde wurde erfolgreich gelöscht.',
-  customer_remove_error: 'Der Kunde konnte leider nicht gelöscht werden. Versuche es später erneut und stelle sicher, dass keine Leihe aktiv ist.',
+  customer_remove_error:
+    'Der Kunde konnte leider nicht gelöscht werden. Versuche es später erneut und stelle sicher, dass keine Leihe aktiv ist.',
   genre_create_success: 'Die Rubrik wurde erfolgreich angelegt.',
-  genre_create_error: 'Die Rubrik konnte leider nicht angelegt werden. Versuche es später erneut.',
+  genre_create_error:
+    'Die Rubrik konnte leider nicht angelegt werden. Versuche es später erneut.',
   genre_remove_success: 'Die Rubrik wurde erfolgreich gelöscht.',
-  genre_remove_error: 'Die Rubrik konnte leider nicht gelöscht werden. Versuche es später erneut.',
+  genre_remove_error:
+    'Die Rubrik konnte leider nicht gelöscht werden. Versuche es später erneut.',
   book_sell_success: 'Das Buch wurde erfolgreich verkauft.',
-  book_sell_error: 'Das Buch konnte leider nicht verkauft werden. Versuche es später erneut.',
+  book_sell_error:
+    'Das Buch konnte leider nicht verkauft werden. Versuche es später erneut.',
   book_remove_success: 'Das Buch wurde erfolgreich gelöscht.',
-  book_remove_error: 'Das Buch konnte leider nicht gelöscht werden. Versuche es später erneut.',
+  book_remove_error:
+    'Das Buch konnte leider nicht gelöscht werden. Versuche es später erneut.',
   password_successful: 'Das Passwort wurde erfolgreich geändert.',
-  password_error: 'Das Passwort konnte leider nicht geändert werden. Versuche es später erneut.',
+  password_error:
+    'Das Passwort konnte leider nicht geändert werden. Versuche es später erneut.',
   dark_mode: 'Dunkelmodus',
-  dark_mode_explanation: 'Der Dunkelmodus stellt das UI in dunkleren Farben dar, dies kann angenehmer für die Augen sein.',
+  dark_mode_explanation:
+    'Der Dunkelmodus stellt das UI in dunkleren Farben dar, dies kann angenehmer für die Augen sein.',
   activate_dark_mode: 'Aktiviere Dunkelmodus',
   deactivate_dark_mode: 'Deaktiviere Dunkelmodus',
   undo: 'Rückgängig'

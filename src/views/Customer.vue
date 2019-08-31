@@ -3,8 +3,8 @@
     <section class="container container_m">
       <h1>{{ $t('customers') }}</h1>
     </section>
-    <list/>
-    <create v-if="isAdmin"/>
+    <list />
+    <create v-if="isAdmin" />
   </section>
 </template>
 
@@ -20,11 +20,9 @@ export default {
     Create
   },
   computed: {
-    ...mapGetters('user', [
-      'isAdmin'
-    ])
+    ...mapGetters('user', ['isAdmin'])
   },
-  mounted: function () {
+  mounted: function() {
     this.$store.dispatch('user/me')
   }
 }

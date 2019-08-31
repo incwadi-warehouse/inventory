@@ -1,7 +1,9 @@
 <template>
   <section>
     <section class="container container_m noprint" v-if="counter">
-      <p class="noprint">{{ $t('results') }}: {{ books.length }}/{{ counter }}</p>
+      <p class="noprint">
+        {{ $t('results') }}: {{ books.length }}/{{ counter }}
+      </p>
     </section>
 
     <section class="container container_m" v-if="counter">
@@ -10,31 +12,47 @@
           <thead>
             <tr>
               <th class="isSortable" @click="filter('title')">
-                {{ $t('title') }} <indicator column="title"/>
+                {{ $t('title') }} <indicator column="title" />
               </th>
               <th class="isSortable" @click="filter('author')">
-                {{ $t('author') }} <indicator column="author"/>
+                {{ $t('author') }} <indicator column="author" />
               </th>
               <th class="isSortable" @click="filter('genre')">
-                {{ $t('genre') }} <indicator column="genre"/>
+                {{ $t('genre') }} <indicator column="genre" />
               </th>
-              <th class="isSortable" @click="filter('added')" v-if="sold == false && removed == false">
-                {{ $t('added') }} <indicator column="added"/>
+              <th
+                class="isSortable"
+                @click="filter('added')"
+                v-if="sold == false && removed == false"
+              >
+                {{ $t('added') }} <indicator column="added" />
               </th>
-              <th class="isSortable" @click="filter('sold')" v-if="sold == true">
-                {{ $t('sold') }} <indicator column="sold"/>
+              <th
+                class="isSortable"
+                @click="filter('sold')"
+                v-if="sold == true"
+              >
+                {{ $t('sold') }} <indicator column="sold" />
               </th>
-              <th class="isSortable" @click="filter('removed')" v-if="removed == true">
-                {{ $t('removed') }} <indicator column="removed"/>
+              <th
+                class="isSortable"
+                @click="filter('removed')"
+                v-if="removed == true"
+              >
+                {{ $t('removed') }} <indicator column="removed" />
               </th>
               <th class="isSortable" @click="filter('type')">
-                {{$t('type') }} <indicator column="type"/>
+                {{ $t('type') }} <indicator column="type" />
               </th>
               <th class="alignRight isSortable" @click="filter('price')">
-                {{currency}} <indicator column="price"/>
+                {{ currency }} <indicator column="price" />
               </th>
-              <th class="alignRight isSortable" :title="$t('release_year')" @click="filter('releaseYear')">
-                {{ $t('year') }} <indicator column="releaseYear"/>
+              <th
+                class="alignRight isSortable"
+                :title="$t('release_year')"
+                @click="filter('releaseYear')"
+              >
+                {{ $t('year') }} <indicator column="releaseYear" />
               </th>
               <th class="noprint"></th>
             </tr>
@@ -42,35 +60,35 @@
           <tbody>
             <tr v-for="book in books" :key="book.id">
               <td>
-                {{book.title}}
+                {{ book.title }}
               </td>
               <td v-if="book.author">
                 {{ author(book.author) }}
               </td>
               <td v-else></td>
               <td>
-                {{book.genre.name}}
+                {{ book.genre.name }}
               </td>
               <td v-if="sold == false && removed == false">
-                {{formatDate(book.added)}}
+                {{ formatDate(book.added) }}
               </td>
               <td v-if="sold == true">
-                {{formatDate(book.sold)}}
+                {{ formatDate(book.sold) }}
               </td>
               <td v-if="removed == true">
-                {{formatDate(book.removed)}}
+                {{ formatDate(book.removed) }}
               </td>
               <td>
                 {{ $t(book.type) }}
               </td>
               <td class="alignRight">
-                {{formatPrice(book.price)}}
+                {{ formatPrice(book.price) }}
               </td>
               <td class="alignRight">
-                {{book.releaseYear}}
+                {{ book.releaseYear }}
               </td>
               <td class="noprint">
-                <context-menu :book="book"/>
+                <context-menu :book="book" />
               </td>
             </tr>
           </tbody>
@@ -99,45 +117,36 @@ export default {
     Indicator,
     ContextMenu
   },
-  data () {
+  data() {
     return {
       currency: process.env.CURRENCY
     }
   },
   computed: {
-    ...mapState('search', [
-      'books',
-      'counter'
-    ]),
-    ...mapState('filter', [
-      'sold',
-      'removed'
-    ]),
-    showLoadMore: function () {
+    ...mapState('search', ['books', 'counter']),
+    ...mapState('filter', ['sold', 'removed']),
+    showLoadMore: function() {
       return this.books.length < this.counter
     }
   },
   methods: {
-    formatDate: function (timestamp) {
+    formatDate: function(timestamp) {
       return new Date(timestamp * 1000).toLocaleDateString()
     },
-    formatPrice: function (price) {
-      return Number.parseFloat(price).toLocaleString(
-        undefined,
-        {
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2
-        }
-      )
+    formatPrice: function(price) {
+      return Number.parseFloat(price).toLocaleString(undefined, {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      })
     },
-    reload: function () {
+    reload: function() {
       this.$store.commit(
         'filter/offset',
         this.$store.state.filter.offset + this.$store.state.filter.limit
       )
       this.$store.dispatch('search/search')
     },
-    filter: function (type) {
+    filter: function(type) {
       const ordering = this.$store.state.filter.orderBy
 
       if (ordering === type + '_desc') {
@@ -151,7 +160,7 @@ export default {
       }
       this.$store.dispatch('search/search')
     },
-    author: function (author) {
+    author: function(author) {
       if (author.firstname === '') {
         return author.surname
       }

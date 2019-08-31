@@ -1,5 +1,8 @@
 <template>
-  <span v-if="orderBy === column + '_asc' || orderBy === column + '_desc'" v-html="icon"/>
+  <span
+    v-if="orderBy === column + '_asc' || orderBy === column + '_desc'"
+    v-html="icon"
+  />
 </template>
 
 <script>
@@ -9,10 +12,8 @@ export default {
   name: 'order-by-indicator',
   props: ['column'],
   computed: {
-    ...mapState('filter', [
-      'orderBy'
-    ]),
-    icon: function () {
+    ...mapState('filter', ['orderBy']),
+    icon: function() {
       if (this.orderBy === this.column + '_asc') {
         return '&#9650;'
       }

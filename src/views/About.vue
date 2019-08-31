@@ -3,7 +3,7 @@
     <section class="container container_m">
       <h1>incwadi</h1>
     </section>
-    <about/>
+    <about />
   </section>
 </template>
 

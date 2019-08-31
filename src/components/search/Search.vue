@@ -9,11 +9,24 @@
         :aria-label="$t('search')"
         autofocus
         @input="search"
-        v-model="searchTerm">
-      <button type="reset" class="search_btn search_btn_reset" @click="reset" v-if="null != searchTerm">
-        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 50 50" class="icon">
+        v-model="searchTerm"
+      />
+      <button
+        type="reset"
+        class="search_btn search_btn_reset"
+        @click="reset"
+        v-if="null != searchTerm"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="25"
+          height="25"
+          viewBox="0 0 50 50"
+          class="icon"
+        >
           <path
-            d="M44.987 9.643l-15.35 15.349 15.35 15.35-4.685 4.684-15.349-15.35-15.35 15.35-4.629-4.63 15.35-15.349-15.35-15.35L9.66 5.014l15.35 15.35 15.348-15.35z" />
+            d="M44.987 9.643l-15.35 15.349 15.35 15.35-4.685 4.684-15.349-15.35-15.35 15.35-4.629-4.63 15.35-15.349-15.35-15.35L9.66 5.014l15.35 15.35 15.348-15.35z"
+          />
         </svg>
       </button>
       <button class="search_btn search_btn_primary" @click.prevent="search">
@@ -28,24 +41,24 @@ export default {
   name: 'search',
   computed: {
     searchTerm: {
-      get: function () {
+      get: function() {
         return this.$store.state.filter.searchTerm
       },
-      set: function (searchTerm) {
+      set: function(searchTerm) {
         this.$store.commit('filter/searchTerm', searchTerm)
       }
     }
   },
   methods: {
-    search: function () {
+    search: function() {
       this.$store.commit('filter/offset', 0)
       this.$store.dispatch('search/search')
     },
-    reset: function () {
+    reset: function() {
       this.$store.commit('filter/searchTerm', null)
     }
   },
-  mounted: function () {
+  mounted: function() {
     document.getElementById('searchTerm').focus()
   }
 }

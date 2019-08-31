@@ -2,7 +2,7 @@ import api from '../../api'
 import router from '../../router'
 import notification from '../../util/notification'
 
-const formatDate = function (data) {
+const formatDate = function(data) {
   const date = new Date(data)
   let month = date.getMonth() + 1
   if (month < 10) {
@@ -34,56 +34,65 @@ export default {
     lendOn: null
   },
   mutations: {
-    added (state, added) {
+    added(state, added) {
       state.added = added
     },
-    title (state, title) {
+    title(state, title) {
       state.title = title
     },
-    authorFirstname (state, authorFirstname) {
+    authorFirstname(state, authorFirstname) {
       state.authorFirstname = authorFirstname
     },
-    authorSurname (state, authorSurname) {
+    authorSurname(state, authorSurname) {
       state.authorSurname = authorSurname
     },
-    genreId (state, genreId) {
+    genreId(state, genreId) {
       state.genreId = genreId
     },
-    price (state, price) {
+    price(state, price) {
       state.price = price
     },
-    sold (state, sold) {
+    sold(state, sold) {
       state.sold = sold
     },
-    removed (state, removed) {
+    removed(state, removed) {
       state.removed = removed
     },
-    releaseYear (state, releaseYear) {
+    releaseYear(state, releaseYear) {
       state.releaseYear = releaseYear
     },
-    type (state, type) {
+    type(state, type) {
       state.type = type
     },
-    premium (state, premium) {
+    premium(state, premium) {
       state.premium = premium
     },
-    lendTo (state, lendTo) {
+    lendTo(state, lendTo) {
       state.lendTo = lendTo
     },
-    lendOn (state, lendOn) {
+    lendOn(state, lendOn) {
       state.lendOn = lendOn
     }
   },
   actions: {
-    show (context, id) {
+    show(context, id) {
       api(context.rootState.user.token)
         .get('/v1/book/' + id)
-        .then(function (response) {
+        .then(function(response) {
           context.commit('added', formatDate(response.data.added * 1000))
           context.commit('title', response.data.title)
-          context.commit('authorFirstname', response.data.author ? response.data.author.firstname : null)
-          context.commit('authorSurname', response.data.author ? response.data.author.surname : null)
-          context.commit('genreId', response.data.genre ? response.data.genre.id : null)
+          context.commit(
+            'authorFirstname',
+            response.data.author ? response.data.author.firstname : null
+          )
+          context.commit(
+            'authorSurname',
+            response.data.author ? response.data.author.surname : null
+          )
+          context.commit(
+            'genreId',
+            response.data.genre ? response.data.genre.id : null
+          )
           context.commit('price', response.data.price)
           context.commit('sold', response.data.sold)
           context.commit('removed', response.data.removed)
@@ -91,15 +100,21 @@ export default {
           context.commit('type', response.data.type)
           context.commit('premium', response.data.premium)
           context.commit('lendTo', response.data.lendTo)
-          context.commit('lendOn', response.data.lendOn ? formatDate(response.data.lendOn * 1000) : response.data.lendOn)
+          context.commit(
+            'lendOn',
+            response.data.lendOn
+              ? formatDate(response.data.lendOn * 1000)
+              : response.data.lendOn
+          )
         })
     },
-    create (context) {
+    create(context) {
       api(context.rootState.user.token)
         .post('/v1/book/new', {
           added: Math.round(new Date().getTime() / 1000),
           title: context.state.title,
-          author: context.state.authorSurname + ',' + context.state.authorFirstname,
+          author:
+            context.state.authorSurname + ',' + context.state.authorFirstname,
           genre: context.state.genreId,
           price: context.state.price,
           sold: false,
@@ -107,23 +122,24 @@ export default {
           type: context.state.type,
           premium: context.state.premium
         })
-        .then(function () {
+        .then(function() {
           notification('book_created', 'success')
           context.dispatch('reset')
         })
-        .catch(function (error) {
+        .catch(function(error) {
           notification('book_not_valid', 'error')
           if (error.response.status === 409) {
             notification('book_not_valid_duplicate', 'error')
           }
         })
     },
-    update (context, id) {
+    update(context, id) {
       api(context.rootState.user.token)
         .put('/v1/book/' + id, {
           added: new Date(context.state.added).getTime() / 1000,
           title: context.state.title,
-          author: context.state.authorSurname + ',' + context.state.authorFirstname,
+          author:
+            context.state.authorSurname + ',' + context.state.authorFirstname,
           genre: context.state.genreId,
           price: context.state.price,
           sold: context.state.sold,
@@ -132,44 +148,50 @@ export default {
           type: context.state.type,
           premium: context.state.premium,
           lendTo: context.state.lendTo,
-          lendOn: context.state.lendOn ? new Date(context.state.lendOn).getTime() / 1000 : null
+          lendOn: context.state.lendOn
+            ? new Date(context.state.lendOn).getTime() / 1000
+            : null
         })
-        .then(function () {
+        .then(function() {
           router.push({ name: 'index' })
           notification('book_updated', 'success')
         })
-        .catch(function (error) {
+        .catch(function(error) {
           notification('book_not_valid', 'error')
           if (error.response.status === 409) {
             notification('book_not_valid_duplicate', 'error')
           }
         })
     },
-    sell (context, book) {
+    sell(context, book) {
       api(context.rootState.user.token)
         .put('/v1/book/sell/' + book.id)
-        .then(function () {
+        .then(function() {
           context.commit('search/removeBook', book, { root: true })
-          context.commit('filter/offset', context.rootState.filter.offset - 1, { root: true })
+          context.commit('filter/offset', context.rootState.filter.offset - 1, {
+            root: true
+          })
           notification('book_sell_success', 'success')
         })
-        .catch(function () {
+        .catch(function() {
           notification('book_sell_error', 'error')
         })
     },
-    remove (context, book) {
+    remove(context, book) {
       api(context.rootState.user.token)
         .put('/v1/book/remove/' + book.id)
-        .then(function () {
+        .then(function() {
           context.commit('search/removeBook', book, { root: true })
-          context.commit('filter/offset', context.rootState.filter.offset - 1, { root: true })
+          context.commit('filter/offset', context.rootState.filter.offset - 1, {
+            root: true
+          })
           notification('book_remove_success', 'success')
         })
-        .catch(function () {
+        .catch(function() {
           notification('book_remove_error', 'error')
         })
     },
-    reset (context) {
+    reset(context) {
       context.commit('search/tab', null, { root: true })
       context.commit('added', null)
       context.commit('title', null)

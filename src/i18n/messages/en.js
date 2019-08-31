@@ -7,7 +7,8 @@ export default {
   edit: 'Edit',
   load_more: 'Load more',
   not_found: 'Error 404 - Page not found!',
-  not_found_desc: 'The page could not be found! Please change references to this site!',
+  not_found_desc:
+    'The page could not be found! Please change references to this site!',
   go_to_homepage: 'Go to homepage',
   create: 'Create',
   genres: 'Genres',
@@ -50,7 +51,7 @@ export default {
   login: 'Login',
   wrong_credentials: 'Please check your credentials!',
   book_not_valid: 'There was an error saving the book!',
-  book_not_valid_duplicate: 'Can\'t save the book, because it\'s a duplicate!',
+  book_not_valid_duplicate: "Can't save the book, because it's a duplicate!",
   catalog: 'Catalogue',
   menu: 'Menu',
   profile: 'Profile',
@@ -75,9 +76,11 @@ export default {
   author_remove_successful: 'The author was removed successfully.',
   author_remove_error: 'Sorry, author could not be removed. Try again later.',
   customer_create_success: 'The customer was created successfully.',
-  customer_create_error: 'Sorry, customer could not be created. Try again later.',
+  customer_create_error:
+    'Sorry, customer could not be created. Try again later.',
   customer_remove_success: 'The customer was removed successfully.',
-  customer_remove_error: 'Sorry, customer could not be removed. Try again later and make sure there is no lend active.',
+  customer_remove_error:
+    'Sorry, customer could not be removed. Try again later and make sure there is no lend active.',
   genre_create_success: 'The genre was created successfully.',
   genre_create_error: 'Sorry, genre could not be created. Try again later.',
   genre_remove_success: 'The genre was removed successfully.',
@@ -89,7 +92,8 @@ export default {
   password_successful: 'The password was changed successfully.',
   password_error: 'Sorry, password could not be changed. Try again later.',
   dark_mode: 'Dark Mode',
-  dark_mode_explanation: 'The dark mode shows the ui in darker colors, that could be more pleasant to the eyes.',
+  dark_mode_explanation:
+    'The dark mode shows the ui in darker colors, that could be more pleasant to the eyes.',
   activate_dark_mode: 'Activate Dark Mode',
   deactivate_dark_mode: 'Deactivate Dark Mode',
   undo: 'Undo'

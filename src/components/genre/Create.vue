@@ -7,12 +7,16 @@
           <label for="name" class="form_label">{{ $t('name') }}</label>
         </div>
         <div class="form_item">
-          <input type="text" id="name" class="form_input" v-model="name">
+          <input type="text" id="name" class="form_input" v-model="name" />
         </div>
       </div>
       <div class="form_group">
         <div class="form_item alignRight">
-          <button class="btn btn_outline" @click.prevent="create" v-if="!isProcessing">
+          <button
+            class="btn btn_outline"
+            @click.prevent="create"
+            v-if="!isProcessing"
+          >
             {{ $t('create') }}
           </button>
           <button class="btn btn_outline" v-if="isProcessing">
@@ -31,21 +35,17 @@ export default {
   name: 'create-genre',
   computed: {
     name: {
-      get: function () {
+      get: function() {
         return this.$store.state.genre.name
       },
-      set: function (name) {
+      set: function(name) {
         this.$store.commit('genre/name', name)
       }
     },
-    ...mapState('genre', [
-      'isProcessing'
-    ])
+    ...mapState('genre', ['isProcessing'])
   },
   methods: {
-    ...mapActions('genre', [
-      'create'
-    ])
+    ...mapActions('genre', ['create'])
   }
 }
 </script>

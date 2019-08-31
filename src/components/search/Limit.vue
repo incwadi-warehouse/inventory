@@ -12,19 +12,35 @@
           <select id="orderBy" class="form_input" v-model="orderBy">
             <option value=""></option>
             <option value="title_asc">{{ $t('title') }} {{ $t('asc') }}</option>
-            <option value="title_desc">{{ $t('title') }} {{ $t('desc') }}</option>
-            <option value="author_asc">{{ $t('author') }} {{ $t('asc') }}</option>
-            <option value="author_desc">{{ $t('author') }} {{ $t('desc') }}</option>
+            <option value="title_desc"
+              >{{ $t('title') }} {{ $t('desc') }}</option
+            >
+            <option value="author_asc"
+              >{{ $t('author') }} {{ $t('asc') }}</option
+            >
+            <option value="author_desc"
+              >{{ $t('author') }} {{ $t('desc') }}</option
+            >
             <option value="genre_asc">{{ $t('genre') }} {{ $t('asc') }}</option>
-            <option value="genre_desc">{{ $t('genre') }} {{ $t('desc') }}</option>
+            <option value="genre_desc"
+              >{{ $t('genre') }} {{ $t('desc') }}</option
+            >
             <option value="added_asc">{{ $t('added') }} {{ $t('asc') }}</option>
-            <option value="added_desc">{{ $t('added') }} {{ $t('desc') }}</option>
+            <option value="added_desc"
+              >{{ $t('added') }} {{ $t('desc') }}</option
+            >
             <option value="price_asc">{{ $t('price') }} {{ $t('asc') }}</option>
-            <option value="price_desc">{{ $t('price') }} {{ $t('desc') }}</option>
+            <option value="price_desc"
+              >{{ $t('price') }} {{ $t('desc') }}</option
+            >
             <option value="type_asc">{{ $t('type') }} {{ $t('asc') }}</option>
             <option value="type_desc">{{ $t('type') }} {{ $t('desc') }}</option>
-            <option value="releaseYear_asc">{{ $t('release_year') }} {{ $t('asc') }}</option>
-            <option value="releaseYear_desc">{{ $t('release_year') }} {{ $t('desc') }}</option>
+            <option value="releaseYear_asc"
+              >{{ $t('release_year') }} {{ $t('asc') }}</option
+            >
+            <option value="releaseYear_desc"
+              >{{ $t('release_year') }} {{ $t('desc') }}</option
+            >
           </select>
         </div>
       </div>
@@ -50,17 +66,17 @@ export default {
   name: 'limit',
   computed: {
     orderBy: {
-      get: function () {
+      get: function() {
         return this.$store.state.filter.orderBy
       },
-      set: function (orderBy) {
+      set: function(orderBy) {
         this.$store.commit('filter/orderBy', orderBy)
         this.$store.dispatch('search/search')
       }
     }
   },
   methods: {
-    setLimit: function (limit) {
+    setLimit: function(limit) {
       this.$store.commit('filter/limit', limit)
       this.$store.dispatch('search/search')
     },

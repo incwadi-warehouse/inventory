@@ -3,10 +3,17 @@
     <form class="form" @submit.prevent="edit(id)">
       <div class="form_group">
         <div class="form_item">
-          <label for="firstname" class="form_label">{{ $t('firstname') }}</label>
+          <label for="firstname" class="form_label">{{
+            $t('firstname')
+          }}</label>
         </div>
         <div class="form_item">
-          <input type="text" id="firstname" class="form_input" v-model="firstname">
+          <input
+            type="text"
+            id="firstname"
+            class="form_input"
+            v-model="firstname"
+          />
         </div>
       </div>
       <div class="form_group">
@@ -14,7 +21,12 @@
           <label for="surname" class="form_label">{{ $t('surname') }}</label>
         </div>
         <div class="form_item">
-          <input type="text" id="surname" class="form_input" v-model="surname">
+          <input
+            type="text"
+            id="surname"
+            class="form_input"
+            v-model="surname"
+          />
         </div>
       </div>
       <div class="form_group">
@@ -36,28 +48,26 @@ export default {
   props: ['id'],
   computed: {
     firstname: {
-      get: function () {
+      get: function() {
         return this.$store.state.author.firstname
       },
-      set: function (firstname) {
+      set: function(firstname) {
         this.$store.commit('author/firstname', firstname)
       }
     },
     surname: {
-      get: function () {
+      get: function() {
         return this.$store.state.author.surname
       },
-      set: function (surname) {
+      set: function(surname) {
         this.$store.commit('author/surname', surname)
       }
     }
   },
   methods: {
-    ...mapActions('author', [
-      'edit'
-    ])
+    ...mapActions('author', ['edit'])
   },
-  created: function () {
+  created: function() {
     this.$store.dispatch('author/show', this.id)
   }
 }

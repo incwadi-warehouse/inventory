@@ -3,7 +3,7 @@
     <section class="container container_m">
       <h1>{{ $t('add_book') }}</h1>
     </section>
-    <create/>
+    <create />
   </section>
 </template>
 
