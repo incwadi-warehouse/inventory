@@ -98,7 +98,7 @@ export default {
     'Das Buch konnte leider nicht gelöscht werden. Versuche es später erneut.',
   password_successful: 'Das Passwort wurde erfolgreich geändert.',
   password_error:
-    'Das Passwort konnte leider nicht geändert werden. Versuche es später erneut.',
+    'Das Passwort konnte leider nicht geändert werden. Bitte verwende Groß- und Kleinbuchstaben, sowie Zahlen und Sonderzeichen',
   dark_mode: 'Dunkelmodus',
   dark_mode_explanation:
     'Der Dunkelmodus stellt das UI in dunkleren Farben dar, dies kann angenehmer für die Augen sein.',
