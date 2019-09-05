@@ -66,7 +66,7 @@ export default {
   all_books: 'Bücher insgesamt',
   available_books: 'verfügbare Bücher',
   sold_books: 'verkaufte Bücher',
-  removed_books: 'entferne Bücher',
+  removed_books: 'entfernte Bücher',
   book_created: 'Das Buch wurde erfolgreich gespeichert.',
   book_updated: 'Das Buch wurde erfolgreich aktualisiert.',
   authors: 'Autoren',
