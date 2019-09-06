@@ -23,7 +23,6 @@
           </svg>
         </button>
       </div>
-      <hr class="divider" />
       <ul class="offcanvas_nav">
         <li class="offcanvas_item">
           <router-link :to="{ name: 'index' }" class="offcanvas_link">
