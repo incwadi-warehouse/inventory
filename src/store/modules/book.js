@@ -29,7 +29,6 @@ export default {
     removed: false,
     releaseYear: 2019,
     type: 'paperback',
-    premium: false,
     lendTo: null,
     lendOn: null
   },
@@ -64,9 +63,6 @@ export default {
     type(state, type) {
       state.type = type
     },
-    premium(state, premium) {
-      state.premium = premium
-    },
     lendTo(state, lendTo) {
       state.lendTo = lendTo
     },
@@ -98,7 +94,6 @@ export default {
           context.commit('removed', response.data.removed)
           context.commit('releaseYear', response.data.releaseYear)
           context.commit('type', response.data.type)
-          context.commit('premium', response.data.premium)
           context.commit('lendTo', response.data.lendTo)
           context.commit(
             'lendOn',
@@ -119,8 +114,7 @@ export default {
           price: context.state.price,
           sold: false,
           releaseYear: context.state.releaseYear,
-          type: context.state.type,
-          premium: context.state.premium
+          type: context.state.type
         })
         .then(function() {
           notification('book_created', 'success')
@@ -146,7 +140,6 @@ export default {
           removed: context.state.removed,
           releaseYear: context.state.releaseYear,
           type: context.state.type,
-          premium: context.state.premium,
           lendTo: context.state.lendTo,
           lendOn: context.state.lendOn
             ? new Date(context.state.lendOn).getTime() / 1000
@@ -202,7 +195,6 @@ export default {
       context.commit('sold', false)
       context.commit('releaseYear', 2019)
       context.commit('type', 'paperback')
-      context.commit('premium', false)
     }
   }
 }

@@ -98,14 +98,6 @@
       </div>
       <div class="form_group">
         <div class="form_item">
-          <input type="checkbox" id="premium" v-model="premium" />
-          <label for="premium" class="form_label">
-            {{ $t('premium') }}
-          </label>
-        </div>
-      </div>
-      <div class="form_group">
-        <div class="form_item">
           <label for="price" class="form_label">
             {{ $t('price') }} ({{ currency }})
           </label>
@@ -198,14 +190,6 @@ export default {
       },
       set: function(type) {
         this.$store.commit('book/type', type)
-      }
-    },
-    premium: {
-      get: function() {
-        return this.$store.state.book.premium
-      },
-      set: function(premium) {
-        this.$store.commit('book/premium', premium)
       }
     }
   },

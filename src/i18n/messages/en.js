@@ -27,7 +27,6 @@ export default {
   type: 'Type',
   paperback: 'Paperback',
   hardcover: 'Hardcover',
-  premium: 'Premium',
   price: 'Price',
   add: 'Add',
   edit_book: 'Edit Book',

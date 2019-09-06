@@ -27,7 +27,6 @@ export default {
   type: 'Typ',
   paperback: 'Taschenbuch',
   hardcover: 'Gebunden',
-  premium: 'Premium',
   price: 'Preis',
   add: 'Hinzufügen',
   edit_book: 'Buch bearbeiten',
