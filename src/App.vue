@@ -30,12 +30,15 @@ export default {
     ...mapState('user', ['isAuthenticated'])
   },
   mounted: function() {
-    document.documentElement.style.setProperty(
-      '--color-primary-10',
-      process.env.BRAND_COLOR
-    )
-    document.documentElement.style.setProperty('--color-primary-05', '#eeab84')
-    document.documentElement.style.setProperty('--color-primary-00', '#fcf1ea')
+    document
+      .querySelector('html')
+      .style.setProperty('--color-primary-10', process.env.BRAND_COLOR)
+    document
+      .querySelector('html')
+      .style.setProperty('--color-primary-05', '#eeab84')
+    document
+      .querySelector('html')
+      .style.setProperty('--color-primary-00', '#fcf1ea')
 
     if (undefined !== Cookies.get('token')) {
       this.$store.commit('user/isAuthenticated', true)
