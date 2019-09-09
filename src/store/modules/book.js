@@ -21,7 +21,7 @@ export default {
   state: {
     added: null,
     title: null,
-    authorFirstname: null,
+    authorFirstname: '',
     authorSurname: null,
     genreId: null,
     price: '2.50',
@@ -188,7 +188,7 @@ export default {
       context.commit('search/tab', null, { root: true })
       context.commit('added', null)
       context.commit('title', null)
-      context.commit('authorFirstname', null)
+      context.commit('authorFirstname', '')
       context.commit('authorSurname', null)
       context.commit('genreId', null)
       context.commit('price', '2.50')
