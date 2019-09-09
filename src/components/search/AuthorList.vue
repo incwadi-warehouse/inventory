@@ -25,7 +25,7 @@
         </ul>
         <div class="card_text">
           <router-link :to="{ name: 'edit-author', params: { id: author.id } }">
-            {{ author.surname }}, {{ author.firstname }}
+            {{ formatAuthor(author) }}
           </router-link>
         </div>
       </div>
@@ -43,7 +43,13 @@ export default {
     ...mapState('search', ['authors'])
   },
   methods: {
-    ...mapActions('search', ['remove'])
+    ...mapActions('search', ['remove']),
+    formatAuthor: function(author) {
+      if (author.firstname === '') {
+        return author.surname
+      }
+      return author.surname + ', ' + author.firstname
+    }
   },
   created: function() {
     this.$store.dispatch('user/me')
