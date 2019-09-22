@@ -173,10 +173,10 @@ export default {
     },
     genre: {
       get: function() {
-        return this.$store.state.filter.genreFilter || []
+        return this.$store.state.filter.genre || []
       },
       set: function(genre) {
-        this.$store.commit('filter/genreFilter', genre)
+        this.$store.commit('filter/genre', genre)
         this.$store.dispatch('search/search')
       }
     },

@@ -5,8 +5,8 @@ export default {
   state: {
     books: [],
     counter: 0,
-    isLoading: false,
     authors: null,
+    isLoading: false,
     tab: null
   },
   mutations: {
@@ -23,9 +23,6 @@ export default {
     counter(state, counter) {
       state.counter = counter
     },
-    isLoading(state, isLoading) {
-      state.isLoading = isLoading
-    },
     authors(state, authors) {
       state.authors = authors
     },
@@ -36,12 +33,15 @@ export default {
         state.authors.splice(id, 1)
       })
     },
+    isLoading(state, isLoading) {
+      state.isLoading = isLoading
+    },
     tab(state, tab) {
       state.tab = tab
     }
   },
   actions: {
-    search(context) {
+    search(context, reload) {
       const isReleaseYearInRange =
         context.rootState.filter.releaseYear === null ||
         (context.rootState.filter.releaseYear >= 1000 &&
@@ -69,10 +69,10 @@ export default {
       }
 
       let genre = null
-      if (context.rootState.filter.genreFilter) {
+      if (context.rootState.filter.genre) {
         genre =
-          context.rootState.filter.genreFilter.length >= 1
-            ? context.rootState.filter.genreFilter.join(',')
+          context.rootState.filter.genre.length >= 1
+            ? context.rootState.filter.genre.join(',')
             : null
       }
 
@@ -111,9 +111,11 @@ export default {
           } else {
             context.commit('books', response.data.books)
             context.commit('counter', response.data.counter)
-            context.commit('filter/offset', context.state.books.length, {
-              root: true
-            })
+            if (reload) {
+              context.commit('filter/offset', context.state.books.length, {
+                root: true
+              })
+            }
           }
           context.commit('isLoading', false)
           context.dispatch('authors', null)

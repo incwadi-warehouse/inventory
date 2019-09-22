@@ -140,11 +140,7 @@ export default {
       })
     },
     reload: function() {
-      this.$store.commit(
-        'filter/offset',
-        this.$store.state.filter.offset + this.$store.state.filter.limit
-      )
-      this.$store.dispatch('search/search')
+      this.$store.dispatch('search/search', true)
     },
     filter: function(type) {
       const ordering = this.$store.state.filter.orderBy

@@ -8,7 +8,7 @@ export default {
     removed: false,
     added: null,
     branch: null,
-    genreFilter: null,
+    genre: null,
     lending: null,
     orderBy: null,
     releaseYear: null,
@@ -33,8 +33,8 @@ export default {
     branch(state, branch) {
       state.branch = branch
     },
-    genreFilter(state, genre) {
-      state.genreFilter = genre
+    genre(state, genre) {
+      state.genre = genre
     },
     lending(state, lending) {
       state.lending = lending
@@ -56,14 +56,14 @@ export default {
     reset(context) {
       context.commit('searchTerm', null)
       context.commit('offset', 0)
-      context.commit('limit', 20)
       context.commit('sold', false)
       context.commit('removed', false)
       context.commit('added', null)
       context.commit('branch', null)
-      context.commit('genreFilter', null)
+      context.commit('genre', null)
       context.commit('lending', null)
       context.commit('orderBy', null)
+      context.commit('limit', 20)
       context.commit('releaseYear', null)
       context.commit('type', null)
     }
