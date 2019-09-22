@@ -55,6 +55,18 @@ input[type='search']::-ms-clear {
   width: 0;
   height: 0;
 }
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-neutral-06);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-neutral-08);
+}
+::-webkit-scrollbar-track-piece {
+  background: var(--color-neutral-02);
+}
 
 @media print {
   .header {
