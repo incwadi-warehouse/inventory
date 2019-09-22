@@ -1,5 +1,5 @@
 <template>
-  <header class="masthead">
+  <header class="masthead noprint">
     <div class="masthead_nav" v-if="isAuthenticated">
       <button class="btn btn_text" @click="showOffCanvas(true)">
         <svg
