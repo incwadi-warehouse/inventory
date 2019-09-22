@@ -42,7 +42,6 @@ export default {
   },
   actions: {
     search(context) {
-      if (!context.rootState.filter.searchTerm) return
       const isReleaseYearInRange =
         context.rootState.filter.releaseYear === null ||
         (context.rootState.filter.releaseYear >= 1000 &&
