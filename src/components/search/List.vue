@@ -96,13 +96,13 @@
       </div>
     </section>
 
-    <section class="container container_m" v-if="showLoadMore">
+    <!-- <section class="container container_m" v-if="showLoadMore">
       <div class="alignCenter noprint">
         <button class="btn btn_outline btn_outline_wide" @click="reload">
           {{ $t('load_more') }}
         </button>
       </div>
-    </section>
+    </section> -->
   </section>
 </template>
 
