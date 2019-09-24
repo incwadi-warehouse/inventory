@@ -103,5 +103,6 @@ export default {
     'Der Dunkelmodus stellt das UI in dunkleren Farben dar, dies kann angenehmer für die Augen sein.',
   activate_dark_mode: 'Aktiviere Dunkelmodus',
   deactivate_dark_mode: 'Deaktiviere Dunkelmodus',
-  undo: 'Rückgängig'
+  undo: 'Rückgängig',
+  back_to_search: 'Zurück zur Suche'
 }
