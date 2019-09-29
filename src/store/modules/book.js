@@ -195,6 +195,16 @@ export default {
       context.commit('sold', false)
       context.commit('releaseYear', 2019)
       context.commit('type', 'paperback')
+    },
+    clean(context) {
+      api(context.rootState.user.token)
+        .delete('/v1/book/clean')
+        .then(function() {
+          notification('book_clean_success', 'success')
+        })
+        .catch(function() {
+          notification('book_clean_error', 'error')
+        })
     }
   }
 }

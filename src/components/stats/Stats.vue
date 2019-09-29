@@ -14,16 +14,22 @@
         <b>{{ stats.removed }}</b> {{ $t('removed_books') }}
       </li>
     </ul>
+    <button class="btn btn_outline btn_outline_danger" @click="clean">
+      {{ $t('clean_books') }}
+    </button>
   </section>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'stats',
   computed: {
     ...mapState('stats', ['stats'])
+  },
+  methods: {
+    ...mapActions('book', ['clean'])
   },
   created: function() {
     this.$store.dispatch('stats/stats')

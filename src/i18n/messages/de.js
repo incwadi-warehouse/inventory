@@ -104,5 +104,8 @@ export default {
   activate_dark_mode: 'Aktiviere Dunkelmodus',
   deactivate_dark_mode: 'Deaktiviere Dunkelmodus',
   undo: 'Rückgängig',
-  back_to_search: 'Zurück zur Suche'
+  back_to_search: 'Zurück zur Suche',
+  book_clean_success: 'Bücher wurden erfolgreich gelöscht.',
+  book_clean_error: 'Konnte Bücher nicht löschen!',
+  clean_books: 'Bücher aufräumen'
 }

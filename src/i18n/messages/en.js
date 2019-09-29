@@ -97,5 +97,8 @@ export default {
   activate_dark_mode: 'Activate Dark Mode',
   deactivate_dark_mode: 'Deactivate Dark Mode',
   undo: 'Undo',
-  back_to_search: 'Back to Search'
+  back_to_search: 'Back to Search',
+  book_clean_success: 'Books were deleted successfully.',
+  book_clean_error: 'Could not delete books!',
+  clean_books: 'Clean Books'
 }
