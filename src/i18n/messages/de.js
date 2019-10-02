@@ -46,7 +46,7 @@ export default {
   lend_to: 'Verliehen an',
   lend_on: 'Verliehen am',
   customers: 'Kunden',
-  remove: 'Löschen',
+  remove: 'Entfernen',
   login: 'Login',
   wrong_credentials: 'Bitte prüfe die Zugangsdaten!',
   book_not_valid: 'Das Buch konnte nicht gespeichert werden!',
