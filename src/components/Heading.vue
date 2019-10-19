@@ -1,7 +1,7 @@
 <template>
   <header class="masthead noprint">
     <div class="masthead_nav" v-if="isAuthenticated">
-      <button class="btn btn_text" @click="showOffCanvas(true)">
+      <button class="masthead_btn" @click="showOffCanvas(true)">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="25"
@@ -21,7 +21,7 @@
       </router-link>
     </div>
     <div class="masthead_settings" v-if="isAuthenticated">
-      <button class="btn btn_text" @click="catalog">
+      <button class="masthead_btn" @click="catalog">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="25"
