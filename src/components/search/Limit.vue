@@ -56,6 +56,7 @@
           <button class="btn btn_text" @click="setLimit(200)">200</button>
           <button class="btn btn_text" @click="setLimit(500)">500</button>
           <button class="btn btn_text" @click="setLimit(1000)">1000</button>
+          <button class="btn btn_text" @click="setLimit(5000)">5000</button>
         </div>
       </fieldset>
     </form>
