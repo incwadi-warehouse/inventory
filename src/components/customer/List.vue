@@ -23,9 +23,7 @@
             </button>
           </li>
         </ul>
-        <div class="card_text">
-          {{ customer.name }}
-        </div>
+        <edit-customer :customer="customer" />
       </div>
     </div>
   </section>
@@ -33,9 +31,13 @@
 
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
+import EditCustomer from './Edit'
 
 export default {
   name: 'customer',
+  components: {
+    EditCustomer
+  },
   computed: {
     ...mapGetters('user', ['isAdmin']),
     ...mapState('customer', ['customers'])

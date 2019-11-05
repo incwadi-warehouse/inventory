@@ -107,5 +107,7 @@ export default {
   back_to_search: 'Zurück zur Suche',
   book_clean_success: 'Bücher wurden erfolgreich gelöscht.',
   book_clean_error: 'Konnte Bücher nicht löschen!',
-  clean_books: 'Bücher aufräumen'
+  clean_books: 'Bücher aufräumen',
+  customer_edit_success: 'Kunde bearbeitet',
+  customer_edit_error: 'Kunde konnte nicht bearbeitet werden.'
 }

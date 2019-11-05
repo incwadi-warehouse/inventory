@@ -45,6 +45,19 @@ export default {
           context.commit('isProcessing', false)
         })
     },
+    edit(context, data) {
+      api(context.rootState.user.token)
+        .put('/v1/customer/' + data.id, {
+          name: data.name
+        })
+        .then(function() {
+          context.dispatch('customers')
+          notification('customer_edit_success', 'success')
+        })
+        .catch(function() {
+          notification('customer_edit_error', 'error')
+        })
+    },
     remove(context, id) {
       api(context.rootState.user.token)
         .delete('/v1/customer/' + id)

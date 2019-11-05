@@ -100,5 +100,7 @@ export default {
   back_to_search: 'Back to Search',
   book_clean_success: 'Books were deleted successfully.',
   book_clean_error: 'Could not delete books!',
-  clean_books: 'Clean Books'
+  clean_books: 'Clean Books',
+  customer_edit_success: 'Customer edited',
+  customer_edit_error: 'Customer could not be edited.'
 }
