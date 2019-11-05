@@ -3,6 +3,7 @@
 ## 1.1.0
 
 - Edit customers
+- Edit Genre
 
 ## 1.0.0
 

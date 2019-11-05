@@ -49,6 +49,19 @@ export default {
           context.commit('isProcessing', false)
         })
     },
+    edit(context, data) {
+      api(context.rootState.user.token)
+        .put('/v1/genre/' + data.id, {
+          name: data.name
+        })
+        .then(function() {
+          context.dispatch('genres')
+          notification('genre_edit_success', 'success')
+        })
+        .catch(function() {
+          notification('genre_edit_error', 'error')
+        })
+    },
     remove(context, id) {
       api(context.rootState.user.token)
         .delete('/v1/genre/' + id)

@@ -23,9 +23,7 @@
             </button>
           </li>
         </ul>
-        <div class="card_text">
-          {{ genre.name }}
-        </div>
+        <edit-genre :genre="genre" />
       </div>
     </div>
   </section>
@@ -33,9 +31,13 @@
 
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
+import EditGenre from './Edit'
 
 export default {
   name: 'genre',
+  components: {
+    EditGenre
+  },
   computed: {
     ...mapGetters('user', ['isAdmin']),
     ...mapState('genre', ['genres'])

@@ -46,6 +46,7 @@ export default {
   lend_to: 'Lend to',
   lend_on: 'Lend on',
   customers: 'Customers',
+  customer: 'Customer',
   remove: 'Remove',
   login: 'Login',
   wrong_credentials: 'Please check your credentials!',
@@ -102,5 +103,7 @@ export default {
   book_clean_error: 'Could not delete books!',
   clean_books: 'Clean Books',
   customer_edit_success: 'Customer edited',
-  customer_edit_error: 'Customer could not be edited.'
+  customer_edit_error: 'Customer could not be edited.',
+  genre_edit_success: 'Genre edited',
+  genre_edit_error: 'Genre could not be edited.'
 }

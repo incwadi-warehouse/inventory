@@ -46,6 +46,7 @@ export default {
   lend_to: 'Verliehen an',
   lend_on: 'Verliehen am',
   customers: 'Kunden',
+  customer: 'Kunde',
   remove: 'Entfernen',
   login: 'Login',
   wrong_credentials: 'Bitte prüfe die Zugangsdaten!',
@@ -109,5 +110,7 @@ export default {
   book_clean_error: 'Konnte Bücher nicht löschen!',
   clean_books: 'Bücher aufräumen',
   customer_edit_success: 'Kunde bearbeitet',
-  customer_edit_error: 'Kunde konnte nicht bearbeitet werden.'
+  customer_edit_error: 'Kunde konnte nicht bearbeitet werden.',
+  genre_edit_success: 'Rubrik bearbeitet',
+  genre_edit_error: 'Rubrik konnte nicht bearbeitet werden.'
 }
