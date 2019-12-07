@@ -1,6 +1,6 @@
 # incwadi
 
-incwadi is a book database to manages your books.
+incwadi is a book database to manage your books.
 
 ![incwadi](screenshot.png)
 
