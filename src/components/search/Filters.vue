@@ -56,7 +56,7 @@
           />
         </div>
       </div>
-      <div class="form_group">
+      <div class="form_group" v-show="showBranches">
         <div class="form_item">
           <label for="branches" class="form_label">{{ $t('branches') }}</label>
         </div>
@@ -206,6 +206,13 @@ export default {
         this.$store.commit('filter/type', type)
         this.$store.dispatch('search/search')
       }
+    },
+    showBranches: function() {
+      if (!this.$store.state.branch.branches) return false
+      if (this.$store.state.branch.branches.length > 1) {
+        return true
+      }
+      return false
     }
   },
   methods: {

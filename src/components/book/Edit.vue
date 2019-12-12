@@ -175,7 +175,7 @@
       </div>
       <div class="form_group">
         <div class="form_item alignRight">
-          <button class="btn btn_primary" @click="update(id)">
+          <button class="btn btn_primary">
             {{ $t('update') }}
           </button>
         </div>
