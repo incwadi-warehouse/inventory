@@ -18,7 +18,7 @@ export default {
     isAdmin: state => {
       if (!state.me) return
 
-      return state.me.roles.indexOf('ROLE_ADMIN') !== -1
+      return state.me.isAdmin
     }
   },
   mutations: {
