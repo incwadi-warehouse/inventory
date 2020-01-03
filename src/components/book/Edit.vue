@@ -153,12 +153,8 @@
             @change="lending"
           >
             <option value=""></option>
-            <option
-              v-for="customer in customers"
-              :key="customer.id"
-              :value="customer.id"
-            >
-              {{ customer.name }}
+            <option v-for="member in staff" :key="member.id" :value="member.id">
+              {{ member.name }}
             </option>
           </select>
         </div>
@@ -197,7 +193,7 @@ export default {
   },
   computed: {
     ...mapState('genre', ['genres']),
-    ...mapState('customer', ['customers']),
+    ...mapState('staff', ['staff']),
     added: {
       get: function() {
         return this.$store.state.book.added
@@ -320,7 +316,7 @@ export default {
   },
   mounted: function() {
     this.$store.dispatch('book/show', this.id)
-    this.$store.dispatch('customer/customers')
+    this.$store.dispatch('staff/staff')
     this.$store.dispatch('genre/genres')
   },
   beforeDestroy: function() {

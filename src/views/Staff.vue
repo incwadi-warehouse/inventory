@@ -1,7 +1,7 @@
 <template>
   <section>
     <section class="container container_m">
-      <h1>{{ $t('customers') }}</h1>
+      <h1>{{ $t('staff_members') }}</h1>
     </section>
     <list />
     <create v-if="isAdmin" />
@@ -9,12 +9,12 @@
 </template>
 
 <script>
-import List from '../components/customer/List'
-import Create from '../components/customer/Create'
+import List from '../components/staff/List'
+import Create from '../components/staff/Create'
 import { mapGetters } from 'vuex'
 
 export default {
-  name: 'customer-view',
+  name: 'staff-view',
   components: {
     List,
     Create

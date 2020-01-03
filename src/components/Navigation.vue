@@ -40,8 +40,8 @@
           </router-link>
         </li>
         <li class="offcanvas_item">
-          <router-link :to="{ name: 'customer' }" class="offcanvas_link">
-            {{ $t('customers') }}
+          <router-link :to="{ name: 'staff' }" class="offcanvas_link">
+            {{ $t('staff_members') }}
           </router-link>
         </li>
         <li class="offcanvas_item">
