@@ -45,8 +45,8 @@ export default {
   desc: 'absteigend',
   lend_to: 'Verliehen an',
   lend_on: 'Verliehen am',
-  customers: 'Kunden',
-  customer: 'Kunde',
+  staff_members: 'Mitarbeiter',
+  staff: 'Mitarbeiter',
   remove: 'Entfernen',
   login: 'Login',
   wrong_credentials: 'Bitte prüfe die Zugangsdaten!',
@@ -78,12 +78,12 @@ export default {
   author_remove_successful: 'Der Autor wurde erfolgreich gelöscht.',
   author_remove_error:
     'Der Autor konnte leider nicht gelöscht werden. Versuche es später erneut.',
-  customer_create_success: 'Der Kunde wurde erfolgreich angelegt.',
-  customer_create_error:
-    'Der Kunde konnte leider nicht angelegt werden. Versuche es später erneut.',
-  customer_remove_success: 'Der Kunde wurde erfolgreich gelöscht.',
-  customer_remove_error:
-    'Der Kunde konnte leider nicht gelöscht werden. Versuche es später erneut und stelle sicher, dass keine Leihe aktiv ist.',
+  staff_create_success: 'Der Mitarbeiter wurde erfolgreich angelegt.',
+  staff_create_error:
+    'Der Mitarbeiter konnte leider nicht angelegt werden. Versuche es später erneut.',
+  staff_remove_success: 'Der Mitarbeiter wurde erfolgreich gelöscht.',
+  staff_remove_error:
+    'Der Mitarbeiter konnte leider nicht gelöscht werden. Versuche es später erneut und stelle sicher, dass keine Leihe aktiv ist.',
   genre_create_success: 'Die Rubrik wurde erfolgreich angelegt.',
   genre_create_error:
     'Die Rubrik konnte leider nicht angelegt werden. Versuche es später erneut.',
@@ -109,8 +109,8 @@ export default {
   book_clean_success: 'Bücher wurden erfolgreich gelöscht.',
   book_clean_error: 'Konnte Bücher nicht löschen!',
   clean_books: 'Bücher aufräumen',
-  customer_edit_success: 'Kunde bearbeitet',
-  customer_edit_error: 'Kunde konnte nicht bearbeitet werden.',
+  staff_edit_success: 'Mitarbeiter bearbeitet',
+  staff_edit_error: 'Mitarbeiter konnte nicht bearbeitet werden.',
   genre_edit_success: 'Rubrik bearbeitet',
   genre_edit_error: 'Rubrik konnte nicht bearbeitet werden.'
 }

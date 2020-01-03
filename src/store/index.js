@@ -4,7 +4,7 @@ import book from './modules/book'
 import genre from './modules/genre'
 import branch from './modules/branch'
 import filter from './modules/filter'
-import customer from './modules/customer'
+import staff from './modules/staff'
 import user from './modules/user'
 import notification from './modules/notification'
 import navigation from './modules/navigation'
@@ -22,7 +22,7 @@ export default new Vuex.Store({
     genre,
     branch,
     filter,
-    customer,
+    staff,
     user,
     notification,
     navigation,

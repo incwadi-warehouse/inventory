@@ -4,13 +4,13 @@ import notification from '../../util/notification'
 export default {
   namespaced: true,
   state: {
-    customers: null,
+    staff: null,
     name: null,
     isProcessing: false
   },
   mutations: {
-    customers(state, customers) {
-      state.customers = customers
+    staff(state, staff) {
+      state.staff = staff
     },
     name(state, name) {
       state.name = name
@@ -20,26 +20,26 @@ export default {
     }
   },
   actions: {
-    customers(context) {
+    staff(context) {
       api(context.rootState.user.token)
-        .get('/v1/customer/')
+        .get('/v1/staff/')
         .then(function(response) {
-          context.commit('customers', response.data.customers)
+          context.commit('staff', response.data.staff)
         })
     },
     create(context) {
       context.commit('isProcessing', true)
       api(context.rootState.user.token)
-        .post('/v1/customer/new', {
+        .post('/v1/staff/new', {
           name: context.state.name
         })
         .then(function() {
-          context.dispatch('customers')
+          context.dispatch('staff')
           context.commit('name', null)
-          notification('customer_create_success', 'success')
+          notification('staff_create_success', 'success')
         })
         .catch(function() {
-          notification('customer_create_error', 'error')
+          notification('staff_create_error', 'error')
         })
         .finally(function() {
           context.commit('isProcessing', false)
@@ -47,26 +47,26 @@ export default {
     },
     edit(context, data) {
       api(context.rootState.user.token)
-        .put('/v1/customer/' + data.id, {
+        .put('/v1/staff/' + data.id, {
           name: data.name
         })
         .then(function() {
-          context.dispatch('customers')
-          notification('customer_edit_success', 'success')
+          context.dispatch('staff')
+          notification('staff_edit_success', 'success')
         })
         .catch(function() {
-          notification('customer_edit_error', 'error')
+          notification('staff_edit_error', 'error')
         })
     },
     remove(context, id) {
       api(context.rootState.user.token)
-        .delete('/v1/customer/' + id)
+        .delete('/v1/staff/' + id)
         .then(function() {
-          context.dispatch('customers')
-          notification('customer_remove_success', 'success')
+          context.dispatch('staff')
+          notification('staff_remove_success', 'success')
         })
         .catch(function() {
-          notification('customer_remove_error', 'error')
+          notification('staff_remove_error', 'error')
         })
     }
   }

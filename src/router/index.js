@@ -5,7 +5,7 @@ import EditBook from '../views/EditBook'
 import CreateBook from '../views/CreateBook'
 import About from '../views/About'
 import Genre from '../views/Genre'
-import Customer from '../views/Customer'
+import Staff from '../views/Staff'
 import Stats from '../views/Stats'
 import NotFound from '../views/NotFound'
 import EditAuthor from '../views/EditAuthor'
@@ -47,9 +47,9 @@ const router = new Router({
       component: Genre
     },
     {
-      path: '/customer',
-      name: 'customer',
-      component: Customer
+      path: '/staff',
+      name: 'staff',
+      component: Staff
     },
     {
       path: '/stats',

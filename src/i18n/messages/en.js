@@ -45,8 +45,8 @@ export default {
   desc: 'descending',
   lend_to: 'Lend to',
   lend_on: 'Lend on',
-  customers: 'Customers',
-  customer: 'Customer',
+  staff_members: 'Staff Members',
+  staff: 'Staff',
   remove: 'Remove',
   login: 'Login',
   wrong_credentials: 'Please check your credentials!',
@@ -75,12 +75,11 @@ export default {
   author_edit_error: 'Sorry, author could not be saved. Try again later.',
   author_remove_successful: 'The author was removed successfully.',
   author_remove_error: 'Sorry, author could not be removed. Try again later.',
-  customer_create_success: 'The customer was created successfully.',
-  customer_create_error:
-    'Sorry, customer could not be created. Try again later.',
-  customer_remove_success: 'The customer was removed successfully.',
-  customer_remove_error:
-    'Sorry, customer could not be removed. Try again later and make sure there is no lend active.',
+  staff_create_success: 'The staff was created successfully.',
+  staff_create_error: 'Sorry, staff could not be created. Try again later.',
+  staff_remove_success: 'The staff was removed successfully.',
+  staff_remove_error:
+    'Sorry, staff could not be removed. Try again later and make sure there is no lend active.',
   genre_create_success: 'The genre was created successfully.',
   genre_create_error: 'Sorry, genre could not be created. Try again later.',
   genre_remove_success: 'The genre was removed successfully.',
@@ -102,8 +101,8 @@ export default {
   book_clean_success: 'Books were deleted successfully.',
   book_clean_error: 'Could not delete books!',
   clean_books: 'Clean Books',
-  customer_edit_success: 'Customer edited',
-  customer_edit_error: 'Customer could not be edited.',
+  staff_edit_success: 'Staff edited',
+  staff_edit_error: 'Staff could not be edited.',
   genre_edit_success: 'Genre edited',
   genre_edit_error: 'Genre could not be edited.'
 }

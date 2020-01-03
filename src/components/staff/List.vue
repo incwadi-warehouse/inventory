@@ -1,13 +1,13 @@
 <template>
   <section class="container container_m">
     <div class="card">
-      <div class="card_item" v-for="customer in customers" :key="customer.id">
+      <div class="card_item" v-for="member in staff" :key="member.id">
         <ul class="card_options" v-if="isAdmin">
           <li class="card_option">
             <button
               class="card_option_btn"
               :title="$t('remove')"
-              @click="remove(customer.id)"
+              @click="remove(member.id)"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -23,7 +23,7 @@
             </button>
           </li>
         </ul>
-        <edit-customer :customer="customer" />
+        <edit-staff :staff="member" />
       </div>
     </div>
   </section>
@@ -31,22 +31,22 @@
 
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
-import EditCustomer from './Edit'
+import EditStaff from './Edit'
 
 export default {
-  name: 'customer',
+  name: 'list',
   components: {
-    EditCustomer
+    EditStaff
   },
   computed: {
     ...mapGetters('user', ['isAdmin']),
-    ...mapState('customer', ['customers'])
+    ...mapState('staff', ['staff'])
   },
   methods: {
-    ...mapActions('customer', ['remove'])
+    ...mapActions('staff', ['remove'])
   },
   created: function() {
-    this.$store.dispatch('customer/customers')
+    this.$store.dispatch('staff/staff')
   }
 }
 </script>
