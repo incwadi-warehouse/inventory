@@ -6,6 +6,7 @@
 - Edit customers
 - Edit Genre
 - feature: rename customer to staff
+- feature: automatically fix ESLint errors
 
 ## 1.0.0
 
