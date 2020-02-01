@@ -112,5 +112,6 @@ export default {
   staff_edit_success: 'Mitarbeiter bearbeitet',
   staff_edit_error: 'Mitarbeiter konnte nicht bearbeitet werden.',
   genre_edit_success: 'Rubrik bearbeitet',
-  genre_edit_error: 'Rubrik konnte nicht bearbeitet werden.'
+  genre_edit_error: 'Rubrik konnte nicht bearbeitet werden.',
+  change_password: 'Passwort ändern'
 }

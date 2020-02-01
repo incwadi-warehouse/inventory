@@ -104,5 +104,6 @@ export default {
   staff_edit_success: 'Staff edited',
   staff_edit_error: 'Staff could not be edited.',
   genre_edit_success: 'Genre edited',
-  genre_edit_error: 'Genre could not be edited.'
+  genre_edit_error: 'Genre could not be edited.',
+  change_password: 'Change Password'
 }
