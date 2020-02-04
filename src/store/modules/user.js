@@ -7,6 +7,7 @@ export default {
   namespaced: true,
   state: {
     token: Cookies.get('token'),
+    refreshToken: Cookies.get('refresh_token'),
     username: null,
     password: null,
     me: null,
@@ -18,12 +19,15 @@ export default {
     isAdmin: state => {
       if (!state.me) return
 
-      return state.me.isAdmin
+      return state.me.roles.indexOf('ROLE_ADMIN') !== -1
     }
   },
   mutations: {
     token(state, token) {
       state.token = token
+    },
+    refreshToken(state, refreshToken) {
+      state.refreshToken = refreshToken
     },
     username(state, username) {
       state.username = username
@@ -55,6 +59,10 @@ export default {
         .then(function(response) {
           Cookies.set('token', response.data.token, { expires: 7 })
           context.commit('token', response.data.token)
+          Cookies.set('refresh_token', response.data.refresh_token, {
+            expires: 30
+          })
+          context.commit('refreshToken', response.data.refresh_token)
           context.commit('username', null)
           context.commit('password', null)
           context.commit('isAuthenticated', true)
@@ -66,22 +74,36 @@ export default {
           context.commit('isLoggingIn', false)
         })
     },
+    refresh(context) {
+      api(context.state.token)
+        .post('/api/token/refresh', {
+          refresh_token: context.state.refreshToken
+        })
+        .then(function(response) {
+          Cookies.set('token', response.data.token, { expires: 7 })
+          context.commit('token', response.data.token)
+          Cookies.set('refresh_token', response.data.refresh_token, {
+            expires: 30
+          })
+          context.commit('refreshToken', response.data.refresh_token)
+          context.commit('isAuthenticated', true)
+        })
+        .catch(function() {
+          context.dispatch('logout')
+        })
+    },
     logout(context) {
       context.commit('isAuthenticated', false)
       context.commit('username', null)
       context.commit('password', null)
       context.commit('me', null)
-      context.commit('search/tab', null, { root: true })
-      context.commit('search/books', [], { root: true })
-      context.commit('search/counter', 0, { root: true })
-      context.commit('filter/searchTerm', null, { root: true })
-      context.dispatch('filter/reset', null, { root: true })
       context.commit('navigation/showOffCanvas', false, { root: true })
       Cookies.remove('token')
+      Cookies.remove('refresh_token')
     },
     me(context) {
       api(context.state.token)
-        .get('/v1/me')
+        .get('/api/v1/me')
         .then(function(response) {
           context.commit('me', response.data)
         })
@@ -89,12 +111,12 @@ export default {
     password(context) {
       context.commit('isChangingPassword', true)
       api(context.state.token)
-        .put('/v1/password', {
+        .put('/api/v1/password', {
           password: context.state.password
         })
         .then(function() {
           notification('password_successful', 'success')
-          router.push({ name: 'index' })
+          router.push({ name: 'items' })
           context.commit('password', null)
         })
         .catch(function() {

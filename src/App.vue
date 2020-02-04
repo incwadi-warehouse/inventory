@@ -43,6 +43,12 @@ export default {
     if (undefined !== Cookies.get('token')) {
       this.$store.commit('user/isAuthenticated', true)
     }
+    if (
+      undefined === Cookies.get('token') &&
+      undefined !== Cookies.get('refresh_token')
+    ) {
+      this.$store.dispatch('user/refresh')
+    }
   }
 }
 </script>
