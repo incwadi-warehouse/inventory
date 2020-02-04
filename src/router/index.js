@@ -1,16 +1,17 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Search from '../views/Search'
-import EditBook from '../views/EditBook'
-import CreateBook from '../views/CreateBook'
-import About from '../views/About'
-import Genre from '../views/Genre'
-import Staff from '../views/Staff'
-import Stats from '../views/Stats'
-import NotFound from '../views/NotFound'
-import EditAuthor from '../views/EditAuthor'
-import Profile from '../views/Profile'
 import store from '../store'
+
+const Search = () => import('../views/Search')
+const EditBook = () => import('../views/EditBook')
+const CreateBook = () => import('../views/CreateBook')
+const About = () => import('../views/About')
+const Genre = () => import('../views/Genre')
+const Staff = () => import('../views/Staff')
+const Stats = () => import('../views/Stats')
+const NotFound = () => import('../views/NotFound')
+const EditAuthor = () => import('../views/EditAuthor')
+const Profile = () => import('../views/Profile')
 
 Vue.use(Router)
 
