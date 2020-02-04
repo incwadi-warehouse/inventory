@@ -8,6 +8,7 @@
 - feature: rename customer to staff
 - feature: automatically fix ESLint errors
 - feature: do not show edit password directly
+- refactor: webpack and eslint configuration
 
 ## 1.0.0
 

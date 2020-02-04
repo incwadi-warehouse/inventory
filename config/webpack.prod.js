@@ -12,39 +12,20 @@ const TerserPlugin = require('terser-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
 const pkg = require('./../package.json')
 
-require('dotenv').config({
-  path: './.env.production'
-});
-
 module.exports = {
   entry: './src/main.js',
   mode: 'production',
   output: {
     path: path.resolve(__dirname, './../dist'),
     publicPath: '/',
-    filename: '[name].[contenthash:8].min.js'
+    filename: '[contenthash].js',
+    chunkFilename: '[chunkhash].js'
   },
   module: {
     rules: [
       {
-        test: /\.(js|vue)$/,
-        loader: 'eslint-loader',
-        enforce: 'pre'
-      },
-      {
-        test: /\.css$/,
-        use: [
-          'vue-style-loader',
-          'css-loader'
-        ],
-      },
-      {
         test: /\.vue$/,
         loader: 'vue-loader',
-        options: {
-          loaders: {
-          }
-        }
       },
       {
         test: /\.js$/,
@@ -56,7 +37,7 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 4096,
-          name: path.posix.join('img/[name].[hash:8].[ext]')
+          name: path.posix.join('img/[name].[hash].[ext]')
         }
       },
       {
@@ -65,10 +46,23 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: path.posix.join('img/[name].[hash:8].[ext]')
+              name: path.posix.join('img/[name].[hash].[ext]')
             },
           },
         ],
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'vue-style-loader',
+          'css-loader'
+        ],
+      },
+      {
+        test: /\.(js|vue)$/,
+        loader: 'eslint-loader',
+        exclude: /node_modules/,
+        enforce: 'pre'
       }
     ]
   },
@@ -151,25 +145,14 @@ module.exports = {
     ])
   ],
   optimization: {
-    minimizer: [new TerserPlugin({
-      cache: true,
-      parallel: true
-    })],
+    minimizer: [
+      new TerserPlugin({
+        cache: true,
+        parallel: true
+      })
+    ],
     splitChunks: {
-      chunks: "all",
-      cacheGroups: {
-        vendors: {
-          name: 'vendor',
-          test: /[\\/]node_modules[\\/]/,
-          priority: -10
-        },
-        default: {
-          name: 'common',
-          minChunks: 2,
-          priority: -20,
-          reuseExistingChunk: true
-        }
-      }
+      chunks: 'all'
     }
   }
 }
