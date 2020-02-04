@@ -10,6 +10,7 @@
 - feature: do not show edit password directly
 - refactor: webpack and eslint configuration
 - feature: split final js files into multiple chunks
+- build: replace webapp-webpack-plugin by favicons-webpack-plugin
 
 ## 1.0.0
 

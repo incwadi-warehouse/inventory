@@ -6,7 +6,7 @@ const Dotenv = require('dotenv-webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { GenerateSW } = require('workbox-webpack-plugin')
-const WebappWebpackPlugin = require('webapp-webpack-plugin')
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
@@ -96,7 +96,7 @@ module.exports = {
         decodeEntities: true
       }
     }),
-    new WebappWebpackPlugin({
+    new FaviconsWebpackPlugin({
       logo: './src/assets/icon.svg',
       prefix: 'assets/',
       inject: true,
