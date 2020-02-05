@@ -133,12 +133,7 @@ module.exports = {
       }
     }),
     new GenerateSW({
-      swDest: 'sw.js',
-      importWorkboxFrom: 'local',
-      importsDirectory: 'workbox',
-      clientsClaim: true,
-      skipWaiting: true,
-      offlineGoogleAnalytics: false
+      swDest: 'sw.js'
     }),
     new CopyPlugin([
       { from: 'robots.txt', to: 'robots.txt' },
