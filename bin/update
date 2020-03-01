@@ -11,5 +11,5 @@ if [ "$tags" == 1 ]
     git pull origin master
 fi
 
-yarn install
+yarn install --frozen-lockfile
 yarn build
