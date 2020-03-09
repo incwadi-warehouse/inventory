@@ -16,24 +16,8 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|vue)$/,
-        loader: 'eslint-loader',
-        enforce: 'pre'
-      },
-      {
-        test: /\.css$/,
-        use: [
-          'vue-style-loader',
-          'css-loader'
-        ],
-      },
-      {
         test: /\.vue$/,
         loader: 'vue-loader',
-        options: {
-          loaders: {
-          }
-        }
       },
       {
         test: /\.js$/,
@@ -44,8 +28,8 @@ module.exports = {
         test: /\.(svg)(\?.*)?$/,
         loader: 'url-loader',
         options: {
-          limit: 10000,
-          name: path.posix.join('img/[name].[hash:8].[ext]')
+          limit: 4096,
+          name: path.posix.join('img/[name].[hash].[ext]')
         }
       },
       {
@@ -54,10 +38,26 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: path.posix.join('img/[name].[hash:8].[ext]')
+              name: path.posix.join('img/[name].[hash].[ext]')
             },
           },
         ],
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'vue-style-loader',
+          'css-loader'
+        ],
+      },
+      {
+        test: /\.(js|vue)$/,
+        loader: 'eslint-loader',
+        exclude: /node_modules/,
+        enforce: 'pre',
+        options: {
+          fix: true
+        }
       }
     ]
   },

@@ -32,20 +32,20 @@
 import { mapState, mapActions } from 'vuex'
 
 export default {
-  name: 'create-customer',
+  name: 'create-staff',
   computed: {
     name: {
       get: function() {
-        return this.$store.state.customer.name
+        return this.$store.state.staff.name
       },
       set: function(name) {
-        this.$store.commit('customer/name', name)
+        this.$store.commit('staff/name', name)
       }
     },
-    ...mapState('customer', ['isProcessing'])
+    ...mapState('staff', ['isProcessing'])
   },
   methods: {
-    ...mapActions('customer', ['create'])
+    ...mapActions('staff', ['create'])
   }
 }
 </script>

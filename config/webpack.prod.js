@@ -6,15 +6,11 @@ const Dotenv = require('dotenv-webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { GenerateSW } = require('workbox-webpack-plugin')
-const WebappWebpackPlugin = require('webapp-webpack-plugin')
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
 const pkg = require('./../package.json')
-
-require('dotenv').config({
-  path: './.env.production'
-});
 
 module.exports = {
   entry: './src/main.js',
@@ -22,29 +18,14 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './../dist'),
     publicPath: '/',
-    filename: '[name].[contenthash:8].min.js'
+    filename: '[contenthash].js',
+    chunkFilename: '[chunkhash].js'
   },
   module: {
     rules: [
       {
-        test: /\.(js|vue)$/,
-        loader: 'eslint-loader',
-        enforce: 'pre'
-      },
-      {
-        test: /\.css$/,
-        use: [
-          'vue-style-loader',
-          'css-loader'
-        ],
-      },
-      {
         test: /\.vue$/,
         loader: 'vue-loader',
-        options: {
-          loaders: {
-          }
-        }
       },
       {
         test: /\.js$/,
@@ -56,7 +37,7 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 4096,
-          name: path.posix.join('img/[name].[hash:8].[ext]')
+          name: path.posix.join('img/[name].[hash].[ext]')
         }
       },
       {
@@ -65,10 +46,23 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: path.posix.join('img/[name].[hash:8].[ext]')
+              name: path.posix.join('img/[name].[hash].[ext]')
             },
           },
         ],
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'vue-style-loader',
+          'css-loader'
+        ],
+      },
+      {
+        test: /\.(js|vue)$/,
+        loader: 'eslint-loader',
+        exclude: /node_modules/,
+        enforce: 'pre'
       }
     ]
   },
@@ -102,7 +96,7 @@ module.exports = {
         decodeEntities: true
       }
     }),
-    new WebappWebpackPlugin({
+    new FaviconsWebpackPlugin({
       logo: './src/assets/icon.svg',
       prefix: 'assets/',
       inject: true,
@@ -139,37 +133,21 @@ module.exports = {
       }
     }),
     new GenerateSW({
-      swDest: 'sw.js',
-      importWorkboxFrom: 'local',
-      importsDirectory: 'workbox',
-      clientsClaim: true,
-      skipWaiting: true,
-      offlineGoogleAnalytics: false
+      swDest: 'sw.js'
     }),
     new CopyPlugin([
       { from: 'robots.txt', to: 'robots.txt' },
     ])
   ],
   optimization: {
-    minimizer: [new TerserPlugin({
-      cache: true,
-      parallel: true
-    })],
+    minimizer: [
+      new TerserPlugin({
+        cache: true,
+        parallel: true
+      })
+    ],
     splitChunks: {
-      chunks: "all",
-      cacheGroups: {
-        vendors: {
-          name: 'vendor',
-          test: /[\\/]node_modules[\\/]/,
-          priority: -10
-        },
-        default: {
-          name: 'common',
-          minChunks: 2,
-          priority: -20,
-          reuseExistingChunk: true
-        }
-      }
+      chunks: 'all'
     }
   }
 }

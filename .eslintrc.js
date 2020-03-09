@@ -1,12 +1,17 @@
 module.exports = {
+  root: true,
   extends: [
     "plugin:vue/essential",
-    "prettier/vue",
-    "plugin:prettier/recommended",
     "eslint:recommended",
+    "@vue/prettier"
   ],
+  parserOptions: {
+    parser: "babel-eslint",
+    sourceType: 'module',
+    ecmaVersion: 2020
+  },
   env: {
-    "node": true
+    node: true
   },
   rules: {
     "no-new": 0,
