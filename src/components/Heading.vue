@@ -17,7 +17,7 @@
     </div>
     <div class="masthead_logo">
       <router-link :to="{ name: 'index' }">
-        <img :src="logo" alt="incwadi" loading="lazy" />
+        <img :src="logo" alt="incwadi" />
       </router-link>
     </div>
     <div class="masthead_settings" v-if="isAuthenticated">
