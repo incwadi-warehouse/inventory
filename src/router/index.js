@@ -12,6 +12,7 @@ const Stats = () => import('../views/Stats')
 const NotFound = () => import('../views/NotFound')
 const EditAuthor = () => import('../views/EditAuthor')
 const Profile = () => import('../views/Profile')
+const Branch = () => import('../views/Branch')
 
 Vue.use(Router)
 
@@ -56,6 +57,11 @@ const router = new Router({
       path: '/stats',
       name: 'stats',
       component: Stats
+    },
+    {
+      path: '/branch',
+      name: 'branch',
+      component: Branch
     },
     {
       path: '/author/edit/:id',

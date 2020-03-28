@@ -35,6 +35,7 @@ export default {
   filter: 'Filter',
   older_then_x_months: 'Older then x months',
   lend_more_then_x_months: 'Lend more then x months',
+  branch: 'Branch',
   branches: 'Branches',
   search_for_title_or_author: 'Search for title or author',
   firstname: 'Firstname',

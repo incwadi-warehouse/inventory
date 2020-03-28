@@ -50,6 +50,11 @@
           </router-link>
         </li>
         <li class="offcanvas_item">
+          <router-link :to="{ name: 'branch' }" class="offcanvas_link">
+            {{ $t('branch') }}
+          </router-link>
+        </li>
+        <li class="offcanvas_item">
           <router-link :to="{ name: 'about' }" class="offcanvas_link">
             {{ $t('about') }}
           </router-link>
