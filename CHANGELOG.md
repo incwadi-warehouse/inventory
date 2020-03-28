@@ -3,6 +3,7 @@
 ## 1.2.0
 
 - feature: add branch page
+- feature: moved delete books to branch, add explanation
 
 ## 1.1.0
 

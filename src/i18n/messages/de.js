@@ -114,5 +114,8 @@ export default {
   staff_edit_error: 'Mitarbeiter konnte nicht bearbeitet werden.',
   genre_edit_success: 'Rubrik bearbeitet',
   genre_edit_error: 'Rubrik konnte nicht bearbeitet werden.',
-  change_password: 'Passwort ändern'
+  change_password: 'Passwort ändern',
+  clean_up: 'Aufräumen',
+  clean_up_desc:
+    'Löscht sofort alle Bücher, die als verkauft oder entfernt markiert wurden. Gewöhnlich werden diese Bücher nach einigen Tagen automatisch gelöscht.'
 }
