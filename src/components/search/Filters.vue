@@ -1,9 +1,9 @@
 <template>
-  <section class="container container_m">
-    <button class="btn btn_text floatRight" @click="resetFilters">
+  <b-container size="m">
+    <b-button type="text" style="float: right;" @click="resetFilters">
       {{ $t('reset') }}
-    </button>
-    <form class="form" @submit.prevent="find">
+    </b-button>
+    <b-form @submit.prevent="find">
       <div class="form_group">
         <div class="form_item">
           <label for="genre" class="form_label">{{ $t('genre') }}</label>
@@ -16,17 +16,17 @@
               :id="'genre-' + item.id"
               v-model="genre"
             />
-            <label :for="'genre-' + item.id" class="form_label">{{
-              item.name
-            }}</label>
+            <label :for="'genre-' + item.id" class="form_label">
+              {{ item.name }}
+            </label>
           </span>
         </div>
       </div>
       <div class="form_group">
         <div class="form_item">
-          <label for="added" class="form_label">{{
-            $t('older_then_x_months')
-          }}</label>
+          <label for="added" class="form_label">
+            {{ $t('older_then_x_months') }}
+          </label>
         </div>
         <div class="form_item">
           <input
@@ -41,9 +41,9 @@
       </div>
       <div class="form_group">
         <div class="form_item">
-          <label for="lending" class="form_label">{{
-            $t('lend_more_then_x_months')
-          }}</label>
+          <label for="lending" class="form_label">
+            {{ $t('lend_more_then_x_months') }}
+          </label>
         </div>
         <div class="form_item">
           <input
@@ -68,9 +68,9 @@
               :value="item.id"
               v-model="branch"
             />
-            <label :for="'branch-' + item.id" class="form_label">{{
-              item.name
-            }}</label>
+            <label :for="'branch-' + item.id" class="form_label">
+              {{ item.name }}
+            </label>
           </span>
         </div>
       </div>
@@ -88,9 +88,9 @@
       </div>
       <div class="form_group">
         <div class="form_item">
-          <label for="releaseYear" class="form_label">{{
-            $t('release_year')
-          }}</label>
+          <label for="releaseYear" class="form_label">
+            {{ $t('release_year') }}
+          </label>
         </div>
         <div class="form_item">
           <input
@@ -113,8 +113,8 @@
           </select>
         </div>
       </div>
-    </form>
-  </section>
+    </b-form>
+  </b-container>
 </template>
 
 <script>

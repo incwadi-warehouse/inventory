@@ -1,5 +1,5 @@
 <template>
-  <section class="container container_m" v-if="stats">
+  <b-container size="m" v-if="stats">
     <ul class="list">
       <li>
         <b>{{ stats.all }}</b> {{ $t('all_books') }}
@@ -14,14 +14,10 @@
         <b>{{ stats.removed }}</b> {{ $t('removed_books') }}
       </li>
     </ul>
-    <button
-      class="btn btn_outline btn_outline_danger"
-      @click="clean"
-      v-if="isAdmin"
-    >
+    <b-button type="outline_danger" @click="clean" v-if="isAdmin">
       {{ $t('clean_books') }}
-    </button>
-  </section>
+    </b-button>
+  </b-container>
 </template>
 
 <script>

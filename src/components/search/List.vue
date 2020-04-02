@@ -1,14 +1,14 @@
 <template>
-  <section>
-    <section class="container container_m noprint" v-if="counter">
+  <article>
+    <b-container size="m" class="noprint" v-if="counter">
       <p class="noprint">
         {{ $t('results') }}: {{ books.length }}/{{ counter }}
       </p>
-    </section>
+    </b-container>
 
-    <section class="container container_m" v-if="counter">
-      <div class="table_wrapper">
-        <table class="table">
+    <b-container size="m" v-if="counter">
+      <b-table>
+        <table>
           <thead>
             <tr>
               <th class="isSortable" @click="filter('title')">
@@ -44,11 +44,16 @@
               <th class="isSortable" @click="filter('type')">
                 {{ $t('type') }} <indicator column="type" />
               </th>
-              <th class="alignRight isSortable" @click="filter('price')">
+              <th
+                class="isSortable"
+                style="text-align: right;"
+                @click="filter('price')"
+              >
                 {{ currency }} <indicator column="price" />
               </th>
               <th
-                class="alignRight isSortable"
+                class="isSortable"
+                style="text-align: right;"
                 :title="$t('release_year')"
                 @click="filter('releaseYear')"
               >
@@ -81,10 +86,10 @@
               <td>
                 {{ $t(book.type) }}
               </td>
-              <td class="alignRight">
+              <td style="text-align: right;">
                 {{ formatPrice(book.price) }}
               </td>
-              <td class="alignRight">
+              <td style="text-align: right;">
                 {{ book.releaseYear }}
               </td>
               <td class="noprint">
@@ -93,17 +98,17 @@
             </tr>
           </tbody>
         </table>
-      </div>
-    </section>
+      </b-table>
+    </b-container>
 
-    <!-- <section class="container container_m" v-if="showLoadMore">
-      <div class="alignCenter noprint">
-        <button class="btn btn_outline btn_outline_wide" @click="reload">
+    <!-- <b-container size="m" v-if="showLoadMore">
+      <div class="noprint">
+        <b-button type="outline_wide" @click="reload">
           {{ $t('load_more') }}
-        </button>
+        </b-button>
       </div>
-    </section> -->
-  </section>
+    </b-container> -->
+  </article>
 </template>
 
 <script>
@@ -169,16 +174,5 @@ export default {
 <style>
 .isSortable {
   cursor: pointer;
-}
-
-@media print {
-  .header,
-  .search,
-  .noprint {
-    display: none;
-  }
-  .table {
-    font-size: 0.7em;
-  }
 }
 </style>

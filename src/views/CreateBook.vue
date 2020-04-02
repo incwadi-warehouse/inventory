@@ -1,15 +1,15 @@
 <template>
-  <section>
-    <section class="container container_m">
+  <article>
+    <b-container size="m">
       <router-link :to="{ name: 'index' }">
         {{ $t('back_to_search') }}
       </router-link>
-    </section>
-    <section class="container container_m">
+    </b-container>
+    <b-container size="m">
       <h1>{{ $t('add_book') }}</h1>
-    </section>
+    </b-container>
     <create />
-  </section>
+  </article>
 </template>
 
 <script>

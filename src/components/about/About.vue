@@ -1,10 +1,10 @@
 <template>
-  <section class="container container_m">
+  <b-container size="m">
     <p>{{ $t('license') }}</p>
     <p>{{ $t('repo') }}</p>
     <p><a href="https://gitlab.com/incwadi/">Gitlab-Repository</a></p>
     <p>{{ $t('contribution') }}</p>
-  </section>
+  </b-container>
 </template>
 
 <script>

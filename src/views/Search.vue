@@ -1,30 +1,30 @@
 <template>
-  <section>
+  <article>
     <search class="noprint" />
 
-    <section class="container container_m alignRight noprint">
-      <button class="btn btn_outline" @click="setTab('filter')">
+    <b-container size="m" class="noprint" style="text-align: right;">
+      <b-button type="outline" @click="setTab('filter')">
         {{ $t('filter') }}
-      </button>
-      <button class="btn btn_outline" @click="setTab('limit')">
+      </b-button>
+      <b-button type="outline" @click="setTab('limit')">
         {{ $t('limit') }}
-      </button>
-      <button class="btn btn_outline" @click="setTab('create')">
+      </b-button>
+      <b-button type="outline" @click="setTab('create')">
         {{ $t('catalog') }}
-      </button>
-    </section>
+      </b-button>
+    </b-container>
 
     <filters class="noprint" v-if="tab === 'filter'" />
     <limit class="noprint" v-if="tab === 'limit'" />
     <create class="noprint" v-if="tab === 'create'" />
 
-    <section class="container container_m" v-if="isLoading">
-      <div class="spinner spinner-l"></div>
-    </section>
+    <b-container size="m" v-if="isLoading">
+      <b-spinner size="l" />
+    </b-container>
 
     <list />
     <author-list />
-  </section>
+  </article>
 </template>
 
 <script>
@@ -46,9 +46,6 @@ export default {
     Limit
   },
   computed: {
-    showCreate: function() {
-      return this.$store.state.showCreate
-    },
     isLoading: function() {
       return this.$store.state.search.isLoading
     },
@@ -63,12 +60,6 @@ export default {
         return
       }
       this.$store.commit('search/tab', tab)
-    },
-    tabsClass: function(active) {
-      return {
-        tabs_item: true,
-        isActive: this.tab === active
-      }
     }
   }
 }

@@ -1,11 +1,11 @@
 <template>
-  <section>
-    <section class="container container_m">
+  <article>
+    <b-container size="m">
       <h1>{{ $t('profile') }}</h1>
-    </section>
+    </b-container>
     <password />
     <dark-mode />
-  </section>
+  </article>
 </template>
 
 <script>
