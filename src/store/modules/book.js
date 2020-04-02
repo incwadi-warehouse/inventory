@@ -146,6 +146,7 @@ export default {
             : null
         })
         .then(function() {
+          context.dispatch('search/search', null, { root: true })
           router.push({ name: 'index' })
           notification('book_updated', 'success')
         })
