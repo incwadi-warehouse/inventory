@@ -11,12 +11,7 @@
         <path d="M10 2h5v5h-5zm0 16h5v5h-5zm0-8h5v5h-5z" />
       </svg>
     </button>
-    <ul
-      class="contextMenu"
-      :style="style"
-      v-if="showContextMenu"
-      @mouseleave="closeContextMenu"
-    >
+    <ul class="contextMenu" :style="style" v-if="showContextMenu">
       <li class="contextMenu_item">
         <router-link :to="{ name: 'edit', params: { id: book.id } }">
           {{ $t('edit') }}
