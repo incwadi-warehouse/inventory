@@ -223,7 +223,6 @@ export default {
   mounted: function() {
     this.$store.dispatch('branch/branches')
     this.$store.dispatch('genre/genres')
-    this.$store.dispatch('user/me')
   }
 }
 </script>

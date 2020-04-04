@@ -21,9 +21,6 @@ export default {
   },
   computed: {
     ...mapGetters('user', ['isAdmin'])
-  },
-  mounted: function() {
-    this.$store.dispatch('user/me')
   }
 }
 </script>

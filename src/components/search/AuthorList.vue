@@ -33,9 +33,6 @@ export default {
       }
       return author.surname + ', ' + author.firstname
     }
-  },
-  created: function() {
-    this.$store.dispatch('user/me')
   }
 }
 </script>

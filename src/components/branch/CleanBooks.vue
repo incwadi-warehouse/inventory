@@ -18,9 +18,6 @@ export default {
   },
   methods: {
     ...mapActions('book', ['clean'])
-  },
-  created: function() {
-    this.$store.dispatch('user/me')
   }
 }
 </script>
