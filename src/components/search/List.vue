@@ -100,14 +100,6 @@
         </table>
       </b-table>
     </b-container>
-
-    <!-- <b-container size="m" v-if="showLoadMore">
-      <div class="noprint">
-        <b-button type="outline_wide" @click="reload">
-          {{ $t('load_more') }}
-        </b-button>
-      </div>
-    </b-container> -->
   </article>
 </template>
 
