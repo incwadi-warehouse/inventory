@@ -110,5 +110,6 @@ export default {
   clean_up: 'Clean up',
   clean_up_desc:
     'Immediately deletes all books marked as sold or removed. Usually those books will be automatically deleted after a few days.',
-  admins_only: 'Admins only'
+  admins_only: 'Admins only',
+  apply: 'Apply'
 }

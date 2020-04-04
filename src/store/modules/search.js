@@ -10,7 +10,6 @@ export default {
     tab: null,
     // Filter
     searchTerm: null,
-    offset: 0,
     limit: 20,
     sold: false,
     removed: false,
@@ -56,9 +55,6 @@ export default {
     searchTerm(state, searchTerm) {
       state.searchTerm = searchTerm
     },
-    offset(state, offset) {
-      state.offset = offset
-    },
     sold(state, sold) {
       state.sold = sold === 1
     },
@@ -91,47 +87,42 @@ export default {
     }
   },
   actions: {
-    search(context, reload) {
+    search(context) {
       const isReleaseYearInRange =
-        context.rootState.filter.releaseYear === null ||
-        (context.rootState.filter.releaseYear >= 1000 &&
-          context.rootState.filter.releaseYear <= 9999)
+        context.state.releaseYear === null ||
+        (context.state.releaseYear >= 1000 && context.state.releaseYear <= 9999)
       if (!isReleaseYearInRange) return
 
       context.commit('isLoading', true)
 
       let added = null
-      if (context.rootState.filter.added) {
+      if (context.state.added) {
         added = new Date()
-        added.setMonth(added.getMonth() - context.rootState.filter.added)
+        added.setMonth(added.getMonth() - context.state.added)
         added =
-          context.rootState.filter.added !== 0
-            ? Math.round(added.getTime() / 1000)
-            : null
+          context.state.added !== 0 ? Math.round(added.getTime() / 1000) : null
       }
 
       let branch = null
-      if (context.rootState.filter.branch) {
+      if (context.state.branch) {
         branch =
-          context.rootState.filter.branch.length >= 1
-            ? context.rootState.filter.branch.join(',')
+          context.state.branch.length >= 1
+            ? context.state.branch.join(',')
             : null
       }
 
       let genre = null
-      if (context.rootState.filter.genre) {
+      if (context.state.genre) {
         genre =
-          context.rootState.filter.genre.length >= 1
-            ? context.rootState.filter.genre.join(',')
-            : null
+          context.state.genre.length >= 1 ? context.state.genre.join(',') : null
       }
 
       let lending = null
-      if (context.rootState.filter.lending) {
+      if (context.state.lending) {
         lending = new Date()
-        lending.setMonth(lending.getMonth() - context.rootState.filter.lending)
+        lending.setMonth(lending.getMonth() - context.state.lending)
         lending =
-          context.rootState.filter.lending !== 0
+          context.state.lending !== 0
             ? Math.round(lending.getTime() / 1000)
             : null
       }
@@ -139,45 +130,33 @@ export default {
       api(context.rootState.user.token)
         .get('/v1/book/find', {
           params: {
-            term: context.rootState.filter.searchTerm,
-            limit: context.rootState.filter.limit,
-            offset: context.rootState.filter.offset,
-            sold: context.rootState.filter.sold ? '1' : '0',
-            removed: context.rootState.filter.removed ? '1' : '0',
+            term: context.state.searchTerm,
+            limit: context.state.limit,
+            sold: context.state.sold ? '1' : '0',
+            removed: context.state.removed ? '1' : '0',
             added: added,
             branch: branch,
             genre: genre,
             lending: lending,
-            orderBy: context.rootState.filter.orderBy,
-            releaseYear: context.rootState.filter.releaseYear,
-            type: context.rootState.filter.type
+            orderBy: context.state.orderBy,
+            releaseYear: context.state.releaseYear,
+            type: context.state.type
           }
         })
         .then(function(response) {
-          if (context.rootState.filter.offset >= 1) {
-            response.data.books.forEach(book => {
-              context.commit('addBook', book)
-            })
-          } else {
-            context.commit('books', response.data.books)
-            context.commit('counter', response.data.counter)
-            if (reload) {
-              context.commit('filter/offset', context.state.books.length, {
-                root: true
-              })
-            }
-          }
+          context.commit('books', response.data.books)
+          context.commit('counter', response.data.counter)
           context.commit('isLoading', false)
           context.dispatch('authors', null)
         })
     },
     authors(context) {
-      if (!context.rootState.filter.searchTerm) return
+      if (!context.state.searchTerm) return
 
       api(context.rootState.user.token)
         .get('/v1/author/find', {
           params: {
-            term: context.rootState.filter.searchTerm
+            term: context.state.searchTerm
           }
         })
         .then(function(response) {
@@ -191,7 +170,6 @@ export default {
     // Filter
     reset(context) {
       context.commit('searchTerm', null)
-      context.commit('offset', 0)
       context.commit('sold', false)
       context.commit('removed', false)
       context.commit('added', null)
