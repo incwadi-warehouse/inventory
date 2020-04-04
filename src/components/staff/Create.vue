@@ -10,8 +10,8 @@
           <input type="text" id="name" class="form_input" v-model="name" />
         </div>
       </div>
-      <div class="form_group">
-        <div class="form_item" style="float: right;">
+      <div class="form_group form_buttons">
+        <div class="form_item">
           <b-button type="outline" @click.prevent="create" v-if="!isProcessing">
             {{ $t('create') }}
           </b-button>

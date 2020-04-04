@@ -18,9 +18,9 @@
             />
           </div>
         </div>
-        <div class="form_group">
+        <div class="form_group form_buttons">
           <div class="form_item">
-            <b-button type="primary" style="float: right;">
+            <b-button type="primary">
               {{ $t('save') }}
             </b-button>
           </div>
