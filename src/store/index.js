@@ -3,7 +3,6 @@ import Vuex from 'vuex'
 import book from './modules/book'
 import genre from './modules/genre'
 import branch from './modules/branch'
-import filter from './modules/filter'
 import staff from './modules/staff'
 import user from './modules/user'
 import notification from './modules/notification'
@@ -21,7 +20,6 @@ export default new Vuex.Store({
     book,
     genre,
     branch,
-    filter,
     staff,
     user,
     notification,

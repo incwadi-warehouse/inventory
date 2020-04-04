@@ -7,7 +7,20 @@ export default {
     counter: 0,
     authors: null,
     isLoading: false,
-    tab: null
+    tab: null,
+    // Filter
+    searchTerm: null,
+    offset: 0,
+    limit: 20,
+    sold: false,
+    removed: false,
+    added: null,
+    branch: null,
+    genre: null,
+    lending: null,
+    orderBy: null,
+    releaseYear: null,
+    type: null
   },
   mutations: {
     books(state, books) {
@@ -38,6 +51,43 @@ export default {
     },
     tab(state, tab) {
       state.tab = tab
+    },
+    // Filter
+    searchTerm(state, searchTerm) {
+      state.searchTerm = searchTerm
+    },
+    offset(state, offset) {
+      state.offset = offset
+    },
+    sold(state, sold) {
+      state.sold = sold === 1
+    },
+    removed(state, removed) {
+      state.removed = removed === 1
+    },
+    added(state, added) {
+      state.added = added
+    },
+    branch(state, branch) {
+      state.branch = branch
+    },
+    genre(state, genre) {
+      state.genre = genre
+    },
+    lending(state, lending) {
+      state.lending = lending
+    },
+    orderBy(state, orderBy) {
+      state.orderBy = orderBy
+    },
+    limit(state, limit) {
+      state.limit = limit
+    },
+    releaseYear(state, releaseYear) {
+      state.releaseYear = releaseYear
+    },
+    type(state, type) {
+      state.type = type
     }
   },
   actions: {
@@ -137,6 +187,21 @@ export default {
     remove(context, id) {
       context.commit('removeAuthor', id)
       context.dispatch('author/remove', id, { root: true })
+    },
+    // Filter
+    reset(context) {
+      context.commit('searchTerm', null)
+      context.commit('offset', 0)
+      context.commit('sold', false)
+      context.commit('removed', false)
+      context.commit('added', null)
+      context.commit('branch', null)
+      context.commit('genre', null)
+      context.commit('lending', null)
+      context.commit('orderBy', null)
+      context.commit('limit', 20)
+      context.commit('releaseYear', null)
+      context.commit('type', null)
     }
   }
 }

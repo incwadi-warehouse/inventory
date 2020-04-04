@@ -16,10 +16,10 @@ export default {
   computed: {
     searchTerm: {
       get: function() {
-        return this.$store.state.filter.searchTerm
+        return this.$store.state.search.searchTerm
       },
       set: function(searchTerm) {
-        this.$store.commit('filter/searchTerm', searchTerm)
+        this.$store.commit('search/searchTerm', searchTerm)
       }
     }
   },

@@ -120,8 +120,7 @@ export default {
     }
   },
   computed: {
-    ...mapState('search', ['books', 'counter']),
-    ...mapState('filter', ['sold', 'removed']),
+    ...mapState('search', ['books', 'counter', 'sold', 'removed']),
     showLoadMore: function() {
       return this.books.length < this.counter
     }
@@ -140,16 +139,16 @@ export default {
       this.$store.dispatch('search/search', true)
     },
     filter: function(type) {
-      const ordering = this.$store.state.filter.orderBy
+      const ordering = this.$store.state.search.orderBy
 
       if (ordering === type + '_desc') {
-        this.$store.commit('filter/orderBy', 'asc')
+        this.$store.commit('search/orderBy', 'asc')
       }
       if (ordering === type + '_asc') {
-        this.$store.commit('filter/orderBy', type + '_desc')
+        this.$store.commit('search/orderBy', type + '_desc')
       }
       if (ordering !== type + '_asc' && ordering !== type + '_desc') {
-        this.$store.commit('filter/orderBy', type + '_asc')
+        this.$store.commit('search/orderBy', type + '_asc')
       }
       this.$store.dispatch('search/search')
     },

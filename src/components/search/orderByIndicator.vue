@@ -12,7 +12,7 @@ export default {
   name: 'order-by-indicator',
   props: ['column'],
   computed: {
-    ...mapState('filter', ['orderBy']),
+    ...mapState('search', ['orderBy']),
     icon: function() {
       if (this.orderBy === this.column + '_asc') {
         return '&#9650;'
