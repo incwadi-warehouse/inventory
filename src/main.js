@@ -6,6 +6,9 @@ import i18n from './i18n'
 import cssVars from 'css-vars-ponyfill'
 import 'core-js/features/promise'
 import 'core-js/features/number/parse-float'
+import components from '@baldeweg/components'
+
+Vue.use(components)
 
 Vue.config.productionTip = false
 

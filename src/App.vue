@@ -1,13 +1,13 @@
 <template>
-  <div id="app">
-    <heading />
-    <navigation />
-    <main class="content" role="main">
+  <b-app>
+    <heading class="noprint" />
+    <navigation class="noprint" />
+    <b-content>
       <notification class="noprint" />
       <router-view v-if="isAuthenticated" />
       <login v-if="!isAuthenticated" />
-    </main>
-  </div>
+    </b-content>
+  </b-app>
 </template>
 
 <script>
@@ -33,12 +33,6 @@ export default {
     document
       .querySelector('html')
       .style.setProperty('--color-primary-10', process.env.BRAND_COLOR)
-    document
-      .querySelector('html')
-      .style.setProperty('--color-primary-05', '#eeab84')
-    document
-      .querySelector('html')
-      .style.setProperty('--color-primary-00', '#fcf1ea')
 
     if (undefined !== Cookies.get('token')) {
       this.$store.commit('user/isAuthenticated', true)
@@ -53,33 +47,22 @@ export default {
 }
 </script>
 
-<style src="../node_modules/baldeweg_ui/dist/style.min.css"></style>
-
 <style>
-input[type='search']::-ms-clear {
-  display: none;
-  width: 0;
-  height: 0;
-}
-::-webkit-scrollbar {
-  width: 10px;
-}
-::-webkit-scrollbar-thumb {
-  background: var(--color-neutral-06);
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-neutral-08);
-}
-::-webkit-scrollbar-track-piece {
-  background: var(--color-neutral-02);
-}
+html {
+  --color-primary-05: #eeab84;
+  --color-primary-00: #fcf1ea;
 
+  --masthead-height: 66px;
+}
 @media print {
-  .header {
-    height: 0;
+  html {
+    --masthead-height: 0 !important;
   }
-  .content {
-    margin-top: 0;
+  .noprint {
+    display: none !important;
+  }
+  .table {
+    font-size: 0.7em;
   }
 }
 </style>

@@ -1,9 +1,9 @@
 <template>
-  <section class="container container_m">
-    <button class="btn btn_text floatRight" @click="resetFilters">
+  <b-container size="m">
+    <b-button type="text" style="float: right;" @click="reset">
       {{ $t('reset') }}
-    </button>
-    <form class="form" @submit.prevent>
+    </b-button>
+    <b-form @submit.prevent>
       <div class="form_group">
         <div class="form_item">
           <label for="orderBy" class="form_label">{{ $t('order_by') }}</label>
@@ -12,35 +12,35 @@
           <select id="orderBy" class="form_input" v-model="orderBy">
             <option value=""></option>
             <option value="title_asc">{{ $t('title') }} {{ $t('asc') }}</option>
-            <option value="title_desc"
-              >{{ $t('title') }} {{ $t('desc') }}</option
-            >
-            <option value="author_asc"
-              >{{ $t('author') }} {{ $t('asc') }}</option
-            >
-            <option value="author_desc"
-              >{{ $t('author') }} {{ $t('desc') }}</option
-            >
+            <option value="title_desc">
+              {{ $t('title') }} {{ $t('desc') }}
+            </option>
+            <option value="author_asc">
+              {{ $t('author') }} {{ $t('asc') }}
+            </option>
+            <option value="author_desc">
+              {{ $t('author') }} {{ $t('desc') }}
+            </option>
             <option value="genre_asc">{{ $t('genre') }} {{ $t('asc') }}</option>
-            <option value="genre_desc"
-              >{{ $t('genre') }} {{ $t('desc') }}</option
-            >
+            <option value="genre_desc">
+              {{ $t('genre') }} {{ $t('desc') }}
+            </option>
             <option value="added_asc">{{ $t('added') }} {{ $t('asc') }}</option>
-            <option value="added_desc"
-              >{{ $t('added') }} {{ $t('desc') }}</option
-            >
+            <option value="added_desc">
+              {{ $t('added') }} {{ $t('desc') }}
+            </option>
             <option value="price_asc">{{ $t('price') }} {{ $t('asc') }}</option>
-            <option value="price_desc"
-              >{{ $t('price') }} {{ $t('desc') }}</option
-            >
+            <option value="price_desc">
+              {{ $t('price') }} {{ $t('desc') }}
+            </option>
             <option value="type_asc">{{ $t('type') }} {{ $t('asc') }}</option>
             <option value="type_desc">{{ $t('type') }} {{ $t('desc') }}</option>
-            <option value="releaseYear_asc"
-              >{{ $t('release_year') }} {{ $t('asc') }}</option
-            >
-            <option value="releaseYear_desc"
-              >{{ $t('release_year') }} {{ $t('desc') }}</option
-            >
+            <option value="releaseYear_asc">
+              {{ $t('release_year') }} {{ $t('asc') }}
+            </option>
+            <option value="releaseYear_desc">
+              {{ $t('release_year') }} {{ $t('desc') }}
+            </option>
           </select>
         </div>
       </div>
@@ -49,18 +49,19 @@
           <legend>{{ $t('limit') }}</legend>
         </div>
         <div class="form_item">
-          <button class="btn btn_text" @click="setLimit(10)">10</button>
-          <button class="btn btn_text" @click="setLimit(20)">20</button>
-          <button class="btn btn_text" @click="setLimit(50)">50</button>
-          <button class="btn btn_text" @click="setLimit(100)">100</button>
-          <button class="btn btn_text" @click="setLimit(200)">200</button>
-          <button class="btn btn_text" @click="setLimit(500)">500</button>
-          <button class="btn btn_text" @click="setLimit(1000)">1000</button>
-          <button class="btn btn_text" @click="setLimit(5000)">5000</button>
+          <b-button type="text" @click="setLimit(10)">10</b-button>
+          <b-button type="text" @click="setLimit(20)">20</b-button>
+          <b-button type="text" @click="setLimit(50)">50</b-button>
+          <b-button type="text" @click="setLimit(100)">100</b-button>
+          <b-button type="text" @click="setLimit(200)">200</b-button>
+          <b-button type="text" @click="setLimit(500)">500</b-button>
+          <b-button type="text" @click="setLimit(1000)">1000</b-button>
+          <b-button type="text" @click="setLimit(2000)">2000</b-button>
+          <b-button type="text" @click="setLimit(5000)">5000</b-button>
         </div>
       </fieldset>
-    </form>
-  </section>
+    </b-form>
+  </b-container>
 </template>
 
 <script>
@@ -84,9 +85,7 @@ export default {
       this.$store.commit('filter/limit', limit)
       this.$store.dispatch('search/search')
     },
-    ...mapActions('filter', {
-      resetFilters: 'reset'
-    })
+    ...mapActions('filter', ['reset'])
   }
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
-  <section class="container container_s">
+  <b-container size="s">
     <h1>{{ $t('login') }}</h1>
-    <form class="form" @submit.prevent="login">
+    <b-form @submit.prevent="login">
       <div class="form_group">
         <div class="form_item">
           <label for="username">{{ $t('username') }}</label>
@@ -32,21 +32,17 @@
         </div>
       </div>
       <div class="form_group">
-        <div class="form_item alignRight">
-          <button
-            class="btn btn_primary"
-            @click.prevent="login"
-            v-if="!isLoggingIn"
-          >
+        <div class="form_item">
+          <b-button type="primary_wide" v-if="!isLoggingIn">
             {{ $t('login') }}
-          </button>
-          <button class="btn btn_outline" v-if="isLoggingIn">
-            <div class="spinner spinner-s"></div>
-          </button>
+          </b-button>
+          <b-button type="outline_wide" v-if="isLoggingIn">
+            <b-spinner size="s" style="margin:auto;" />
+          </b-button>
         </div>
       </div>
-    </form>
-  </section>
+    </b-form>
+  </b-container>
 </template>
 
 <script>

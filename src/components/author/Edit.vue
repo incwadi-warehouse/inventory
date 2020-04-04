@@ -1,11 +1,11 @@
 <template>
-  <section class="container container_m">
-    <form class="form" @submit.prevent="edit(id)">
+  <b-container size="m">
+    <b-form @submit.prevent="edit(id)">
       <div class="form_group">
         <div class="form_item">
-          <label for="firstname" class="form_label">{{
-            $t('firstname')
-          }}</label>
+          <label for="firstname" class="form_label">
+            {{ $t('firstname') }}
+          </label>
         </div>
         <div class="form_item">
           <input
@@ -30,14 +30,14 @@
         </div>
       </div>
       <div class="form_group">
-        <div class="form_item alignRight">
-          <button class="btn btn_primary" @click.prevent="edit(id)">
+        <div class="form_item" style="float: right;">
+          <b-button type="primary" @click.prevent="edit(id)">
             {{ $t('save') }}
-          </button>
+          </b-button>
         </div>
       </div>
-    </form>
-  </section>
+    </b-form>
+  </b-container>
 </template>
 
 <script>

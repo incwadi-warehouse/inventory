@@ -1,6 +1,6 @@
 <template>
-  <section class="container container_m">
-    <form class="form" @submit.prevent="create">
+  <b-container size="m">
+    <b-form @submit.prevent="create">
       <div class="form_group">
         <div class="form_item">
           <label for="genre" class="form_label">
@@ -114,14 +114,14 @@
         </div>
       </div>
       <div class="form_group">
-        <div class="form_item alignRight">
-          <button type="submit" class="btn btn_primary">
+        <div class="form_item" style="float: right;">
+          <b-button type="primary">
             {{ $t('add') }}
-          </button>
+          </b-button>
         </div>
       </div>
-    </form>
-  </section>
+    </b-form>
+  </b-container>
 </template>
 
 <script>

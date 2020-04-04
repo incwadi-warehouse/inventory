@@ -1,5 +1,5 @@
 <template>
-  <section class="container container_m" v-if="stats">
+  <b-container size="m" v-if="stats">
     <ul class="list">
       <li>
         <b>{{ stats.all }}</b> {{ $t('all_books') }}

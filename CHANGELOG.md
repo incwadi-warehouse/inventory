@@ -4,6 +4,7 @@
 
 - feature: add branch page
 - feature: moved delete books to branch, add explanation
+- feature: replace baldeweg_ui by baldeweg/components
 
 ## 1.1.0
 

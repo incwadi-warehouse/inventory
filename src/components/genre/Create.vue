@@ -1,7 +1,7 @@
 <template>
-  <section class="container container_m">
+  <b-container size="m">
     <h2>{{ $t('new') }}</h2>
-    <form class="form" @submit.prevent="create">
+    <b-form @submit.prevent="create">
       <div class="form_group">
         <div class="form_item">
           <label for="name" class="form_label">{{ $t('name') }}</label>
@@ -11,21 +11,17 @@
         </div>
       </div>
       <div class="form_group">
-        <div class="form_item alignRight">
-          <button
-            class="btn btn_outline"
-            @click.prevent="create"
-            v-if="!isProcessing"
-          >
+        <div class="form_item" style="float: right;">
+          <b-button type="outline" @click.prevent="create" v-if="!isProcessing">
             {{ $t('create') }}
-          </button>
-          <button class="btn btn_outline" v-if="isProcessing">
-            <div class="spinner spinner-s"></div>
-          </button>
+          </b-button>
+          <b-button type="outline" v-if="isProcessing">
+            <b-spinner size="s" />
+          </b-button>
         </div>
       </div>
-    </form>
-  </section>
+    </b-form>
+  </b-container>
 </template>
 
 <script>

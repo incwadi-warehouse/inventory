@@ -1,11 +1,11 @@
 <template>
-  <section>
-    <section class="container container_m">
+  <article>
+    <b-container size="m">
       <h1>{{ $t('genres') }}</h1>
-    </section>
+    </b-container>
     <list />
     <create v-if="isAdmin" />
-  </section>
+  </article>
 </template>
 
 <script>

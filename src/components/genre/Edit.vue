@@ -1,27 +1,25 @@
 <template>
-  <div class="card_text" @dblclick="toggleEditGenre()" v-if="!editGenre">
+  <span @dblclick="toggleEditGenre" v-if="!editGenre">
     {{ genre.name }}
-  </div>
-  <div class="card_text" v-else>
-    <form class="form form_inline" @submit.prevent="update()">
-      <div class="form_group">
-        <div class="form_item">
-          <label for="genre" class="form_label visuallyHidden">
-            {{ $t('genre') }}
-          </label>
-        </div>
-        <div class="form_item">
-          <input
-            type="text"
-            id="genre"
-            class="form_input"
-            v-focus
-            v-model="name"
-          />
-        </div>
+  </span>
+  <b-form @submit.prevent="update" v-else>
+    <div class="form_group">
+      <div class="form_item">
+        <label for="genre" class="form_label visuallyHidden">
+          {{ $t('genre') }}
+        </label>
       </div>
-    </form>
-  </div>
+      <div class="form_item">
+        <input
+          type="text"
+          id="genre"
+          class="form_input"
+          v-model="name"
+          v-focus
+        />
+      </div>
+    </div>
+  </b-form>
 </template>
 
 <script>
@@ -55,9 +53,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.form_inline {
-  margin: 0;
-}
-</style>

@@ -1,10 +1,10 @@
 <template>
-  <section>
-    <section class="container container_m">
+  <article>
+    <b-container size="m">
       <h1>incwadi</h1>
-    </section>
+    </b-container>
     <about />
-  </section>
+  </article>
 </template>
 
 <script>

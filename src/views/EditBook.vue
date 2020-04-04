@@ -1,10 +1,10 @@
 <template>
-  <section>
-    <section class="container container_m">
+  <article>
+    <b-container size="m">
       <h1>{{ $t('edit_book') }}</h1>
-    </section>
+    </b-container>
     <edit :id="id" />
-  </section>
+  </article>
 </template>
 
 <script>

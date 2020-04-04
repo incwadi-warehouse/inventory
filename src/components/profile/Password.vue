@@ -1,13 +1,13 @@
 <template>
-  <section class="container container_m">
+  <b-container size="m">
     <details>
       <summary>{{ $t('change_password') }}</summary>
-      <form class="form" @submit.prevent="save">
+      <b-form @submit.prevent="save">
         <div class="form_group">
           <div class="form_item">
-            <label for="password" class="form_label">{{
-              $t('password')
-            }}</label>
+            <label for="password" class="form_label">
+              {{ $t('password') }}
+            </label>
           </div>
           <div class="form_item">
             <input
@@ -20,12 +20,14 @@
         </div>
         <div class="form_group">
           <div class="form_item">
-            <button class="btn btn_primary floatRight">{{ $t('save') }}</button>
+            <b-button type="primary" style="float: right;">
+              {{ $t('save') }}
+            </b-button>
           </div>
         </div>
-      </form>
+      </b-form>
     </details>
-  </section>
+  </b-container>
 </template>
 
 <script>

@@ -1,22 +1,14 @@
 <template>
-  <section class="container container_m">
+  <b-container size="m">
     <h2>{{ $t('dark_mode') }}</h2>
     <p>{{ $t('dark_mode_explanation') }}</p>
-    <button
-      class="btn btn_outline"
-      @click="toggleDarkMode"
-      v-if="!isDarkModeActive"
-    >
+    <b-button type="outline" @click="toggleDarkMode" v-if="!isDarkModeActive">
       {{ $t('activate_dark_mode') }}
-    </button>
-    <button
-      class="btn btn_outline"
-      @click="toggleDarkMode"
-      v-if="isDarkModeActive"
-    >
+    </b-button>
+    <b-button type="outline" @click="toggleDarkMode" v-if="isDarkModeActive">
       {{ $t('deactivate_dark_mode') }}
-    </button>
-  </section>
+    </b-button>
+  </b-container>
 </template>
 
 <script>
