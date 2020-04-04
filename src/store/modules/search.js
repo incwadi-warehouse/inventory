@@ -10,7 +10,6 @@ export default {
     tab: null,
     // Filter
     searchTerm: null,
-    offset: 0,
     limit: 20,
     sold: false,
     removed: false,
@@ -56,9 +55,6 @@ export default {
     searchTerm(state, searchTerm) {
       state.searchTerm = searchTerm
     },
-    offset(state, offset) {
-      state.offset = offset
-    },
     sold(state, sold) {
       state.sold = sold === 1
     },
@@ -91,7 +87,7 @@ export default {
     }
   },
   actions: {
-    search(context, reload) {
+    search(context) {
       const isReleaseYearInRange =
         context.state.releaseYear === null ||
         (context.state.releaseYear >= 1000 && context.state.releaseYear <= 9999)
@@ -136,7 +132,6 @@ export default {
           params: {
             term: context.state.searchTerm,
             limit: context.state.limit,
-            offset: context.state.offset,
             sold: context.state.sold ? '1' : '0',
             removed: context.state.removed ? '1' : '0',
             added: added,
@@ -149,19 +144,8 @@ export default {
           }
         })
         .then(function(response) {
-          if (context.state.offset >= 1) {
-            response.data.books.forEach(book => {
-              context.commit('addBook', book)
-            })
-          } else {
-            context.commit('books', response.data.books)
-            context.commit('counter', response.data.counter)
-            if (reload) {
-              context.commit('filter/offset', context.state.books.length, {
-                root: true
-              })
-            }
-          }
+          context.commit('books', response.data.books)
+          context.commit('counter', response.data.counter)
           context.commit('isLoading', false)
           context.dispatch('authors', null)
         })
@@ -186,7 +170,6 @@ export default {
     // Filter
     reset(context) {
       context.commit('searchTerm', null)
-      context.commit('offset', 0)
       context.commit('sold', false)
       context.commit('removed', false)
       context.commit('added', null)
