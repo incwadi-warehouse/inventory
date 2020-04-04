@@ -12,8 +12,8 @@
             id="username"
             class="form_input"
             :placeholder="$t('username')"
-            autofocus
             v-model="username"
+            autofocus
           />
         </div>
       </div>
