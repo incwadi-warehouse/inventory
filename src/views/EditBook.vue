@@ -12,7 +12,9 @@ import Edit from '../components/book/Edit'
 
 export default {
   name: 'edit-view',
-  props: ['id'],
+  props: {
+    id: Number
+  },
   components: {
     Edit
   }
