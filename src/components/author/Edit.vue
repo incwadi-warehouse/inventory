@@ -45,7 +45,9 @@ import { mapActions } from 'vuex'
 
 export default {
   name: 'edit-author',
-  props: ['id'],
+  props: {
+    id: Number
+  },
   computed: {
     firstname: {
       get: function() {

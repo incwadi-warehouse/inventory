@@ -36,7 +36,9 @@ import { mapActions } from 'vuex'
 
 export default {
   name: 'contextMenu',
-  props: ['book'],
+  props: {
+    book: Object
+  },
   methods: {
     ...mapActions('book', ['sell', 'remove'])
   }

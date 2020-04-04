@@ -25,7 +25,9 @@
 <script>
 export default {
   name: 'edit-staff',
-  props: ['staff'],
+  props: {
+    staff: Object
+  },
   data() {
     return {
       name: this.staff.name,
