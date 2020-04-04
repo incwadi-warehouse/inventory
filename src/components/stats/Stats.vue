@@ -14,7 +14,7 @@
         <b>{{ stats.removed }}</b> {{ $t('removed_books') }}
       </li>
     </ul>
-  </section>
+  </b-container>
 </template>
 
 <script>
