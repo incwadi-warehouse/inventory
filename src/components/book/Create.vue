@@ -113,8 +113,8 @@
           />
         </div>
       </div>
-      <div class="form_group">
-        <div class="form_item" style="float: right;">
+      <div class="form_group form_buttons">
+        <div class="form_item">
           <b-button type="primary">
             {{ $t('add') }}
           </b-button>
