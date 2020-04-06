@@ -6,6 +6,7 @@
 - feature: moved delete books to branch, add explanation
 - feature: replace baldeweg_ui by baldeweg/components
 - Refactoring of some parts
+- feature: date added in create view
 
 ## 1.1.0
 

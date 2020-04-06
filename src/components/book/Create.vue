@@ -113,6 +113,16 @@
           />
         </div>
       </div>
+      <div class="form_group">
+        <div class="form_item">
+          <label for="added" class="form_label">
+            {{ $t('added') }}
+          </label>
+        </div>
+        <div class="form_item">
+          <input type="date" id="added" class="form_input" v-model="added" />
+        </div>
+      </div>
       <div class="form_group form_buttons">
         <div class="form_item">
           <b-button type="primary">
@@ -136,6 +146,14 @@ export default {
   },
   computed: {
     ...mapState('genre', ['genres']),
+    added: {
+      get: function() {
+        return this.$store.state.book.added
+      },
+      set: function(added) {
+        this.$store.commit('book/added', added)
+      }
+    },
     title: {
       get: function() {
         return this.$store.state.book.title

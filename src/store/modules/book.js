@@ -19,7 +19,7 @@ const formatDate = function(data) {
 export default {
   namespaced: true,
   state: {
-    added: null,
+    added: formatDate(Math.round(new Date().getTime() / 1000) * 1000),
     title: null,
     authorFirstname: '',
     authorSurname: null,
@@ -106,7 +106,7 @@ export default {
     create(context) {
       api(context.rootState.user.token)
         .post('/v1/book/new', {
-          added: Math.round(new Date().getTime() / 1000),
+          added: new Date(context.state.added).getTime() / 1000,
           title: context.state.title,
           author:
             context.state.authorSurname + ',' + context.state.authorFirstname,
