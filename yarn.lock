@@ -769,10 +769,10 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@baldeweg/components@^1.2.4":
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/@baldeweg/components/-/components-1.2.4.tgz#465cf161d174626666f5f058e4af63db4669e972"
-  integrity sha512-GBLekWpUK05TSL2jZp2FbAluCL9e9pgPi+zIFrkKAsuNLKt92lBnL0wdjcfdkxN3Ea4MEm1Ebh4ueTeLLpTQLQ==
+"@baldeweg/components@^1.3":
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/@baldeweg/components/-/components-1.3.3.tgz#78361136872f5a7329d309c57dd955af8e924a10"
+  integrity sha512-VNW1mQuy3dwxPAxA2kPcWQkK8qqj1qZPDrOshZ5euYIMX3oXtjL1YKV/C9dXISB0jETc4PoaUfGnbXw5SQw42w==
 
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
