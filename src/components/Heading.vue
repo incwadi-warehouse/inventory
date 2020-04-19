@@ -30,15 +30,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.masthead_logo img {
-  width: 110px;
-}
-
-@media all and (min-width: 410px) {
-  .masthead_logo img {
-    width: 200px;
-  }
-}
-</style>
