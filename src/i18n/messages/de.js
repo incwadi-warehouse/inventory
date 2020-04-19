@@ -100,11 +100,6 @@ export default {
   password_successful: 'Das Passwort wurde erfolgreich geändert.',
   password_error:
     'Das Passwort konnte leider nicht geändert werden. Bitte verwende Groß- und Kleinbuchstaben, sowie Zahlen und Sonderzeichen',
-  dark_mode: 'Dunkelmodus',
-  dark_mode_explanation:
-    'Der Dunkelmodus stellt das UI in dunkleren Farben dar, dies kann angenehmer für die Augen sein.',
-  activate_dark_mode: 'Aktiviere Dunkelmodus',
-  deactivate_dark_mode: 'Deaktiviere Dunkelmodus',
   undo: 'Rückgängig',
   back_to_search: 'Zurück zur Suche',
   book_clean_success: 'Bücher wurden erfolgreich gelöscht.',
@@ -118,5 +113,6 @@ export default {
   clean_up: 'Aufräumen',
   clean_up_desc:
     'Löscht sofort alle Bücher, die als verkauft oder entfernt markiert wurden. Gewöhnlich werden diese Bücher nach einigen Tagen automatisch gelöscht.',
-  admins_only: 'nur für Admins'
+  admins_only: 'nur für Admins',
+  themes: 'Designs'
 }

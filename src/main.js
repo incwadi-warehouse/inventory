@@ -9,6 +9,7 @@ import 'core-js/features/number/parse-float'
 import components from '@baldeweg/components'
 
 Vue.use(components)
+Vue.themes()
 
 Vue.config.productionTip = false
 

@@ -92,11 +92,6 @@ export default {
   password_successful: 'The password was changed successfully.',
   password_error:
     'Sorry, password could not be changed. Please use upper- and lowercase letters as well as numbers and special characters.',
-  dark_mode: 'Dark Mode',
-  dark_mode_explanation:
-    'The dark mode shows the ui in darker colors, that could be more pleasant to the eyes.',
-  activate_dark_mode: 'Activate Dark Mode',
-  deactivate_dark_mode: 'Deactivate Dark Mode',
   undo: 'Undo',
   back_to_search: 'Back to Search',
   book_clean_success: 'Books were deleted successfully.',
@@ -110,5 +105,6 @@ export default {
   clean_up: 'Clean up',
   clean_up_desc:
     'Immediately deletes all books marked as sold or removed. Usually those books will be automatically deleted after a few days.',
-  admins_only: 'Admins only'
+  admins_only: 'Admins only',
+  themes: 'Themes'
 }

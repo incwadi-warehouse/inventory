@@ -7,6 +7,7 @@
 - feature: replace baldeweg_ui by baldeweg/components
 - Refactoring of some parts
 - feature: date added in create view
+- feature: remove dark mode in favor of themes
 
 ## 1.1.0
 
