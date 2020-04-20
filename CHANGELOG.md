@@ -9,6 +9,7 @@
 - feature: date added in create view
 - feature: remove dark mode in favor of themes
 - feature: show loading indicator while stats are being loaded
+- feature: edit link for authors  in dropdown on search results
 
 ## 1.1.0
 

@@ -8,6 +8,11 @@
       </template>
       <template #options>
         <b-dropdown-item>
+          <b-button type="text" class="dropdown_btn" @click="edit(author.id)">
+            {{ $t('edit') }}
+          </b-button>
+        </b-dropdown-item>
+        <b-dropdown-item>
           <b-button type="text" class="dropdown_btn" @click="remove(author.id)">
             {{ $t('remove') }}
           </b-button>
@@ -32,6 +37,9 @@ export default {
         return author.surname
       }
       return author.surname + ', ' + author.firstname
+    },
+    edit: function(author_id) {
+      this.$router.push({ name: 'edit-author', params: { id: author_id } })
     }
   }
 }
