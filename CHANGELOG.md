@@ -8,6 +8,7 @@
 - Refactoring of some parts
 - feature: date added in create view
 - feature: remove dark mode in favor of themes
+- feature: show loading indicator while stats are being loaded
 
 ## 1.1.0
 
