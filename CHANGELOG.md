@@ -2,6 +2,7 @@
 
 ## 1.2.0
 
+- feature: profile instead of create book
 - feature: add branch page
 - feature: moved delete books to branch, add explanation
 - feature: replace baldeweg_ui by baldeweg/components

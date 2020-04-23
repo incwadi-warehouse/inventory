@@ -25,7 +25,7 @@ export default {
   methods: {
     ...mapMutations('navigation', ['showOffCanvas']),
     settings: function() {
-      this.$router.push({ name: 'create-book' })
+      this.$router.push({ name: 'profile' })
     }
   }
 }
