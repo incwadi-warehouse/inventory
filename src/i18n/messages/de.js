@@ -114,5 +114,6 @@ export default {
   clean_up_desc:
     'Löscht sofort alle Bücher, die als verkauft oder entfernt markiert wurden. Gewöhnlich werden diese Bücher nach einigen Tagen automatisch gelöscht.',
   admins_only: 'nur für Admins',
-  themes: 'Designs'
+  themes: 'Designs',
+  apply: 'Anwenden'
 }

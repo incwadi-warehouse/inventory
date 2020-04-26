@@ -1,5 +1,5 @@
 <template>
-  <b-container size="m">
+  <article>
     <b-button type="text" style="float: right;" @click="reset">
       {{ $t('reset') }}
     </b-button>
@@ -49,6 +49,7 @@
           <legend>{{ $t('limit') }}</legend>
         </div>
         <div class="form_item">
+          <b-button type="text" @click="setLimit(2)">2</b-button>
           <b-button type="text" @click="setLimit(10)">10</b-button>
           <b-button type="text" @click="setLimit(20)">20</b-button>
           <b-button type="text" @click="setLimit(50)">50</b-button>
@@ -61,7 +62,7 @@
         </div>
       </fieldset>
     </b-form>
-  </b-container>
+  </article>
 </template>
 
 <script>
@@ -72,20 +73,20 @@ export default {
   computed: {
     orderBy: {
       get: function() {
-        return this.$store.state.filter.orderBy
+        return this.$store.state.search.orderBy
       },
       set: function(orderBy) {
-        this.$store.commit('filter/orderBy', orderBy)
+        this.$store.commit('search/orderBy', orderBy)
         this.$store.dispatch('search/search')
       }
     }
   },
   methods: {
     setLimit: function(limit) {
-      this.$store.commit('filter/limit', limit)
+      this.$store.commit('search/limit', limit)
       this.$store.dispatch('search/search')
     },
-    ...mapActions('filter', ['reset'])
+    ...mapActions('search', ['reset'])
   }
 }
 </script>

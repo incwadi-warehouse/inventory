@@ -6,16 +6,18 @@
       <b-button type="outline" @click="setTab('filter')">
         {{ $t('filter') }}
       </b-button>
-      <b-button type="outline" @click="setTab('limit')">
+      <!-- <b-button type="outline" @click="setTab('limit')">
         {{ $t('limit') }}
-      </b-button>
+      </b-button> -->
       <b-button type="outline" @click="setTab('create')">
         {{ $t('catalog') }}
       </b-button>
     </b-container>
 
     <filters class="noprint" v-if="tab === 'filter'" />
-    <limit class="noprint" v-if="tab === 'limit'" />
+    <b-container size="m" v-if="tab === 'limit'">
+      <limit class="noprint" />
+    </b-container>
     <create class="noprint" v-if="tab === 'create'" />
 
     <b-container size="m" v-if="isLoading">
