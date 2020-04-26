@@ -1,7 +1,7 @@
 <template>
   <b-dropdown>
     <template #selector>
-      <b-icon-settings />
+      <b-icon-more />
     </template>
     <b-dropdown-item>
       <router-link :to="{ name: 'edit', params: { id: book.id } }">
