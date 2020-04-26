@@ -93,7 +93,7 @@
               <td style="text-align: right;">
                 {{ book.releaseYear }}
               </td>
-              <td class="noprint">
+              <td class="noprint" style="cursor: pointer;">
                 <context-menu :book="book" />
               </td>
             </tr>
