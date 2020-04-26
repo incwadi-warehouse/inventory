@@ -65,6 +65,7 @@
           <tbody>
             <tr v-for="book in books" :key="book.id">
               <td>
+                <span v-show="book.lendTo">[{{ $t('lend') }}] </span>
                 {{ book.title }}
               </td>
               <td v-if="book.author">

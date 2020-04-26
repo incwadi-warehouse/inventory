@@ -107,5 +107,6 @@ export default {
     'Immediately deletes all books marked as sold or removed. Usually those books will be automatically deleted after a few days.',
   admins_only: 'Admins only',
   themes: 'Themes',
-  apply: 'Apply'
+  apply: 'Apply',
+  lend: 'Lend'
 }

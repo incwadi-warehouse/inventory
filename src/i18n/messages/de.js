@@ -115,5 +115,6 @@ export default {
     'Löscht sofort alle Bücher, die als verkauft oder entfernt markiert wurden. Gewöhnlich werden diese Bücher nach einigen Tagen automatisch gelöscht.',
   admins_only: 'nur für Admins',
   themes: 'Designs',
-  apply: 'Anwenden'
+  apply: 'Anwenden',
+  lend: 'Verliehen'
 }
