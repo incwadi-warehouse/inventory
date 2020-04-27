@@ -71,7 +71,11 @@ const router = new Router({
       path: '/author/edit/:id',
       name: 'edit-author',
       component: EditAuthor,
-      props: true
+      props(route) {
+        const props = route.params
+        props.id = +props.id
+        return props
+      }
     },
     {
       path: '/profile',
