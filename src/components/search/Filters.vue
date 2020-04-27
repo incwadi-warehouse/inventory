@@ -14,29 +14,24 @@
         <b-divider />
 
         <details>
-          <summary>{{ $t('genre') }}</summary>
+          <summary>{{ $t('genres') }}</summary>
           <div class="form_group">
-            <div class="form_item">
-              <label for="genre" class="form_label">{{ $t('genre') }}</label>
-            </div>
-            <div class="form_item">
-              <div v-for="item in genres" :key="item.id">
-                <input
-                  type="checkbox"
-                  :value="item.id"
-                  :id="'genre-' + item.id"
-                  v-model="genre"
-                />
-                <label :for="'genre-' + item.id" class="form_label">
-                  {{ item.name }}
-                </label>
-              </div>
+            <div class="form_item" v-for="item in genres" :key="item.id">
+              <input
+                type="checkbox"
+                :value="item.id"
+                :id="'genre-' + item.id"
+                v-model="genre"
+              />
+              <label :for="'genre-' + item.id" class="form_label">
+                {{ item.name }}
+              </label>
             </div>
           </div>
         </details>
 
         <details>
-          <summary>{{ $t('older_then_x_months') }}</summary>
+          <summary>{{ $t('added') }}</summary>
           <div class="form_group">
             <div class="form_item">
               <label for="added" class="form_label">
@@ -57,7 +52,7 @@
         </details>
 
         <details>
-          <summary>{{ $t('lend_more_then_x_months') }}</summary>
+          <summary>{{ $t('lend') }}</summary>
           <div class="form_group">
             <div class="form_item">
               <label for="lending" class="form_label">
@@ -80,36 +75,27 @@
         <details>
           <summary>{{ $t('branches') }}</summary>
           <div class="form_group" v-show="showBranches">
-            <div class="form_item">
-              <label for="branches" class="form_label">{{
-                $t('branches')
-              }}</label>
-            </div>
-            <div class="form_item">
-              <span v-for="item in branches" :key="item.id">
-                <input
-                  type="checkbox"
-                  :id="'branch-' + item.id"
-                  :value="item.id"
-                  v-model="branch"
-                />
-                <label :for="'branch-' + item.id" class="form_label">
-                  {{ item.name }}
-                </label>
-              </span>
+            <div class="form_item" v-for="item in branches" :key="item.id">
+              <input
+                type="checkbox"
+                :id="'branch-' + item.id"
+                :value="item.id"
+                v-model="branch"
+              />
+              <label :for="'branch-' + item.id" class="form_label">
+                {{ item.name }}
+              </label>
             </div>
           </div>
         </details>
 
         <details>
-          <summary>{{ $t('sold') }}/ {{ $t('removed') }}</summary>
+          <summary>{{ $t('availability') }}</summary>
           <div class="form_group">
             <div class="form_item">
               <input type="checkbox" id="sold" v-model="sold" />
               <label for="sold">{{ $t('sold') }}</label>
             </div>
-          </div>
-          <div class="form_group">
             <div class="form_item">
               <input type="checkbox" id="removed" v-model="removed" />
               <label for="removed">{{ $t('removed') }}</label>
@@ -121,7 +107,7 @@
           <summary>{{ $t('release_year') }}</summary>
           <div class="form_group">
             <div class="form_item">
-              <label for="releaseYear" class="form_label">
+              <label for="releaseYear" class="form_label visuallyHidden">
                 {{ $t('release_year') }}
               </label>
             </div>
@@ -140,14 +126,31 @@
           <summary>{{ $t('type') }}</summary>
           <div class="form_group">
             <div class="form_item">
-              <label for="orderBy" class="form_label">{{ $t('type') }}</label>
+              <label for="orderBy" class="form_label visuallyHidden">
+                {{ $t('type') }}
+              </label>
             </div>
             <div class="form_item">
-              <select id="orderBy" class="form_input" v-model="type">
-                <option value=""></option>
-                <option value="paperback">{{ $t('paperback') }}</option>
-                <option value="hardcover">{{ $t('hardcover') }}</option>
-              </select>
+              <input type="radio" value="all" id="all" v-model="type" />
+              <label for="all" class="form_label">{{ $t('all') }}</label>
+              <input
+                type="radio"
+                value="paperback"
+                id="paperback"
+                v-model="type"
+              />
+              <label for="paperback" class="form_label">
+                {{ $t('paperback') }}
+              </label>
+              <input
+                type="radio"
+                value="hardcover"
+                id="hardcover"
+                v-model="type"
+              />
+              <label for="hardcover" class="form_label">
+                {{ $t('hardcover') }}
+              </label>
             </div>
           </div>
         </details>
@@ -242,9 +245,11 @@ export default {
     type: {
       get: function() {
         return this.$store.state.search.type
+          ? this.$store.state.search.type
+          : 'all'
       },
       set: function(type) {
-        this.$store.commit('search/type', type)
+        this.$store.commit('search/type', type === 'all' ? null : type)
       }
     },
     showBranches: function() {

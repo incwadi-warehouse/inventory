@@ -116,5 +116,7 @@ export default {
   admins_only: 'nur für Admins',
   themes: 'Designs',
   apply: 'Anwenden',
-  lend: 'Verliehen'
+  lend: 'Verliehen',
+  availability: 'Verfügbarkeit',
+  all: 'Alle'
 }

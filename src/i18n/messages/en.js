@@ -108,5 +108,7 @@ export default {
   admins_only: 'Admins only',
   themes: 'Themes',
   apply: 'Apply',
-  lend: 'Lend'
+  lend: 'Lend',
+  availability: 'Availability',
+  all: 'all'
 }
