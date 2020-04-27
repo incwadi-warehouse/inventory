@@ -49,7 +49,6 @@
           <legend>{{ $t('limit') }}</legend>
         </div>
         <div class="form_item">
-          <b-button type="text" @click="setLimit(2)">2</b-button>
           <b-button type="text" @click="setLimit(10)">10</b-button>
           <b-button type="text" @click="setLimit(20)">20</b-button>
           <b-button type="text" @click="setLimit(50)">50</b-button>
