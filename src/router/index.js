@@ -36,7 +36,11 @@ const router = new Router({
       path: '/book/edit/:id',
       name: 'edit',
       component: EditBook,
-      props: true
+      props(route) {
+        const props = route.params
+        props.id = +props.id
+        return props
+      }
     },
     {
       path: '/about',
