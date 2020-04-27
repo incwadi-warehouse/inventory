@@ -162,9 +162,6 @@ export default {
         .put('/v1/book/sell/' + book.id)
         .then(function() {
           context.commit('search/removeBook', book, { root: true })
-          context.commit('filter/offset', context.rootState.filter.offset - 1, {
-            root: true
-          })
           notification('book_sell_success', 'success')
         })
         .catch(function() {
@@ -176,9 +173,6 @@ export default {
         .put('/v1/book/remove/' + book.id)
         .then(function() {
           context.commit('search/removeBook', book, { root: true })
-          context.commit('filter/offset', context.rootState.filter.offset - 1, {
-            root: true
-          })
           notification('book_remove_success', 'success')
         })
         .catch(function() {
