@@ -181,7 +181,10 @@ export default {
     },
     reset(context) {
       context.commit('search/tab', null, { root: true })
-      context.commit('added', null)
+      context.commit(
+        'added',
+        formatDate(Math.round(new Date().getTime() / 1000) * 1000)
+      )
       context.commit('title', null)
       context.commit('authorFirstname', '')
       context.commit('authorSurname', null)
