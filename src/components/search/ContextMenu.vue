@@ -8,23 +8,13 @@
         {{ $t('edit') }}
       </router-link>
     </b-dropdown-item>
-    <b-dropdown-item>
-      <b-button
-        type="text"
-        class="dropdown_btn"
-        @click="sell(book)"
-        v-if="!book.sold"
-      >
+    <b-dropdown-item v-if="!book.sold">
+      <b-button type="text" class="dropdown_btn" @click="sell(book)">
         {{ $t('sell') }}
       </b-button>
     </b-dropdown-item>
-    <b-dropdown-item>
-      <b-button
-        type="text"
-        class="dropdown_btn"
-        @click="remove(book)"
-        v-if="!book.removed"
-      >
+    <b-dropdown-item v-if="!book.removed">
+      <b-button type="text" class="dropdown_btn" @click="remove(book)">
         {{ $t('remove') }}
       </b-button>
     </b-dropdown-item>
