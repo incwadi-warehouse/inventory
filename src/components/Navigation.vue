@@ -31,13 +31,20 @@
             {{ $t('branch') }}
           </router-link>
         </li>
+      </ul>
+
+      <b-divider />
+
+      <ul class="offcanvas_nav">
         <li class="offcanvas_item">
           <router-link :to="{ name: 'about' }" class="offcanvas_link">
             {{ $t('about') }}
           </router-link>
         </li>
       </ul>
+
       <b-divider />
+
       <ul class="offcanvas_nav">
         <li class="offcanvas_item">
           <router-link :to="{ name: 'profile' }" class="offcanvas_link">
