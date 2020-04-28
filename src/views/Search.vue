@@ -6,9 +6,6 @@
       <b-button type="outline" @click="setTab('filter')">
         {{ $t('filter') }}
       </b-button>
-      <!-- <b-button type="outline" @click="setTab('limit')">
-        {{ $t('limit') }}
-      </b-button> -->
       <b-button type="outline" @click="setTab('create')">
         {{ $t('catalog') }}
       </b-button>
