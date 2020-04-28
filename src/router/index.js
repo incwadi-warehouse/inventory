@@ -4,7 +4,6 @@ import store from '../store'
 
 const Search = () => import('../views/Search')
 const EditBook = () => import('../views/EditBook')
-const CreateBook = () => import('../views/CreateBook')
 const About = () => import('../views/About')
 const Genre = () => import('../views/Genre')
 const Staff = () => import('../views/Staff')
@@ -25,12 +24,6 @@ const router = new Router({
       path: '/',
       name: 'index',
       component: Search
-    },
-    {
-      path: '/book/new',
-      name: 'create-book',
-      component: CreateBook,
-      props: true
     },
     {
       path: '/book/edit/:id',
