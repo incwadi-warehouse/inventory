@@ -118,5 +118,7 @@ export default {
   apply: 'Anwenden',
   lend: 'Verliehen',
   availability: 'Verfügbarkeit',
-  all: 'Alle'
+  all: 'Alle',
+  ordering: 'Reihenfolge',
+  limit_to: 'Begrenze auf'
 }

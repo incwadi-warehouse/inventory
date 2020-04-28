@@ -110,5 +110,7 @@ export default {
   apply: 'Apply',
   lend: 'Lend',
   availability: 'Availability',
-  all: 'all'
+  all: 'all',
+  ordering: 'Ordering',
+  limit_to: 'limit_to'
 }
