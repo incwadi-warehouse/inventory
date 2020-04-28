@@ -347,7 +347,6 @@ export default {
     },
     setLimit: function(limit) {
       this.$store.commit('search/limit', limit)
-      this.$store.dispatch('search/search')
     }
   },
   created: function() {
