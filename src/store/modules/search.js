@@ -10,7 +10,7 @@ export default {
     tab: null,
     // Filter
     searchTerm: null,
-    limit: 20,
+    limit: 50,
     sold: false,
     removed: false,
     added: null,
@@ -177,7 +177,7 @@ export default {
       context.commit('genre', null)
       context.commit('lending', null)
       context.commit('orderBy', null)
-      context.commit('limit', 20)
+      context.commit('limit', 50)
       context.commit('releaseYear', null)
       context.commit('type', null)
     }

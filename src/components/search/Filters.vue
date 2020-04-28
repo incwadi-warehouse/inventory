@@ -215,22 +215,19 @@
 
         <details>
           <summary>{{ $t('limit') }}</summary>
-          <fieldset class="formGroup">
+          <div class="formGroup">
             <div class="form_item">
-              <legend>{{ $t('limit_to') }}</legend>
+              <label for="limit" class="form_label">{{ $t('limit_to') }}</label>
             </div>
             <div class="form_item">
-              <b-button type="text" @click="setLimit(10)">10</b-button>
-              <b-button type="text" @click="setLimit(20)">20</b-button>
-              <b-button type="text" @click="setLimit(50)">50</b-button>
-              <b-button type="text" @click="setLimit(100)">100</b-button>
-              <b-button type="text" @click="setLimit(200)">200</b-button>
-              <b-button type="text" @click="setLimit(500)">500</b-button>
-              <b-button type="text" @click="setLimit(1000)">1000</b-button>
-              <b-button type="text" @click="setLimit(2000)">2000</b-button>
-              <b-button type="text" @click="setLimit(5000)">5000</b-button>
+              <input
+                type="number"
+                class="form_input"
+                id="limit"
+                v-model="limit"
+              />
             </div>
-          </fieldset>
+          </div>
         </details>
       </b-form>
     </b-container>
@@ -329,6 +326,14 @@ export default {
         this.$store.commit('search/orderBy', orderBy)
       }
     },
+    limit: {
+      get: function() {
+        return this.$store.state.search.limit
+      },
+      set: function(limit) {
+        this.$store.commit('search/limit', limit)
+      }
+    },
     showBranches: function() {
       if (!this.$store.state.branch.branches) return false
       if (this.$store.state.branch.branches.length > 1) {
@@ -344,9 +349,6 @@ export default {
     find: function() {
       this.$store.dispatch('search/search')
       this.$store.commit('search/tab', false)
-    },
-    setLimit: function(limit) {
-      this.$store.commit('search/limit', limit)
     }
   },
   created: function() {
