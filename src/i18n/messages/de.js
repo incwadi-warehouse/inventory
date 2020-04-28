@@ -120,5 +120,6 @@ export default {
   availability: 'Verfügbarkeit',
   all: 'Alle',
   ordering: 'Reihenfolge',
-  limit_to: 'Begrenze auf'
+  limit_to: 'Begrenze auf',
+  cancel: 'Abbrechen'
 }
