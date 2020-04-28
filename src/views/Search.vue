@@ -12,9 +12,6 @@
     </b-container>
 
     <filters class="noprint" v-if="tab === 'filter'" />
-    <b-container size="m" v-if="tab === 'limit'">
-      <limit class="noprint" />
-    </b-container>
     <create class="noprint" v-if="tab === 'create'" />
 
     <b-container size="m" v-if="isLoading">
@@ -32,7 +29,6 @@ import Filters from '../components/search/Filters'
 import List from '../components/search/List'
 import AuthorList from '../components/search/AuthorList'
 import Create from '../components/book/Create'
-import Limit from '../components/search/Limit'
 
 export default {
   name: 'search-view',
@@ -41,8 +37,7 @@ export default {
     Filters,
     List,
     AuthorList,
-    Create,
-    Limit
+    Create
   },
   computed: {
     isLoading: function() {
