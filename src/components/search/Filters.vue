@@ -327,7 +327,6 @@ export default {
       },
       set: function(orderBy) {
         this.$store.commit('search/orderBy', orderBy)
-        this.$store.dispatch('search/search')
       }
     },
     showBranches: function() {
