@@ -30,7 +30,8 @@ export default {
     releaseYear: 2019,
     type: 'paperback',
     lendTo: null,
-    lendOn: null
+    lendOn: null,
+    cond_id: null
   },
   mutations: {
     added(state, added) {
@@ -68,6 +69,9 @@ export default {
     },
     lendOn(state, lendOn) {
       state.lendOn = lendOn
+    },
+    cond_id(state, cond_id) {
+      state.cond_id = cond_id
     }
   },
   actions: {
@@ -101,6 +105,10 @@ export default {
               ? formatDate(response.data.lendOn * 1000)
               : response.data.lendOn
           )
+          context.commit(
+            'cond_id',
+            response.data.condition ? response.data.condition.id : null
+          )
         })
     },
     create(context) {
@@ -114,7 +122,8 @@ export default {
           price: context.state.price,
           sold: false,
           releaseYear: context.state.releaseYear,
-          type: context.state.type
+          type: context.state.type,
+          cond: context.state.cond_id
         })
         .then(function() {
           notification('book_created', 'success')
@@ -143,7 +152,8 @@ export default {
           lendTo: context.state.lendTo,
           lendOn: context.state.lendOn
             ? new Date(context.state.lendOn).getTime() / 1000
-            : null
+            : null,
+          cond: context.state.cond_id
         })
         .then(function() {
           context.dispatch('search/search', null, { root: true })
@@ -193,6 +203,7 @@ export default {
       context.commit('sold', false)
       context.commit('releaseYear', 2019)
       context.commit('type', 'paperback')
+      context.commit('cond_id', null)
     },
     clean(context) {
       api(context.rootState.user.token)

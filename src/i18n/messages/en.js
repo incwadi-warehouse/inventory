@@ -112,5 +112,17 @@ export default {
   availability: 'Availability',
   all: 'all',
   ordering: 'Ordering',
-  limit_to: 'limit_to'
+  limit_to: 'limit_to',
+  condition: 'Condition',
+  conditions: 'Conditions',
+  new_condition: 'New Condition',
+  enter_condition_and_hit_enter: 'Enter condition and hit enter.',
+  could_not_create_the_condition_try_again_later:
+    'Could not create the condition. Try again later.',
+  could_not_delete_the_condition_try_again_later:
+    'Could not delete the condition. Try again later.',
+  could_not_update_the_condition_try_again_later:
+    'Could not update the condition. Try again later.',
+  conditions_desc:
+    'All books can have a condition assigned. Removing a condition, results in books without a condition.'
 }

@@ -123,6 +123,25 @@
           <input type="date" id="added" class="form_input" v-model="added" />
         </div>
       </div>
+      <div class="form_group">
+        <div class="form_item">
+          <label for="cond" class="form_label">
+            {{ $t('condition') }}
+          </label>
+        </div>
+        <div class="form_item">
+          <select class="form_input" id="cond" v-model="cond_id">
+            <option value=""></option>
+            <option
+              :value="condition.id"
+              v-for="condition in conditions"
+              :key="condition.id"
+            >
+              {{ condition.name }}
+            </option>
+          </select>
+        </div>
+      </div>
       <div class="form_group form_buttons">
         <div class="form_item">
           <b-button type="primary">
@@ -146,6 +165,7 @@ export default {
   },
   computed: {
     ...mapState('genre', ['genres']),
+    ...mapState('condition', ['conditions']),
     added: {
       get: function() {
         return this.$store.state.book.added
@@ -209,6 +229,14 @@ export default {
       set: function(type) {
         this.$store.commit('book/type', type)
       }
+    },
+    cond_id: {
+      get: function() {
+        return this.$store.state.book.cond_id
+      },
+      set: function(cond_id) {
+        this.$store.commit('book/cond_id', cond_id)
+      }
     }
   },
   methods: {
@@ -216,6 +244,7 @@ export default {
   },
   mounted: function() {
     this.$store.dispatch('genre/genres')
+    this.$store.dispatch('condition/list')
   }
 }
 </script>

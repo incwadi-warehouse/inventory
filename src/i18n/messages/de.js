@@ -120,5 +120,17 @@ export default {
   availability: 'Verfügbarkeit',
   all: 'Alle',
   ordering: 'Reihenfolge',
-  limit_to: 'Begrenze auf'
+  limit_to: 'Begrenze auf',
+  condition: 'Zustand',
+  conditions: 'Zustände',
+  new_condition: 'Neuer Zustand',
+  enter_condition_and_hit_enter: 'Neuen Zustand eintragen und Enter drücken.',
+  could_not_create_the_condition_try_again_later:
+    'Konnte den Zustand nicht speichern. Versuche es später erneut.',
+  could_not_delete_the_condition_try_again_later:
+    'Konnte den Zustand nicht löschen. Versuche es später erneut.',
+  could_not_update_the_condition_try_again_later:
+    'Konnte den Zustand nicht aktualisieren. Versuche es später erneut.',
+  conditions_desc:
+    'Allen Büchern kann ein Zustand zugewiesen werden. Löschen eines Zustandes, führt zu Büchern ohne Zustand.'
 }

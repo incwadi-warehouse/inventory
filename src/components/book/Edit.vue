@@ -170,6 +170,25 @@
         </div>
       </div>
       <div class="form_group">
+        <div class="form_item">
+          <label for="cond" class="form_label">
+            {{ $t('condition') }}
+          </label>
+        </div>
+        <div class="form_item">
+          <select class="form_input" id="cond" v-model="cond_id">
+            <option value=""></option>
+            <option
+              :value="condition.id"
+              v-for="condition in conditions"
+              :key="condition.id"
+            >
+              {{ condition.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="form_group">
         <div class="form_item" style="float: right;">
           <b-button type="primary">
             {{ $t('update') }}
@@ -194,6 +213,7 @@ export default {
   computed: {
     ...mapState('genre', ['genres']),
     ...mapState('staff', ['staff']),
+    ...mapState('condition', ['conditions']),
     added: {
       get: function() {
         return this.$store.state.book.added
@@ -289,6 +309,14 @@ export default {
       set: function(lendOn) {
         this.$store.commit('book/lendOn', lendOn)
       }
+    },
+    cond_id: {
+      get: function() {
+        return this.$store.state.book.cond_id
+      },
+      set: function(cond_id) {
+        this.$store.commit('book/cond_id', cond_id)
+      }
     }
   },
   methods: {
@@ -318,6 +346,7 @@ export default {
     this.$store.dispatch('book/show', this.id)
     this.$store.dispatch('staff/staff')
     this.$store.dispatch('genre/genres')
+    this.$store.dispatch('condition/list')
   },
   beforeDestroy: function() {
     this.$store.dispatch('book/reset')
