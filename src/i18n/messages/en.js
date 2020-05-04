@@ -112,5 +112,6 @@ export default {
   availability: 'Availability',
   all: 'all',
   ordering: 'Ordering',
-  limit_to: 'limit_to'
+  limit_to: 'limit_to',
+  cancel: 'Cancel'
 }
