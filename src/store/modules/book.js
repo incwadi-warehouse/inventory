@@ -204,6 +204,7 @@ export default {
       context.commit('releaseYear', 2019)
       context.commit('type', 'paperback')
       context.commit('cond_id', null)
+      context.commit('search/tab', false, { root: true })
     },
     clean(context) {
       api(context.rootState.user.token)
