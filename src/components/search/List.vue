@@ -2,11 +2,14 @@
   <article>
     <b-container size="m" class="noprint" v-if="counter">
       <p class="noprint">
-        {{ $t('results') }}: {{ books.length }}/{{ counter }}
+        {{ $t('results') }}: {{ books.length }}/{{ counter }} |
+        <span @click="fluid = !fluid" :style="{ cursor: 'pointer' }">
+          Fluid
+        </span>
       </p>
     </b-container>
 
-    <b-container size="m" v-if="counter">
+    <b-container :size="size" v-if="counter">
       <b-table>
         <table>
           <thead>
@@ -117,13 +120,17 @@ export default {
   },
   data() {
     return {
-      currency: process.env.CURRENCY
+      currency: process.env.CURRENCY,
+      fluid: false
     }
   },
   computed: {
     ...mapState('search', ['books', 'counter', 'sold', 'removed']),
     showLoadMore: function() {
       return this.books.length < this.counter
+    },
+    size: function() {
+      return this.fluid ? 'l' : 'm'
     }
   },
   methods: {
