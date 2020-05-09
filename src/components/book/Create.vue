@@ -143,25 +143,6 @@
             </select>
           </div>
         </div>
-        <div class="form_group">
-          <div class="form_item">
-            <label for="cond" class="form_label">
-              {{ $t('condition') }}
-            </label>
-          </div>
-          <div class="form_item">
-            <select class="form_input" id="cond" v-model="cond_id">
-              <option value=""></option>
-              <option
-                :value="condition.id"
-                v-for="condition in conditions"
-                :key="condition.id"
-              >
-                {{ condition.name }}
-              </option>
-            </select>
-          </div>
-        </div>
         <div class="form_group form_buttons">
           <div class="form_item">
             <b-button type="outline" @click.prevent="cancel">
