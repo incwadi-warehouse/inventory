@@ -34,8 +34,8 @@ export default {
       .querySelector('html')
       .style.setProperty('--color-primary-10', process.env.BRAND_COLOR)
 
-    this.$store.dispatch('user/me')
     if (undefined !== Cookies.get('token')) {
+      this.$store.dispatch('user/me')
       this.$store.commit('user/isAuthenticated', true)
     }
     if (
