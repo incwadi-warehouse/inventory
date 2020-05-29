@@ -1,5 +1,5 @@
 import api from '../../api'
-import notification from '../../util/notification'
+import { notification } from '@baldeweg/components'
 
 export default {
   namespaced: true,
@@ -26,7 +26,7 @@ export default {
           context.dispatch('list')
         })
         .catch(function() {
-          notification(
+          notification.create(
             'could_not_create_the_condition_try_again_later',
             'error'
           )
@@ -39,7 +39,7 @@ export default {
           context.dispatch('list')
         })
         .catch(function() {
-          notification(
+          notification.create(
             'could_not_delete_the_condition_try_again_later',
             'error'
           )
@@ -52,7 +52,7 @@ export default {
           context.dispatch('list')
         })
         .catch(function() {
-          notification(
+          notification.create(
             'could_not_update_the_condition_try_again_later',
             'error'
           )

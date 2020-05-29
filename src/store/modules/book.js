@@ -1,6 +1,6 @@
 import api from '../../api'
 import router from '../../router'
-import notification from '../../util/notification'
+import { notification } from '@baldeweg/components'
 
 const formatDate = function(data) {
   const date = new Date(data)
@@ -126,13 +126,13 @@ export default {
           cond: context.state.cond_id
         })
         .then(function() {
-          notification('book_created', 'success')
+          notification.create('book_created', 'success')
           context.dispatch('reset')
         })
         .catch(function(error) {
-          notification('book_not_valid', 'error')
+          notification.create('book_not_valid', 'error')
           if (error.response.status === 409) {
-            notification('book_not_valid_duplicate', 'error')
+            notification.create('book_not_valid_duplicate', 'error')
           }
         })
     },
@@ -158,12 +158,12 @@ export default {
         .then(function() {
           context.dispatch('search/search', null, { root: true })
           router.push({ name: 'index' })
-          notification('book_updated', 'success')
+          notification.create('book_updated', 'success')
         })
         .catch(function(error) {
-          notification('book_not_valid', 'error')
+          notification.create('book_not_valid', 'error')
           if (error.response.status === 409) {
-            notification('book_not_valid_duplicate', 'error')
+            notification.create('book_not_valid_duplicate', 'error')
           }
         })
     },
@@ -172,10 +172,10 @@ export default {
         .put('/v1/book/sell/' + book.id)
         .then(function() {
           context.commit('search/removeBook', book, { root: true })
-          notification('book_sell_success', 'success')
+          notification.create('book_sell_success', 'success')
         })
         .catch(function() {
-          notification('book_sell_error', 'error')
+          notification.create('book_sell_error', 'error')
         })
     },
     remove(context, book) {
@@ -183,10 +183,10 @@ export default {
         .put('/v1/book/remove/' + book.id)
         .then(function() {
           context.commit('search/removeBook', book, { root: true })
-          notification('book_remove_success', 'success')
+          notification.create('book_remove_success', 'success')
         })
         .catch(function() {
-          notification('book_remove_error', 'error')
+          notification.create('book_remove_error', 'error')
         })
     },
     reset(context) {
@@ -210,10 +210,10 @@ export default {
       api(context.rootState.user.token)
         .delete('/v1/book/clean')
         .then(function() {
-          notification('book_clean_success', 'success')
+          notification.create('book_clean_success', 'success')
         })
         .catch(function() {
-          notification('book_clean_error', 'error')
+          notification.create('book_clean_error', 'error')
         })
     }
   }

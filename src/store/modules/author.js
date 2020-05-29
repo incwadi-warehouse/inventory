@@ -1,6 +1,6 @@
 import api from '../../api'
 import router from '../../router'
-import notification from '../../util/notification'
+import { notification } from '@baldeweg/components'
 
 export default {
   namespaced: true,
@@ -33,20 +33,20 @@ export default {
         })
         .then(function() {
           router.push({ name: 'index' })
-          notification('author_edit_successful', 'success')
+          notification.create('author_edit_successful', 'success')
         })
         .catch(function() {
-          notification('author_edit_error', 'error')
+          notification.create('author_edit_error', 'error')
         })
     },
     remove(context, id) {
       api(context.rootState.user.token)
         .delete('/v1/author/' + id)
         .then(function() {
-          notification('author_remove_successful', 'success')
+          notification.create('author_remove_successful', 'success')
         })
         .catch(function() {
-          notification('author_remove_error', 'error')
+          notification.create('author_remove_error', 'error')
         })
     }
   }

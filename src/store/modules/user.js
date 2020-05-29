@@ -1,7 +1,7 @@
 import api from '../../api'
 import router from '../../router'
 import Cookies from 'js-cookie'
-import notification from '../../util/notification'
+import { notification } from '@baldeweg/components'
 
 export default {
   namespaced: true,
@@ -68,7 +68,7 @@ export default {
           context.commit('isAuthenticated', true)
         })
         .catch(function() {
-          notification('wrong_credentials', 'error')
+          notification.create('wrong_credentials', 'error')
         })
         .finally(function() {
           context.commit('isLoggingIn', false)
@@ -115,12 +115,12 @@ export default {
           password: context.state.password
         })
         .then(function() {
-          notification('password_successful', 'success')
+          notification.create('password_successful', 'success')
           router.push({ name: 'items' })
           context.commit('password', null)
         })
         .catch(function() {
-          notification('password_error', 'error')
+          notification.create('password_error', 'error')
         })
         .finally(function() {
           context.commit('isChangingPassword', false)

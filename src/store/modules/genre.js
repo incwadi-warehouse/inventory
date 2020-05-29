@@ -1,5 +1,5 @@
 import api from '../../api'
-import notification from '../../util/notification'
+import { notification } from '@baldeweg/components'
 
 export default {
   namespaced: true,
@@ -40,10 +40,10 @@ export default {
         .then(function() {
           context.commit('name', null)
           context.dispatch('genres')
-          notification('genre_create_success', 'success')
+          notification.create('genre_create_success', 'success')
         })
         .catch(function() {
-          notification('genre_create_error', 'error')
+          notification.create('genre_create_error', 'error')
         })
         .finally(function() {
           context.commit('isProcessing', false)
@@ -56,10 +56,10 @@ export default {
         })
         .then(function() {
           context.dispatch('genres')
-          notification('genre_edit_success', 'success')
+          notification.create('genre_edit_success', 'success')
         })
         .catch(function() {
-          notification('genre_edit_error', 'error')
+          notification.create('genre_edit_error', 'error')
         })
     },
     remove(context, id) {
@@ -67,10 +67,10 @@ export default {
         .delete('/v1/genre/' + id)
         .then(function() {
           context.dispatch('genres')
-          notification('genre_remove_success', 'success')
+          notification.create('genre_remove_success', 'success')
         })
         .catch(function() {
-          notification('genre_remove_error', 'error')
+          notification.create('genre_remove_error', 'error')
         })
     }
   }
