@@ -3,22 +3,16 @@
     {{ genre.name }}
   </span>
   <b-form @submit.prevent="update" v-else>
-    <div class="form_group">
-      <div class="form_item">
-        <label for="genre" class="form_label visuallyHidden">
+    <b-form-group>
+      <b-form-item>
+        <b-form-label for="genre" class="visuallyHidden">
           {{ $t('genre') }}
-        </label>
-      </div>
-      <div class="form_item">
-        <input
-          type="text"
-          id="genre"
-          class="form_input"
-          v-model="name"
-          v-focus
-        />
-      </div>
-    </div>
+        </b-form-label>
+      </b-form-item>
+      <b-form-item>
+        <b-form-input type="text" id="genre" v-model="name" v-focus />
+      </b-form-item>
+    </b-form-group>
   </b-form>
 </template>
 

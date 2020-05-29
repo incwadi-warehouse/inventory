@@ -1,41 +1,31 @@
 <template>
   <b-container size="m">
     <b-form @submit.prevent="edit(id)">
-      <div class="form_group">
-        <div class="form_item">
-          <label for="firstname" class="form_label">
+      <b-form-group>
+        <b-form-item>
+          <b-form-label for="firstname">
             {{ $t('firstname') }}
-          </label>
-        </div>
-        <div class="form_item">
-          <input
-            type="text"
-            id="firstname"
-            class="form_input"
-            v-model="firstname"
-          />
-        </div>
-      </div>
-      <div class="form_group">
-        <div class="form_item">
-          <label for="surname" class="form_label">{{ $t('surname') }}</label>
-        </div>
-        <div class="form_item">
-          <input
-            type="text"
-            id="surname"
-            class="form_input"
-            v-model="surname"
-          />
-        </div>
-      </div>
-      <div class="form_group">
-        <div class="form_item" style="float: right;">
+          </b-form-label>
+        </b-form-item>
+        <b-form-item>
+          <b-form-input type="text" id="firstname" v-model="firstname" />
+        </b-form-item>
+      </b-form-group>
+      <b-form-group>
+        <b-form-item>
+          <b-form-label for="surname">{{ $t('surname') }}</b-form-label>
+        </b-form-item>
+        <b-form-item>
+          <b-form-input type="text" id="surname" v-model="surname" />
+        </b-form-item>
+      </b-form-group>
+      <b-form-group>
+        <b-form-item style="float: right;">
           <b-button design="primary" @click.prevent="edit(id)">
             {{ $t('save') }}
           </b-button>
-        </div>
-      </div>
+        </b-form-item>
+      </b-form-group>
     </b-form>
   </b-container>
 </template>

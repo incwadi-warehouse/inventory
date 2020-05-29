@@ -4,22 +4,16 @@
       {{ condition.name }}
     </span>
     <b-form @submit.prevent="update" v-if="isEditing">
-      <div class="form_group">
-        <div class="form_item">
-          <label for="name" class="form_label visuallyHidden">
+      <b-form-group>
+        <b-form-item>
+          <b-form-label for="name" class="visuallyHidden">
             {{ $t('name') }}
-          </label>
-        </div>
-        <div class="form_item">
-          <input
-            type="text"
-            class="form_input"
-            id="name"
-            v-focus
-            v-model="name"
-          />
-        </div>
-      </div>
+          </b-form-label>
+        </b-form-item>
+        <b-form-item>
+          <b-form-input type="text" id="name" v-focus v-model="name" />
+        </b-form-item>
+      </b-form-group>
     </b-form>
   </article>
 </template>

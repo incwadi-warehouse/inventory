@@ -2,169 +2,180 @@
   <b-modal>
     <b-container size="l">
       <b-form @submit.prevent="find">
-        <div class="form_group form_buttons">
-          <div class="form_item">
+        <b-form-group buttons>
+          <b-form-item>
             <b-button design="outline" @click="resetFilters">
               {{ $t('reset') }}
             </b-button>
             <b-button design="primary">{{ $t('apply') }}</b-button>
-          </div>
-        </div>
+          </b-form-item>
+        </b-form-group>
 
         <b-divider />
 
         <details>
           <summary>{{ $t('genres') }}</summary>
-          <div class="form_group">
-            <div class="form_item" v-for="item in genres" :key="item.id">
-              <input
+          <b-form-group>
+            <b-form-item v-for="item in genres" :key="item.id">
+              <b-form-input
                 type="checkbox"
                 :value="item.id"
+                no-styling
                 :id="'genre-' + item.id"
                 v-model="genre"
               />
-              <label :for="'genre-' + item.id" class="form_label">
+              <b-form-label :for="'genre-' + item.id">
                 {{ item.name }}
-              </label>
-            </div>
-          </div>
+              </b-form-label>
+            </b-form-item>
+          </b-form-group>
         </details>
 
         <details>
           <summary>{{ $t('added') }}</summary>
-          <div class="form_group">
-            <div class="form_item">
-              <label for="added" class="form_label">
+          <b-form-group>
+            <b-form-item>
+              <b-form-label for="added">
                 {{ $t('older_then_x_months') }}
-              </label>
-            </div>
-            <div class="form_item">
-              <input
+              </b-form-label>
+            </b-form-item>
+            <b-form-item>
+              <b-form-input
                 type="number"
                 id="added"
-                class="form_input"
                 min="0"
                 max="120"
                 v-model="added"
               />
-            </div>
-          </div>
+            </b-form-item>
+          </b-form-group>
         </details>
 
         <details>
           <summary>{{ $t('lend') }}</summary>
-          <div class="form_group">
-            <div class="form_item">
-              <label for="lending" class="form_label">
+          <b-form-group>
+            <b-form-item>
+              <b-form-label for="lending">
                 {{ $t('lend_more_then_x_months') }}
-              </label>
-            </div>
-            <div class="form_item">
-              <input
+              </b-form-label>
+            </b-form-item>
+            <b-form-item>
+              <b-form-input
                 type="number"
                 id="lending"
-                class="form_input"
                 min="0"
                 max="120"
                 v-model="lending"
               />
-            </div>
-          </div>
+            </b-form-item>
+          </b-form-group>
         </details>
 
         <details>
           <summary>{{ $t('branches') }}</summary>
-          <div class="form_group" v-show="showBranches">
-            <div class="form_item" v-for="item in branches" :key="item.id">
-              <input
+          <b-form-group v-show="showBranches">
+            <b-form-item v-for="item in branches" :key="item.id">
+              <b-form-input
                 type="checkbox"
+                no-styling
                 :id="'branch-' + item.id"
                 :value="item.id"
                 v-model="branch"
               />
-              <label :for="'branch-' + item.id" class="form_label">
+              <b-form-label :for="'branch-' + item.id">
                 {{ item.name }}
-              </label>
-            </div>
-          </div>
+              </b-form-label>
+            </b-form-item>
+          </b-form-group>
         </details>
 
         <details>
           <summary>{{ $t('availability') }}</summary>
-          <div class="form_group">
-            <div class="form_item">
-              <input type="checkbox" id="sold" v-model="sold" />
-              <label for="sold">{{ $t('sold') }}</label>
-            </div>
-            <div class="form_item">
-              <input type="checkbox" id="removed" v-model="removed" />
-              <label for="removed">{{ $t('removed') }}</label>
-            </div>
-          </div>
+          <b-form-group>
+            <b-form-item>
+              <b-form-input
+                type="checkbox"
+                id="sold"
+                no-styling
+                v-model="sold"
+              />
+              <b-form-label for="sold">{{ $t('sold') }}</b-form-label>
+            </b-form-item>
+            <b-form-item>
+              <b-form-input
+                type="checkbox"
+                id="removed"
+                no-styling
+                v-model="removed"
+              />
+              <b-form-label for="removed">{{ $t('removed') }}</b-form-label>
+            </b-form-item>
+          </b-form-group>
         </details>
 
         <details>
           <summary>{{ $t('release_year') }}</summary>
-          <div class="form_group">
-            <div class="form_item">
-              <label for="releaseYear" class="form_label visuallyHidden">
+          <b-form-group>
+            <b-form-item>
+              <b-form-label for="releaseYear" class="visuallyHidden">
                 {{ $t('release_year') }}
-              </label>
-            </div>
-            <div class="form_item">
-              <input
+              </b-form-label>
+            </b-form-item>
+            <b-form-item>
+              <b-form-input
                 type="number"
                 id="releaseYear"
-                class="form_input"
                 v-model="releaseYear"
               />
-            </div>
-          </div>
+            </b-form-item>
+          </b-form-group>
         </details>
 
         <details>
           <summary>{{ $t('type') }}</summary>
-          <div class="form_group">
-            <div class="form_item">
-              <label for="orderBy" class="form_label visuallyHidden">
+          <b-form-group>
+            <b-form-item>
+              <b-form-label for="orderBy" class="visuallyHidden">
                 {{ $t('type') }}
-              </label>
-            </div>
-            <div class="form_item">
+              </b-form-label>
+            </b-form-item>
+            <b-form-item>
               <input type="radio" value="all" id="all" v-model="type" />
-              <label for="all" class="form_label">{{ $t('all') }}</label>
-              <input
+              <b-form-label for="all">{{ $t('all') }}</b-form-label>
+              <b-form-input
                 type="radio"
                 value="paperback"
                 id="paperback"
+                no-styling
                 v-model="type"
               />
-              <label for="paperback" class="form_label">
+              <b-form-label for="paperback">
                 {{ $t('paperback') }}
-              </label>
-              <input
+              </b-form-label>
+              <b-form-input
                 type="radio"
                 value="hardcover"
                 id="hardcover"
+                no-styling
                 v-model="type"
               />
-              <label for="hardcover" class="form_label">
+              <b-form-label for="hardcover">
                 {{ $t('hardcover') }}
-              </label>
-            </div>
-          </div>
+              </b-form-label>
+            </b-form-item>
+          </b-form-group>
         </details>
 
         <details>
           <summary>{{ $t('ordering') }}</summary>
-          <div class="form_group">
-            <div class="form_item">
-              <label for="orderBy" class="form_label">
+          <b-form-group>
+            <b-form-item>
+              <b-form-label for="orderBy">
                 {{ $t('order_by') }}
-              </label>
-            </div>
-            <div class="form_item">
-              <select id="orderBy" class="form_input" v-model="orderBy">
+              </b-form-label>
+            </b-form-item>
+            <b-form-item>
+              <b-form-select id="orderBy" v-model="orderBy">
                 <option value=""></option>
                 <option value="title_asc"
                   >{{ $t('title') }} {{ $t('asc') }}</option
@@ -208,26 +219,21 @@
                 <option value="releaseYear_desc">
                   {{ $t('release_year') }} {{ $t('desc') }}
                 </option>
-              </select>
-            </div>
-          </div>
+              </b-form-select>
+            </b-form-item>
+          </b-form-group>
         </details>
 
         <details>
           <summary>{{ $t('limit') }}</summary>
-          <div class="formGroup">
-            <div class="form_item">
-              <label for="limit" class="form_label">{{ $t('limit_to') }}</label>
-            </div>
-            <div class="form_item">
-              <input
-                type="number"
-                class="form_input"
-                id="limit"
-                v-model="limit"
-              />
-            </div>
-          </div>
+          <b-form-group>
+            <b-form-item>
+              <b-form-label for="limit">{{ $t('limit_to') }}</b-form-label>
+            </b-form-item>
+            <b-form-item>
+              <b-form-input type="number" id="limit" v-model="limit" />
+            </b-form-item>
+          </b-form-group>
         </details>
       </b-form>
     </b-container>

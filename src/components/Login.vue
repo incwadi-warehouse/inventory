@@ -2,45 +2,43 @@
   <b-container size="s">
     <h1>{{ $t('login') }}</h1>
     <b-form @submit.prevent="login">
-      <div class="form_group">
-        <div class="form_item">
-          <label for="username">{{ $t('username') }}</label>
-        </div>
-        <div class="form_item">
-          <input
+      <b-form-group>
+        <b-form-item>
+          <b-form-label for="username">{{ $t('username') }}</b-form-label>
+        </b-form-item>
+        <b-form-item>
+          <b-form-input
             type="text"
             id="username"
-            class="form_input"
             :placeholder="$t('username')"
             v-model="username"
             autofocus
           />
-        </div>
-      </div>
-      <div class="form_group">
-        <div class="form_item">
-          <label for="password">{{ $t('password') }}</label>
-        </div>
-        <div class="form_item">
-          <input
+        </b-form-item>
+      </b-form-group>
+      <b-form-group>
+        <b-form-item>
+          <b-form-label for="password">{{ $t('password') }}</b-form-label>
+        </b-form-item>
+        <b-form-item>
+          <b-form-input
             type="password"
             id="password"
-            class="form_input"
             :placeholder="$t('password')"
             v-model="password"
           />
-        </div>
-      </div>
-      <div class="form_group">
-        <div class="form_item">
+        </b-form-item>
+      </b-form-group>
+      <b-form-group buttons>
+        <b-form-item>
           <b-button design="primary_wide" v-if="!isLoggingIn">
             {{ $t('login') }}
           </b-button>
           <b-button design="outline_wide" v-if="isLoggingIn">
             <b-spinner size="s" style="margin:auto;" />
           </b-button>
-        </div>
-      </div>
+        </b-form-item>
+      </b-form-group>
     </b-form>
   </b-container>
 </template>

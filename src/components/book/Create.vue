@@ -2,136 +2,131 @@
   <b-modal>
     <b-container size="m">
       <b-form @submit.prevent="create">
-        <div class="form_group">
-          <div class="form_item">
-            <label for="genre" class="form_label">
+        <b-form-group>
+          <b-form-item>
+            <b-form-label for="genre">
               {{ $t('genre') }}
-            </label>
-          </div>
-          <div class="form_item">
-            <select id="genre" class="form_input" required v-model="genreId">
+            </b-form-label>
+          </b-form-item>
+          <b-form-item>
+            <b-form-select id="genre" required v-model="genreId">
               <option v-for="genre in genres" :key="genre.id" :value="genre.id">
                 {{ genre.name }}
               </option>
-            </select>
-          </div>
-        </div>
-        <div class="form_group">
-          <div class="form_item">
-            <label for="title" class="form_label">
+            </b-form-select>
+          </b-form-item>
+        </b-form-group>
+        <b-form-group>
+          <b-form-item>
+            <b-form-label for="title">
               {{ $t('title') }}
-            </label>
-          </div>
-          <div class="form_item">
-            <input
+            </b-form-label>
+          </b-form-item>
+          <b-form-item>
+            <b-form-input
               type="text"
               id="title"
-              class="form_input"
               maxlength="255"
               required
               v-model="title"
             />
-          </div>
-        </div>
-        <div class="form_group">
-          <div class="form_item">
-            <label for="authorFirstname" class="form_label">
+          </b-form-item>
+        </b-form-group>
+        <b-form-group>
+          <b-form-item>
+            <b-form-label for="authorFirstname">
               {{ $t('firstname') }}
-            </label>
-          </div>
-          <div class="form_item">
-            <input
+            </b-form-label>
+          </b-form-item>
+          <b-form-item>
+            <b-form-input
               type="text"
               id="authorFirstname"
-              class="form_input"
               maxlength="255"
               v-model="authorFirstname"
             />
-          </div>
-        </div>
-        <div class="form_group">
-          <div class="form_item">
-            <label for="authorSurname" class="form_label">
+          </b-form-item>
+        </b-form-group>
+        <b-form-group>
+          <b-form-item>
+            <b-form-label for="authorSurname">
               {{ $t('surname') }}
-            </label>
-          </div>
-          <div class="form_item">
-            <input
+            </b-form-label>
+          </b-form-item>
+          <b-form-item>
+            <b-form-input
               type="text"
               id="authorSurname"
-              class="form_input"
               maxlength="255"
               required
               v-model="authorSurname"
             />
-          </div>
-        </div>
-        <div class="form_group">
-          <div class="form_item">
-            <label for="author" class="form_label">
+          </b-form-item>
+        </b-form-group>
+        <b-form-group>
+          <b-form-item>
+            <b-form-label for="author">
               {{ $t('release_year') }}
-            </label>
-          </div>
-          <div class="form_item">
-            <input
+            </b-form-label>
+          </b-form-item>
+          <b-form-item>
+            <b-form-input
               type="number"
               id="author"
-              class="form_input"
               min="1000"
               max="9999"
               required
               v-model="releaseYear"
             />
-          </div>
-        </div>
-        <div class="form_group">
-          <div class="form_item">
-            <label for="type" class="form_label">
+          </b-form-item>
+        </b-form-group>
+        <b-form-group>
+          <b-form-item>
+            <b-form-label for="type">
               {{ $t('type') }}
-            </label>
-          </div>
-          <div class="form_item">
-            <select id="type" class="form_input" v-model="type">
+            </b-form-label>
+          </b-form-item>
+          <b-form-item>
+            <b-form-select id="type" v-model="type">
               <option value="paperback">{{ $t('paperback') }}</option>
               <option value="hardcover">{{ $t('hardcover') }}</option>
-            </select>
-          </div>
-        </div>
-        <div class="form_group">
-          <div class="form_item">
-            <label for="price" class="form_label">
+            </b-form-select>
+          </b-form-item>
+        </b-form-group>
+        <b-form-group>
+          <b-form-item>
+            <b-form-label for="price">
               {{ $t('price') }} ({{ currency }})
-            </label>
-          </div>
-          <div class="form_item">
-            <input
+            </b-form-label>
+          </b-form-item>
+          <b-form-item>
+            <b-form-input
               type="text"
               id="price"
-              class="form_input"
               pattern="^\d+(\.|,)?\d{0,2}$"
               required
               v-model="price"
             />
-          </div>
-        </div>
-        <div class="form_group">
-          <div class="form_item">
-            <label for="added" class="form_label">
+          </b-form-item>
+        </b-form-group>
+        <b-form-group>
+          <b-form-item>
+            <b-form-label for="added">
               {{ $t('added') }}
-            </label>
-          </div>
-          <div class="form_item">
-            <input type="date" id="added" class="form_input" v-model="added" />
-          </div>
-        </div>
-        <div class="form_group">
-          <div class="form_item">
-            <label for="cond" class="form_label">
+            </b-form-label>
+          </b-form-item>
+          <b-form-item>
+            <b-form-input type="date" id="added" v-model="added" />
+          </b-form-item>
+        </b-form-group>
+        <b-form-group>
+          <b-form-item>
+            <b-form-label for="cond">
               {{ $t('condition') }}
-            </label>
-          </div>
-          <div class="form_item">
-            <select class="form_input" id="cond" v-model="cond_id">
+            </b-form-label>
+          </b-form-item>
+          <b-form-item>
+            <b-form-select id="cond" v-model="cond_id">
               <option value=""></option>
               <option
                 :value="condition.id"
@@ -140,19 +135,19 @@
               >
                 {{ condition.name }}
               </option>
-            </select>
-          </div>
-        </div>
-        <div class="form_group form_buttons">
-          <div class="form_item">
+            </b-form-select>
+          </b-form-item>
+        </b-form-group>
+        <b-form-group buttons>
+          <b-form-item>
             <b-button design="outline" @click.prevent="cancel">
               {{ $t('cancel') }}
             </b-button>
             <b-button design="primary">
               {{ $t('add') }}
             </b-button>
-          </div>
-        </div>
+          </b-form-item>
+        </b-form-group>
       </b-form>
     </b-container>
   </b-modal>

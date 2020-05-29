@@ -2,22 +2,21 @@
   <b-list>
     <template #title>
       <b-form @submit.prevent="create">
-        <div class="form_group">
-          <div class="form_item">
-            <label for="condition" class="form_label visuallyHidden">
+        <b-form-group>
+          <b-form-item>
+            <b-form-label for="condition" class="visuallyHidden">
               {{ $t('new_condition') }}
-            </label>
-          </div>
-          <div class="form_item">
-            <input
+            </b-form-label>
+          </b-form-item>
+          <b-form-item>
+            <b-form-input
               type="text"
-              class="form_input"
               id="condition"
               :placeholder="$t('enter_condition_and_hit_enter')"
               v-model="condition"
             />
-          </div>
-        </div>
+          </b-form-item>
+        </b-form-group>
       </b-form>
     </template>
   </b-list>

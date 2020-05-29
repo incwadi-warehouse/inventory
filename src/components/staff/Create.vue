@@ -2,16 +2,16 @@
   <b-container size="m">
     <h2>{{ $t('new') }}</h2>
     <b-form @submit.prevent="create">
-      <div class="form_group">
-        <div class="form_item">
-          <label for="name" class="form_label">{{ $t('name') }}</label>
-        </div>
-        <div class="form_item">
-          <input type="text" id="name" class="form_input" v-model="name" />
-        </div>
-      </div>
-      <div class="form_group form_buttons">
-        <div class="form_item">
+      <b-form-group>
+        <b-form-item>
+          <b-form-label for="name">{{ $t('name') }}</b-form-label>
+        </b-form-item>
+        <b-form-item>
+          <b-form-input type="text" id="name" v-model="name" />
+        </b-form-item>
+      </b-form-group>
+      <b-form-group buttons>
+        <b-form-item>
           <b-button
             design="outline"
             @click.prevent="create"
@@ -22,8 +22,8 @@
           <b-button design="outline" v-if="isProcessing">
             <b-spinner size="s" />
           </b-button>
-        </div>
-      </div>
+        </b-form-item>
+      </b-form-group>
     </b-form>
   </b-container>
 </template>
