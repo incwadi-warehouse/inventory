@@ -8,7 +8,7 @@
       <template #options>
         <b-dropdown-item>
           <template #icon>
-            <b-icon-bin noHover />
+            <b-icon type="bin" noHover />
           </template>
           <b-button type="text" class="dropdown_btn" @click="remove(condition)">
             {{ $t('remove') }}
