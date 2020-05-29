@@ -6,14 +6,16 @@
       </template>
 
       <template #options>
-        <b-dropdown-item>
-          <template #icon>
-            <b-icon type="bin" no-hover />
+        <b-dropdown position="mouse">
+          <template #selector>
+            <b-icon type="more" />
           </template>
-          <b-button type="text" class="dropdown_btn" @click="remove(condition)">
-            {{ $t('remove') }}
-          </b-button>
-        </b-dropdown-item>
+          <b-dropdown-item
+            :title="$t('remove')"
+            icon="bin"
+            @click="remove(condition)"
+          />
+        </b-dropdown>
       </template>
     </b-list>
   </article>

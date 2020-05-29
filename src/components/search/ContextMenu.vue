@@ -3,21 +3,19 @@
     <template #selector>
       <b-icon type="more" />
     </template>
-    <b-dropdown-item>
-      <router-link :to="{ name: 'edit', params: { id: book.id } }">
-        {{ $t('edit') }}
-      </router-link>
-    </b-dropdown-item>
-    <b-dropdown-item v-if="!book.sold">
-      <b-button type="text" class="dropdown_btn" @click="sell(book)">
-        {{ $t('sell') }}
-      </b-button>
-    </b-dropdown-item>
-    <b-dropdown-item v-if="!book.removed">
-      <b-button type="text" class="dropdown_btn" @click="remove(book)">
-        {{ $t('remove') }}
-      </b-button>
-    </b-dropdown-item>
+    <b-dropdown-item :title="$t('edit')" icon="pencil" @click="edit(book.id)" />
+    <b-dropdown-item
+      :title="$t('sell')"
+      icon="minus"
+      @click="sell(book)"
+      v-if="!book.sold"
+    />
+    <b-dropdown-item
+      :title="$t('remove')"
+      icon="bin"
+      @click="remove(book)"
+      v-if="!book.removed"
+    />
   </b-dropdown>
 </template>
 
@@ -30,7 +28,10 @@ export default {
     book: Object
   },
   methods: {
-    ...mapActions('book', ['sell', 'remove'])
+    ...mapActions('book', ['sell', 'remove']),
+    edit: function(id) {
+      this.$router.push({ name: 'edit', params: { id: id } })
+    }
   }
 }
 </script>

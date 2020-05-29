@@ -2,11 +2,17 @@
   <b-container size="m">
     <b-list v-for="genre in genres" :key="genre.id">
       <template #options>
-        <b-dropdown-item v-if="isAdmin">
-          <b-button type="text" class="dropdown_btn" @click="remove(genre.id)">
-            {{ $t('remove') }}
-          </b-button>
-        </b-dropdown-item>
+        <b-dropdown position="mouse">
+          <template #selector>
+            <b-icon type="more" />
+          </template>
+          <b-dropdown-item
+            :title="$t('remove')"
+            icon="bin"
+            @click="remove(genre.id)"
+            v-if="isAdmin"
+          />
+        </b-dropdown>
       </template>
       <template #title>
         <edit-genre :genre="genre" />

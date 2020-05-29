@@ -7,16 +7,21 @@
         </router-link>
       </template>
       <template #options>
-        <b-dropdown-item>
-          <b-button type="text" class="dropdown_btn" @click="edit(author.id)">
-            {{ $t('edit') }}
-          </b-button>
-        </b-dropdown-item>
-        <b-dropdown-item>
-          <b-button type="text" class="dropdown_btn" @click="remove(author.id)">
-            {{ $t('remove') }}
-          </b-button>
-        </b-dropdown-item>
+        <b-dropdown position="mouse">
+          <template #selector>
+            <b-icon type="more" />
+          </template>
+          <b-dropdown-item
+            :title="$t('edit')"
+            icon="pencil"
+            @click="edit(author.id)"
+          />
+          <b-dropdown-item
+            :title="$t('remove')"
+            icon="bin"
+            @click="remove(author.id)"
+          />
+        </b-dropdown>
       </template>
     </b-list>
   </b-container>
