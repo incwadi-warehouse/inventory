@@ -31,7 +31,7 @@
       </div>
       <div class="form_group">
         <div class="form_item" style="float: right;">
-          <b-button type="primary" @click.prevent="edit(id)">
+          <b-button design="primary" @click.prevent="edit(id)">
             {{ $t('save') }}
           </b-button>
         </div>

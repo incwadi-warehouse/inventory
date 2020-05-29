@@ -145,10 +145,10 @@
         </div>
         <div class="form_group form_buttons">
           <div class="form_item">
-            <b-button type="outline" @click.prevent="cancel">
+            <b-button design="outline" @click.prevent="cancel">
               {{ $t('cancel') }}
             </b-button>
-            <b-button type="primary">
+            <b-button design="primary">
               {{ $t('add') }}
             </b-button>
           </div>

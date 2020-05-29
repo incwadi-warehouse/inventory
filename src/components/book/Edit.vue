@@ -190,7 +190,7 @@
       </div>
       <div class="form_group">
         <div class="form_item" style="float: right;">
-          <b-button type="primary">
+          <b-button design="primary">
             {{ $t('update') }}
           </b-button>
         </div>

@@ -33,10 +33,10 @@
       </div>
       <div class="form_group">
         <div class="form_item">
-          <b-button type="primary_wide" v-if="!isLoggingIn">
+          <b-button design="primary_wide" v-if="!isLoggingIn">
             {{ $t('login') }}
           </b-button>
-          <b-button type="outline_wide" v-if="isLoggingIn">
+          <b-button design="outline_wide" v-if="isLoggingIn">
             <b-spinner size="s" style="margin:auto;" />
           </b-button>
         </div>

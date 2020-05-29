@@ -4,10 +4,10 @@
       <b-form @submit.prevent="find">
         <div class="form_group form_buttons">
           <div class="form_item">
-            <b-button type="outline" @click="resetFilters">
+            <b-button design="outline" @click="resetFilters">
               {{ $t('reset') }}
             </b-button>
-            <b-button type="primary">{{ $t('apply') }}</b-button>
+            <b-button design="primary">{{ $t('apply') }}</b-button>
           </div>
         </div>
 

@@ -20,7 +20,7 @@
         </div>
         <div class="form_group form_buttons">
           <div class="form_item">
-            <b-button type="primary">
+            <b-button design="primary">
               {{ $t('save') }}
             </b-button>
           </div>

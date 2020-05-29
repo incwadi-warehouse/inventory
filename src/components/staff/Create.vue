@@ -12,10 +12,14 @@
       </div>
       <div class="form_group form_buttons">
         <div class="form_item">
-          <b-button type="outline" @click.prevent="create" v-if="!isProcessing">
+          <b-button
+            design="outline"
+            @click.prevent="create"
+            v-if="!isProcessing"
+          >
             {{ $t('create') }}
           </b-button>
-          <b-button type="outline" v-if="isProcessing">
+          <b-button design="outline" v-if="isProcessing">
             <b-spinner size="s" />
           </b-button>
         </div>

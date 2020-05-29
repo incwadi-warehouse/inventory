@@ -1,6 +1,6 @@
 <template>
   <span>
-    <b-button type="outline_danger" @click="clean" v-if="isAdmin">
+    <b-button design="outline_danger" @click="clean" v-if="isAdmin">
       {{ $t('clean_books') }}
     </b-button>
     <p v-else>{{ $t('admins_only') }}</p>
