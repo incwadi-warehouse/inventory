@@ -3,10 +3,14 @@
     <b-container size="m">
       <h1>{{ $t('stats') }}</h1>
     </b-container>
-    <b-container size="m" v-show="loading">
+
+    <b-container size="m" v-show="isLoading">
       <b-spinner size="l" />
     </b-container>
-    <stats />
+
+    <b-container size="m" v-if="stats">
+      <stats />
+    </b-container>
   </article>
 </template>
 
@@ -20,7 +24,7 @@ export default {
     Stats
   },
   computed: {
-    ...mapState('stats', ['loading'])
+    ...mapState('stats', ['stats', 'isLoading'])
   }
 }
 </script>
