@@ -121,5 +121,12 @@ export default {
   all: 'Alle',
   ordering: 'Reihenfolge',
   limit_to: 'Begrenze auf',
-  cancel: 'Abbrechen'
+  cancel: 'Abbrechen',
+  save_as_report: 'Als Report speichern',
+  name_of_report: 'Reportname',
+  report_create_success: 'Report wurde erfolgreich angelegt',
+  report_create_error: 'Report konnte nicht angelegt werden.',
+  report_remove_success: 'Report wurde erfolgreich gelöscht',
+  report_remove_error: 'Report konnte nicht gelöscht werden.',
+  delete: 'Löschen'
 }

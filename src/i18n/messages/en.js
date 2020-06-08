@@ -113,5 +113,12 @@ export default {
   all: 'all',
   ordering: 'Ordering',
   limit_to: 'limit_to',
-  cancel: 'Cancel'
+  cancel: 'Cancel',
+  save_as_report: 'Save as Report',
+  name_of_report: 'Name of Report',
+  report_create_success: 'Report was created successfully.',
+  report_create_error: 'Report could not be created.',
+  report_remove_success: 'Report was deleted successfully.',
+  report_remove_error: 'Report could not be deleted.',
+  delete: 'Delete'
 }
