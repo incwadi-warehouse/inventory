@@ -1,5 +1,5 @@
 <template>
-  <span @dblclick="toggleEditStaff()" v-if="!editStaff">
+  <span @dblclick="toggleEdit()" v-if="!edit">
     {{ staff.name }}
   </span>
   <b-form @submit.prevent="update()" v-else>
@@ -25,19 +25,19 @@ export default {
   data() {
     return {
       name: this.staff.name,
-      editStaff: false
+      edit: false
     }
   },
   methods: {
     update: function() {
-      this.toggleEditStaff()
+      this.toggleEdit()
       this.$store.dispatch('staff/edit', {
         id: this.staff.id,
         name: this.name
       })
     },
-    toggleEditStaff: function() {
-      this.editStaff = !this.editStaff
+    toggleEdit: function() {
+      this.edit = !this.edit
     }
   },
   directives: {
