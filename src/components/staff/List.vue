@@ -2,7 +2,7 @@
   <b-container size="m">
     <b-list v-for="member in staff" :key="member.id">
       <template #options>
-        <b-dropdown position="mouse">
+        <b-dropdown>
           <template #selector>
             <b-icon type="more" />
           </template>
