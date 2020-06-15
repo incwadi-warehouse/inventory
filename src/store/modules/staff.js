@@ -5,15 +5,11 @@ export default {
   namespaced: true,
   state: {
     staff: null,
-    name: null,
     isProcessing: false
   },
   mutations: {
     staff(state, staff) {
       state.staff = staff
-    },
-    name(state, name) {
-      state.name = name
     },
     isProcessing(state, status) {
       state.isProcessing = status
@@ -27,15 +23,14 @@ export default {
           context.commit('staff', response.data)
         })
     },
-    create(context) {
+    create(context, name) {
       context.commit('isProcessing', true)
       api(context.rootState.user.token)
         .post('/v1/staff/new', {
-          name: context.state.name
+          name: name
         })
         .then(function() {
           context.dispatch('staff')
-          context.commit('name', null)
           notification.create('staff_create_success', 'success')
         })
         .catch(function() {

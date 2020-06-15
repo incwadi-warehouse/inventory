@@ -29,23 +29,23 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
   name: 'create-staff',
+  data() {
+    return {
+      name: null
+    }
+  },
   computed: {
-    name: {
-      get: function() {
-        return this.$store.state.staff.name
-      },
-      set: function(name) {
-        this.$store.commit('staff/name', name)
-      }
-    },
     ...mapState('staff', ['isProcessing'])
   },
   methods: {
-    ...mapActions('staff', ['create'])
+    create: function() {
+      this.$store.dispatch('staff/create', this.name)
+      this.name = null
+    }
   }
 }
 </script>
