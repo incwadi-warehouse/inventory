@@ -39,13 +39,6 @@ export default {
     toggleEdit: function() {
       this.edit = !this.edit
     }
-  },
-  directives: {
-    focus: {
-      inserted: function(el) {
-        el.focus()
-      }
-    }
   }
 }
 </script>
