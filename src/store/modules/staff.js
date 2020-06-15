@@ -24,7 +24,7 @@ export default {
       api(context.rootState.user.token)
         .get('/v1/staff/')
         .then(function(response) {
-          context.commit('staff', response.data.staff)
+          context.commit('staff', response.data)
         })
     },
     create(context) {
