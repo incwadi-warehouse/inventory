@@ -110,6 +110,9 @@ export default {
             response.data.condition ? response.data.condition.id : null
           )
         })
+        .catch(function() {
+          router.replace({ name: 'not-found' })
+        })
     },
     create(context) {
       api(context.rootState.user.token)

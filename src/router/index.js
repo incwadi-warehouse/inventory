@@ -77,6 +77,7 @@ const router = new Router({
     },
     {
       path: '*',
+      name: 'not-found',
       component: NotFound
     }
   ]
