@@ -6,7 +6,6 @@ export default {
   state: {
     genres: [],
     genre: null,
-    name: null,
     isProcessing: false
   },
   mutations: {
@@ -15,9 +14,6 @@ export default {
     },
     genre(state, genre) {
       state.genre = genre
-    },
-    name(state, name) {
-      state.name = name
     },
     isProcessing(state, status) {
       state.isProcessing = status
@@ -28,17 +24,16 @@ export default {
       api(context.rootState.user.token)
         .get('/v1/genre/')
         .then(function(response) {
-          context.commit('genres', response.data.genres)
+          context.commit('genres', response.data)
         })
     },
-    create(context) {
+    create(context, name) {
       context.commit('isProcessing', true)
       api(context.rootState.user.token)
         .post('/v1/genre/new', {
-          name: context.state.name
+          name: name
         })
         .then(function() {
-          context.commit('name', null)
           context.dispatch('genres')
           notification.create('genre_create_success', 'success')
         })

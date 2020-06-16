@@ -1,5 +1,5 @@
 <template>
-  <span @dblclick="toggleEditGenre" v-if="!editGenre">
+  <span @dblclick="toggleEdit" v-if="!edit">
     {{ genre.name }}
   </span>
   <b-form @submit.prevent="update" v-else>
@@ -19,30 +19,25 @@
 <script>
 export default {
   name: 'edit-genre',
-  props: ['genre'],
+  props: {
+    genre: Object
+  },
   data() {
     return {
       name: this.genre.name,
-      editGenre: false
+      edit: false
     }
   },
   methods: {
     update: function() {
-      this.toggleEditGenre()
+      this.toggleEdit()
       this.$store.dispatch('genre/edit', {
         id: this.genre.id,
         name: this.name
       })
     },
-    toggleEditGenre: function() {
-      this.editGenre = !this.editGenre
-    }
-  },
-  directives: {
-    focus: {
-      inserted: function(el) {
-        el.focus()
-      }
+    toggleEdit: function() {
+      this.edit = !this.edit
     }
   }
 }

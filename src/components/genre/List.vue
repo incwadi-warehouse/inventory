@@ -2,7 +2,7 @@
   <b-container size="m">
     <b-list v-for="genre in genres" :key="genre.id">
       <template #options>
-        <b-dropdown position="mouse">
+        <b-dropdown>
           <template #selector>
             <b-icon type="more" />
           </template>
@@ -15,7 +15,7 @@
         </b-dropdown>
       </template>
       <template #title>
-        <edit-genre :genre="genre" />
+        <genre-edit :genre="genre" />
       </template>
     </b-list>
   </b-container>
@@ -23,12 +23,12 @@
 
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
-import EditGenre from './Edit'
+import GenreEdit from './Edit'
 
 export default {
-  name: 'genre',
+  name: 'list-genre',
   components: {
-    EditGenre
+    GenreEdit
   },
   computed: {
     ...mapGetters('user', ['isAdmin']),
