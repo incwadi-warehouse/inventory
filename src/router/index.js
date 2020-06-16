@@ -9,7 +9,7 @@ const Genre = () => import('../views/Genre')
 const Staff = () => import('../views/Staff')
 const Stats = () => import('../views/Stats')
 const NotFound = () => import('../views/NotFound')
-const EditAuthor = () => import('../views/EditAuthor')
+const Author = () => import('../views/Author')
 const Profile = () => import('../views/Profile')
 const Branch = () => import('../views/Branch')
 
@@ -61,9 +61,9 @@ const router = new Router({
       component: Branch
     },
     {
-      path: '/author/edit/:id',
-      name: 'edit-author',
-      component: EditAuthor,
+      path: '/author/:id',
+      name: 'author',
+      component: Author,
       props(route) {
         const props = route.params
         props.id = +props.id

@@ -19,9 +19,9 @@
           <b-form-input type="text" id="surname" v-model="surname" />
         </b-form-item>
       </b-form-group>
-      <b-form-group>
-        <b-form-item style="float: right;">
-          <b-button design="primary" @click.prevent="edit(id)">
+      <b-form-group buttons>
+        <b-form-item>
+          <b-button design="primary">
             {{ $t('save') }}
           </b-button>
         </b-form-item>
@@ -31,36 +31,34 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
-
 export default {
   name: 'edit-author',
   props: {
     id: Number
   },
-  computed: {
-    firstname: {
-      get: function() {
-        return this.$store.state.author.firstname
-      },
-      set: function(firstname) {
-        this.$store.commit('author/firstname', firstname)
-      }
-    },
-    surname: {
-      get: function() {
-        return this.$store.state.author.surname
-      },
-      set: function(surname) {
-        this.$store.commit('author/surname', surname)
-      }
+  data() {
+    return {
+      firstname: null,
+      surname: null
     }
   },
   methods: {
-    ...mapActions('author', ['edit'])
+    edit: function() {
+      this.$store.dispatch('author/edit', {
+        id: this.id,
+        firstname: this.firstname,
+        surname: this.surname
+      })
+    }
   },
   created: function() {
     this.$store.dispatch('author/show', this.id)
+  },
+  watch: {
+    '$store.state.author.author': function() {
+      this.firstname = this.$store.state.author.author.firstname
+      this.surname = this.$store.state.author.author.surname
+    }
   }
 }
 </script>

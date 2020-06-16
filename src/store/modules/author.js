@@ -5,10 +5,14 @@ import { notification } from '@baldeweg/components'
 export default {
   namespaced: true,
   state: {
+    author: null,
     firstname: null,
     surname: null
   },
   mutations: {
+    author(state, author) {
+      state.author = author
+    },
     firstname(state, firstname) {
       state.firstname = firstname
     },
@@ -21,15 +25,16 @@ export default {
       api(context.rootState.user.token)
         .get('/v1/author/' + id)
         .then(function(response) {
+          context.commit('author', response.data)
           context.commit('firstname', response.data.firstname)
           context.commit('surname', response.data.surname)
         })
     },
-    edit(context, id) {
+    edit(context, data) {
       api(context.rootState.user.token)
-        .put('/v1/author/' + id, {
-          firstname: context.state.firstname,
-          surname: context.state.surname
+        .put('/v1/author/' + data.id, {
+          firstname: data.firstname,
+          surname: data.surname
         })
         .then(function() {
           router.push({ name: 'index' })

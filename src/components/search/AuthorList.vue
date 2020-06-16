@@ -2,7 +2,7 @@
   <b-container size="m">
     <b-list v-for="author in authors" :key="author.id">
       <template #title>
-        <router-link :to="{ name: 'edit-author', params: { id: author.id } }">
+        <router-link :to="{ name: 'author', params: { id: author.id } }">
           {{ formatAuthor(author) }}
         </router-link>
       </template>
@@ -44,7 +44,7 @@ export default {
       return author.surname + ', ' + author.firstname
     },
     edit: function(author_id) {
-      this.$router.push({ name: 'edit-author', params: { id: author_id } })
+      this.$router.push({ name: 'author', params: { id: author_id } })
     }
   }
 }
