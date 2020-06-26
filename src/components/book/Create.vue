@@ -1,5 +1,5 @@
 <template>
-  <b-modal>
+  <b-modal @close="close">
     <b-container size="m">
       <b-form @submit.prevent="create">
         <b-form-group>
@@ -240,7 +240,10 @@ export default {
     }
   },
   methods: {
-    ...mapActions('book', ['create'])
+    ...mapActions('book', ['create']),
+    close: function() {
+      this.$store.commit('search/tab', null)
+    }
   },
   mounted: function() {
     this.$store.dispatch('genre/genres')

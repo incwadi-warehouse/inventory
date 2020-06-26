@@ -1,5 +1,5 @@
 <template>
-  <b-modal>
+  <b-modal @close="close">
     <b-container size="l">
       <b-form @submit.prevent="find">
         <b-form-group buttons>
@@ -355,6 +355,9 @@ export default {
     find: function() {
       this.$store.dispatch('search/search')
       this.$store.commit('search/tab', false)
+    },
+    close: function() {
+      this.$store.commit('search/tab', null)
     }
   },
   created: function() {
