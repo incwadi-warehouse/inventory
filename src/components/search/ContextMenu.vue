@@ -6,7 +6,7 @@
     <b-dropdown-item :title="$t('edit')" icon="pencil" @click="edit(book.id)" />
     <b-dropdown-item
       :title="$t('sell')"
-      icon="minus"
+      icon="sell"
       @click="sell(book)"
       v-if="!book.sold"
     />
