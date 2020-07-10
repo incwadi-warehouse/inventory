@@ -1,5 +1,5 @@
-import api from '../../api'
-import router from '../../router'
+import api from '../api'
+import router from '../router'
 import { notification } from '@baldeweg/components'
 
 const formatDate = function(data) {

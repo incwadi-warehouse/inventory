@@ -1,5 +1,5 @@
-import api from '../../api'
-import router from '../../router'
+import api from '../api'
+import router from '../router'
 import Cookies from 'js-cookie'
 import { notification } from '@baldeweg/components'
 
