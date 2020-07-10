@@ -243,6 +243,9 @@ export default {
     ...mapActions('book', ['create']),
     close: function() {
       this.$store.commit('search/tab', null)
+    },
+    cancel: function() {
+      this.$store.commit('search/tab', false)
     }
   },
   mounted: function() {

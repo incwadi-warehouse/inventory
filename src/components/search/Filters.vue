@@ -237,14 +237,27 @@
         </details>
       </b-form>
     </b-container>
+
+    <b-divider />
+
+    <b-container size="m">
+      <report-create />
+      <report-list />
+    </b-container>
   </b-modal>
 </template>
 
 <script>
+import ReportCreate from '../report/Create'
+import ReportList from '../report/List'
 import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'filters',
+  components: {
+    ReportCreate,
+    ReportList
+  },
   data() {
     return {
       filter: false
@@ -342,7 +355,7 @@ export default {
     },
     showBranches: function() {
       if (!this.$store.state.branch.branches) return false
-      if (this.$store.state.branch.branches.length > 1) {
+      if (this.$store.state.branch.branches.length >= 1) {
         return true
       }
       return false

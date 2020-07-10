@@ -10,6 +10,7 @@ import stats from './modules/stats'
 import author from './modules/author'
 import search from './modules/search'
 import condition from './modules/condition'
+import report from './modules/report'
 
 Vue.use(Vuex)
 
@@ -25,6 +26,7 @@ export default new Vuex.Store({
     stats,
     author,
     search,
-    condition
+    condition,
+    report
   }
 })
