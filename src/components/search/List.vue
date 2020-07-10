@@ -82,10 +82,10 @@
                 {{ formatDate(book.added) }}
               </td>
               <td v-if="sold == true">
-                {{ formatDate(book.sold) }}
+                {{ formatDate(book.soldOn) }}
               </td>
               <td v-if="removed == true">
-                {{ formatDate(book.removed) }}
+                {{ formatDate(book.removedOn) }}
               </td>
               <td>
                 {{ $t(book.type) }}
