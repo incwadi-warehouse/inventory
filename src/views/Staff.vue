@@ -4,14 +4,14 @@
       <h1>{{ $t('staff_members') }}</h1>
     </b-container>
     <list />
-    <create v-if="isAdmin" />
+    <create v-if="me.isAdmin" />
   </article>
 </template>
 
 <script>
 import List from '../components/staff/List'
 import Create from '../components/staff/Create'
-import { mapGetters } from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
   name: 'staff-view',
@@ -20,7 +20,7 @@ export default {
     Create
   },
   computed: {
-    ...mapGetters('user', ['isAdmin'])
+    ...mapState('user', ['me'])
   }
 }
 </script>

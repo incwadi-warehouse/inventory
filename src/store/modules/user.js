@@ -15,13 +15,6 @@ export default {
     isLoggingIn: false,
     isChangingPassword: false
   },
-  getters: {
-    isAdmin: state => {
-      if (!state.me) return
-
-      return state.me.roles.indexOf('ROLE_ADMIN') !== -1
-    }
-  },
   mutations: {
     token(state, token) {
       state.token = token
@@ -66,6 +59,7 @@ export default {
           context.commit('username', null)
           context.commit('password', null)
           context.commit('isAuthenticated', true)
+          context.dispatch('me')
         })
         .catch(function() {
           notification('wrong_credentials', 'error')

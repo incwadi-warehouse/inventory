@@ -1,6 +1,6 @@
 <template>
   <span>
-    <b-button type="outline_danger" @click="clean" v-if="isAdmin">
+    <b-button type="outline_danger" @click="clean" v-if="me.isAdmin">
       {{ $t('clean_books') }}
     </b-button>
     <p v-else>{{ $t('admins_only') }}</p>
@@ -8,12 +8,12 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'clean-books',
   computed: {
-    ...mapGetters('user', ['isAdmin'])
+    ...mapState('user', ['me'])
   },
   methods: {
     ...mapActions('book', ['clean'])

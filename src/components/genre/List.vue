@@ -2,7 +2,7 @@
   <b-container size="m">
     <b-list v-for="genre in genres" :key="genre.id">
       <template #options>
-        <b-dropdown-item v-if="isAdmin">
+        <b-dropdown-item v-if="me.isAdmin">
           <b-button type="text" class="dropdown_btn" @click="remove(genre.id)">
             {{ $t('remove') }}
           </b-button>
@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import EditGenre from './Edit'
 
 export default {
@@ -25,7 +25,7 @@ export default {
     EditGenre
   },
   computed: {
-    ...mapGetters('user', ['isAdmin']),
+    ...mapState('user', ['me']),
     ...mapState('genre', ['genres'])
   },
   methods: {
