@@ -11,6 +11,7 @@ import author from './author'
 import search from './search'
 import condition from './condition'
 import report from './report'
+import tag from './tag'
 
 Vue.use(Vuex)
 
@@ -27,6 +28,7 @@ export default new Vuex.Store({
     author,
     search,
     condition,
-    report
+    report,
+    tag
   }
 })

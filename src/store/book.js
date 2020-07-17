@@ -31,7 +31,8 @@ export default {
     type: 'paperback',
     lendTo: null,
     lendOn: null,
-    cond_id: null
+    cond_id: null,
+    tags: []
   },
   mutations: {
     added(state, added) {
@@ -72,6 +73,9 @@ export default {
     },
     cond_id(state, cond_id) {
       state.cond_id = cond_id
+    },
+    tags(state, tags) {
+      state.tags = tags
     }
   },
   actions: {
@@ -109,12 +113,17 @@ export default {
             'cond_id',
             response.data.condition ? response.data.condition.id : null
           )
+          context.commit('tags', response.data.tags)
         })
         .catch(function() {
           router.replace({ name: 'not-found' })
         })
     },
     create(context) {
+      let tags = []
+      context.rootState.tag.tags.forEach(element => {
+        tags.push(element.id)
+      })
       api(context.rootState.user.token)
         .post('/v1/book/new', {
           added: new Date(context.state.added).getTime() / 1000,
@@ -126,7 +135,8 @@ export default {
           sold: false,
           releaseYear: context.state.releaseYear,
           type: context.state.type,
-          cond: context.state.cond_id
+          cond: context.state.cond_id,
+          tags: tags
         })
         .then(function() {
           notification.create('book_created', 'success')
@@ -208,6 +218,7 @@ export default {
       context.commit('type', 'paperback')
       context.commit('cond_id', null)
       context.commit('search/tab', false, { root: true })
+      context.commit('tags', [])
     },
     clean(context) {
       api(context.rootState.user.token)

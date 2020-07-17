@@ -183,6 +183,29 @@
           </b-form-select>
         </b-form-item>
       </b-form-group>
+
+      <!-- tags -->
+      <b-form @submit.prevent="createTag">
+        <b-form-group>
+          <span v-for="(tag, index) in tags" :key="tag.id">
+            {{ tag.name }}
+            <span v-if="index !== tags.length - 1">, </span>
+          </span>
+        </b-form-group>
+        <b-form-group>
+          <b-form-item>
+            <b-form-label for="tag">{{ $t('add_tag') }}</b-form-label>
+          </b-form-item>
+          <b-form-item>
+            <b-form-input type="text" id="tag" v-model="tag" />
+          </b-form-item>
+        </b-form-group>
+        <b-form-group buttons>
+          <b-button design="outline">{{ $t('add_tag') }}</b-button>
+        </b-form-group>
+      </b-form>
+      <!-- /tags -->
+
       <b-form-group buttons>
         <b-form-item>
           <b-button design="primary">
@@ -202,7 +225,8 @@ export default {
   props: ['id'],
   data() {
     return {
-      currency: process.env.CURRENCY
+      currency: process.env.CURRENCY,
+      tag: null
     }
   },
   computed: {
@@ -312,6 +336,9 @@ export default {
       set: function(cond_id) {
         this.$store.commit('book/cond_id', cond_id)
       }
+    },
+    tags: function() {
+      return this.$store.state.book.tags
     }
   },
   methods: {
@@ -335,6 +362,10 @@ export default {
       }
 
       return date.getFullYear() + '-' + month + '-' + day
+    },
+    createTag: function() {
+      this.$store.dispatch('tag/create', this.tag)
+      this.tag = null
     }
   },
   mounted: function() {
@@ -345,6 +376,10 @@ export default {
   },
   beforeDestroy: function() {
     this.$store.dispatch('book/reset')
+  },
+  destroyed: function() {
+    this.$store.commit('tag/tags', null)
+    this.tag = null
   }
 }
 </script>

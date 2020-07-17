@@ -132,5 +132,7 @@ export default {
   report_create_error: 'Report could not be created.',
   report_remove_success: 'Report was deleted successfully.',
   report_remove_error: 'Report could not be deleted.',
-  delete: 'Delete'
+  delete: 'Delete',
+  add_tag: 'Add Tag',
+  create_tag_not_successful: 'Could not create tag.'
 }
