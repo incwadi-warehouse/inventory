@@ -135,9 +135,11 @@ module.exports = {
     new GenerateSW({
       swDest: 'sw.js'
     }),
-    new CopyPlugin([
-      { from: 'robots.txt', to: 'robots.txt' },
-    ])
+    new CopyPlugin({
+      patterns: [
+        { from: 'src/assets/robots.txt', to: 'robots.txt' },
+      ]
+    })
   ],
   optimization: {
     minimizer: [
