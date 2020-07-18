@@ -9,7 +9,7 @@
     </b-container>
 
     <b-container size="m" v-if="stats">
-      <stats />
+      <stats :stats="stats" />
     </b-container>
   </article>
 </template>
@@ -25,6 +25,9 @@ export default {
   },
   computed: {
     ...mapState('stats', ['stats', 'isLoading'])
+  },
+  created: function() {
+    this.$store.dispatch('stats/stats')
   }
 }
 </script>

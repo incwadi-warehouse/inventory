@@ -16,15 +16,13 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-
 export default {
   name: 'stats',
-  computed: {
-    ...mapState('stats', ['stats'])
-  },
-  created: function() {
-    this.$store.dispatch('stats/stats')
+  props: {
+    stats: {
+      type: Object,
+      required: true
+    }
   }
 }
 </script>
