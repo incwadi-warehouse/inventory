@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     create: function() {
-      this.$store.dispatch('genre/create', name)
+      this.$store.dispatch('genre/create', this.name)
       this.name = null
     }
   }
