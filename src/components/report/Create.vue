@@ -35,7 +35,6 @@ export default {
   },
   methods: {
     create: function() {
-      console.warn(this.$store.state.search.branch)
       this.$store.dispatch('report/create', {
         name: this.name,
         searchTerm: this.$store.state.search.searchTerm,
