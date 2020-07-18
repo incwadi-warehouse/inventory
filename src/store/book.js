@@ -113,7 +113,7 @@ export default {
             'cond_id',
             response.data.condition ? response.data.condition.id : null
           )
-          context.commit('tags', response.data.tags)
+          context.commit('tag/tags', response.data.tags, { root: true })
         })
         .catch(function() {
           router.replace({ name: 'not-found' })

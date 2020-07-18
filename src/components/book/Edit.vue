@@ -338,7 +338,7 @@ export default {
       }
     },
     tags: function() {
-      return this.$store.state.book.tags
+      return this.$store.state.tag.tags
     }
   },
   methods: {
@@ -378,7 +378,7 @@ export default {
     this.$store.dispatch('book/reset')
   },
   destroyed: function() {
-    this.$store.commit('tag/tags', null)
+    this.$store.commit('tag/tags', [])
     this.tag = null
   }
 }

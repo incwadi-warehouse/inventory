@@ -284,7 +284,7 @@ export default {
     this.$store.dispatch('condition/list')
   },
   destroyed: function() {
-    this.$store.commit('tag/tags', null)
+    this.$store.commit('tag/tags', [])
     this.tag = null
   }
 }
