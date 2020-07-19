@@ -3,21 +3,21 @@
     <b-container size="m">
       <h1>{{ $t('genres') }}</h1>
     </b-container>
-    <list />
-    <create v-if="me.isAdmin" />
+    <genre-list />
+    <genre-create v-if="isAdmin" />
   </article>
 </template>
 
 <script>
-import List from '../components/genre/List'
-import Create from '../components/genre/Create'
-import { mapState } from 'vuex'
+import GenreList from '../components/genre/List'
+import GenreCreate from '../components/genre/Create'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'genre-view',
   components: {
-    List,
-    Create
+    GenreList,
+    GenreCreate
   },
   computed: {
     ...mapState('user', ['me'])

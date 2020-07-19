@@ -2,21 +2,26 @@
   <b-container size="m">
     <b-list v-for="author in authors" :key="author.id">
       <template #title>
-        <router-link :to="{ name: 'edit-author', params: { id: author.id } }">
+        <router-link :to="{ name: 'author', params: { id: author.id } }">
           {{ formatAuthor(author) }}
         </router-link>
       </template>
       <template #options>
-        <b-dropdown-item>
-          <b-button type="text" class="dropdown_btn" @click="edit(author.id)">
-            {{ $t('edit') }}
-          </b-button>
-        </b-dropdown-item>
-        <b-dropdown-item>
-          <b-button type="text" class="dropdown_btn" @click="remove(author.id)">
-            {{ $t('remove') }}
-          </b-button>
-        </b-dropdown-item>
+        <b-dropdown position="mouse">
+          <template #selector>
+            <b-icon type="more" />
+          </template>
+          <b-dropdown-item
+            :title="$t('edit')"
+            icon="pencil"
+            @click="edit(author.id)"
+          />
+          <b-dropdown-item
+            :title="$t('remove')"
+            icon="bin"
+            @click="remove(author.id)"
+          />
+        </b-dropdown>
       </template>
     </b-list>
   </b-container>
@@ -39,7 +44,7 @@ export default {
       return author.surname + ', ' + author.firstname
     },
     edit: function(author_id) {
-      this.$router.push({ name: 'edit-author', params: { id: author_id } })
+      this.$router.push({ name: 'author', params: { id: author_id } })
     }
   }
 }

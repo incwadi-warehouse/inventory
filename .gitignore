@@ -1,5 +1,6 @@
 dist/
 custom/
 node_modules/
+coverage/
 .env
 .env.production
