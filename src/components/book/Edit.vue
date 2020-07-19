@@ -110,7 +110,7 @@
       </b-form-group>
       <b-form-group>
         <b-form-item>
-          <b-form-input type="checkbox" id="sold" no-styling v-model="sold" />
+          <input type="checkbox" name="sold" id="sold" v-model="sold" />
           <b-form-label for="sold">
             {{ $t('sold') }}
           </b-form-label>
@@ -118,10 +118,10 @@
       </b-form-group>
       <b-form-group>
         <b-form-item>
-          <b-form-input
+          <input
             type="checkbox"
+            name="removed"
             id="removed"
-            no-styling
             v-model="removed"
           />
           <b-form-label for="removed">

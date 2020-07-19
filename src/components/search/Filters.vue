@@ -17,10 +17,10 @@
           <summary>{{ $t('genres') }}</summary>
           <b-form-group>
             <b-form-item v-for="item in genres" :key="item.id">
-              <b-form-input
+              <input
                 type="checkbox"
+                name="genre"
                 :value="item.id"
-                no-styling
                 :id="'genre-' + item.id"
                 v-model="genre"
               />
@@ -75,9 +75,9 @@
           <summary>{{ $t('branches') }}</summary>
           <b-form-group v-show="showBranches">
             <b-form-item v-for="item in branches" :key="item.id">
-              <b-form-input
+              <input
                 type="checkbox"
-                no-styling
+                name="branch"
                 :id="'branch-' + item.id"
                 :value="item.id"
                 v-model="branch"
@@ -93,19 +93,14 @@
           <summary>{{ $t('availability') }}</summary>
           <b-form-group>
             <b-form-item>
-              <b-form-input
-                type="checkbox"
-                id="sold"
-                no-styling
-                v-model="sold"
-              />
+              <input type="checkbox" name="sold" id="sold" v-model="sold" />
               <b-form-label for="sold">{{ $t('sold') }}</b-form-label>
             </b-form-item>
             <b-form-item>
-              <b-form-input
+              <input
                 type="checkbox"
+                name="removed"
                 id="removed"
-                no-styling
                 v-model="removed"
               />
               <b-form-label for="removed">{{ $t('removed') }}</b-form-label>
@@ -140,23 +135,29 @@
               </b-form-label>
             </b-form-item>
             <b-form-item>
-              <input type="radio" value="all" id="all" v-model="type" />
-              <b-form-label for="all">{{ $t('all') }}</b-form-label>
-              <b-form-input
+              <input
                 type="radio"
+                name="type"
+                value="all"
+                id="all"
+                v-model="type"
+              />
+              <b-form-label for="all">{{ $t('all') }}</b-form-label>
+              <input
+                type="radio"
+                name="type"
                 value="paperback"
                 id="paperback"
-                no-styling
                 v-model="type"
               />
               <b-form-label for="paperback">
                 {{ $t('paperback') }}
               </b-form-label>
-              <b-form-input
+              <input
                 type="radio"
                 value="hardcover"
+                name="type"
                 id="hardcover"
-                no-styling
                 v-model="type"
               />
               <b-form-label for="hardcover">
