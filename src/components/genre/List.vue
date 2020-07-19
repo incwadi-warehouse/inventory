@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import GenreEdit from './Edit'
 
 export default {

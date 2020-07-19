@@ -11,7 +11,7 @@
 <script>
 import StaffList from '../components/staff/List'
 import StaffCreate from '../components/staff/Create'
-import { mapGetters } from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
   name: 'staff-view',

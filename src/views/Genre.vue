@@ -11,7 +11,7 @@
 <script>
 import GenreList from '../components/genre/List'
 import GenreCreate from '../components/genre/Create'
-import { mapGetters } from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
   name: 'genre-view',
