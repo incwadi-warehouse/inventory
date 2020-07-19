@@ -5,7 +5,7 @@ import genre from './genre'
 import branch from './branch'
 import staff from './staff'
 import user from './user'
-import navigation from './navigation'
+import app from './app'
 import stats from './stats'
 import author from './author'
 import search from './search'
@@ -23,7 +23,7 @@ export default new Vuex.Store({
     branch,
     staff,
     user,
-    navigation,
+    app,
     stats,
     author,
     search,

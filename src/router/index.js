@@ -84,7 +84,7 @@ const router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-  store.commit('navigation/showOffCanvas', false)
+  store.commit('app/showOffCanvas', false)
   next()
 })
 

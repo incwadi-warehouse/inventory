@@ -23,7 +23,7 @@ export default {
     }
   },
   methods: {
-    ...mapMutations('navigation', ['showOffCanvas']),
+    ...mapMutations('app', ['showOffCanvas']),
     settings: function() {
       if (this.$route.name === 'profile') return
 
