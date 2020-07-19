@@ -2,17 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import store from '../store'
 
-const Search = () => import('../views/Search')
-const EditBook = () => import('../views/EditBook')
-const About = () => import('../views/About')
-const Genre = () => import('../views/Genre')
-const Staff = () => import('../views/Staff')
-const Stats = () => import('../views/Stats')
-const NotFound = () => import('../views/404')
-const Author = () => import('../views/Author')
-const Profile = () => import('../views/Profile')
-const Branch = () => import('../views/Branch')
-
 Vue.use(Router)
 
 const router = new Router({
@@ -23,12 +12,12 @@ const router = new Router({
     {
       path: '/',
       name: 'index',
-      component: Search,
+      component: () => import('../views/Search'),
     },
     {
       path: '/book/edit/:id',
       name: 'edit',
-      component: EditBook,
+      component: () => import('../views/EditBook'),
       props(route) {
         const props = route.params
         props.id = +props.id
@@ -38,32 +27,32 @@ const router = new Router({
     {
       path: '/about',
       name: 'about',
-      component: About,
+      component: () => import('../views/About'),
     },
     {
       path: '/genre',
       name: 'genre',
-      component: Genre,
+      component: () => import('../views/Genre'),
     },
     {
       path: '/staff',
       name: 'staff',
-      component: Staff,
+      component: () => import('../views/Staff'),
     },
     {
       path: '/stats',
       name: 'stats',
-      component: Stats,
+      component: () => import('../views/Stats'),
     },
     {
       path: '/branch',
       name: 'branch',
-      component: Branch,
+      component: () => import('../views/Branch'),
     },
     {
       path: '/author/:id',
       name: 'author',
-      component: Author,
+      component: () => import('../views/Author'),
       props(route) {
         const props = route.params
         props.id = +props.id
@@ -73,14 +62,17 @@ const router = new Router({
     {
       path: '/profile',
       name: 'profile',
-      component: Profile,
+      component: () => import('../views/Profile'),
     },
     {
       path: '*',
       name: 'not-found',
-      component: NotFound,
+      component: () => import('../views/404'),
     },
   ],
+  scrollBehavior() {
+    return { x: 0, y: 0 }
+  },
 })
 
 router.beforeEach((to, from, next) => {
