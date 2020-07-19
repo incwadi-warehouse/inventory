@@ -37,10 +37,10 @@ export default {
         })
         .then(function() {
           context.dispatch('reports')
-          notification('report_create_success', 'success')
+          notification.create('report_create_success', 'success')
         })
         .catch(function() {
-          notification('report_create_error', 'error')
+          notification.create('report_create_error', 'error')
         })
     },
     remove(context, id) {
