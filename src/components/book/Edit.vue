@@ -368,11 +368,8 @@ export default {
       this.tag = null
     }
   },
-  mounted: function() {
+  created: function() {
     this.$store.dispatch('book/show', this.id)
-    this.$store.dispatch('staff/staff')
-    this.$store.dispatch('genre/genres')
-    this.$store.dispatch('condition/list')
   },
   beforeDestroy: function() {
     this.$store.dispatch('book/reset')
