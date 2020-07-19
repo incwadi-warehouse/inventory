@@ -33,19 +33,19 @@ import { mapState, mapActions } from 'vuex'
 export default {
   name: 'author',
   computed: {
-    ...mapState('search', ['authors'])
+    ...mapState('search', ['authors']),
   },
   methods: {
     ...mapActions('search', ['remove']),
-    formatAuthor: function(author) {
+    formatAuthor: function (author) {
       if (author.firstname === '') {
         return author.surname
       }
       return author.surname + ', ' + author.firstname
     },
-    edit: function(author_id) {
+    edit: function (author_id) {
       this.$router.push({ name: 'author', params: { id: author_id } })
-    }
-  }
+    },
+  },
 }
 </script>

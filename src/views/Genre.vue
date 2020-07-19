@@ -17,10 +17,10 @@ export default {
   name: 'genre-view',
   components: {
     GenreList,
-    GenreCreate
+    GenreCreate,
   },
   computed: {
-    ...mapState('user', ['me'])
-  }
+    ...mapState('user', ['me']),
+  },
 }
 </script>

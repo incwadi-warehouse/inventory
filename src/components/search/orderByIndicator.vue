@@ -13,7 +13,7 @@ export default {
   props: ['column'],
   computed: {
     ...mapState('search', ['orderBy']),
-    icon: function() {
+    icon: function () {
       if (this.orderBy === this.column + '_asc') {
         return '&#9650;'
       }
@@ -22,7 +22,7 @@ export default {
       }
 
       return undefined
-    }
-  }
+    },
+  },
 }
 </script>

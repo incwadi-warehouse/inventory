@@ -13,10 +13,10 @@ import AuthorEdit from '../components/author/Edit'
 export default {
   name: 'author-view',
   props: {
-    id: Number
+    id: Number,
   },
   components: {
-    AuthorEdit
-  }
+    AuthorEdit,
+  },
 }
 </script>

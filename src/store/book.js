@@ -2,7 +2,7 @@ import api from '../api'
 import router from '../router'
 import { notification } from '@baldeweg/components'
 
-const formatDate = function(data) {
+const formatDate = function (data) {
   const date = new Date(data)
   let month = date.getMonth() + 1
   if (month < 10) {
@@ -32,7 +32,7 @@ export default {
     lendTo: null,
     lendOn: null,
     cond_id: null,
-    tags: []
+    tags: [],
   },
   mutations: {
     added(state, added) {
@@ -76,13 +76,13 @@ export default {
     },
     tags(state, tags) {
       state.tags = tags
-    }
+    },
   },
   actions: {
     show(context, id) {
       api(context.rootState.user.token)
         .get('/v1/book/' + id)
-        .then(function(response) {
+        .then(function (response) {
           context.commit('added', formatDate(response.data.added * 1000))
           context.commit('title', response.data.title)
           context.commit(
@@ -115,13 +115,13 @@ export default {
           )
           context.commit('tag/tags', response.data.tags, { root: true })
         })
-        .catch(function() {
+        .catch(function () {
           router.replace({ name: 'not-found' })
         })
     },
     create(context) {
       let tags = []
-      context.rootState.tag.tags.forEach(element => {
+      context.rootState.tag.tags.forEach((element) => {
         tags.push(element.id)
       })
       api(context.rootState.user.token)
@@ -136,13 +136,13 @@ export default {
           releaseYear: context.state.releaseYear,
           type: context.state.type,
           cond: context.state.cond_id,
-          tags: tags
+          tags: tags,
         })
-        .then(function() {
+        .then(function () {
           notification.create('book_created', 'success')
           context.dispatch('reset')
         })
-        .catch(function(error) {
+        .catch(function (error) {
           notification.create('book_not_valid', 'error')
           if (error.response.status === 409) {
             notification.create('book_not_valid_duplicate', 'error')
@@ -166,14 +166,14 @@ export default {
           lendOn: context.state.lendOn
             ? new Date(context.state.lendOn).getTime() / 1000
             : null,
-          cond: context.state.cond_id
+          cond: context.state.cond_id,
         })
-        .then(function() {
+        .then(function () {
           context.dispatch('search/search', null, { root: true })
           router.push({ name: 'index' })
           notification.create('book_updated', 'success')
         })
-        .catch(function(error) {
+        .catch(function (error) {
           notification.create('book_not_valid', 'error')
           if (error.response.status === 409) {
             notification.create('book_not_valid_duplicate', 'error')
@@ -183,22 +183,22 @@ export default {
     sell(context, book) {
       api(context.rootState.user.token)
         .put('/v1/book/sell/' + book.id)
-        .then(function() {
+        .then(function () {
           context.commit('search/removeBook', book, { root: true })
           notification.create('book_sell_success', 'success')
         })
-        .catch(function() {
+        .catch(function () {
           notification.create('book_sell_error', 'error')
         })
     },
     remove(context, book) {
       api(context.rootState.user.token)
         .put('/v1/book/remove/' + book.id)
-        .then(function() {
+        .then(function () {
           context.commit('search/removeBook', book, { root: true })
           notification.create('book_remove_success', 'success')
         })
-        .catch(function() {
+        .catch(function () {
           notification.create('book_remove_error', 'error')
         })
     },
@@ -223,12 +223,12 @@ export default {
     clean(context) {
       api(context.rootState.user.token)
         .delete('/v1/book/clean')
-        .then(function() {
+        .then(function () {
           notification.create('book_clean_success', 'success')
         })
-        .catch(function() {
+        .catch(function () {
           notification.create('book_clean_error', 'error')
         })
-    }
-  }
+    },
+  },
 }

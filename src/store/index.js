@@ -29,6 +29,6 @@ export default new Vuex.Store({
     search,
     condition,
     report,
-    tag
-  }
+    tag,
+  },
 })

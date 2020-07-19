@@ -18,8 +18,8 @@ cssVars({
     'color-primary-10': process.env.BRAND_COLOR,
     'color-primary-05': '#eeab84',
     'color-primary-00': '#fcf1ea',
-    'masthead-height': '66px'
-  }
+    'masthead-height': '66px',
+  },
 })
 
 if (process.env.NODE_ENV === 'production') {
@@ -44,6 +44,6 @@ new Vue({
   i18n,
   template: '<App/>',
   components: {
-    App
-  }
+    App,
+  },
 })

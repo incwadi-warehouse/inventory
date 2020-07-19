@@ -23,7 +23,6 @@
 import Heading from './components/Heading'
 import Login from './components/Login'
 import Navigation from './components/Navigation'
-import Cookies from 'js-cookie'
 import { mapState } from 'vuex'
 
 export default {
@@ -31,22 +30,22 @@ export default {
   components: {
     Heading,
     Login,
-    Navigation
+    Navigation,
   },
   data() {
     return {
-      notifications: this.$notify.list()
+      notifications: this.$notify.list(),
     }
   },
   computed: {
-    ...mapState('user', ['isAuthenticated'])
+    ...mapState('user', ['isAuthenticated']),
   },
-  mounted: function() {
+  mounted: function () {
     document
       .querySelector('html')
       .style.setProperty('--color-primary-10', process.env.BRAND_COLOR)
     this.$store.dispatch('user/check')
-  }
+  },
 }
 </script>
 

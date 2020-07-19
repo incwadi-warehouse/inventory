@@ -30,11 +30,11 @@ export default {
   name: 'create',
   data() {
     return {
-      name: null
+      name: null,
     }
   },
   methods: {
-    create: function() {
+    create: function () {
       this.$store.dispatch('report/create', {
         name: this.name,
         searchTerm: this.$store.state.search.searchTerm,
@@ -51,10 +51,10 @@ export default {
         lendMoreThenXMonths: this.$store.state.search.lending,
         orderBy: this.$store.state.search.orderBy,
         releaseYear: this.$store.state.search.releaseYear,
-        type: this.$store.state.search.type
+        type: this.$store.state.search.type,
       })
       this.name = null
-    }
-  }
+    },
+  },
 }
 </script>

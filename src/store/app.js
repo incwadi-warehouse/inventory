@@ -1,11 +1,11 @@
 export default {
   namespaced: true,
   state: {
-    showOffCanvas: false
+    showOffCanvas: false,
   },
   mutations: {
     showOffCanvas(state, status) {
       state.showOffCanvas = status
-    }
-  }
+    },
+  },
 }

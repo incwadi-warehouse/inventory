@@ -226,7 +226,7 @@ export default {
   data() {
     return {
       currency: process.env.CURRENCY,
-      tag: null
+      tag: null,
     }
   },
   computed: {
@@ -234,123 +234,123 @@ export default {
     ...mapState('staff', ['staff']),
     ...mapState('condition', ['conditions']),
     added: {
-      get: function() {
+      get: function () {
         return this.$store.state.book.added
       },
-      set: function(added) {
+      set: function (added) {
         this.$store.commit('book/added', added)
-      }
+      },
     },
     title: {
-      get: function() {
+      get: function () {
         return this.$store.state.book.title
       },
-      set: function(title) {
+      set: function (title) {
         this.$store.commit('book/title', title)
-      }
+      },
     },
     authorFirstname: {
-      get: function() {
+      get: function () {
         return this.$store.state.book.authorFirstname
       },
-      set: function(authorFirstname) {
+      set: function (authorFirstname) {
         this.$store.commit('book/authorFirstname', authorFirstname)
-      }
+      },
     },
     authorSurname: {
-      get: function() {
+      get: function () {
         return this.$store.state.book.authorSurname
       },
-      set: function(authorSurname) {
+      set: function (authorSurname) {
         this.$store.commit('book/authorSurname', authorSurname)
-      }
+      },
     },
     genreId: {
-      get: function() {
+      get: function () {
         return this.$store.state.book.genreId
       },
-      set: function(genreId) {
+      set: function (genreId) {
         this.$store.commit('book/genreId', genreId)
-      }
+      },
     },
     price: {
-      get: function() {
+      get: function () {
         return this.$store.state.book.price
       },
-      set: function(price) {
+      set: function (price) {
         this.$store.commit('book/price', price)
-      }
+      },
     },
     sold: {
-      get: function() {
+      get: function () {
         return this.$store.state.book.sold
       },
-      set: function(sold) {
+      set: function (sold) {
         this.$store.commit('book/sold', sold)
-      }
+      },
     },
     removed: {
-      get: function() {
+      get: function () {
         return this.$store.state.book.removed
       },
-      set: function(removed) {
+      set: function (removed) {
         this.$store.commit('book/removed', removed)
-      }
+      },
     },
     releaseYear: {
-      get: function() {
+      get: function () {
         return this.$store.state.book.releaseYear
       },
-      set: function(releaseYear) {
+      set: function (releaseYear) {
         this.$store.commit('book/releaseYear', releaseYear)
-      }
+      },
     },
     type: {
-      get: function() {
+      get: function () {
         return this.$store.state.book.type
       },
-      set: function(type) {
+      set: function (type) {
         this.$store.commit('book/type', type)
-      }
+      },
     },
     lendTo: {
-      get: function() {
+      get: function () {
         return this.$store.state.book.lendTo
       },
-      set: function(lendTo) {
+      set: function (lendTo) {
         this.$store.commit('book/lendTo', lendTo)
-      }
+      },
     },
     lendOn: {
-      get: function() {
+      get: function () {
         return this.$store.state.book.lendOn
       },
-      set: function(lendOn) {
+      set: function (lendOn) {
         this.$store.commit('book/lendOn', lendOn)
-      }
+      },
     },
     cond_id: {
-      get: function() {
+      get: function () {
         return this.$store.state.book.cond_id
       },
-      set: function(cond_id) {
+      set: function (cond_id) {
         this.$store.commit('book/cond_id', cond_id)
-      }
+      },
     },
-    tags: function() {
+    tags: function () {
       return this.$store.state.tag.tags
-    }
+    },
   },
   methods: {
     ...mapActions('book', ['update']),
-    lending: function() {
+    lending: function () {
       if (this.$store.state.book.lendTo) {
         this.$store.commit('book/lendOn', this.formatDate())
       } else {
         this.$store.commit('book/lendOn', null)
       }
     },
-    formatDate: function() {
+    formatDate: function () {
       const date = new Date()
       let month = date.getMonth() + 1
       if (month < 10) {
@@ -363,20 +363,20 @@ export default {
 
       return date.getFullYear() + '-' + month + '-' + day
     },
-    createTag: function() {
+    createTag: function () {
       this.$store.dispatch('tag/create', this.tag)
       this.tag = null
-    }
+    },
   },
-  created: function() {
+  created: function () {
     this.$store.dispatch('book/show', this.id)
   },
-  beforeDestroy: function() {
+  beforeDestroy: function () {
     this.$store.dispatch('book/reset')
   },
-  destroyed: function() {
+  destroyed: function () {
     this.$store.commit('tag/tags', [])
     this.tag = null
-  }
+  },
 }
 </script>

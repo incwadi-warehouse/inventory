@@ -20,25 +20,25 @@
 export default {
   name: 'edit-genre',
   props: {
-    genre: Object
+    genre: Object,
   },
   data() {
     return {
       name: this.genre.name,
-      edit: false
+      edit: false,
     }
   },
   methods: {
-    update: function() {
+    update: function () {
       this.toggleEdit()
       this.$store.dispatch('genre/edit', {
         id: this.genre.id,
-        name: this.name
+        name: this.name,
       })
     },
-    toggleEdit: function() {
+    toggleEdit: function () {
       this.edit = !this.edit
-    }
-  }
+    },
+  },
 }
 </script>

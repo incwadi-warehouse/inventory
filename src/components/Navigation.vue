@@ -68,13 +68,13 @@ export default {
   name: 'navigation',
   computed: {
     ...mapState('user', ['isAuthenticated']),
-    ...mapState('app', ['showOffCanvas'])
+    ...mapState('app', ['showOffCanvas']),
   },
   methods: {
     ...mapMutations('app', {
-      toggleOffCanvas: 'showOffCanvas'
+      toggleOffCanvas: 'showOffCanvas',
     }),
-    ...mapActions('user', ['logout'])
-  }
+    ...mapActions('user', ['logout']),
+  },
 }
 </script>

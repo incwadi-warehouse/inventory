@@ -184,108 +184,108 @@ export default {
   data() {
     return {
       currency: process.env.CURRENCY,
-      tag: null
+      tag: null,
     }
   },
   computed: {
     ...mapState('genre', ['genres']),
     ...mapState('condition', ['conditions']),
     added: {
-      get: function() {
+      get: function () {
         return this.$store.state.book.added
       },
-      set: function(added) {
+      set: function (added) {
         this.$store.commit('book/added', added)
-      }
+      },
     },
     title: {
-      get: function() {
+      get: function () {
         return this.$store.state.book.title
       },
-      set: function(title) {
+      set: function (title) {
         this.$store.commit('book/title', title)
-      }
+      },
     },
     authorFirstname: {
-      get: function() {
+      get: function () {
         return this.$store.state.book.authorFirstname
       },
-      set: function(authorFirstname) {
+      set: function (authorFirstname) {
         this.$store.commit('book/authorFirstname', authorFirstname)
-      }
+      },
     },
     authorSurname: {
-      get: function() {
+      get: function () {
         return this.$store.state.book.authorSurname
       },
-      set: function(authorSurname) {
+      set: function (authorSurname) {
         this.$store.commit('book/authorSurname', authorSurname)
-      }
+      },
     },
     genreId: {
-      get: function() {
+      get: function () {
         return this.$store.state.book.genreId
       },
-      set: function(genreId) {
+      set: function (genreId) {
         this.$store.commit('book/genreId', genreId)
-      }
+      },
     },
     price: {
-      get: function() {
+      get: function () {
         return this.$store.state.book.price
       },
-      set: function(price) {
+      set: function (price) {
         this.$store.commit('book/price', price)
-      }
+      },
     },
     releaseYear: {
-      get: function() {
+      get: function () {
         return this.$store.state.book.releaseYear
       },
-      set: function(releaseYear) {
+      set: function (releaseYear) {
         this.$store.commit('book/releaseYear', releaseYear)
-      }
+      },
     },
     type: {
-      get: function() {
+      get: function () {
         return this.$store.state.book.type
       },
-      set: function(type) {
+      set: function (type) {
         this.$store.commit('book/type', type)
-      }
+      },
     },
     cond_id: {
-      get: function() {
+      get: function () {
         return this.$store.state.book.cond_id
       },
-      set: function(cond_id) {
+      set: function (cond_id) {
         this.$store.commit('book/cond_id', cond_id)
-      }
+      },
     },
-    tags: function() {
+    tags: function () {
       return this.$store.state.tag.tags
-    }
+    },
   },
   methods: {
     ...mapActions('book', ['create']),
-    close: function() {
+    close: function () {
       this.$store.commit('search/tab', null)
     },
-    cancel: function() {
+    cancel: function () {
       this.$store.commit('search/tab', false)
     },
-    createTag: function() {
+    createTag: function () {
       this.$store.dispatch('tag/create', this.tag)
       this.tag = null
-    }
+    },
   },
-  mounted: function() {
+  mounted: function () {
     this.$store.dispatch('genre/genres')
     this.$store.dispatch('condition/list')
   },
-  destroyed: function() {
+  destroyed: function () {
     this.$store.commit('tag/tags', [])
     this.tag = null
-  }
+  },
 }
 </script>

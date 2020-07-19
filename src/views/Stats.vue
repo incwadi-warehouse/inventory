@@ -21,13 +21,13 @@ import { mapState } from 'vuex'
 export default {
   name: 'stats-view',
   components: {
-    Stats
+    Stats,
   },
   computed: {
-    ...mapState('stats', ['stats', 'isLoading'])
+    ...mapState('stats', ['stats', 'isLoading']),
   },
-  created: function() {
+  created: function () {
     this.$store.dispatch('stats/stats')
-  }
+  },
 }
 </script>

@@ -32,18 +32,18 @@ export default {
   name: 'password',
   computed: {
     password: {
-      get: function() {
+      get: function () {
         return this.$store.state.user.password
       },
-      set: function(password) {
+      set: function (password) {
         this.$store.commit('user/password', password)
-      }
-    }
+      },
+    },
   },
   methods: {
     ...mapActions('user', {
-      save: 'password'
-    })
-  }
+      save: 'password',
+    }),
+  },
 }
 </script>

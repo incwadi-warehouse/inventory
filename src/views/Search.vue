@@ -37,24 +37,24 @@ export default {
     Filters,
     List,
     AuthorList,
-    Create
+    Create,
   },
   computed: {
-    isLoading: function() {
+    isLoading: function () {
       return this.$store.state.search.isLoading
     },
-    tab: function() {
+    tab: function () {
       return this.$store.state.search.tab
-    }
+    },
   },
   methods: {
-    setTab: function(tab) {
+    setTab: function (tab) {
       if (tab === this.$store.state.search.tab) {
         this.$store.commit('search/tab', null)
         return
       }
       this.$store.commit('search/tab', tab)
-    }
-  }
+    },
+  },
 }
 </script>

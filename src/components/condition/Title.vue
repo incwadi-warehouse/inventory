@@ -24,23 +24,23 @@ export default {
   props: {
     condition: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
       name: this.condition.name,
-      isEditing: false
+      isEditing: false,
     }
   },
   methods: {
-    update: function() {
+    update: function () {
       this.$store.dispatch('condition/update', {
         id: this.condition.id,
-        name: this.name
+        name: this.name,
       })
       this.isEditing = false
-    }
-  }
+    },
+  },
 }
 </script>

@@ -27,20 +27,20 @@ import ConditionTitle from './Title'
 export default {
   name: 'condition-list',
   components: {
-    ConditionTitle
+    ConditionTitle,
   },
   computed: {
-    conditions: function() {
+    conditions: function () {
       return this.$store.state.condition.conditions
-    }
+    },
   },
   methods: {
-    remove: function(condition) {
+    remove: function (condition) {
       this.$store.dispatch('condition/remove', condition)
-    }
+    },
   },
-  created: function() {
+  created: function () {
     this.$store.dispatch('condition/list')
-  }
+  },
 }
 </script>

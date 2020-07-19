@@ -5,7 +5,7 @@ export default {
   namespaced: true,
   state: {
     tags: [],
-    tag: null
+    tag: null,
   },
   mutations: {
     tags(state, tags) {
@@ -16,21 +16,21 @@ export default {
     },
     tag(state, tag) {
       state.tag = tag
-    }
+    },
   },
   actions: {
     create(context, name) {
       api(context.rootState.user.token)
         .post('/v1/tag/new', {
-          name: name
+          name: name,
         })
-        .then(function(response) {
+        .then(function (response) {
           context.commit('tag', response.data)
           context.commit('addTag', response.data)
         })
-        .catch(function() {
+        .catch(function () {
           notification.create('create_tag_not_successful', 'error')
         })
-    }
-  }
+    },
+  },
 }

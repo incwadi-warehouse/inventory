@@ -13,10 +13,10 @@ import { mapState, mapActions } from 'vuex'
 export default {
   name: 'clean-books',
   computed: {
-    ...mapState('user', ['me'])
+    ...mapState('user', ['me']),
   },
   methods: {
-    ...mapActions('book', ['clean'])
-  }
+    ...mapActions('book', ['clean']),
+  },
 }
 </script>

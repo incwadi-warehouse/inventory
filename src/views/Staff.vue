@@ -17,10 +17,10 @@ export default {
   name: 'staff-view',
   components: {
     StaffList,
-    StaffCreate
+    StaffCreate,
   },
   computed: {
-    ...mapState('user', ['me'])
-  }
+    ...mapState('user', ['me']),
+  },
 }
 </script>

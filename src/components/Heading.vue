@@ -18,17 +18,17 @@ export default {
   name: 'heading',
   computed: {
     ...mapState('user', ['isAuthenticated']),
-    logo: function() {
+    logo: function () {
       return require('../../' + process.env.LOGO)
-    }
+    },
   },
   methods: {
     ...mapMutations('app', ['showOffCanvas']),
-    settings: function() {
+    settings: function () {
       if (this.$route.name === 'profile') return
 
       this.$router.push({ name: 'profile' })
-    }
-  }
+    },
+  },
 }
 </script>

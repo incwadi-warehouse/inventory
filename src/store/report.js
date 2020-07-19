@@ -4,18 +4,18 @@ import { notification } from '@baldeweg/components'
 export default {
   namespaced: true,
   state: {
-    reports: null
+    reports: null,
   },
   mutations: {
     reports(state, reports) {
       state.reports = reports
-    }
+    },
   },
   actions: {
     reports(context) {
       api(context.rootState.user.token)
         .get('/v1/report/')
-        .then(function(response) {
+        .then(function (response) {
           context.commit('reports', response.data)
         })
     },
@@ -33,26 +33,26 @@ export default {
           lendMoreThenXMonths: data.lendMoreThenXMonths,
           orderBy: data.orderBy,
           releaseYear: data.releaseYear,
-          type: data.type
+          type: data.type,
         })
-        .then(function() {
+        .then(function () {
           context.dispatch('reports')
           notification.create('report_create_success', 'success')
         })
-        .catch(function() {
+        .catch(function () {
           notification.create('report_create_error', 'error')
         })
     },
     remove(context, id) {
       api(context.rootState.user.token)
         .delete('/v1/report/' + id)
-        .then(function() {
+        .then(function () {
           context.dispatch('reports')
           notification.create('report_remove_success', 'success')
         })
-        .catch(function() {
+        .catch(function () {
           notification.create('report_remove_error', 'error')
         })
-    }
-  }
+    },
+  },
 }

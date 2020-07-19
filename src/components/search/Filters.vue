@@ -257,42 +257,42 @@ export default {
   name: 'filters',
   components: {
     ReportCreate,
-    ReportList
+    ReportList,
   },
   data() {
     return {
-      filter: false
+      filter: false,
     }
   },
   computed: {
     ...mapState('branch', ['branches']),
     ...mapState('genre', ['genres']),
     sold: {
-      get: function() {
+      get: function () {
         return this.$store.state.search.sold || false
       },
-      set: function(sold) {
+      set: function (sold) {
         this.$store.commit('search/sold', sold ? 1 : 0)
-      }
+      },
     },
     removed: {
-      get: function() {
+      get: function () {
         return this.$store.state.search.removed || false
       },
-      set: function(removed) {
+      set: function (removed) {
         this.$store.commit('search/removed', removed ? 1 : 0)
-      }
+      },
     },
     added: {
-      get: function() {
+      get: function () {
         return this.$store.state.search.added || 0
       },
-      set: function(added) {
+      set: function (added) {
         this.$store.commit('search/added', added)
-      }
+      },
     },
     branch: {
-      get: function() {
+      get: function () {
         return (
           this.$store.state.search.branch ||
           (this.$store.state.user.me
@@ -300,83 +300,83 @@ export default {
             : [])
         )
       },
-      set: function(branch) {
+      set: function (branch) {
         this.$store.commit('search/branch', branch)
-      }
+      },
     },
     genre: {
-      get: function() {
+      get: function () {
         return this.$store.state.search.genre || []
       },
-      set: function(genre) {
+      set: function (genre) {
         this.$store.commit('search/genre', genre)
-      }
+      },
     },
     lending: {
-      get: function() {
+      get: function () {
         return this.$store.state.search.lending || 0
       },
-      set: function(lending) {
+      set: function (lending) {
         this.$store.commit('search/lending', lending)
-      }
+      },
     },
     releaseYear: {
-      get: function() {
+      get: function () {
         return this.$store.state.search.releaseYear
       },
-      set: function(releaseYear) {
+      set: function (releaseYear) {
         this.$store.commit('search/releaseYear', releaseYear)
-      }
+      },
     },
     type: {
-      get: function() {
+      get: function () {
         return this.$store.state.search.type
           ? this.$store.state.search.type
           : 'all'
       },
-      set: function(type) {
+      set: function (type) {
         this.$store.commit('search/type', type === 'all' ? null : type)
-      }
+      },
     },
     orderBy: {
-      get: function() {
+      get: function () {
         return this.$store.state.search.orderBy
       },
-      set: function(orderBy) {
+      set: function (orderBy) {
         this.$store.commit('search/orderBy', orderBy)
-      }
+      },
     },
     limit: {
-      get: function() {
+      get: function () {
         return this.$store.state.search.limit
       },
-      set: function(limit) {
+      set: function (limit) {
         this.$store.commit('search/limit', limit)
-      }
+      },
     },
-    showBranches: function() {
+    showBranches: function () {
       if (!this.$store.state.branch.branches) return false
       if (this.$store.state.branch.branches.length >= 1) {
         return true
       }
       return false
-    }
+    },
   },
   methods: {
     ...mapActions('search', {
-      resetFilters: 'reset'
+      resetFilters: 'reset',
     }),
-    find: function() {
+    find: function () {
       this.$store.dispatch('search/search')
       this.$store.commit('search/tab', false)
     },
-    close: function() {
+    close: function () {
       this.$store.commit('search/tab', null)
-    }
+    },
   },
-  created: function() {
+  created: function () {
     this.$store.dispatch('branch/branches')
     this.$store.dispatch('genre/genres')
-  }
+  },
 }
 </script>

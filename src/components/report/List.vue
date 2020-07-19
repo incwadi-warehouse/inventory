@@ -28,7 +28,7 @@
 export default {
   name: 'list',
   methods: {
-    showReport: function(report) {
+    showReport: function (report) {
       this.$store.commit('search/searchTerm', report.searchTerm)
       this.$store.commit('search/limit', report.limitTo)
       this.$store.commit('search/sold', report.sold ? 1 : 0)
@@ -50,12 +50,12 @@ export default {
       this.$store.dispatch('search/search')
       this.$store.commit('search/tab', false)
     },
-    deleteReport: function(id) {
+    deleteReport: function (id) {
       this.$store.dispatch('report/remove', id)
-    }
+    },
   },
-  created: function() {
+  created: function () {
     this.$store.dispatch('report/reports')
-  }
+  },
 }
 </script>

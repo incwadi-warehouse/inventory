@@ -116,37 +116,37 @@ export default {
   name: 'list',
   components: {
     Indicator,
-    ContextMenu
+    ContextMenu,
   },
   data() {
     return {
       currency: process.env.CURRENCY,
-      fluid: false
+      fluid: false,
     }
   },
   computed: {
     ...mapState('search', ['books', 'counter', 'sold', 'removed']),
-    showLoadMore: function() {
+    showLoadMore: function () {
       return this.books.length < this.counter
     },
-    size: function() {
+    size: function () {
       return this.fluid ? 'l' : 'm'
-    }
+    },
   },
   methods: {
-    formatDate: function(timestamp) {
+    formatDate: function (timestamp) {
       return new Date(timestamp * 1000).toLocaleDateString()
     },
-    formatPrice: function(price) {
+    formatPrice: function (price) {
       return Number.parseFloat(price).toLocaleString(undefined, {
         minimumFractionDigits: 2,
-        maximumFractionDigits: 2
+        maximumFractionDigits: 2,
       })
     },
-    reload: function() {
+    reload: function () {
       this.$store.dispatch('search/search', true)
     },
-    filter: function(type) {
+    filter: function (type) {
       const ordering = this.$store.state.search.orderBy
 
       if (ordering === type + '_desc') {
@@ -160,13 +160,13 @@ export default {
       }
       this.$store.dispatch('search/search')
     },
-    author: function(author) {
+    author: function (author) {
       if (author.firstname === '') {
         return author.surname
       }
       return author.surname + ', ' + author.firstname
-    }
-  }
+    },
+  },
 }
 </script>
 

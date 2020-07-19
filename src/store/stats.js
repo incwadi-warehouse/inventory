@@ -4,7 +4,7 @@ export default {
   namespaced: true,
   state: {
     stats: null,
-    isLoading: true
+    isLoading: true,
   },
   mutations: {
     stats(state, stats) {
@@ -12,19 +12,19 @@ export default {
     },
     isLoading(state, isLoading) {
       state.isLoading = isLoading
-    }
+    },
   },
   actions: {
     stats(context) {
       context.commit('isLoading', true)
       api(context.rootState.user.token)
         .get('/v1/stats/')
-        .then(function(response) {
+        .then(function (response) {
           context.commit('stats', response.data)
         })
-        .finally(function() {
+        .finally(function () {
           context.commit('isLoading', false)
         })
-    }
-  }
+    },
+  },
 }

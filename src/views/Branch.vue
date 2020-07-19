@@ -29,7 +29,7 @@ export default {
   components: {
     CleanBooks,
     ConditionList,
-    ConditionNew
-  }
+    ConditionNew,
+  },
 }
 </script>

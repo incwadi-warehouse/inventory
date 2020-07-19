@@ -134,5 +134,5 @@ export default {
   report_remove_error: 'Report could not be deleted.',
   delete: 'Delete',
   add_tag: 'Add Tag',
-  create_tag_not_successful: 'Could not create tag.'
+  create_tag_not_successful: 'Could not create tag.',
 }

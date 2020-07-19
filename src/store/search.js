@@ -19,7 +19,7 @@ export default {
     lending: null,
     orderBy: null,
     releaseYear: null,
-    type: null
+    type: null,
   },
   mutations: {
     books(state, books) {
@@ -39,8 +39,8 @@ export default {
       state.authors = authors
     },
     removeAuthor(state, id) {
-      const authors = state.authors.filter(author => author.id === id)
-      authors.forEach(author => {
+      const authors = state.authors.filter((author) => author.id === id)
+      authors.forEach((author) => {
         const id = state.authors.indexOf(author)
         state.authors.splice(id, 1)
       })
@@ -84,7 +84,7 @@ export default {
     },
     type(state, type) {
       state.type = type
-    }
+    },
   },
   actions: {
     search(context) {
@@ -140,10 +140,10 @@ export default {
             lending: lending,
             orderBy: context.state.orderBy,
             releaseYear: context.state.releaseYear,
-            type: context.state.type
-          }
+            type: context.state.type,
+          },
         })
-        .then(function(response) {
+        .then(function (response) {
           context.commit('books', response.data.books)
           context.commit('counter', response.data.counter)
           context.commit('isLoading', false)
@@ -156,10 +156,10 @@ export default {
       api(context.rootState.user.token)
         .get('/v1/author/find', {
           params: {
-            term: context.state.searchTerm
-          }
+            term: context.state.searchTerm,
+          },
         })
-        .then(function(response) {
+        .then(function (response) {
           context.commit('authors', response.data)
         })
     },
@@ -180,6 +180,6 @@ export default {
       context.commit('limit', 50)
       context.commit('releaseYear', null)
       context.commit('type', null)
-    }
-  }
+    },
+  },
 }

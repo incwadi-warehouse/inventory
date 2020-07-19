@@ -35,17 +35,17 @@ export default {
   name: 'create-staff',
   data() {
     return {
-      name: null
+      name: null,
     }
   },
   computed: {
-    ...mapState('staff', ['isProcessing'])
+    ...mapState('staff', ['isProcessing']),
   },
   methods: {
-    create: function() {
+    create: function () {
       this.$store.dispatch('staff/create', this.name)
       this.name = null
-    }
-  }
+    },
+  },
 }
 </script>

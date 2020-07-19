@@ -4,28 +4,28 @@ import { notification } from '@baldeweg/components'
 export default {
   namespaced: true,
   state: {
-    conditions: null
+    conditions: null,
   },
   mutations: {
     conditions(state, conditions) {
       state.conditions = conditions
-    }
+    },
   },
   actions: {
     list(context) {
       api(context.rootState.user.token)
         .get('/v1/condition/')
-        .then(function(response) {
+        .then(function (response) {
           context.commit('conditions', response.data)
         })
     },
     create(context, condition) {
       api(context.rootState.user.token)
         .post('/v1/condition/new', { name: condition })
-        .then(function() {
+        .then(function () {
           context.dispatch('list')
         })
-        .catch(function() {
+        .catch(function () {
           notification.create(
             'could_not_create_the_condition_try_again_later',
             'error'
@@ -35,10 +35,10 @@ export default {
     remove(context, condition) {
       api(context.rootState.user.token)
         .delete('/v1/condition/' + condition.id)
-        .then(function() {
+        .then(function () {
           context.dispatch('list')
         })
-        .catch(function() {
+        .catch(function () {
           notification.create(
             'could_not_delete_the_condition_try_again_later',
             'error'
@@ -48,15 +48,15 @@ export default {
     update(context, data) {
       api(context.rootState.user.token)
         .put('/v1/condition/' + data.id, { name: data.name })
-        .then(function() {
+        .then(function () {
           context.dispatch('list')
         })
-        .catch(function() {
+        .catch(function () {
           notification.create(
             'could_not_update_the_condition_try_again_later',
             'error'
           )
         })
-    }
-  }
+    },
+  },
 }

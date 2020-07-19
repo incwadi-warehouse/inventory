@@ -28,17 +28,17 @@ import EditStaff from './Edit'
 export default {
   name: 'list',
   components: {
-    EditStaff
+    EditStaff,
   },
   computed: {
     ...mapState('user', ['me']),
-    ...mapState('staff', ['staff'])
+    ...mapState('staff', ['staff']),
   },
   methods: {
-    ...mapActions('staff', ['remove'])
+    ...mapActions('staff', ['remove']),
   },
-  created: function() {
+  created: function () {
     this.$store.dispatch('staff/staff')
-  }
+  },
 }
 </script>

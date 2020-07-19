@@ -142,5 +142,5 @@ export default {
   report_remove_error: 'Report konnte nicht gelöscht werden.',
   delete: 'Löschen',
   add_tag: 'Schlagwort hinzufügen',
-  create_tag_not_successful: 'Schlagwort konnte nicht angelegt werden.'
+  create_tag_not_successful: 'Schlagwort konnte nicht angelegt werden.',
 }

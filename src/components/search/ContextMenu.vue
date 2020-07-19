@@ -25,13 +25,13 @@ import { mapActions } from 'vuex'
 export default {
   name: 'contextMenu',
   props: {
-    book: Object
+    book: Object,
   },
   methods: {
     ...mapActions('book', ['sell', 'remove']),
-    edit: function(id) {
+    edit: function (id) {
       this.$router.push({ name: 'edit', params: { id: id } })
-    }
-  }
+    },
+  },
 }
 </script>

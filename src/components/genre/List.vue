@@ -28,17 +28,17 @@ import GenreEdit from './Edit'
 export default {
   name: 'list-genre',
   components: {
-    GenreEdit
+    GenreEdit,
   },
   computed: {
     ...mapState('user', ['me']),
-    ...mapState('genre', ['genres'])
+    ...mapState('genre', ['genres']),
   },
   methods: {
-    ...mapActions('genre', ['remove'])
+    ...mapActions('genre', ['remove']),
   },
-  created: function() {
+  created: function () {
     this.$store.dispatch('genre/genres')
-  }
+  },
 }
 </script>

@@ -15,18 +15,18 @@ export default {
   name: 'search',
   computed: {
     searchTerm: {
-      get: function() {
+      get: function () {
         return this.$store.state.search.searchTerm
       },
-      set: function(searchTerm) {
+      set: function (searchTerm) {
         this.$store.commit('search/searchTerm', searchTerm)
-      }
-    }
+      },
+    },
   },
   methods: {
-    search: function() {
+    search: function () {
       this.$store.dispatch('search/search')
-    }
-  }
+    },
+  },
 }
 </script>

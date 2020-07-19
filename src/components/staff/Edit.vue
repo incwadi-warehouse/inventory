@@ -20,25 +20,25 @@
 export default {
   name: 'edit-staff',
   props: {
-    staff: Object
+    staff: Object,
   },
   data() {
     return {
       name: this.staff.name,
-      edit: false
+      edit: false,
     }
   },
   methods: {
-    update: function() {
+    update: function () {
       this.toggleEdit()
       this.$store.dispatch('staff/edit', {
         id: this.staff.id,
-        name: this.name
+        name: this.name,
       })
     },
-    toggleEdit: function() {
+    toggleEdit: function () {
       this.edit = !this.edit
-    }
-  }
+    },
+  },
 }
 </script>

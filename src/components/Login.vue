@@ -35,7 +35,7 @@
             {{ $t('login') }}
           </b-button>
           <b-button design="outline_wide" v-if="isLoggingIn">
-            <b-spinner size="s" style="margin:auto;" />
+            <b-spinner size="s" style="margin: auto;" />
           </b-button>
         </b-form-item>
       </b-form-group>
@@ -51,27 +51,27 @@ export default {
   computed: {
     ...mapState('user', ['isLoggingIn']),
     username: {
-      get: function() {
+      get: function () {
         return this.$store.state.user.username
       },
-      set: function(username) {
+      set: function (username) {
         this.$store.commit('user/username', username)
-      }
+      },
     },
     password: {
-      get: function() {
+      get: function () {
         return this.$store.state.user.password
       },
-      set: function(password) {
+      set: function (password) {
         this.$store.commit('user/password', password)
-      }
-    }
+      },
+    },
   },
   methods: {
-    ...mapActions('user', ['login'])
+    ...mapActions('user', ['login']),
   },
-  mounted: function() {
+  mounted: function () {
     document.getElementById('username').focus()
-  }
+  },
 }
 </script>

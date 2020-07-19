@@ -35,17 +35,17 @@ export default {
   name: 'create-genre',
   data() {
     return {
-      name: null
+      name: null,
     }
   },
   computed: {
-    ...mapState('genre', ['isProcessing'])
+    ...mapState('genre', ['isProcessing']),
   },
   methods: {
-    create: function() {
+    create: function () {
       this.$store.dispatch('genre/create', this.name)
       this.name = null
-    }
-  }
+    },
+  },
 }
 </script>

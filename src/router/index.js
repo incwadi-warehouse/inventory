@@ -23,7 +23,7 @@ const router = new Router({
     {
       path: '/',
       name: 'index',
-      component: Search
+      component: Search,
     },
     {
       path: '/book/edit/:id',
@@ -33,32 +33,32 @@ const router = new Router({
         const props = route.params
         props.id = +props.id
         return props
-      }
+      },
     },
     {
       path: '/about',
       name: 'about',
-      component: About
+      component: About,
     },
     {
       path: '/genre',
       name: 'genre',
-      component: Genre
+      component: Genre,
     },
     {
       path: '/staff',
       name: 'staff',
-      component: Staff
+      component: Staff,
     },
     {
       path: '/stats',
       name: 'stats',
-      component: Stats
+      component: Stats,
     },
     {
       path: '/branch',
       name: 'branch',
-      component: Branch
+      component: Branch,
     },
     {
       path: '/author/:id',
@@ -68,19 +68,19 @@ const router = new Router({
         const props = route.params
         props.id = +props.id
         return props
-      }
+      },
     },
     {
       path: '/profile',
       name: 'profile',
-      component: Profile
+      component: Profile,
     },
     {
       path: '*',
       name: 'not-found',
-      component: NotFound
-    }
-  ]
+      component: NotFound,
+    },
+  ],
 })
 
 router.beforeEach((to, from, next) => {

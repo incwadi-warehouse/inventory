@@ -27,14 +27,14 @@ export default {
   name: 'condition-new',
   data() {
     return {
-      condition: null
+      condition: null,
     }
   },
   methods: {
-    create: function() {
+    create: function () {
       this.$store.dispatch('condition/create', this.condition)
       this.condition = null
-    }
-  }
+    },
+  },
 }
 </script>

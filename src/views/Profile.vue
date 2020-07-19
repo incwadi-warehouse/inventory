@@ -17,7 +17,7 @@ import Password from '../components/profile/Password'
 export default {
   name: 'profile-view',
   components: {
-    Password
-  }
+    Password,
+  },
 }
 </script>

@@ -34,31 +34,31 @@
 export default {
   name: 'edit-author',
   props: {
-    id: Number
+    id: Number,
   },
   data() {
     return {
       firstname: null,
-      surname: null
+      surname: null,
     }
   },
   methods: {
-    edit: function() {
+    edit: function () {
       this.$store.dispatch('author/edit', {
         id: this.id,
         firstname: this.firstname,
-        surname: this.surname
+        surname: this.surname,
       })
-    }
+    },
   },
-  created: function() {
+  created: function () {
     this.$store.dispatch('author/show', this.id)
   },
   watch: {
-    '$store.state.author.author': function() {
+    '$store.state.author.author': function () {
       this.firstname = this.$store.state.author.author.firstname
       this.surname = this.$store.state.author.author.surname
-    }
-  }
+    },
+  },
 }
 </script>
