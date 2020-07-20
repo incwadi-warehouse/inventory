@@ -34,6 +34,7 @@ export default {
       api(context.rootState.user.token)
         .put('/v1/branch/' + data.id, {
           name: data.name,
+          steps: data.steps,
         })
         .then(function (response) {
           context.commit('branch', response.data)

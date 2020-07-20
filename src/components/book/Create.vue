@@ -101,11 +101,21 @@
           </b-form-item>
           <b-form-item>
             <b-form-input
+              type="number"
+              id="price"
+              :step="branch.steps"
+              pattern="^\d+(\.|,)?\d{0,2}$"
+              required
+              v-model="price"
+              v-if="branch && branch.steps > 0"
+            />
+            <b-form-input
               type="text"
               id="price"
               pattern="^\d+(\.|,)?\d{0,2}$"
               required
               v-model="price"
+              v-else
             />
           </b-form-item>
         </b-form-group>
@@ -190,6 +200,7 @@ export default {
   computed: {
     ...mapState('genre', ['genres']),
     ...mapState('condition', ['conditions']),
+    ...mapState('branch', ['branch']),
     added: {
       get: function () {
         return this.$store.state.book.added
@@ -278,6 +289,9 @@ export default {
       this.$store.dispatch('tag/create', this.tag)
       this.tag = null
     },
+  },
+  created: function () {
+    this.$store.dispatch('branch/branch')
   },
   mounted: function () {
     this.$store.dispatch('genre/genres')

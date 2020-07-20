@@ -8,6 +8,24 @@
         <b-form-input type="text" id="name" v-model="name" />
       </b-form-item>
     </b-form-group>
+
+    <b-form-group>
+      <b-form-item>
+        <b-form-label for="name">{{ $t('price_steps') }}</b-form-label>
+      </b-form-item>
+      <b-form-item>
+        <b-form-input
+          type="number"
+          id="name"
+          min="0.00"
+          max="100.00"
+          step="0.01"
+          pattern="^\d+(\.|,)?\d{0,2}$"
+          v-model="steps"
+        />
+      </b-form-item>
+    </b-form-group>
+
     <b-form-group buttons v-if="me && me.isAdmin">
       <b-form-group>
         <b-form-item>
@@ -32,6 +50,7 @@ export default {
   data() {
     return {
       name: this.branch.name,
+      steps: this.branch.steps,
     }
   },
   computed: {
@@ -43,6 +62,7 @@ export default {
       this.$store.dispatch('branch/update', {
         id: this.branch.id,
         name: this.name,
+        steps: this.steps,
       })
     },
   },
