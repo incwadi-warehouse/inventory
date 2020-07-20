@@ -135,4 +135,5 @@ export default {
   delete: 'Delete',
   add_tag: 'Add Tag',
   create_tag_not_successful: 'Could not create tag.',
+  scroll_to_top: 'Scroll to top',
 }

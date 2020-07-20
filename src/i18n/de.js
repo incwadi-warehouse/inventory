@@ -143,4 +143,5 @@ export default {
   delete: 'Löschen',
   add_tag: 'Schlagwort hinzufügen',
   create_tag_not_successful: 'Schlagwort konnte nicht angelegt werden.',
+  scroll_to_top: 'Nach oben',
 }

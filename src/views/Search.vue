@@ -20,6 +20,8 @@
 
     <list />
     <author-list />
+
+    <scroll-to-top v-if="counter" />
   </article>
 </template>
 
@@ -29,6 +31,8 @@ import Filters from '../components/search/Filters'
 import List from '../components/search/List'
 import AuthorList from '../components/search/AuthorList'
 import Create from '../components/book/Create'
+import ScrollToTop from '../components/search/ScrollToTop'
+import { mapState } from 'vuex'
 
 export default {
   name: 'search-view',
@@ -38,6 +42,7 @@ export default {
     List,
     AuthorList,
     Create,
+    ScrollToTop,
   },
   computed: {
     isLoading: function () {
@@ -46,6 +51,7 @@ export default {
     tab: function () {
       return this.$store.state.search.tab
     },
+    ...mapState('search', ['counter']),
   },
   methods: {
     setTab: function (tab) {
