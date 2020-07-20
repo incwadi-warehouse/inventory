@@ -24,7 +24,7 @@ export default {
       api(context.rootState.user.token)
         .get('/v1/genre/')
         .then(function (response) {
-          context.commit('genres', response.data)
+          context.commit('genres', response.data.genres)
         })
     },
     create(context, name) {

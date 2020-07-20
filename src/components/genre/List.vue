@@ -1,5 +1,5 @@
 <template>
-  <b-container size="m">
+  <article>
     <b-list v-for="genre in genres" :key="genre.id">
       <template #options>
         <b-dropdown>
@@ -10,7 +10,7 @@
             :title="$t('remove')"
             icon="bin"
             @click="remove(genre.id)"
-            v-if="isAdmin"
+            v-if="me.isAdmin"
           />
         </b-dropdown>
       </template>
@@ -18,7 +18,7 @@
         <genre-edit :genre="genre" />
       </template>
     </b-list>
-  </b-container>
+  </article>
 </template>
 
 <script>
@@ -27,18 +27,20 @@ import GenreEdit from './Edit'
 
 export default {
   name: 'list-genre',
+  props: {
+    genres: {
+      type: Array,
+      required: true,
+    },
+  },
   components: {
     GenreEdit,
   },
   computed: {
     ...mapState('user', ['me']),
-    ...mapState('genre', ['genres']),
   },
   methods: {
     ...mapActions('genre', ['remove']),
-  },
-  created: function () {
-    this.$store.dispatch('genre/genres')
   },
 }
 </script>

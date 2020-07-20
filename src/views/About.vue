@@ -1,19 +1,15 @@
 <template>
-  <article>
-    <b-container size="m">
-      <h1>incwadi</h1>
-    </b-container>
-    <about />
-  </article>
+  <b-container size="m">
+    <h1>incwadi</h1>
+    <p>{{ $t('license') }}</p>
+    <p>{{ $t('repo') }}</p>
+    <p><a href="https://gitlab.com/incwadi/">Gitlab-Repository</a></p>
+    <p>{{ $t('contribution') }}</p>
+  </b-container>
 </template>
 
 <script>
-import About from '../components/about/About'
-
 export default {
   name: 'about-view',
-  components: {
-    About,
-  },
 }
 </script>

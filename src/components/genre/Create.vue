@@ -1,5 +1,5 @@
 <template>
-  <b-container size="m">
+  <article>
     <h2>{{ $t('new') }}</h2>
     <b-form @submit.prevent="create">
       <b-form-group>
@@ -25,7 +25,7 @@
         </b-form-item>
       </b-form-group>
     </b-form>
-  </b-container>
+  </article>
 </template>
 
 <script>

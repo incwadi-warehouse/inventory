@@ -3,7 +3,10 @@
     <b-container size="m">
       <h1>{{ $t('edit_author') }}</h1>
     </b-container>
-    <author-edit :id="id" />
+
+    <b-container size="m">
+      <author-edit :id="id" />
+    </b-container>
   </article>
 </template>
 

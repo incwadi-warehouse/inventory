@@ -3,8 +3,14 @@
     <b-container size="m">
       <h1>{{ $t('genres') }}</h1>
     </b-container>
-    <genre-list />
-    <genre-create v-if="isAdmin" />
+
+    <b-container size="m" v-if="genres.length > 0">
+      <genre-list :genres="genres" />
+    </b-container>
+
+    <b-container size="m" v-if="me && me.isAdmin">
+      <genre-create />
+    </b-container>
   </article>
 </template>
 
@@ -21,6 +27,11 @@ export default {
   },
   computed: {
     ...mapState('user', ['me']),
+    ...mapState('genre', ['genres']),
+  },
+  created: function () {
+    this.$store.dispatch('genre/genres')
+    if (!this.$store.state.user.me) this.$store.dispatch('user/me')
   },
 }
 </script>

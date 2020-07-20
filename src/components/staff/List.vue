@@ -1,5 +1,5 @@
 <template>
-  <b-container size="m">
+  <article>
     <b-list v-for="member in staff" :key="member.id">
       <template #options>
         <b-dropdown>
@@ -10,7 +10,7 @@
             :title="$t('remove')"
             icon="bin"
             @click="remove(member.id)"
-            v-if="isAdmin"
+            v-if="me.isAdmin"
           />
         </b-dropdown>
       </template>
@@ -18,7 +18,7 @@
         <edit-staff :staff="member" />
       </template>
     </b-list>
-  </b-container>
+  </article>
 </template>
 
 <script>
