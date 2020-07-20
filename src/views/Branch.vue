@@ -16,6 +16,11 @@
       <condition-list />
       <condition-new />
     </b-container>
+
+    <b-container size="m" v-if="branch">
+      <h2>{{ $t('settings') }}</h2>
+      <branch-edit :branch="branch" />
+    </b-container>
   </article>
 </template>
 
@@ -23,6 +28,8 @@
 import BranchCleanBooks from '../components/branch/CleanBooks'
 import ConditionList from '../components/condition/List'
 import ConditionNew from '../components/condition/New'
+import BranchEdit from '../components/branch/Edit'
+import { mapState } from 'vuex'
 
 export default {
   name: 'branch-view',
@@ -30,6 +37,13 @@ export default {
     BranchCleanBooks,
     ConditionList,
     ConditionNew,
+    BranchEdit,
+  },
+  computed: {
+    ...mapState('branch', ['branch']),
+  },
+  created: function () {
+    this.$store.dispatch('branch/branch')
   },
 }
 </script>

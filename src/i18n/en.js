@@ -136,4 +136,8 @@ export default {
   add_tag: 'Add Tag',
   create_tag_not_successful: 'Could not create tag.',
   scroll_to_top: 'Scroll to top',
+  settings: 'Settings',
+  name_of_branch: 'Name of branch',
+  branch_update_success: 'Branch updated successfully.',
+  branch_update_error: 'Could not update the branch.',
 }

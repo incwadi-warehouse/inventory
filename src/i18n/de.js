@@ -144,4 +144,8 @@ export default {
   add_tag: 'Schlagwort hinzufügen',
   create_tag_not_successful: 'Schlagwort konnte nicht angelegt werden.',
   scroll_to_top: 'Nach oben',
+  settings: 'Einstellungen',
+  name_of_branch: 'Name der Filiale',
+  branch_update_success: 'Filiale erfolgreich aktualisiert.',
+  branch_update_error: 'Konnte die Filiale nicht aktualisieren.',
 }
