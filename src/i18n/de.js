@@ -149,4 +149,5 @@ export default {
   branch_update_success: 'Filiale erfolgreich aktualisiert.',
   branch_update_error: 'Konnte die Filiale nicht aktualisieren.',
   price_steps: 'Preisschritte',
+  currency: 'Währung',
 }

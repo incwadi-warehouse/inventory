@@ -52,7 +52,9 @@
                 style="text-align: right;"
                 @click="filter('price')"
               >
-                {{ currency }} <indicator column="price" />
+                <span v-if="branch">{{ branch.currency }}</span>
+                <span v-else>{{ $t('price') }}</span>
+                <indicator column="price" />
               </th>
               <th
                 class="isSortable"
@@ -120,12 +122,12 @@ export default {
   },
   data() {
     return {
-      currency: process.env.CURRENCY,
       fluid: false,
     }
   },
   computed: {
     ...mapState('search', ['books', 'counter', 'sold', 'removed']),
+    ...mapState('branch', ['branch']),
     showLoadMore: function () {
       return this.books.length < this.counter
     },
@@ -166,6 +168,9 @@ export default {
       }
       return author.surname + ', ' + author.firstname
     },
+  },
+  created: function () {
+    this.$store.dispatch('branch/branch')
   },
 }
 </script>

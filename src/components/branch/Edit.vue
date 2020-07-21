@@ -26,6 +26,18 @@
       </b-form-item>
     </b-form-group>
 
+    <b-form-group>
+      <b-form-item>
+        <b-form-label for="currency">{{ $t('currency') }}</b-form-label>
+      </b-form-item>
+      <b-form-item>
+        <b-form-select id="currency" v-model="currency">
+          <option value="EUR">EUR</option>
+          <option value="USD">USD</option>
+        </b-form-select>
+      </b-form-item>
+    </b-form-group>
+
     <b-form-group buttons v-if="me && me.isAdmin">
       <b-form-group>
         <b-form-item>
@@ -51,6 +63,7 @@ export default {
     return {
       name: this.branch.name,
       steps: this.branch.steps,
+      currency: this.branch.currency,
     }
   },
   computed: {
@@ -63,6 +76,7 @@ export default {
         id: this.branch.id,
         name: this.name,
         steps: this.steps,
+        currency: this.currency,
       })
     },
   },

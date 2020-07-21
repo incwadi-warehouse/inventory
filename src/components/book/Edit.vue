@@ -95,7 +95,8 @@
       <b-form-group>
         <b-form-item>
           <b-form-label for="price">
-            {{ $t('price') }} ({{ currency }})
+            {{ $t('price') }}
+            <span v-if="branch">({{ branch.currency }})</span>
           </b-form-label>
         </b-form-item>
         <b-form-item>
@@ -235,7 +236,6 @@ export default {
   props: ['id'],
   data() {
     return {
-      currency: process.env.CURRENCY,
       tag: null,
     }
   },

@@ -26,7 +26,6 @@ Create the files `.env` and `.env.production` with the following content. Please
 ```shell
 API=URL
 LOCALE=en
-CURRENCY=EUR
 BRAND_COLOR=#000000
 LOGO=src/assets/logo.png
 ```

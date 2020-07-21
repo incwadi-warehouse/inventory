@@ -35,6 +35,7 @@ export default {
         .put('/v1/branch/' + data.id, {
           name: data.name,
           steps: data.steps,
+          currency: data.currency,
         })
         .then(function (response) {
           context.commit('branch', response.data)

@@ -141,4 +141,5 @@ export default {
   branch_update_success: 'Branch updated successfully.',
   branch_update_error: 'Could not update the branch.',
   price_steps: 'Price steps',
+  currency: 'Currency',
 }
