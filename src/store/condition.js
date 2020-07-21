@@ -14,14 +14,14 @@ export default {
   actions: {
     list(context) {
       api(context.rootState.user.token)
-        .get('/v1/condition/')
+        .get('/api/v1/condition/')
         .then(function (response) {
           context.commit('conditions', response.data)
         })
     },
     create(context, condition) {
       api(context.rootState.user.token)
-        .post('/v1/condition/new', { name: condition })
+        .post('/api/v1/condition/new', { name: condition })
         .then(function () {
           context.dispatch('list')
         })
@@ -34,7 +34,7 @@ export default {
     },
     remove(context, condition) {
       api(context.rootState.user.token)
-        .delete('/v1/condition/' + condition.id)
+        .delete('/api/v1/condition/' + condition.id)
         .then(function () {
           context.dispatch('list')
         })
@@ -47,7 +47,7 @@ export default {
     },
     update(context, data) {
       api(context.rootState.user.token)
-        .put('/v1/condition/' + data.id, { name: data.name })
+        .put('/api/v1/condition/' + data.id, { name: data.name })
         .then(function () {
           context.dispatch('list')
         })

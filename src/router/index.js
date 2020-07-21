@@ -11,12 +11,12 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      name: 'index',
+      name: 'search',
       component: () => import('../views/Search'),
     },
     {
-      path: '/book/edit/:id',
-      name: 'edit',
+      path: '/book/:id',
+      name: 'book',
       component: () => import('../views/EditBook'),
       props(route) {
         const props = route.params

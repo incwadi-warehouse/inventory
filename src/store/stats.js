@@ -18,7 +18,7 @@ export default {
     stats(context) {
       context.commit('isLoading', true)
       api(context.rootState.user.token)
-        .get('/v1/stats/')
+        .get('/api/v1/stats/')
         .then(function (response) {
           context.commit('stats', response.data)
         })

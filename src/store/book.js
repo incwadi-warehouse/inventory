@@ -81,7 +81,7 @@ export default {
   actions: {
     show(context, id) {
       api(context.rootState.user.token)
-        .get('/v1/book/' + id)
+        .get('/api/v1/book/' + id)
         .then(function (response) {
           context.commit('added', formatDate(response.data.added * 1000))
           context.commit('title', response.data.title)
@@ -125,7 +125,7 @@ export default {
         tags.push(element.id)
       })
       api(context.rootState.user.token)
-        .post('/v1/book/new', {
+        .post('/api/v1/book/new', {
           added: new Date(context.state.added).getTime() / 1000,
           title: context.state.title,
           author:
@@ -151,7 +151,7 @@ export default {
     },
     update(context, id) {
       api(context.rootState.user.token)
-        .put('/v1/book/' + id, {
+        .put('/api/v1/book/' + id, {
           added: new Date(context.state.added).getTime() / 1000,
           title: context.state.title,
           author:
@@ -170,7 +170,7 @@ export default {
         })
         .then(function () {
           context.dispatch('search/search', null, { root: true })
-          router.push({ name: 'index' })
+          router.push({ name: 'search' })
           notification.create('book_updated', 'success')
         })
         .catch(function (error) {
@@ -182,7 +182,7 @@ export default {
     },
     sell(context, book) {
       api(context.rootState.user.token)
-        .put('/v1/book/sell/' + book.id)
+        .put('/api/v1/book/sell/' + book.id)
         .then(function () {
           context.commit('search/removeBook', book, { root: true })
           notification.create('book_sell_success', 'success')
@@ -193,7 +193,7 @@ export default {
     },
     remove(context, book) {
       api(context.rootState.user.token)
-        .put('/v1/book/remove/' + book.id)
+        .put('/api/v1/book/remove/' + book.id)
         .then(function () {
           context.commit('search/removeBook', book, { root: true })
           notification.create('book_remove_success', 'success')
@@ -222,7 +222,7 @@ export default {
     },
     clean(context) {
       api(context.rootState.user.token)
-        .delete('/v1/book/clean')
+        .delete('/api/v1/book/clean')
         .then(function () {
           notification.create('book_clean_success', 'success')
         })

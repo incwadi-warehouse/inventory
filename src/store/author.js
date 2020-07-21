@@ -23,7 +23,7 @@ export default {
   actions: {
     show(context, id) {
       api(context.rootState.user.token)
-        .get('/v1/author/' + id)
+        .get('/api/v1/author/' + id)
         .then(function (response) {
           context.commit('author', response.data)
           context.commit('firstname', response.data.firstname)
@@ -32,12 +32,12 @@ export default {
     },
     edit(context, data) {
       api(context.rootState.user.token)
-        .put('/v1/author/' + data.id, {
+        .put('/api/v1/author/' + data.id, {
           firstname: data.firstname,
           surname: data.surname,
         })
         .then(function () {
-          router.push({ name: 'index' })
+          router.push({ name: 'search' })
           notification.create('author_edit_successful', 'success')
         })
         .catch(function () {
@@ -46,7 +46,7 @@ export default {
     },
     remove(context, id) {
       api(context.rootState.user.token)
-        .delete('/v1/author/' + id)
+        .delete('/api/v1/author/' + id)
         .then(function () {
           notification.create('author_remove_successful', 'success')
         })

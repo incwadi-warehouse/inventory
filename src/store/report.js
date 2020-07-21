@@ -14,14 +14,14 @@ export default {
   actions: {
     reports(context) {
       api(context.rootState.user.token)
-        .get('/v1/report/')
+        .get('/api/v1/report/')
         .then(function (response) {
           context.commit('reports', response.data)
         })
     },
     create(context, data) {
       api(context.rootState.user.token)
-        .post('/v1/report/new', {
+        .post('/api/v1/report/new', {
           name: data.name,
           searchTerm: data.searchTerm,
           limitTo: data.limitTo,
@@ -45,7 +45,7 @@ export default {
     },
     remove(context, id) {
       api(context.rootState.user.token)
-        .delete('/v1/report/' + id)
+        .delete('/api/v1/report/' + id)
         .then(function () {
           context.dispatch('reports')
           notification.create('report_remove_success', 'success')

@@ -7,7 +7,7 @@
     <div v-if="isAuthenticated">
       <ul class="offcanvas_nav">
         <li class="offcanvas_item">
-          <router-link :to="{ name: 'index' }" class="offcanvas_link">
+          <router-link :to="{ name: 'search' }" class="offcanvas_link">
             {{ $t('search') }}
           </router-link>
         </li>

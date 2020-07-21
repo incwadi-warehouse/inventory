@@ -21,7 +21,7 @@ export default {
   actions: {
     create(context, name) {
       api(context.rootState.user.token)
-        .post('/v1/tag/new', {
+        .post('/api/v1/tag/new', {
           name: name,
         })
         .then(function (response) {

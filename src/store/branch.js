@@ -18,21 +18,21 @@ export default {
   actions: {
     branches(context) {
       api(context.rootState.user.token)
-        .get('/v1/branch/')
+        .get('/api/v1/branch/')
         .then(function (response) {
           context.commit('branches', response.data)
         })
     },
     branch(context) {
       api(context.rootState.user.token)
-        .get('/v1/branch/my')
+        .get('/api/v1/branch/my')
         .then(function (response) {
           context.commit('branch', response.data)
         })
     },
     update(context, data) {
       api(context.rootState.user.token)
-        .put('/v1/branch/' + data.id, {
+        .put('/api/v1/branch/' + data.id, {
           name: data.name,
           steps: data.steps,
           currency: data.currency,

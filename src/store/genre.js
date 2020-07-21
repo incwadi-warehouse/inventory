@@ -22,15 +22,15 @@ export default {
   actions: {
     genres(context) {
       api(context.rootState.user.token)
-        .get('/v1/genre/')
+        .get('/api/v1/genre/')
         .then(function (response) {
-          context.commit('genres', response.data.genres)
+          context.commit('genres', response.data)
         })
     },
     create(context, name) {
       context.commit('isProcessing', true)
       api(context.rootState.user.token)
-        .post('/v1/genre/new', {
+        .post('/api/v1/genre/new', {
           name: name,
         })
         .then(function () {
@@ -46,7 +46,7 @@ export default {
     },
     edit(context, data) {
       api(context.rootState.user.token)
-        .put('/v1/genre/' + data.id, {
+        .put('/api/v1/genre/' + data.id, {
           name: data.name,
         })
         .then(function () {
@@ -59,7 +59,7 @@ export default {
     },
     remove(context, id) {
       api(context.rootState.user.token)
-        .delete('/v1/genre/' + id)
+        .delete('/api/v1/genre/' + id)
         .then(function () {
           context.dispatch('genres')
           notification.create('genre_remove_success', 'success')

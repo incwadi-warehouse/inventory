@@ -128,7 +128,7 @@ export default {
       }
 
       api(context.rootState.user.token)
-        .get('/v1/book/find', {
+        .get('/api/v1/book/find', {
           params: {
             term: context.state.searchTerm,
             limit: context.state.limit,
@@ -144,8 +144,8 @@ export default {
           },
         })
         .then(function (response) {
-          context.commit('books', response.data.books)
-          context.commit('counter', response.data.counter)
+          context.commit('books', response.data)
+          context.commit('counter', response.data.length)
           context.commit('isLoading', false)
           context.dispatch('authors', null)
         })
@@ -154,7 +154,7 @@ export default {
       if (!context.state.searchTerm) return
 
       api(context.rootState.user.token)
-        .get('/v1/author/find', {
+        .get('/api/v1/author/find', {
           params: {
             term: context.state.searchTerm,
           },

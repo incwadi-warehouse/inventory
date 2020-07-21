@@ -5,7 +5,7 @@
     :showMenu="isAuthenticated"
     :showSettings="isAuthenticated"
   >
-    <router-link :to="{ name: 'index' }">
+    <router-link :to="{ name: 'search' }">
       <img :src="logo" alt="incwadi" />
     </router-link>
   </b-masthead>
