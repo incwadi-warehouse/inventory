@@ -1,5 +1,6 @@
 <template>
   <b-form @submit.prevent="update" v-if="branch">
+    <!-- branch -->
     <b-form-group>
       <b-form-item>
         <b-form-label for="name">{{ $t('name_of_branch') }}</b-form-label>
@@ -8,15 +9,17 @@
         <b-form-input type="text" id="name" v-model="name" />
       </b-form-item>
     </b-form-group>
+    <!-- /branch -->
 
+    <!-- steps -->
     <b-form-group>
       <b-form-item>
-        <b-form-label for="name">{{ $t('price_steps') }}</b-form-label>
+        <b-form-label for="steps">{{ $t('price_steps') }}</b-form-label>
       </b-form-item>
       <b-form-item>
         <b-form-input
           type="number"
-          id="name"
+          id="steps"
           min="0.00"
           max="100.00"
           step="0.01"
@@ -25,7 +28,9 @@
         />
       </b-form-item>
     </b-form-group>
+    <!-- /steps -->
 
+    <!-- currency -->
     <b-form-group>
       <b-form-item>
         <b-form-label for="currency">{{ $t('currency') }}</b-form-label>
@@ -37,11 +42,12 @@
         </b-form-select>
       </b-form-item>
     </b-form-group>
+    <!-- /currency -->
 
     <b-form-group buttons v-if="me && me.isAdmin">
       <b-form-group>
         <b-form-item>
-          <b-button>{{ $t('save') }}</b-button>
+          <b-button design="outline">{{ $t('save') }}</b-button>
         </b-form-item>
       </b-form-group>
     </b-form-group>

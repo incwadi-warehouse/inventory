@@ -32,9 +32,9 @@ export default {
           )
         })
     },
-    remove(context, condition) {
+    remove(context, conditionId) {
       api(context.rootState.user.token)
-        .delete('/api/v1/condition/' + condition.id)
+        .delete('/api/v1/condition/' + conditionId)
         .then(function () {
           context.dispatch('list')
         })

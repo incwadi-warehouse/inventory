@@ -5,7 +5,7 @@
   <b-form @submit.prevent="update" v-else>
     <b-form-group>
       <b-form-item>
-        <b-form-label for="genre" class="visuallyHidden">
+        <b-form-label for="genre" hidden>
           {{ $t('genre') }}
         </b-form-label>
       </b-form-item>

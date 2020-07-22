@@ -5,10 +5,11 @@
     </b-container>
 
     <b-container size="m">
-      <staff-list />
+      <staff-list v-for="member in staff" :key="member.id" :staff="member" />
     </b-container>
 
     <b-container size="m" v-if="me && me.isAdmin">
+      <h2>{{ $t('new') }}</h2>
       <staff-create />
     </b-container>
   </article>
@@ -27,9 +28,11 @@ export default {
   },
   computed: {
     ...mapState('user', ['me']),
+    ...mapState('staff', ['staff']),
   },
   created: function () {
     if (!this.$store.state.user.me) this.$store.dispatch('user/me')
+    this.$store.dispatch('staff/staff')
   },
 }
 </script>

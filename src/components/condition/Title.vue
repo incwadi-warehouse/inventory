@@ -6,7 +6,7 @@
     <b-form @submit.prevent="update" v-if="isEditing">
       <b-form-group>
         <b-form-item>
-          <b-form-label for="name" class="visuallyHidden">
+          <b-form-label for="name" hidden>
             {{ $t('name') }}
           </b-form-label>
         </b-form-item>

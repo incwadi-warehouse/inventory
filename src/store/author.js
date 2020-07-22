@@ -6,18 +6,10 @@ export default {
   namespaced: true,
   state: {
     author: null,
-    firstname: null,
-    surname: null,
   },
   mutations: {
     author(state, author) {
       state.author = author
-    },
-    firstname(state, firstname) {
-      state.firstname = firstname
-    },
-    surname(state, surname) {
-      state.surname = surname
     },
   },
   actions: {
@@ -26,8 +18,6 @@ export default {
         .get('/api/v1/author/' + id)
         .then(function (response) {
           context.commit('author', response.data)
-          context.commit('firstname', response.data.firstname)
-          context.commit('surname', response.data.surname)
         })
     },
     edit(context, data) {
@@ -37,8 +27,8 @@ export default {
           surname: data.surname,
         })
         .then(function () {
-          router.push({ name: 'search' })
           notification.create('author_edit_successful', 'success')
+          router.push({ name: 'search' })
         })
         .catch(function () {
           notification.create('author_edit_error', 'error')

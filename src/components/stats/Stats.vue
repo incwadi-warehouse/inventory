@@ -1,5 +1,5 @@
 <template>
-  <ul class="list">
+  <ul>
     <li>
       <b>{{ stats.all }}</b> {{ $t('all_books') }}
     </li>

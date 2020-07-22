@@ -5,10 +5,11 @@
     </b-container>
 
     <b-container size="m" v-if="genres.length > 0">
-      <genre-list :genres="genres" />
+      <genre-list v-for="genre in genres" :key="genre.id" :genre="genre" />
     </b-container>
 
     <b-container size="m" v-if="me && me.isAdmin">
+      <h2>{{ $t('new') }}</h2>
       <genre-create />
     </b-container>
   </article>

@@ -13,7 +13,11 @@
     <b-container size="m">
       <h2>{{ $t('conditions') }}</h2>
       <p>{{ $t('conditions_desc') }}</p>
-      <condition-list />
+      <condition-list
+        v-for="condition in conditions"
+        :key="condition.id"
+        :condition="condition"
+      />
       <condition-new />
     </b-container>
 
@@ -41,9 +45,11 @@ export default {
   },
   computed: {
     ...mapState('branch', ['branch']),
+    ...mapState('condition', ['conditions']),
   },
   created: function () {
     this.$store.dispatch('branch/branch')
+    this.$store.dispatch('condition/list')
   },
 }
 </script>
