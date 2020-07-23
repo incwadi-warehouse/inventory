@@ -27,7 +27,7 @@ Create the files `.env` and `.env.production` with the following content. Please
 API=URL
 LOCALE=en
 BRAND_COLOR=#000000
-LOGO=src/assets/logo.png
+LOGO=src/assets/logo.png # set to false for default logo
 ```
 
 Start the build process.
