@@ -15,9 +15,12 @@ Vue.config.productionTip = false
 
 cssVars({
   variables: {
-    'color-primary-10': process.env.BRAND_COLOR,
-    'color-primary-05': '#eeab84',
-    'color-primary-00': '#fcf1ea',
+    'color-primary-10':
+      process.env.COLOR10 !== 'false' ? process.env.COLOR10 : '#e1661e',
+    'color-primary-05':
+      process.env.COLOR05 !== 'false' ? process.env.COLOR05 : '#eeab84',
+    'color-primary-00':
+      process.env.COLOR00 !== 'false' ? process.env.COLOR00 : '#fcf1ea',
     'masthead-height': '66px',
   },
 })

@@ -41,9 +41,19 @@ export default {
     ...mapState('user', ['isAuthenticated']),
   },
   mounted: function () {
-    document
-      .querySelector('html')
-      .style.setProperty('--color-primary-10', process.env.BRAND_COLOR)
+    const el = document.querySelector('html')
+    el.style.setProperty(
+      '--color-primary-10',
+      process.env.COLOR10 !== 'false' ? process.env.COLOR10 : '#e1661e'
+    )
+    el.style.setProperty(
+      '--color-primary-05',
+      process.env.COLOR05 !== 'false' ? process.env.COLOR05 : '#eeab84'
+    )
+    el.style.setProperty(
+      '--color-primary-00',
+      process.env.COLOR00 !== 'false' ? process.env.COLOR00 : '#fcf1ea'
+    )
     this.$store.dispatch('user/check')
   },
 }
