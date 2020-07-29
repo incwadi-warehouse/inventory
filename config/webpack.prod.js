@@ -76,7 +76,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new Dotenv({
-      path: './.env.production'
+      path: './.env'
     }),
     new VueLoaderPlugin(),
     new webpack.LoaderOptionsPlugin({
