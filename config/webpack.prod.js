@@ -83,7 +83,7 @@ module.exports = {
       minimize: true
     }),
     new HtmlWebpackPlugin({
-      template: 'index.html',
+      template: 'static/index.html',
       minify: {
         removeComments: true,
         collapseWhitespace: true,
@@ -97,7 +97,7 @@ module.exports = {
       }
     }),
     new FaviconsWebpackPlugin({
-      logo: './src/assets/icon.svg',
+      logo: './static/icon.svg',
       prefix: 'assets/',
       inject: true,
       favicons: {
@@ -137,7 +137,7 @@ module.exports = {
     }),
     new CopyPlugin({
       patterns: [
-        { from: 'src/assets/robots.txt', to: 'robots.txt' },
+        { from: 'static/robots.txt', to: 'robots.txt' },
       ]
     })
   ],

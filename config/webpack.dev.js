@@ -79,7 +79,7 @@ module.exports = {
     }),
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
-      template: 'index.html'
+      template: 'static/index.html'
     })
   ]
 }
