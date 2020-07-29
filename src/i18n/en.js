@@ -143,4 +143,5 @@ export default {
   price_steps: 'Price steps',
   currency: 'Currency',
   hello: 'Hello',
+  beach: 'Beach',
 }

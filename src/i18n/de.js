@@ -151,4 +151,5 @@ export default {
   price_steps: 'Preisschritte',
   currency: 'Währung',
   hello: 'Hallo',
+  beach: 'Strand',
 }
