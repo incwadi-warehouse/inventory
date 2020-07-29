@@ -3,19 +3,19 @@
     <heading class="noprint" />
     <navigation class="noprint" />
     <b-content>
-      <b-notification-bar>
-        <b-notification
-          v-for="notification in notifications"
-          :key="notification.id"
-          :type="notification.state"
-          hidable
-        >
-          {{ $t(notification.msg) }}
-        </b-notification>
-      </b-notification-bar>
       <router-view v-if="isAuthenticated" />
       <login v-if="!isAuthenticated" />
     </b-content>
+    <b-notification-bar>
+      <b-notification
+        v-for="notification in notifications"
+        :key="notification.id"
+        :type="notification.state"
+        hidable
+      >
+        {{ $t(notification.msg) }}
+      </b-notification>
+    </b-notification-bar>
   </b-app>
 </template>
 
