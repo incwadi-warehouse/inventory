@@ -12,12 +12,12 @@ const router = new Router({
     {
       path: '/',
       name: 'search',
-      component: () => import('../views/Search'),
+      component: () => import('../views/SearchView'),
     },
     {
       path: '/book/:id',
       name: 'book',
-      component: () => import('../views/EditBook'),
+      component: () => import('../views/EditBookView'),
       props(route) {
         const props = route.params
         props.id = +props.id
@@ -27,32 +27,32 @@ const router = new Router({
     {
       path: '/about',
       name: 'about',
-      component: () => import('../views/About'),
+      component: () => import('../views/AboutView'),
     },
     {
       path: '/genre',
       name: 'genre',
-      component: () => import('../views/Genre'),
+      component: () => import('../views/GenreView'),
     },
     {
       path: '/staff',
       name: 'staff',
-      component: () => import('../views/Staff'),
+      component: () => import('../views/StaffView'),
     },
     {
       path: '/stats',
       name: 'stats',
-      component: () => import('../views/Stats'),
+      component: () => import('../views/StatsView'),
     },
     {
       path: '/branch',
       name: 'branch',
-      component: () => import('../views/Branch'),
+      component: () => import('../views/BranchView'),
     },
     {
       path: '/author/:id',
       name: 'author',
-      component: () => import('../views/Author'),
+      component: () => import('../views/AuthorView'),
       props(route) {
         const props = route.params
         props.id = +props.id
@@ -62,12 +62,12 @@ const router = new Router({
     {
       path: '/profile',
       name: 'profile',
-      component: () => import('../views/Profile'),
+      component: () => import('../views/ProfileView'),
     },
     {
       path: '*',
       name: 'not-found',
-      component: () => import('../views/404'),
+      component: () => import('../views/404View'),
     },
   ],
   scrollBehavior() {
