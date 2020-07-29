@@ -37,6 +37,9 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'branch-view',
+  head: {
+    title: 'Branch',
+  },
   components: {
     BranchCleanBooks,
     ConditionList,

@@ -11,5 +11,8 @@
 <script>
 export default {
   name: 'about-view',
+  head: {
+    title: 'About',
+  },
 }
 </script>

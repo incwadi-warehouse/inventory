@@ -27,6 +27,26 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'app',
+  head: {
+    title: 'Home',
+    titleTemplate: '%s - incwadi',
+    meta: [
+      {
+        vmid: 'description',
+        name: 'description',
+        content: 'incwadi is a book database to manage your books.',
+      },
+      {
+        vmid: 'viewport',
+        name: 'viewport',
+        content: 'width=device-width, initial-scale=1.0',
+      },
+      {
+        vmid: 'charset',
+        charset: 'utf-8',
+      },
+    ],
+  },
   components: {
     Heading,
     Login,

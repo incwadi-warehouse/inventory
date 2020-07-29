@@ -13,6 +13,9 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'edit-view',
+  head: {
+    title: 'Book',
+  },
   props: {
     id: Number,
   },

@@ -22,6 +22,9 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'genre-view',
+  head: {
+    title: 'Genre',
+  },
   components: {
     GenreList,
     GenreCreate,

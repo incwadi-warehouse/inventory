@@ -7,10 +7,13 @@ import cssVars from 'css-vars-ponyfill'
 import 'core-js/features/promise'
 import 'core-js/features/number/parse-float'
 import components from '@baldeweg/components'
+import VueMeta from 'vue-meta'
 
 Vue.use(components)
 Vue.themes()
-
+Vue.use(VueMeta, {
+  keyName: 'head',
+})
 Vue.config.productionTip = false
 
 cssVars({

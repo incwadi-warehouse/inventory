@@ -20,6 +20,9 @@ import ProfilePassword from '../components/profile/Password'
 
 export default {
   name: 'profile-view',
+  head: {
+    title: 'Profile',
+  },
   components: {
     ProfilePassword,
   },

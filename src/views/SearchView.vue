@@ -36,6 +36,9 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'search-view',
+  head: {
+    title: 'Search',
+  },
   components: {
     Search,
     Filters,

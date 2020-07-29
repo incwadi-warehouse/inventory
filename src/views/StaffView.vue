@@ -22,6 +22,9 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'staff-view',
+  head: {
+    title: 'Staff',
+  },
   components: {
     StaffList,
     StaffCreate,

@@ -16,6 +16,9 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'author-view',
+  head: {
+    title: 'Author',
+  },
   props: {
     id: {
       type: Number,

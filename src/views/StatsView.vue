@@ -20,6 +20,9 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'stats-view',
+  head: {
+    title: 'Stats',
+  },
   components: {
     Stats,
   },
