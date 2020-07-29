@@ -1,7 +1,8 @@
 <template>
   <details>
     <summary>{{ $t('change_password') }}</summary>
-    <b-form @submit.prevent="save">
+
+    <b-form @submit.prevent="update">
       <b-form-group>
         <b-form-item>
           <b-form-label for="password">
@@ -12,11 +13,10 @@
           <b-form-input type="password" id="password" v-model="password" />
         </b-form-item>
       </b-form-group>
+
       <b-form-group buttons>
         <b-form-item>
-          <b-button design="primary">
-            {{ $t('save') }}
-          </b-button>
+          <b-button design="primary">{{ $t('save') }}</b-button>
         </b-form-item>
       </b-form-group>
     </b-form>
@@ -24,24 +24,18 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
-
 export default {
-  name: 'password',
-  computed: {
-    password: {
-      get: function () {
-        return this.$store.state.user.password
-      },
-      set: function (password) {
-        this.$store.commit('user/password', password)
-      },
-    },
+  name: 'password-profile',
+  data() {
+    return {
+      password: null,
+    }
   },
   methods: {
-    ...mapActions('user', {
-      save: 'password',
-    }),
+    update: function () {
+      this.$store.dispatch('user/password', this.password)
+      this.password = null
+    },
   },
 }
 </script>

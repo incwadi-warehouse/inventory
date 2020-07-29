@@ -4,13 +4,18 @@
     <navigation class="noprint" />
     <b-content>
       <router-view v-if="isAuthenticated" />
-      <login v-if="!isAuthenticated" />
+      <b-container size="s" v-if="!isAuthenticated">
+        <h1>{{ $t('login') }}</h1>
+        <profile-login />
+      </b-container>
     </b-content>
+
     <b-notification-bar>
       <b-notification
         v-for="notification in notifications"
         :key="notification.id"
         :type="notification.state"
+        :undo="notification.undo"
         hidable
       >
         {{ $t(notification.msg) }}
@@ -21,8 +26,8 @@
 
 <script>
 import Heading from './components/Heading'
-import Login from './components/Login'
 import Navigation from './components/Navigation'
+import ProfileLogin from './components/profile/Login'
 import { mapState } from 'vuex'
 
 export default {
@@ -49,8 +54,8 @@ export default {
   },
   components: {
     Heading,
-    Login,
     Navigation,
+    ProfileLogin,
   },
   data() {
     return {
@@ -75,6 +80,8 @@ export default {
       process.env.COLOR00 !== 'false' ? process.env.COLOR00 : '#fcf1ea'
     )
     this.$store.dispatch('user/check')
+    this.$i18n.locale =
+      window.localStorage.getItem('locale') || process.env.LOCALE
   },
 }
 </script>

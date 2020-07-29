@@ -1,5 +1,4 @@
-import api from '../api'
-import router from '../router'
+import Api from '../api'
 import Cookies from 'js-cookie'
 import { notification } from '@baldeweg/components'
 
@@ -8,8 +7,6 @@ export default {
   state: {
     token: Cookies.get('token'),
     refreshToken: Cookies.get('refresh_token'),
-    username: null,
-    password: null,
     me: null,
     isAuthenticated: false,
     isLoggingIn: false,
@@ -22,12 +19,6 @@ export default {
     },
     refreshToken(state, refreshToken) {
       state.refreshToken = refreshToken
-    },
-    username(state, username) {
-      state.username = username
-    },
-    password(state, password) {
-      state.password = password
     },
     me(state, me) {
       state.me = me
@@ -75,12 +66,12 @@ export default {
         context.dispatch('logout')
       }
     },
-    login(context) {
+    login(context, data) {
       context.commit('isLoggingIn', true)
-      api(context.state.token)
+      Api(context.state.token)
         .post('/api/login_check', {
-          username: context.state.username,
-          password: context.state.password,
+          username: data.username,
+          password: data.password,
         })
         .then(function (response) {
           Cookies.set('token', response.data.token, { expires: 7 })
@@ -89,8 +80,6 @@ export default {
             expires: 30,
           })
           context.commit('refreshToken', response.data.refresh_token)
-          context.commit('username', null)
-          context.commit('password', null)
           context.commit('isAuthenticated', true)
           context.dispatch('check')
         })
@@ -102,7 +91,7 @@ export default {
         })
     },
     refresh(context) {
-      api(context.state.token)
+      Api(context.state.token)
         .post('/api/token/refresh', {
           refresh_token: context.state.refreshToken,
         })
@@ -121,8 +110,6 @@ export default {
     },
     logout(context) {
       context.commit('isAuthenticated', false)
-      context.commit('username', null)
-      context.commit('password', null)
       context.commit('me', null)
       context.commit('app/showOffCanvas', false, { root: true })
       Cookies.remove('token')
@@ -130,7 +117,7 @@ export default {
       window.clearInterval(context.state.interval)
     },
     me(context) {
-      api(context.state.token)
+      Api(context.state.token)
         .get('/api/v1/me')
         .then(function (response) {
           context.commit('me', response.data)
@@ -142,16 +129,14 @@ export default {
           }
         })
     },
-    password(context) {
+    password(context, password) {
       context.commit('isChangingPassword', true)
-      api(context.state.token)
+      Api(context.state.token)
         .put('/api/v1/password', {
-          password: context.state.password,
+          password: password,
         })
         .then(function () {
           notification.create('password_successful', 'success')
-          router.push({ name: 'items' })
-          context.commit('password', null)
         })
         .catch(function () {
           notification.create('password_error', 'error')
