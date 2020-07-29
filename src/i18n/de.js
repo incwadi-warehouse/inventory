@@ -150,4 +150,5 @@ export default {
   branch_update_error: 'Konnte die Filiale nicht aktualisieren.',
   price_steps: 'Preisschritte',
   currency: 'Währung',
+  hello: 'Hallo',
 }

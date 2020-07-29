@@ -142,4 +142,5 @@ export default {
   branch_update_error: 'Could not update the branch.',
   price_steps: 'Price steps',
   currency: 'Currency',
+  hello: 'Hello',
 }
