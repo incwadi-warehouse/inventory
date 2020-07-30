@@ -8,11 +8,12 @@
           </b-form-label>
         </b-form-item>
         <b-form-item>
-          <b-form-select id="genre" required v-model="genreId">
-            <option v-for="genre in genres" :key="genre.id" :value="genre.id">
-              {{ genre.name }}
-            </option>
-          </b-form-select>
+          <b-form-autosuggest
+            required
+            :source="genres"
+            v-model="genreId"
+            v-if="genres.length >= 1"
+          />
         </b-form-item>
       </b-form-group>
       <b-form-group>
