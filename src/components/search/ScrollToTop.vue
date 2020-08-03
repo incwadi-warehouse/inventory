@@ -1,14 +1,14 @@
 <template>
-  <button class="scroll-to-top" @click.prevent="scrollToTop()">
+  <button class="scroll-to-top" @click.prevent="scrollToTop">
     {{ $t('scroll_to_top') }}
   </button>
 </template>
 
 <script>
 export default {
-  name: 'scroll-to-top',
+  name: 'scroll-to-top-search',
   methods: {
-    scrollToTop: function () {
+    scrollToTop() {
       window.scrollTo(0, 0)
     },
   },

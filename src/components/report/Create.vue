@@ -37,7 +37,7 @@ export default {
     create: function () {
       this.$store.dispatch('report/create', {
         name: this.name,
-        searchTerm: this.$store.state.search.searchTerm,
+        term: this.$store.state.search.term,
         limitTo: this.$store.state.search.limit,
         sold: this.$store.state.search.sold,
         removed: this.$store.state.search.removed,

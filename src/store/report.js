@@ -23,7 +23,7 @@ export default {
       api(context.rootState.user.token)
         .post('/api/v1/report/new', {
           name: data.name,
-          searchTerm: data.searchTerm,
+          term: data.term,
           limitTo: data.limitTo,
           sold: data.sold,
           removed: data.removed,

@@ -1,6 +1,6 @@
 <template>
   <span
-    v-if="orderBy === column + '_asc' || orderBy === column + '_desc'"
+    v-if="orderByDirection === 'asc' || orderByDirection === 'desc'"
     v-html="icon"
   />
 </template>
@@ -9,15 +9,19 @@
 import { mapState } from 'vuex'
 
 export default {
-  name: 'order-by-indicator',
-  props: ['column'],
+  name: 'order-by-indicator-search',
+  props: {
+    column: String,
+  },
   computed: {
-    ...mapState('search', ['orderBy']),
-    icon: function () {
-      if (this.orderBy === this.column + '_asc') {
+    ...mapState('search', ['orderByDirection', 'orderByField']),
+    icon() {
+      if (this.column !== this.orderByField) return
+
+      if (this.orderByDirection === 'asc') {
         return '&#9650;'
       }
-      if (this.orderBy === this.column + '_desc') {
+      if (this.orderByDirection === 'desc') {
         return '&#9660;'
       }
 

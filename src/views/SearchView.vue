@@ -1,38 +1,41 @@
 <template>
   <article>
-    <search class="noprint" />
-
-    <b-container size="m" class="noprint" style="text-align: right;">
-      <b-button design="outline" @click="setTab('filter')">
-        {{ $t('filter') }}
-      </b-button>
-      <b-button design="outline" @click="setTab('create')">
-        {{ $t('catalog') }}
-      </b-button>
-    </b-container>
-
-    <filters class="noprint" v-if="tab === 'filter'" />
-    <create class="noprint" v-if="tab === 'create'" />
+    <search-actionbar class="noprint" />
 
     <b-container size="m" v-if="isLoading">
       <b-spinner size="l" />
     </b-container>
 
-    <list />
-    <author-list />
+    <div class="noprint" v-if="hasBooks">
+      <search-book-heading />
+    </div>
 
-    <scroll-to-top v-if="counter" />
+    <b-container :size="size" v-if="hasBooks">
+      <b-table>
+        <table>
+          <search-books-table-head />
+          <search-books-table-body />
+        </table>
+      </b-table>
+    </b-container>
+
+    <b-container size="m" v-if="hasAuthors">
+      <h2>{{ $t('authors') }}</h2>
+    </b-container>
+
+    <search-author-list v-if="hasAuthors" />
+
+    <search-scroll-to-top v-if="hasBooks" />
   </article>
 </template>
 
 <script>
-import Search from '../components/search/Search'
-import Filters from '../components/search/Filters'
-import List from '../components/search/List'
-import AuthorList from '../components/search/AuthorList'
-import Create from '../components/book/Create'
-import ScrollToTop from '../components/search/ScrollToTop'
-import { mapState } from 'vuex'
+import SearchActionbar from '../components/search/Actionbar'
+import SearchAuthorList from '../components/search/AuthorList'
+import SearchScrollToTop from '../components/search/ScrollToTop'
+import SearchBookHeading from '../components/search/BookHeading'
+import SearchBooksTableHead from '../components/search/BooksTableHead'
+import SearchBooksTableBody from '../components/search/BooksTableBody'
 
 export default {
   name: 'search-view',
@@ -40,29 +43,27 @@ export default {
     title: 'Search',
   },
   components: {
-    Search,
-    Filters,
-    List,
-    AuthorList,
-    Create,
-    ScrollToTop,
+    SearchActionbar,
+    SearchAuthorList,
+    SearchScrollToTop,
+    SearchBookHeading,
+    SearchBooksTableHead,
+    SearchBooksTableBody,
   },
   computed: {
-    isLoading: function () {
+    hasBooks() {
+      if (!this.$store.state.book.books) return false
+      return this.$store.state.book.books.length >= 1
+    },
+    hasAuthors() {
+      if (!this.$store.state.author.authors) return false
+      return this.$store.state.author.authors.length >= 1
+    },
+    isLoading() {
       return this.$store.state.search.isLoading
     },
-    tab: function () {
-      return this.$store.state.search.tab
-    },
-    ...mapState('search', ['counter']),
-  },
-  methods: {
-    setTab: function (tab) {
-      if (tab === this.$store.state.search.tab) {
-        this.$store.commit('search/tab', null)
-        return
-      }
-      this.$store.commit('search/tab', tab)
+    size() {
+      return this.$store.state.search.fluid ? 'l' : 'm'
     },
   },
 }

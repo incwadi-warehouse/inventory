@@ -29,7 +29,7 @@ export default {
   name: 'list',
   methods: {
     showReport: function (report) {
-      this.$store.commit('search/searchTerm', report.searchTerm)
+      this.$store.commit('search/term', report.term)
       this.$store.commit('search/limit', report.limitTo)
       this.$store.commit('search/sold', report.sold ? 1 : 0)
       this.$store.commit('search/removed', report.removed ? 1 : 0)

@@ -281,10 +281,10 @@ export default {
   methods: {
     ...mapActions('book', ['create']),
     close: function () {
-      this.$store.commit('search/tab', null)
+      this.$emit('close', this.$event)
     },
     cancel: function () {
-      this.$store.commit('search/tab', false)
+      this.$emit('close', this.$event)
     },
     createTag: function () {
       this.$store.dispatch('tag/create', this.tag)

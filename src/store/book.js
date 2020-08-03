@@ -19,6 +19,8 @@ const formatDate = function (data) {
 export default {
   namespaced: true,
   state: {
+    books: [],
+    counter: 0,
     added: formatDate(Math.round(new Date().getTime() / 1000) * 1000),
     title: null,
     authorFirstname: '',
@@ -35,6 +37,16 @@ export default {
     tags: [],
   },
   mutations: {
+    books(state, books) {
+      state.books = books
+    },
+    removeBook(state, book) {
+      const id = state.books.indexOf(book)
+      state.books.splice(id, 1)
+    },
+    counter(state, counter) {
+      state.counter = counter
+    },
     added(state, added) {
       state.added = added
     },
@@ -79,6 +91,66 @@ export default {
     },
   },
   actions: {
+    find(context) {
+      const filters = context.rootState.search.elements
+      context.commit('search/isLoading', true, { root: true })
+
+      let flattenedFilters = []
+      Object.keys(filters).forEach((key) => {
+        if (!filters[key]) return
+        if (
+          !filters[key].field &&
+          !filters[key].operator &&
+          !filters[key].value
+        )
+          return
+        flattenedFilters.push(filters[key])
+      })
+
+      let term = undefined
+      if (context.rootState.search.term) {
+        term = context.rootState.search.term
+      }
+
+      let filter = undefined
+      if (flattenedFilters.length >= 1) {
+        filter = flattenedFilters
+      }
+
+      let orderBy = undefined
+      if (
+        context.rootState.search.orderByField ||
+        context.rootState.search.orderByDirection
+      ) {
+        orderBy = [{}]
+        if (context.rootState.search.orderByField) {
+          orderBy[0].field = context.rootState.search.orderByField
+        }
+        if (context.rootState.search.orderByDirection) {
+          orderBy[0].direction = context.rootState.search.orderByDirection
+        }
+      }
+
+      api(context.rootState.user.token)
+        .get('/api/v1/book/find', {
+          params: {
+            options: {
+              term,
+              filter,
+              orderBy,
+              limit: context.rootState.search.limit,
+            },
+          },
+        })
+        .then(function (response) {
+          context.commit('books', response.data.books)
+          context.commit('counter', response.data.counter)
+          context.dispatch('author/authors', null, { root: true })
+        })
+        .finally(function () {
+          context.commit('search/isLoading', false, { root: true })
+        })
+    },
     show(context, id) {
       api(context.rootState.user.token)
         .get('/api/v1/book/' + id)
@@ -184,7 +256,7 @@ export default {
       api(context.rootState.user.token)
         .put('/api/v1/book/sell/' + book.id)
         .then(function () {
-          context.commit('search/removeBook', book, { root: true })
+          context.commit('removeBook', book)
           notification.create('book_sell_success', 'success')
         })
         .catch(function () {
@@ -195,7 +267,7 @@ export default {
       api(context.rootState.user.token)
         .put('/api/v1/book/remove/' + book.id)
         .then(function () {
-          context.commit('search/removeBook', book, { root: true })
+          context.commit('removeBook', book)
           notification.create('book_remove_success', 'success')
         })
         .catch(function () {

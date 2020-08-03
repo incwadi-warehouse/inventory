@@ -3,11 +3,11 @@
     <b-list v-for="author in authors" :key="author.id">
       <template #title>
         <router-link :to="{ name: 'author', params: { id: author.id } }">
-          {{ formatAuthor(author) }}
+          {{ author | formatAuthor }}
         </router-link>
       </template>
       <template #options>
-        <b-dropdown position="mouse">
+        <b-dropdown>
           <template #selector>
             <b-icon type="more" />
           </template>
@@ -31,20 +31,23 @@
 import { mapState, mapActions } from 'vuex'
 
 export default {
-  name: 'author',
+  name: 'author-list-search',
   computed: {
-    ...mapState('search', ['authors']),
+    ...mapState('author', ['authors']),
   },
   methods: {
     ...mapActions('search', ['remove']),
-    formatAuthor: function (author) {
+    edit(authorId) {
+      this.$router.push({ name: 'author', params: { id: authorId } })
+    },
+  },
+  filters: {
+    formatAuthor(author) {
       if (author.firstname === '') {
         return author.surname
       }
+
       return author.surname + ', ' + author.firstname
-    },
-    edit: function (author_id) {
-      this.$router.push({ name: 'author', params: { id: author_id } })
     },
   },
 }
