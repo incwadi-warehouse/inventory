@@ -1,6 +1,6 @@
 <template>
   <span @dblclick="toggleEdit" v-if="!edit">
-    {{ genre.name }}
+    {{ genre.name }} ({{ genre.books }} {{ $t('books') }})
   </span>
   <b-form @submit.prevent="update" v-else>
     <b-form-group>
