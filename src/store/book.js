@@ -1,6 +1,6 @@
-import api from '../../api'
-import router from '../../router'
-import notification from '../../util/notification'
+import api from '../api'
+import router from '../router'
+import { notification } from '@baldeweg/components'
 
 const formatDate = function(data) {
   const date = new Date(data)
@@ -30,7 +30,9 @@ export default {
     releaseYear: 2019,
     type: 'paperback',
     lendTo: null,
-    lendOn: null
+    lendOn: null,
+    cond_id: null,
+    tags: []
   },
   mutations: {
     added(state, added) {
@@ -68,6 +70,12 @@ export default {
     },
     lendOn(state, lendOn) {
       state.lendOn = lendOn
+    },
+    cond_id(state, cond_id) {
+      state.cond_id = cond_id
+    },
+    tags(state, tags) {
+      state.tags = tags
     }
   },
   actions: {
@@ -101,9 +109,21 @@ export default {
               ? formatDate(response.data.lendOn * 1000)
               : response.data.lendOn
           )
+          context.commit(
+            'cond_id',
+            response.data.condition ? response.data.condition.id : null
+          )
+          context.commit('tag/tags', response.data.tags, { root: true })
+        })
+        .catch(function() {
+          router.replace({ name: 'not-found' })
         })
     },
     create(context) {
+      let tags = []
+      context.rootState.tag.tags.forEach(element => {
+        tags.push(element.id)
+      })
       api(context.rootState.user.token)
         .post('/v1/book/new', {
           added: new Date(context.state.added).getTime() / 1000,
@@ -114,16 +134,18 @@ export default {
           price: context.state.price,
           sold: false,
           releaseYear: context.state.releaseYear,
-          type: context.state.type
+          type: context.state.type,
+          cond: context.state.cond_id,
+          tags: tags
         })
         .then(function() {
-          notification('book_created', 'success')
+          notification.create('book_created', 'success')
           context.dispatch('reset')
         })
         .catch(function(error) {
-          notification('book_not_valid', 'error')
+          notification.create('book_not_valid', 'error')
           if (error.response.status === 409) {
-            notification('book_not_valid_duplicate', 'error')
+            notification.create('book_not_valid_duplicate', 'error')
           }
         })
     },
@@ -143,17 +165,18 @@ export default {
           lendTo: context.state.lendTo,
           lendOn: context.state.lendOn
             ? new Date(context.state.lendOn).getTime() / 1000
-            : null
+            : null,
+          cond: context.state.cond_id
         })
         .then(function() {
           context.dispatch('search/search', null, { root: true })
           router.push({ name: 'index' })
-          notification('book_updated', 'success')
+          notification.create('book_updated', 'success')
         })
         .catch(function(error) {
-          notification('book_not_valid', 'error')
+          notification.create('book_not_valid', 'error')
           if (error.response.status === 409) {
-            notification('book_not_valid_duplicate', 'error')
+            notification.create('book_not_valid_duplicate', 'error')
           }
         })
     },
@@ -162,10 +185,10 @@ export default {
         .put('/v1/book/sell/' + book.id)
         .then(function() {
           context.commit('search/removeBook', book, { root: true })
-          notification('book_sell_success', 'success')
+          notification.create('book_sell_success', 'success')
         })
         .catch(function() {
-          notification('book_sell_error', 'error')
+          notification.create('book_sell_error', 'error')
         })
     },
     remove(context, book) {
@@ -173,10 +196,10 @@ export default {
         .put('/v1/book/remove/' + book.id)
         .then(function() {
           context.commit('search/removeBook', book, { root: true })
-          notification('book_remove_success', 'success')
+          notification.create('book_remove_success', 'success')
         })
         .catch(function() {
-          notification('book_remove_error', 'error')
+          notification.create('book_remove_error', 'error')
         })
     },
     reset(context) {
@@ -193,16 +216,18 @@ export default {
       context.commit('sold', false)
       context.commit('releaseYear', 2019)
       context.commit('type', 'paperback')
+      context.commit('cond_id', null)
       context.commit('search/tab', false, { root: true })
+      context.commit('tags', [])
     },
     clean(context) {
       api(context.rootState.user.token)
         .delete('/v1/book/clean')
         .then(function() {
-          notification('book_clean_success', 'success')
+          notification.create('book_clean_success', 'success')
         })
         .catch(function() {
-          notification('book_clean_error', 'error')
+          notification.create('book_clean_error', 'error')
         })
     }
   }

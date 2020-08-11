@@ -1,76 +1,64 @@
 <template>
   <b-container size="m">
     <b-form @submit.prevent="edit(id)">
-      <div class="form_group">
-        <div class="form_item">
-          <label for="firstname" class="form_label">
+      <b-form-group>
+        <b-form-item>
+          <b-form-label for="firstname">
             {{ $t('firstname') }}
-          </label>
-        </div>
-        <div class="form_item">
-          <input
-            type="text"
-            id="firstname"
-            class="form_input"
-            v-model="firstname"
-          />
-        </div>
-      </div>
-      <div class="form_group">
-        <div class="form_item">
-          <label for="surname" class="form_label">{{ $t('surname') }}</label>
-        </div>
-        <div class="form_item">
-          <input
-            type="text"
-            id="surname"
-            class="form_input"
-            v-model="surname"
-          />
-        </div>
-      </div>
-      <div class="form_group">
-        <div class="form_item" style="float: right;">
-          <b-button type="primary" @click.prevent="edit(id)">
+          </b-form-label>
+        </b-form-item>
+        <b-form-item>
+          <b-form-input type="text" id="firstname" v-model="firstname" />
+        </b-form-item>
+      </b-form-group>
+      <b-form-group>
+        <b-form-item>
+          <b-form-label for="surname">{{ $t('surname') }}</b-form-label>
+        </b-form-item>
+        <b-form-item>
+          <b-form-input type="text" id="surname" v-model="surname" />
+        </b-form-item>
+      </b-form-group>
+      <b-form-group buttons>
+        <b-form-item>
+          <b-button design="primary">
             {{ $t('save') }}
           </b-button>
-        </div>
-      </div>
+        </b-form-item>
+      </b-form-group>
     </b-form>
   </b-container>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
-
 export default {
   name: 'edit-author',
   props: {
     id: Number
   },
-  computed: {
-    firstname: {
-      get: function() {
-        return this.$store.state.author.firstname
-      },
-      set: function(firstname) {
-        this.$store.commit('author/firstname', firstname)
-      }
-    },
-    surname: {
-      get: function() {
-        return this.$store.state.author.surname
-      },
-      set: function(surname) {
-        this.$store.commit('author/surname', surname)
-      }
+  data() {
+    return {
+      firstname: null,
+      surname: null
     }
   },
   methods: {
-    ...mapActions('author', ['edit'])
+    edit: function() {
+      this.$store.dispatch('author/edit', {
+        id: this.id,
+        firstname: this.firstname,
+        surname: this.surname
+      })
+    }
   },
   created: function() {
     this.$store.dispatch('author/show', this.id)
+  },
+  watch: {
+    '$store.state.author.author': function() {
+      this.firstname = this.$store.state.author.author.firstname
+      this.surname = this.$store.state.author.author.surname
+    }
   }
 }
 </script>

@@ -1,15 +1,17 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import book from './modules/book'
-import genre from './modules/genre'
-import branch from './modules/branch'
-import staff from './modules/staff'
-import user from './modules/user'
-import notification from './modules/notification'
-import navigation from './modules/navigation'
-import stats from './modules/stats'
-import author from './modules/author'
-import search from './modules/search'
+import book from './book'
+import genre from './genre'
+import branch from './branch'
+import staff from './staff'
+import user from './user'
+import navigation from './navigation'
+import stats from './stats'
+import author from './author'
+import search from './search'
+import condition from './condition'
+import report from './report'
+import tag from './tag'
 
 Vue.use(Vuex)
 
@@ -21,10 +23,12 @@ export default new Vuex.Store({
     branch,
     staff,
     user,
-    notification,
     navigation,
     stats,
     author,
-    search
+    search,
+    condition,
+    report,
+    tag
   }
 })

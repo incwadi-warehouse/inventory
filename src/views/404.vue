@@ -6,7 +6,7 @@
 import NotFound from '../components/notFound/NotFound'
 
 export default {
-  name: 'not-found-view',
+  name: '404-view',
   components: {
     NotFound
   }

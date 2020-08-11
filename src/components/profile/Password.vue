@@ -3,28 +3,23 @@
     <details>
       <summary>{{ $t('change_password') }}</summary>
       <b-form @submit.prevent="save">
-        <div class="form_group">
-          <div class="form_item">
-            <label for="password" class="form_label">
+        <b-form-group>
+          <b-form-item>
+            <b-form-label for="password">
               {{ $t('password') }}
-            </label>
-          </div>
-          <div class="form_item">
-            <input
-              type="password"
-              id="password"
-              class="form_input"
-              v-model="password"
-            />
-          </div>
-        </div>
-        <div class="form_group form_buttons">
-          <div class="form_item">
-            <b-button type="primary">
+            </b-form-label>
+          </b-form-item>
+          <b-form-item>
+            <b-form-input type="password" id="password" v-model="password" />
+          </b-form-item>
+        </b-form-group>
+        <b-form-group buttons>
+          <b-form-item>
+            <b-button design="primary">
               {{ $t('save') }}
             </b-button>
-          </div>
-        </div>
+          </b-form-item>
+        </b-form-group>
       </b-form>
     </details>
   </b-container>

@@ -1,4 +1,4 @@
-import api from '../../api'
+import api from '../api'
 
 export default {
   namespaced: true,
@@ -160,7 +160,7 @@ export default {
           }
         })
         .then(function(response) {
-          context.commit('authors', response.data.authors)
+          context.commit('authors', response.data)
         })
     },
     remove(context, id) {

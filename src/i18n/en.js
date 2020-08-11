@@ -113,5 +113,26 @@ export default {
   all: 'all',
   ordering: 'Ordering',
   limit_to: 'limit_to',
-  cancel: 'Cancel'
+  condition: 'Condition',
+  conditions: 'Conditions',
+  new_condition: 'New Condition',
+  enter_condition_and_hit_enter: 'Enter condition and hit enter.',
+  could_not_create_the_condition_try_again_later:
+    'Could not create the condition. Try again later.',
+  could_not_delete_the_condition_try_again_later:
+    'Could not delete the condition. Try again later.',
+  could_not_update_the_condition_try_again_later:
+    'Could not update the condition. Try again later.',
+  conditions_desc:
+    'All books can have a condition assigned. Removing a condition, results in books without a condition.',
+  cancel: 'Cancel',
+  save_as_report: 'Save as Report',
+  name_of_report: 'Name of Report',
+  report_create_success: 'Report was created successfully.',
+  report_create_error: 'Report could not be created.',
+  report_remove_success: 'Report was deleted successfully.',
+  report_remove_error: 'Report could not be deleted.',
+  delete: 'Delete',
+  add_tag: 'Add Tag',
+  create_tag_not_successful: 'Could not create tag.'
 }

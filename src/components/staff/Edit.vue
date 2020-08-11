@@ -1,24 +1,18 @@
 <template>
-  <span @dblclick="toggleEditStaff()" v-if="!editStaff">
+  <span @dblclick="toggleEdit()" v-if="!edit">
     {{ staff.name }}
   </span>
   <b-form @submit.prevent="update()" v-else>
-    <div class="form_group">
-      <div class="form_item">
-        <label for="staff" class="form_label visuallyHidden">
+    <b-form-group>
+      <b-form-item>
+        <b-form-label for="staff" class="visuallyHidden">
           {{ $t('staff') }}
-        </label>
-      </div>
-      <div class="form_item">
-        <input
-          type="text"
-          id="staff"
-          class="form_input"
-          v-model="name"
-          v-focus
-        />
-      </div>
-    </div>
+        </b-form-label>
+      </b-form-item>
+      <b-form-item>
+        <b-form-input type="text" id="staff" v-model="name" v-focus />
+      </b-form-item>
+    </b-form-group>
   </b-form>
 </template>
 
@@ -31,26 +25,19 @@ export default {
   data() {
     return {
       name: this.staff.name,
-      editStaff: false
+      edit: false
     }
   },
   methods: {
     update: function() {
-      this.toggleEditStaff()
+      this.toggleEdit()
       this.$store.dispatch('staff/edit', {
         id: this.staff.id,
         name: this.name
       })
     },
-    toggleEditStaff: function() {
-      this.editStaff = !this.editStaff
-    }
-  },
-  directives: {
-    focus: {
-      inserted: function(el) {
-        el.focus()
-      }
+    toggleEdit: function() {
+      this.edit = !this.edit
     }
   }
 }

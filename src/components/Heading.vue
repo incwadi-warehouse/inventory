@@ -25,6 +25,8 @@ export default {
   methods: {
     ...mapMutations('navigation', ['showOffCanvas']),
     settings: function() {
+      if (this.$route.name === 'profile') return
+
       this.$router.push({ name: 'profile' })
     }
   }

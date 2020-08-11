@@ -3,10 +3,10 @@
     <search class="noprint" />
 
     <b-container size="m" class="noprint" style="text-align: right;">
-      <b-button type="outline" @click="setTab('filter')">
+      <b-button design="outline" @click="setTab('filter')">
         {{ $t('filter') }}
       </b-button>
-      <b-button type="outline" @click="setTab('create')">
+      <b-button design="outline" @click="setTab('create')">
         {{ $t('catalog') }}
       </b-button>
     </b-container>

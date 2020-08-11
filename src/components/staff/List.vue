@@ -2,11 +2,17 @@
   <b-container size="m">
     <b-list v-for="member in staff" :key="member.id">
       <template #options>
-        <b-dropdown-item v-if="me.isAdmin">
-          <b-button type="text" class="dropdown_btn" @click="remove(member.id)">
-            {{ $t('remove') }}
-          </b-button>
-        </b-dropdown-item>
+        <b-dropdown>
+          <template #selector>
+            <b-icon type="more" />
+          </template>
+          <b-dropdown-item
+            :title="$t('remove')"
+            icon="bin"
+            @click="remove(member.id)"
+            v-if="me.isAdmin"
+          />
+        </b-dropdown>
       </template>
       <template #title>
         <edit-staff :staff="member" />
