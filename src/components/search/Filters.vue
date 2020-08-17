@@ -15,20 +15,22 @@
 
         <details>
           <summary>{{ $t('genres') }}</summary>
-          <b-form-group>
-            <b-form-item v-for="item in genres" :key="item.id">
-              <input
-                type="checkbox"
-                name="genre"
-                :value="item.id"
-                :id="'genre-' + item.id"
-                v-model="genre"
-              />
-              <b-form-label :for="'genre-' + item.id">
-                {{ item.name }}
-              </b-form-label>
-            </b-form-item>
-          </b-form-group>
+          <div class="scroll">
+            <b-form-group>
+              <b-form-item v-for="item in genres" :key="item.id">
+                <input
+                  type="checkbox"
+                  name="genre"
+                  :value="item.id"
+                  :id="'genre-' + item.id"
+                  v-model="genre"
+                />
+                <b-form-label :for="'genre-' + item.id">
+                  {{ item.name }}
+                </b-form-label>
+              </b-form-item>
+            </b-form-group>
+          </div>
         </details>
 
         <details>
@@ -380,3 +382,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.scroll {
+  max-height: 200px;
+  overflow: auto;
+}
+</style>
