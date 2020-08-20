@@ -154,4 +154,5 @@ export default {
   beach: 'Strand',
   cache_advise:
     'Wenn etwas schief gelaufen ist und Du kurz zuvor ein Update durchgeführt hast, drücke Cmd + F5. Die App wird unter Umgehung des Caches neugeladen.',
+  language: 'Sprache',
 }

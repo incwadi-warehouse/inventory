@@ -146,4 +146,5 @@ export default {
   beach: 'Beach',
   cache_advise:
     'If something went wrong and you did an update just before, hit Cmd + F5. The app will be loaded bypassing the cache.',
+  language: 'Language',
 }
