@@ -5,6 +5,9 @@
     <p>{{ $t('repo') }}</p>
     <p><a href="https://gitlab.com/incwadi/">Gitlab-Repository</a></p>
     <p>{{ $t('contribution') }}</p>
+
+    <b-divider />
+    <p>{{ $t('cache_advise') }}</p>
   </b-container>
 </template>
 
