@@ -6,7 +6,7 @@
       </span>
     </b-masthead-item>
 
-    <b-masthead-item grow center>
+    <b-masthead-item>
       <router-link :to="{ name: 'search' }">
         <logo v-if="hasLogo" />
         <svg
