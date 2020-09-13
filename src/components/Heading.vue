@@ -1,9 +1,9 @@
 <template>
   <b-masthead>
     <b-masthead-item v-if="isAuthenticated">
-      <b-button design="text" @click="showOffCanvas(true)">
+      <span @click="showOffCanvas(true)">
         <b-icon type="menu" />
-      </b-button>
+      </span>
     </b-masthead-item>
 
     <b-masthead-item grow center>
@@ -28,9 +28,9 @@
     <b-masthead-item v-if="isAuthenticated">
       <b-dropdown position="bottom">
         <template #selector>
-          <b-button design="text" @click.prevent>
+          <span @click.prevent>
             <b-icon type="profile" />
-          </b-button>
+          </span>
         </template>
         <b-dropdown-title v-if="me"
           >{{ $t('hello') }}, {{ me.username }}!</b-dropdown-title
