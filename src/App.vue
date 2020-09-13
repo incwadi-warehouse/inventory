@@ -1,5 +1,5 @@
 <template>
-  <b-app>
+  <b-app id="app">
     <heading class="noprint" />
     <navigation class="noprint" />
     <b-content>
