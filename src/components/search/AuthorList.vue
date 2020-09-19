@@ -11,16 +11,12 @@
           <template #selector>
             <b-icon type="more" />
           </template>
-          <b-dropdown-item
-            :title="$t('edit')"
-            icon="pencil"
-            @click="edit(author.id)"
-          />
-          <b-dropdown-item
-            :title="$t('remove')"
-            icon="bin"
-            @click="remove(author.id)"
-          />
+          <b-dropdown-item icon="pencil" @click="edit(author.id)">
+            {{ $t('edit') }}
+          </b-dropdown-item>
+          <b-dropdown-item icon="bin" @click="remove(author.id)">
+            {{ $t('remove') }}
+          </b-dropdown-item>
         </b-dropdown>
       </template>
     </b-list>

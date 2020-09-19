@@ -9,7 +9,9 @@
         <template #selector>
           <b-icon type="more" />
         </template>
-        <b-dropdown-item :title="$t('remove')" icon="bin" @click="remove()" />
+        <b-dropdown-item icon="bin" @click="remove()">
+          {{ $t('remove') }}
+        </b-dropdown-item>
       </b-dropdown>
     </template>
   </b-list>

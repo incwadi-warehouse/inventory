@@ -26,18 +26,22 @@
     </b-masthead-item>
 
     <b-masthead-item v-if="isAuthenticated">
-      <b-dropdown position="bottom">
+      <b-dropdown position="bottom" :style="{ lineHeight: 1 }">
         <template #selector>
           <span @click.prevent>
             <b-icon type="profile" />
           </span>
         </template>
-        <b-dropdown-title v-if="me"
-          >{{ $t('hello') }}, {{ me.username }}!</b-dropdown-title
-        >
+        <b-dropdown-item v-if="me">
+          {{ $t('hello') }}, {{ me.username }}!
+        </b-dropdown-item>
         <b-dropdown-divider />
-        <b-dropdown-item :title="$t('settings')" @click.prevent="profile" />
-        <b-dropdown-item :title="$t('logout')" @click.prevent="logout" />
+        <b-dropdown-item @click.prevent="profile">
+          {{ $t('settings') }}
+        </b-dropdown-item>
+        <b-dropdown-item @click.prevent="logout">
+          {{ $t('logout') }}
+        </b-dropdown-item>
       </b-dropdown>
     </b-masthead-item>
   </b-masthead>

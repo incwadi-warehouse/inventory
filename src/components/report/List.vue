@@ -14,10 +14,11 @@
             <b-icon type="more" />
           </template>
           <b-dropdown-item
-            :title="$t('delete')"
             icon="bin"
             @click.prevent="deleteReport(report.id)"
-          />
+          >
+            {{$t('delete')}}
+          </b-dropdown-item>
         </b-dropdown>
       </template>
     </b-list>

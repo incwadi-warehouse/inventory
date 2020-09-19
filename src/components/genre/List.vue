@@ -5,12 +5,9 @@
         <template #selector>
           <b-icon type="more" />
         </template>
-        <b-dropdown-item
-          :title="$t('remove')"
-          icon="bin"
-          @click="remove(genre.id)"
-          v-if="me.isAdmin"
-        />
+        <b-dropdown-item icon="bin" @click="remove(genre.id)" v-if="me.isAdmin">
+          {{ $t('remove') }}
+        </b-dropdown-item>
       </b-dropdown>
     </template>
 
