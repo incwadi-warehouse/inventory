@@ -86,6 +86,8 @@ export default {
 }
 </script>
 
+<style src="@baldeweg/components/dist/components.css" />
+
 <style>
 html {
   --color-primary-05: #eeab84;
