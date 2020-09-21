@@ -83,9 +83,7 @@ module.exports = {
   },
   devtool: '#cheap-module-eval-source-map',
   plugins: [
-    new Dotenv({
-      path: './.env'
-    }),
+    new Dotenv(),
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
       template: 'static/index.html'

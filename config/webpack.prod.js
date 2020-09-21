@@ -82,9 +82,7 @@ module.exports = {
   devtool: false,
   plugins: [
     new CleanWebpackPlugin(),
-    new Dotenv({
-      path: './.env'
-    }),
+    new Dotenv(),
     new VueLoaderPlugin(),
     new webpack.LoaderOptionsPlugin({
       minimize: true
