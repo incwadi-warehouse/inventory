@@ -2,7 +2,7 @@
   <article>
     <b-container size="m">
       <b-search
-        :placeholder="$t('search_for_title_or_author')"
+        :placeholder="$t('search_in_title_author_tags')"
         :button="$t('search')"
         @input="search"
         @submit.prevent="search"
