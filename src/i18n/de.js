@@ -132,7 +132,7 @@ export default {
   could_not_update_the_condition_try_again_later:
     'Konnte den Zustand nicht aktualisieren. Versuche es später erneut.',
   conditions_desc:
-    'Allen Büchern kann ein Zustand zugewiesen werden. Löschen eines Zustandes, führt zu Büchern ohne Zustand.',
+    'Allen Büchern kann ein Zustand zugewiesen werden. Nur Admins dürfen neue Zustände anlegen. Löschen eines Zustandes, führt zu Büchern ohne Zustand.',
   cancel: 'Abbrechen',
   save_as_report: 'Als Report speichern',
   name_of_report: 'Reportname',
