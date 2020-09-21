@@ -92,16 +92,28 @@
         </b-form-group>
       </b-form>
     </b-container>
+
+    <b-container size="l">
+      <h2>{{ $t('saved_searches') }}</h2>
+      <p>{{ $t('savedsearches_desc') }}</p>
+
+      <saved-search-create />
+      <saved-search-list @find="find" />
+    </b-container>
   </b-modal>
 </template>
 
 <script>
 import FilterItem from './FilterItem'
+import SavedSearchList from './../savedsearch/List'
+import SavedSearchCreate from './../savedsearch/Create'
 
 export default {
   name: 'filter-search',
   components: {
     FilterItem,
+    SavedSearchList,
+    SavedSearchCreate,
   },
   data() {
     return {

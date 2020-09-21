@@ -172,4 +172,13 @@ export default {
   books: 'Bücher',
   show_x_of_y_found_books: 'Zeige {show} von {found} gefundenen Büchern.',
   show_all: 'Zeige alle',
+  name_of_saved_search: 'Name der Suche',
+  save_search: 'Suche speichern',
+  savedsearches_create_success: 'Suche gespeichert',
+  savedsearches_create_error: 'Suche konnte nicht gespeichert werden.',
+  savedsearches_remove_success: 'Suche gelöscht',
+  savedsearches_remove_error: 'Suche konnte nicht gelöscht werden.',
+  savedsearches_desc:
+    'Sucheinstellungen können von Admins gespeichert und von allen Nutzern in der Filiale geladen werden.',
+  saved_searches: 'Gespeicherte Suchen',
 }

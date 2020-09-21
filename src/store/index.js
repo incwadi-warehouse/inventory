@@ -12,6 +12,7 @@ import search from './search'
 import condition from './condition'
 import report from './report'
 import tag from './tag'
+import savedsearch from './savedsearch'
 
 Vue.use(Vuex)
 
@@ -30,5 +31,6 @@ export default new Vuex.Store({
     condition,
     report,
     tag,
+    savedsearch,
   },
 })

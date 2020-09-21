@@ -164,4 +164,13 @@ export default {
   books: 'Books',
   show_x_of_y_found_books: 'Show {show} of {found} found books.',
   show_all: 'Show all',
+  name_of_saved_search: 'Name of the search',
+  save_search: 'Save search',
+  savedsearches_create_success: 'Saved search',
+  savedsearches_create_error: 'Could not save the search.',
+  savedsearches_remove_success: 'Search removed',
+  savedsearches_remove_error: 'Could not remove the search.',
+  savedsearches_desc:
+    'Searches can be saved by admins and loaded by all users of the branch.',
+  saved_searches: 'Saved Searches',
 }
