@@ -28,17 +28,13 @@
       </th>
       <th
         class="isSortable"
-        style="text-align: right;"
+        style="text-align: right"
         :title="$t('release_year')"
         @click="filter('releaseYear')"
       >
         {{ $t('year') }} <indicator column="releaseYear" />
       </th>
-      <th
-        class="isSortable"
-        style="text-align: right;"
-        @click="filter('price')"
-      >
+      <th class="isSortable" style="text-align: right" @click="filter('price')">
         <span v-if="branch">{{ branch.currency }}</span>
         <span v-else>{{ $t('price') }}</span>
         <indicator column="price" />

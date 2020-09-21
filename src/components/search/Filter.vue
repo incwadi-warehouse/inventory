@@ -35,7 +35,7 @@
           Add Field
         </b-button>
 
-        <b-form-group style="margin-top: 20px;">
+        <b-form-group style="margin-top: 20px">
           <b-form-item>
             <b-form-label for="orderBy_field">
               {{ $t('orderBy_field') }}

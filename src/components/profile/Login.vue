@@ -35,7 +35,7 @@
           {{ $t('login') }}
         </b-button>
         <b-button design="outline_wide" v-if="isLoggingIn">
-          <b-spinner size="s" style="margin: auto;" />
+          <b-spinner size="s" style="margin: auto" />
         </b-button>
       </b-form-item>
     </b-form-group>

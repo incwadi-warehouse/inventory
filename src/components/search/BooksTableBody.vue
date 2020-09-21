@@ -24,13 +24,13 @@
       <td>
         {{ $t(book.type) }}
       </td>
-      <td style="text-align: right;">
+      <td style="text-align: right">
         {{ book.releaseYear }}
       </td>
-      <td style="text-align: right;">
+      <td style="text-align: right">
         {{ book.price | formatPrice }}
       </td>
-      <td class="noprint" style="cursor: pointer;">
+      <td class="noprint" style="cursor: pointer">
         <context-menu :book="book" />
       </td>
     </tr>
