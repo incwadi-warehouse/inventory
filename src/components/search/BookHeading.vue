@@ -13,8 +13,10 @@
         </span>
       </div>
       <div class="search-head_actions">
-        <b-button design="text" @click="toggleFluid">Fluid</b-button>
-        <b-button design="text" @click="showAll">{{ $t('show_all') }}</b-button>
+        <b-button design="text" ripple @click="toggleFluid">Fluid</b-button>
+        <b-button design="text" ripple @click="showAll">{{
+          $t('show_all')
+        }}</b-button>
       </div>
     </div>
   </b-container>
