@@ -1,34 +1,31 @@
 <template>
-  <article>
-    <b-container size="m">
-      <b-search
-        :placeholder="$t('search_in_title_author_tags')"
-        :button="$t('search')"
-        @input="search"
-        @submit.prevent="search"
-        v-model="term"
-      />
+  <article class="noprint">
+    <b-container size="l">
+      <div class="actionbar">
+        <div class="actionbar_input">
+          <b-search
+            :placeholder="$t('search_in_title_author_tags')"
+            :button="$t('search')"
+            icon
+            filter
+            @input="search"
+            @submit.prevent="search"
+            @filter="showFilter = !showFilter"
+            v-model="term"
+            :style="{ fontSize: '1.2em' }"
+          />
+        </div>
+
+        <div class="actionbar_action">
+          <b-button design="outline" ripple @click="showCreate = true">
+            {{ $t('catalog') }}
+          </b-button>
+        </div>
+      </div>
     </b-container>
 
-    <b-container size="m" align="right" class="noprint">
-      <b-button design="outline" @click="showFilter = true">
-        {{ $t('filter') }}
-      </b-button>
-      <b-button design="outline" @click="showCreate = true">
-        {{ $t('catalog') }}
-      </b-button>
-    </b-container>
-
-    <search-filter
-      class="noprint"
-      @close="showFilter = false"
-      v-if="showFilter"
-    />
-    <book-create
-      class="noprint"
-      @close="showCreate = false"
-      v-if="showCreate"
-    />
+    <search-filter @close="showFilter = false" v-if="showFilter" />
+    <book-create @close="showCreate = false" v-if="showCreate" />
   </article>
 </template>
 
@@ -65,3 +62,17 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.actionbar {
+  display: flex;
+  align-items: center;
+}
+.actionbar_input {
+  flex-grow: 1;
+}
+.actionbar_action {
+  margin-left: 10px;
+  text-align: right;
+}
+</style>
