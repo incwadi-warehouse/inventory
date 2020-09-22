@@ -171,6 +171,8 @@ export default {
   orderBy_direction: 'Sortiere nach Richtung',
   books: 'Bücher',
   show_x_of_y_found_books: 'Zeige {show} von {found} gefundenen Büchern.',
+  show_x_found_books: 'Zeige alle {found} gefundene Bücher.',
+  show_1_found_book: 'Zeige 1 gefundenes Buch.',
   show_all: 'Zeige alle',
   name_of_saved_search: 'Name der Suche',
   save_search: 'Suche speichern',
