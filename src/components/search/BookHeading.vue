@@ -1,5 +1,5 @@
 <template>
-  <b-container size="m" v-if="hasBooks">
+  <b-container size="l" v-if="hasBooks">
     <div class="search-head">
       <div class="search-head_title">
         <h2>{{ $t('books') }}</h2>
@@ -23,7 +23,6 @@
         </span>
       </div>
       <div class="search-head_actions">
-        <b-button design="text" ripple @click="toggleFluid">Fluid</b-button>
         <b-button design="text" ripple @click="showAll">{{
           $t('show_all')
         }}</b-button>
@@ -38,7 +37,6 @@ import { mapState } from 'vuex'
 export default {
   name: 'book-counter-search',
   computed: {
-    ...mapState('search', ['fluid']),
     ...mapState('book', ['books']),
     counter() {
       return this.$store.state.book.counter
@@ -48,9 +46,6 @@ export default {
     },
   },
   methods: {
-    toggleFluid() {
-      this.$store.dispatch('search/toggleFluid')
-    },
     showAll() {
       this.$store.commit('search/limit', this.counter)
       this.$store.dispatch('book/find')

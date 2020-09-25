@@ -7,7 +7,6 @@ export default {
     orderByDirection: '',
     limit: 50,
     isLoading: false,
-    fluid: false,
     sold: false,
     removed: false,
   },
@@ -32,9 +31,6 @@ export default {
     },
     isLoading(state, isLoading) {
       state.isLoading = isLoading
-    },
-    fluid(state, fluid) {
-      state.fluid = fluid
     },
     sold(state, sold) {
       state.sold = sold
@@ -116,9 +112,6 @@ export default {
       if (context.state.elements === {}) return
       context.commit('elements', {})
       context.commit('addElement')
-    },
-    toggleFluid(context) {
-      context.commit('fluid', !context.state.fluid)
     },
   },
 }

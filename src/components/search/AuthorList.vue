@@ -1,5 +1,5 @@
 <template>
-  <b-container size="m">
+  <b-container size="l">
     <b-list v-for="author in authors" :key="author.id">
       <template #title>
         <router-link :to="{ name: 'author', params: { id: author.id } }">

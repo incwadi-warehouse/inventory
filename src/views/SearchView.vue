@@ -2,7 +2,7 @@
   <article>
     <search-actionbar class="noprint" />
 
-    <b-container size="m" v-if="isLoading">
+    <b-container size="l" v-if="isLoading">
       <b-spinner size="l" />
     </b-container>
 
@@ -10,7 +10,7 @@
       <search-book-heading />
     </div>
 
-    <b-container :size="size" v-if="hasBooks">
+    <b-container size="l" v-if="hasBooks">
       <b-table>
         <table>
           <search-books-table-head />
@@ -19,7 +19,7 @@
       </b-table>
     </b-container>
 
-    <b-container size="m" v-if="hasAuthors">
+    <b-container size="l" v-if="hasAuthors">
       <h2>{{ $t('authors') }}</h2>
     </b-container>
 
@@ -61,9 +61,6 @@ export default {
     },
     isLoading() {
       return this.$store.state.search.isLoading
-    },
-    size() {
-      return this.$store.state.search.fluid ? 'l' : 'm'
     },
   },
 }
