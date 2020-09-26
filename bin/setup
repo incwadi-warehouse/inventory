@@ -1,15 +1,24 @@
 #!/bin/bash
 
-tags=${1:-"0"}
+release=${1:-"tag"}
 
-if [ "$tags" == 1 ]
+if [ "$release" == "tag" ]
   then
     git fetch
     tag=$(git describe --tags "$(git rev-list --tags --max-count=1)")
     git checkout "$tag"
-  else
-    git pull origin main
 fi
 
-yarn install --frozen-lockfile
-yarn build
+if [ "$release" != "tag" ]
+  then
+    git fetch
+    git checkout "$release"
+fi
+
+composer install
+composer dump-env prod
+bin/console doctrine:database:create --if-not-exists
+bin/console doctrine:migrations:migrate -n
+bin/console cache:clear
+bin/console cache:warmup
+chown -R www-data:www-data .
