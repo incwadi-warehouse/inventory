@@ -122,12 +122,12 @@ export default {
         context.rootState.search.orderByField ||
         context.rootState.search.orderByDirection
       ) {
-        orderBy = [{}]
+        orderBy = { book: [{}] }
         if (context.rootState.search.orderByField) {
-          orderBy[0].field = context.rootState.search.orderByField
+          orderBy.book[0].field = context.rootState.search.orderByField
         }
         if (context.rootState.search.orderByDirection) {
-          orderBy[0].direction = context.rootState.search.orderByDirection
+          orderBy.book[0].direction = context.rootState.search.orderByDirection
         }
       }
 

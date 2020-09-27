@@ -51,11 +51,11 @@ export default {
       if (savedsearch.query.orderBy) {
         this.$store.commit(
           'search/orderByField',
-          savedsearch.query.orderBy[0].field
+          savedsearch.query.orderBy.book[0].field
         )
         this.$store.commit(
           'search/orderByDirection',
-          savedsearch.query.orderBy[0].direction
+          savedsearch.query.orderBy.book[0].direction
         )
       }
 
