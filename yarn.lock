@@ -842,10 +842,10 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
-"@baldeweg/components@5.0.0-beta.1":
-  version "5.0.0-beta.1"
-  resolved "https://registry.yarnpkg.com/@baldeweg/components/-/components-5.0.0-beta.1.tgz#edbb0aed7678538e7dd4b1957fb0993dee0b1558"
-  integrity sha512-Qr1bpG6YZ7HNdNXMmQsQECoz9dew4CkUN5c0FiNrZkdytST0enO0bI0Qgjx3afgFbtaraq8IbMPmDZkbxDs1rg==
+"@baldeweg/components@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@baldeweg/components/-/components-5.0.0.tgz#592302f9a816286bf42222f9be182030811f5592"
+  integrity sha512-4s8idH/DdnF1o+Z9K0G0kylSTx017TTju2q1gW+7RerfEif0JALUMxwU5ZDpk5hFJUKk+tw8caymUNWHgcNfXQ==
   dependencies:
     ejs "^3.1"
     lodash "^4.17"

@@ -12,7 +12,6 @@
             @submit.prevent="search"
             @filter="showFilter = !showFilter"
             v-model="term"
-            :style="{ fontSize: '1.2em' }"
           />
         </div>
 

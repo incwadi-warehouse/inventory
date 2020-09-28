@@ -1,12 +1,12 @@
 <template>
   <b-masthead>
-    <b-masthead-item v-if="isAuthenticated">
+    <b-masthead-item type="start" v-if="isAuthenticated">
       <span @click="showOffCanvas(true)">
         <b-icon type="menu" />
       </span>
     </b-masthead-item>
 
-    <b-masthead-item>
+    <b-masthead-item type="center">
       <router-link :to="{ name: 'search' }">
         <logo v-if="hasLogo" />
         <svg
@@ -25,8 +25,8 @@
       </router-link>
     </b-masthead-item>
 
-    <b-masthead-item v-if="isAuthenticated">
-      <b-dropdown position="bottom" :style="{ lineHeight: 1 }">
+    <b-masthead-item type="end" v-if="isAuthenticated">
+      <b-dropdown position="bottom">
         <template #selector>
           <span @click.prevent>
             <b-icon type="profile" />
