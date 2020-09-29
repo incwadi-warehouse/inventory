@@ -18,7 +18,7 @@ export default {
   search: 'Search',
   new: 'New',
   name: 'Name',
-  license: 'This project is made by André Baldeweg an is MIT-licensed',
+  license: 'This project is made by André Baldeweg and is MIT-licensed.',
   repo: 'You can find the source code at the Gitlab repository.',
   contribution: 'Ideas and bug reports are welcome!',
   add_book: 'Add Book',
