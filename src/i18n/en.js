@@ -145,7 +145,7 @@ export default {
   hello: 'Hello',
   beach: 'Beach',
   cache_advise:
-    'If something went wrong and you did an update just before, hit Cmd + F5. The app will be loaded bypassing the cache.',
+    'If something went wrong and you did an update just before, hit <kbd>Cmd</kbd> + <kbd>F5</kbd>. The app will be loaded bypassing the cache.',
   language: 'Language',
   lendOn: 'Lend On',
   releaseYear: 'Release Year',

@@ -153,7 +153,7 @@ export default {
   hello: 'Hallo',
   beach: 'Strand',
   cache_advise:
-    'Wenn etwas schief gelaufen ist und Du kurz zuvor ein Update durchgeführt hast, drücke Cmd + F5. Die App wird unter Umgehung des Caches neugeladen.',
+    'Wenn etwas schief gelaufen ist und Du kurz zuvor ein Update durchgeführt hast, drücke <kbd>Strg</kbd> + <kbd>F5</kbd>. Die App wird unter Umgehung des Caches neugeladen.',
   language: 'Sprache',
   lendOn: 'Ausgeliehen am',
   releaseYear: 'Veröffentlichungsjahr',

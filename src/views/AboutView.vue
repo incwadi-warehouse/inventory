@@ -7,7 +7,7 @@
     <p>{{ $t('contribution') }}</p>
 
     <b-divider />
-    <p>{{ $t('cache_advise') }}</p>
+    <p v-html="$t('cache_advise')" />
   </b-container>
 </template>
 
