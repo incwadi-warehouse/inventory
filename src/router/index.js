@@ -18,11 +18,7 @@ const router = new Router({
       path: '/book/:id',
       name: 'book',
       component: () => import('../views/EditBookView'),
-      props(route) {
-        const props = route.params
-        props.id = +props.id
-        return props
-      },
+      props: true,
     },
     {
       path: '/about',

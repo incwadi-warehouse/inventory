@@ -17,7 +17,7 @@ export default {
     title: 'Book',
   },
   props: {
-    id: Number,
+    id: String,
   },
   components: {
     Edit,

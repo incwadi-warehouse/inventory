@@ -48,8 +48,7 @@ export default {
       this.$store.commit('search/releaseYear', report.releaseYear)
       this.$store.commit('search/type', report.type)
 
-      this.$store.dispatch('search/search')
-      this.$store.commit('search/tab', false)
+      this.$store.dispatch('search/find')
     },
     deleteReport: function (id) {
       this.$store.dispatch('report/remove', id)

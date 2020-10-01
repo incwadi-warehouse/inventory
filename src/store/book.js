@@ -241,7 +241,7 @@ export default {
           cond: context.state.cond_id,
         })
         .then(function () {
-          context.dispatch('search/search', null, { root: true })
+          context.dispatch('search/find', null, { root: true })
           router.push({ name: 'search' })
           notification.create('book_updated', 'success')
         })
@@ -275,7 +275,6 @@ export default {
         })
     },
     reset(context) {
-      context.commit('search/tab', null, { root: true })
       context.commit(
         'added',
         formatDate(Math.round(new Date().getTime() / 1000) * 1000)
@@ -289,7 +288,6 @@ export default {
       context.commit('releaseYear', 2019)
       context.commit('type', 'paperback')
       context.commit('cond_id', null)
-      context.commit('search/tab', false, { root: true })
       context.commit('tags', [])
     },
     clean(context) {
