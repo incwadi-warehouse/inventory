@@ -32,7 +32,7 @@ export default {
     ...mapState('author', ['authors']),
   },
   methods: {
-    ...mapActions('search', ['remove']),
+    ...mapActions('author', ['remove']),
     edit(authorId) {
       this.$router.push({ name: 'author', params: { id: authorId } })
     },
