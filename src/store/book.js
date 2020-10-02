@@ -248,7 +248,7 @@ export default {
           tags: tags,
         })
         .then(function () {
-          context.dispatch('search/find', null, { root: true })
+          context.dispatch('find')
           router.push({ name: 'search' })
           notification.create('book_updated', 'success')
         })
