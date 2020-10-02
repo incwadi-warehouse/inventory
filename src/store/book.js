@@ -196,6 +196,7 @@ export default {
       context.rootState.tag.tags.forEach((element) => {
         tags.push(element.id)
       })
+
       api(context.rootState.user.token)
         .post('/api/v1/book/new', {
           added: new Date(context.state.added).getTime() / 1000,
@@ -222,6 +223,11 @@ export default {
         })
     },
     update(context, id) {
+      let tags = []
+      context.rootState.tag.tags.forEach((element) => {
+        tags.push(element.id)
+      })
+
       api(context.rootState.user.token)
         .put('/api/v1/book/' + id, {
           added: new Date(context.state.added).getTime() / 1000,
@@ -239,6 +245,7 @@ export default {
             ? new Date(context.state.lendOn).getTime() / 1000
             : null,
           cond: context.state.cond_id,
+          tags: tags,
         })
         .then(function () {
           context.dispatch('search/find', null, { root: true })

@@ -189,7 +189,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
   name: 'create',
@@ -279,7 +279,10 @@ export default {
     },
   },
   methods: {
-    ...mapActions('book', ['create']),
+    create() {
+      this.$store.dispatch('book/create')
+      this.close()
+    },
     close: function () {
       this.$emit('close', this.$event)
     },
