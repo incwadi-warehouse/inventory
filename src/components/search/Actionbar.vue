@@ -8,9 +8,10 @@
             :button="$t('search')"
             icon
             filter
-            @input="search"
+            @input="change"
             @submit.prevent="search"
             @filter="showFilter = !showFilter"
+            @reset="reset"
             v-model="term"
           />
         </div>
@@ -57,6 +58,15 @@ export default {
   methods: {
     search() {
       this.$store.dispatch('book/find')
+    },
+    reset() {
+      this.$store.commit('book/books', [])
+      this.$store.commit('author/authors', null)
+    },
+    change() {
+      if (this.term !== null) {
+        this.$store.dispatch('book/find')
+      }
     },
   },
 }
