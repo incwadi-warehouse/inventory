@@ -280,8 +280,9 @@ export default {
   },
   methods: {
     create() {
-      this.$store.dispatch('book/create')
-      this.close()
+      this.$store.dispatch('book/create').then(() => {
+        this.close()
+      })
     },
     close: function () {
       this.$emit('close', this.$event)

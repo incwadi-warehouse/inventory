@@ -192,35 +192,39 @@ export default {
         })
     },
     create(context) {
-      let tags = []
-      context.rootState.tag.tags.forEach((element) => {
-        tags.push(element.id)
-      })
+      return new Promise((resolve, reject) => {
+        let tags = []
+        context.rootState.tag.tags.forEach((element) => {
+          tags.push(element.id)
+        })
 
-      api(context.rootState.user.token)
-        .post('/api/v1/book/new', {
-          added: new Date(context.state.added).getTime() / 1000,
-          title: context.state.title,
-          author:
-            context.state.authorSurname + ',' + context.state.authorFirstname,
-          genre: context.state.genreId,
-          price: context.state.price,
-          sold: false,
-          releaseYear: context.state.releaseYear,
-          type: context.state.type,
-          cond: context.state.cond_id,
-          tags: tags,
-        })
-        .then(function () {
-          notification.create('book_created', 'success')
-          context.dispatch('reset')
-        })
-        .catch(function (error) {
-          notification.create('book_not_valid', 'error')
-          if (error.response.status === 409) {
-            notification.create('book_not_valid_duplicate', 'error')
-          }
-        })
+        api(context.rootState.user.token)
+          .post('/api/v1/book/new', {
+            added: new Date(context.state.added).getTime() / 1000,
+            title: context.state.title,
+            author:
+              context.state.authorSurname + ',' + context.state.authorFirstname,
+            genre: context.state.genreId,
+            price: context.state.price,
+            sold: false,
+            releaseYear: context.state.releaseYear,
+            type: context.state.type,
+            cond: context.state.cond_id,
+            tags: tags,
+          })
+          .then(function () {
+            notification.create('book_created', 'success')
+            context.dispatch('reset')
+            resolve()
+          })
+          .catch(function (error) {
+            notification.create('book_not_valid', 'error')
+            if (error.response.status === 409) {
+              notification.create('book_not_valid_duplicate', 'error')
+            }
+            reject()
+          })
+      })
     },
     update(context, id) {
       let tags = []
