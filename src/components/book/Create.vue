@@ -1,6 +1,6 @@
 <template>
   <b-modal @close="close">
-    <b-container size="m">
+    <b-container size="m" :style="{ overflowY: 'scroll', height: '80vh' }">
       <b-form @submit.prevent="create">
         <b-form-group>
           <b-form-item>
