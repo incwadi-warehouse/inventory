@@ -15,10 +15,5 @@ if [ "$release" != "tag" ]
     git checkout "$release"
 fi
 
-composer install
-composer dump-env prod
-bin/console doctrine:database:create --if-not-exists
-bin/console doctrine:migrations:migrate -n
-bin/console cache:clear
-bin/console cache:warmup
-chown -R www-data:www-data .
+yarn install --frozen-lockfile
+yarn build
