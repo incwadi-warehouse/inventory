@@ -201,6 +201,9 @@
         <b-form-group>
           <span v-for="(tag, index) in tags" :key="tag.id">
             {{ tag.name }}
+            <span @click="removeTag(tag)">
+              <b-icon type="close" :size="12" />
+            </span>
             <span v-if="index !== tags.length - 1">, </span>
           </span>
         </b-form-group>
@@ -378,6 +381,9 @@ export default {
     createTag: function () {
       this.$store.dispatch('tag/create', this.tag)
       this.tag = null
+    },
+    removeTag: function (tag) {
+      this.$store.dispatch('tag/remove', tag)
     },
   },
   created: function () {

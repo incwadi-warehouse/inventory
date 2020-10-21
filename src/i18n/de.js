@@ -183,4 +183,5 @@ export default {
   savedsearches_desc:
     'Sucheinstellungen können von Admins gespeichert und von allen Nutzern in der Filiale geladen werden.',
   saved_searches: 'Gespeicherte Suchen',
+  remove_tag_error: 'Konnte Schlagwort nicht löschen.',
 }

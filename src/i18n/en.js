@@ -175,4 +175,5 @@ export default {
   savedsearches_desc:
     'Searches can be saved by admins and loaded by all users of the branch.',
   saved_searches: 'Saved Searches',
+  remove_tag_error: 'Could not remove the tag.',
 }
