@@ -192,4 +192,5 @@ export default {
   saved_searches: 'Gespeicherte Suchen',
   remove_tag_error:
     'Konnte Schlagwort nicht löschen. Versuche es später erneut.',
+  options: 'Optionen',
 }

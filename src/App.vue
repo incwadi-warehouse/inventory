@@ -21,6 +21,7 @@
         {{ $t(notification.msg) }}
       </b-notification>
     </b-notification-bar>
+    <b-tooltip />
   </b-app>
 </template>
 
