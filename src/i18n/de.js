@@ -7,7 +7,7 @@ export default {
   edit: 'Bearbeiten',
   load_more: 'mehr laden',
   not_found: 'Error 404 - Seite nicht gefunden!',
-  not_found_desc: 'Die gewünschte Seite konnte nicht gefunden werden.',
+  not_found_desc: 'Die gewünschte Seite konnte nicht gefunden werden!',
   go_to_homepage: 'Zur Startseite',
   create: 'Hinzufügen',
   genres: 'Rubriken',
@@ -51,7 +51,8 @@ export default {
   remove: 'Entfernen',
   login: 'Login',
   wrong_credentials: 'Bitte prüfe die Zugangsdaten!',
-  book_not_valid: 'Das Buch konnte nicht gespeichert werden!',
+  book_not_valid:
+    'Das Buch konnte nicht gespeichert werden! Versuche es später erneut.',
   book_not_valid_duplicate:
     'Das Buch konnte nicht gespeichert werden, da es ein Duplikat ist!',
   catalog: 'Katalogisieren',
@@ -68,38 +69,38 @@ export default {
   available_books: 'verfügbare Bücher',
   sold_books: 'verkaufte Bücher',
   removed_books: 'entfernte Bücher',
-  book_created: 'Das Buch wurde erfolgreich gespeichert.',
-  book_updated: 'Das Buch wurde erfolgreich aktualisiert.',
+  book_created: 'Buch gespeichert.',
+  book_updated: 'Buch aktualisiert.',
   authors: 'Autoren',
   edit_author: 'Autor bearbeiten',
   save: 'Speichern',
-  author_edit_successful: 'Der Autor wurde erfolgreich bearbeitet.',
+  author_edit_successful: 'Autor geändert.',
   author_edit_error:
     'Der Autor konnte leider nicht bearbeitet werden. Versuche es später erneut.',
-  author_remove_successful: 'Der Autor wurde erfolgreich gelöscht.',
+  author_remove_successful: 'Autor gelöscht.',
   author_remove_error:
     'Der Autor konnte leider nicht gelöscht werden. Versuche es später erneut.',
-  staff_create_success: 'Der Mitarbeiter wurde erfolgreich angelegt.',
+  staff_create_success: 'Mitarbeiter angelegt.',
   staff_create_error:
     'Der Mitarbeiter konnte leider nicht angelegt werden. Versuche es später erneut.',
-  staff_remove_success: 'Der Mitarbeiter wurde erfolgreich gelöscht.',
+  staff_remove_success: 'Mitarbeiter gelöscht.',
   staff_remove_error:
     'Der Mitarbeiter konnte leider nicht gelöscht werden. Versuche es später erneut und stelle sicher, dass keine Leihe aktiv ist.',
-  genre_create_success: 'Die Rubrik wurde erfolgreich angelegt.',
+  genre_create_success: 'Rubrik angelegt.',
   genre_create_error:
     'Die Rubrik konnte leider nicht angelegt werden. Versuche es später erneut.',
-  genre_remove_success: 'Die Rubrik wurde erfolgreich gelöscht.',
+  genre_remove_success: 'Rubrik gelöscht.',
   genre_remove_error:
     'Die Rubrik konnte leider nicht gelöscht werden. Versuche es später erneut.',
-  book_sell_success: 'Das Buch wurde erfolgreich verkauft.',
+  book_sell_success: 'Buch verkauft.',
   book_sell_error:
     'Das Buch konnte leider nicht verkauft werden. Versuche es später erneut.',
-  book_remove_success: 'Das Buch wurde erfolgreich gelöscht.',
+  book_remove_success: 'Buch gelöscht.',
   book_remove_error:
     'Das Buch konnte leider nicht gelöscht werden. Versuche es später erneut.',
-  password_successful: 'Das Passwort wurde erfolgreich geändert.',
+  password_successful: 'Passwort geändert.',
   password_error:
-    'Das Passwort konnte leider nicht geändert werden. Bitte verwende Groß- und Kleinbuchstaben, sowie Zahlen und Sonderzeichen',
+    'Das Passwort konnte leider nicht geändert werden. Bitte verwende Groß- und Kleinbuchstaben, sowie Zahlen und Sonderzeichen.',
   undo: 'Rückgängig',
   back_to_search: 'Zurück zur Suche',
   book_clean_success: 'Bücher wurden erfolgreich gelöscht.',
@@ -136,18 +137,22 @@ export default {
   cancel: 'Abbrechen',
   save_as_report: 'Als Report speichern',
   name_of_report: 'Reportname',
-  report_create_success: 'Report wurde erfolgreich angelegt',
-  report_create_error: 'Report konnte nicht angelegt werden.',
-  report_remove_success: 'Report wurde erfolgreich gelöscht',
-  report_remove_error: 'Report konnte nicht gelöscht werden.',
+  report_create_success: 'Report angelegt',
+  report_create_error:
+    'Report konnte nicht angelegt werden. Versuche es später erneut.',
+  report_remove_success: 'Report gelöscht.',
+  report_remove_error:
+    'Report konnte nicht gelöscht werden. Versuche es später erneut.',
   delete: 'Löschen',
   add_tag: 'Schlagwort hinzufügen',
-  create_tag_not_successful: 'Schlagwort konnte nicht angelegt werden.',
+  create_tag_not_successful:
+    'Schlagwort konnte nicht angelegt werden. Versuche es später erneut.',
   scroll_to_top: 'Nach oben',
   settings: 'Einstellungen',
   name_of_branch: 'Name der Filiale',
-  branch_update_success: 'Filiale erfolgreich aktualisiert.',
-  branch_update_error: 'Konnte die Filiale nicht aktualisieren.',
+  branch_update_success: 'Filiale aktualisiert.',
+  branch_update_error:
+    'Konnte die Filiale nicht aktualisieren. Versuche es später erneut.',
   price_steps: 'Preisschritte',
   currency: 'Währung',
   hello: 'Hallo',
@@ -177,11 +182,14 @@ export default {
   name_of_saved_search: 'Name der Suche',
   save_search: 'Suche speichern',
   savedsearches_create_success: 'Suche gespeichert',
-  savedsearches_create_error: 'Suche konnte nicht gespeichert werden.',
+  savedsearches_create_error:
+    'Suche konnte nicht gespeichert werden. Versuche es später erneut.',
   savedsearches_remove_success: 'Suche gelöscht',
-  savedsearches_remove_error: 'Suche konnte nicht gelöscht werden.',
+  savedsearches_remove_error:
+    'Suche konnte nicht gelöscht werden. Versuche es später erneut.',
   savedsearches_desc:
     'Sucheinstellungen können von Admins gespeichert und von allen Nutzern in der Filiale geladen werden.',
   saved_searches: 'Gespeicherte Suchen',
-  remove_tag_error: 'Konnte Schlagwort nicht löschen.',
+  remove_tag_error:
+    'Konnte Schlagwort nicht löschen. Versuche es später erneut.',
 }
