@@ -1,7 +1,11 @@
 export default {
   namespaced: true,
   state: {
-    elements: { 1: { field: null, operator: null, value: null } },
+    elements: {
+      1: { field: 'sold', operator: 'eq', value: '0' },
+      2: { field: 'removed', operator: 'eq', value: '0' },
+      3: { field: null, operator: null, value: null },
+    },
     term: null,
     orderByField: '',
     orderByDirection: '',
