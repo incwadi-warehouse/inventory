@@ -10,7 +10,6 @@ import stats from './stats'
 import author from './author'
 import search from './search'
 import condition from './condition'
-import report from './report'
 import tag from './tag'
 import savedsearch from './savedsearch'
 
@@ -29,7 +28,6 @@ export default new Vuex.Store({
     author,
     search,
     condition,
-    report,
     tag,
     savedsearch,
   },
