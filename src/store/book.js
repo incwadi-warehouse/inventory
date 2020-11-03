@@ -2,7 +2,7 @@ import api from '../api'
 import router from '../router'
 import { notification } from '@baldeweg/components'
 
-const formatDate = function(data) {
+const formatDate = function (data) {
   const date = new Date(data)
   let month = date.getMonth() + 1
   if (month < 10) {
@@ -19,6 +19,8 @@ const formatDate = function(data) {
 export default {
   namespaced: true,
   state: {
+    books: [],
+    counter: 0,
     added: formatDate(Math.round(new Date().getTime() / 1000) * 1000),
     title: null,
     authorFirstname: '',
@@ -32,9 +34,19 @@ export default {
     lendTo: null,
     lendOn: null,
     cond_id: null,
-    tags: []
+    tags: [],
   },
   mutations: {
+    books(state, books) {
+      state.books = books
+    },
+    removeBook(state, book) {
+      const id = state.books.indexOf(book)
+      state.books.splice(id, 1)
+    },
+    counter(state, counter) {
+      state.counter = counter
+    },
     added(state, added) {
       state.added = added
     },
@@ -76,13 +88,73 @@ export default {
     },
     tags(state, tags) {
       state.tags = tags
-    }
+    },
   },
   actions: {
+    find(context) {
+      const filters = context.rootState.search.elements
+      context.commit('search/isLoading', true, { root: true })
+
+      let flattenedFilters = []
+      Object.keys(filters).forEach((key) => {
+        if (!filters[key]) return
+        if (
+          !filters[key].field &&
+          !filters[key].operator &&
+          !filters[key].value
+        )
+          return
+        flattenedFilters.push(filters[key])
+      })
+
+      let term = undefined
+      if (context.rootState.search.term) {
+        term = context.rootState.search.term
+      }
+
+      let filter = undefined
+      if (flattenedFilters.length >= 1) {
+        filter = flattenedFilters
+      }
+
+      let orderBy = undefined
+      if (
+        context.rootState.search.orderByField ||
+        context.rootState.search.orderByDirection
+      ) {
+        orderBy = { book: [{}] }
+        if (context.rootState.search.orderByField) {
+          orderBy.book[0].field = context.rootState.search.orderByField
+        }
+        if (context.rootState.search.orderByDirection) {
+          orderBy.book[0].direction = context.rootState.search.orderByDirection
+        }
+      }
+
+      api(context.rootState.user.token)
+        .get('/api/v1/book/find', {
+          params: {
+            options: {
+              term,
+              filter,
+              orderBy,
+              limit: context.rootState.search.limit,
+            },
+          },
+        })
+        .then(function (response) {
+          context.commit('books', response.data.books)
+          context.commit('counter', response.data.counter)
+          context.dispatch('author/authors', null, { root: true })
+        })
+        .finally(function () {
+          context.commit('search/isLoading', false, { root: true })
+        })
+    },
     show(context, id) {
       api(context.rootState.user.token)
-        .get('/v1/book/' + id)
-        .then(function(response) {
+        .get('/api/v1/book/' + id)
+        .then(function (response) {
           context.commit('added', formatDate(response.data.added * 1000))
           context.commit('title', response.data.title)
           context.commit(
@@ -115,43 +187,53 @@ export default {
           )
           context.commit('tag/tags', response.data.tags, { root: true })
         })
-        .catch(function() {
+        .catch(function () {
           router.replace({ name: 'not-found' })
         })
     },
     create(context) {
-      let tags = []
-      context.rootState.tag.tags.forEach(element => {
-        tags.push(element.id)
+      return new Promise((resolve, reject) => {
+        let tags = []
+        context.rootState.tag.tags.forEach((element) => {
+          tags.push(element.id)
+        })
+
+        api(context.rootState.user.token)
+          .post('/api/v1/book/new', {
+            added: new Date(context.state.added).getTime() / 1000,
+            title: context.state.title,
+            author:
+              context.state.authorSurname + ',' + context.state.authorFirstname,
+            genre: context.state.genreId,
+            price: context.state.price,
+            sold: false,
+            releaseYear: context.state.releaseYear,
+            type: context.state.type,
+            cond: context.state.cond_id,
+            tags: tags,
+          })
+          .then(function () {
+            notification.create('book_created', 'success')
+            context.dispatch('reset')
+            resolve()
+          })
+          .catch(function (error) {
+            notification.create('book_not_valid', 'error')
+            if (error.response.status === 409) {
+              notification.create('book_not_valid_duplicate', 'error')
+            }
+            reject()
+          })
       })
-      api(context.rootState.user.token)
-        .post('/v1/book/new', {
-          added: new Date(context.state.added).getTime() / 1000,
-          title: context.state.title,
-          author:
-            context.state.authorSurname + ',' + context.state.authorFirstname,
-          genre: context.state.genreId,
-          price: context.state.price,
-          sold: false,
-          releaseYear: context.state.releaseYear,
-          type: context.state.type,
-          cond: context.state.cond_id,
-          tags: tags
-        })
-        .then(function() {
-          notification.create('book_created', 'success')
-          context.dispatch('reset')
-        })
-        .catch(function(error) {
-          notification.create('book_not_valid', 'error')
-          if (error.response.status === 409) {
-            notification.create('book_not_valid_duplicate', 'error')
-          }
-        })
     },
     update(context, id) {
+      let tags = []
+      context.rootState.tag.tags.forEach((element) => {
+        tags.push(element.id)
+      })
+
       api(context.rootState.user.token)
-        .put('/v1/book/' + id, {
+        .put('/api/v1/book/' + id, {
           added: new Date(context.state.added).getTime() / 1000,
           title: context.state.title,
           author:
@@ -166,14 +248,15 @@ export default {
           lendOn: context.state.lendOn
             ? new Date(context.state.lendOn).getTime() / 1000
             : null,
-          cond: context.state.cond_id
+          cond: context.state.cond_id,
+          tags: tags,
         })
-        .then(function() {
-          context.dispatch('search/search', null, { root: true })
-          router.push({ name: 'index' })
+        .then(function () {
+          context.dispatch('find')
+          router.push({ name: 'search' })
           notification.create('book_updated', 'success')
         })
-        .catch(function(error) {
+        .catch(function (error) {
           notification.create('book_not_valid', 'error')
           if (error.response.status === 409) {
             notification.create('book_not_valid_duplicate', 'error')
@@ -182,28 +265,27 @@ export default {
     },
     sell(context, book) {
       api(context.rootState.user.token)
-        .put('/v1/book/sell/' + book.id)
-        .then(function() {
-          context.commit('search/removeBook', book, { root: true })
+        .put('/api/v1/book/sell/' + book.id)
+        .then(function () {
+          context.commit('removeBook', book)
           notification.create('book_sell_success', 'success')
         })
-        .catch(function() {
+        .catch(function () {
           notification.create('book_sell_error', 'error')
         })
     },
     remove(context, book) {
       api(context.rootState.user.token)
-        .put('/v1/book/remove/' + book.id)
-        .then(function() {
-          context.commit('search/removeBook', book, { root: true })
+        .put('/api/v1/book/remove/' + book.id)
+        .then(function () {
+          context.commit('removeBook', book)
           notification.create('book_remove_success', 'success')
         })
-        .catch(function() {
+        .catch(function () {
           notification.create('book_remove_error', 'error')
         })
     },
     reset(context) {
-      context.commit('search/tab', null, { root: true })
       context.commit(
         'added',
         formatDate(Math.round(new Date().getTime() / 1000) * 1000)
@@ -217,18 +299,17 @@ export default {
       context.commit('releaseYear', 2019)
       context.commit('type', 'paperback')
       context.commit('cond_id', null)
-      context.commit('search/tab', false, { root: true })
       context.commit('tags', [])
     },
     clean(context) {
       api(context.rootState.user.token)
-        .delete('/v1/book/clean')
-        .then(function() {
+        .delete('/api/v1/book/clean')
+        .then(function () {
           notification.create('book_clean_success', 'success')
         })
-        .catch(function() {
+        .catch(function () {
           notification.create('book_clean_error', 'error')
         })
-    }
-  }
+    },
+  },
 }

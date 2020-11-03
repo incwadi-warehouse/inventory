@@ -6,7 +6,7 @@
     <b-form @submit.prevent="update" v-if="isEditing">
       <b-form-group>
         <b-form-item>
-          <b-form-label for="name" class="visuallyHidden">
+          <b-form-label for="name" hidden>
             {{ $t('name') }}
           </b-form-label>
         </b-form-item>
@@ -24,23 +24,23 @@ export default {
   props: {
     condition: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
       name: this.condition.name,
-      isEditing: false
+      isEditing: false,
     }
   },
   methods: {
-    update: function() {
+    update: function () {
       this.$store.dispatch('condition/update', {
         id: this.condition.id,
-        name: this.name
+        name: this.name,
       })
       this.isEditing = false
-    }
-  }
+    },
+  },
 }
 </script>

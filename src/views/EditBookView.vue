@@ -13,21 +13,24 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'edit-view',
+  head: {
+    title: 'Book',
+  },
   props: {
-    id: Number
+    id: String,
   },
   components: {
-    Edit
+    Edit,
   },
   computed: {
     ...mapState('staff', ['staff']),
     ...mapState('genre', ['genres']),
-    ...mapState('condition', ['conditions'])
+    ...mapState('condition', ['conditions']),
   },
-  created: function() {
+  created: function () {
     this.$store.dispatch('staff/staff')
     this.$store.dispatch('genre/genres')
     this.$store.dispatch('condition/list')
-  }
+  },
 }
 </script>

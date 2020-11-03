@@ -4,7 +4,7 @@
       <b-form @submit.prevent="create">
         <b-form-group>
           <b-form-item>
-            <b-form-label for="condition" class="visuallyHidden">
+            <b-form-label for="condition" hidden>
               {{ $t('new_condition') }}
             </b-form-label>
           </b-form-item>
@@ -24,17 +24,17 @@
 
 <script>
 export default {
-  name: 'condition-new',
+  name: 'new',
   data() {
     return {
-      condition: null
+      condition: null,
     }
   },
   methods: {
-    create: function() {
+    create: function () {
       this.$store.dispatch('condition/create', this.condition)
       this.condition = null
-    }
-  }
+    },
+  },
 }
 </script>

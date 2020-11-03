@@ -4,6 +4,7 @@ const path = require('path')
 const { VueLoaderPlugin } = require('vue-loader')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+var FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 module.exports = {
   entry: './src/main.js',
@@ -46,9 +47,16 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          'vue-style-loader',
-          'css-loader'
-        ],
+          {
+            loader: 'vue-style-loader',
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              esModule: false,
+            }
+          },
+        ]
       },
       {
         test: /\.(js|vue)$/,
@@ -70,16 +78,16 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     noInfo: true,
-    overlay: true
+    overlay: true,
+    quiet: true,
   },
   devtool: '#cheap-module-eval-source-map',
   plugins: [
-    new Dotenv({
-      path: './.env'
-    }),
+    new Dotenv(),
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
-      template: 'index.html'
-    })
+      template: 'static/index.html'
+    }),
+    new FriendlyErrorsWebpackPlugin(),
   ]
 }

@@ -1,24 +1,20 @@
 <template>
-  <b-container size="m">
-    <b-list v-for="member in staff" :key="member.id">
-      <template #options>
-        <b-dropdown>
-          <template #selector>
-            <b-icon type="more" />
-          </template>
-          <b-dropdown-item
-            :title="$t('remove')"
-            icon="bin"
-            @click="remove(member.id)"
-            v-if="me.isAdmin"
-          />
-        </b-dropdown>
-      </template>
-      <template #title>
-        <edit-staff :staff="member" />
-      </template>
-    </b-list>
-  </b-container>
+  <b-list>
+    <template #options v-if="me">
+      <b-dropdown>
+        <template #selector>
+          <b-icon type="more" />
+        </template>
+        <b-dropdown-item icon="bin" @click="remove(staff.id)" v-if="me.isAdmin">
+          {{ $t('remove') }}
+        </b-dropdown-item>
+      </b-dropdown>
+    </template>
+
+    <template #title>
+      <edit-staff :staff="staff" />
+    </template>
+  </b-list>
 </template>
 
 <script>
@@ -26,19 +22,21 @@ import { mapState, mapActions } from 'vuex'
 import EditStaff from './Edit'
 
 export default {
-  name: 'list',
+  name: 'list-staff',
   components: {
-    EditStaff
+    EditStaff,
+  },
+  props: {
+    staff: {
+      type: Object,
+      required: true,
+    },
   },
   computed: {
     ...mapState('user', ['me']),
-    ...mapState('staff', ['staff'])
   },
   methods: {
-    ...mapActions('staff', ['remove'])
+    ...mapActions('staff', ['remove']),
   },
-  created: function() {
-    this.$store.dispatch('staff/staff')
-  }
 }
 </script>

@@ -54,9 +54,16 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          'vue-style-loader',
-          'css-loader'
-        ],
+          {
+            loader: 'vue-style-loader',
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              esModule: false,
+            }
+          },
+        ]
       },
       {
         test: /\.(js|vue)$/,
@@ -75,15 +82,13 @@ module.exports = {
   devtool: false,
   plugins: [
     new CleanWebpackPlugin(),
-    new Dotenv({
-      path: './.env.production'
-    }),
+    new Dotenv(),
     new VueLoaderPlugin(),
     new webpack.LoaderOptionsPlugin({
       minimize: true
     }),
     new HtmlWebpackPlugin({
-      template: 'index.html',
+      template: 'static/index.html',
       minify: {
         removeComments: true,
         collapseWhitespace: true,
@@ -97,7 +102,7 @@ module.exports = {
       }
     }),
     new FaviconsWebpackPlugin({
-      logo: './src/assets/icon.svg',
+      logo: './static/icon.svg',
       prefix: 'assets/',
       inject: true,
       favicons: {
@@ -135,9 +140,11 @@ module.exports = {
     new GenerateSW({
       swDest: 'sw.js'
     }),
-    new CopyPlugin([
-      { from: 'robots.txt', to: 'robots.txt' },
-    ])
+    new CopyPlugin({
+      patterns: [
+        { from: 'static/robots.txt', to: 'robots.txt' },
+      ]
+    })
   ],
   optimization: {
     minimizer: [

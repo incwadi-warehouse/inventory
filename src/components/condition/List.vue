@@ -1,24 +1,20 @@
 <template>
-  <article>
-    <b-list v-for="condition in conditions" :key="condition.id">
-      <template #title>
-        <condition-title :condition="condition" />
-      </template>
+  <b-list>
+    <template #title>
+      <condition-title :condition="condition" />
+    </template>
 
-      <template #options>
-        <b-dropdown position="mouse">
-          <template #selector>
-            <b-icon type="more" />
-          </template>
-          <b-dropdown-item
-            :title="$t('remove')"
-            icon="bin"
-            @click="remove(condition)"
-          />
-        </b-dropdown>
-      </template>
-    </b-list>
-  </article>
+    <template #options>
+      <b-dropdown>
+        <template #selector>
+          <b-icon type="more" />
+        </template>
+        <b-dropdown-item icon="bin" @click="remove()">
+          {{ $t('remove') }}
+        </b-dropdown-item>
+      </b-dropdown>
+    </template>
+  </b-list>
 </template>
 
 <script>
@@ -27,20 +23,18 @@ import ConditionTitle from './Title'
 export default {
   name: 'condition-list',
   components: {
-    ConditionTitle
+    ConditionTitle,
   },
-  computed: {
-    conditions: function() {
-      return this.$store.state.condition.conditions
-    }
+  props: {
+    condition: {
+      type: Object,
+      required: true,
+    },
   },
   methods: {
-    remove: function(condition) {
-      this.$store.dispatch('condition/remove', condition)
-    }
+    remove: function () {
+      this.$store.dispatch('condition/remove', this.condition.id)
+    },
   },
-  created: function() {
-    this.$store.dispatch('condition/list')
-  }
 }
 </script>

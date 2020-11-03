@@ -1,5 +1,5 @@
 <template>
-  <ul class="list">
+  <ul>
     <li>
       <b>{{ stats.all }}</b> {{ $t('all_books') }}
     </li>
@@ -21,8 +21,8 @@ export default {
   props: {
     stats: {
       type: Object,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 }
 </script>

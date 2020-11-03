@@ -5,13 +5,13 @@ import genre from './genre'
 import branch from './branch'
 import staff from './staff'
 import user from './user'
-import navigation from './navigation'
+import app from './app'
 import stats from './stats'
 import author from './author'
 import search from './search'
 import condition from './condition'
-import report from './report'
 import tag from './tag'
+import savedsearch from './savedsearch'
 
 Vue.use(Vuex)
 
@@ -23,12 +23,12 @@ export default new Vuex.Store({
     branch,
     staff,
     user,
-    navigation,
+    app,
     stats,
     author,
     search,
     condition,
-    report,
-    tag
-  }
+    tag,
+    savedsearch,
+  },
 })

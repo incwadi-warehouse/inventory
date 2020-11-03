@@ -1,11 +1,11 @@
 <template>
-  <span @dblclick="toggleEdit()" v-if="!edit">
+  <span @dblclick="toggleEdit" v-if="!isEditing">
     {{ staff.name }}
   </span>
-  <b-form @submit.prevent="update()" v-else>
+  <b-form @submit.prevent="update" v-else>
     <b-form-group>
       <b-form-item>
-        <b-form-label for="staff" class="visuallyHidden">
+        <b-form-label for="staff" hidden>
           {{ $t('staff') }}
         </b-form-label>
       </b-form-item>
@@ -20,25 +20,28 @@
 export default {
   name: 'edit-staff',
   props: {
-    staff: Object
+    staff: {
+      type: Object,
+      required: true,
+    },
   },
   data() {
     return {
       name: this.staff.name,
-      edit: false
+      isEditing: false,
     }
   },
   methods: {
-    update: function() {
+    update: function () {
       this.toggleEdit()
       this.$store.dispatch('staff/edit', {
         id: this.staff.id,
-        name: this.name
+        name: this.name,
       })
     },
-    toggleEdit: function() {
-      this.edit = !this.edit
-    }
-  }
+    toggleEdit: function () {
+      this.isEditing = !this.isEditing
+    },
+  },
 }
 </script>

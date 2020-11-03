@@ -3,19 +3,15 @@
     <template #selector>
       <b-icon type="more" />
     </template>
-    <b-dropdown-item :title="$t('edit')" icon="pencil" @click="edit(book.id)" />
-    <b-dropdown-item
-      :title="$t('sell')"
-      icon="sell"
-      @click="sell(book)"
-      v-if="!book.sold"
-    />
-    <b-dropdown-item
-      :title="$t('remove')"
-      icon="bin"
-      @click="remove(book)"
-      v-if="!book.removed"
-    />
+    <b-dropdown-item icon="pencil" @click="edit(book.id)">
+      {{ $t('edit') }}
+    </b-dropdown-item>
+    <b-dropdown-item icon="sell" @click="sell(book)" v-if="!book.sold">
+      {{ $t('sell') }}
+    </b-dropdown-item>
+    <b-dropdown-item icon="bin" @click="remove(book)" v-if="!book.removed">
+      {{ $t('remove') }}
+    </b-dropdown-item>
   </b-dropdown>
 </template>
 
@@ -23,15 +19,15 @@
 import { mapActions } from 'vuex'
 
 export default {
-  name: 'contextMenu',
+  name: 'context-menu-search',
   props: {
-    book: Object
+    book: Object,
   },
   methods: {
     ...mapActions('book', ['sell', 'remove']),
-    edit: function(id) {
-      this.$router.push({ name: 'edit', params: { id: id } })
-    }
-  }
+    edit(id) {
+      this.$router.push({ name: 'book', params: { id: id } })
+    },
+  },
 }
 </script>

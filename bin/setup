@@ -1,14 +1,20 @@
 #!/bin/bash
 
-tags=${1:-"0"}
+release=${1:-"tag"}
 
-if [ "$tags" == 1 ]
+if [ "$release" == "tag" ]
   then
     git fetch
     tag=$(git describe --tags "$(git rev-list --tags --max-count=1)")
     git checkout "$tag"
-  else
-    git pull origin main
+    git pull
+fi
+
+if [ "$release" != "tag" ]
+  then
+    git fetch
+    git checkout "$release"
+    git pull
 fi
 
 yarn install --frozen-lockfile

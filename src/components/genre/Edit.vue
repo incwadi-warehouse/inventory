@@ -1,11 +1,11 @@
 <template>
   <span @dblclick="toggleEdit" v-if="!edit">
-    {{ genre.name }}
+    {{ genre.name }} ({{ genre.books }} {{ $t('books') }})
   </span>
   <b-form @submit.prevent="update" v-else>
     <b-form-group>
       <b-form-item>
-        <b-form-label for="genre" class="visuallyHidden">
+        <b-form-label for="genre" hidden>
           {{ $t('genre') }}
         </b-form-label>
       </b-form-item>
@@ -20,25 +20,25 @@
 export default {
   name: 'edit-genre',
   props: {
-    genre: Object
+    genre: Object,
   },
   data() {
     return {
       name: this.genre.name,
-      edit: false
+      edit: false,
     }
   },
   methods: {
-    update: function() {
+    update: function () {
       this.toggleEdit()
       this.$store.dispatch('genre/edit', {
         id: this.genre.id,
-        name: this.name
+        name: this.name,
       })
     },
-    toggleEdit: function() {
+    toggleEdit: function () {
       this.edit = !this.edit
-    }
-  }
+    },
+  },
 }
 </script>

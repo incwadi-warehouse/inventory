@@ -2,17 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import store from '../store'
 
-const Search = () => import('../views/Search')
-const EditBook = () => import('../views/EditBook')
-const About = () => import('../views/About')
-const Genre = () => import('../views/Genre')
-const Staff = () => import('../views/Staff')
-const Stats = () => import('../views/Stats')
-const NotFound = () => import('../views/404')
-const Author = () => import('../views/Author')
-const Profile = () => import('../views/Profile')
-const Branch = () => import('../views/Branch')
-
 Vue.use(Router)
 
 const router = new Router({
@@ -22,69 +11,68 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      name: 'index',
-      component: Search
+      name: 'search',
+      component: () => import('../views/SearchView'),
     },
     {
-      path: '/book/edit/:id',
-      name: 'edit',
-      component: EditBook,
-      props(route) {
-        const props = route.params
-        props.id = +props.id
-        return props
-      }
+      path: '/book/:id',
+      name: 'book',
+      component: () => import('../views/EditBookView'),
+      props: true,
     },
     {
       path: '/about',
       name: 'about',
-      component: About
+      component: () => import('../views/AboutView'),
     },
     {
       path: '/genre',
       name: 'genre',
-      component: Genre
+      component: () => import('../views/GenreView'),
     },
     {
       path: '/staff',
       name: 'staff',
-      component: Staff
+      component: () => import('../views/StaffView'),
     },
     {
       path: '/stats',
       name: 'stats',
-      component: Stats
+      component: () => import('../views/StatsView'),
     },
     {
       path: '/branch',
       name: 'branch',
-      component: Branch
+      component: () => import('../views/BranchView'),
     },
     {
       path: '/author/:id',
       name: 'author',
-      component: Author,
+      component: () => import('../views/AuthorView'),
       props(route) {
         const props = route.params
         props.id = +props.id
         return props
-      }
+      },
     },
     {
       path: '/profile',
       name: 'profile',
-      component: Profile
+      component: () => import('../views/ProfileView'),
     },
     {
       path: '*',
       name: 'not-found',
-      component: NotFound
-    }
-  ]
+      component: () => import('../views/404View'),
+    },
+  ],
+  scrollBehavior() {
+    return { x: 0, y: 0 }
+  },
 })
 
 router.beforeEach((to, from, next) => {
-  store.commit('navigation/showOffCanvas', false)
+  store.commit('app/showOffCanvas', false)
   next()
 })
 

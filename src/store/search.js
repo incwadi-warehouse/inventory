@@ -1,185 +1,117 @@
-import api from '../api'
-
 export default {
   namespaced: true,
   state: {
-    books: [],
-    counter: 0,
-    authors: null,
-    isLoading: false,
-    tab: null,
-    // Filter
-    searchTerm: null,
+    elements: { 1: { field: null, operator: null, value: null } },
+    term: null,
+    orderByField: '',
+    orderByDirection: '',
     limit: 50,
+    isLoading: false,
     sold: false,
     removed: false,
-    added: null,
-    branch: null,
-    genre: null,
-    lending: null,
-    orderBy: null,
-    releaseYear: null,
-    type: null
   },
   mutations: {
-    books(state, books) {
-      state.books = books
+    elements(state, elements) {
+      state.elements = elements
     },
-    addBook(state, book) {
-      state.books.push(book)
+    addElement(state, data) {
+      state.elements[data.id] = data.element
     },
-    removeBook(state, book) {
-      const id = state.books.indexOf(book)
-      state.books.splice(id, 1)
+    term(state, term) {
+      state.term = term
     },
-    counter(state, counter) {
-      state.counter = counter
+    orderByField(state, field) {
+      state.orderByField = field
     },
-    authors(state, authors) {
-      state.authors = authors
-    },
-    removeAuthor(state, id) {
-      const authors = state.authors.filter(author => author.id === id)
-      authors.forEach(author => {
-        const id = state.authors.indexOf(author)
-        state.authors.splice(id, 1)
-      })
-    },
-    isLoading(state, isLoading) {
-      state.isLoading = isLoading
-    },
-    tab(state, tab) {
-      state.tab = tab
-    },
-    // Filter
-    searchTerm(state, searchTerm) {
-      state.searchTerm = searchTerm
-    },
-    sold(state, sold) {
-      state.sold = sold === 1
-    },
-    removed(state, removed) {
-      state.removed = removed === 1
-    },
-    added(state, added) {
-      state.added = added
-    },
-    branch(state, branch) {
-      state.branch = branch
-    },
-    genre(state, genre) {
-      state.genre = genre
-    },
-    lending(state, lending) {
-      state.lending = lending
-    },
-    orderBy(state, orderBy) {
-      state.orderBy = orderBy
+    orderByDirection(state, direction) {
+      state.orderByDirection = direction
     },
     limit(state, limit) {
       state.limit = limit
     },
-    releaseYear(state, releaseYear) {
-      state.releaseYear = releaseYear
+    isLoading(state, isLoading) {
+      state.isLoading = isLoading
     },
-    type(state, type) {
-      state.type = type
-    }
+    sold(state, sold) {
+      state.sold = sold
+    },
+    removed(state, removed) {
+      state.removed = removed
+    },
   },
   actions: {
-    search(context) {
-      const isReleaseYearInRange =
-        context.state.releaseYear === null ||
-        (context.state.releaseYear >= 1000 && context.state.releaseYear <= 9999)
-      if (!isReleaseYearInRange) return
-
-      context.commit('isLoading', true)
-
-      let added = null
-      if (context.state.added) {
-        added = new Date()
-        added.setMonth(added.getMonth() - context.state.added)
-        added =
-          context.state.added !== 0 ? Math.round(added.getTime() / 1000) : null
+    addElement(context) {
+      let elements = {}
+      elements[Object.keys(context.state.elements).length + 1] = {
+        field: null,
+        operator: null,
+        value: null,
       }
 
-      let branch = null
-      if (context.state.branch) {
-        branch =
-          context.state.branch.length >= 1
-            ? context.state.branch.join(',')
-            : null
-      }
-
-      let genre = null
-      if (context.state.genre) {
-        genre =
-          context.state.genre.length >= 1 ? context.state.genre.join(',') : null
-      }
-
-      let lending = null
-      if (context.state.lending) {
-        lending = new Date()
-        lending.setMonth(lending.getMonth() - context.state.lending)
-        lending =
-          context.state.lending !== 0
-            ? Math.round(lending.getTime() / 1000)
-            : null
-      }
-
-      api(context.rootState.user.token)
-        .get('/v1/book/find', {
-          params: {
-            term: context.state.searchTerm,
-            limit: context.state.limit,
-            sold: context.state.sold ? '1' : '0',
-            removed: context.state.removed ? '1' : '0',
-            added: added,
-            branch: branch,
-            genre: genre,
-            lending: lending,
-            orderBy: context.state.orderBy,
-            releaseYear: context.state.releaseYear,
-            type: context.state.type
-          }
-        })
-        .then(function(response) {
-          context.commit('books', response.data.books)
-          context.commit('counter', response.data.counter)
-          context.commit('isLoading', false)
-          context.dispatch('authors', null)
-        })
+      context.commit(
+        'elements',
+        Object.assign({}, context.state.elements, elements)
+      )
     },
-    authors(context) {
-      if (!context.state.searchTerm) return
-
-      api(context.rootState.user.token)
-        .get('/v1/author/find', {
-          params: {
-            term: context.state.searchTerm
-          }
-        })
-        .then(function(response) {
-          context.commit('authors', response.data)
-        })
+    handleElement(context, data) {
+      if (data.val.field === 'sold' && data.val.value) {
+        context.commit('sold', true)
+        context.commit('removed', false)
+      }
+      if (data.val.field === 'sold' && !data.val.value) {
+        context.commit('sold', false)
+      }
+      if (data.val.field === 'removed' && data.val.value) {
+        context.commit('removed', true)
+        context.commit('sold', false)
+      }
+      if (data.val.field === 'removed' && !data.val.value) {
+        context.commit('removed', false)
+      }
+      let element = {}
+      element[data.id] = {
+        field: data.val.field,
+        operator: data.val.operator,
+        value: data.val.value,
+      }
+      context.commit(
+        'elements',
+        Object.assign({}, context.state.elements, element)
+      )
     },
-    remove(context, id) {
-      context.commit('removeAuthor', id)
-      context.dispatch('author/remove', id, { root: true })
+    removeElement(context, id) {
+      let element = {}
+      element[id] = null
+      context.commit(
+        'elements',
+        Object.assign({}, context.state.elements, element)
+      )
     },
-    // Filter
+    getDirection(context, type) {
+      const search = context.state
+      if (
+        search.orderByField === '' ||
+        search.orderByField !== type ||
+        search.orderByDirection === ''
+      ) {
+        return 'asc'
+      }
+      if (search.orderByDirection === 'asc') {
+        return 'desc'
+      }
+      if (search.orderByDirection === 'desc') {
+        return ''
+      }
+    },
+    setOrderBy(context, type) {
+      context.commit('orderByDirection', this.direction(type))
+      context.commit('orderByField', type)
+      context.dispatch('book/find', null, { root: true })
+    },
     reset(context) {
-      context.commit('searchTerm', null)
-      context.commit('sold', false)
-      context.commit('removed', false)
-      context.commit('added', null)
-      context.commit('branch', null)
-      context.commit('genre', null)
-      context.commit('lending', null)
-      context.commit('orderBy', null)
-      context.commit('limit', 50)
-      context.commit('releaseYear', null)
-      context.commit('type', null)
-    }
-  }
+      if (context.state.elements === {}) return
+      context.commit('elements', {})
+      context.commit('addElement')
+    },
+  },
 }

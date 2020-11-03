@@ -7,7 +7,7 @@
     <div v-if="isAuthenticated">
       <ul class="offcanvas_nav">
         <li class="offcanvas_item">
-          <router-link :to="{ name: 'index' }" class="offcanvas_link">
+          <router-link :to="{ name: 'search' }" class="offcanvas_link">
             {{ $t('search') }}
           </router-link>
         </li>
@@ -68,13 +68,13 @@ export default {
   name: 'navigation',
   computed: {
     ...mapState('user', ['isAuthenticated']),
-    ...mapState('navigation', ['showOffCanvas'])
+    ...mapState('app', ['showOffCanvas']),
   },
   methods: {
-    ...mapMutations('navigation', {
-      toggleOffCanvas: 'showOffCanvas'
+    ...mapMutations('app', {
+      toggleOffCanvas: 'showOffCanvas',
     }),
-    ...mapActions('user', ['logout'])
-  }
+    ...mapActions('user', ['logout']),
+  },
 }
 </script>

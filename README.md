@@ -1,4 +1,4 @@
-# incwadi
+# incwadi/inventory
 
 incwadi is a book database to manage your books.
 
@@ -10,9 +10,8 @@ An article can be found here https://medium.com/@A.Baldeweg/i-was-trying-new-thi
 
 ## Requirements
 
-- NodeJS 10LTS
+- NodeJS 12LTS
 - Yarn
-- A modern browser
 
 ## Getting Started
 
@@ -22,24 +21,14 @@ Download the files from the repository.
 git clone https://gitlab.com/incwadi/inventory.git
 ```
 
-The `.env` files specify variables. You must define them for production by creating a `.env.production` file.
-
-```shell
-touch .env
-touch .env.production
-```
-
-The files are looking like:
+Create the files `.env` and `.env.production` with the following content. Please fit it to your needs.
 
 ```shell
 API=URL
-CURRENCY=EUR
-BRAND_COLOR=#000000
-LOGO=src/assets/logo.png
 LOCALE=en
+BRAND_COLOR=#000000
+LOGO=src/assets/logo.png # set to false for default logo
 ```
-
-Please change the values to your needs. For more informations refer to the section "Options".
 
 Start the build process.
 
@@ -68,25 +57,12 @@ Example for Apache
 
 Remove the old files and download the new ones like you would install the app.
 
-If you still have the cloned repository and the `.env` files, you can pull for updates and start the build process.
-
 ```shell
-git pull
-yarn build
+bin/update
 ```
-
-## Options
-
-These options are used in the `.env` files.
-
-- API - Defines the URL to your API.
-- CURRENCY - The currency shown in the app.
-- BRAND_COLOR - The hex code of your desired color.
-- LOGO - Path to your custom logo.
-- LOCALE - Choose your language (en, de)
 
 ## CLI
 
+- yarn build - Builds the app.
 - yarn watch - Starts the development environment.
 - yarn test - Runs the unit tests.
-- yarn build - Builds the app.

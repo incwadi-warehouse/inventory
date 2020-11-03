@@ -1,26 +1,22 @@
 <template>
-  <b-container size="m">
+  <b-container size="l">
     <b-list v-for="author in authors" :key="author.id">
       <template #title>
         <router-link :to="{ name: 'author', params: { id: author.id } }">
-          {{ formatAuthor(author) }}
+          {{ author | formatAuthor }}
         </router-link>
       </template>
       <template #options>
-        <b-dropdown position="mouse">
+        <b-dropdown>
           <template #selector>
             <b-icon type="more" />
           </template>
-          <b-dropdown-item
-            :title="$t('edit')"
-            icon="pencil"
-            @click="edit(author.id)"
-          />
-          <b-dropdown-item
-            :title="$t('remove')"
-            icon="bin"
-            @click="remove(author.id)"
-          />
+          <b-dropdown-item icon="pencil" @click="edit(author.id)">
+            {{ $t('edit') }}
+          </b-dropdown-item>
+          <b-dropdown-item icon="bin" @click="remove(author.id)">
+            {{ $t('remove') }}
+          </b-dropdown-item>
         </b-dropdown>
       </template>
     </b-list>
@@ -31,21 +27,24 @@
 import { mapState, mapActions } from 'vuex'
 
 export default {
-  name: 'author',
+  name: 'author-list-search',
   computed: {
-    ...mapState('search', ['authors'])
+    ...mapState('author', ['authors']),
   },
   methods: {
-    ...mapActions('search', ['remove']),
-    formatAuthor: function(author) {
+    ...mapActions('author', ['remove']),
+    edit(authorId) {
+      this.$router.push({ name: 'author', params: { id: authorId } })
+    },
+  },
+  filters: {
+    formatAuthor(author) {
       if (author.firstname === '') {
         return author.surname
       }
+
       return author.surname + ', ' + author.firstname
     },
-    edit: function(author_id) {
-      this.$router.push({ name: 'author', params: { id: author_id } })
-    }
-  }
+  },
 }
 </script>

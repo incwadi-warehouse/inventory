@@ -9,11 +9,12 @@
             </b-form-label>
           </b-form-item>
           <b-form-item>
-            <b-form-select id="genre" required v-model="genreId">
-              <option v-for="genre in genres" :key="genre.id" :value="genre.id">
-                {{ genre.name }}
-              </option>
-            </b-form-select>
+            <b-form-autosuggest
+              required
+              :source="genres"
+              v-model="genreId"
+              v-if="genres.length >= 1"
+            />
           </b-form-item>
         </b-form-group>
         <b-form-group>
@@ -96,16 +97,27 @@
         <b-form-group>
           <b-form-item>
             <b-form-label for="price">
-              {{ $t('price') }} ({{ currency }})
+              {{ $t('price') }}
+              <span v-if="branch">({{ branch.currency }})</span>
             </b-form-label>
           </b-form-item>
           <b-form-item>
+            <b-form-input
+              type="number"
+              id="price"
+              :step="branch.steps"
+              pattern="^\d+(\.|,)?\d{0,2}$"
+              required
+              v-model="price"
+              v-if="branch && branch.steps > 0"
+            />
             <b-form-input
               type="text"
               id="price"
               pattern="^\d+(\.|,)?\d{0,2}$"
               required
               v-model="price"
+              v-else
             />
           </b-form-item>
         </b-form-group>
@@ -177,115 +189,122 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
   name: 'create',
   data() {
     return {
-      currency: process.env.CURRENCY,
-      tag: null
+      tag: null,
     }
   },
   computed: {
     ...mapState('genre', ['genres']),
     ...mapState('condition', ['conditions']),
+    ...mapState('branch', ['branch']),
     added: {
-      get: function() {
+      get: function () {
         return this.$store.state.book.added
       },
-      set: function(added) {
+      set: function (added) {
         this.$store.commit('book/added', added)
-      }
+      },
     },
     title: {
-      get: function() {
+      get: function () {
         return this.$store.state.book.title
       },
-      set: function(title) {
+      set: function (title) {
         this.$store.commit('book/title', title)
-      }
+      },
     },
     authorFirstname: {
-      get: function() {
+      get: function () {
         return this.$store.state.book.authorFirstname
       },
-      set: function(authorFirstname) {
+      set: function (authorFirstname) {
         this.$store.commit('book/authorFirstname', authorFirstname)
-      }
+      },
     },
     authorSurname: {
-      get: function() {
+      get: function () {
         return this.$store.state.book.authorSurname
       },
-      set: function(authorSurname) {
+      set: function (authorSurname) {
         this.$store.commit('book/authorSurname', authorSurname)
-      }
+      },
     },
     genreId: {
-      get: function() {
+      get: function () {
         return this.$store.state.book.genreId
       },
-      set: function(genreId) {
+      set: function (genreId) {
         this.$store.commit('book/genreId', genreId)
-      }
+      },
     },
     price: {
-      get: function() {
+      get: function () {
         return this.$store.state.book.price
       },
-      set: function(price) {
+      set: function (price) {
         this.$store.commit('book/price', price)
-      }
+      },
     },
     releaseYear: {
-      get: function() {
+      get: function () {
         return this.$store.state.book.releaseYear
       },
-      set: function(releaseYear) {
+      set: function (releaseYear) {
         this.$store.commit('book/releaseYear', releaseYear)
-      }
+      },
     },
     type: {
-      get: function() {
+      get: function () {
         return this.$store.state.book.type
       },
-      set: function(type) {
+      set: function (type) {
         this.$store.commit('book/type', type)
-      }
+      },
     },
     cond_id: {
-      get: function() {
+      get: function () {
         return this.$store.state.book.cond_id
       },
-      set: function(cond_id) {
+      set: function (cond_id) {
         this.$store.commit('book/cond_id', cond_id)
-      }
+      },
     },
-    tags: function() {
+    tags: function () {
       return this.$store.state.tag.tags
-    }
+    },
   },
   methods: {
-    ...mapActions('book', ['create']),
-    close: function() {
-      this.$store.commit('search/tab', null)
+    create() {
+      this.$store.dispatch('book/create').then(() => {
+        this.close()
+      })
     },
-    cancel: function() {
-      this.$store.commit('search/tab', false)
+    close: function () {
+      this.$emit('close', this.$event)
     },
-    createTag: function() {
+    cancel: function () {
+      this.$emit('close', this.$event)
+    },
+    createTag: function () {
       this.$store.dispatch('tag/create', this.tag)
       this.tag = null
-    }
+    },
   },
-  mounted: function() {
+  created: function () {
+    this.$store.dispatch('branch/branch')
+  },
+  mounted: function () {
     this.$store.dispatch('genre/genres')
     this.$store.dispatch('condition/list')
   },
-  destroyed: function() {
+  destroyed: function () {
     this.$store.commit('tag/tags', [])
     this.tag = null
-  }
+  },
 }
 </script>
