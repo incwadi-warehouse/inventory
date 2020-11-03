@@ -83,8 +83,8 @@
           v-if="'sold' === field || 'removed' === field"
           v-model="value"
         >
-          <option value="yes">{{ $t('yes') }}</option>
-          <option value="no">{{ $t('no') }}</option>
+          <option value="1">{{ $t('yes') }}</option>
+          <option value="0">{{ $t('no') }}</option>
         </b-form-select>
 
         <!-- type -->
