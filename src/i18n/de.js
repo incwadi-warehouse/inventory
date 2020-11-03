@@ -134,12 +134,6 @@ export default {
   conditions_desc:
     'Allen Büchern kann ein Zustand zugewiesen werden. Nur Admins dürfen neue Zustände anlegen. Löschen eines Zustandes, führt zu Büchern ohne Zustand.',
   cancel: 'Abbrechen',
-  save_as_report: 'Als Report speichern',
-  name_of_report: 'Reportname',
-  report_create_success: 'Report wurde erfolgreich angelegt',
-  report_create_error: 'Report konnte nicht angelegt werden.',
-  report_remove_success: 'Report wurde erfolgreich gelöscht',
-  report_remove_error: 'Report konnte nicht gelöscht werden.',
   delete: 'Löschen',
   add_tag: 'Schlagwort hinzufügen',
   create_tag_not_successful: 'Schlagwort konnte nicht angelegt werden.',
