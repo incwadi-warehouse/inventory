@@ -91,24 +91,24 @@ export default {
         Object.assign({}, context.state.elements, element)
       )
     },
-    getDirection(context, type) {
-      const search = context.state
+    orderByDirection(context, type) {
+      console.log(context.state.orderByDirection)
       if (
-        search.orderByField === '' ||
-        search.orderByField !== type ||
-        search.orderByDirection === ''
+        context.state.orderByField === '' ||
+        context.state.orderByField !== type ||
+        context.state.orderByDirection === ''
       ) {
-        return 'asc'
+        return context.commit('orderByDirection', 'asc')
       }
-      if (search.orderByDirection === 'asc') {
-        return 'desc'
+      if (context.state.orderByDirection === 'asc') {
+        return context.commit('orderByDirection', 'desc')
       }
-      if (search.orderByDirection === 'desc') {
-        return ''
+      if (context.state.orderByDirection === 'desc') {
+        return context.commit('orderByDirection', '')
       }
     },
     setOrderBy(context, type) {
-      context.commit('orderByDirection', this.direction(type))
+      context.dispatch('orderByDirection', type)
       context.commit('orderByField', type)
       context.dispatch('book/find', null, { root: true })
     },
