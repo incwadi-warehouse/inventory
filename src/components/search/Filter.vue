@@ -155,7 +155,7 @@ export default {
     },
     orderBy_direction: {
       get() {
-        return this.$store.state.search.orderByDirection
+        return this.$store.state.search.orderByDirection.toUpperCase()
       },
       set(orderBy_direction) {
         this.$store.commit('search/orderByDirection', orderBy_direction)
