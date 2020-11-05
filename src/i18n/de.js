@@ -150,7 +150,7 @@ export default {
     'Wenn etwas schief gelaufen ist und Du kurz zuvor ein Update durchgeführt hast, drücke <kbd>Strg</kbd> + <kbd>F5</kbd>. Die App wird unter Umgehung des Caches neugeladen.',
   language: 'Sprache',
   lendOn: 'Ausgeliehen am',
-  releaseYear: 'Veröffentlichungsjahr',
+  releaseYear: 'Erscheinungsjahr',
   months: 'Monate',
   eq: 'ist gleich',
   in: 'ist in',
