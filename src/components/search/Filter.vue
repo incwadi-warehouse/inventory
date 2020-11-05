@@ -32,7 +32,7 @@
           @remove="remove(el)"
         />
         <b-button design="outline_wide" type="button" @click="add">
-          Add Field
+          {{ $t('add_field') }}
         </b-button>
 
         <b-form-group style="margin-top: 20px">

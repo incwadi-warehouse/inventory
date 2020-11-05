@@ -169,4 +169,5 @@ export default {
   savedsearches_desc:
     'Searches can be saved by admins and loaded by all users of the branch.',
   saved_searches: 'Saved Searches',
+  add_field: 'Add Field',
 }

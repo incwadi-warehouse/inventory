@@ -177,4 +177,5 @@ export default {
   savedsearches_desc:
     'Sucheinstellungen können von Admins gespeichert und von allen Nutzern in der Filiale geladen werden.',
   saved_searches: 'Gespeicherte Suchen',
+  add_field: 'Feld hinzufügen',
 }
