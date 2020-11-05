@@ -214,7 +214,7 @@ export default {
   margin: 10px 0;
 }
 .list {
-  height: 100px;
+  height: 200px;
   overflow: auto;
 }
 .list::-webkit-scrollbar-track-piece {
