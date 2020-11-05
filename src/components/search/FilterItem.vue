@@ -154,7 +154,9 @@ export default {
         }
       }
       if ('releaseYear' === this.field) {
-        this.value = '2020'
+        if (null === this.value) {
+          this.value = '2020'
+        }
       }
     },
     handle() {
