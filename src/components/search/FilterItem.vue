@@ -30,14 +30,7 @@
         <!-- lendOn -->
         <!-- added -->
         <div v-if="'lendOn' === field || 'added' === field">
-          <b-form-input
-            type="number"
-            v-model="value"
-            :placeholder="$t('months')"
-          />
-          <p>
-            {{ value | format }}
-          </p>
+          <b-form-input type="date" v-model="value" />
         </div>
 
         <!-- releaseYear -->
@@ -165,14 +158,6 @@ export default {
         operator: this.operator || 'eq',
         value: this.value || null,
       })
-    },
-  },
-  filters: {
-    format(value) {
-      let date = new Date()
-      date.setMonth(date.getMonth() - value)
-
-      return date.toLocaleString()
     },
   },
   watch: {
