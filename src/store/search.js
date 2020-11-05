@@ -92,7 +92,6 @@ export default {
       )
     },
     orderByDirection(context, type) {
-      console.log(context.state.orderByDirection)
       if (
         context.state.orderByField === '' ||
         context.state.orderByField !== type ||
