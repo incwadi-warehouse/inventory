@@ -162,6 +162,7 @@ export default {
   },
   watch: {
     field() {
+      this.value = null
       this.setOperators()
       this.setDefaultValue()
       this.handle()
