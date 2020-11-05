@@ -114,7 +114,10 @@ export default {
     reset(context) {
       if (context.state.elements === {}) return
       context.commit('elements', {})
-      context.commit('addElement')
+      context.dispatch('addElement')
+      context.commit('orderByField', '')
+      context.commit('orderByDirection', '')
+      context.commit('limit', 50)
     },
   },
 }
