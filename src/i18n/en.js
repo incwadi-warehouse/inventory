@@ -171,4 +171,5 @@ export default {
   saved_searches: 'Saved Searches',
   remove_tag_error: 'Could not remove the tag. Try again later.',
   options: 'Options',
+  deprecated: 'Deprecated! This feature will be removed soon!',
 }

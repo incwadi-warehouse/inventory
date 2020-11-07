@@ -96,6 +96,9 @@
     <b-container size="l">
       <h2>{{ $t('saved_searches') }}</h2>
       <p>{{ $t('savedsearches_desc') }}</p>
+      <b-notification type="warning">
+        {{ $t('deprecated') }}
+      </b-notification>
 
       <saved-search-create />
       <saved-search-list @find="find" />

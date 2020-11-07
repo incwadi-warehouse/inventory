@@ -193,4 +193,5 @@ export default {
   remove_tag_error:
     'Konnte Schlagwort nicht löschen. Versuche es später erneut.',
   options: 'Optionen',
+  deprecated: 'Deprecated! Diese Funktion wird bald entfernt!',
 }
