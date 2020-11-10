@@ -1,6 +1,10 @@
 <template>
   <b-modal @close="close">
     <b-container size="m">
+      <h1>{{ $t('catalog') }}</h1>
+    </b-container>
+
+    <b-container size="m">
       <b-form @submit.prevent="create">
         <b-form-group>
           <b-form-item>
