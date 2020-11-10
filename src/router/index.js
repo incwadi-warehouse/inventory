@@ -15,9 +15,9 @@ const router = new Router({
       component: () => import('../views/SearchView'),
     },
     {
-      path: '/book/:id',
+      path: '/book/:bookId',
       name: 'book',
-      component: () => import('../views/EditBookView'),
+      component: () => import('../views/SearchView'),
       props: true,
     },
     {

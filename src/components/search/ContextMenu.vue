@@ -26,7 +26,7 @@ export default {
   methods: {
     ...mapActions('book', ['sell', 'remove']),
     edit(id) {
-      this.$router.push({ name: 'book', params: { id: id } })
+      this.$router.push({ name: 'book', params: { bookId: id } })
     },
   },
 }

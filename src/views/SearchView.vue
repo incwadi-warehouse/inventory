@@ -26,6 +26,8 @@
     <search-author-list v-if="hasAuthors" />
 
     <search-scroll-to-top v-if="hasBooks" />
+
+    <book-edit :id="bookId" v-if="bookId && staff && genres && conditions" />
   </article>
 </template>
 
@@ -36,11 +38,19 @@ import SearchScrollToTop from '../components/search/ScrollToTop'
 import SearchBookHeading from '../components/search/BookHeading'
 import SearchBooksTableHead from '../components/search/BooksTableHead'
 import SearchBooksTableBody from '../components/search/BooksTableBody'
+import BookEdit from '../components/book/Edit'
+import { mapState } from 'vuex'
 
 export default {
   name: 'search-view',
   head: {
     title: 'Search',
+  },
+  props: {
+    bookId: {
+      type: String,
+      default: null,
+    },
   },
   components: {
     SearchActionbar,
@@ -49,8 +59,12 @@ export default {
     SearchBookHeading,
     SearchBooksTableHead,
     SearchBooksTableBody,
+    BookEdit,
   },
   computed: {
+    ...mapState('staff', ['staff']),
+    ...mapState('genre', ['genres']),
+    ...mapState('condition', ['conditions']),
     hasBooks() {
       if (!this.$store.state.book.books) return false
       return this.$store.state.book.books.length >= 1
@@ -62,6 +76,11 @@ export default {
     isLoading() {
       return this.$store.state.search.isLoading
     },
+  },
+  created: function () {
+    this.$store.dispatch('staff/staff')
+    this.$store.dispatch('genre/genres')
+    this.$store.dispatch('condition/list')
   },
 }
 </script>
