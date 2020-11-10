@@ -17,7 +17,11 @@
         </div>
 
         <div class="actionbar_action">
-          <b-button design="outline" ripple @click="showCreate = true">
+          <b-button
+            design="outline"
+            ripple
+            @click="$router.push({ name: 'book.new' })"
+          >
             {{ $t('catalog') }}
           </b-button>
         </div>
@@ -25,24 +29,20 @@
     </b-container>
 
     <search-filter @close="showFilter = false" v-if="showFilter" />
-    <book-create @close="showCreate = false" v-if="showCreate" />
   </article>
 </template>
 
 <script>
 import SearchFilter from './Filter'
-import BookCreate from './../book/Create'
 
 export default {
   name: 'search-search',
   components: {
     SearchFilter,
-    BookCreate,
   },
   data() {
     return {
       showFilter: false,
-      showCreate: false,
     }
   },
   computed: {

@@ -1,5 +1,5 @@
 <template>
-  <b-modal @close="close">
+  <b-modal @close="$emit('close', $event)">
     <b-container size="m">
       <h1>{{ $t('catalog') }}</h1>
     </b-container>
@@ -18,12 +18,6 @@
                 {{ genre.name }}
               </option>
             </b-form-select>
-            <!-- <b-form-autosuggest
-              required
-              :source="genres"
-              v-model="genreId"
-              v-if="genres.length >= 1"
-            /> -->
           </b-form-item>
         </b-form-group>
         <b-form-group>
@@ -165,6 +159,9 @@
           <b-form-group>
             <span v-for="(tag, index) in tags" :key="tag.id">
               {{ tag.name }}
+              <span @click="removeTag(tag)">
+                <b-icon type="close" :size="12" />
+              </span>
               <span v-if="index !== tags.length - 1">, </span>
             </span>
           </b-form-group>
@@ -184,7 +181,7 @@
 
         <b-form-group buttons>
           <b-form-item>
-            <b-button design="outline" @click.prevent="cancel">
+            <b-button design="outline" @click.prevent="$emit('close', $event)">
               {{ $t('cancel') }}
             </b-button>
             <b-button design="primary">
@@ -198,12 +195,26 @@
 </template>
 
 <script>
+import formatDate from './../../util/date'
 import { mapState } from 'vuex'
 
 export default {
-  name: 'create',
+  name: 'create-book',
   data() {
     return {
+      added: formatDate(Math.round(new Date().getTime() / 1000) * 1000),
+      title: null,
+      authorFirstname: null,
+      authorSurname: null,
+      genreId: null,
+      price: '2.50',
+      sold: false,
+      removed: false,
+      releaseYear: new Date().getFullYear(),
+      type: 'paperback',
+      lendTo: null,
+      lendOn: null,
+      cond_id: null,
       tag: null,
     }
   },
@@ -211,109 +222,52 @@ export default {
     ...mapState('genre', ['genres']),
     ...mapState('condition', ['conditions']),
     ...mapState('branch', ['branch']),
-    added: {
-      get: function () {
-        return this.$store.state.book.added
-      },
-      set: function (added) {
-        this.$store.commit('book/added', added)
-      },
-    },
-    title: {
-      get: function () {
-        return this.$store.state.book.title
-      },
-      set: function (title) {
-        this.$store.commit('book/title', title)
-      },
-    },
-    authorFirstname: {
-      get: function () {
-        return this.$store.state.book.authorFirstname
-      },
-      set: function (authorFirstname) {
-        this.$store.commit('book/authorFirstname', authorFirstname)
-      },
-    },
-    authorSurname: {
-      get: function () {
-        return this.$store.state.book.authorSurname
-      },
-      set: function (authorSurname) {
-        this.$store.commit('book/authorSurname', authorSurname)
-      },
-    },
-    genreId: {
-      get: function () {
-        return this.$store.state.book.genreId
-      },
-      set: function (genreId) {
-        this.$store.commit('book/genreId', genreId)
-      },
-    },
-    price: {
-      get: function () {
-        return this.$store.state.book.price
-      },
-      set: function (price) {
-        this.$store.commit('book/price', price)
-      },
-    },
-    releaseYear: {
-      get: function () {
-        return this.$store.state.book.releaseYear
-      },
-      set: function (releaseYear) {
-        this.$store.commit('book/releaseYear', releaseYear)
-      },
-    },
-    type: {
-      get: function () {
-        return this.$store.state.book.type
-      },
-      set: function (type) {
-        this.$store.commit('book/type', type)
-      },
-    },
-    cond_id: {
-      get: function () {
-        return this.$store.state.book.cond_id
-      },
-      set: function (cond_id) {
-        this.$store.commit('book/cond_id', cond_id)
-      },
-    },
     tags: function () {
       return this.$store.state.tag.tags
     },
   },
   methods: {
     create() {
-      this.$store.dispatch('book/create').then(() => {
-        this.close()
+      let tags = []
+      this.tags.forEach((element) => {
+        tags.push(element.id)
       })
+
+      this.$store
+        .dispatch('book/create', {
+          added: new Date(this.added).getTime() / 1000,
+          title: this.title,
+          author: this.authorSurname + ',' + this.authorFirstname,
+          genre: this.genreId,
+          price: this.price,
+          sold: false,
+          removed: false,
+          releaseYear: this.releaseYear,
+          type: this.type,
+          lendTo: null,
+          lendOn: null,
+          cond: this.cond_id,
+          tags: tags,
+        })
+        .then(() => {
+          this.$emit('close', this.$event)
+        })
     },
-    close: function () {
-      this.$emit('close', this.$event)
-    },
-    cancel: function () {
-      this.$emit('close', this.$event)
-    },
-    createTag: function () {
+    createTag() {
       this.$store.dispatch('tag/create', this.tag)
       this.tag = null
     },
+    removeTag(tag) {
+      this.$store.dispatch('tag/remove', tag)
+    },
   },
-  created: function () {
+  created() {
     this.$store.dispatch('branch/branch')
-  },
-  mounted: function () {
     this.$store.dispatch('genre/genres')
     this.$store.dispatch('condition/list')
   },
-  destroyed: function () {
+  destroyed() {
     this.$store.commit('tag/tags', [])
-    this.tag = null
   },
 }
 </script>

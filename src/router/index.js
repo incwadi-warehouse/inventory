@@ -15,6 +15,12 @@ const router = new Router({
       component: () => import('../views/SearchView'),
     },
     {
+      path: '/book/new',
+      name: 'book.new',
+      component: () => import('../views/SearchView'),
+      props: { showCreateBook: true },
+    },
+    {
       path: '/book/:bookId',
       name: 'book',
       component: () => import('../views/SearchView'),

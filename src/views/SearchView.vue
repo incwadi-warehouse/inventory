@@ -27,7 +27,15 @@
 
     <search-scroll-to-top v-if="hasBooks" />
 
-    <book-edit :id="bookId" v-if="bookId && staff && genres && conditions" />
+    <book-edit
+      :book="$store.state.book.book"
+      v-if="$store.state.book.book"
+      @close="closeEdit"
+    />
+    <book-create
+      @close="$router.push({ name: 'search' })"
+      v-if="showCreateBook"
+    />
   </article>
 </template>
 
@@ -38,8 +46,8 @@ import SearchScrollToTop from '../components/search/ScrollToTop'
 import SearchBookHeading from '../components/search/BookHeading'
 import SearchBooksTableHead from '../components/search/BooksTableHead'
 import SearchBooksTableBody from '../components/search/BooksTableBody'
+import BookCreate from '../components/book/Create'
 import BookEdit from '../components/book/Edit'
-import { mapState } from 'vuex'
 
 export default {
   name: 'search-view',
@@ -51,6 +59,10 @@ export default {
       type: String,
       default: null,
     },
+    showCreateBook: {
+      type: Boolean,
+      default: false,
+    },
   },
   components: {
     SearchActionbar,
@@ -59,12 +71,10 @@ export default {
     SearchBookHeading,
     SearchBooksTableHead,
     SearchBooksTableBody,
+    BookCreate,
     BookEdit,
   },
   computed: {
-    ...mapState('staff', ['staff']),
-    ...mapState('genre', ['genres']),
-    ...mapState('condition', ['conditions']),
     hasBooks() {
       if (!this.$store.state.book.books) return false
       return this.$store.state.book.books.length >= 1
@@ -77,10 +87,22 @@ export default {
       return this.$store.state.search.isLoading
     },
   },
-  created: function () {
-    this.$store.dispatch('staff/staff')
-    this.$store.dispatch('genre/genres')
-    this.$store.dispatch('condition/list')
+  methods: {
+    getBook() {
+      if (this.bookId) this.$store.dispatch('book/show', this.bookId)
+    },
+    closeEdit() {
+      this.$store.commit('book/book', null)
+      this.$router.push({ name: 'search' })
+    },
+  },
+  watch: {
+    bookId() {
+      this.getBook()
+    },
+  },
+  created() {
+    this.getBook()
   },
 }
 </script>
