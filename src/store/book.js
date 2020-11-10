@@ -156,7 +156,6 @@ export default {
           })
           .then(function () {
             context.dispatch('find')
-            router.push({ name: 'search' })
             notification.create('book_updated', 'success')
             resolve()
           })
