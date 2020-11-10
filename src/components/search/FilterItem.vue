@@ -30,14 +30,7 @@
         <!-- lendOn -->
         <!-- added -->
         <div v-if="'lendOn' === field || 'added' === field">
-          <b-form-input
-            type="number"
-            v-model="value"
-            :placeholder="$t('months')"
-          />
-          <p>
-            {{ value | format }}
-          </p>
+          <b-form-input type="date" v-model="value" />
         </div>
 
         <!-- releaseYear -->
@@ -83,8 +76,8 @@
           v-if="'sold' === field || 'removed' === field"
           v-model="value"
         >
-          <option value="yes">{{ $t('yes') }}</option>
-          <option value="no">{{ $t('no') }}</option>
+          <option value="1">{{ $t('yes') }}</option>
+          <option value="0">{{ $t('no') }}</option>
         </b-form-select>
 
         <!-- type -->
@@ -154,7 +147,9 @@ export default {
         }
       }
       if ('releaseYear' === this.field) {
-        this.value = '2020'
+        if (null === this.value) {
+          this.value = '2020'
+        }
       }
     },
     handle() {
@@ -165,16 +160,9 @@ export default {
       })
     },
   },
-  filters: {
-    format(value) {
-      let date = new Date()
-      date.setMonth(date.getMonth() - value)
-
-      return date.toLocaleString()
-    },
-  },
   watch: {
     field() {
+      this.value = null
       this.setOperators()
       this.setDefaultValue()
       this.handle()
@@ -212,7 +200,7 @@ export default {
   margin: 10px 0;
 }
 .list {
-  height: 100px;
+  height: 200px;
   overflow: auto;
 }
 .list::-webkit-scrollbar-track-piece {

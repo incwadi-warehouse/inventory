@@ -1,6 +1,6 @@
 <template>
   <b-modal @close="close">
-    <b-container size="m" :style="{ overflowY: 'scroll', height: '80vh' }">
+    <b-container size="m">
       <b-form @submit.prevent="create">
         <b-form-group>
           <b-form-item>
@@ -9,12 +9,17 @@
             </b-form-label>
           </b-form-item>
           <b-form-item>
-            <b-form-autosuggest
+            <b-form-select id="genre" required v-model="genreId">
+              <option v-for="genre in genres" :key="genre.id" :value="genre.id">
+                {{ genre.name }}
+              </option>
+            </b-form-select>
+            <!-- <b-form-autosuggest
               required
               :source="genres"
               v-model="genreId"
               v-if="genres.length >= 1"
-            />
+            /> -->
           </b-form-item>
         </b-form-group>
         <b-form-group>

@@ -32,7 +32,7 @@
           @remove="remove(el)"
         />
         <b-button design="outline_wide" type="button" @click="add">
-          Add Field
+          {{ $t('add_field') }}
         </b-button>
 
         <b-form-group style="margin-top: 20px">
@@ -158,7 +158,7 @@ export default {
     },
     orderBy_direction: {
       get() {
-        return this.$store.state.search.orderByDirection
+        return this.$store.state.search.orderByDirection.toUpperCase()
       },
       set(orderBy_direction) {
         this.$store.commit('search/orderByDirection', orderBy_direction)

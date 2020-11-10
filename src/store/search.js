@@ -1,7 +1,11 @@
 export default {
   namespaced: true,
   state: {
-    elements: { 1: { field: null, operator: null, value: null } },
+    elements: {
+      1: { field: 'sold', operator: 'eq', value: '0' },
+      2: { field: 'removed', operator: 'eq', value: '0' },
+      3: { field: null, operator: null, value: null },
+    },
     term: null,
     orderByField: '',
     orderByDirection: '',
@@ -87,31 +91,33 @@ export default {
         Object.assign({}, context.state.elements, element)
       )
     },
-    getDirection(context, type) {
-      const search = context.state
+    orderByDirection(context, type) {
       if (
-        search.orderByField === '' ||
-        search.orderByField !== type ||
-        search.orderByDirection === ''
+        context.state.orderByField === '' ||
+        context.state.orderByField !== type ||
+        context.state.orderByDirection === ''
       ) {
-        return 'asc'
+        return context.commit('orderByDirection', 'asc')
       }
-      if (search.orderByDirection === 'asc') {
-        return 'desc'
+      if (context.state.orderByDirection === 'asc') {
+        return context.commit('orderByDirection', 'desc')
       }
-      if (search.orderByDirection === 'desc') {
-        return ''
+      if (context.state.orderByDirection === 'desc') {
+        return context.commit('orderByDirection', '')
       }
     },
     setOrderBy(context, type) {
-      context.commit('orderByDirection', this.direction(type))
+      context.dispatch('orderByDirection', type)
       context.commit('orderByField', type)
       context.dispatch('book/find', null, { root: true })
     },
     reset(context) {
       if (context.state.elements === {}) return
       context.commit('elements', {})
-      context.commit('addElement')
+      context.dispatch('addElement')
+      context.commit('orderByField', '')
+      context.commit('orderByDirection', '')
+      context.commit('limit', 50)
     },
   },
 }

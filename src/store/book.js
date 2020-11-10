@@ -104,7 +104,16 @@ export default {
           !filters[key].value
         )
           return
-        flattenedFilters.push(filters[key])
+        if (filters[key].field === 'added' || filters[key].field === 'lendOn') {
+          const date = new Date(filters[key].value)
+
+          return flattenedFilters.push({
+            field: filters[key].field,
+            operator: filters[key].operator,
+            value: date.getTime() / 1000,
+          })
+        }
+        return flattenedFilters.push(filters[key])
       })
 
       let term = undefined
