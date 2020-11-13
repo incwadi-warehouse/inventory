@@ -28,17 +28,26 @@
       </b-actionbar>
     </b-container>
 
-    <search-filter @close="showFilter = false" v-if="showFilter" />
+    <search-filter
+      @close="showFilter = false"
+      v-if="showFilter && !classicFilters"
+    />
+    <search-filters
+      @close="showFilter = false"
+      v-if="showFilter && classicFilters === 'true'"
+    />
   </article>
 </template>
 
 <script>
 import SearchFilter from './Filter'
+import SearchFilters from './Filters'
 
 export default {
   name: 'search-search',
   components: {
     SearchFilter,
+    SearchFilters,
   },
   data() {
     return {
@@ -53,6 +62,9 @@ export default {
       set: function (term) {
         this.$store.commit('search/term', term)
       },
+    },
+    classicFilters() {
+      return window.localStorage.getItem('classicFilters')
     },
   },
   methods: {

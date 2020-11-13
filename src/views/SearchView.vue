@@ -102,6 +102,7 @@ export default {
     },
   },
   created() {
+    this.$store.dispatch('genre/genres')
     this.getBook()
   },
 }

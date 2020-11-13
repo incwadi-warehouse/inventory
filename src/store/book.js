@@ -47,6 +47,29 @@ export default {
             value: date.getTime() / 1000,
           })
         }
+        if (filters[key].field === 'genre') {
+          if (filters[key].value.length === 0) {
+            let genres = []
+            context.rootState.genre.genres.forEach((genre) => {
+              genres.push(genre.id)
+            })
+
+            return flattenedFilters.push({
+              field: filters[key].field,
+              operator: filters[key].operator,
+              value: genres,
+            })
+          }
+        }
+        if (filters[key].field === 'branch') {
+          if (filters[key].value.length === 0) {
+            return flattenedFilters.push({
+              field: filters[key].field,
+              operator: filters[key].operator,
+              value: [context.rootState.user.me.branch.id],
+            })
+          }
+        }
         return flattenedFilters.push(filters[key])
       })
 

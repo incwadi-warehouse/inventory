@@ -1,11 +1,23 @@
+const flex = {
+  1: { field: 'sold', operator: 'eq', value: '0' },
+  2: { field: 'removed', operator: 'eq', value: '0' },
+  3: { field: null, operator: null, value: null },
+}
+const classic = {
+  1: { field: 'genre', operator: 'in', value: [] },
+  2: {
+    field: 'branch',
+    operator: 'in',
+    value: [],
+  },
+  6: { field: 'sold', operator: 'eq', value: false },
+  7: { field: 'removed', operator: 'eq', value: false },
+}
+
 export default {
   namespaced: true,
   state: {
-    elements: {
-      1: { field: 'sold', operator: 'eq', value: '0' },
-      2: { field: 'removed', operator: 'eq', value: '0' },
-      3: { field: null, operator: null, value: null },
-    },
+    elements: window.localStorage.getItem('classicFilters') ? classic : flex,
     term: null,
     orderByField: '',
     orderByDirection: '',
@@ -113,11 +125,20 @@ export default {
     },
     reset(context) {
       if (context.state.elements === {}) return
-      context.commit('elements', {})
-      context.dispatch('addElement')
+      context.commit(
+        'elements',
+        Object.assign(
+          {},
+          window.localStorage.getItem('classicFilters') ? classic : flex
+        )
+      )
+      if (!window.localStorage.getItem('classicFilters')) {
+        context.dispatch('addElement')
+      }
       context.commit('orderByField', '')
       context.commit('orderByDirection', '')
       context.commit('limit', 50)
+      context.dispatch('genre/genres', null, { root: true })
     },
   },
 }

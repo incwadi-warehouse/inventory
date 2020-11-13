@@ -14,6 +14,15 @@
       <h2>{{ $t('language') }}</h2>
       <b-locale />
     </b-container>
+    <b-container size="m">
+      <h2>{{ $t('filters') }}</h2>
+      <b-form-item>
+        <input type="checkbox" id="classicFilters" v-model="classicFilters" />
+        <b-form-label for="classicFilters">
+          {{ $t('activate_classic_filters') }}
+        </b-form-label>
+      </b-form-item>
+    </b-container>
   </article>
 </template>
 
@@ -27,6 +36,19 @@ export default {
   },
   components: {
     ProfilePassword,
+  },
+  data() {
+    return {
+      classicFilters: window.localStorage.getItem('classicFilters') || false,
+    }
+  },
+  watch: {
+    classicFilters() {
+      window.localStorage.removeItem('classicFilters')
+      if (this.classicFilters) {
+        window.localStorage.setItem('classicFilters', true)
+      }
+    },
   },
 }
 </script>

@@ -173,4 +173,9 @@ export default {
   options: 'Options',
   deprecated: 'Deprecated! This feature will be removed soon!',
   add_field: 'Add Field',
+  activate_classic_filters: 'Activate classic filters',
+  filters: 'Filters',
+  from: 'from',
+  until: 'until',
+  sorting: 'Sorting',
 }
