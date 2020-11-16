@@ -1,7 +1,9 @@
 <template>
   <b-dropdown>
     <template #selector>
-      <b-icon type="more" />
+      <span v-tooltip.left="$t('options')">
+        <b-icon type="more" />
+      </span>
     </template>
     <b-dropdown-item icon="pencil" @click="edit(book.id)">
       {{ $t('edit') }}

@@ -31,7 +31,7 @@
         {{ book.price | formatPrice }}
       </td>
       <td class="noprint" style="cursor: pointer">
-        <context-menu :book="book" v-tooltip.top="$t('options')" />
+        <context-menu :book="book" />
       </td>
     </tr>
   </tbody>
