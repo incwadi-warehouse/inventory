@@ -1,6 +1,12 @@
 <template>
   <b-modal @close="$emit('close', $event)">
     <b-container size="l">
+      <b-notification type="warning">
+        {{ $t('deprecated') }}
+      </b-notification>
+    </b-container>
+
+    <b-container size="l">
       <b-form @submit.prevent="find">
         <b-form-group buttons>
           <b-form-item>
