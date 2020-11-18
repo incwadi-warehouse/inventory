@@ -17,11 +17,15 @@
       >
         {{ $t('added') }} <indicator column="added" />
       </th>
-      <th class="isSortable" @click="filter('sold')" v-if="sold == true">
-        {{ $t('sold') }} <indicator column="sold" />
+      <th class="isSortable" @click="filter('soldOn')" v-if="sold == true">
+        {{ $t('sold') }} <indicator column="soldOn" />
       </th>
-      <th class="isSortable" @click="filter('removed')" v-if="removed == true">
-        {{ $t('removed') }} <indicator column="removed" />
+      <th
+        class="isSortable"
+        @click="filter('removedOn')"
+        v-if="removed == true"
+      >
+        {{ $t('removed') }} <indicator column="removedOn" />
       </th>
       <th class="isSortable" @click="filter('type')">
         {{ $t('type') }} <indicator column="type" />
