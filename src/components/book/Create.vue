@@ -204,7 +204,7 @@ export default {
     return {
       added: formatDate(Math.round(new Date().getTime() / 1000) * 1000),
       title: null,
-      authorFirstname: null,
+      authorFirstname: '',
       authorSurname: null,
       genreId: null,
       price: '2.50',
