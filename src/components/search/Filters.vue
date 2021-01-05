@@ -19,6 +19,12 @@
         <!-- Genre -->
         <details>
           <summary>{{ $t('genres') }}</summary>
+          <b-button design="text" @click="selectAllGenres" type="button">
+            {{ $t('all') }}
+          </b-button>
+          <b-button design="text" @click="selectNoGenres" type="button">
+            {{ $t('nothing') }}
+          </b-button>
           <b-form-fieldset>
             <b-form-legend class="visuallyHidden">
               {{ $t('genres') }}
@@ -379,6 +385,16 @@ export default {
     },
     reset() {
       this.$store.dispatch('search/reset')
+    },
+    selectAllGenres() {
+      document.querySelectorAll("input[id^='genre-']").forEach((element) => {
+        element.checked = true
+      })
+    },
+    selectNoGenres() {
+      document.querySelectorAll("input[id^='genre-']").forEach((element) => {
+        element.checked = false
+      })
     },
   },
   watch: {

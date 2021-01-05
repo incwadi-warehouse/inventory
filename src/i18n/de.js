@@ -200,4 +200,5 @@ export default {
   from: 'von',
   until: 'bis',
   sorting: 'Sortierung',
+  nothing: 'Nichts',
 }
