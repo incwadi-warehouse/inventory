@@ -36,6 +36,7 @@ export default {
           name: data.name,
           steps: data.steps,
           currency: data.currency,
+          ordering: data.ordering,
         })
         .then(function (response) {
           context.commit('branch', response.data)

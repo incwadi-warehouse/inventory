@@ -202,4 +202,5 @@ export default {
   sorting: 'Sortierung',
   nothing: 'Nichts',
   shortDescription: 'Kurzbeschreibung',
+  bookOrdering: 'Bestellung',
 }

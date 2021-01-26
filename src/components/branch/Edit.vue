@@ -44,6 +44,17 @@
     </b-form-group>
     <!-- /currency -->
 
+    <!-- ordering -->
+    <b-form-group>
+      <b-form-item>
+        <b-form-label for="ordering">{{ $t('bookOrdering') }}</b-form-label>
+      </b-form-item>
+      <b-form-item>
+        <b-form-textarea id="ordering" :rows="5" v-model="ordering" />
+      </b-form-item>
+    </b-form-group>
+    <!-- /ordering -->
+
     <b-form-group buttons v-if="me && me.isAdmin">
       <b-form-group>
         <b-form-item>
@@ -70,6 +81,7 @@ export default {
       name: this.branch.name,
       steps: this.branch.steps,
       currency: this.branch.currency,
+      ordering: this.branch.ordering,
     }
   },
   computed: {
@@ -83,6 +95,7 @@ export default {
         name: this.name,
         steps: this.steps,
         currency: this.currency,
+        ordering: this.ordering,
       })
     },
   },

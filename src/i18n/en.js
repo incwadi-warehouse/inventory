@@ -180,4 +180,5 @@ export default {
   sorting: 'Sorting',
   nothing: 'Nothing',
   shortDescription: 'Short Description',
+  bookOrdering: 'Ordering',
 }
