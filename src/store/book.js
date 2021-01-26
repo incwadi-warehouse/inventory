@@ -134,6 +134,7 @@ export default {
           .post('/api/v1/book/new', {
             added: data.added,
             title: data.title,
+            shortDescription: data.shortDescription,
             author: data.author,
             genre: data.genre,
             price: data.price,
@@ -165,6 +166,7 @@ export default {
           .put('/api/v1/book/' + data.id, {
             added: data.added,
             title: data.title,
+            shortDescription: data.shortDescription,
             author: data.author,
             genre: data.genre,
             price: data.price,

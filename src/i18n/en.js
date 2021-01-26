@@ -179,4 +179,5 @@ export default {
   until: 'until',
   sorting: 'Sorting',
   nothing: 'Nothing',
+  shortDescription: 'Short Description',
 }

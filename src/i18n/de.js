@@ -201,4 +201,5 @@ export default {
   until: 'bis',
   sorting: 'Sortierung',
   nothing: 'Nichts',
+  shortDescription: 'Kurzbeschreibung',
 }

@@ -36,6 +36,24 @@
             />
           </b-form-item>
         </b-form-group>
+
+        <!-- short description -->
+        <b-form-group>
+          <b-form-item>
+            <b-form-label for="shortDescription">
+              {{ $t('shortDescription') }}
+            </b-form-label>
+          </b-form-item>
+          <b-form-item>
+            <b-form-textarea
+              type="text"
+              id="shortDescription"
+              :rows="4"
+              v-model="shortDescription"
+            />
+          </b-form-item>
+        </b-form-group>
+
         <b-form-group>
           <b-form-item>
             <b-form-label for="authorFirstname">
@@ -252,6 +270,7 @@ export default {
     return {
       added: formatDate(this.book.added * 1000),
       title: this.book.title,
+      shortDescription: this.book.shortDescription,
       authorFirstname: this.book.author ? this.book.author.firstname : null,
       authorSurname: this.book.author ? this.book.author.surname : null,
       genreId: this.book.genre ? this.book.genre.id : null,
@@ -289,6 +308,7 @@ export default {
           id: this.book.id,
           added: new Date(this.added).getTime() / 1000,
           title: this.title,
+          shortDescription: this.shortDescription,
           author: this.authorSurname + ',' + this.authorFirstname,
           genre: this.genreId,
           price: this.price,
