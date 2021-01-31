@@ -255,6 +255,39 @@
           </b-form-item>
         </b-form-group>
       </b-form>
+
+      <!-- cover -->
+      <div v-if="cover">
+        <!-- show -->
+        <img :src="cover.cover_m" />
+
+        <!-- remove -->
+        <div v-if="cover.cover_s || cover.cover_m || cover.cover_l">
+          <b-button type="button" design="outline" @click="removeCover">
+            {{ $t('removeCover') }}
+          </b-button>
+        </div>
+
+        <!-- upload -->
+        <div v-else>
+          <b-form enctype="multipart/form-data" @submit.prevent>
+            <b-form-group>
+              <b-form-item>
+                <b-form-label for="cover">{{ $t('cover') }}</b-form-label>
+              </b-form-item>
+              <b-form-item>
+                <input
+                  type="file"
+                  id="cover"
+                  @change="upload($event)"
+                  accept="image/png, image/jpeg, image/jpg"
+                  class="form-input"
+                />
+              </b-form-item>
+            </b-form-group>
+          </b-form>
+        </div>
+      </div>
     </b-container>
   </b-modal>
 </template>
@@ -292,6 +325,7 @@ export default {
     ...mapState('genre', ['genres']),
     ...mapState('staff', ['staff']),
     ...mapState('condition', ['conditions']),
+    ...mapState('book', ['cover']),
     tags() {
       return this.$store.state.tag.tags
     },
@@ -336,15 +370,43 @@ export default {
     removeTag(tag) {
       this.$store.dispatch('tag/remove', tag)
     },
+    upload(event) {
+      const file = event.target.files[0]
+      const form = new FormData()
+      form.append('cover', file)
+      this.$store.dispatch('book/upload', { id: this.book.id, form: form })
+    },
+    removeCover() {
+      this.$store.dispatch('book/removeCover', this.book)
+    },
   },
   created() {
     this.$store.dispatch('branch/branch')
     this.$store.dispatch('genre/genres')
     this.$store.dispatch('staff/staff')
     this.$store.dispatch('condition/list')
+    this.$store.dispatch('book/getCover', this.book)
   },
   destroyed() {
     this.$store.commit('tag/tags', [])
   },
 }
 </script>
+
+<style scoped>
+.form-input {
+  border: 1px solid var(--color-neutral-04);
+  background: var(--color-neutral-00);
+  box-sizing: border-box;
+  border-radius: 5px;
+  width: 100%;
+  margin: 0;
+  font-size: 1em;
+  color: var(--color-neutral-10);
+}
+.form-input:hover,
+.form-input:focus {
+  border: 1px solid var(--color-primary-10);
+  outline: none;
+}
+</style>

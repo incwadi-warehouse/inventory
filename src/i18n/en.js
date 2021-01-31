@@ -181,4 +181,6 @@ export default {
   nothing: 'Nothing',
   shortDescription: 'Short Description',
   bookOrdering: 'Ordering',
+  cover: 'Cover',
+  removeCover: 'Remove Cover',
 }

@@ -203,4 +203,6 @@ export default {
   nothing: 'Nichts',
   shortDescription: 'Kurzbeschreibung',
   bookOrdering: 'Bestellung',
+  cover: 'Cover',
+  removeCover: 'Cover löschen',
 }

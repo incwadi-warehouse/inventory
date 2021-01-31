@@ -8,6 +8,7 @@ export default {
     books: [],
     book: null,
     counter: 0,
+    cover: null,
   },
   mutations: {
     books(state, books) {
@@ -22,6 +23,9 @@ export default {
     },
     counter(state, counter) {
       state.counter = counter
+    },
+    cover(state, cover) {
+      state.cover = cover
     },
   },
   actions: {
@@ -192,6 +196,27 @@ export default {
             reject()
           })
       })
+    },
+    getCover(context, data) {
+      api(context.rootState.user.token)
+        .get('/api/v1/book/cover/' + data.id)
+        .then(function (response) {
+          context.commit('cover', response.data)
+        })
+    },
+    upload(context, data) {
+      api(context.rootState.user.token)
+        .post('/api/v1/book/cover/' + data.id, data.form)
+        .then(function () {
+          context.dispatch('getCover', data)
+        })
+    },
+    removeCover(context, data) {
+      api(context.rootState.user.token)
+        .delete('/api/v1/book/cover/' + data.id)
+        .then(function () {
+          context.dispatch('getCover', data)
+        })
     },
     sell(context, book) {
       api(context.rootState.user.token)
