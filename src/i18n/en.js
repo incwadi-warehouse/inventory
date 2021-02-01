@@ -183,4 +183,5 @@ export default {
   bookOrdering: 'Ordering',
   cover: 'Cover',
   removeCover: 'Remove Cover',
+  uploadingFile: 'Uploading File',
 }

@@ -205,11 +205,10 @@ export default {
         })
     },
     upload(context, data) {
-      api(context.rootState.user.token)
-        .post('/api/v1/book/cover/' + data.id, data.form)
-        .then(function () {
-          context.dispatch('getCover', data)
-        })
+      return api(context.rootState.user.token).post(
+        '/api/v1/book/cover/' + data.id,
+        data.form
+      )
     },
     removeCover(context, data) {
       api(context.rootState.user.token)

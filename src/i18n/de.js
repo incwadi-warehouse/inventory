@@ -205,4 +205,5 @@ export default {
   bookOrdering: 'Bestellung',
   cover: 'Cover',
   removeCover: 'Cover löschen',
+  uploadingFile: 'Datei wird hochgeladen',
 }

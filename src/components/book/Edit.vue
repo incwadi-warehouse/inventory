@@ -270,7 +270,11 @@
 
         <!-- upload -->
         <div v-else>
-          <b-form enctype="multipart/form-data" @submit.prevent>
+          <b-form
+            enctype="multipart/form-data"
+            @submit.prevent
+            v-if="!isUploading"
+          >
             <b-form-group>
               <b-form-item>
                 <b-form-label for="cover">{{ $t('cover') }}</b-form-label>
@@ -287,6 +291,8 @@
             </b-form-group>
           </b-form>
         </div>
+
+        <p v-if="isUploading">{{ $t('uploadingFile') }}</p>
       </div>
     </b-container>
   </b-modal>
@@ -318,6 +324,7 @@ export default {
         : this.book.lendOn,
       cond_id: this.book.condition ? this.book.condition.id : null,
       tag: this.book.tag,
+      isUploading: false,
     }
   },
   computed: {
@@ -371,10 +378,18 @@ export default {
       this.$store.dispatch('tag/remove', tag)
     },
     upload(event) {
+      this.isUploading = true
       const file = event.target.files[0]
       const form = new FormData()
       form.append('cover', file)
-      this.$store.dispatch('book/upload', { id: this.book.id, form: form })
+      this.$store
+        .dispatch('book/upload', { id: this.book.id, form: form })
+        .then(() => {
+          this.$store.dispatch('book/getCover', this.book)
+        })
+        .then(() => {
+          this.isUploading = false
+        })
     },
     removeCover() {
       this.$store.dispatch('book/removeCover', this.book)
