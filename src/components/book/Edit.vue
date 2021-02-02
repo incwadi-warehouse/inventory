@@ -300,7 +300,7 @@
                   type="file"
                   id="cover"
                   @change="upload($event)"
-                  accept="image/png, image/jpeg, image/jpg"
+                  accept="image/jpeg, image/jpg, image/png, image/webp"
                   class="form-input"
                 />
               </b-form-item>
