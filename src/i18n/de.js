@@ -206,4 +206,8 @@ export default {
   cover: 'Cover',
   removeCover: 'Cover löschen',
   uploadingFile: 'Datei wird hochgeladen',
+  reserved: 'Reserviert',
+  reserve: 'Reservieren',
+  book_reserve_success: 'Buch reserviert',
+  book_reserve_error: 'Buch konnte nicht reserviert werden.',
 }

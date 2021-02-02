@@ -130,6 +130,12 @@
               <input type="checkbox" id="removed" v-model="removed" />
               <b-form-label for="removed">{{ $t('removed') }}</b-form-label>
             </b-form-item>
+
+            <!-- Reserved -->
+            <b-form-item>
+              <input type="checkbox" id="reserved" v-model="reserved" />
+              <b-form-label for="reserved">{{ $t('reserved') }}</b-form-label>
+            </b-form-item>
           </b-form-group>
         </details>
 
@@ -283,6 +289,7 @@ export default {
         : false,
       sold: this.$store.state.search.elements[6].value,
       removed: this.$store.state.search.elements[7].value,
+      reserved: this.$store.state.search.elements[11].value,
       type: this.$store.state.search.elements[8]
         ? this.$store.state.search.elements[8].value
         : null,
@@ -368,6 +375,7 @@ export default {
           : {},
         6: { field: 'sold', operator: 'eq', value: this.sold },
         7: { field: 'removed', operator: 'eq', value: this.removed },
+        11: { field: 'reserved', operator: 'eq', value: this.reserved },
         8: {
           field: 'type',
           operator: 'eq',
@@ -424,6 +432,7 @@ export default {
         : false
       this.sold = this.$store.state.search.elements[6].value
       this.removed = this.$store.state.search.elements[7].value
+      this.reserved = this.$store.state.search.elements[11].value
       this.type = this.$store.state.search.elements[8]
         ? this.$store.state.search.elements[8].value
         : null

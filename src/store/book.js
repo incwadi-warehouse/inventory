@@ -176,6 +176,7 @@ export default {
             price: data.price,
             sold: data.sold,
             removed: data.removed,
+            reserved: data.reserved,
             releaseYear: data.releaseYear,
             type: data.type,
             lendTo: data.lendTo,
@@ -237,6 +238,17 @@ export default {
         })
         .catch(function () {
           notification.create('book_remove_error', 'error')
+        })
+    },
+    reserve(context, book) {
+      api(context.rootState.user.token)
+        .put('/api/v1/book/reserve/' + book.id)
+        .then(function () {
+          context.commit('removeBook', book)
+          notification.create('book_reserve_success', 'success')
+        })
+        .catch(function () {
+          notification.create('book_reserve_error', 'error')
         })
     },
     clean(context) {

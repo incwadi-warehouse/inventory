@@ -163,6 +163,22 @@
             </b-form-label>
           </b-form-item>
         </b-form-group>
+
+        <!-- reserved -->
+        <b-form-group>
+          <b-form-item>
+            <input
+              type="checkbox"
+              name="reserved"
+              id="reserved"
+              v-model="reserved"
+            />
+            <b-form-label for="reserved">
+              {{ $t('reserved') }}
+            </b-form-label>
+          </b-form-item>
+        </b-form-group>
+
         <b-form-group>
           <b-form-item>
             <b-form-label for="added">
@@ -316,6 +332,7 @@ export default {
       price: this.book.price,
       sold: this.book.sold,
       removed: this.book.removed,
+      reserved: this.book.reserved,
       releaseYear: this.book.releaseYear,
       type: this.book.type,
       lendTo: this.book.lendTo,
@@ -355,6 +372,7 @@ export default {
           price: this.price,
           sold: this.sold,
           removed: this.removed,
+          reserved: this.reserved,
           releaseYear: this.releaseYear,
           type: this.type,
           lendTo: this.lendTo,

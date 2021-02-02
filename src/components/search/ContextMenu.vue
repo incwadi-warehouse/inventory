@@ -14,6 +14,13 @@
     <b-dropdown-item icon="bin" @click="remove(book)" v-if="!book.removed">
       {{ $t('remove') }}
     </b-dropdown-item>
+    <b-dropdown-item
+      icon="bookmark"
+      @click="reserve(book)"
+      v-if="!book.reserved"
+    >
+      {{ $t('reserve') }}
+    </b-dropdown-item>
   </b-dropdown>
 </template>
 
@@ -26,7 +33,7 @@ export default {
     book: Object,
   },
   methods: {
-    ...mapActions('book', ['sell', 'remove']),
+    ...mapActions('book', ['sell', 'remove', 'reserve']),
     edit(id) {
       this.$router.push({ name: 'book', params: { bookId: id } })
     },
