@@ -18,7 +18,7 @@ An article can be found here https://medium.com/@A.Baldeweg/i-was-trying-new-thi
 Download the files from the repository.
 
 ```shell
-git clone https://gitlab.com/incwadi/inventory.git
+git clone https://github.com/abaldeweg/incwadi_inventory.git
 ```
 
 Create the files `.env` and `.env.production` with the following content. Please fit it to your needs.
