@@ -118,7 +118,7 @@ export default {
     },
     me(context) {
       Api(context.state.token)
-        .get('/api/v1/me')
+        .get('/api/me')
         .then(function (response) {
           context.commit('me', response.data)
         })
@@ -132,7 +132,7 @@ export default {
     password(context, password) {
       context.commit('isChangingPassword', true)
       Api(context.state.token)
-        .put('/api/v1/password', {
+        .put('/api/password', {
           password: password,
         })
         .then(function () {
