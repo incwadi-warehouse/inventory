@@ -1,8 +1,10 @@
 <template>
-  <b-modal @close="$emit('close', $event)">
-    <b-container size="l">
-      <b-form @submit.prevent="find">
-        <!-- Buttons -->
+  <b-form @submit.prevent="find">
+    <b-modal @close="$emit('close', $event)">
+      <template #title>
+        {{ $t('filters') }}
+      </template>
+      <template #footer>
         <b-form-group buttons>
           <b-form-item>
             <b-button type="button" design="text" ripple @click="reset">
@@ -13,9 +15,9 @@
             </b-button>
           </b-form-item>
         </b-form-group>
+      </template>
 
-        <b-divider />
-
+      <b-container size="l">
         <!-- Genre -->
         <details>
           <summary>{{ $t('genres') }}</summary>
@@ -254,9 +256,9 @@
             </b-form-item>
           </b-form-group>
         </details>
-      </b-form>
-    </b-container>
-  </b-modal>
+      </b-container>
+    </b-modal>
+  </b-form>
 </template>
 
 <script>
