@@ -1,11 +1,20 @@
 <template>
-  <b-modal @close="$emit('close', $event)">
-    <b-container size="m">
-      <h1>{{ $t('edit_book') }}</h1>
-    </b-container>
+  <b-form @submit.prevent="update()">
+    <b-modal @close="$emit('close', $event)">
+      <template #title>
+        {{ $t('edit_book') }}
+      </template>
+      <template #footer>
+        <b-form-group buttons>
+          <b-form-item>
+            <b-button design="primary">
+              {{ $t('update') }}
+            </b-button>
+          </b-form-item>
+        </b-form-group>
+      </template>
 
-    <b-container size="m" v-if="book">
-      <b-form @submit.prevent="update()">
+      <b-container size="m" v-if="book">
         <b-form-group>
           <b-form-item>
             <b-form-label for="genre">
@@ -263,55 +272,82 @@
         </b-form>
         <!-- /tags -->
 
-        <b-form-group buttons>
-          <b-form-item>
-            <b-button design="primary">
-              {{ $t('update') }}
+        <!-- cover -->
+        <div v-if="cover">
+          <!-- status -->
+          <b-notification type="neutral" v-if="isUploading">
+            <p>{{ $t('uploadingFile') }}</p>
+          </b-notification>
+          <b-notification type="error" hidable v-if="hasErrorUploading">
+            <p>{{ $t('coverUploadError') }}</p>
+          </b-notification>
+
+          <div v-if="cover.cover_s || cover.cover_m || cover.cover_l">
+            <!-- remove -->
+            <b-button
+              type="button"
+              design="outline_danger"
+              @click="removeCover"
+              :style="{ float: 'right' }"
+            >
+              {{ $t('removeCover') }}
             </b-button>
-          </b-form-item>
-        </b-form-group>
-      </b-form>
 
-      <!-- cover -->
-      <div v-if="cover">
-        <!-- show -->
-        <img :src="cover.cover_m" />
+            <!-- show -->
+            <img :src="cover.cover_m" />
+          </div>
 
-        <!-- remove -->
-        <div v-if="cover.cover_s || cover.cover_m || cover.cover_l">
-          <b-button type="button" design="outline" @click="removeCover">
-            {{ $t('removeCover') }}
-          </b-button>
+          <!-- upload -->
+          <div v-else>
+            <b-form
+              enctype="multipart/form-data"
+              @submit.prevent
+              v-if="!isUploading"
+            >
+              <b-form-group>
+                <b-form-item>
+                  <b-form-label for="cover">{{ $t('cover') }}</b-form-label>
+                </b-form-item>
+                <b-form-item
+                  :style="{
+                    position: 'relative',
+                    height: '300px',
+                    border: '1px solid var(--color-neutral-02)',
+                    borderRadius: '5px',
+                  }"
+                >
+                  <input
+                    type="file"
+                    id="cover"
+                    @change="upload($event)"
+                    accept="image/jpeg, image/jpg, image/png, image/webp"
+                    class="form-input"
+                    :style="{
+                      position: 'absolute',
+                      width: '100%',
+                      height: '100%',
+                      opacity: '0.001',
+                    }"
+                  />
+                  <p
+                    :style="{
+                      position: 'absolute',
+                      top: '50%',
+                      transform: 'translateY(-50%)',
+                      width: '100%',
+                      textAlign: 'center',
+                    }"
+                  >
+                    {{ $t('drop_the_file_in_this_area_or_click_here') }}
+                  </p>
+                </b-form-item>
+              </b-form-group>
+            </b-form>
+          </div>
         </div>
-
-        <!-- upload -->
-        <div v-else>
-          <b-form
-            enctype="multipart/form-data"
-            @submit.prevent
-            v-if="!isUploading"
-          >
-            <b-form-group>
-              <b-form-item>
-                <b-form-label for="cover">{{ $t('cover') }}</b-form-label>
-              </b-form-item>
-              <b-form-item>
-                <input
-                  type="file"
-                  id="cover"
-                  @change="upload($event)"
-                  accept="image/jpeg, image/jpg, image/png, image/webp"
-                  class="form-input"
-                />
-              </b-form-item>
-            </b-form-group>
-          </b-form>
-        </div>
-
-        <p v-if="isUploading">{{ $t('uploadingFile') }}</p>
-      </div>
-    </b-container>
-  </b-modal>
+      </b-container>
+    </b-modal>
+  </b-form>
 </template>
 
 <script>
@@ -342,6 +378,7 @@ export default {
       cond_id: this.book.condition ? this.book.condition.id : null,
       tag: this.book.tag,
       isUploading: false,
+      hasErrorUploading: false,
     }
   },
   computed: {
@@ -402,10 +439,13 @@ export default {
       form.append('cover', file)
       this.$store
         .dispatch('book/upload', { id: this.book.id, form: form })
+        .catch(() => {
+          this.hasErrorUploading = true
+        })
         .then(() => {
           this.$store.dispatch('book/getCover', this.book)
         })
-        .then(() => {
+        .finally(() => {
           this.isUploading = false
         })
     },

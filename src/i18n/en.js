@@ -183,9 +183,12 @@ export default {
   bookOrdering: 'Ordering',
   cover: 'Cover',
   removeCover: 'Remove Cover',
-  uploadingFile: 'Uploading File',
+  uploadingFile: 'Uploading File...',
   reserved: 'Reserved',
   reserve: 'Reserve',
   book_reserve_success: 'Book reserved',
   book_reserve_error: 'Could not reserve book',
+  drop_the_file_in_this_area_or_click_here:
+    'Drop the file in this area or click here.',
+  coverUploadError: 'Upload failed! Please check file and file size.',
 }

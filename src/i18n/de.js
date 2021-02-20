@@ -205,9 +205,12 @@ export default {
   bookOrdering: 'Bestellung',
   cover: 'Cover',
   removeCover: 'Cover löschen',
-  uploadingFile: 'Datei wird hochgeladen',
+  uploadingFile: 'Datei wird hochgeladen...',
   reserved: 'Reserviert',
   reserve: 'Reservieren',
   book_reserve_success: 'Buch reserviert',
   book_reserve_error: 'Buch konnte nicht reserviert werden.',
+  drop_the_file_in_this_area_or_click_here:
+    'Datei in diesem Bereich ablegen oder hier klicken.',
+  coverUploadError: 'Upload fehlgeschlagen! Bitte prüfe Datei und Dateigröße.',
 }
