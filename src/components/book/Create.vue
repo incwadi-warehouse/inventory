@@ -1,11 +1,23 @@
 <template>
-  <b-modal @close="$emit('close', $event)">
-    <b-container size="m">
-      <h1>{{ $t('catalog') }}</h1>
-    </b-container>
+  <b-form @submit.prevent="create">
+    <b-modal @close="$emit('close', $event)">
+      <template #title>
+        {{ $t('catalog') }}
+      </template>
+      <template #footer>
+        <b-form-group buttons>
+          <b-form-item>
+            <b-button design="outline" @click.prevent="$emit('close', $event)">
+              {{ $t('cancel') }}
+            </b-button>
+            <b-button design="primary">
+              {{ $t('add') }}
+            </b-button>
+          </b-form-item>
+        </b-form-group>
+      </template>
 
-    <b-container size="m">
-      <b-form @submit.prevent="create">
+      <b-container size="m">
         <b-form-group>
           <b-form-item>
             <b-form-label for="genre">
@@ -196,20 +208,9 @@
           </b-form-group>
         </b-form>
         <!-- /tags -->
-
-        <b-form-group buttons>
-          <b-form-item>
-            <b-button design="outline" @click.prevent="$emit('close', $event)">
-              {{ $t('cancel') }}
-            </b-button>
-            <b-button design="primary">
-              {{ $t('add') }}
-            </b-button>
-          </b-form-item>
-        </b-form-group>
-      </b-form>
-    </b-container>
-  </b-modal>
+      </b-container>
+    </b-modal>
+  </b-form>
 </template>
 
 <script>
