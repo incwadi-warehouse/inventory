@@ -11,8 +11,8 @@ export default {
     }
   },
   created: function () {
-    return process.env.LOGO !== 'false'
-      ? import('../../' + process.env.LOGO).then(
+    return process.env.VUE_APP_LOGO !== 'false'
+      ? import('../../' + process.env.VUE_APP_LOGO).then(
           (logo) => (this.logo = logo.default)
         )
       : null

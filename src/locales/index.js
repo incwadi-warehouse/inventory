@@ -6,7 +6,7 @@ import de from './de'
 Vue.use(VueI18n)
 
 const i18n = new VueI18n({
-  locale: process.env.LOCALE,
+  locale: process.env.VUE_APP_LOCALE,
   fallbackLocale: 'en',
   messages: {
     en,

@@ -3,7 +3,9 @@
     <h1>incwadi</h1>
     <p>{{ $t('license') }}</p>
     <p>{{ $t('repo') }}</p>
-    <p><a href="https://gitlab.com/incwadi/">Gitlab-Repository</a></p>
+    <p><a href="https://github.com/abaldeweg/incwadi_core">Repository core</a></p>
+    <p><a href="https://github.com/abaldeweg/incwadi_inventory">Repository inventory</a></p>
+    <p><a href="https://github.com/abaldeweg/incwadi_find">Repository find</a></p>
     <p>{{ $t('contribution') }}</p>
 
     <b-divider />
