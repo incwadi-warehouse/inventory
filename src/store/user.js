@@ -76,12 +76,12 @@ export default {
         .then(function (response) {
           Cookies.set('token', response.data.token, {
             expires: 7,
-            secure: true,
+            secure: process.env.NODE_ENV === 'production',
           })
           context.commit('token', response.data.token)
           Cookies.set('refresh_token', response.data.refresh_token, {
             expires: 30,
-            secure: true,
+            secure: process.env.NODE_ENV === 'production',
           })
           context.commit('refreshToken', response.data.refresh_token)
           context.commit('isAuthenticated', true)
@@ -102,12 +102,12 @@ export default {
         .then(function (response) {
           Cookies.set('token', response.data.token, {
             expires: 7,
-            secure: true,
+            secure: process.env.NODE_ENV === 'production',
           })
           context.commit('token', response.data.token)
           Cookies.set('refresh_token', response.data.refresh_token, {
             expires: 30,
-            secure: true,
+            secure: process.env.NODE_ENV === 'production',
           })
           context.commit('refreshToken', response.data.refresh_token)
           context.commit('isAuthenticated', true)
