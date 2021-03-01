@@ -213,4 +213,6 @@ export default {
   drop_the_file_in_this_area_or_click_here:
     'Datei in diesem Bereich ablegen oder hier klicken.',
   coverUploadError: 'Upload fehlgeschlagen! Bitte prüfe Datei und Dateigröße.',
+  filtersAdvice:
+    'Wenn du nach mehreren Filialen filterst, verwende bitte keine Rubriken. Es könnte zu unerwarteten Ergebnissen führen.',
 }

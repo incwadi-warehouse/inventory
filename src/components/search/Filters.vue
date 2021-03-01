@@ -69,6 +69,8 @@
               </div>
             </b-form-item>
           </b-form-fieldset>
+
+          <p>{{ $t('filtersAdvice') }}</p>
         </details>
 
         <!-- Release Year -->

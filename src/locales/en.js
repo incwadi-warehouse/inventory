@@ -191,4 +191,6 @@ export default {
   drop_the_file_in_this_area_or_click_here:
     'Drop the file in this area or click here.',
   coverUploadError: 'Upload failed! Please check file and file size.',
+  filtersAdvice:
+    'If you are filtering for more then one branch, please do not use genres. It could lead into weird results.',
 }
