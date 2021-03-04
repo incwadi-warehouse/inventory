@@ -48,6 +48,7 @@ export default {
       if (this.classicFilters) {
         window.localStorage.setItem('classicFilters', true)
       }
+      this.$store.dispatch('search/reset')
     },
   },
 }

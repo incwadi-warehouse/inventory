@@ -402,11 +402,24 @@ export default {
       document.querySelectorAll("input[id^='genre-']").forEach((element) => {
         element.checked = true
       })
+      let genres = []
+      this.$store.state.genre.genres.forEach((element) => {
+        genres.push(element.id)
+      })
+
+      const val = { field: 'genre', operator: 'in', value: genres }
+      const id = 1
+      this.$store.dispatch('search/handleElement', { val, id })
+      this.genreId = genres
     },
     selectNoGenres() {
       document.querySelectorAll("input[id^='genre-']").forEach((element) => {
         element.checked = false
       })
+      const val = { field: 'genre', operator: 'in', value: [] }
+      const id = 1
+      this.$store.dispatch('search/handleElement', { val, id })
+      this.genreId = []
     },
   },
   watch: {
