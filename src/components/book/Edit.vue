@@ -316,6 +316,17 @@
                     borderRadius: '5px',
                   }"
                 >
+                  <p
+                    :style="{
+                      position: 'absolute',
+                      top: '50%',
+                      transform: 'translateY(-50%)',
+                      width: '100%',
+                      textAlign: 'center',
+                    }"
+                  >
+                    {{ $t('drop_the_file_in_this_area_or_click_here') }}
+                  </p>
                   <input
                     type="file"
                     id="cover"
@@ -329,17 +340,6 @@
                       opacity: '0.001',
                     }"
                   />
-                  <p
-                    :style="{
-                      position: 'absolute',
-                      top: '50%',
-                      transform: 'translateY(-50%)',
-                      width: '100%',
-                      textAlign: 'center',
-                    }"
-                  >
-                    {{ $t('drop_the_file_in_this_area_or_click_here') }}
-                  </p>
                 </b-form-item>
               </b-form-group>
             </b-form>
