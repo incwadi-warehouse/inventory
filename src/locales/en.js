@@ -194,4 +194,7 @@ export default {
   filtersAdvice:
     'If you are filtering for more then one branch, please do not use genres. It could lead into weird results.',
   reserved_books: 'reserved book | reserved books',
+  orderBy: 'OrderBy',
+  orderByNameAsc: 'Name - Ascending',
+  orderByBookcountDesc: 'Number of Books - Descending',
 }

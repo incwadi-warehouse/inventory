@@ -216,4 +216,7 @@ export default {
   filtersAdvice:
     'Wenn du nach mehreren Filialen filterst, verwende bitte keine Rubriken. Es könnte zu unerwarteten Ergebnissen führen.',
   reserved_books: 'reserviertes Buch | reservierte Bücher',
+  orderBy: 'Sortiere nach',
+  orderByNameAsc: 'Name - aufsteigend',
+  orderByBookcountDesc: 'Anzahl Bücher - absteigend',
 }
