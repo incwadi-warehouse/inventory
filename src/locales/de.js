@@ -233,4 +233,11 @@ export default {
   orderBy: 'Sortiere nach',
   orderByNameAsc: 'Name - aufsteigend',
   orderByBookcountDesc: 'Anzahl Bücher - absteigend',
+  branchNameHelp:
+    'Der Name wird u.a. in den Filtern und der öffentlichen Suche gezeigt.',
+  branchStepsHelp:
+    'Der Preis eines Buches kann in festgelegten Schritten erhöht und verringert werden.',
+  branchOrderingHelp:
+    'Wie Kundinnen und Kunden das Buch erwerben können. Dieser Text wird in der öffentlichen Suche bei jedem Buch ausgegeben.',
+  branchOrderByHelp: 'Wie Rubriken in der gesamten App sortiert werden sollen.',
 }
