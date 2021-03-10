@@ -36,7 +36,7 @@ export default {
   lend_more_then_x_months: 'Lend more then x months',
   branch: 'Branch',
   branches: 'Branches',
-  search_in_title_author_tags: 'Search in title, author and tags',
+  search_in_title_author_genre_tags: 'Search in title, author, genre and tags',
   firstname: 'Firstname',
   surname: 'Surname',
   limit: 'Limit',
