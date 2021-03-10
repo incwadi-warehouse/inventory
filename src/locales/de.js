@@ -230,4 +230,7 @@ export default {
     'Es befindet sich {counter} Artikel im Einkaufskorb. Bitte vervollständige die Reservierung. | Es befinden sich {counter} Artikel im Einkaufskorb. Bitte vervollständige die Reservierung.',
   cart: 'Warenkorb',
   reserved_books: 'reserviertes Buch | reservierte Bücher',
+  orderBy: 'Sortiere nach',
+  orderByNameAsc: 'Name - aufsteigend',
+  orderByBookcountDesc: 'Anzahl Bücher - absteigend',
 }

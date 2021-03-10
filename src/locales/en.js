@@ -208,4 +208,7 @@ export default {
     'There is {counter} article in the cart. Please complete the reservation. | There are {counter} articles in the cart. Please complete the reservation.',
   cart: 'Cart',
   reserved_books: 'reserved book | reserved books',
+  orderBy: 'OrderBy',
+  orderByNameAsc: 'Name - Ascending',
+  orderByBookcountDesc: 'Number of Books - Descending',
 }
