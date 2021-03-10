@@ -65,10 +65,10 @@ export default {
   removed: 'Entfernt',
   sell: 'Verkaufen',
   stats: 'Statistiken',
-  all_books: 'Bücher insgesamt',
-  available_books: 'verfügbare Bücher',
-  sold_books: 'verkaufte Bücher',
-  removed_books: 'entfernte Bücher',
+  all_books: 'Buch insgesamt | Bücher insgesamt',
+  available_books: 'verfügbares Buch | verfügbare Bücher',
+  sold_books: 'verkauftes Buch | verkaufte Bücher',
+  removed_books: 'entferntes Buch | entfernte Bücher',
   book_created: 'Buch gespeichert.',
   book_updated: 'Buch aktualisiert.',
   authors: 'Autoren',
@@ -229,4 +229,5 @@ export default {
   articlesInCart:
     'Es befindet sich {counter} Artikel im Einkaufskorb. Bitte vervollständige die Reservierung. | Es befinden sich {counter} Artikel im Einkaufskorb. Bitte vervollständige die Reservierung.',
   cart: 'Warenkorb',
+  reserved_books: 'reserviertes Buch | reservierte Bücher',
 }
