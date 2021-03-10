@@ -62,10 +62,10 @@ export default {
   removed: 'Removed',
   sell: 'Sell',
   stats: 'Statistics',
-  all_books: 'books in sum',
-  available_books: 'available books',
-  sold_books: 'sold books',
-  removed_books: 'removed books',
+  all_books: 'book in sum | books in sum',
+  available_books: 'available book | available books',
+  sold_books: 'sold book | sold books',
+  removed_books: 'removed book | removed books',
   book_created: 'Book saved.',
   book_updated: 'Book updated.',
   authors: 'Authors',
@@ -193,4 +193,5 @@ export default {
   coverUploadError: 'Upload failed! Please check file and file size.',
   filtersAdvice:
     'If you are filtering for more then one branch, please do not use genres. It could lead into weird results.',
+  reserved_books: 'reserved book | reserved books',
 }

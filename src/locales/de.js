@@ -65,10 +65,10 @@ export default {
   removed: 'Entfernt',
   sell: 'Verkaufen',
   stats: 'Statistiken',
-  all_books: 'Bücher insgesamt',
-  available_books: 'verfügbare Bücher',
-  sold_books: 'verkaufte Bücher',
-  removed_books: 'entfernte Bücher',
+  all_books: 'Buch insgesamt | Bücher insgesamt',
+  available_books: 'verfügbares Buch | verfügbare Bücher',
+  sold_books: 'verkauftes Buch | verkaufte Bücher',
+  removed_books: 'entferntes Buch | entfernte Bücher',
   book_created: 'Buch gespeichert.',
   book_updated: 'Buch aktualisiert.',
   authors: 'Autoren',
@@ -215,4 +215,5 @@ export default {
   coverUploadError: 'Upload fehlgeschlagen! Bitte prüfe Datei und Dateigröße.',
   filtersAdvice:
     'Wenn du nach mehreren Filialen filterst, verwende bitte keine Rubriken. Es könnte zu unerwarteten Ergebnissen führen.',
+  reserved_books: 'reserviertes Buch | reservierte Bücher',
 }
