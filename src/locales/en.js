@@ -197,4 +197,11 @@ export default {
   orderBy: 'OrderBy',
   orderByNameAsc: 'Name - Ascending',
   orderByBookcountDesc: 'Number of Books - Descending',
+  branchNameHelp:
+    'The name is shown in the filters, the public search and on other places.',
+  branchStepsHelp:
+    'The price of a book can be increased and decreased in fixed steps.',
+  branchOrderingHelp:
+    'How customers can purchase the book. This text is shown in the public search for every book.',
+  branchOrderByHelp: 'How to sort genres throughout the app.',
 }

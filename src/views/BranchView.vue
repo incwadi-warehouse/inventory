@@ -4,11 +4,30 @@
       <h1>{{ $t('branch') }}</h1>
     </b-container>
 
+    <b-container size="m" v-show="isLoading">
+      <b-spinner size="l" />
+    </b-container>
+
+    <b-container size="m" v-if="stats">
+      <branch-stats :stats="stats" />
+    </b-container>
+
+    <b-divider />
+
+    <b-container size="m" v-if="branch">
+      <h2>{{ $t('settings') }}</h2>
+      <branch-edit :branch="branch" />
+    </b-container>
+
+    <b-divider />
+
     <b-container size="m">
       <h2>{{ $t('clean_up') }}</h2>
       <p>{{ $t('clean_up_desc') }}</p>
       <branch-clean-books />
     </b-container>
+
+    <b-divider />
 
     <b-container size="m">
       <h2>{{ $t('conditions') }}</h2>
@@ -19,23 +38,6 @@
         :condition="condition"
       />
       <condition-new />
-    </b-container>
-
-    <b-container size="m" v-if="branch">
-      <h2>{{ $t('settings') }}</h2>
-      <branch-edit :branch="branch" />
-    </b-container>
-
-    <b-container size="m">
-      <h1>{{ $t('stats') }}</h1>
-    </b-container>
-
-    <b-container size="m" v-show="isLoading">
-      <b-spinner size="l" />
-    </b-container>
-
-    <b-container size="m" v-if="stats">
-      <branch-stats :stats="stats" />
     </b-container>
   </article>
 </template>

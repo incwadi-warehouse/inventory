@@ -6,6 +6,9 @@
         <b-form-label for="name">{{ $t('name_of_branch') }}</b-form-label>
       </b-form-item>
       <b-form-item>
+        <b-form-helpline>{{ $t('branchNameHelp') }}</b-form-helpline>
+      </b-form-item>
+      <b-form-item>
         <b-form-input type="text" id="name" v-model="name" />
       </b-form-item>
     </b-form-group>
@@ -15,6 +18,9 @@
     <b-form-group>
       <b-form-item>
         <b-form-label for="steps">{{ $t('price_steps') }}</b-form-label>
+      </b-form-item>
+      <b-form-item>
+        <b-form-helpline>{{ $t('branchStepsHelp') }}</b-form-helpline>
       </b-form-item>
       <b-form-item>
         <b-form-input
@@ -50,6 +56,9 @@
         <b-form-label for="ordering">{{ $t('bookOrdering') }}</b-form-label>
       </b-form-item>
       <b-form-item>
+        <b-form-helpline>{{ $t('branchOrderingHelp') }}</b-form-helpline>
+      </b-form-item>
+      <b-form-item>
         <b-form-textarea id="ordering" :rows="5" v-model="ordering" />
       </b-form-item>
     </b-form-group>
@@ -59,6 +68,9 @@
     <b-form-group>
       <b-form-item>
         <b-form-label for="orderBy">{{ $t('orderBy') }}</b-form-label>
+      </b-form-item>
+      <b-form-item>
+        <b-form-helpline>{{ $t('branchOrderByHelp') }}</b-form-helpline>
       </b-form-item>
       <b-form-item>
         <b-form-select id="orderBy" v-model="orderBy">
