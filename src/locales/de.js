@@ -37,7 +37,8 @@ export default {
   lend_more_then_x_months: 'Geliehen über X Monate',
   branch: 'Filiale',
   branches: 'Filialen',
-  search_in_title_author_tags: 'Suche in Titel, Autor und Schlagworten',
+  search_in_title_author_genre_tags:
+    'Suche in Titel, Autor, Rubriken und Schlagworten',
   firstname: 'Vorname',
   surname: 'Nachname',
   limit: 'Limit',

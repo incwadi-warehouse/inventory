@@ -4,7 +4,7 @@
       <b-actionbar>
         <template #input>
           <b-search
-            :placeholder="$t('search_in_title_author_tags')"
+            :placeholder="$t('search_in_title_author_genre_tags')"
             :button="$t('search')"
             icon
             filter
