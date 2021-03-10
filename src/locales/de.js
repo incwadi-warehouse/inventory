@@ -215,4 +215,7 @@ export default {
   coverUploadError: 'Upload fehlgeschlagen! Bitte prüfe Datei und Dateigröße.',
   filtersAdvice:
     'Wenn du nach mehreren Filialen filterst, verwende bitte keine Rubriken. Es könnte zu unerwarteten Ergebnissen führen.',
+  orderBy: 'Sortiere nach',
+  orderByNameAsc: 'Name - aufsteigend',
+  orderByBookcountDesc: 'Anzahl Bücher - absteigend',
 }

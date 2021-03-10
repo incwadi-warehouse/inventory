@@ -55,6 +55,20 @@
     </b-form-group>
     <!-- /ordering -->
 
+    <!-- orderBy -->
+    <b-form-group>
+      <b-form-item>
+        <b-form-label for="orderBy">{{ $t('orderBy') }}</b-form-label>
+      </b-form-item>
+      <b-form-item>
+        <b-form-select id="orderBy" v-model="orderBy">
+          <option value="name">{{ $t('orderByNameAsc') }}</option>
+          <option value="books">{{ $t('orderByBookcountDesc') }}</option>
+        </b-form-select>
+      </b-form-item>
+    </b-form-group>
+    <!-- /orderBy -->
+
     <b-form-group buttons v-if="me && me.isAdmin">
       <b-form-group>
         <b-form-item>
@@ -82,6 +96,7 @@ export default {
       steps: this.branch.steps,
       currency: this.branch.currency,
       ordering: this.branch.ordering,
+      orderBy: this.branch.orderBy,
     }
   },
   computed: {
@@ -96,6 +111,7 @@ export default {
         steps: this.steps,
         currency: this.currency,
         ordering: this.ordering,
+        orderBy: this.orderBy,
       })
     },
   },
