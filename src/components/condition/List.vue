@@ -1,7 +1,11 @@
 <template>
   <b-list>
     <template #title>
-      <condition-title :condition="condition" />
+      <condition-title
+        :condition="condition"
+        :edit="edit"
+        @edited="edit = false"
+      />
     </template>
 
     <template #options>
@@ -9,6 +13,9 @@
         <template #selector>
           <b-icon type="more" />
         </template>
+        <b-dropdown-item icon="pencil" @click="edit = true">
+          {{ $t('edit') }}
+        </b-dropdown-item>
         <b-dropdown-item icon="bin" @click="remove()">
           {{ $t('remove') }}
         </b-dropdown-item>
@@ -30,6 +37,11 @@ export default {
       type: Object,
       required: true,
     },
+  },
+  data() {
+    return {
+      edit: false,
+    }
   },
   methods: {
     remove: function () {
