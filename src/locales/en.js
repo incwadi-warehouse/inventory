@@ -193,4 +193,18 @@ export default {
   coverUploadError: 'Upload failed! Please check file and file size.',
   filtersAdvice:
     'If you are filtering for more then one branch, please do not use genres. It could lead into weird results.',
+  reservation: 'Reservation',
+  reservations: 'Reservations',
+  reservedBooks: 'Reserved Books',
+  reservationDate: 'Date of Collection',
+  reservationTime: 'Time of Collection',
+  notes: 'Notes',
+  createdAt: 'Created at',
+  collection: 'Collection',
+  newReservation: 'New Reservation',
+  doNotEditReservedBooks:
+    'Please do not edit a reserved book unless you know what you are doing.',
+  articlesInCart:
+    'There is {counter} article in the cart. Please complete the reservation. | There are {counter} articles in the cart. Please complete the reservation.',
+  cart: 'Cart',
 }

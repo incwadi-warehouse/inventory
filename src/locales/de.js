@@ -215,4 +215,18 @@ export default {
   coverUploadError: 'Upload fehlgeschlagen! Bitte prüfe Datei und Dateigröße.',
   filtersAdvice:
     'Wenn du nach mehreren Filialen filterst, verwende bitte keine Rubriken. Es könnte zu unerwarteten Ergebnissen führen.',
+  reservation: 'Reservierung',
+  reservations: 'Reservierungen',
+  reservedBooks: 'Reservierte Bücher',
+  reservationDate: 'Abholdatum',
+  reservationTime: 'Abholzeit',
+  notes: 'Notizen',
+  createdAt: 'Angelegt am',
+  collection: 'Abholung',
+  newReservation: 'Neue Reservierung',
+  doNotEditReservedBooks:
+    'Bitte bearbeite keine reservierten Bücher, es sei denn, du weißt, was du tust.',
+  articlesInCart:
+    'Es befindet sich {counter} Artikel im Einkaufskorb. Bitte vervollständige die Reservierung. | Es befinden sich {counter} Artikel im Einkaufskorb. Bitte vervollständige die Reservierung.',
+  cart: 'Warenkorb',
 }
