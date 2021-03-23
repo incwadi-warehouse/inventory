@@ -312,7 +312,9 @@
                   :style="{
                     position: 'relative',
                     height: '300px',
-                    border: '1px solid var(--color-neutral-02)',
+                    border: isDragging
+                      ? '1px solid var(--color-primary-10)'
+                      : '1px solid var(--color-neutral-02)',
                     borderRadius: '5px',
                   }"
                 >
@@ -327,19 +329,32 @@
                   >
                     {{ $t('drop_the_file_in_this_area_or_click_here') }}
                   </p>
-                  <b-form-input
-                    type="file"
-                    id="cover"
-                    @change="upload($event)"
-                    event
-                    accept="image/jpeg, image/jpg, image/png, image/webp"
+                  <div
                     :style="{
                       position: 'absolute',
                       width: '100%',
                       height: '100%',
-                      opacity: '0.001',
                     }"
-                  />
+                    @dragover="isDragging = true"
+                    @dragenter="isDragging = true"
+                    @dragleave="isDragging = false"
+                    @dragend="isDragging = false"
+                    @drop="isDragging = false"
+                  >
+                    <b-form-input
+                      type="file"
+                      id="cover"
+                      @change="upload($event)"
+                      event
+                      accept="image/jpeg, image/jpg, image/png, image/webp"
+                      :style="{
+                        position: 'absolute',
+                        width: '100%',
+                        height: '100%',
+                        opacity: '0.001',
+                      }"
+                    />
+                  </div>
                 </b-form-item>
               </b-form-group>
             </b-form>
@@ -379,6 +394,7 @@ export default {
       tag: this.book.tag,
       isUploading: false,
       hasErrorUploading: false,
+      isDragging: false,
     }
   },
   computed: {
