@@ -452,7 +452,7 @@ export default {
       this.tag = null
     },
     removeTag(tag) {
-      this.$store.dispatch('tag/remove', tag)
+      this.$store.commit('tag/removeTag', tag)
     },
     upload(event) {
       this.isUploading = true
