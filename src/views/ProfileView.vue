@@ -17,9 +17,9 @@
     <b-container size="m">
       <h2>{{ $t('filters') }}</h2>
       <b-form-item>
-        <input type="checkbox" id="classicFilters" v-model="classicFilters" />
-        <b-form-label for="classicFilters">
-          {{ $t('activate_classic_filters') }}
+        <input type="checkbox" id="flexFilters" v-model="flexFilters" />
+        <b-form-label for="flexFilters">
+          {{ $t('activate_flex_filters') }}
         </b-form-label>
       </b-form-item>
     </b-container>
@@ -39,14 +39,14 @@ export default {
   },
   data() {
     return {
-      classicFilters: window.localStorage.getItem('classicFilters') || false,
+      flexFilters: window.localStorage.getItem('flexFilters') || false,
     }
   },
   watch: {
-    classicFilters() {
-      window.localStorage.removeItem('classicFilters')
-      if (this.classicFilters) {
-        window.localStorage.setItem('classicFilters', true)
+    flexFilters() {
+      window.localStorage.removeItem('flexFilters')
+      if (this.flexFilters) {
+        window.localStorage.setItem('flexFilters', true)
       }
       this.$store.dispatch('search/reset')
     },

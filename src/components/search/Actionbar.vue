@@ -28,13 +28,13 @@
       </b-actionbar>
     </b-container>
 
-    <search-filter
-      @close="showFilter = false"
-      v-if="showFilter && !classicFilters"
-    />
     <search-filters
       @close="showFilter = false"
-      v-if="showFilter && classicFilters === 'true'"
+      v-if="showFilter && !flexFilters"
+    />
+    <search-filter
+      @close="showFilter = false"
+      v-if="showFilter && flexFilters === 'true'"
     />
   </article>
 </template>
@@ -63,8 +63,8 @@ export default {
         this.$store.commit('search/term', term)
       },
     },
-    classicFilters() {
-      return window.localStorage.getItem('classicFilters')
+    flexFilters() {
+      return window.localStorage.getItem('flexFilters')
     },
   },
   methods: {

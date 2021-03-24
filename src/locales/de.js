@@ -196,7 +196,7 @@ export default {
   options: 'Optionen',
   deprecated: 'Deprecated! Diese Funktion wird bald entfernt!',
   add_field: 'Feld hinzufügen',
-  activate_classic_filters: 'Aktiviere die classic Filter',
+  activate_flex_filters: 'Aktiviere die flex Filter',
   filters: 'Filter',
   from: 'von',
   until: 'bis',
