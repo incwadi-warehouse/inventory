@@ -50,6 +50,7 @@
     "jest": "^26.1",
     "jest-transform-stub": "^2.0",
     "js-cookie": "^2.2",
+    "lodash": "^4.17.21",
     "postcss": "^8.0.6",
     "prettier": "^2.0",
     "terser-webpack-plugin": "^4.2.2",

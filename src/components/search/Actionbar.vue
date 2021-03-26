@@ -42,6 +42,7 @@
 <script>
 import SearchFilter from './Filter'
 import SearchFilters from './Filters'
+import _debounce from 'lodash/debounce'
 
 export default {
   name: 'search-search',
@@ -52,6 +53,7 @@ export default {
   data() {
     return {
       showFilter: false,
+      changeRequest: null,
     }
   },
   computed: {
@@ -76,9 +78,15 @@ export default {
       this.$store.commit('author/authors', null)
     },
     change() {
-      if (this.term !== null) {
-        this.$store.dispatch('book/find')
+      if (null !== this.changeRequest) {
+        this.changeRequest.cancel()
       }
+      this.changeRequest = _debounce(() => {
+        if (this.term !== null) {
+          this.$store.dispatch('book/find')
+        }
+      }, 500)
+      this.changeRequest()
     },
   },
 }
