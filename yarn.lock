@@ -1007,10 +1007,10 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
-"@baldeweg/components@5.2.1":
-  version "5.2.1"
-  resolved "https://registry.yarnpkg.com/@baldeweg/components/-/components-5.2.1.tgz#252134f51d6c0427d933026c50f4cf35271874b3"
-  integrity sha512-GJ1F3Sv4qSC6ETepdgFAodDo7Y06eC4YjqJDLzF28YblPcvDV0QMR9967tauB5BvzxvQ8dgNajAAwuFxT1VLLA==
+"@baldeweg/components@5.4.2":
+  version "5.4.2"
+  resolved "https://registry.yarnpkg.com/@baldeweg/components/-/components-5.4.2.tgz#b0c10a1604d73426d2a372a41202e7ea170e52c4"
+  integrity sha512-XMvYMWSzCrJJPQJdmWJ5kBHa/Y9zDj5UQzfjC0OJ2xiax/dupieXg1F/GPXB1Pref5Xj6qQ8Hr2TGWzw5ZqCFg==
   dependencies:
     ejs "^3.1"
     lodash "^4.17"
