@@ -1,7 +1,7 @@
 <template>
   <tbody>
     <tr v-for="book in books" :key="book.id">
-      <td>
+      <td @click="edit(book.id)" :style="{ cursor: 'pointer' }">
         <span v-show="book.lendTo">[{{ $t('lend') }}] </span>
         {{ book.title }}
       </td>
@@ -49,6 +49,11 @@ export default {
   computed: {
     ...mapState('search', ['sold', 'removed']),
     ...mapState('book', ['books']),
+  },
+  methods: {
+    edit(id) {
+      this.$router.push({ name: 'book', params: { bookId: id } })
+    },
   },
   filters: {
     formatDate(timestamp) {
