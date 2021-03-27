@@ -47,7 +47,7 @@ export default {
   },
   methods: {
     showAll() {
-      this.$store.commit('search/limit', this.counter)
+      this.$store.commit('search/limit', this.counter * 10)
       this.$store.dispatch('book/find')
     },
   },
