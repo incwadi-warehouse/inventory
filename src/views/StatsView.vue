@@ -1,6 +1,12 @@
 <template>
   <article>
     <b-container size="m">
+      <b-notification type="warning">
+        {{ $t('deprecated') }}
+      </b-notification>
+    </b-container>
+
+    <b-container size="m">
       <h1>{{ $t('stats') }}</h1>
     </b-container>
 

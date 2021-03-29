@@ -312,7 +312,9 @@
                   :style="{
                     position: 'relative',
                     height: '300px',
-                    border: '1px solid var(--color-neutral-02)',
+                    border: isDragging
+                      ? '1px solid var(--color-primary-10)'
+                      : '1px solid var(--color-neutral-02)',
                     borderRadius: '5px',
                   }"
                 >
@@ -327,19 +329,32 @@
                   >
                     {{ $t('drop_the_file_in_this_area_or_click_here') }}
                   </p>
-                  <input
-                    type="file"
-                    id="cover"
-                    @change="upload($event)"
-                    accept="image/jpeg, image/jpg, image/png, image/webp"
-                    class="form-input"
+                  <div
                     :style="{
                       position: 'absolute',
                       width: '100%',
                       height: '100%',
-                      opacity: '0.001',
                     }"
-                  />
+                    @dragover="isDragging = true"
+                    @dragenter="isDragging = true"
+                    @dragleave="isDragging = false"
+                    @dragend="isDragging = false"
+                    @drop="isDragging = false"
+                  >
+                    <b-form-input
+                      type="file"
+                      id="cover"
+                      @change="upload($event)"
+                      event
+                      accept="image/jpeg, image/jpg, image/png, image/webp"
+                      :style="{
+                        position: 'absolute',
+                        width: '100%',
+                        height: '100%',
+                        opacity: '0.001',
+                      }"
+                    />
+                  </div>
                 </b-form-item>
               </b-form-group>
             </b-form>
@@ -379,6 +394,7 @@ export default {
       tag: this.book.tag,
       isUploading: false,
       hasErrorUploading: false,
+      isDragging: false,
     }
   },
   computed: {
@@ -430,7 +446,7 @@ export default {
       this.tag = null
     },
     removeTag(tag) {
-      this.$store.dispatch('tag/remove', tag)
+      this.$store.commit('tag/removeTag', tag)
     },
     upload(event) {
       this.isUploading = true
@@ -465,21 +481,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-.form-input {
-  border: 1px solid var(--color-neutral-04);
-  background: var(--color-neutral-00);
-  box-sizing: border-box;
-  border-radius: 5px;
-  width: 100%;
-  margin: 0;
-  font-size: 1em;
-  color: var(--color-neutral-10);
-}
-.form-input:hover,
-.form-input:focus {
-  border: 1px solid var(--color-primary-10);
-  outline: none;
-}
-</style>

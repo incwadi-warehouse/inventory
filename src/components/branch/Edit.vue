@@ -6,6 +6,9 @@
         <b-form-label for="name">{{ $t('name_of_branch') }}</b-form-label>
       </b-form-item>
       <b-form-item>
+        <b-form-helpline>{{ $t('branchNameHelp') }}</b-form-helpline>
+      </b-form-item>
+      <b-form-item>
         <b-form-input type="text" id="name" v-model="name" />
       </b-form-item>
     </b-form-group>
@@ -15,6 +18,9 @@
     <b-form-group>
       <b-form-item>
         <b-form-label for="steps">{{ $t('price_steps') }}</b-form-label>
+      </b-form-item>
+      <b-form-item>
+        <b-form-helpline>{{ $t('branchStepsHelp') }}</b-form-helpline>
       </b-form-item>
       <b-form-item>
         <b-form-input
@@ -50,10 +56,30 @@
         <b-form-label for="ordering">{{ $t('bookOrdering') }}</b-form-label>
       </b-form-item>
       <b-form-item>
+        <b-form-helpline>{{ $t('branchOrderingHelp') }}</b-form-helpline>
+      </b-form-item>
+      <b-form-item>
         <b-form-textarea id="ordering" :rows="5" v-model="ordering" />
       </b-form-item>
     </b-form-group>
     <!-- /ordering -->
+
+    <!-- orderBy -->
+    <b-form-group>
+      <b-form-item>
+        <b-form-label for="orderBy">{{ $t('orderBy') }}</b-form-label>
+      </b-form-item>
+      <b-form-item>
+        <b-form-helpline>{{ $t('branchOrderByHelp') }}</b-form-helpline>
+      </b-form-item>
+      <b-form-item>
+        <b-form-select id="orderBy" v-model="orderBy">
+          <option value="name">{{ $t('orderByNameAsc') }}</option>
+          <option value="books">{{ $t('orderByBookcountDesc') }}</option>
+        </b-form-select>
+      </b-form-item>
+    </b-form-group>
+    <!-- /orderBy -->
 
     <b-form-group buttons v-if="me && me.isAdmin">
       <b-form-group>
@@ -82,6 +108,7 @@ export default {
       steps: this.branch.steps,
       currency: this.branch.currency,
       ordering: this.branch.ordering,
+      orderBy: this.branch.orderBy,
     }
   },
   computed: {
@@ -96,6 +123,7 @@ export default {
         steps: this.steps,
         currency: this.currency,
         ordering: this.ordering,
+        orderBy: this.orderBy,
       })
     },
   },

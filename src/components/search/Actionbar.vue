@@ -4,7 +4,7 @@
       <b-actionbar>
         <template #input>
           <b-search
-            :placeholder="$t('search_in_title_author_tags')"
+            :placeholder="$t('search_in_title_author_genre_tags')"
             :button="$t('search')"
             icon
             filter
@@ -28,13 +28,13 @@
       </b-actionbar>
     </b-container>
 
-    <search-filter
-      @close="showFilter = false"
-      v-if="showFilter && !classicFilters"
-    />
     <search-filters
       @close="showFilter = false"
-      v-if="showFilter && classicFilters === 'true'"
+      v-if="showFilter && !flexFilters"
+    />
+    <search-filter
+      @close="showFilter = false"
+      v-if="showFilter && flexFilters === 'true'"
     />
   </article>
 </template>
@@ -42,6 +42,7 @@
 <script>
 import SearchFilter from './Filter'
 import SearchFilters from './Filters'
+import _debounce from 'lodash/debounce'
 
 export default {
   name: 'search-search',
@@ -52,6 +53,7 @@ export default {
   data() {
     return {
       showFilter: false,
+      changeRequest: null,
     }
   },
   computed: {
@@ -63,8 +65,8 @@ export default {
         this.$store.commit('search/term', term)
       },
     },
-    classicFilters() {
-      return window.localStorage.getItem('classicFilters')
+    flexFilters() {
+      return window.localStorage.getItem('flexFilters')
     },
   },
   methods: {
@@ -76,9 +78,15 @@ export default {
       this.$store.commit('author/authors', null)
     },
     change() {
-      if (this.term !== null) {
-        this.$store.dispatch('book/find')
+      if (null !== this.changeRequest) {
+        this.changeRequest.cancel()
       }
+      this.changeRequest = _debounce(() => {
+        if (this.term !== null) {
+          this.$store.dispatch('book/find')
+        }
+      }, 500)
+      this.changeRequest()
     },
   },
 }
