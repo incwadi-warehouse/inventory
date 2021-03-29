@@ -26,6 +26,12 @@ export default {
       type: Object,
       required: true,
     },
+    edit: {
+      type: Boolean,
+      default() {
+        return false
+      },
+    },
   },
   data() {
     return {
@@ -40,6 +46,12 @@ export default {
         name: this.name,
       })
       this.isEditing = false
+      this.$emit('edited')
+    },
+  },
+  watch: {
+    edit(edit) {
+      this.isEditing = edit
     },
   },
 }

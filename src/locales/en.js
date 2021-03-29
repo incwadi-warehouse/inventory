@@ -36,7 +36,7 @@ export default {
   lend_more_then_x_months: 'Lend more then x months',
   branch: 'Branch',
   branches: 'Branches',
-  search_in_title_author_tags: 'Search in title, author and tags',
+  search_in_title_author_genre_tags: 'Search in title, author, genre and tags',
   firstname: 'Firstname',
   surname: 'Surname',
   limit: 'Limit',
@@ -62,10 +62,10 @@ export default {
   removed: 'Removed',
   sell: 'Sell',
   stats: 'Statistics',
-  all_books: 'books in sum',
-  available_books: 'available books',
-  sold_books: 'sold books',
-  removed_books: 'removed books',
+  all_books: 'book in sum | books in sum',
+  available_books: 'available book | available books',
+  sold_books: 'sold book | sold books',
+  removed_books: 'removed book | removed books',
   book_created: 'Book saved.',
   book_updated: 'Book updated.',
   authors: 'Authors',
@@ -173,7 +173,7 @@ export default {
   options: 'Options',
   deprecated: 'Deprecated! This feature will be removed soon!',
   add_field: 'Add Field',
-  activate_classic_filters: 'Activate classic filters',
+  activate_flex_filters: 'Activate flex filters',
   filters: 'Filters',
   from: 'from',
   until: 'until',
@@ -193,4 +193,15 @@ export default {
   coverUploadError: 'Upload failed! Please check file and file size.',
   filtersAdvice:
     'If you are filtering for more then one branch, please do not use genres. It could lead into weird results.',
+  reserved_books: 'reserved book | reserved books',
+  orderBy: 'Order by',
+  orderByNameAsc: 'Name - Ascending',
+  orderByBookcountDesc: 'Number of Books - Descending',
+  branchNameHelp:
+    'The name is shown in the filters, the public search and on other places.',
+  branchStepsHelp:
+    'The price of a book can be increased and decreased in fixed steps.',
+  branchOrderingHelp:
+    'How customers can purchase the book. This text is shown in the public search for every book.',
+  branchOrderByHelp: 'How to sort genres throughout the app.',
 }

@@ -8,12 +8,14 @@ import 'core-js/features/promise'
 import 'core-js/features/number/parse-float'
 import components from '@baldeweg/components'
 import VueMeta from 'vue-meta'
+import VueCompositionAPI from '@vue/composition-api'
 
 Vue.use(components)
 Vue.themes()
 Vue.use(VueMeta, {
   keyName: 'head',
 })
+Vue.use(VueCompositionAPI)
 Vue.config.productionTip = false
 
 cssVars({

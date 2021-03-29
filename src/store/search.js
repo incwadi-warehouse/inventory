@@ -18,7 +18,7 @@ const classic = {
 export default {
   namespaced: true,
   state: {
-    elements: window.localStorage.getItem('classicFilters') ? classic : flex,
+    elements: window.localStorage.getItem('flexFilters') ? flex : classic,
     term: null,
     orderByField: '',
     orderByDirection: '',
@@ -130,10 +130,10 @@ export default {
         'elements',
         Object.assign(
           {},
-          window.localStorage.getItem('classicFilters') ? classic : flex
+          window.localStorage.getItem('flexFilters') ? flex : classic
         )
       )
-      if (!window.localStorage.getItem('classicFilters')) {
+      if (!window.localStorage.getItem('flexFilters')) {
         context.dispatch('addElement')
       }
       context.commit('orderByField', '')
