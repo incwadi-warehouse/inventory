@@ -26,6 +26,7 @@
           </b-form-item>
           <b-form-item>
             <b-form-select id="genre" required v-model="genreId">
+              <option></option>
               <option v-for="genre in genres" :key="genre.id" :value="genre.id">
                 {{ genre.name }}
               </option>
