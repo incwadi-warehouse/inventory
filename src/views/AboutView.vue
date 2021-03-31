@@ -4,18 +4,9 @@
     <p>{{ $t('license') }}</p>
     <p>{{ $t('repo') }}</p>
     <p>
-      <a href="https://github.com/abaldeweg/incwadi_core">Repository core</a>
-    </p>
-    <p>
-      <a href="https://github.com/abaldeweg/incwadi_inventory"
-        >Repository inventory</a
-      >
-    </p>
-    <p>
-      <a href="https://github.com/abaldeweg/incwadi_find">Repository find</a>
+      <a href="https://github.com/incwadi-warehouse">Git-Repository</a>
     </p>
     <p>{{ $t('contribution') }}</p>
-
     <b-divider />
     <p v-html="$t('cache_advise')" />
   </b-container>

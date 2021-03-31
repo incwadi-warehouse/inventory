@@ -19,7 +19,7 @@ export default {
   name: 'Name',
   license:
     'Dieses Projekt wurde von André Baldeweg entwickelt und steht unter MIT-Lizenz.',
-  repo: 'Der Code befindet sich im Gitlab-Repository.',
+  repo: 'Der Code befindet sich im Github-Repository.',
   contribution: 'Feedback ist willkommen!',
   add_book: 'Buch hinzufügen',
   release_year: 'Erscheinungsjahr',
