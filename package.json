@@ -56,7 +56,7 @@
     "terser-webpack-plugin": "4.2.3",
     "url-loader": "4.1.1",
     "vue": "2.6.12",
-    "vue-i18n": "8.24.2",
+    "vue-i18n": "8.24.3",
     "vue-jest": "3.0.7",
     "vue-loader": "15.9.6",
     "vue-meta": "2.4.0",
