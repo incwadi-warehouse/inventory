@@ -8,7 +8,9 @@ export default function useReservationList(emit) {
   let books = ref(null)
 
   const collection = computed(() => {
-    let date = new Date(reservationDate.value + ' ' + reservationTime.value)
+    let date = new Date(
+      reservationDate.value + ' ' + reservationTime.value + 'Z'
+    )
     return date.getTime() / 1000
   })
 
