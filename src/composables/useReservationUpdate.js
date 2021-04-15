@@ -1,10 +1,18 @@
 import { edit, show as showAction } from './../api/reservation'
-import { ref, onMounted } from '@vue/composition-api'
+import { ref, onMounted, computed } from '@vue/composition-api'
 
 export default function useReservationList(reservation) {
   let reservationDate = ref(null)
   let reservationTime = ref(null)
   let notes = ref(reservation.notes)
+  let books = computed(() => {
+    let books = []
+    reservation.books.forEach((element) => {
+      books.push(element.id)
+    })
+
+    return books.join(',')
+  })
 
   const collection = () => {
     if (null === reservationDate.value || null === reservationTime.value) {
@@ -18,6 +26,7 @@ export default function useReservationList(reservation) {
     edit(reservation.id, {
       notes: notes.value,
       collection: collection(),
+      books: books.value,
     })
   }
 
@@ -49,6 +58,7 @@ export default function useReservationList(reservation) {
     reservationDate,
     reservationTime,
     notes,
+    books,
     show,
     update,
   }
