@@ -6,7 +6,7 @@
 
     <b-container size="m">
       <h2>{{ $t('newReservation') }}</h2>
-      <reservation-create @created="onCreated" />
+      <reservation-create :cart="cart" @created="onCreated" />
     </b-container>
 
     <b-container size="m">
@@ -34,14 +34,16 @@ export default {
   },
   setup() {
     const { reservations, isLoading, getList } = useReservationList()
-    const { cleanCart } = useCart()
+    const { cart, cleanCart, listCart } = useCart()
+    listCart()
 
     const onCreated = () => {
       getList()
       cleanCart()
+      listCart()
     }
 
-    return { reservations, isLoading, getList, onCreated }
+    return { reservations, isLoading, getList, onCreated, cart }
   },
 }
 </script>

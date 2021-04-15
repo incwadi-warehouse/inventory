@@ -13,9 +13,9 @@ export default function useReservationList(emit) {
   })
 
   const addBook = (book) => {
-    if (null === book.value) return
+    if (null === book) return
     let ids = []
-    book.value.forEach((element) => {
+    book.forEach((element) => {
       return ids.push(element.id)
     })
     books.value = ids.join()

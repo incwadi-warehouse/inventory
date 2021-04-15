@@ -68,10 +68,12 @@
 <script>
 import { onMounted } from '@vue/composition-api'
 import useReservationCreate from './../../composables/useReservationCreate'
-import useCart from './../../composables/useCart'
 
 export default {
   name: 'create',
+  props: {
+    cart: Array,
+  },
   setup(props, { emit }) {
     const {
       create,
@@ -81,20 +83,16 @@ export default {
       books,
       addBook,
     } = useReservationCreate(emit)
-    const { cart, listCart } = useCart()
-    listCart()
 
     onMounted(() => {
-      addBook(cart)
+      addBook(props.cart)
     })
 
     return {
-      cart,
       create,
       reservationDate,
       reservationTime,
       notes,
-      listCart,
       books,
     }
   },
