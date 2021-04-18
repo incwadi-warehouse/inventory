@@ -6,6 +6,19 @@
       <b-spinner size="l" />
     </b-container>
 
+    <b-container size="l" v-if="cart">
+      <b-notification type="success">
+        {{
+          $tc('articlesInCart', cart.length, {
+            counter: cart.length,
+          })
+        }}
+        <router-link :to="{ name: 'reservation' }">
+          {{ $t('reservations') }}
+        </router-link>
+      </b-notification>
+    </b-container>
+
     <div class="noprint" v-if="hasBooks">
       <search-book-heading />
     </div>
@@ -14,7 +27,7 @@
       <b-table>
         <table>
           <search-books-table-head />
-          <search-books-table-body />
+          <search-books-table-body @cart="listCart()" />
         </table>
       </b-table>
     </b-container>
@@ -48,6 +61,7 @@ import SearchBooksTableHead from '../components/search/BooksTableHead'
 import SearchBooksTableBody from '../components/search/BooksTableBody'
 import BookCreate from '../components/book/Create'
 import BookEdit from '../components/book/Edit'
+import useCart from './../composables/useCart'
 
 export default {
   name: 'search-view',
@@ -73,6 +87,12 @@ export default {
     SearchBooksTableBody,
     BookCreate,
     BookEdit,
+  },
+  setup() {
+    const { cart, listCart } = useCart()
+    listCart()
+
+    return { cart, listCart }
   },
   computed: {
     hasBooks() {

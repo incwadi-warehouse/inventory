@@ -31,6 +31,11 @@
             {{ $t('branch') }}
           </router-link>
         </li>
+        <li class="offcanvas_item">
+          <router-link :to="{ name: 'reservation' }" class="offcanvas_link">
+            {{ $t('reservation') }}
+          </router-link>
+        </li>
       </ul>
 
       <b-divider />

@@ -31,7 +31,7 @@
         {{ book.price | formatPrice }}
       </td>
       <td class="noprint" style="cursor: pointer">
-        <context-menu :book="book" />
+        <context-menu :book="book" @cart="$emit('cart')" />
       </td>
     </tr>
   </tbody>

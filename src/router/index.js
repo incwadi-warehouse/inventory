@@ -62,6 +62,11 @@ const router = new Router({
       },
     },
     {
+      path: '/reservation',
+      name: 'reservation',
+      component: () => import('../views/ReservationView'),
+    },
+    {
       path: '/profile',
       name: 'profile',
       component: () => import('../views/ProfileView'),

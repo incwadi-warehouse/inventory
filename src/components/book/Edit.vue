@@ -1,6 +1,12 @@
 <template>
   <b-form @submit.prevent="update()">
     <b-modal @close="$emit('close', $event)">
+      <b-container size="m" v-if="book.reserved">
+        <b-notification type="warning">
+          <p>{{ $t('doNotEditReservedBooks') }}</p>
+        </b-notification>
+      </b-container>
+
       <template #title>
         {{ $t('edit_book') }}
       </template>

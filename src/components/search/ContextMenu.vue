@@ -16,24 +16,35 @@
     </b-dropdown-item>
     <b-dropdown-item
       icon="bookmark"
-      @click="reserve(book)"
+      @click="reserveToCart(book)"
       v-if="!book.reserved"
     >
-      {{ $t('reserve') }}
+      {{ $t('cart') }}
     </b-dropdown-item>
   </b-dropdown>
 </template>
 
 <script>
 import { mapActions } from 'vuex'
+import useCart from './../../composables/useCart'
 
 export default {
   name: 'context-menu-search',
   props: {
     book: Object,
   },
+  setup(props, { emit }) {
+    const { addCart } = useCart()
+
+    const reserveToCart = (book) => {
+      addCart(book)
+      emit('cart')
+    }
+
+    return { reserveToCart }
+  },
   methods: {
-    ...mapActions('book', ['sell', 'remove', 'reserve']),
+    ...mapActions('book', ['sell', 'remove']),
     edit(id) {
       this.$router.push({ name: 'book', params: { bookId: id } })
     },
