@@ -133,7 +133,7 @@ export default {
           window.localStorage.getItem('flexFilters') ? flex : classic
         )
       )
-      if (!window.localStorage.getItem('flexFilters')) {
+      if (window.localStorage.getItem('flexFilters')) {
         context.dispatch('addElement')
       }
       context.commit('orderByField', '')
