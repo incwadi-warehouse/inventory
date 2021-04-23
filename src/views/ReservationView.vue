@@ -14,6 +14,10 @@
       <b-spinner size="l" v-if="isLoading" />
       <reservation-list :reservations="reservations" @removed="getList" />
     </b-container>
+
+    <b-container size="m">
+      <div v-html="$tc('reservationDesc')" />
+    </b-container>
   </article>
 </template>
 
