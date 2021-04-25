@@ -29,7 +29,7 @@ export default {
     },
   },
   actions: {
-    find(context) {
+    find(context, me) {
       const filters = context.rootState.search.elements
       context.commit('search/isLoading', true, { root: true })
 
@@ -70,7 +70,7 @@ export default {
             return flattenedFilters.push({
               field: filters[key].field,
               operator: filters[key].operator,
-              value: [context.rootState.user.me.branch.id],
+              value: [me.branch.id],
             })
           }
         }
@@ -101,7 +101,7 @@ export default {
         }
       }
 
-      api(context.rootState.user.token)
+      api()
         .get('/api/v1/book/find', {
           params: {
             options: {
@@ -122,7 +122,7 @@ export default {
         })
     },
     show(context, id) {
-      api(context.rootState.user.token)
+      api()
         .get('/api/v1/book/' + id)
         .then(function (response) {
           context.commit('book', response.data)
@@ -134,7 +134,7 @@ export default {
     },
     create(context, data) {
       return new Promise((resolve, reject) => {
-        api(context.rootState.user.token)
+        api()
           .post('/api/v1/book/new', {
             added: data.added,
             title: data.title,
@@ -166,7 +166,7 @@ export default {
     },
     update(context, data) {
       return new Promise((resolve, reject) => {
-        api(context.rootState.user.token)
+        api()
           .put('/api/v1/book/' + data.id, {
             added: data.added,
             title: data.title,
@@ -199,27 +199,24 @@ export default {
       })
     },
     getCover(context, data) {
-      api(context.rootState.user.token)
+      api()
         .get('/api/v1/book/cover/' + data.id)
         .then(function (response) {
           context.commit('cover', response.data)
         })
     },
     upload(context, data) {
-      return api(context.rootState.user.token).post(
-        '/api/v1/book/cover/' + data.id,
-        data.form
-      )
+      return api().post('/api/v1/book/cover/' + data.id, data.form)
     },
     removeCover(context, data) {
-      api(context.rootState.user.token)
+      api()
         .delete('/api/v1/book/cover/' + data.id)
         .then(function () {
           context.dispatch('getCover', data)
         })
     },
     sell(context, book) {
-      api(context.rootState.user.token)
+      api()
         .put('/api/v1/book/sell/' + book.id)
         .then(function () {
           context.commit('removeBook', book)
@@ -230,7 +227,7 @@ export default {
         })
     },
     remove(context, book) {
-      api(context.rootState.user.token)
+      api()
         .put('/api/v1/book/remove/' + book.id)
         .then(function () {
           context.commit('removeBook', book)
@@ -241,7 +238,7 @@ export default {
         })
     },
     reserve(context, book) {
-      api(context.rootState.user.token)
+      api()
         .put('/api/v1/book/reserve/' + book.id)
         .then(function () {
           context.commit('removeBook', book)
@@ -251,8 +248,8 @@ export default {
           notification.create('book_reserve_error', 'error')
         })
     },
-    clean(context) {
-      api(context.rootState.user.token)
+    clean() {
+      api()
         .delete('/api/v1/book/clean')
         .then(function () {
           notification.create('book_clean_success', 'success')

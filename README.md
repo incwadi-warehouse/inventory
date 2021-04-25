@@ -1,34 +1,24 @@
-# incwadi/inventory
+# inventory
 
 incwadi is a book database to manage your books.
 
 ![incwadi](screenshot.png)
 
-## How it was made
-
-An article can be found here https://medium.com/@A.Baldeweg/i-was-trying-new-things-accf33792e86
-
 ## Requirements
 
 - NodeJS 12LTS
 - Yarn
+- VueJS Binary
 
 ## Getting Started
 
 Download the files from the repository.
 
 ```shell
-git clone https://github.com/abaldeweg/incwadi_inventory.git
+git clone https://github.com/incwadi-warehouse/inventory
 ```
 
-Create the files `.env` and `.env.production` with the following content. Please fit it to your needs.
-
-```shell
-API=URL
-LOCALE=en
-BRAND_COLOR=#000000
-LOGO=src/assets/logo.png # set to false for default logo
-```
+Create the file `.env.local` and overwrite env vars from `.env`, if needed.
 
 Start the build process.
 
@@ -38,9 +28,9 @@ yarn build
 
 The files in `dest/` should be located in your web root.
 
-Configure your webserver to redirect all requests to the `index.html` file.
+## Apache
 
-Example for Apache
+Configure your webserver to redirect all requests to the `index.html` file.
 
 ```apache
 <IfModule mod_rewrite.c>
@@ -58,11 +48,5 @@ Example for Apache
 Remove the old files and download the new ones like you would install the app.
 
 ```shell
-bin/update
+bin/setup
 ```
-
-## CLI
-
-- yarn build - Builds the app.
-- yarn watch - Starts the development environment.
-- yarn test - Runs the unit tests.

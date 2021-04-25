@@ -119,10 +119,10 @@ export default {
         return context.commit('orderByDirection', '')
       }
     },
-    setOrderBy(context, type) {
+    setOrderBy(context, { type, me }) {
       context.dispatch('orderByDirection', type)
       context.commit('orderByField', type)
-      context.dispatch('book/find', null, { root: true })
+      context.dispatch('book/find', me, { root: true })
     },
     reset(context) {
       if (context.state.elements === {}) return

@@ -13,14 +13,14 @@ export default {
   },
   actions: {
     list(context) {
-      api(context.rootState.user.token)
+      api()
         .get('/api/v1/condition/')
         .then(function (response) {
           context.commit('conditions', response.data)
         })
     },
     create(context, condition) {
-      api(context.rootState.user.token)
+      api()
         .post('/api/v1/condition/new', { name: condition })
         .then(function () {
           context.dispatch('list')
@@ -33,7 +33,7 @@ export default {
         })
     },
     remove(context, conditionId) {
-      api(context.rootState.user.token)
+      api()
         .delete('/api/v1/condition/' + conditionId)
         .then(function () {
           context.dispatch('list')
@@ -46,7 +46,7 @@ export default {
         })
     },
     update(context, data) {
-      api(context.rootState.user.token)
+      api()
         .put('/api/v1/condition/' + data.id, { name: data.name })
         .then(function () {
           context.dispatch('list')

@@ -57,13 +57,16 @@ export default {
   components: {
     Indicator,
   },
+  props: {
+    me: Object,
+  },
   computed: {
     ...mapState('search', ['sold', 'removed']),
     ...mapState('branch', ['branch']),
   },
   methods: {
     filter(type) {
-      this.$store.dispatch('search/setOrderBy', type)
+      this.$store.dispatch('search/setOrderBy', { type, me: this.me })
     },
   },
   created() {

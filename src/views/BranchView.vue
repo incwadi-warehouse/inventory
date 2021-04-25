@@ -49,6 +49,8 @@ import ConditionNew from '../components/condition/New'
 import BranchEdit from '../components/branch/Edit'
 import BranchStats from '../components/branch/Stats'
 import { mapState } from 'vuex'
+import useAuth from '@/composables/useAuth'
+import { toRefs } from '@vue/composition-api'
 
 export default {
   name: 'branch-view',
@@ -62,17 +64,22 @@ export default {
     BranchEdit,
     BranchStats,
   },
+  setup() {
+    const { getUser, state } = useAuth()
+    getUser()
+    const { me } = toRefs(state)
+
+    return { me }
+  },
   computed: {
     ...mapState('branch', ['branch']),
     ...mapState('condition', ['conditions']),
     ...mapState('stats', ['stats', 'isLoading']),
-    ...mapState('user', ['me']),
   },
   created: function () {
     this.$store.dispatch('branch/branch')
     this.$store.dispatch('condition/list')
     this.$store.dispatch('stats/stats')
-    if (!this.$store.state.user.me) this.$store.dispatch('user/me')
   },
 }
 </script>

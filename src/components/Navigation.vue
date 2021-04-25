@@ -37,9 +37,7 @@
           </router-link>
         </li>
       </ul>
-
       <b-divider />
-
       <ul class="offcanvas_nav">
         <li class="offcanvas_item">
           <router-link :to="{ name: 'about' }" class="offcanvas_link">
@@ -47,13 +45,11 @@
           </router-link>
         </li>
       </ul>
-
       <b-divider />
-
       <ul class="offcanvas_nav">
-        <li class="offcanvas_item">
+        <li class="offcanvas_item" v-if="state.me">
           <router-link :to="{ name: 'profile' }" class="offcanvas_link">
-            {{ $t('profile') }}
+            {{ state.me.username }}
           </router-link>
         </li>
         <li class="offcanvas_item">
@@ -67,19 +63,36 @@
 </template>
 
 <script>
-import { mapState, mapActions, mapMutations } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
+import useAuth from '@/composables/useAuth'
+import { toRefs, watch } from '@vue/composition-api'
 
 export default {
   name: 'navigation',
+  props: {
+    isAuthenticated: Boolean,
+  },
+  setup(props, { emit }) {
+    const { state, getUser, logout } = useAuth(emit)
+    const { isAuthenticated } = toRefs(props)
+
+    if (props.isAuthenticated) {
+      getUser()
+    }
+
+    watch(isAuthenticated, () => {
+      getUser()
+    })
+
+    return { state, logout }
+  },
   computed: {
-    ...mapState('user', ['isAuthenticated']),
-    ...mapState('app', ['showOffCanvas']),
+    ...mapState(['showOffCanvas']),
   },
   methods: {
-    ...mapMutations('app', {
+    ...mapMutations({
       toggleOffCanvas: 'showOffCanvas',
     }),
-    ...mapActions('user', ['logout']),
   },
 }
 </script>

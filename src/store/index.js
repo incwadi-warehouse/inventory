@@ -4,8 +4,6 @@ import book from './book'
 import genre from './genre'
 import branch from './branch'
 import staff from './staff'
-import user from './user'
-import app from './app'
 import stats from './stats'
 import author from './author'
 import search from './search'
@@ -16,14 +14,20 @@ import savedsearch from './savedsearch'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  strict: process.env.NODE_ENV !== 'production',
+  state: {
+    showOffCanvas: false,
+  },
+  mutations: {
+    showOffCanvas(state, status) {
+      state.showOffCanvas = status
+    },
+  },
+  actions: {},
   modules: {
     book,
     genre,
     branch,
     staff,
-    user,
-    app,
     stats,
     author,
     search,

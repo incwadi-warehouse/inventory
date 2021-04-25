@@ -17,7 +17,7 @@ export default {
   },
   actions: {
     staff(context) {
-      api(context.rootState.user.token)
+      api()
         .get('/api/v1/staff/')
         .then(function (response) {
           context.commit('staff', response.data)
@@ -25,7 +25,7 @@ export default {
     },
     create(context, name) {
       context.commit('isProcessing', true)
-      api(context.rootState.user.token)
+      api()
         .post('/api/v1/staff/new', {
           name: name,
         })
@@ -41,7 +41,7 @@ export default {
         })
     },
     edit(context, data) {
-      api(context.rootState.user.token)
+      api()
         .put('/api/v1/staff/' + data.id, {
           name: data.name,
         })
@@ -54,7 +54,7 @@ export default {
         })
     },
     remove(context, id) {
-      api(context.rootState.user.token)
+      api()
         .delete('/api/v1/staff/' + id)
         .then(function () {
           context.dispatch('staff')

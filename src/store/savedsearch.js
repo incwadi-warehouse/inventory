@@ -13,7 +13,7 @@ export default {
   },
   actions: {
     savedsearches(context) {
-      api(context.rootState.user.token)
+      api()
         .get('/api/v1/savedsearch/')
         .then(function (response) {
           context.commit('savedsearches', response.data)
@@ -57,7 +57,7 @@ export default {
         }
       }
 
-      api(context.rootState.user.token)
+      api()
         .post('/api/v1/savedsearch/new', {
           name: data.name,
           query: {
@@ -76,7 +76,7 @@ export default {
         })
     },
     remove(context, id) {
-      api(context.rootState.user.token)
+      api()
         .delete('/api/v1/savedsearch/' + id)
         .then(function () {
           context.dispatch('savedsearches')

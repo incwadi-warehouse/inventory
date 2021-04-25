@@ -24,6 +24,8 @@
 import GenreList from '../components/genre/List'
 import GenreCreate from '../components/genre/Create'
 import { mapState } from 'vuex'
+import useAuth from '@/composables/useAuth'
+import { toRefs } from '@vue/composition-api'
 
 export default {
   name: 'genre-view',
@@ -34,13 +36,18 @@ export default {
     GenreList,
     GenreCreate,
   },
+  setup() {
+    const { getUser, state } = useAuth()
+    getUser()
+    const { me } = toRefs(state)
+
+    return { me }
+  },
   computed: {
-    ...mapState('user', ['me']),
     ...mapState('genre', ['genres']),
   },
   created: function () {
     this.$store.dispatch('genre/genres')
-    if (!this.$store.state.user.me) this.$store.dispatch('user/me')
   },
 }
 </script>

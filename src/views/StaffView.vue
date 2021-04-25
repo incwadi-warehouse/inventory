@@ -24,6 +24,8 @@
 import StaffList from '../components/staff/List'
 import StaffCreate from '../components/staff/Create'
 import { mapState } from 'vuex'
+import useAuth from '@/composables/useAuth'
+import { toRefs } from '@vue/composition-api'
 
 export default {
   name: 'staff-view',
@@ -34,12 +36,17 @@ export default {
     StaffList,
     StaffCreate,
   },
+  setup() {
+    const { getUser, state } = useAuth()
+    getUser()
+    const { me } = toRefs(state)
+
+    return { me }
+  },
   computed: {
-    ...mapState('user', ['me']),
     ...mapState('staff', ['staff']),
   },
   created: function () {
-    if (!this.$store.state.user.me) this.$store.dispatch('user/me')
     this.$store.dispatch('staff/staff')
   },
 }

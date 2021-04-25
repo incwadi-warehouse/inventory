@@ -17,21 +17,21 @@ export default {
   },
   actions: {
     branches(context) {
-      api(context.rootState.user.token)
+      api()
         .get('/api/v1/branch/')
         .then(function (response) {
           context.commit('branches', response.data)
         })
     },
     branch(context) {
-      api(context.rootState.user.token)
+      api()
         .get('/api/v1/branch/my')
         .then(function (response) {
           context.commit('branch', response.data)
         })
     },
     update(context, data) {
-      api(context.rootState.user.token)
+      api()
         .put('/api/v1/branch/' + data.id, {
           name: data.name,
           steps: data.steps,

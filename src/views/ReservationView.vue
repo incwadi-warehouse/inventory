@@ -30,7 +30,8 @@ import useReservationList from '../composables/useReservationList'
 import useCart from '../composables/useCart'
 import ReservationList from './../components/reservation/List'
 import ReservationCreate from './../components/reservation/Create'
-import { mapState } from 'vuex'
+import useAuth from '@/composables/useAuth'
+import { toRefs } from '@vue/composition-api'
 
 export default {
   name: 'reservation-view',
@@ -42,6 +43,10 @@ export default {
     ReservationCreate,
   },
   setup() {
+    const { getUser, state } = useAuth()
+    getUser()
+    const { me } = toRefs(state)
+
     const { reservations, isLoading, getList } = useReservationList()
     const { cart, cleanCart, listCart } = useCart()
     listCart()
@@ -52,10 +57,7 @@ export default {
       listCart()
     }
 
-    return { reservations, isLoading, getList, onCreated, cart }
-  },
-  computed: {
-    ...mapState('user', ['me']),
+    return { reservations, isLoading, getList, onCreated, cart, me }
   },
 }
 </script>

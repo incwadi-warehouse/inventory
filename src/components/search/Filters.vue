@@ -395,7 +395,7 @@ export default {
           ? { field: 'added', operator: 'lte', value: this.addedEnd }
           : {},
       })
-      this.$store.dispatch('book/find')
+      this.$store.dispatch('book/find', this.me)
       this.$emit('close', this.$event)
     },
     reset() {

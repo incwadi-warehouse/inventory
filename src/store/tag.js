@@ -24,7 +24,7 @@ export default {
   },
   actions: {
     create(context, name) {
-      api(context.rootState.user.token)
+      api()
         .post('/api/v1/tag/new', {
           name: name,
         })
@@ -37,7 +37,7 @@ export default {
         })
     },
     remove(context, tag) {
-      api(context.rootState.user.token)
+      api()
         .delete('/api/v1/tag/' + tag.id)
         .then(function () {
           context.commit('removeTag', tag)

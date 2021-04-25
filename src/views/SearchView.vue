@@ -20,13 +20,13 @@
     </b-container>
 
     <div class="noprint" v-if="hasBooks">
-      <search-book-heading />
+      <search-book-heading :me="me" />
     </div>
 
     <b-container size="l" v-if="hasBooks">
       <b-table>
         <table>
-          <search-books-table-head />
+          <search-books-table-head :me="me" />
           <search-books-table-body @cart="listCart()" />
         </table>
       </b-table>
@@ -62,6 +62,8 @@ import SearchBooksTableBody from '../components/search/BooksTableBody'
 import BookCreate from '../components/book/Create'
 import BookEdit from '../components/book/Edit'
 import useCart from './../composables/useCart'
+import useAuth from '@/composables/useAuth'
+import { toRefs } from '@vue/composition-api'
 
 export default {
   name: 'search-view',
@@ -89,10 +91,14 @@ export default {
     BookEdit,
   },
   setup() {
+    const { getUser, state } = useAuth()
+    getUser()
+    const { me } = toRefs(state)
+
     const { cart, listCart } = useCart()
     listCart()
 
-    return { cart, listCart }
+    return { cart, listCart, me }
   },
   computed: {
     hasBooks() {
@@ -105,9 +111,6 @@ export default {
     },
     isLoading() {
       return this.$store.state.search.isLoading
-    },
-    me() {
-      return this.$store.state.user.me
     },
   },
   methods: {

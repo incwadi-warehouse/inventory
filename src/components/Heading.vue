@@ -18,8 +18,7 @@
           v-else
         >
           <path
-            d="M 0 0 L 0 200 L 50 170 L 100 140 L 150 170 L 200 200 L 200 0 L 0 0 z "
-          />
+            d="M 27.435547 9.8710938 C 17.706307 9.8710935 9.8710935 17.706307 9.8710938 27.435547 L 9.8710938 172.56445 C 9.8710935 182.29369 17.706307 190.12891 27.435547 190.12891 L 172.56445 190.12891 C 182.29369 190.12891 190.12891 182.29369 190.12891 172.56445 L 190.12891 27.435547 C 190.12891 17.706307 182.29369 9.8710938 172.56445 9.8710938 L 27.435547 9.8710938 z M 55 40 L 145 40 L 145 160 L 100 124 L 55 160 L 55 40 z "
           />
         </svg>
       </router-link>
@@ -32,8 +31,8 @@
             <b-icon type="profile" />
           </span>
         </template>
-        <b-dropdown-item v-if="me">
-          {{ $t('hello') }}, {{ me.username }}!
+        <b-dropdown-item no-hover v-if="state.me">
+          {{ $t('hello') }}, {{ state.me.username }}!
         </b-dropdown-item>
         <b-dropdown-divider />
         <b-dropdown-item @click.prevent="profile">
@@ -49,23 +48,40 @@
 
 <script>
 import Logo from './Logo'
-import { mapState, mapMutations, mapActions } from 'vuex'
+import useAuth from '@/composables/useAuth'
+import { toRefs, watch } from '@vue/composition-api'
+import { mapMutations } from 'vuex'
 
 export default {
   name: 'heading',
   components: {
     Logo,
   },
+  props: {
+    isAuthenticated: Boolean,
+  },
+  setup(props, { emit }) {
+    const { getUser, state, logout } = useAuth(emit)
+    const { isAuthenticated } = toRefs(props)
+
+    if (props.isAuthenticated) {
+      getUser()
+    }
+
+    watch(isAuthenticated, () => {
+      getUser()
+    })
+
+    return { state, logout }
+  },
   computed: {
-    ...mapState('user', ['me', 'isAuthenticated']),
     hasLogo: function () {
-      return process.env.LOGO === 'false' ? false : true
+      return process.env.VUE_APP_LOGO === 'false' ? false : true
     },
   },
   methods: {
-    ...mapMutations('app', ['showOffCanvas']),
-    ...mapActions('user', ['logout']),
-    profile: function () {
+    ...mapMutations(['showOffCanvas']),
+    profile() {
       this.$router.push({ name: 'profile' })
     },
   },

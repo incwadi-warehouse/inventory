@@ -1,12 +1,19 @@
 <template>
   <b-app id="app">
-    <heading class="noprint" />
-    <navigation class="noprint" />
+    <heading
+      :isAuthenticated="state.isAuthenticated"
+      @loggedout="onLoggedOut()"
+    />
+    <navigation
+      :isAuthenticated="state.isAuthenticated"
+      @loggedout="onLoggedOut()"
+    />
+
     <b-content>
-      <router-view v-if="isAuthenticated" />
-      <b-container size="s" v-if="!isAuthenticated">
+      <router-view v-if="state.isAuthenticated" />
+      <b-container size="s" v-if="!state.isAuthenticated">
         <h1>{{ $t('login') }}</h1>
-        <profile-login />
+        <auth-login @loggedin="session" />
       </b-container>
     </b-content>
 
@@ -18,7 +25,7 @@
         :undo="notification.undo"
         hidable
       >
-        {{ $t(notification.msg) }}
+        {{ notification.msg }}
       </b-notification>
     </b-notification-bar>
     <b-tooltip />
@@ -28,74 +35,41 @@
 <script>
 import Heading from './components/Heading'
 import Navigation from './components/Navigation'
-import ProfileLogin from './components/profile/Login'
-import { mapState } from 'vuex'
+import AuthLogin from './components/auth/Login'
+import useAuth from '@/composables/useAuth'
 
 export default {
   name: 'app',
-  head: {
-    title: 'Home',
-    titleTemplate: '%s - incwadi',
-    meta: [
-      {
-        vmid: 'description',
-        name: 'description',
-        content: 'incwadi is a book database to manage your books.',
-      },
-      {
-        vmid: 'viewport',
-        name: 'viewport',
-        content: 'width=device-width, initial-scale=1.0',
-      },
-      {
-        vmid: 'charset',
-        charset: 'utf-8',
-      },
-    ],
-  },
   components: {
     Heading,
     Navigation,
-    ProfileLogin,
+    AuthLogin,
+  },
+  head: {
+    title: 'Home',
+    titleTemplate: '%s - incwadi',
   },
   data() {
     return {
       notifications: this.$notify.list(),
     }
   },
-  computed: {
-    ...mapState('user', ['isAuthenticated']),
+  setup(props, { emit }) {
+    const { state, check, session } = useAuth(emit)
+    check()
+
+    return { state, session }
   },
-  mounted: function () {
-    const el = document.querySelector('html')
-    el.style.setProperty(
-      '--color-primary-10',
-      process.env.COLOR10 !== 'false' ? process.env.COLOR10 : '#d7621d'
-    )
-    el.style.setProperty(
-      '--color-primary-05',
-      process.env.COLOR05 !== 'false' ? process.env.COLOR05 : '#e9915d'
-    )
-    el.style.setProperty(
-      '--color-primary-00',
-      process.env.COLOR00 !== 'false' ? process.env.COLOR00 : '#f3c2a5'
-    )
-    this.$store.dispatch('user/check')
-    this.$i18n.locale =
-      window.localStorage.getItem('locale') || process.env.LOCALE
+  methods: {
+    onLoggedOut() {
+      this.$store.commit('showOffCanvas', false)
+      this.session()
+    },
   },
 }
 </script>
 
-<style src="@baldeweg/components/dist/components.css" />
-
 <style>
-html {
-  --color-primary-05: #e9915d;
-  --color-primary-00: #f3c2a5;
-
-  --masthead-height: 66px;
-}
 @media print {
   html {
     --masthead-height: 0 !important;

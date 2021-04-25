@@ -21,7 +21,7 @@ export default {
   },
   actions: {
     genres(context) {
-      api(context.rootState.user.token)
+      api()
         .get('/api/v1/genre/')
         .then(function (response) {
           context.commit('genres', response.data)
@@ -29,7 +29,7 @@ export default {
     },
     create(context, name) {
       context.commit('isProcessing', true)
-      api(context.rootState.user.token)
+      api()
         .post('/api/v1/genre/new', {
           name: name,
         })
@@ -45,7 +45,7 @@ export default {
         })
     },
     edit(context, data) {
-      api(context.rootState.user.token)
+      api()
         .put('/api/v1/genre/' + data.id, {
           name: data.name,
         })
@@ -58,7 +58,7 @@ export default {
         })
     },
     remove(context, id) {
-      api(context.rootState.user.token)
+      api()
         .delete('/api/v1/genre/' + id)
         .then(function () {
           context.dispatch('genres')
