@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 import EditStaff from './Edit'
 
 export default {
@@ -31,9 +31,7 @@ export default {
       type: Object,
       required: true,
     },
-  },
-  computed: {
-    ...mapState('user', ['me']),
+    me: Object,
   },
   methods: {
     ...mapActions('staff', ['remove']),

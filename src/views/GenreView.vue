@@ -5,7 +5,12 @@
     </b-container>
 
     <b-container size="m" v-if="genres.length > 0">
-      <genre-list v-for="genre in genres" :key="genre.id" :genre="genre" />
+      <genre-list
+        v-for="genre in genres"
+        :key="genre.id"
+        :genre="genre"
+        :me="me"
+      />
     </b-container>
 
     <b-container size="m" v-if="me && me.isAdmin">

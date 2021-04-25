@@ -1,6 +1,6 @@
 <template>
   <article>
-    <search-actionbar class="noprint" />
+    <search-actionbar class="noprint" :me="me" />
 
     <b-container size="l" v-if="isLoading">
       <b-spinner size="l" />
@@ -105,6 +105,9 @@ export default {
     },
     isLoading() {
       return this.$store.state.search.isLoading
+    },
+    me() {
+      return this.$store.state.user.me
     },
   },
   methods: {

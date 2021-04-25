@@ -12,7 +12,11 @@
     <b-container size="m">
       <h2>{{ $t('reservedBooks') }}</h2>
       <b-spinner size="l" v-if="isLoading" />
-      <reservation-list :reservations="reservations" @removed="getList" />
+      <reservation-list
+        :reservations="reservations"
+        @removed="getList"
+        :me="me"
+      />
     </b-container>
 
     <b-container size="m">
@@ -26,6 +30,7 @@ import useReservationList from '../composables/useReservationList'
 import useCart from '../composables/useCart'
 import ReservationList from './../components/reservation/List'
 import ReservationCreate from './../components/reservation/Create'
+import { mapState } from 'vuex'
 
 export default {
   name: 'reservation-view',
@@ -48,6 +53,9 @@ export default {
     }
 
     return { reservations, isLoading, getList, onCreated, cart }
+  },
+  computed: {
+    ...mapState('user', ['me']),
   },
 }
 </script>

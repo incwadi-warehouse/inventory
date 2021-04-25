@@ -266,6 +266,9 @@
 <script>
 export default {
   name: 'filters-search',
+  props: {
+    me: Object,
+  },
   data() {
     return {
       fields: [
@@ -280,7 +283,7 @@ export default {
       genreId: this.$store.state.search.elements[1].value,
       branches:
         this.$store.state.search.elements[2].value.length === 0
-          ? [this.$store.state.user.me.branch.id]
+          ? [this.me.branch.id]
           : this.$store.state.search.elements[2].value,
       releaseYearStart: this.$store.state.search.elements[3]
         ? this.$store.state.search.elements[3].value
@@ -436,7 +439,7 @@ export default {
       this.genreId = this.$store.state.search.elements[1].value
       this.branches =
         this.$store.state.search.elements[2].value.length === 0
-          ? [this.$store.state.user.me.branch.id]
+          ? [this.me.branch.id]
           : this.$store.state.search.elements[2].value
       this.releaseYearStart = this.$store.state.search.elements[3]
         ? this.$store.state.search.elements[3].value

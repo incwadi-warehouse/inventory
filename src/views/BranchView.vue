@@ -16,7 +16,7 @@
 
     <b-container size="m" v-if="branch">
       <h2>{{ $t('settings') }}</h2>
-      <branch-edit :branch="branch" />
+      <branch-edit :branch="branch" :me="me" />
     </b-container>
 
     <b-divider />
@@ -24,7 +24,7 @@
     <b-container size="m">
       <h2>{{ $t('clean_up') }}</h2>
       <p>{{ $t('clean_up_desc') }}</p>
-      <branch-clean-books />
+      <branch-clean-books :me="me" />
     </b-container>
 
     <b-divider />
@@ -66,11 +66,13 @@ export default {
     ...mapState('branch', ['branch']),
     ...mapState('condition', ['conditions']),
     ...mapState('stats', ['stats', 'isLoading']),
+    ...mapState('user', ['me']),
   },
   created: function () {
     this.$store.dispatch('branch/branch')
     this.$store.dispatch('condition/list')
     this.$store.dispatch('stats/stats')
+    if (!this.$store.state.user.me) this.$store.dispatch('user/me')
   },
 }
 </script>

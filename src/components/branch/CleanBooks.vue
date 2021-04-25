@@ -8,18 +8,15 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'clean-books',
-  computed: {
-    ...mapState('user', ['me']),
+  props: {
+    me: Object,
   },
   methods: {
     ...mapActions('book', ['clean']),
-  },
-  created: function () {
-    if (!this.$store.state.user.me) this.$store.dispatch('user/me')
   },
 }
 </script>

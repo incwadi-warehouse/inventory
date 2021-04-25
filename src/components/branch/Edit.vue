@@ -92,8 +92,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-
 export default {
   name: 'edit',
   props: {
@@ -101,6 +99,7 @@ export default {
       type: Object,
       required: true,
     },
+    me: Object,
   },
   data() {
     return {
@@ -110,9 +109,6 @@ export default {
       ordering: this.branch.ordering,
       orderBy: this.branch.orderBy,
     }
-  },
-  computed: {
-    ...mapState('user', ['me']),
   },
   methods: {
     update: function () {
@@ -126,9 +122,6 @@ export default {
         orderBy: this.orderBy,
       })
     },
-  },
-  created: function () {
-    if (!this.$store.state.user.me) this.$store.dispatch('user/me')
   },
 }
 </script>

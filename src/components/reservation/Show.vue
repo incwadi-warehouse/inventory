@@ -99,6 +99,7 @@ export default {
   name: 'show',
   props: {
     reservation: Object,
+    me: Object,
   },
   setup(props, { emit }) {
     const { localeDateString } = useReservationShow()
@@ -121,11 +122,7 @@ export default {
       localeDateString,
     }
   },
-  computed: {
-    me() {
-      return this.$store.state.user.me
-    },
-  },
+  computed: {},
   methods: {
     submit() {
       this.update()

@@ -5,7 +5,12 @@
     </b-container>
 
     <b-container size="m">
-      <staff-list v-for="member in staff" :key="member.id" :staff="member" />
+      <staff-list
+        v-for="member in staff"
+        :key="member.id"
+        :staff="member"
+        :me="me"
+      />
     </b-container>
 
     <b-container size="m" v-if="me && me.isAdmin">

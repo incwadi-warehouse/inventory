@@ -31,6 +31,7 @@
     <search-filters
       @close="showFilter = false"
       v-if="showFilter && !flexFilters"
+      :me="me"
     />
     <search-filter
       @close="showFilter = false"
@@ -49,6 +50,9 @@ export default {
   components: {
     SearchFilter,
     SearchFilters,
+  },
+  props: {
+    me: Object,
   },
   data() {
     return {
