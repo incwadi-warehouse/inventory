@@ -2715,7 +2715,7 @@ babylon@^6.18.0:
   resolved "https://registry.yarnpkg.com/babylon/-/babylon-6.18.0.tgz#af2f3b88fa6f5c1e4c634d1a0f8eac4f55b395e3"
   integrity sha512-q/UEjfGJ2Cm3oKV71DJz9d25TPnq5rhBVL2Q4fA5wcC3jcrdn7+SssEybFIxwAvvP+YCsCYNKughoF33GxgycQ==
 
-balanced-match@^1.0.0:
+balanced-match@^1.0.0, balanced-match@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.2.tgz#e83e3a7e3f300b34cb9d87f615fa0cbf357690ee"
   integrity sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==
@@ -3716,11 +3716,12 @@ css-select@^2.0.2:
     domutils "^1.7.0"
     nth-check "^1.0.2"
 
-css-vars-ponyfill@2.4.4:
-  version "2.4.4"
-  resolved "https://registry.yarnpkg.com/css-vars-ponyfill/-/css-vars-ponyfill-2.4.4.tgz#402bb1fb1c724b8863007322ca9e4e2b48852d52"
-  integrity sha512-Fi8JyA8ItQySIXilNISrLMs8X9NYJ8RnSYiY8ZpBAckK60nFgrwY0GEQOqED1Y8GKhYmOkJ3c5ejqPZJsbVirg==
+css-vars-ponyfill@2.4.5:
+  version "2.4.5"
+  resolved "https://registry.yarnpkg.com/css-vars-ponyfill/-/css-vars-ponyfill-2.4.5.tgz#7c81934e924d4d4ff2502e0a479420abf652e7f4"
+  integrity sha512-g/iKntsYEzYFTozriPP8GqqfBsgSSSXbR4DQ55+uFb9Yx4ltOaiQUcVm4Rv6IvS39y1n+wQpCUQMErwFJKyk9Q==
   dependencies:
+    balanced-match "^1.0.2"
     get-css-data "^2.0.2"
 
 css-what@^3.2.1:
