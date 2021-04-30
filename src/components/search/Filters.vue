@@ -46,7 +46,7 @@
         </details>
 
         <!-- Branch -->
-        <details v-if="$store.state.user.me.isAdmin">
+        <details v-if="me.isAdmin">
           <summary>{{ $t('branches') }}</summary>
           <b-form-fieldset>
             <b-form-legend class="visuallyHidden">
