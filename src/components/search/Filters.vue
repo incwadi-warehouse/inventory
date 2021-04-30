@@ -140,6 +140,18 @@
               <input type="checkbox" id="reserved" v-model="reserved" />
               <b-form-label for="reserved">{{ $t('reserved') }}</b-form-label>
             </b-form-item>
+
+            <!-- Recommendation -->
+            <b-form-item>
+              <input
+                type="checkbox"
+                id="recommendation"
+                v-model="recommendation"
+              />
+              <b-form-label for="recommendation">{{
+                $t('recommendation')
+              }}</b-form-label>
+            </b-form-item>
           </b-form-group>
         </details>
 
@@ -306,6 +318,9 @@ export default {
       addedEnd: this.$store.state.search.elements[10]
         ? this.$store.state.search.elements[10].value
         : null,
+      recommendation: this.$store.state.search.elements[12]
+        ? this.$store.state.search.elements[12].value
+        : false,
     }
   },
   computed: {
@@ -394,6 +409,11 @@ export default {
         10: this.addedEnd
           ? { field: 'added', operator: 'lte', value: this.addedEnd }
           : {},
+        12: {
+          field: 'recommendation',
+          operator: 'eq',
+          value: this.recommendation,
+        },
       })
       this.$store.dispatch('book/find', this.me)
       this.$emit('close', this.$event)
@@ -462,6 +482,7 @@ export default {
       this.addedEnd = this.$store.state.search.elements[10]
         ? this.$store.state.search.elements[10].value
         : null
+      this.recommendation = this.$store.state.search.elements[12].value
     },
   },
   created() {

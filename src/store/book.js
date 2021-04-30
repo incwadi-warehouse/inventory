@@ -183,6 +183,7 @@ export default {
             lendOn: data.lendOn,
             cond: data.cond,
             tags: data.tags,
+            recommendation: data.recommendation,
           })
           .then(function () {
             context.dispatch('find')
