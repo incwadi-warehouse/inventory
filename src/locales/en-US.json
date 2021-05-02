@@ -171,8 +171,8 @@
   "orderBy_field": "Order by Field",
   "orderBy_direction": "Order by Direction",
   "books": "Books",
-  "show_x_of_y_found_books": "Show { show } of { found } found books.",
-  "show_x_found_books": "Show all { found } found books.",
+  "show_x_of_y_found_books": "Show {show} of {found} found books.",
+  "show_x_found_books": "Show all {found} found books.",
   "show_1_found_book": "Show 1 found book.",
   "show_all": "Show all",
   "name_of_saved_search": "Name of the search",
@@ -220,7 +220,7 @@
   "doNotEditReservedBooks":
       "Please do not edit a reserved book unless you know what you are doing.",
   "articlesInCart":
-      "There is { counter } article in the cart. Please complete the reservation. | There are { counter } articles in the cart. Please complete the reservation.",
+      "There is {counter} article in the cart. Please complete the reservation. | There are {counter} articles in the cart. Please complete the reservation.",
   "cart": "Cart",
   "reserved_books": "reserved book | reserved books",
   "orderBy": "Order by",

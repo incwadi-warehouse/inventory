@@ -1,4 +1,5 @@
 import api from '../api'
+import i18n from '../i18n'
 import { notification } from '@baldeweg/components'
 
 export default {
@@ -27,7 +28,7 @@ export default {
         })
         .catch(function () {
           notification.create(
-            'could_not_create_the_condition_try_again_later',
+            i18n.t('could_not_create_the_condition_try_again_later'),
             'error'
           )
         })
@@ -40,7 +41,7 @@ export default {
         })
         .catch(function () {
           notification.create(
-            'could_not_delete_the_condition_try_again_later',
+            i18n.t('could_not_delete_the_condition_try_again_later'),
             'error'
           )
         })
@@ -53,7 +54,7 @@ export default {
         })
         .catch(function () {
           notification.create(
-            'could_not_update_the_condition_try_again_later',
+            i18n.t('could_not_update_the_condition_try_again_later'),
             'error'
           )
         })

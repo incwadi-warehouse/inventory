@@ -191,8 +191,8 @@
   "orderBy_field": "Sortiere nach Feld",
   "orderBy_direction": "Sortiere nach Richtung",
   "books": "Bücher",
-  "show_x_of_y_found_books": "Zeige {show } von {found } gefundenen Büchern.",
-  "show_x_found_books": "Zeige alle {found } gefundene Bücher.",
+  "show_x_of_y_found_books": "Zeige {show} von {found} gefundenen Büchern.",
+  "show_x_found_books": "Zeige alle {found} gefundene Bücher.",
   "show_1_found_book": "Zeige 1 gefundenes Buch.",
   "show_all": "Zeige alle",
   "name_of_saved_search": "Name der Suche",
@@ -243,7 +243,7 @@
   "doNotEditReservedBooks":
       "Bitte bearbeite keine reservierten Bücher, es sei denn, du weißt, was du tust.",
   "articlesInCart":
-      "Es befindet sich { counter } Artikel im Einkaufskorb. Bitte vervollständige die Reservierung. | Es befinden sich { counter } Artikel im Einkaufskorb. Bitte vervollständige die Reservierung.",
+      "Es befindet sich {counter} Artikel im Einkaufskorb. Bitte vervollständige die Reservierung. | Es befinden sich {counter} Artikel im Einkaufskorb. Bitte vervollständige die Reservierung.",
   "cart": "Warenkorb",
   "reserved_books": "reserviertes Buch | reservierte Bücher",
   "orderBy": "Sortiere nach",

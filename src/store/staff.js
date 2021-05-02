@@ -1,4 +1,5 @@
 import api from '../api'
+import i18n from '../i18n'
 import { notification } from '@baldeweg/components'
 
 export default {
@@ -31,10 +32,10 @@ export default {
         })
         .then(function () {
           context.dispatch('staff')
-          notification.create('staff_create_success', 'success')
+          notification.create(i18n.t('staff_create_success'), 'success')
         })
         .catch(function () {
-          notification.create('staff_create_error', 'error')
+          notification.create(i18n.t('staff_create_error'), 'error')
         })
         .finally(function () {
           context.commit('isProcessing', false)
@@ -47,10 +48,10 @@ export default {
         })
         .then(function () {
           context.dispatch('staff')
-          notification.create('staff_edit_success', 'success')
+          notification.create(i18n.t('staff_edit_success'), 'success')
         })
         .catch(function () {
-          notification.create('staff_edit_error', 'error')
+          notification.create(i18n.t('staff_edit_error'), 'error')
         })
     },
     remove(context, id) {
@@ -58,10 +59,10 @@ export default {
         .delete('/api/v1/staff/' + id)
         .then(function () {
           context.dispatch('staff')
-          notification.create('staff_remove_success', 'success')
+          notification.create(i18n.t('staff_remove_success'), 'success')
         })
         .catch(function () {
-          notification.create('staff_remove_error', 'error')
+          notification.create(i18n.t('staff_remove_error'), 'error')
         })
     },
   },
