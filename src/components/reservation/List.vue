@@ -9,6 +9,7 @@
         :reservation="reservation"
         @removed="$emit('removed')"
         :me="me"
+        v-if="me"
       />
     </div>
   </div>
