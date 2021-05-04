@@ -16,6 +16,8 @@
       </li>
     </ul>
 
+    <b-form-input type="hidden" id="books" v-model="books" />
+
     <b-form @submit.prevent="submit">
       <div class="date">
         <div class="date_item">
@@ -59,17 +61,6 @@
         </b-form-item>
         <b-form-item>
           <b-form-textarea id="notes" v-model="notes" />
-        </b-form-item>
-      </b-form-group>
-
-      <b-form-group>
-        <b-form-item>
-          <b-form-label for="books">
-            {{ $t('books') }}
-          </b-form-label>
-        </b-form-item>
-        <b-form-item>
-          <b-form-input type="hidden" id="books" v-model="books" />
         </b-form-item>
       </b-form-group>
 
