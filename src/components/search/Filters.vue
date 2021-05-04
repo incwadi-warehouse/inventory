@@ -482,7 +482,9 @@ export default {
       this.addedEnd = this.$store.state.search.elements[10]
         ? this.$store.state.search.elements[10].value
         : null
-      this.recommendation = this.$store.state.search.elements[12].value
+      this.recommendation = this.$store.state.search.elements[12]
+        ? this.$store.state.search.elements[12].value
+        : null
     },
   },
   created() {

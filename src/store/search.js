@@ -13,7 +13,6 @@ const classic = {
   6: { field: 'sold', operator: 'eq', value: false },
   7: { field: 'removed', operator: 'eq', value: false },
   11: { field: 'reserved', operator: 'eq', value: false },
-  12: { field: 'recommendation', operator: 'eq', value: false },
 }
 
 export default {
