@@ -1,5 +1,6 @@
 import api from '../api'
 import router from '../router'
+import i18n from '../i18n'
 import { notification } from '@baldeweg/components'
 
 export default {
@@ -51,11 +52,11 @@ export default {
           surname: data.surname,
         })
         .then(function () {
-          notification.create('author_edit_successful', 'success')
+          notification.create(i18n.t('author_edit_successful'), 'success')
           router.push({ name: 'search' })
         })
         .catch(function () {
-          notification.create('author_edit_error', 'error')
+          notification.create(i18n.t('author_edit_error'), 'error')
         })
     },
     remove(context, id) {
@@ -63,10 +64,10 @@ export default {
       api()
         .delete('/api/v1/author/' + id)
         .then(function () {
-          notification.create('author_remove_successful', 'success')
+          notification.create(i18n.t('author_remove_successful'), 'success')
         })
         .catch(function () {
-          notification.create('author_remove_error', 'error')
+          notification.create(i18n.t('author_remove_error'), 'error')
         })
     },
   },

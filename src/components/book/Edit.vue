@@ -392,7 +392,7 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'edit-book',
-  props: ['book'],
+  props: ['book', 'me'],
   data() {
     return {
       added: formatDate(this.book.added * 1000),
@@ -438,6 +438,7 @@ export default {
 
       this.$store
         .dispatch('book/update', {
+          me: this.me,
           id: this.book.id,
           added: new Date(this.added).getTime() / 1000,
           title: this.title,

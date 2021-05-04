@@ -1,5 +1,6 @@
 import api from '../api'
 import router from '../router'
+import i18n from '../i18n'
 import { notification } from '@baldeweg/components'
 
 export default {
@@ -152,13 +153,13 @@ export default {
             tags: data.tags,
           })
           .then(function () {
-            notification.create('book_created', 'success')
+            notification.create(i18n.t('book_created'), 'success')
             resolve()
           })
           .catch(function (error) {
-            notification.create('book_not_valid', 'error')
+            notification.create(i18n.t('book_not_valid'), 'error')
             if (error.response.status === 409) {
-              notification.create('book_not_valid_duplicate', 'error')
+              notification.create(i18n.t('book_not_valid_duplicate'), 'error')
             }
             reject()
           })
@@ -186,14 +187,14 @@ export default {
             recommendation: data.recommendation,
           })
           .then(function () {
-            context.dispatch('find')
-            notification.create('book_updated', 'success')
+            context.dispatch('find', data.me)
+            notification.create(i18n.t('book_updated'), 'success')
             resolve()
           })
           .catch(function (error) {
-            notification.create('book_not_valid', 'error')
+            notification.create(i18n.t('book_not_valid'), 'error')
             if (error.response.status === 409) {
-              notification.create('book_not_valid_duplicate', 'error')
+              notification.create(i18n.t('book_not_valid_duplicate'), 'error')
             }
             reject()
           })
@@ -221,10 +222,10 @@ export default {
         .put('/api/v1/book/sell/' + book.id)
         .then(function () {
           context.commit('removeBook', book)
-          notification.create('book_sell_success', 'success')
+          notification.create(i18n.t('book_sell_success'), 'success')
         })
         .catch(function () {
-          notification.create('book_sell_error', 'error')
+          notification.create(i18n.t('book_sell_error'), 'error')
         })
     },
     remove(context, book) {
@@ -232,10 +233,10 @@ export default {
         .put('/api/v1/book/remove/' + book.id)
         .then(function () {
           context.commit('removeBook', book)
-          notification.create('book_remove_success', 'success')
+          notification.create(i18n.t('book_remove_success'), 'success')
         })
         .catch(function () {
-          notification.create('book_remove_error', 'error')
+          notification.create(i18n.t('book_remove_error'), 'error')
         })
     },
     reserve(context, book) {
@@ -243,20 +244,20 @@ export default {
         .put('/api/v1/book/reserve/' + book.id)
         .then(function () {
           context.commit('removeBook', book)
-          notification.create('book_reserve_success', 'success')
+          notification.create(i18n.t('book_reserve_success'), 'success')
         })
         .catch(function () {
-          notification.create('book_reserve_error', 'error')
+          notification.create(i18n.t('book_reserve_error'), 'error')
         })
     },
     clean() {
       api()
         .delete('/api/v1/book/clean')
         .then(function () {
-          notification.create('book_clean_success', 'success')
+          notification.create(i18n.t('book_clean_success'), 'success')
         })
         .catch(function () {
-          notification.create('book_clean_error', 'error')
+          notification.create(i18n.t('book_clean_error'), 'error')
         })
     },
   },

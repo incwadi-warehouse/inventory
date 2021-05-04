@@ -1,4 +1,5 @@
 import api from '../api'
+import i18n from '../i18n'
 import { notification } from '@baldeweg/components'
 
 export default {
@@ -35,10 +36,10 @@ export default {
         })
         .then(function () {
           context.dispatch('genres')
-          notification.create('genre_create_success', 'success')
+          notification.create(i18n.t('genre_create_success'), 'success')
         })
         .catch(function () {
-          notification.create('genre_create_error', 'error')
+          notification.create(i18n.t('genre_create_error'), 'error')
         })
         .finally(function () {
           context.commit('isProcessing', false)
@@ -51,10 +52,10 @@ export default {
         })
         .then(function () {
           context.dispatch('genres')
-          notification.create('genre_edit_success', 'success')
+          notification.create(i18n.t('genre_edit_success'), 'success')
         })
         .catch(function () {
-          notification.create('genre_edit_error', 'error')
+          notification.create(i18n.t('genre_edit_error'), 'error')
         })
     },
     remove(context, id) {
@@ -62,10 +63,10 @@ export default {
         .delete('/api/v1/genre/' + id)
         .then(function () {
           context.dispatch('genres')
-          notification.create('genre_remove_success', 'success')
+          notification.create(i18n.t('genre_remove_success'), 'success')
         })
         .catch(function () {
-          notification.create('genre_remove_error', 'error')
+          notification.create(i18n.t('genre_remove_error'), 'error')
         })
     },
   },

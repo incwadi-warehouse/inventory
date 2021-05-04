@@ -42,6 +42,7 @@
 
     <book-edit
       :book="$store.state.book.book"
+      :me="me"
       v-if="$store.state.book.book"
       @close="closeEdit"
     />

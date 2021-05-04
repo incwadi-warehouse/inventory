@@ -1,4 +1,5 @@
 import api from '../api'
+import i18n from '../i18n'
 import { notification } from '@baldeweg/components'
 
 export default {
@@ -33,7 +34,7 @@ export default {
           context.commit('addTag', response.data)
         })
         .catch(function () {
-          notification.create('create_tag_not_successful', 'error')
+          notification.create(i18n.t('create_tag_not_successful'), 'error')
         })
     },
     remove(context, tag) {
@@ -43,7 +44,7 @@ export default {
           context.commit('removeTag', tag)
         })
         .catch(function () {
-          notification.create('remove_tag_error', 'error')
+          notification.create(i18n.t('remove_tag_error'), 'error')
         })
     },
   },

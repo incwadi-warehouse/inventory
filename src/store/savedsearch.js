@@ -1,4 +1,5 @@
 import api from '../api'
+import i18n from '../i18n'
 import { notification } from '@baldeweg/components'
 
 export default {
@@ -69,10 +70,10 @@ export default {
         })
         .then(function () {
           context.dispatch('savedsearches')
-          notification.create('savedsearches_create_success', 'success')
+          notification.create(i18n.t('savedsearches_create_success'), 'success')
         })
         .catch(function () {
-          notification.create('savedsearches_create_error', 'error')
+          notification.create(i18n.t('savedsearches_create_error'), 'error')
         })
     },
     remove(context, id) {
@@ -80,10 +81,10 @@ export default {
         .delete('/api/v1/savedsearch/' + id)
         .then(function () {
           context.dispatch('savedsearches')
-          notification.create('savedsearches_remove_success', 'success')
+          notification.create(i18n.t('savedsearches_remove_success'), 'success')
         })
         .catch(function () {
-          notification.create('savedsearches_remove_error', 'error')
+          notification.create(i18n.t('savedsearches_remove_error'), 'error')
         })
     },
   },
