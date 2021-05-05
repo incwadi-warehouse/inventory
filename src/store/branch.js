@@ -39,6 +39,7 @@ export default {
           currency: data.currency,
           ordering: data.ordering,
           orderBy: data.orderBy,
+          public: data.public,
         })
         .then(function (response) {
           context.commit('branch', response.data)

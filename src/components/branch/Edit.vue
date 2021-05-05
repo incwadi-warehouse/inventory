@@ -81,6 +81,18 @@
     </b-form-group>
     <!-- /orderBy -->
 
+    <!-- public -->
+    <b-form-group>
+      <b-form-item>
+        <b-form-helpline>{{ $t('branchPublicHelp') }}</b-form-helpline>
+      </b-form-item>
+      <b-form-item>
+        <input type="checkbox" id="public" v-model="isPublic" />
+        <b-form-label for="public">{{ $t('public') }}</b-form-label>
+      </b-form-item>
+    </b-form-group>
+    <!-- /public -->
+
     <b-form-group buttons v-if="me && me.isAdmin">
       <b-form-group>
         <b-form-item>
@@ -108,6 +120,7 @@ export default {
       currency: this.branch.currency,
       ordering: this.branch.ordering,
       orderBy: this.branch.orderBy,
+      isPublic: this.branch.public,
     }
   },
   methods: {
@@ -120,6 +133,7 @@ export default {
         currency: this.currency,
         ordering: this.ordering,
         orderBy: this.orderBy,
+        public: this.isPublic,
       })
     },
   },
