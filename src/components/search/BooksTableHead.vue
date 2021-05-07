@@ -1,6 +1,7 @@
 <template>
   <thead>
     <tr>
+      <th v-if="covers"></th>
       <th class="isSortable" @click="filter('title')">
         {{ $t('title') }} <indicator column="title" />
       </th>
@@ -59,6 +60,10 @@ export default {
   },
   props: {
     me: Object,
+    covers: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     ...mapState('search', ['sold', 'removed']),

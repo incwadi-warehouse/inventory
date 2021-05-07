@@ -1,6 +1,16 @@
 <template>
   <tbody>
     <tr v-for="book in books" :key="book.id">
+      <td v-if="covers">
+        <img
+          :src="
+            'http://localhost:8000/api/public/book/cover/' +
+            book.id +
+            '_100x100.jpg'
+          "
+          width="100"
+        />
+      </td>
       <td @click="edit(book.id)" :style="{ cursor: 'pointer' }">
         <span v-show="book.lendTo">[{{ $t('lend') }}] </span>
         {{ book.title }}
@@ -45,6 +55,12 @@ export default {
   name: 'books-list-search',
   components: {
     ContextMenu,
+  },
+  props: {
+    covers: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     ...mapState('search', ['sold', 'removed']),
