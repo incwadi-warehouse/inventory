@@ -35,7 +35,7 @@
     "core-js": "3.10.1",
     "css-loader": "4.3.0",
     "css-vars-ponyfill": "2.4.5",
-    "dotenv-webpack": "2.0.0",
+    "dotenv-webpack": "7.0.2",
     "eslint": "7.26.0",
     "eslint-loader": "4.0.2",
     "eslint-plugin-import": "2.22.1",
