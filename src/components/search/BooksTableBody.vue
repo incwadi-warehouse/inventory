@@ -2,14 +2,7 @@
   <tbody>
     <tr v-for="book in books" :key="book.id">
       <td v-if="covers">
-        <img
-          :src="
-            'http://localhost:8000/api/public/book/cover/' +
-            book.id +
-            '_100x100.jpg'
-          "
-          width="100"
-        />
+        <img :src="image(book.id)" width="100" />
       </td>
       <td @click="edit(book.id)" :style="{ cursor: 'pointer' }">
         <span v-show="book.lendTo">[{{ $t('lend') }}] </span>
@@ -69,6 +62,14 @@ export default {
   methods: {
     edit(id) {
       this.$router.push({ name: 'book', params: { bookId: id } })
+    },
+    image(id) {
+      return (
+        process.env.VUE_APP_API +
+        '/api/public/book/cover/' +
+        id +
+        '_100x100.jpg'
+      )
     },
   },
   filters: {
