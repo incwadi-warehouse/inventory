@@ -81,6 +81,18 @@
     </b-form-group>
     <!-- /orderBy -->
 
+    <!-- public -->
+    <b-form-group>
+      <b-form-item>
+        <b-form-helpline>{{ $t('branchPublicHelp') }}</b-form-helpline>
+      </b-form-item>
+      <b-form-item>
+        <input type="checkbox" id="public" v-model="isPublic" />
+        <b-form-label for="public">{{ $t('public') }}</b-form-label>
+      </b-form-item>
+    </b-form-group>
+    <!-- /public -->
+
     <b-form-group buttons v-if="me && me.isAdmin">
       <b-form-group>
         <b-form-item>
@@ -92,8 +104,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-
 export default {
   name: 'edit',
   props: {
@@ -101,6 +111,7 @@ export default {
       type: Object,
       required: true,
     },
+    me: Object,
   },
   data() {
     return {
@@ -109,10 +120,8 @@ export default {
       currency: this.branch.currency,
       ordering: this.branch.ordering,
       orderBy: this.branch.orderBy,
+      isPublic: this.branch.public,
     }
-  },
-  computed: {
-    ...mapState('user', ['me']),
   },
   methods: {
     update: function () {
@@ -124,11 +133,9 @@ export default {
         currency: this.currency,
         ordering: this.ordering,
         orderBy: this.orderBy,
+        public: this.isPublic,
       })
     },
-  },
-  created: function () {
-    if (!this.$store.state.user.me) this.$store.dispatch('user/me')
   },
 }
 </script>

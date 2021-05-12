@@ -46,7 +46,7 @@
         </details>
 
         <!-- Branch -->
-        <details v-if="$store.state.user.me.isAdmin">
+        <details v-if="me.isAdmin">
           <summary>{{ $t('branches') }}</summary>
           <b-form-fieldset>
             <b-form-legend class="visuallyHidden">
@@ -139,6 +139,18 @@
             <b-form-item>
               <input type="checkbox" id="reserved" v-model="reserved" />
               <b-form-label for="reserved">{{ $t('reserved') }}</b-form-label>
+            </b-form-item>
+
+            <!-- Recommendation -->
+            <b-form-item>
+              <input
+                type="checkbox"
+                id="recommendation"
+                v-model="recommendation"
+              />
+              <b-form-label for="recommendation">{{
+                $t('recommendation')
+              }}</b-form-label>
             </b-form-item>
           </b-form-group>
         </details>
@@ -266,6 +278,9 @@
 <script>
 export default {
   name: 'filters-search',
+  props: {
+    me: Object,
+  },
   data() {
     return {
       fields: [
@@ -280,7 +295,7 @@ export default {
       genreId: this.$store.state.search.elements[1].value,
       branches:
         this.$store.state.search.elements[2].value.length === 0
-          ? [this.$store.state.user.me.branch.id]
+          ? [this.me.branch.id]
           : this.$store.state.search.elements[2].value,
       releaseYearStart: this.$store.state.search.elements[3]
         ? this.$store.state.search.elements[3].value
@@ -303,6 +318,9 @@ export default {
       addedEnd: this.$store.state.search.elements[10]
         ? this.$store.state.search.elements[10].value
         : null,
+      recommendation: this.$store.state.search.elements[12]
+        ? this.$store.state.search.elements[12].value
+        : false,
     }
   },
   computed: {
@@ -391,8 +409,13 @@ export default {
         10: this.addedEnd
           ? { field: 'added', operator: 'lte', value: this.addedEnd }
           : {},
+        12: {
+          field: 'recommendation',
+          operator: 'eq',
+          value: this.recommendation,
+        },
       })
-      this.$store.dispatch('book/find')
+      this.$store.dispatch('book/find', this.me)
       this.$emit('close', this.$event)
     },
     reset() {
@@ -436,7 +459,7 @@ export default {
       this.genreId = this.$store.state.search.elements[1].value
       this.branches =
         this.$store.state.search.elements[2].value.length === 0
-          ? [this.$store.state.user.me.branch.id]
+          ? [this.me.branch.id]
           : this.$store.state.search.elements[2].value
       this.releaseYearStart = this.$store.state.search.elements[3]
         ? this.$store.state.search.elements[3].value
@@ -458,6 +481,9 @@ export default {
         : null
       this.addedEnd = this.$store.state.search.elements[10]
         ? this.$store.state.search.elements[10].value
+        : null
+      this.recommendation = this.$store.state.search.elements[12]
+        ? this.$store.state.search.elements[12].value
         : null
     },
   },

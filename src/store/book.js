@@ -1,5 +1,6 @@
 import api from '../api'
 import router from '../router'
+import i18n from '../i18n'
 import { notification } from '@baldeweg/components'
 
 export default {
@@ -29,7 +30,7 @@ export default {
     },
   },
   actions: {
-    find(context) {
+    find(context, me) {
       const filters = context.rootState.search.elements
       context.commit('search/isLoading', true, { root: true })
 
@@ -70,7 +71,7 @@ export default {
             return flattenedFilters.push({
               field: filters[key].field,
               operator: filters[key].operator,
-              value: [context.rootState.user.me.branch.id],
+              value: [me.branch.id],
             })
           }
         }
@@ -101,7 +102,7 @@ export default {
         }
       }
 
-      api(context.rootState.user.token)
+      api()
         .get('/api/v1/book/find', {
           params: {
             options: {
@@ -122,7 +123,7 @@ export default {
         })
     },
     show(context, id) {
-      api(context.rootState.user.token)
+      api()
         .get('/api/v1/book/' + id)
         .then(function (response) {
           context.commit('book', response.data)
@@ -134,7 +135,7 @@ export default {
     },
     create(context, data) {
       return new Promise((resolve, reject) => {
-        api(context.rootState.user.token)
+        api()
           .post('/api/v1/book/new', {
             added: data.added,
             title: data.title,
@@ -152,13 +153,13 @@ export default {
             tags: data.tags,
           })
           .then(function () {
-            notification.create('book_created', 'success')
+            notification.create(i18n.t('book_created'), 'success')
             resolve()
           })
           .catch(function (error) {
-            notification.create('book_not_valid', 'error')
+            notification.create(i18n.t('book_not_valid'), 'error')
             if (error.response.status === 409) {
-              notification.create('book_not_valid_duplicate', 'error')
+              notification.create(i18n.t('book_not_valid_duplicate'), 'error')
             }
             reject()
           })
@@ -166,7 +167,7 @@ export default {
     },
     update(context, data) {
       return new Promise((resolve, reject) => {
-        api(context.rootState.user.token)
+        api()
           .put('/api/v1/book/' + data.id, {
             added: data.added,
             title: data.title,
@@ -183,82 +184,80 @@ export default {
             lendOn: data.lendOn,
             cond: data.cond,
             tags: data.tags,
+            recommendation: data.recommendation,
           })
           .then(function () {
-            context.dispatch('find')
-            notification.create('book_updated', 'success')
+            context.dispatch('find', data.me)
+            notification.create(i18n.t('book_updated'), 'success')
             resolve()
           })
           .catch(function (error) {
-            notification.create('book_not_valid', 'error')
+            notification.create(i18n.t('book_not_valid'), 'error')
             if (error.response.status === 409) {
-              notification.create('book_not_valid_duplicate', 'error')
+              notification.create(i18n.t('book_not_valid_duplicate'), 'error')
             }
             reject()
           })
       })
     },
     getCover(context, data) {
-      api(context.rootState.user.token)
+      api()
         .get('/api/v1/book/cover/' + data.id)
         .then(function (response) {
           context.commit('cover', response.data)
         })
     },
     upload(context, data) {
-      return api(context.rootState.user.token).post(
-        '/api/v1/book/cover/' + data.id,
-        data.form
-      )
+      return api().post('/api/v1/book/cover/' + data.id, data.form)
     },
     removeCover(context, data) {
-      api(context.rootState.user.token)
+      api()
         .delete('/api/v1/book/cover/' + data.id)
         .then(function () {
           context.dispatch('getCover', data)
         })
     },
     sell(context, book) {
-      api(context.rootState.user.token)
+      api()
         .put('/api/v1/book/sell/' + book.id)
         .then(function () {
           context.commit('removeBook', book)
-          notification.create('book_sell_success', 'success')
+          notification.create(i18n.t('book_sell_success'), 'success')
         })
         .catch(function () {
-          notification.create('book_sell_error', 'error')
+          notification.create(i18n.t('book_sell_error'), 'error')
         })
     },
     remove(context, book) {
-      api(context.rootState.user.token)
+      api()
         .put('/api/v1/book/remove/' + book.id)
         .then(function () {
           context.commit('removeBook', book)
-          notification.create('book_remove_success', 'success')
+          notification.create(i18n.t('book_remove_success'), 'success')
         })
         .catch(function () {
-          notification.create('book_remove_error', 'error')
+          notification.create(i18n.t('book_remove_error'), 'error')
         })
     },
     reserve(context, book) {
-      api(context.rootState.user.token)
+      api()
         .put('/api/v1/book/reserve/' + book.id)
         .then(function () {
           context.commit('removeBook', book)
-          notification.create('book_reserve_success', 'success')
+          notification.create(i18n.t('book_reserve_success'), 'success')
         })
         .catch(function () {
-          notification.create('book_reserve_error', 'error')
+          notification.create(i18n.t('book_reserve_error'), 'error')
         })
     },
-    clean(context) {
-      api(context.rootState.user.token)
+    clean() {
+      api()
         .delete('/api/v1/book/clean')
         .then(function () {
-          notification.create('book_clean_success', 'success')
+          notification.create(i18n.t('book_clean_success'), 'success')
         })
         .catch(function () {
-          notification.create('book_clean_error', 'error')
+          notification.create(i18n.t('book_clean_error'), 'error')
         })
     },
   },

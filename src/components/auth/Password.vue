@@ -1,8 +1,8 @@
 <template>
   <details>
-    <summary>{{ $t('change_password') }}</summary>
+    <summary>{{ $t('changePassword') }}</summary>
 
-    <b-form @submit.prevent="update">
+    <b-form @submit.prevent="changePassword">
       <b-form-group>
         <b-form-item>
           <b-form-label for="password">
@@ -10,7 +10,11 @@
           </b-form-label>
         </b-form-item>
         <b-form-item>
-          <b-form-input type="password" id="password" v-model="password" />
+          <b-form-input
+            type="password"
+            id="password"
+            v-model="state.password"
+          />
         </b-form-item>
       </b-form-group>
 
@@ -24,18 +28,17 @@
 </template>
 
 <script>
+import useAuth from '@/composables/useAuth'
+
 export default {
-  name: 'password-profile',
-  data() {
+  name: 'password-auth',
+  setup() {
+    const { state, changePassword } = useAuth()
+
     return {
-      password: null,
+      state,
+      changePassword,
     }
-  },
-  methods: {
-    update: function () {
-      this.$store.dispatch('user/password', this.password)
-      this.password = null
-    },
   },
 }
 </script>

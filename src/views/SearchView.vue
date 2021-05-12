@@ -1,6 +1,6 @@
 <template>
   <article>
-    <search-actionbar class="noprint" />
+    <search-actionbar class="noprint" :me="me" />
 
     <b-container size="l" v-if="isLoading">
       <b-spinner size="l" />
@@ -20,14 +20,19 @@
     </b-container>
 
     <div class="noprint" v-if="hasBooks">
-      <search-book-heading />
+      <search-book-heading :me="me" />
     </div>
 
     <b-container size="l" v-if="hasBooks">
+      <div :style="{ textAlign: 'right' }">
+        <b-button design="text" @click.prevent="showCovers = !showCovers">
+          {{ $t('showCovers') }}
+        </b-button>
+      </div>
       <b-table>
         <table>
-          <search-books-table-head />
-          <search-books-table-body @cart="listCart()" />
+          <search-books-table-head :me="me" :covers="showCovers" />
+          <search-books-table-body @cart="listCart()" :covers="showCovers" />
         </table>
       </b-table>
     </b-container>
@@ -42,6 +47,7 @@
 
     <book-edit
       :book="$store.state.book.book"
+      :me="me"
       v-if="$store.state.book.book"
       @close="closeEdit"
     />
@@ -62,6 +68,8 @@ import SearchBooksTableBody from '../components/search/BooksTableBody'
 import BookCreate from '../components/book/Create'
 import BookEdit from '../components/book/Edit'
 import useCart from './../composables/useCart'
+import useAuth from '@/composables/useAuth'
+import { ref, toRefs } from '@vue/composition-api'
 
 export default {
   name: 'search-view',
@@ -89,10 +97,15 @@ export default {
     BookEdit,
   },
   setup() {
+    let showCovers = ref(false)
+    const { getUser, state } = useAuth()
+    getUser()
+    const { me } = toRefs(state)
+
     const { cart, listCart } = useCart()
     listCart()
 
-    return { cart, listCart }
+    return { showCovers, cart, listCart, me }
   },
   computed: {
     hasBooks() {

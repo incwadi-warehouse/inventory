@@ -16,7 +16,7 @@
 
     <b-container size="m" v-if="branch">
       <h2>{{ $t('settings') }}</h2>
-      <branch-edit :branch="branch" />
+      <branch-edit :branch="branch" :me="me" />
     </b-container>
 
     <b-divider />
@@ -24,7 +24,7 @@
     <b-container size="m">
       <h2>{{ $t('clean_up') }}</h2>
       <p>{{ $t('clean_up_desc') }}</p>
-      <branch-clean-books />
+      <branch-clean-books :me="me" />
     </b-container>
 
     <b-divider />
@@ -49,6 +49,8 @@ import ConditionNew from '../components/condition/New'
 import BranchEdit from '../components/branch/Edit'
 import BranchStats from '../components/branch/Stats'
 import { mapState } from 'vuex'
+import useAuth from '@/composables/useAuth'
+import { toRefs } from '@vue/composition-api'
 
 export default {
   name: 'branch-view',
@@ -61,6 +63,13 @@ export default {
     ConditionNew,
     BranchEdit,
     BranchStats,
+  },
+  setup() {
+    const { getUser, state } = useAuth()
+    getUser()
+    const { me } = toRefs(state)
+
+    return { me }
   },
   computed: {
     ...mapState('branch', ['branch']),

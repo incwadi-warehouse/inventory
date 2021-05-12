@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 import GenreEdit from './Edit'
 
 export default {
@@ -28,12 +28,10 @@ export default {
       type: Object,
       required: true,
     },
+    me: Object,
   },
   components: {
     GenreEdit,
-  },
-  computed: {
-    ...mapState('user', ['me']),
   },
   methods: {
     ...mapActions('genre', ['remove']),

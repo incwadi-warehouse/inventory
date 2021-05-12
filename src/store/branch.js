@@ -1,4 +1,5 @@
 import api from '../api'
+import i18n from '../i18n'
 import { notification } from '@baldeweg/components'
 
 export default {
@@ -17,34 +18,35 @@ export default {
   },
   actions: {
     branches(context) {
-      api(context.rootState.user.token)
+      api()
         .get('/api/v1/branch/')
         .then(function (response) {
           context.commit('branches', response.data)
         })
     },
     branch(context) {
-      api(context.rootState.user.token)
+      api()
         .get('/api/v1/branch/my')
         .then(function (response) {
           context.commit('branch', response.data)
         })
     },
     update(context, data) {
-      api(context.rootState.user.token)
+      api()
         .put('/api/v1/branch/' + data.id, {
           name: data.name,
           steps: data.steps,
           currency: data.currency,
           ordering: data.ordering,
           orderBy: data.orderBy,
+          public: data.public,
         })
         .then(function (response) {
           context.commit('branch', response.data)
-          notification.create('branch_update_success', 'success')
+          notification.create(i18n.t('branch_update_success'), 'success')
         })
         .catch(function (e) {
-          notification.create('branch_update_error', 'error')
+          notification.create(i18n.t('branch_update_error'), 'error')
           console.error(e)
         })
     },

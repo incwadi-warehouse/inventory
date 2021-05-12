@@ -31,10 +31,12 @@
     <search-filters
       @close="showFilter = false"
       v-if="showFilter && !flexFilters"
+      :me="me"
     />
     <search-filter
       @close="showFilter = false"
       v-if="showFilter && flexFilters === 'true'"
+      :me="me"
     />
   </article>
 </template>
@@ -49,6 +51,9 @@ export default {
   components: {
     SearchFilter,
     SearchFilters,
+  },
+  props: {
+    me: Object,
   },
   data() {
     return {
@@ -71,7 +76,7 @@ export default {
   },
   methods: {
     search() {
-      this.$store.dispatch('book/find')
+      this.$store.dispatch('book/find', this.me)
     },
     reset() {
       this.$store.commit('book/books', [])
@@ -83,7 +88,7 @@ export default {
       }
       this.changeRequest = _debounce(() => {
         if (this.term !== null) {
-          this.$store.dispatch('book/find')
+          this.$store.dispatch('book/find', this.me)
         }
       }, 500)
       this.changeRequest()

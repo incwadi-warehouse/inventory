@@ -1,6 +1,7 @@
 <template>
   <thead>
     <tr>
+      <th v-if="covers"></th>
       <th class="isSortable" @click="filter('title')">
         {{ $t('title') }} <indicator column="title" />
       </th>
@@ -57,13 +58,20 @@ export default {
   components: {
     Indicator,
   },
+  props: {
+    me: Object,
+    covers: {
+      type: Boolean,
+      default: false,
+    },
+  },
   computed: {
     ...mapState('search', ['sold', 'removed']),
     ...mapState('branch', ['branch']),
   },
   methods: {
     filter(type) {
-      this.$store.dispatch('search/setOrderBy', type)
+      this.$store.dispatch('search/setOrderBy', { type, me: this.me })
     },
   },
   created() {

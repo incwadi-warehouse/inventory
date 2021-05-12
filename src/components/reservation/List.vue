@@ -8,6 +8,8 @@
       <reservation-show
         :reservation="reservation"
         @removed="$emit('removed')"
+        :me="me"
+        v-if="me"
       />
     </div>
   </div>
@@ -20,6 +22,7 @@ export default {
   name: 'list',
   props: {
     reservations: Array,
+    me: Object,
   },
   components: {
     ReservationShow,

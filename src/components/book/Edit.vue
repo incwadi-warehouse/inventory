@@ -194,6 +194,21 @@
           </b-form-item>
         </b-form-group>
 
+        <!-- recommendation -->
+        <b-form-group>
+          <b-form-item>
+            <input
+              type="checkbox"
+              name="recommendation"
+              id="recommendation"
+              v-model="recommendation"
+            />
+            <b-form-label for="recommendation">
+              {{ $t('recommendation') }}
+            </b-form-label>
+          </b-form-item>
+        </b-form-group>
+
         <b-form-group>
           <b-form-item>
             <b-form-label for="added">
@@ -377,7 +392,7 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'edit-book',
-  props: ['book'],
+  props: ['book', 'me'],
   data() {
     return {
       added: formatDate(this.book.added * 1000),
@@ -398,6 +413,7 @@ export default {
         : this.book.lendOn,
       cond_id: this.book.condition ? this.book.condition.id : null,
       tag: this.book.tag,
+      recommendation: this.book.recommendation,
       isUploading: false,
       hasErrorUploading: false,
       isDragging: false,
@@ -422,6 +438,7 @@ export default {
 
       this.$store
         .dispatch('book/update', {
+          me: this.me,
           id: this.book.id,
           added: new Date(this.added).getTime() / 1000,
           title: this.title,
@@ -438,6 +455,7 @@ export default {
           lendOn: this.lendOn ? new Date(this.lendOn).getTime() / 1000 : null,
           cond: this.cond_id,
           tags: tags,
+          recommendation: this.recommendation,
         })
         .then(() => {
           this.$emit('close', this.$event)

@@ -1,6 +1,9 @@
 <template>
   <tbody>
     <tr v-for="book in books" :key="book.id">
+      <td v-if="covers">
+        <img :src="image(book.id)" width="100" />
+      </td>
       <td @click="edit(book.id)" :style="{ cursor: 'pointer' }">
         <span v-show="book.lendTo">[{{ $t('lend') }}] </span>
         {{ book.title }}
@@ -46,6 +49,12 @@ export default {
   components: {
     ContextMenu,
   },
+  props: {
+    covers: {
+      type: Boolean,
+      default: false,
+    },
+  },
   computed: {
     ...mapState('search', ['sold', 'removed']),
     ...mapState('book', ['books']),
@@ -53,6 +62,14 @@ export default {
   methods: {
     edit(id) {
       this.$router.push({ name: 'book', params: { bookId: id } })
+    },
+    image(id) {
+      return (
+        process.env.VUE_APP_API +
+        '/api/public/book/cover/' +
+        id +
+        '_100x100.jpg'
+      )
     },
   },
   filters: {

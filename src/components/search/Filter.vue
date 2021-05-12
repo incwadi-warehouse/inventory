@@ -124,6 +124,9 @@ export default {
     SavedSearchList,
     SavedSearchCreate,
   },
+  props: {
+    me: Object,
+  },
   data() {
     return {
       fields: [
@@ -185,7 +188,7 @@ export default {
       this.$store.dispatch('search/removeElement', id)
     },
     find() {
-      this.$store.dispatch('book/find')
+      this.$store.dispatch('book/find', this.me)
       this.$emit('close', this.$event)
     },
     reset() {

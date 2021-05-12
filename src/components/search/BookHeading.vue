@@ -36,6 +36,9 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'book-counter-search',
+  props: {
+    me: Object,
+  },
   computed: {
     ...mapState('book', ['books']),
     counter() {
@@ -48,7 +51,7 @@ export default {
   methods: {
     showAll() {
       this.$store.commit('search/limit', this.counter * 10)
-      this.$store.dispatch('book/find')
+      this.$store.dispatch('book/find', this.me)
     },
   },
 }

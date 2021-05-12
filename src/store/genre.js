@@ -1,4 +1,5 @@
 import api from '../api'
+import i18n from '../i18n'
 import { notification } from '@baldeweg/components'
 
 export default {
@@ -21,7 +22,7 @@ export default {
   },
   actions: {
     genres(context) {
-      api(context.rootState.user.token)
+      api()
         .get('/api/v1/genre/')
         .then(function (response) {
           context.commit('genres', response.data)
@@ -29,43 +30,43 @@ export default {
     },
     create(context, name) {
       context.commit('isProcessing', true)
-      api(context.rootState.user.token)
+      api()
         .post('/api/v1/genre/new', {
           name: name,
         })
         .then(function () {
           context.dispatch('genres')
-          notification.create('genre_create_success', 'success')
+          notification.create(i18n.t('genre_create_success'), 'success')
         })
         .catch(function () {
-          notification.create('genre_create_error', 'error')
+          notification.create(i18n.t('genre_create_error'), 'error')
         })
         .finally(function () {
           context.commit('isProcessing', false)
         })
     },
     edit(context, data) {
-      api(context.rootState.user.token)
+      api()
         .put('/api/v1/genre/' + data.id, {
           name: data.name,
         })
         .then(function () {
           context.dispatch('genres')
-          notification.create('genre_edit_success', 'success')
+          notification.create(i18n.t('genre_edit_success'), 'success')
         })
         .catch(function () {
-          notification.create('genre_edit_error', 'error')
+          notification.create(i18n.t('genre_edit_error'), 'error')
         })
     },
     remove(context, id) {
-      api(context.rootState.user.token)
+      api()
         .delete('/api/v1/genre/' + id)
         .then(function () {
           context.dispatch('genres')
-          notification.create('genre_remove_success', 'success')
+          notification.create(i18n.t('genre_remove_success'), 'success')
         })
         .catch(function () {
-          notification.create('genre_remove_error', 'error')
+          notification.create(i18n.t('genre_remove_error'), 'error')
         })
     },
   },

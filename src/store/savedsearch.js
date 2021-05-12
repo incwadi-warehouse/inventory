@@ -1,4 +1,5 @@
 import api from '../api'
+import i18n from '../i18n'
 import { notification } from '@baldeweg/components'
 
 export default {
@@ -13,7 +14,7 @@ export default {
   },
   actions: {
     savedsearches(context) {
-      api(context.rootState.user.token)
+      api()
         .get('/api/v1/savedsearch/')
         .then(function (response) {
           context.commit('savedsearches', response.data)
@@ -57,7 +58,7 @@ export default {
         }
       }
 
-      api(context.rootState.user.token)
+      api()
         .post('/api/v1/savedsearch/new', {
           name: data.name,
           query: {
@@ -69,21 +70,21 @@ export default {
         })
         .then(function () {
           context.dispatch('savedsearches')
-          notification.create('savedsearches_create_success', 'success')
+          notification.create(i18n.t('savedsearches_create_success'), 'success')
         })
         .catch(function () {
-          notification.create('savedsearches_create_error', 'error')
+          notification.create(i18n.t('savedsearches_create_error'), 'error')
         })
     },
     remove(context, id) {
-      api(context.rootState.user.token)
+      api()
         .delete('/api/v1/savedsearch/' + id)
         .then(function () {
           context.dispatch('savedsearches')
-          notification.create('savedsearches_remove_success', 'success')
+          notification.create(i18n.t('savedsearches_remove_success'), 'success')
         })
         .catch(function () {
-          notification.create('savedsearches_remove_error', 'error')
+          notification.create(i18n.t('savedsearches_remove_error'), 'error')
         })
     },
   },

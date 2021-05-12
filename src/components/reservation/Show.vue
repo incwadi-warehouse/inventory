@@ -16,6 +16,8 @@
       </li>
     </ul>
 
+    <b-form-input type="hidden" id="books" v-model="books" />
+
     <b-form @submit.prevent="submit">
       <div class="date">
         <div class="date_item">
@@ -62,17 +64,6 @@
         </b-form-item>
       </b-form-group>
 
-      <b-form-group>
-        <b-form-item>
-          <b-form-label for="books">
-            {{ $t('books') }}
-          </b-form-label>
-        </b-form-item>
-        <b-form-item>
-          <b-form-input type="hidden" id="books" v-model="books" />
-        </b-form-item>
-      </b-form-group>
-
       <b-form-group buttons>
         <b-form-item>
           <b-button
@@ -99,6 +90,7 @@ export default {
   name: 'show',
   props: {
     reservation: Object,
+    me: Object,
   },
   setup(props, { emit }) {
     const { localeDateString } = useReservationShow()
@@ -121,11 +113,7 @@ export default {
       localeDateString,
     }
   },
-  computed: {
-    me() {
-      return this.$store.state.user.me
-    },
-  },
+  computed: {},
   methods: {
     submit() {
       this.update()
