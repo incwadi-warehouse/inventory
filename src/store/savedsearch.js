@@ -15,7 +15,7 @@ export default {
   actions: {
     savedsearches(context) {
       api()
-        .get('/api/v1/savedsearch/')
+        .get('/api/savedsearch/')
         .then(function (response) {
           context.commit('savedsearches', response.data)
         })
@@ -59,7 +59,7 @@ export default {
       }
 
       api()
-        .post('/api/v1/savedsearch/new', {
+        .post('/api/savedsearch/new', {
           name: data.name,
           query: {
             term,
@@ -78,7 +78,7 @@ export default {
     },
     remove(context, id) {
       api()
-        .delete('/api/v1/savedsearch/' + id)
+        .delete('/api/savedsearch/' + id)
         .then(function () {
           context.dispatch('savedsearches')
           notification.create(i18n.t('savedsearches_remove_success'), 'success')

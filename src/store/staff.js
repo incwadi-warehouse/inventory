@@ -19,7 +19,7 @@ export default {
   actions: {
     staff(context) {
       api()
-        .get('/api/v1/staff/')
+        .get('/api/staff/')
         .then(function (response) {
           context.commit('staff', response.data)
         })
@@ -27,7 +27,7 @@ export default {
     create(context, name) {
       context.commit('isProcessing', true)
       api()
-        .post('/api/v1/staff/new', {
+        .post('/api/staff/new', {
           name: name,
         })
         .then(function () {
@@ -43,7 +43,7 @@ export default {
     },
     edit(context, data) {
       api()
-        .put('/api/v1/staff/' + data.id, {
+        .put('/api/staff/' + data.id, {
           name: data.name,
         })
         .then(function () {
@@ -56,7 +56,7 @@ export default {
     },
     remove(context, id) {
       api()
-        .delete('/api/v1/staff/' + id)
+        .delete('/api/staff/' + id)
         .then(function () {
           context.dispatch('staff')
           notification.create(i18n.t('staff_remove_success'), 'success')

@@ -19,21 +19,21 @@ export default {
   actions: {
     branches(context) {
       api()
-        .get('/api/v1/branch/')
+        .get('/api/branch/')
         .then(function (response) {
           context.commit('branches', response.data)
         })
     },
     branch(context) {
       api()
-        .get('/api/v1/branch/my')
+        .get('/api/branch/my')
         .then(function (response) {
           context.commit('branch', response.data)
         })
     },
     update(context, data) {
       api()
-        .put('/api/v1/branch/' + data.id, {
+        .put('/api/branch/' + data.id, {
           name: data.name,
           steps: data.steps,
           currency: data.currency,
