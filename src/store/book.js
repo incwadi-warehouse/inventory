@@ -10,6 +10,8 @@ export default {
     book: null,
     counter: 0,
     cover: null,
+    stats: null,
+    isStatsLoading: true,
   },
   mutations: {
     books(state, books) {
@@ -27,6 +29,12 @@ export default {
     },
     cover(state, cover) {
       state.cover = cover
+    },
+    stats(state, stats) {
+      state.stats = stats
+    },
+    isStatsLoading(state, isStatsLoading) {
+      state.isStatsLoading = isStatsLoading
     },
   },
   actions: {
@@ -258,6 +266,17 @@ export default {
         })
         .catch(function () {
           notification.create(i18n.t('book_clean_error'), 'error')
+        })
+    },
+    stats(context) {
+      context.commit('isStatsLoading', true)
+      api()
+        .get('/api/v1/book/stats/')
+        .then(function (response) {
+          context.commit('stats', response.data)
+        })
+        .finally(function () {
+          context.commit('isStatsLoading', false)
         })
     },
   },

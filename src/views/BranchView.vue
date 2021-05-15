@@ -4,7 +4,7 @@
       <h1>{{ $t('branch') }}</h1>
     </b-container>
 
-    <b-container size="m" v-show="isLoading">
+    <b-container size="m" v-show="isStatsLoading">
       <b-spinner size="l" />
     </b-container>
 
@@ -74,12 +74,13 @@ export default {
   computed: {
     ...mapState('branch', ['branch']),
     ...mapState('condition', ['conditions']),
-    ...mapState('stats', ['stats', 'isLoading']),
+    ...mapState('book', ['stats', 'isStatsLoading']),
   },
   created: function () {
     this.$store.dispatch('branch/branch')
     this.$store.dispatch('condition/list')
     this.$store.dispatch('stats/stats')
+    this.$store.dispatch('book/stats')
   },
 }
 </script>
