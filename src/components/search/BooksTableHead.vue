@@ -44,7 +44,8 @@
         <span v-else>{{ $t('price') }}</span>
         <indicator column="price" />
       </th>
-      <th class="noprint"></th>
+      <th class="noprint" width="25"></th>
+      <th class="noprint" width="90" v-if="inventoryMode"></th>
     </tr>
   </thead>
 </template>
@@ -64,6 +65,7 @@ export default {
       type: Boolean,
       default: false,
     },
+    inventoryMode: Boolean,
   },
   computed: {
     ...mapState('search', ['sold', 'removed']),

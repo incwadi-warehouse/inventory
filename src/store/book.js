@@ -258,6 +258,20 @@ export default {
           notification.create(i18n.t('book_reserve_error'), 'error')
         })
     },
+    bookFound(context, { me, id }) {
+      api()
+        .put('/api/book/inventory/found/' + id)
+        .then(() => {
+          context.dispatch('find', me)
+        })
+    },
+    bookNotFound(context, { me, id }) {
+      api()
+        .put('/api/book/inventory/notfound/' + id)
+        .then(() => {
+          context.dispatch('find', me)
+        })
+    },
     clean() {
       api()
         .delete('/api/book/clean')

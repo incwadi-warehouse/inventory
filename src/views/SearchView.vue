@@ -28,11 +28,27 @@
         <b-button design="text" @click.prevent="showCovers = !showCovers">
           {{ $t('showCovers') }}
         </b-button>
+        <b-button
+          design="text"
+          @click.prevent="inventoryMode = !inventoryMode"
+          v-if="stateInventory.hasActiveInventory"
+        >
+          {{ $t('inventoryMode') }}
+        </b-button>
       </div>
       <b-table>
         <table>
-          <search-books-table-head :me="me" :covers="showCovers" />
-          <search-books-table-body @cart="listCart()" :covers="showCovers" />
+          <search-books-table-head
+            :me="me"
+            :covers="showCovers"
+            :inventoryMode="inventoryMode"
+          />
+          <search-books-table-body
+            @cart="listCart()"
+            :covers="showCovers"
+            :inventoryMode="inventoryMode"
+            :me="me"
+          />
         </table>
       </b-table>
     </b-container>
@@ -70,6 +86,7 @@ import BookEdit from '../components/book/Edit'
 import useCart from './../composables/useCart'
 import useAuth from '@/composables/useAuth'
 import { ref, toRefs } from '@vue/composition-api'
+import useInventory from '@/composables/useInventory'
 
 export default {
   name: 'search-view',
@@ -105,7 +122,10 @@ export default {
     const { cart, listCart } = useCart()
     listCart()
 
-    return { showCovers, cart, listCart, me }
+    let inventoryMode = ref(false)
+    const { state: stateInventory } = useInventory()
+
+    return { showCovers, cart, listCart, me, stateInventory, inventoryMode }
   },
   computed: {
     hasBooks() {
