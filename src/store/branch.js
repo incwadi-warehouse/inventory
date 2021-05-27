@@ -6,7 +6,7 @@ export default {
   namespaced: true,
   state: {
     branches: null,
-    branch: null,
+    branch: null, // @deprecated
   },
   mutations: {
     branches(state, branches) {
@@ -24,6 +24,7 @@ export default {
           context.commit('branches', response.data)
         })
     },
+    // @deprecated
     branch(context) {
       api()
         .get('/api/v1/branch/my')
