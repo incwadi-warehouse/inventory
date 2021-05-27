@@ -10,6 +10,8 @@ export default {
     book: null,
     counter: 0,
     cover: null,
+    stats: null,
+    isStatsLoading: true,
   },
   mutations: {
     books(state, books) {
@@ -27,6 +29,12 @@ export default {
     },
     cover(state, cover) {
       state.cover = cover
+    },
+    stats(state, stats) {
+      state.stats = stats
+    },
+    isStatsLoading(state, isStatsLoading) {
+      state.isStatsLoading = isStatsLoading
     },
   },
   actions: {
@@ -103,7 +111,7 @@ export default {
       }
 
       api()
-        .get('/api/v1/book/find', {
+        .get('/api/book/find', {
           params: {
             options: {
               term,
@@ -124,7 +132,7 @@ export default {
     },
     show(context, id) {
       api()
-        .get('/api/v1/book/' + id)
+        .get('/api/book/' + id)
         .then(function (response) {
           context.commit('book', response.data)
           context.commit('tag/tags', response.data.tags, { root: true })
@@ -136,7 +144,7 @@ export default {
     create(context, data) {
       return new Promise((resolve, reject) => {
         api()
-          .post('/api/v1/book/new', {
+          .post('/api/book/new', {
             added: data.added,
             title: data.title,
             shortDescription: data.shortDescription,
@@ -168,7 +176,7 @@ export default {
     update(context, data) {
       return new Promise((resolve, reject) => {
         api()
-          .put('/api/v1/book/' + data.id, {
+          .put('/api/book/' + data.id, {
             added: data.added,
             title: data.title,
             shortDescription: data.shortDescription,
@@ -202,24 +210,24 @@ export default {
     },
     getCover(context, data) {
       api()
-        .get('/api/v1/book/cover/' + data.id)
+        .get('/api/book/cover/' + data.id)
         .then(function (response) {
           context.commit('cover', response.data)
         })
     },
     upload(context, data) {
-      return api().post('/api/v1/book/cover/' + data.id, data.form)
+      return api().post('/api/book/cover/' + data.id, data.form)
     },
     removeCover(context, data) {
       api()
-        .delete('/api/v1/book/cover/' + data.id)
+        .delete('/api/book/cover/' + data.id)
         .then(function () {
           context.dispatch('getCover', data)
         })
     },
     sell(context, book) {
       api()
-        .put('/api/v1/book/sell/' + book.id)
+        .put('/api/book/sell/' + book.id)
         .then(function () {
           context.commit('removeBook', book)
           notification.create(i18n.t('book_sell_success'), 'success')
@@ -230,7 +238,7 @@ export default {
     },
     remove(context, book) {
       api()
-        .put('/api/v1/book/remove/' + book.id)
+        .put('/api/book/remove/' + book.id)
         .then(function () {
           context.commit('removeBook', book)
           notification.create(i18n.t('book_remove_success'), 'success')
@@ -241,7 +249,7 @@ export default {
     },
     reserve(context, book) {
       api()
-        .put('/api/v1/book/reserve/' + book.id)
+        .put('/api/book/reserve/' + book.id)
         .then(function () {
           context.commit('removeBook', book)
           notification.create(i18n.t('book_reserve_success'), 'success')
@@ -250,14 +258,39 @@ export default {
           notification.create(i18n.t('book_reserve_error'), 'error')
         })
     },
+    bookFound(context, { me, id }) {
+      api()
+        .put('/api/book/inventory/found/' + id)
+        .then(() => {
+          context.dispatch('find', me)
+        })
+    },
+    bookNotFound(context, { me, id }) {
+      api()
+        .put('/api/book/inventory/notfound/' + id)
+        .then(() => {
+          context.dispatch('find', me)
+        })
+    },
     clean() {
       api()
-        .delete('/api/v1/book/clean')
+        .delete('/api/book/clean')
         .then(function () {
           notification.create(i18n.t('book_clean_success'), 'success')
         })
         .catch(function () {
           notification.create(i18n.t('book_clean_error'), 'error')
+        })
+    },
+    stats(context) {
+      context.commit('isStatsLoading', true)
+      api()
+        .get('/api/book/stats/')
+        .then(function (response) {
+          context.commit('stats', response.data)
+        })
+        .finally(function () {
+          context.commit('isStatsLoading', false)
         })
     },
   },

@@ -18,7 +18,7 @@ export default {
     stats(context) {
       context.commit('isLoading', true)
       api()
-        .get('/api/v1/stats/')
+        .get('/api/stats/')
         .then(function (response) {
           context.commit('stats', response.data)
         })

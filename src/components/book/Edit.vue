@@ -226,6 +226,11 @@
             </b-form-label>
           </b-form-item>
           <b-form-item>
+            <b-form-helpline>
+              {{ $t('deprecated') }}
+            </b-form-helpline>
+          </b-form-item>
+          <b-form-item>
             <b-form-select id="lendTo" v-model="lendTo" @change="lending">
               <option value=""></option>
               <option
@@ -243,6 +248,11 @@
             <b-form-label for="lendOn">
               {{ $t('lend_on') }}
             </b-form-label>
+          </b-form-item>
+          <b-form-item>
+            <b-form-helpline>
+              {{ $t('deprecated') }}
+            </b-form-helpline>
           </b-form-item>
           <b-form-item>
             <b-form-input type="date" id="lendOn" v-model="lendOn" />

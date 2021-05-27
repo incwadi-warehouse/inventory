@@ -29,7 +29,7 @@ export default {
       if (!context.rootState.search.term) return
 
       api()
-        .get('/api/v1/author/find', {
+        .get('/api/author/find', {
           params: {
             term: context.rootState.search.term,
           },
@@ -40,14 +40,14 @@ export default {
     },
     show(context, id) {
       api()
-        .get('/api/v1/author/' + id)
+        .get('/api/author/' + id)
         .then(function (response) {
           context.commit('author', response.data)
         })
     },
     edit(context, data) {
       api()
-        .put('/api/v1/author/' + data.id, {
+        .put('/api/author/' + data.id, {
           firstname: data.firstname,
           surname: data.surname,
         })
@@ -62,7 +62,7 @@ export default {
     remove(context, id) {
       context.commit('removeAuthor', id)
       api()
-        .delete('/api/v1/author/' + id)
+        .delete('/api/author/' + id)
         .then(function () {
           notification.create(i18n.t('author_remove_successful'), 'success')
         })

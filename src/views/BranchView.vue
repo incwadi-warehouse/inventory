@@ -4,7 +4,7 @@
       <h1>{{ $t('branch') }}</h1>
     </b-container>
 
-    <b-container size="m" v-show="isLoading">
+    <b-container size="m" v-show="isStatsLoading">
       <b-spinner size="l" />
     </b-container>
 
@@ -39,6 +39,28 @@
       />
       <condition-new />
     </b-container>
+
+    <b-divider />
+
+    <b-container size="m">
+      <b-button
+        :style="{ float: 'right' }"
+        design="outline"
+        @click.prevent="createInventory"
+        v-if="!inventoryState.hasActiveInventory"
+      >
+        {{ $t('createInventory') }}
+      </b-button>
+      <h3>{{ $t('inventory') }}</h3>
+      <p>{{ $t('inventoryDesc') }}</p>
+    </b-container>
+
+    <b-container size="m">
+      <inventory-list
+        :inventories="inventoryState.inventories"
+        @end="endInventory"
+      />
+    </b-container>
   </article>
 </template>
 
@@ -51,6 +73,8 @@ import BranchStats from '../components/branch/Stats'
 import { mapState } from 'vuex'
 import useAuth from '@/composables/useAuth'
 import { toRefs } from '@vue/composition-api'
+import useInventory from '@/composables/useInventory'
+import InventoryList from '@/components/inventory/List'
 
 export default {
   name: 'branch-view',
@@ -63,23 +87,31 @@ export default {
     ConditionNew,
     BranchEdit,
     BranchStats,
+    InventoryList,
   },
   setup() {
     const { getUser, state } = useAuth()
     getUser()
     const { me } = toRefs(state)
 
-    return { me }
+    const {
+      state: inventoryState,
+      createInventory,
+      endInventory,
+    } = useInventory()
+
+    return { me, inventoryState, createInventory, endInventory }
   },
   computed: {
     ...mapState('branch', ['branch']),
     ...mapState('condition', ['conditions']),
-    ...mapState('stats', ['stats', 'isLoading']),
+    ...mapState('book', ['stats', 'isStatsLoading']),
   },
   created: function () {
     this.$store.dispatch('branch/branch')
     this.$store.dispatch('condition/list')
     this.$store.dispatch('stats/stats')
+    this.$store.dispatch('book/stats')
   },
 }
 </script>

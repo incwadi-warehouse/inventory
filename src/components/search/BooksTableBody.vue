@@ -36,6 +36,14 @@
       <td class="noprint" style="cursor: pointer">
         <context-menu :book="book" @cart="$emit('cart')" />
       </td>
+      <td class="noprint" :style="{ textAlign: 'right' }" v-if="inventoryMode">
+        <b-button design="text" @click.prevent="bookFound(book.id)">
+          <b-icon type="done" :isPrimary="book.inventory" />
+        </b-button>
+        <b-button design="text" @click.prevent="bookNotFound(book.id)">
+          <b-icon type="close" :isPrimary="false === book.inventory" />
+        </b-button>
+      </td>
     </tr>
   </tbody>
 </template>
@@ -54,6 +62,8 @@ export default {
       type: Boolean,
       default: false,
     },
+    inventoryMode: Boolean,
+    me: Object,
   },
   computed: {
     ...mapState('search', ['sold', 'removed']),
@@ -70,6 +80,12 @@ export default {
         id +
         '_100x100.jpg'
       )
+    },
+    bookFound(id) {
+      this.$store.dispatch('book/bookFound', { me: this.me, id })
+    },
+    bookNotFound(id) {
+      this.$store.dispatch('book/bookNotFound', { me: this.me, id })
     },
   },
   filters: {

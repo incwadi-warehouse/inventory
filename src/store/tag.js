@@ -26,7 +26,7 @@ export default {
   actions: {
     create(context, name) {
       api()
-        .post('/api/v1/tag/new', {
+        .post('/api/tag/new', {
           name: name,
         })
         .then(function (response) {
@@ -39,7 +39,7 @@ export default {
     },
     remove(context, tag) {
       api()
-        .delete('/api/v1/tag/' + tag.id)
+        .delete('/api/tag/' + tag.id)
         .then(function () {
           context.commit('removeTag', tag)
         })

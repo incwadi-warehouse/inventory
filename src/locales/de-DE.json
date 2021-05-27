@@ -260,5 +260,14 @@
   "recommendation": "Empfehlung",
   "public": "Öffentlich",
   "branchPublicHelp": "Soll die Filiale in der öffentlichen Suche erscheinen?",
-  "showCovers": "Zeige Cover"
+  "showCovers": "Zeige Cover",
+  "inventory": "Inventory",
+  "startedAt": "Gestartet am",
+  "endedAt": "Beendet am",
+  "found": "Gefunden",
+  "notFound": "Nicht gefunden",
+  "end": "Beenden",
+  "createInventory": "Neue Inventur",
+  "inventoryMode": "Inventur-Modus",
+  "inventoryDesc": "Nach dem anlegen einer Inventur wird in der Suche ein Inventur-Modus verfügbar. In diesem Modus kannst du Bücher als gefunden und nicht gefunden markieren. Das Beenden einer Inventur führt dazu, dass nicht gefundene Bücher als entfernt markiert werden und der Inventur-Status bei allen Büchern zurückgesetzt wird."
 }
