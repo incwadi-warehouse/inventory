@@ -19,6 +19,10 @@ cssVars({
   variables: {},
 })
 
+if (process.env.VUE_APP_THEME !== 'false') {
+  import('../' + process.env.VUE_APP_THEME)
+}
+
 new Vue({
   router,
   store,
