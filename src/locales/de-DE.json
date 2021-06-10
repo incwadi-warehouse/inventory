@@ -269,5 +269,6 @@
   "end": "Beenden",
   "createInventory": "Neue Inventur",
   "inventoryMode": "Inventur-Modus",
-  "inventoryDesc": "Nach dem anlegen einer Inventur wird in der Suche ein Inventur-Modus verfügbar. In diesem Modus kannst du Bücher als gefunden und nicht gefunden markieren. Das Beenden einer Inventur führt dazu, dass nicht gefundene Bücher als entfernt markiert werden und der Inventur-Status bei allen Büchern zurückgesetzt wird."
+  "inventoryDesc": "Nach dem anlegen einer Inventur wird in der Suche ein Inventur-Modus verfügbar. In diesem Modus kannst du Bücher als gefunden und nicht gefunden markieren. Das Beenden einer Inventur führt dazu, dass nicht gefundene Bücher als entfernt markiert werden und der Inventur-Status bei allen Büchern zurückgesetzt wird.",
+  "closeCatalogueModal": "Fenster wirklich schließen?"
 }
