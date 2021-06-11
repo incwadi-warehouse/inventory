@@ -67,7 +67,11 @@
       v-if="$store.state.book.book"
       @close="closeEdit"
     />
-    <book-create @close="confirmClose" v-if="showCreateBook" />
+    <book-create
+      @close="confirmClose"
+      @created="$router.push({ name: 'search' })"
+      v-if="showCreateBook"
+    />
   </article>
 </template>
 

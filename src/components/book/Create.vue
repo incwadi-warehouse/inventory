@@ -272,7 +272,7 @@ export default {
           tags: tags,
         })
         .then(() => {
-          this.$emit('close', this.$event)
+          this.$emit('created', this.$event)
         })
     },
     createTag() {
