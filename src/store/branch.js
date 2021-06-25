@@ -46,9 +46,8 @@ export default {
           context.commit('branch', response.data)
           notification.create(i18n.t('branch_update_success'), 'success')
         })
-        .catch(function (e) {
+        .catch(function () {
           notification.create(i18n.t('branch_update_error'), 'error')
-          console.error(e)
         })
     },
   },
