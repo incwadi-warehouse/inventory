@@ -94,13 +94,9 @@ export default {
   },
   setup(props, { emit }) {
     const { localeDateString } = useReservationShow()
-    const {
-      reservationDate,
-      reservationTime,
-      notes,
-      books,
-      update,
-    } = useReservationUpdate(props.reservation)
+    const { reservationDate } = useReservationUpdate(props.reservation)
+    const { reservationTime } = useReservationUpdate(props.reservation)
+    const { notes, books, update } = useReservationUpdate(props.reservation)
     const { remove } = useReservationRemove(emit)
 
     return {
