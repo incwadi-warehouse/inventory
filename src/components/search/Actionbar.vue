@@ -1,8 +1,8 @@
 <template>
   <article class="noprint">
     <b-container size="l">
-      <b-actionbar>
-        <template #input>
+      <div class="actionbar">
+        <div class="actionbar_input">
           <b-search
             :placeholder="$t('search_in_title_author_genre_tags')"
             :button="$t('search')"
@@ -14,9 +14,9 @@
             @reset="reset"
             v-model="term"
           />
-        </template>
+        </div>
 
-        <template #actions>
+        <div class="actionbar_actions">
           <b-button
             design="outline"
             ripple
@@ -24,8 +24,8 @@
           >
             {{ $t('catalog') }}
           </b-button>
-        </template>
-      </b-actionbar>
+        </div>
+      </div>
     </b-container>
 
     <search-filters
@@ -96,3 +96,15 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.actionbar {
+  display: flex;
+}
+.actionbar_input {
+  flex-grow: 1;
+}
+.actionbar_actions {
+  margin-left: 10px;
+}
+</style>
