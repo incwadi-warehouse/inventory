@@ -17,6 +17,10 @@
       </b-container>
     </b-content>
 
+    <b-container size="m">
+      <div v-html="about" />
+    </b-container>
+
     <b-notification-bar>
       <b-notification
         v-for="notification in notifications"
@@ -59,6 +63,11 @@ export default {
     check()
 
     return { state, session }
+  },
+  computed: {
+    about() {
+      return process.env.VUE_APP_ABOUT
+    },
   },
   methods: {
     onLoggedOut() {

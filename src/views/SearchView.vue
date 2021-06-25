@@ -68,7 +68,8 @@
       @close="closeEdit"
     />
     <book-create
-      @close="$router.push({ name: 'search' })"
+      @close="confirmClose"
+      @created="$router.push({ name: 'search' })"
       v-if="showCreateBook"
     />
   </article>
@@ -147,6 +148,12 @@ export default {
     closeEdit() {
       this.$store.commit('book/book', null)
       this.$router.push({ name: 'search' })
+    },
+    confirmClose() {
+      let close = confirm(this.$t('closeCatalogueModal'))
+      if (close) {
+        this.$router.push({ name: 'search' })
+      }
     },
   },
   watch: {

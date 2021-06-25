@@ -246,5 +246,6 @@
   "end": "end",
   "createInventory": "Create Inventory",
   "inventoryMode": "Inventory Mode",
-  "inventoryDesc": "After creating a new inventory you will see a new button in the search. In Inventory Mode you can mark books as found and not found. Closing an inventory means marking all not found books as removed and reset inventory state on all books."
+  "inventoryDesc": "After creating a new inventory you will see a new button in the search. In Inventory Mode you can mark books as found and not found. Closing an inventory means marking all not found books as removed and reset inventory state on all books.",
+  "closeCatalogueModal": "Sure, closing this window?"
 }
