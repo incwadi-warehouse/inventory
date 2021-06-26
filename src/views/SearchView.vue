@@ -1,5 +1,11 @@
 <template>
   <article>
+    <b-container size="l" v-if="is404">
+      <b-notification type="warning" hidable>
+        {{ $t('notFoundDesc') }}
+      </b-notification>
+    </b-container>
+
     <search-actionbar class="noprint" :me="me" />
 
     <b-container size="l" v-if="isLoading">
@@ -100,6 +106,10 @@ export default {
       default: null,
     },
     showCreateBook: {
+      type: Boolean,
+      default: false,
+    },
+    is404: {
       type: Boolean,
       default: false,
     },

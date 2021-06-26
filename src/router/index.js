@@ -9,6 +9,7 @@ const routes = [
     path: '/',
     name: 'search',
     component: () => import('../views/SearchView'),
+    props: true,
   },
   {
     path: '/book/new',
@@ -69,8 +70,7 @@ const routes = [
   },
   {
     path: '*',
-    name: 'not-found',
-    component: () => import('../views/NotFoundView'),
+    redirect: { name: 'search', params: { is404: true } },
   },
 ]
 
