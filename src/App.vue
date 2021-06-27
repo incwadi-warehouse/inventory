@@ -21,7 +21,7 @@
       <div v-html="about" />
     </b-container>
 
-    <b-notification-bar>
+    <b-notification-bar :style="{ zIndex: '5' }">
       <b-notification
         v-for="notification in notifications"
         :key="notification.id"
