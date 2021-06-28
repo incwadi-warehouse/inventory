@@ -6,6 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
+    "test:e2e": "vue-cli-service test:e2e --headless",
     "lint": "vue-cli-service lint",
     "i18n:report": "vue-cli-service i18n:report --src \"./src/**/*.?(js|vue)\" --locales \"./src/locales/**/*.json\"",
     "watch": "vue-cli-service serve"
@@ -27,6 +28,7 @@
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "4.5.13",
+    "@vue/cli-plugin-e2e-cypress": "~4.5.0",
     "@vue/cli-plugin-eslint": "4.5.13",
     "@vue/cli-plugin-pwa": "4.5.13",
     "@vue/cli-plugin-router": "4.5.13",
