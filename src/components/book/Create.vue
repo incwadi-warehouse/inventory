@@ -128,6 +128,27 @@
             </b-form-select>
           </b-form-item>
         </b-form-group>
+
+        <!-- format -->
+        <b-form-group v-if="state.formats">
+          <b-form-item>
+            <b-form-label for="format">
+              {{ $t('format') }}
+            </b-form-label>
+          </b-form-item>
+          <b-form-item>
+            <b-form-select id="type" v-model="format">
+              <option
+                v-for="format in state.formats"
+                :value="format.id"
+                :key="format.id"
+              >
+                {{ format.name }}
+              </option>
+            </b-form-select>
+          </b-form-item>
+        </b-form-group>
+
         <b-form-group>
           <b-form-item>
             <b-form-label for="price">
@@ -217,9 +238,24 @@
 <script>
 import formatDate from './../../util/date'
 import { mapState } from 'vuex'
+import { list } from '@/api/format'
+import { onMounted, reactive } from '@vue/composition-api'
 
 export default {
   name: 'create-book',
+  setup() {
+    const state = reactive({
+      formats: null,
+    })
+
+    onMounted(() => {
+      list().then((response) => {
+        state.formats = response.data
+      })
+    })
+
+    return { state }
+  },
   data() {
     return {
       added: formatDate(Math.round(new Date().getTime() / 1000) * 1000),
@@ -237,6 +273,7 @@ export default {
       lendOn: null,
       cond_id: null,
       tag: null,
+      format: null,
     }
   },
   computed: {
@@ -270,6 +307,7 @@ export default {
           lendOn: null,
           cond: this.cond_id,
           tags: tags,
+          format: this.format,
         })
         .then(() => {
           this.$emit('created', this.$event)

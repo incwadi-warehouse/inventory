@@ -159,6 +159,7 @@ export default {
             lendOn: data.lendOn,
             cond: data.cond,
             tags: data.tags,
+            format: data.format,
           })
           .then(function () {
             notification.create(i18n.t('book_created'), 'success')
@@ -193,6 +194,7 @@ export default {
             cond: data.cond,
             tags: data.tags,
             recommendation: data.recommendation,
+            format: data.format,
           })
           .then(function () {
             context.dispatch('find', data.me)

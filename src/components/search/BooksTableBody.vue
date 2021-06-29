@@ -27,6 +27,9 @@
       <td>
         {{ $t(book.type) }}
       </td>
+      <td>
+        {{ book.format ? book.format.name : null }}
+      </td>
       <td style="text-align: right">
         {{ book.releaseYear }}
       </td>
