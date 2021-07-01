@@ -69,7 +69,6 @@
           <b-button
             type="button"
             design="outline_danger"
-            v-if="me.isAdmin"
             @click="remove(reservation.id)"
           >
             {{ $t('delete') }}
