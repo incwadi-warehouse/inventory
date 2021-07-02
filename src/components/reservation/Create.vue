@@ -75,9 +75,8 @@ export default {
     cart: Array,
   },
   setup(props, { emit }) {
-    const { create } = useReservationCreate(emit)
-    const { reservationDate, reservationTime } = useReservationCreate(emit)
-    const { notes, books, addBook } = useReservationCreate(emit)
+    const { create, reservationDate, reservationTime, notes, books, addBook } =
+      useReservationCreate(emit)
 
     onMounted(() => {
       addBook(props.cart)
