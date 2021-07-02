@@ -43,6 +43,17 @@
     <b-divider />
 
     <b-container size="m">
+      <h2>{{ $t('formats') }}</h2>
+      <p>
+        {{ $t('formatsDesc') }}
+      </p>
+      <format-list ref="formatList" />
+      <format-new @created="createdFormat" />
+    </b-container>
+
+    <b-divider />
+
+    <b-container size="m">
       <b-button
         :style="{ float: 'right' }"
         design="outline"
@@ -72,9 +83,11 @@ import BranchEdit from '../components/branch/Edit'
 import BranchStats from '../components/branch/Stats'
 import { mapState } from 'vuex'
 import useAuth from '@/composables/useAuth'
-import { toRefs } from '@vue/composition-api'
+import { ref, toRefs } from '@vue/composition-api'
 import useInventory from '@/composables/useInventory'
 import InventoryList from '@/components/inventory/List'
+import FormatList from '@/components/format/Format'
+import FormatNew from '@/components/format/New'
 
 export default {
   name: 'branch-view',
@@ -88,8 +101,11 @@ export default {
     BranchEdit,
     BranchStats,
     InventoryList,
+    FormatList,
+    FormatNew,
   },
   setup() {
+    const formatList = ref(null)
     const { getUser, state } = useAuth()
     getUser()
     const { me } = toRefs(state)
@@ -100,7 +116,18 @@ export default {
       endInventory,
     } = useInventory()
 
-    return { me, inventoryState, createInventory, endInventory }
+    const createdFormat = () => {
+      formatList.value.listFormats()
+    }
+
+    return {
+      me,
+      inventoryState,
+      createInventory,
+      endInventory,
+      formatList,
+      createdFormat,
+    }
   },
   computed: {
     ...mapState('branch', ['branch']),

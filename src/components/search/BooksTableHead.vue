@@ -31,6 +31,7 @@
       <th class="isSortable" @click="filter('type')">
         {{ $t('type') }} <indicator column="type" />
       </th>
+      <th>{{ $t('format') }}</th>
       <th
         class="isSortable"
         style="text-align: right"
