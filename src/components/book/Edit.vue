@@ -468,7 +468,7 @@ export default {
           recommendation: this.recommendation,
         })
         .then(() => {
-          this.$emit('close', this.$event)
+          this.$emit('update-book', this.$event)
         })
     },
     lending() {
