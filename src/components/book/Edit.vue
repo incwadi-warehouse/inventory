@@ -506,7 +506,7 @@ export default {
           format: this.format,
         })
         .then(() => {
-          this.$emit('close', this.$event)
+          this.$emit('update-book', this.$event)
         })
     },
     lending() {

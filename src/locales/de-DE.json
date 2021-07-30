@@ -275,5 +275,8 @@
   "new_format": "Format anlegen",
   "formats": "Formate",
   "formatsDesc": "Jeder kann Formate sehen, jedoch können nur Admins neue Formate anlegen oder Formate löschen.",
-  "format": "Format"
+  "format": "Format",
+  "closeModal": "Fenster wirklich schließen?",
+  "yes": "Ja",
+  "no": "Nein"
 }

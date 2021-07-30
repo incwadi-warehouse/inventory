@@ -253,4 +253,7 @@
   "formats": "Formats",
   "formatsDesc": "Everyone can see formats, but only admins can create new ones or delete existing formats.",
   "format": "Format"
+  "closeModal": "Sure, closing this window?",
+  "yes": "Yes",
+  "no": "No"
 }

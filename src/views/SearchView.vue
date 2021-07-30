@@ -72,12 +72,21 @@
       :me="me"
       v-if="$store.state.book.book"
       @close="closeEdit"
+      @update-book="updateBook"
     />
     <book-create
       @close="confirmClose"
       @created="$router.push({ name: 'search' })"
       v-if="showCreateBook"
     />
+
+    <confirm
+      v-if="showConfirm"
+      @confirm-yes="closeModal"
+      @confirm-no="showConfirm = false"
+    >
+      {{ $t('closeModal') }}
+    </confirm>
   </article>
 </template>
 
@@ -94,6 +103,7 @@ import useCart from './../composables/useCart'
 import useAuth from '@/composables/useAuth'
 import { ref, toRefs } from '@vue/composition-api'
 import useInventory from '@/composables/useInventory'
+import Confirm from '@/components/Confirm'
 
 export default {
   name: 'search-view',
@@ -123,6 +133,7 @@ export default {
     SearchBooksTableBody,
     BookCreate,
     BookEdit,
+    Confirm,
   },
   setup() {
     let showCovers = ref(false)
@@ -136,7 +147,17 @@ export default {
     let inventoryMode = ref(false)
     const { state: stateInventory } = useInventory()
 
-    return { showCovers, cart, listCart, me, stateInventory, inventoryMode }
+    const showConfirm = ref(false)
+
+    return {
+      showCovers,
+      cart,
+      listCart,
+      me,
+      stateInventory,
+      inventoryMode,
+      showConfirm,
+    }
   },
   computed: {
     hasBooks() {
@@ -156,14 +177,19 @@ export default {
       if (this.bookId) this.$store.dispatch('book/show', this.bookId)
     },
     closeEdit() {
+      this.showConfirm = true
+    },
+    updateBook() {
       this.$store.commit('book/book', null)
       this.$router.push({ name: 'search' })
     },
     confirmClose() {
-      let close = confirm(this.$t('closeCatalogueModal'))
-      if (close) {
-        this.$router.push({ name: 'search' })
-      }
+      this.showConfirm = true
+    },
+    closeModal() {
+      this.showConfirm = false
+      this.$store.commit('book/book', null)
+      this.$router.push({ name: 'search' })
     },
   },
   watch: {
