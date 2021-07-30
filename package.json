@@ -15,7 +15,7 @@
     "@baldeweg/components": "5.4.2",
     "@vue/composition-api": "1.0.4",
     "axios": "0.21.1",
-    "core-js": "3.15.2",
+    "core-js": "3.16.0",
     "css-vars-ponyfill": "2.4.6",
     "js-cookie": "3.0.0",
     "lodash": "4.17.21",
