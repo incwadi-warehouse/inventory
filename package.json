@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@baldeweg/components": "5.4.2",
-    "@vue/composition-api": "1.0.4",
+    "@vue/composition-api": "1.0.5",
     "axios": "0.21.1",
     "core-js": "3.16.0",
     "css-vars-ponyfill": "2.4.6",
