@@ -42,21 +42,19 @@
           {{ $t('inventoryMode') }}
         </b-button>
       </div>
-      <b-table>
-        <table>
-          <search-books-table-head
-            :me="me"
-            :covers="showCovers"
-            :inventoryMode="inventoryMode"
-          />
-          <search-books-table-body
-            @cart="listCart()"
-            :covers="showCovers"
-            :inventoryMode="inventoryMode"
-            :me="me"
-          />
-        </table>
-      </b-table>
+      <table>
+        <search-books-table-head
+          :me="me"
+          :covers="showCovers"
+          :inventoryMode="inventoryMode"
+        />
+        <search-books-table-body
+          @cart="listCart()"
+          :covers="showCovers"
+          :inventoryMode="inventoryMode"
+          :me="me"
+        />
+      </table>
     </b-container>
 
     <b-container size="l" v-if="hasAuthors">

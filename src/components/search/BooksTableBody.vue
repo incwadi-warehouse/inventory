@@ -110,3 +110,12 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+td:first-child {
+  position: sticky;
+  left: 20px;
+  z-index: 1;
+  background: var(--color-neutral-00);
+}
+</style>

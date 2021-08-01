@@ -88,3 +88,15 @@ export default {
   cursor: pointer;
 }
 </style>
+
+<style scoped>
+thead {
+  position: sticky;
+  top: var(--masthead-height);
+  background: var(--color-neutral-00);
+  z-index: 2;
+}
+th:first-child {
+  min-width: 200px;
+}
+</style>
