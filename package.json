@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@baldeweg/components": "5.4.2",
-    "@vue/composition-api": "1.0.4",
+    "@vue/composition-api": "1.0.5",
     "axios": "0.21.1",
     "core-js": "3.16.0",
     "css-vars-ponyfill": "2.4.6",
@@ -38,9 +38,9 @@
     "@vue/eslint-config-prettier": "6.0.0",
     "@vue/test-utils": "1.2.2",
     "babel-eslint": "10.1.0",
-    "eslint": "7.31.0",
+    "eslint": "7.32.0",
     "eslint-plugin-prettier": "3.4.0",
-    "eslint-plugin-vue": "7.15.0",
+    "eslint-plugin-vue": "7.15.1",
     "prettier": "2.3.2",
     "vue-cli-plugin-i18n": "latest",
     "vue-template-compiler": "2.6.14"
