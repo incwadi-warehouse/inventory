@@ -14,9 +14,9 @@
 
     <b-divider />
 
-    <b-container size="m" v-if="branch">
+    <b-container size="m" v-if="me">
       <h2>{{ $t('settings') }}</h2>
-      <branch-edit :branch="branch" :me="me" />
+      <branch-edit :branch="me.branch" :me="me" />
     </b-container>
 
     <b-divider />
@@ -130,14 +130,11 @@ export default {
     }
   },
   computed: {
-    ...mapState('branch', ['branch']),
     ...mapState('condition', ['conditions']),
     ...mapState('book', ['stats', 'isStatsLoading']),
   },
   created: function () {
-    this.$store.dispatch('branch/branch')
     this.$store.dispatch('condition/list')
-    this.$store.dispatch('stats/stats')
     this.$store.dispatch('book/stats')
   },
 }

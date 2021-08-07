@@ -116,13 +116,7 @@
         <!-- Availability -->
         <details>
           <summary>{{ $t('availability') }}</summary>
-          <!-- Lend -->
           <b-form-group>
-            <b-form-item>
-              <input type="checkbox" id="lend" v-model="lend" />
-              <b-form-label for="lend">{{ $t('lend') }}</b-form-label>
-            </b-form-item>
-
             <!-- Sold -->
             <b-form-item>
               <input type="checkbox" id="sold" v-model="sold" />
@@ -151,23 +145,6 @@
               <b-form-label for="recommendation">{{
                 $t('recommendation')
               }}</b-form-label>
-            </b-form-item>
-          </b-form-group>
-        </details>
-
-        <!-- Type -->
-        <details>
-          <summary>{{ $t('type') }}</summary>
-          <b-form-group>
-            <b-form-item>
-              <b-form-label for="type" hidden>{{ $t('type') }}</b-form-label>
-            </b-form-item>
-            <b-form-item>
-              <b-form-select id="type" v-model="type">
-                <option value="">{{ $t('all') }}</option>
-                <option value="paperback">{{ $t('paperback') }}</option>
-                <option value="hardcover">{{ $t('hardcover') }}</option>
-              </b-form-select>
             </b-form-item>
           </b-form-group>
         </details>
@@ -283,15 +260,7 @@ export default {
   },
   data() {
     return {
-      fields: [
-        'title',
-        'author',
-        'genre',
-        'added',
-        'price',
-        'type',
-        'releaseYear',
-      ],
+      fields: ['title', 'author', 'genre', 'added', 'price', 'releaseYear'],
       genreId: this.$store.state.search.elements[1].value,
       branches:
         this.$store.state.search.elements[2].value.length === 0
@@ -303,15 +272,9 @@ export default {
       releaseYearEnd: this.$store.state.search.elements[4]
         ? this.$store.state.search.elements[4].value
         : null,
-      lend: this.$store.state.search.elements[5]
-        ? this.$store.state.search.elements[5].value
-        : false,
       sold: this.$store.state.search.elements[6].value,
       removed: this.$store.state.search.elements[7].value,
       reserved: this.$store.state.search.elements[11].value,
-      type: this.$store.state.search.elements[8]
-        ? this.$store.state.search.elements[8].value
-        : null,
       addedStart: this.$store.state.search.elements[8]
         ? this.$store.state.search.elements[9].value
         : null,
@@ -388,21 +351,9 @@ export default {
               value: this.releaseYearEnd,
             }
           : {},
-        5: this.lend
-          ? {
-              field: 'lendOn',
-              operator: 'gte',
-              value: 1 * 1000,
-            }
-          : {},
         6: { field: 'sold', operator: 'eq', value: this.sold },
         7: { field: 'removed', operator: 'eq', value: this.removed },
         11: { field: 'reserved', operator: 'eq', value: this.reserved },
-        8: {
-          field: 'type',
-          operator: 'eq',
-          value: this.type !== '' ? this.type : null,
-        },
         9: this.addedStart
           ? { field: 'added', operator: 'gte', value: this.addedStart }
           : {},
@@ -467,15 +418,9 @@ export default {
       this.releaseYearEnd = this.$store.state.search.elements[4]
         ? this.$store.state.search.elements[4].value
         : null
-      this.lend = this.$store.state.search.elements[5]
-        ? this.$store.state.search.elements[5].value
-        : false
       this.sold = this.$store.state.search.elements[6].value
       this.removed = this.$store.state.search.elements[7].value
       this.reserved = this.$store.state.search.elements[11].value
-      this.type = this.$store.state.search.elements[8]
-        ? this.$store.state.search.elements[8].value
-        : null
       this.addedStart = this.$store.state.search.elements[9]
         ? this.$store.state.search.elements[9].value
         : null

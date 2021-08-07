@@ -27,9 +27,8 @@
         <!-- default -->
         <b-form-input v-model="value" v-if="!field" />
 
-        <!-- lendOn -->
         <!-- added -->
-        <div v-if="'lendOn' === field || 'added' === field">
+        <div v-if="'added' === field">
           <b-form-input type="date" v-model="value" />
         </div>
 
@@ -79,12 +78,6 @@
           <option value="1">{{ $t('yes') }}</option>
           <option value="0">{{ $t('no') }}</option>
         </b-form-select>
-
-        <!-- type -->
-        <b-form-select v-if="'type' === field" v-model="value">
-          <option value="paperback">{{ $t('paperback') }}</option>
-          <option value="hardcover">{{ $t('hardcover') }}</option>
-        </b-form-select>
       </b-form-group>
     </div>
 
@@ -106,12 +99,10 @@ export default {
     return {
       fields: [
         'genre',
-        'lendOn',
         'branches',
         'releaseYear',
         'sold',
         'removed',
-        'type',
         'added',
       ],
       operators: ['eq', 'gte', 'gt', 'lte', 'lt', 'in'],
@@ -133,7 +124,6 @@ export default {
         this.operators = ['in']
       }
       if (
-        'lendOn' === this.field ||
         'releaseYear' === this.field ||
         'added' === this.field
       ) {

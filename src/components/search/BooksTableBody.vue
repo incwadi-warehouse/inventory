@@ -5,27 +5,23 @@
         <img :src="image(book.id)" width="100" />
       </td>
       <td @click="edit(book.id)" :style="{ cursor: 'pointer' }">
-        <span v-show="book.lendTo">[{{ $t('lend') }}] </span>
         {{ book.title }}
       </td>
       <td v-if="book.author">
-        {{ book.author | formatAuthor }}
+        {{ formatAuthor(book.author) }}
       </td>
       <td v-else></td>
       <td>
         {{ book.genre.name }}
       </td>
       <td v-if="sold == false && removed == false">
-        {{ book.added | formatDate }}
+        {{ formatDate(book.added) }}
       </td>
       <td v-if="sold == true">
-        {{ book.soldOn | formatDate }}
+        {{ formatDate(book.soldOn) }}
       </td>
       <td v-if="removed == true">
-        {{ book.removedOn | formatDate }}
-      </td>
-      <td>
-        {{ $t(book.type) }}
+        {{ formatDate(book.removedOn) }}
       </td>
       <td>
         {{ book.format ? book.format.name : null }}
@@ -34,7 +30,7 @@
         {{ book.releaseYear }}
       </td>
       <td style="text-align: right">
-        {{ book.price | formatPrice }}
+        {{ formatPrice(book.price) }}
       </td>
       <td class="noprint" style="cursor: pointer">
         <context-menu :book="book" @cart="$emit('cart')" />
@@ -90,8 +86,6 @@ export default {
     bookNotFound(id) {
       this.$store.dispatch('book/bookNotFound', { me: this.me, id })
     },
-  },
-  filters: {
     formatDate(timestamp) {
       return new Date(timestamp * 1000).toLocaleDateString()
     },

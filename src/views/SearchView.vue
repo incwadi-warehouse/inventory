@@ -73,6 +73,7 @@
       @update-book="updateBook"
     />
     <book-create
+      :me="me"
       @close="confirmClose"
       @created="$router.push({ name: 'search' })"
       v-if="showCreateBook"

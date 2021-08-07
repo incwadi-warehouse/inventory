@@ -4,12 +4,10 @@ import book from './book'
 import genre from './genre'
 import branch from './branch'
 import staff from './staff'
-import stats from './stats'
 import author from './author'
 import search from './search'
 import condition from './condition'
 import tag from './tag'
-import savedsearch from './savedsearch'
 
 Vue.use(Vuex)
 
@@ -28,11 +26,9 @@ export default new Vuex.Store({
     genre,
     branch,
     staff,
-    stats,
     author,
     search,
     condition,
     tag,
-    savedsearch,
   },
 })

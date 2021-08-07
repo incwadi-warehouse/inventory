@@ -28,9 +28,6 @@
       >
         {{ $t('removed') }} <indicator column="removedOn" />
       </th>
-      <th class="isSortable" @click="filter('type')">
-        {{ $t('type') }} <indicator column="type" />
-      </th>
       <th>{{ $t('format') }}</th>
       <th
         class="isSortable"
@@ -41,7 +38,7 @@
         {{ $t('year') }} <indicator column="releaseYear" />
       </th>
       <th class="isSortable" style="text-align: right" @click="filter('price')">
-        <span v-if="branch">{{ branch.currency }}</span>
+        <span v-if="me">{{ me.branch.currency }}</span>
         <span v-else>{{ $t('price') }}</span>
         <indicator column="price" />
       </th>
@@ -70,15 +67,11 @@ export default {
   },
   computed: {
     ...mapState('search', ['sold', 'removed']),
-    ...mapState('branch', ['branch']),
   },
   methods: {
     filter(type) {
       this.$store.dispatch('search/setOrderBy', { type, me: this.me })
     },
-  },
-  created() {
-    this.$store.dispatch('branch/branch')
   },
 }
 </script>

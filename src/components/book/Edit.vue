@@ -117,19 +117,6 @@
             />
           </b-form-item>
         </b-form-group>
-        <b-form-group>
-          <b-form-item>
-            <b-form-label for="type">
-              {{ $t('type') }}
-            </b-form-label>
-          </b-form-item>
-          <b-form-item>
-            <b-form-select id="type" v-model="type">
-              <option value="paperback">{{ $t('paperback') }}</option>
-              <option value="hardcover">{{ $t('hardcover') }}</option>
-            </b-form-select>
-          </b-form-item>
-        </b-form-group>
 
         <!-- format -->
         <b-form-group v-if="state.formats">
@@ -155,18 +142,18 @@
           <b-form-item>
             <b-form-label for="price">
               {{ $t('price') }}
-              <span v-if="branch">({{ branch.currency }})</span>
+              <span v-if="me">({{ me.branch.currency }})</span>
             </b-form-label>
           </b-form-item>
           <b-form-item>
             <b-form-input
               type="number"
               id="price"
-              :step="branch.steps"
+              :step="me.branch.steps"
               pattern="^\d+(\.|,)?\d{0,2}$"
               required
               v-model="price"
-              v-if="branch && branch.steps > 0"
+              v-if="me.branch && me.branch.steps > 0"
             />
             <b-form-input
               type="text"
@@ -240,45 +227,7 @@
             <b-form-input type="date" id="added" v-model="added" />
           </b-form-item>
         </b-form-group>
-        <b-form-group>
-          <b-form-item>
-            <b-form-label for="lendTo">
-              {{ $t('lend_to') }}
-            </b-form-label>
-          </b-form-item>
-          <b-form-item>
-            <b-form-helpline>
-              {{ $t('deprecated') }}
-            </b-form-helpline>
-          </b-form-item>
-          <b-form-item>
-            <b-form-select id="lendTo" v-model="lendTo" @change="lending">
-              <option value=""></option>
-              <option
-                v-for="member in staff"
-                :key="member.id"
-                :value="member.id"
-              >
-                {{ member.name }}
-              </option>
-            </b-form-select>
-          </b-form-item>
-        </b-form-group>
-        <b-form-group>
-          <b-form-item>
-            <b-form-label for="lendOn">
-              {{ $t('lend_on') }}
-            </b-form-label>
-          </b-form-item>
-          <b-form-item>
-            <b-form-helpline>
-              {{ $t('deprecated') }}
-            </b-form-helpline>
-          </b-form-item>
-          <b-form-item>
-            <b-form-input type="date" id="lendOn" v-model="lendOn" />
-          </b-form-item>
-        </b-form-group>
+
         <b-form-group>
           <b-form-item>
             <b-form-label for="cond">
@@ -452,11 +401,6 @@ export default {
       removed: this.book.removed,
       reserved: this.book.reserved,
       releaseYear: this.book.releaseYear,
-      type: this.book.type,
-      lendTo: this.book.lendTo,
-      lendOn: this.book.lendOn
-        ? formatDate(this.book.lendOn * 1000)
-        : this.book.lendOn,
       cond_id: this.book.condition ? this.book.condition.id : null,
       tag: this.book.tag,
       recommendation: this.book.recommendation,
@@ -467,7 +411,6 @@ export default {
     }
   },
   computed: {
-    ...mapState('branch', ['branch']),
     ...mapState('genre', ['genres']),
     ...mapState('staff', ['staff']),
     ...mapState('condition', ['conditions']),
@@ -497,9 +440,6 @@ export default {
           removed: this.removed,
           reserved: this.reserved,
           releaseYear: this.releaseYear,
-          type: this.type,
-          lendTo: this.lendTo,
-          lendOn: this.lendOn ? new Date(this.lendOn).getTime() / 1000 : null,
           cond: this.cond_id,
           tags: tags,
           recommendation: this.recommendation,
@@ -508,10 +448,6 @@ export default {
         .then(() => {
           this.$emit('update-book', this.$event)
         })
-    },
-    lending() {
-      if (!this.lendTo) return (this.lendOn = null)
-      return (this.lendOn = formatDate(new Date().getTime()))
     },
     createTag() {
       this.$store.dispatch('tag/create', this.tag)
@@ -542,7 +478,6 @@ export default {
     },
   },
   created() {
-    this.$store.dispatch('branch/branch')
     this.$store.dispatch('genre/genres')
     this.$store.dispatch('staff/staff')
     this.$store.dispatch('condition/list')

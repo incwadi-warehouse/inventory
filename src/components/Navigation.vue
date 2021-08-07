@@ -22,11 +22,6 @@
           </router-link>
         </li>
         <li class="offcanvas_item">
-          <router-link :to="{ name: 'stats' }" class="offcanvas_link">
-            {{ $t('stats') }}
-          </router-link>
-        </li>
-        <li class="offcanvas_item">
           <router-link :to="{ name: 'branch' }" class="offcanvas_link">
             {{ $t('branch') }}
           </router-link>

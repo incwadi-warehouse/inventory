@@ -115,19 +115,6 @@
             />
           </b-form-item>
         </b-form-group>
-        <b-form-group>
-          <b-form-item>
-            <b-form-label for="type">
-              {{ $t('type') }}
-            </b-form-label>
-          </b-form-item>
-          <b-form-item>
-            <b-form-select id="type" v-model="type">
-              <option value="paperback">{{ $t('paperback') }}</option>
-              <option value="hardcover">{{ $t('hardcover') }}</option>
-            </b-form-select>
-          </b-form-item>
-        </b-form-group>
 
         <!-- format -->
         <b-form-group v-if="state.formats">
@@ -153,18 +140,18 @@
           <b-form-item>
             <b-form-label for="price">
               {{ $t('price') }}
-              <span v-if="branch">({{ branch.currency }})</span>
+              <span v-if="me">({{ me.branch.currency }})</span>
             </b-form-label>
           </b-form-item>
           <b-form-item>
             <b-form-input
               type="number"
               id="price"
-              :step="branch.steps"
+              :step="me.branch.steps"
               pattern="^\d+(\.|,)?\d{0,2}$"
               required
               v-model="price"
-              v-if="branch && branch.steps > 0"
+              v-if="me.branch && me.branch.steps > 0"
             />
             <b-form-input
               type="text"
@@ -243,6 +230,9 @@ import { onMounted, reactive } from '@vue/composition-api'
 
 export default {
   name: 'create-book',
+  props: {
+    me: Object,
+  },
   setup() {
     const state = reactive({
       formats: null,
@@ -268,9 +258,6 @@ export default {
       sold: false,
       removed: false,
       releaseYear: new Date().getFullYear(),
-      type: 'paperback',
-      lendTo: null,
-      lendOn: null,
       cond_id: null,
       tag: null,
       format: null,
@@ -279,7 +266,6 @@ export default {
   computed: {
     ...mapState('genre', ['genres']),
     ...mapState('condition', ['conditions']),
-    ...mapState('branch', ['branch']),
     tags: function () {
       return this.$store.state.tag.tags
     },
@@ -302,9 +288,6 @@ export default {
           sold: false,
           removed: false,
           releaseYear: this.releaseYear,
-          type: this.type,
-          lendTo: null,
-          lendOn: null,
           cond: this.cond_id,
           tags: tags,
           format: this.format,
@@ -322,7 +305,6 @@ export default {
     },
   },
   created() {
-    this.$store.dispatch('branch/branch')
     this.$store.dispatch('genre/genres')
     this.$store.dispatch('condition/list')
   },

@@ -28,28 +28,17 @@
       </div>
     </b-container>
 
-    <search-filters
-      @close="showFilter = false"
-      v-if="showFilter && !flexFilters"
-      :me="me"
-    />
-    <search-filter
-      @close="showFilter = false"
-      v-if="showFilter && flexFilters === 'true'"
-      :me="me"
-    />
+    <search-filters @close="showFilter = false" v-if="showFilter" :me="me" />
   </article>
 </template>
 
 <script>
-import SearchFilter from './Filter'
 import SearchFilters from './Filters'
 import _debounce from 'lodash/debounce'
 
 export default {
   name: 'search-search',
   components: {
-    SearchFilter,
     SearchFilters,
   },
   props: {
@@ -69,9 +58,6 @@ export default {
       set: function (term) {
         this.$store.commit('search/term', term)
       },
-    },
-    flexFilters() {
-      return window.localStorage.getItem('flexFilters')
     },
   },
   methods: {
