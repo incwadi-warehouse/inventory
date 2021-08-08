@@ -149,6 +149,28 @@
           </b-form-group>
         </details>
 
+        <!-- Format -->
+        <details>
+          <summary>{{ $t('format') }}</summary>
+          <b-form-group>
+            <b-form-item>
+              <b-form-label for="format">{{ $t('format') }}</b-form-label>
+            </b-form-item>
+            <b-form-item>
+              <b-form-select id="format" v-model="format">
+                <option value="">{{ $t('all') }}</option>
+                <option
+                  v-for="format in state.formats"
+                  :key="format.id"
+                  :value="format.id"
+                >
+                  {{ format.name }}
+                </option>
+              </b-form-select>
+            </b-form-item>
+          </b-form-group>
+        </details>
+
         <!-- Added -->
         <details>
           <summary>{{ $t('added') }}</summary>
@@ -253,14 +275,40 @@
 </template>
 
 <script>
+import { list } from '@/api/format'
+import { onMounted, reactive } from '@vue/composition-api'
+
 export default {
   name: 'filters-search',
   props: {
     me: Object,
   },
+  setup() {
+    const state = reactive({
+      formats: null,
+    })
+
+    const listFormats = () => {
+      list().then((response) => {
+        state.formats = response.data
+      })
+    }
+
+    onMounted(listFormats)
+
+    return { state }
+  },
   data() {
     return {
-      fields: ['title', 'author', 'genre', 'added', 'price', 'releaseYear'],
+      fields: [
+        'title',
+        'author',
+        'genre',
+        'added',
+        'price',
+        'releaseYear',
+        'format',
+      ],
       genreId: this.$store.state.search.elements[1].value,
       branches:
         this.$store.state.search.elements[2].value.length === 0
@@ -284,6 +332,9 @@ export default {
       recommendation: this.$store.state.search.elements[12]
         ? this.$store.state.search.elements[12].value
         : false,
+      format: this.$store.state.search.elements[13]
+        ? this.$store.state.search.elements[13].value
+        : null,
     }
   },
   computed: {
@@ -365,6 +416,11 @@ export default {
           operator: 'eq',
           value: this.recommendation,
         },
+        13: {
+          field: 'format',
+          operator: 'eq',
+          value: this.format !== '' ? this.format : null,
+        },
       })
       this.$store.dispatch('book/find', this.me)
       this.$emit('close', this.$event)
@@ -429,6 +485,9 @@ export default {
         : null
       this.recommendation = this.$store.state.search.elements[12]
         ? this.$store.state.search.elements[12].value
+        : null
+      this.format = this.$store.state.search.elements[13]
+        ? this.$store.state.search.elements[13].value
         : null
     },
   },
