@@ -12,6 +12,21 @@
           </router-link>
         </li>
         <li class="offcanvas_item">
+          <router-link :to="{ name: 'reservation' }" class="offcanvas_link">
+            {{ $t('reservation') }}
+          </router-link>
+        </li>
+        <li class="offcanvas_item">
+          <router-link :to="{ name: 'branch' }" class="offcanvas_link">
+            {{ $t('branch') }}
+          </router-link>
+        </li>
+      </ul>
+
+      <b-divider />
+
+      <ul class="offcanvas_nav">
+        <li class="offcanvas_item">
           <router-link :to="{ name: 'genre' }" class="offcanvas_link">
             {{ $t('genres') }}
           </router-link>
@@ -21,18 +36,10 @@
             {{ $t('staff_members') }}
           </router-link>
         </li>
-        <li class="offcanvas_item">
-          <router-link :to="{ name: 'branch' }" class="offcanvas_link">
-            {{ $t('branch') }}
-          </router-link>
-        </li>
-        <li class="offcanvas_item">
-          <router-link :to="{ name: 'reservation' }" class="offcanvas_link">
-            {{ $t('reservation') }}
-          </router-link>
-        </li>
       </ul>
+
       <b-divider />
+
       <ul class="offcanvas_nav">
         <li class="offcanvas_item">
           <router-link :to="{ name: 'about' }" class="offcanvas_link">
@@ -40,7 +47,9 @@
           </router-link>
         </li>
       </ul>
+
       <b-divider />
+
       <ul class="offcanvas_nav">
         <li class="offcanvas_item" v-if="state.me">
           <router-link :to="{ name: 'profile' }" class="offcanvas_link">
