@@ -295,7 +295,7 @@
             </b-button>
 
             <!-- show -->
-            <img :src="cover.cover_m" />
+            <img :src="cover.cover_m" alt="Cover" />
           </div>
 
           <!-- upload -->

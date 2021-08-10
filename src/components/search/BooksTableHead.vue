@@ -1,35 +1,43 @@
 <template>
   <thead>
     <tr>
-      <th v-if="covers"></th>
-      <th class="isSortable" @click="filter('title')">
+      <th scope="col" v-if="covers"></th>
+      <th scope="col" class="isSortable" @click="filter('title')">
         {{ $t('title') }} <indicator column="title" />
       </th>
-      <th class="isSortable" @click="filter('author')">
+      <th scope="col" class="isSortable" @click="filter('author')">
         {{ $t('author') }} <indicator column="author" />
       </th>
-      <th class="isSortable" @click="filter('genre')">
+      <th scope="col" class="isSortable" @click="filter('genre')">
         {{ $t('genre') }} <indicator column="genre" />
       </th>
       <th
+        scope="col"
         class="isSortable"
         @click="filter('added')"
         v-if="sold == false && removed == false"
       >
         {{ $t('added') }} <indicator column="added" />
       </th>
-      <th class="isSortable" @click="filter('soldOn')" v-if="sold == true">
+      <th
+        scope="col"
+        class="isSortable"
+        @click="filter('soldOn')"
+        v-if="sold == true"
+      >
         {{ $t('sold') }} <indicator column="soldOn" />
       </th>
       <th
+        scope="col"
         class="isSortable"
         @click="filter('removedOn')"
         v-if="removed == true"
       >
         {{ $t('removed') }} <indicator column="removedOn" />
       </th>
-      <th>{{ $t('format') }}</th>
+      <th scope="col">{{ $t('format') }}</th>
       <th
+        scope="col"
         class="isSortable"
         style="text-align: right"
         :title="$t('release_year')"
@@ -37,13 +45,18 @@
       >
         {{ $t('year') }} <indicator column="releaseYear" />
       </th>
-      <th class="isSortable" style="text-align: right" @click="filter('price')">
+      <th
+        scope="col"
+        class="isSortable"
+        style="text-align: right"
+        @click="filter('price')"
+      >
         <span v-if="me">{{ me.branch.currency }}</span>
         <span v-else>{{ $t('price') }}</span>
         <indicator column="price" />
       </th>
-      <th class="noprint" width="25"></th>
-      <th class="noprint" width="90" v-if="inventoryMode"></th>
+      <th scope="col" class="noprint"></th>
+      <th scope="col" class="noprint" v-if="inventoryMode"></th>
     </tr>
   </thead>
 </template>

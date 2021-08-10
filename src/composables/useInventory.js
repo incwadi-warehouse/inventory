@@ -1,7 +1,7 @@
 import { computed, onMounted, reactive } from '@vue/composition-api'
 import { list, create, edit } from '@/api/inventory'
 
-export default function useReservationList() {
+export default function useInventory() {
   const state = reactive({
     inventories: [],
     hasActiveInventory: computed(() => {

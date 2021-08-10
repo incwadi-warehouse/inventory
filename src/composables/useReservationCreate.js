@@ -1,7 +1,7 @@
 import { ref, computed } from '@vue/composition-api'
 import { create as createAction } from './../api/reservation'
 
-export default function useReservationList(emit) {
+export default function useReservationCreate(emit) {
   let reservationDate = ref(null)
   let reservationTime = ref(null)
   let notes = ref(null)

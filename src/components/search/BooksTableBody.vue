@@ -2,7 +2,7 @@
   <tbody>
     <tr v-for="book in books" :key="book.id">
       <td v-if="covers">
-        <img :src="image(book.id)" width="100" />
+        <img :src="image(book.id)" width="100" alt="Cover" />
       </td>
       <td @click="edit(book.id)" :style="{ cursor: 'pointer' }">
         {{ book.title }}

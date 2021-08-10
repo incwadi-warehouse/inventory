@@ -1,17 +1,17 @@
 import { edit, show as showAction } from './../api/reservation'
 import { ref, onMounted, computed } from '@vue/composition-api'
 
-export default function useReservationList(reservation) {
+export default function useReservationUpdate(reservation) {
   let reservationDate = ref(null)
   let reservationTime = ref(null)
   let notes = ref(reservation.notes)
   let books = computed(() => {
-    let books = []
+    let _books = []
     reservation.books.forEach((element) => {
-      books.push(element.id)
+      _books.push(element.id)
     })
 
-    return books.join(',')
+    return _books.join(',')
   })
 
   const collection = () => {
