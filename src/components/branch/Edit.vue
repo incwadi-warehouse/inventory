@@ -121,6 +121,7 @@ export default {
       ordering: this.branch.ordering,
       orderBy: this.branch.orderBy,
       isPublic: this.branch.public,
+      pricelist: this.branch.pricelist,
     }
   },
   methods: {
@@ -134,6 +135,7 @@ export default {
         ordering: this.ordering,
         orderBy: this.orderBy,
         public: this.isPublic,
+        pricelist: this.pricelist,
       })
     },
   },

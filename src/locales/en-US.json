@@ -255,5 +255,10 @@
   "format": "Format",
   "closeModal": "Sure, closing this window?",
   "yes": "Yes",
-  "no": "No"
+  "no": "No",
+  "pricelist": "Price List",
+  "pricelistDesc": "Define a price and depending on properties you can increase or decrease the price.",
+  "baseprice": "Base Price",
+  "priceCalcReleaseYearHelp": "Use keypairs like YEAR:PRICE e.g. 2021:-1. One entry per line.",
+  "priceCalcConditionHelp": "Use keypairs like CONDITION_ID:PRICE e.g. 1:2. One entry per line."
 }

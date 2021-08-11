@@ -163,6 +163,15 @@
             />
           </b-form-item>
         </b-form-group>
+
+        <details v-if="me">
+          <summary>{{ $t('pricelist') }}</summary>
+          <book-price-calculator
+            :list="pricelist"
+            :currency="me.branch.currency"
+          />
+        </details>
+
         <b-form-group>
           <b-form-item>
             <b-form-label for="added">
@@ -226,14 +235,19 @@
 import formatDate from './../../util/date'
 import { mapState } from 'vuex'
 import { list } from '@/api/format'
-import { onMounted, reactive } from '@vue/composition-api'
+import { computed, onMounted, reactive, toRefs } from '@vue/composition-api'
+import BookPriceCalculator from '@/components/book/PriceCalculator'
 
 export default {
   name: 'create-book',
+  components: {
+    BookPriceCalculator,
+  },
   props: {
     me: Object,
   },
-  setup() {
+  setup(props) {
+    const { me } = toRefs(props)
     const state = reactive({
       formats: null,
     })
@@ -244,7 +258,11 @@ export default {
       })
     })
 
-    return { state }
+    const pricelist = computed(() => {
+      return me ? JSON.parse(me.value.branch.pricelist) : null
+    })
+
+    return { state, pricelist }
   },
   data() {
     return {
