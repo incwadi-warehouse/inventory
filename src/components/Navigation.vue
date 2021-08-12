@@ -42,6 +42,16 @@
 
       <ul class="offcanvas_nav">
         <li class="offcanvas_item">
+          <a :href="links.find" class="offcanvas_link">
+            {{ $t('find') }}
+          </a>
+        </li>
+      </ul>
+
+      <b-divider />
+
+      <ul class="offcanvas_nav">
+        <li class="offcanvas_item">
           <router-link :to="{ name: 'about' }" class="offcanvas_link">
             {{ $t('about') }}
           </router-link>
@@ -69,7 +79,7 @@
 <script>
 import { mapState, mapMutations } from 'vuex'
 import useAuth from '@/composables/useAuth'
-import { toRefs, watch } from '@vue/composition-api'
+import { reactive, toRefs, watch } from '@vue/composition-api'
 
 export default {
   name: 'navigation',
@@ -80,6 +90,10 @@ export default {
     const { state, getUser, logout } = useAuth(emit)
     const { isAuthenticated } = toRefs(props)
 
+    const links = reactive({
+      find: process.env.VUE_APP_FIND,
+    })
+
     if (props.isAuthenticated) {
       getUser()
     }
@@ -88,7 +102,7 @@ export default {
       getUser()
     })
 
-    return { state, logout }
+    return { state, logout, links }
   },
   computed: {
     ...mapState(['showOffCanvas']),
