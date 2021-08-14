@@ -48,5 +48,6 @@ Configure your webserver to redirect all requests to the `index.html` file.
 Remove the old files and download the new ones like you would install the app.
 
 ```shell
-bin/setup
+yarn install --frozen-lockfile
+yarn build
 ```
