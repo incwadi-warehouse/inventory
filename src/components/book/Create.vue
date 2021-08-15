@@ -136,7 +136,8 @@
           </b-form-item>
         </b-form-group>
 
-        <b-form-group>
+        <!-- price -->
+        <b-form-group v-if="me">
           <b-form-item>
             <b-form-label for="price">
               {{ $t('price') }}
