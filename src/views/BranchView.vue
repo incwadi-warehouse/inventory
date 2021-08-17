@@ -72,6 +72,14 @@
         @end="endInventory"
       />
     </b-container>
+
+    <b-divider />
+
+    <b-container size="m">
+      <h3>{{ $t('pricelist') }}</h3>
+      <p>{{ $t('pricelistDesc') }}</p>
+      <branch-price-calculator :branch="me.branch" :me="me" v-if="me" />
+    </b-container>
   </article>
 </template>
 
@@ -88,6 +96,7 @@ import useInventory from '@/composables/useInventory'
 import InventoryList from '@/components/inventory/List'
 import FormatList from '@/components/format/Format'
 import FormatNew from '@/components/format/New'
+import BranchPriceCalculator from '@/components/branch/PriceCalculator'
 
 export default {
   name: 'branch-view',
@@ -103,6 +112,7 @@ export default {
     InventoryList,
     FormatList,
     FormatNew,
+    BranchPriceCalculator,
   },
   setup() {
     const formatList = ref(null)

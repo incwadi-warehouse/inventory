@@ -278,5 +278,10 @@
   "format": "Format",
   "closeModal": "Fenster wirklich schließen?",
   "yes": "Ja",
-  "no": "Nein"
+  "no": "Nein",
+  "pricelist": "Price List",
+  "pricelistDesc": "Definiere einen Grundpreis und je nach Eigenschaft können Preise erhöht oder reduziert werden.",
+  "baseprice": "Base Price",
+  "priceCalcReleaseYearHelp": "Nutze Schlüsselpaare nach dem Muster JAHR:PREIS z.B. 2021:-1. Ein Eintrag pro Zeile. ",
+  "priceCalcConditionHelp": "Nutze Schlüsselpaare nach dem Muster ZUSTAND_ID:PREIS z.B. 1:2. Ein Eintrag pro Zeile. "
 }
