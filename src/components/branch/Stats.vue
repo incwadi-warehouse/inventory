@@ -39,20 +39,22 @@
 
     <ul class="barchart_legend">
       <li class="barchart_legend_item">
-        <b>{{ stats.available }}</b>
+        <strong>{{ stats.available }}</strong>
         {{ $tc('available_books', stats.available) }}
       </li>
       <li class="barchart_legend_item">
-        <b>{{ stats.reserved }}</b> {{ $tc('reserved_books', stats.reserved) }}
+        <strong>{{ stats.reserved }}</strong>
+        {{ $tc('reserved_books', stats.reserved) }}
       </li>
       <li class="barchart_legend_item">
-        <b>{{ stats.sold }}</b> {{ $tc('sold_books', stats.sold) }}
+        <strong>{{ stats.sold }}</strong> {{ $tc('sold_books', stats.sold) }}
       </li>
       <li class="barchart_legend_item">
-        <b>{{ stats.removed }}</b> {{ $tc('removed_books', stats.removed) }}
+        <strong>{{ stats.removed }}</strong>
+        {{ $tc('removed_books', stats.removed) }}
       </li>
       <li class="barchart_legend_item" :style="{ float: 'right' }">
-        <b>{{ stats.all }}</b> {{ $tc('all_books', stats.all) }}
+        <strong>{{ stats.all }}</strong> {{ $tc('all_books', stats.all) }}
       </li>
     </ul>
   </article>

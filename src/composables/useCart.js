@@ -1,6 +1,6 @@
 import { ref } from '@vue/composition-api'
 
-export default function useReservationList() {
+export default function useCart() {
   const cart = ref(JSON.parse(localStorage.getItem('cart')))
 
   const listCart = () => {

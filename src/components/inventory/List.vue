@@ -3,10 +3,12 @@
     <table>
       <thead>
         <tr>
-          <th>{{ $t('startedAt') }}</th>
-          <th>{{ $t('endedAt') }}</th>
-          <th :style="{ textAlign: 'right' }">{{ $t('found') }}</th>
-          <th :style="{ textAlign: 'right' }">{{ $t('notFound') }}</th>
+          <th scope="col">{{ $t('startedAt') }}</th>
+          <th scope="col">{{ $t('endedAt') }}</th>
+          <th scope="col" :style="{ textAlign: 'right' }">{{ $t('found') }}</th>
+          <th scope="col" :style="{ textAlign: 'right' }">
+            {{ $t('notFound') }}
+          </th>
         </tr>
       </thead>
 
