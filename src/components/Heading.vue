@@ -25,23 +25,56 @@
     </b-masthead-item>
 
     <b-masthead-item type="end" v-if="isAuthenticated">
-      <b-dropdown position="bottom">
-        <template #selector>
-          <span @click.prevent>
-            <b-icon type="profile" />
-          </span>
-        </template>
-        <b-dropdown-item no-hover v-if="state.me">
-          {{ $t('hello') }}, {{ state.me.username }}!
-        </b-dropdown-item>
-        <b-dropdown-divider />
-        <b-dropdown-item @click.prevent="profile">
-          {{ $t('settings') }}
-        </b-dropdown-item>
-        <b-dropdown-item @click.prevent="logout">
-          {{ $t('logout') }}
-        </b-dropdown-item>
-      </b-dropdown>
+      <span :style="{ float: 'right' }">
+        <b-dropdown position="bottom">
+          <template #selector>
+            <span @click.prevent>
+              <b-icon type="profile" />
+            </span>
+          </template>
+          <b-dropdown-item no-hover v-if="state.me">
+            {{ $t('hello') }}, {{ state.me.username }}!
+          </b-dropdown-item>
+
+          <b-dropdown-divider />
+
+          <b-dropdown-item @click.prevent="profile">
+            {{ $t('settings') }}
+          </b-dropdown-item>
+          <b-dropdown-item @click.prevent="logout">
+            {{ $t('logout') }}
+          </b-dropdown-item>
+        </b-dropdown>
+      </span>
+
+      <span :style="{ float: 'right', marginRight: '20px' }">
+        <b-dropdown position="bottom">
+          <template #selector>
+            <span @click.prevent>
+              <b-icon type="bookmark" />
+            </span>
+          </template>
+          <b-dropdown-item
+            v-for="item in bookmark.state.bookmarks"
+            :key="item.id"
+            @click.prevent="bookmark.open(item.url)"
+          >
+            {{ item.name }}
+          </b-dropdown-item>
+
+          <b-dropdown-divider />
+
+          <b-dropdown-item icon="plus" @click="bookmark.createFromPage()">
+            {{ $t('addThisPage') }}
+          </b-dropdown-item>
+          <b-dropdown-item
+            icon="bookmark"
+            @click="$router.push({ name: 'bookmark' })"
+          >
+            {{ $t('bookmarks') }}
+          </b-dropdown-item>
+        </b-dropdown>
+      </span>
     </b-masthead-item>
   </b-masthead>
 </template>
@@ -51,6 +84,7 @@ import Logo from './Logo'
 import useAuth from '@/composables/useAuth'
 import { toRefs, watch } from '@vue/composition-api'
 import { mapMutations } from 'vuex'
+import useBookmark from '@/composables/useBookmark'
 
 export default {
   name: 'heading',
@@ -63,6 +97,7 @@ export default {
   setup(props, { emit }) {
     const { getUser, state, logout } = useAuth(emit)
     const { isAuthenticated } = toRefs(props)
+    const bookmark = useBookmark()
 
     if (props.isAuthenticated) {
       getUser()
@@ -72,7 +107,7 @@ export default {
       getUser()
     })
 
-    return { state, logout }
+    return { state, logout, bookmark }
   },
   computed: {
     hasLogo: function () {

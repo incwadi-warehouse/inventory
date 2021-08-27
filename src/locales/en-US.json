@@ -255,5 +255,10 @@
   "format": "Format",
   "closeModal": "Sure, closing this window?",
   "yes": "Yes",
-  "no": "No"
+  "no": "No",
+  "newBookmark": "New Bookmark",
+  "enter_bookmark_and_hit_enter": "Enter new bookmark and hit enter.",
+  "bookmarks": "Bookmark Manager",
+  "addThisPage": "Add This Page",
+  "bookmarksDesc": "Bookmarks can be created by everyone and are bound to a branch."
 }

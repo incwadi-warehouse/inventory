@@ -59,6 +59,11 @@ const routes = [
     component: () => import('../views/ReservationView'),
   },
   {
+    path: '/bookmark',
+    name: 'bookmark',
+    component: () => import('../views/BookmarkView'),
+  },
+  {
     path: '/profile',
     name: 'profile',
     component: () => import('../views/ProfileView'),

@@ -278,5 +278,10 @@
   "format": "Format",
   "closeModal": "Fenster wirklich schließen?",
   "yes": "Ja",
-  "no": "Nein"
+  "no": "Nein",
+  "newBookmark": "Bookmark hinzufügen",
+  "enter_bookmark_and_hit_enter": "URL eingeben und Enter drücken.",
+  "bookmarks": "Bookmark Manager",
+  "addThisPage": "Aktuelle Seite hinzufügen",
+  "bookmarksDesc": "Bookmarks können von jedem angelegt werden und sie sind an die jeweilige Filiale gebunden."
 }
