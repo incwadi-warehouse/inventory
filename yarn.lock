@@ -3664,10 +3664,10 @@ css-tree@^1.1.2:
     mdn-data "2.0.14"
     source-map "^0.6.1"
 
-css-vars-ponyfill@2.4.6:
-  version "2.4.6"
-  resolved "https://registry.yarnpkg.com/css-vars-ponyfill/-/css-vars-ponyfill-2.4.6.tgz#9499068d21af6a265ecf55dfeaa50968e5bd63d5"
-  integrity sha512-FqUFzMlI5jpPl73R9FrUuittWM/t7RDEnyp0603MCNEy6PI/1PALIX1d15cui6UAN/V8tnIWZDMz6WoZD87eGQ==
+css-vars-ponyfill@2.4.7:
+  version "2.4.7"
+  resolved "https://registry.yarnpkg.com/css-vars-ponyfill/-/css-vars-ponyfill-2.4.7.tgz#df6fb2928e5ff013eb67e968761f8ed3d440b1e3"
+  integrity sha512-KhG3AbiZrUpIvAQ9Oc/iBqCitmXg6MajFqNRQd9nHvlwOo8p54HTq5DFCIaAUwMGRyttJ+mBmZCRSHJpe6J9cg==
   dependencies:
     balanced-match "^1.0.2"
     get-css-data "^2.0.2"
