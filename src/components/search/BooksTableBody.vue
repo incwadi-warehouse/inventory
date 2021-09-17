@@ -33,7 +33,10 @@
         {{ formatPrice(book.price) }}
       </td>
       <td class="noprint" style="cursor: pointer">
-        <context-menu :book="book" @cart="$emit('cart')" />
+        <context-menu
+          :book="book"
+          @add-to-cart="$emit('add-to-cart', $event)"
+        />
       </td>
       <td class="noprint" :style="{ textAlign: 'right' }" v-if="inventoryMode">
         <b-button design="text" @click.prevent="bookFound(book.id)">

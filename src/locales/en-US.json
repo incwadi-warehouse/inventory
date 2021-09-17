@@ -261,5 +261,7 @@
   "baseprice": "Base Price",
   "priceCalcReleaseYearHelp": "Use keypairs like YEAR:PRICE e.g. 2021:-1. One entry per line.",
   "priceCalcConditionHelp": "Use keypairs like CONDITION_ID:PRICE e.g. 1:2. One entry per line.",
-  "find": "Public Search"
+  "find": "Public Search",
+  "cleanCart": "Clean Cart",
+  "reservate":"Reservate"
 }
