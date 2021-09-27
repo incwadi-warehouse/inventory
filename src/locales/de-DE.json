@@ -284,4 +284,12 @@
   "bookmarks": "Bookmark Manager",
   "addThisPage": "Aktuelle Seite hinzufügen",
   "bookmarksDesc": "Bookmarks können von jedem angelegt werden und sie sind an die jeweilige Filiale gebunden."
+  "pricelist": "Preisliste",
+  "pricelistDesc": "Definiere einen Grundpreis und je nach Eigenschaft können Preise erhöht oder reduziert werden.",
+  "baseprice": "Grundpreis",
+  "priceCalcReleaseYearHelp": "Nutze Schlüsselpaare nach dem Muster JAHR:PREIS z.B. 2021:-1. Ein Eintrag pro Zeile.",
+  "priceCalcConditionHelp": "Nutze Schlüsselpaare nach dem Muster ZUSTAND_ID:PREIS z.B. 1:2. Ein Eintrag pro Zeile.",
+  "find": "Öffentliche Suche",
+  "cleanCart": "Warenkorb leeren",
+  "reservate": "Reservieren"
 }

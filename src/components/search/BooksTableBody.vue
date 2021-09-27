@@ -2,7 +2,7 @@
   <tbody>
     <tr v-for="book in books" :key="book.id">
       <td v-if="covers">
-        <img :src="image(book.id)" width="100" />
+        <img :src="image(book.id)" width="100" alt="Cover" />
       </td>
       <td @click="edit(book.id)" :style="{ cursor: 'pointer' }">
         {{ book.title }}
@@ -33,7 +33,10 @@
         {{ formatPrice(book.price) }}
       </td>
       <td class="noprint" style="cursor: pointer">
-        <context-menu :book="book" @cart="$emit('cart')" />
+        <context-menu
+          :book="book"
+          @add-to-cart="$emit('add-to-cart', $event)"
+        />
       </td>
       <td class="noprint" :style="{ textAlign: 'right' }" v-if="inventoryMode">
         <b-button design="text" @click.prevent="bookFound(book.id)">

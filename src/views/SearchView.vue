@@ -12,17 +12,30 @@
       <b-spinner size="l" />
     </b-container>
 
-    <b-container size="l" v-if="cart">
-      <b-notification type="success">
-        {{
-          $tc('articlesInCart', cart.length, {
-            counter: cart.length,
-          })
-        }}
-        <router-link :to="{ name: 'reservation' }">
-          {{ $t('reservations') }}
-        </router-link>
-      </b-notification>
+    <b-container size="l" v-if="cart.state.cart">
+      <h2>{{ $t('cart') }} ({{ cart.state.cart.length }})</h2>
+
+      <ul>
+        <li v-for="book in cart.state.cart" :key="book.id">
+          <router-link :to="{ name: 'book', params: { bookId: book.id } }">
+            {{ book.title }}
+          </router-link>
+          <span @click="cart.remove(book)"
+            ><b-icon type="close" :size="15"
+          /></span>
+        </li>
+      </ul>
+
+      <b-button type="button" design="text" @click="cart.clean">
+        {{ $t('cleanCart') }}
+      </b-button>
+      <b-button
+        type="button"
+        design="text"
+        @click="$router.push({ name: 'reservation' })"
+      >
+        {{ $t('reservate') }}
+      </b-button>
     </b-container>
 
     <div class="noprint" v-if="hasBooks">
@@ -49,7 +62,7 @@
           :inventoryMode="inventoryMode"
         />
         <search-books-table-body
-          @cart="listCart()"
+          @add-to-cart="cart.add($event)"
           :covers="showCovers"
           :inventoryMode="inventoryMode"
           :me="me"
@@ -140,8 +153,7 @@ export default {
     getUser()
     const { me } = toRefs(state)
 
-    const { cart, listCart } = useCart()
-    listCart()
+    const cart = useCart()
 
     let inventoryMode = ref(false)
     const { state: stateInventory } = useInventory()
@@ -151,7 +163,6 @@ export default {
     return {
       showCovers,
       cart,
-      listCart,
       me,
       stateInventory,
       inventoryMode,

@@ -4,17 +4,17 @@ import VueI18n from 'vue-i18n'
 Vue.use(VueI18n)
 
 const messages = () => {
-  const messages = {}
+  const items = {}
 
   const locales = require.context('./locales', true, /([A-Za-z0-9-_]+)\.json$/i)
   locales.keys().forEach((key) => {
     const item = key.match(/([A-Za-z0-9-_]+)\./i)
     if (item) {
-      messages[item[1]] = locales(key)
+      items[item[1]] = locales(key)
     }
   })
 
-  return messages
+  return items
 }
 
 export default new VueI18n({

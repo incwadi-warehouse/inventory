@@ -33,6 +33,7 @@ export default {
           ordering: data.ordering,
           orderBy: data.orderBy,
           public: data.public,
+          pricelist: data.pricelist,
         })
         .then(function (response) {
           context.commit('branch', response.data)
