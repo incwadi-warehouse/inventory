@@ -153,7 +153,7 @@
               pattern="^\d+(\.|,)?\d{0,2}$"
               required
               v-model="price"
-              v-if="me.branch && me.branch.steps > 0"
+              v-if="me && me.branch.steps > 0"
             />
             <b-form-input
               type="text"
