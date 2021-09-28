@@ -260,7 +260,7 @@
   "enter_bookmark_and_hit_enter": "Enter new bookmark and hit enter.",
   "bookmarks": "Bookmark Manager",
   "addThisPage": "Add This Page",
-  "bookmarksDesc": "Bookmarks can be created by everyone and are bound to a branch."
+  "bookmarksDesc": "Bookmarks can be created by everyone and are bound to a branch.",
   "pricelist": "Price List",
   "pricelistDesc": "Define a price and depending on properties you can increase or decrease the price.",
   "baseprice": "Base Price",
