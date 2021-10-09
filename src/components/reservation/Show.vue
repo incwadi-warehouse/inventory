@@ -1,66 +1,50 @@
 <template>
-  <div class="reservation_item">
+  <div class="reservation">
     <p>
-      ID: {{ reservation.id }} - {{ $t('createdAt') }}:
-      {{ localeDateString(reservation.createdAt) }}
+      {{ $t('createdAt') }}: {{ toLocaleDateString(reservation.createdAt) }}
     </p>
 
     <ul>
       <li v-for="book in reservation.books" :key="book.id">
-        <router-link :to="{ name: 'book', params: { bookId: book.id } }"
-          >{{ book.title }} - {{ book.genre.name }} - {{ book.author.surname }},
+        <router-link :to="{ name: 'book', params: { bookId: book.id } }">
+          {{ book.title }} - {{ book.genre.name }} - {{ book.author.surname }},
           {{ book.author.firstname }}
-          <span v-if="book.sold"> - {{ $t('sold') }}</span
-          ><span v-if="book.removed"> - {{ $t('removed') }}</span></router-link
-        >
+          <span v-if="book.sold"> - {{ $t('sold') }}</span>
+          <span v-if="book.removed"> - {{ $t('removed') }}</span>
+        </router-link>
       </li>
     </ul>
+    <b-form-input type="hidden" id="books" v-model="state.books" />
 
-    <b-form-input type="hidden" id="books" v-model="books" />
+    <b-form @submit.prevent="update">
+      <b-form-group>
+        <b-form-item>
+          <b-form-label for="date">
+            {{ $t('date') }}
+          </b-form-label>
+        </b-form-item>
+        <b-form-item>
+          <b-form-input type="date" id="date" v-model="state.date" />
+        </b-form-item>
+      </b-form-group>
 
-    <b-form @submit.prevent="submit">
-      <div class="date">
-        <div class="date_item">
-          <b-form-group>
-            <b-form-item>
-              <b-form-label for="reservationDate">
-                {{ $t('reservationDate') }}
-              </b-form-label>
-            </b-form-item>
-            <b-form-item>
-              <b-form-input
-                type="date"
-                id="reservationDate"
-                v-model="reservationDate"
-              />
-            </b-form-item>
-          </b-form-group>
-        </div>
-
-        <div class="date_item">
-          <b-form-group>
-            <b-form-item>
-              <b-form-label for="reservationTime">
-                {{ $t('reservationTime') }}
-              </b-form-label>
-            </b-form-item>
-            <b-form-item>
-              <b-form-input
-                type="time"
-                id="reservationTime"
-                v-model="reservationTime"
-              />
-            </b-form-item>
-          </b-form-group>
-        </div>
-      </div>
+      <b-form-group>
+        <b-form-item>
+          <b-form-label for="time">
+            {{ $t('time') }}
+          </b-form-label>
+        </b-form-item>
+        <b-form-item>
+          <b-form-input type="time" id="time" v-model="state.time" />
+        </b-form-item>
+      </b-form-group>
 
       <b-form-group>
         <b-form-item>
           <b-form-label for="notes">{{ $t('notes') }}</b-form-label>
         </b-form-item>
         <b-form-item>
-          <b-form-textarea id="notes" v-model="notes" />
+          <b-form-textarea id="notes" v-model="state.notes" />
         </b-form-item>
       </b-form-group>
 
@@ -69,11 +53,12 @@
           <b-button
             type="button"
             design="outline_danger"
-            @click="remove(reservation.id)"
+            @click="$emit('remove', reservation.id)"
+            :style="{ marginRight: '10px' }"
           >
             {{ $t('delete') }}
           </b-button>
-          <b-button design="primary">{{ $t('save') }}</b-button>
+          <b-button design="outline">{{ $t('save') }}</b-button>
         </b-form-item>
       </b-form-group>
     </b-form>
@@ -81,53 +66,81 @@
 </template>
 
 <script>
-import useReservationShow from './../../composables/useReservationShow'
-import useReservationUpdate from './../../composables/useReservationUpdate'
-import useReservationRemove from './../../composables/useReservationRemove'
+import { computed, onMounted, reactive } from '@vue/composition-api'
 
 export default {
-  name: 'show',
+  name: 'reservation-show',
   props: {
     reservation: Object,
-    me: Object,
   },
   setup(props, { emit }) {
-    const { localeDateString } = useReservationShow()
-    const { reservationDate, reservationTime, notes, books, update } =
-      useReservationUpdate(props.reservation)
-    const { remove } = useReservationRemove(emit)
+    const state = reactive({
+      date: null,
+      time: null,
+      notes: props.reservation.notes,
+      books: computed(() => {
+        let list = []
+        props.reservation.books.forEach((element) => {
+          list.push(element.id)
+        })
+        return list.join(',')
+      }),
+      collection: computed(() => {
+        let date = new Date(state.date + ' ' + state.time + 'Z')
+        return date.getTime() / 1000
+      }),
+    })
+
+    const update = () => {
+      emit('update', {
+        id: props.reservation.id,
+        collection: state.collection,
+        notes: state.notes,
+        books: state.books,
+      })
+    }
+
+    onMounted(() => {
+      setCollection()
+    })
+
+    const setCollection = () => {
+      if (null === props.reservation.collection) return
+
+      let date = new Date(props.reservation.collection * 1000)
+
+      let month = formatNumber(date.getMonth() + 1)
+      let day = formatNumber(date.getDate())
+      state.date = date.getFullYear() + '-' + month + '-' + day
+
+      let hours = formatNumber(date.getHours())
+      let minutes = formatNumber(date.getMinutes())
+      state.time = hours + ':' + minutes
+    }
+
+    const formatNumber = (number) => {
+      if (number <= 9) {
+        return '0' + number
+      }
+      return number
+    }
+
+    const toLocaleDateString = (data) => {
+      let date = new Date(data * 1000)
+      return date.toLocaleString()
+    }
 
     return {
-      reservationDate,
-      reservationTime,
-      notes,
-      books,
+      state,
       update,
-      remove,
-      localeDateString,
+      toLocaleDateString,
     }
-  },
-  computed: {},
-  methods: {
-    submit() {
-      this.update()
-    },
   },
 }
 </script>
 
 <style scoped>
-.date {
-  display: flex;
-}
-.date_item {
-  width: 50%;
-  margin-bottom: 20px;
-}
-.date_item:first-of-type {
-  margin-right: 10px;
-}
-.date_item:last-of-type {
-  margin-left: 10px;
+.reservation {
+  border-bottom: 1px solid var(--color-neutral-02);
 }
 </style>

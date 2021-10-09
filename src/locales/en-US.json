@@ -268,5 +268,7 @@
   "priceCalcConditionHelp": "Use keypairs like CONDITION_ID:PRICE e.g. 1:2. One entry per line.",
   "find": "Public Search",
   "cleanCart": "Clean Cart",
-  "reservate":"Reservate"
+  "reservate":"Reservate",
+  "date": "Date",
+  "time": "Time"
 }

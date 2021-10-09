@@ -291,5 +291,7 @@
   "priceCalcConditionHelp": "Nutze Schlüsselpaare nach dem Muster ZUSTAND_ID:PREIS z.B. 1:2. Ein Eintrag pro Zeile.",
   "find": "Öffentliche Suche",
   "cleanCart": "Warenkorb leeren",
-  "reservate": "Reservieren"
+  "reservate": "Reservieren",
+  "date": "Datum",
+  "time": "Zeit"
 }

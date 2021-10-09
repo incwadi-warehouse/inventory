@@ -12,10 +12,12 @@ export const create = function (data) {
   return request().post('/api/reservation/new', data)
 }
 
-export const edit = function (id, data) {
+export const update = function (id, data) {
   return request().put('/api/reservation/' + id, data)
 }
 
 export const remove = function (id) {
   return request().delete('/api/reservation/' + id)
 }
+
+export default { list, show, create, update, remove }

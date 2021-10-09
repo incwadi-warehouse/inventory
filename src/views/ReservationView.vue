@@ -6,17 +6,25 @@
 
     <b-container size="m">
       <h2>{{ $t('newReservation') }}</h2>
-      <reservation-create :cart="cart.state.cart" @created="onCreated" />
+      <reservation-create
+        :cart="cart.state.cart"
+        @create="reservation.create($event)"
+        @created="onCreated"
+      />
     </b-container>
 
     <b-container size="m">
       <h2>{{ $t('reservedBooks') }}</h2>
-      <b-spinner size="l" v-if="isLoading" />
-      <reservation-list
-        :reservations="reservations"
-        @removed="getList"
-        :me="me"
-      />
+      <b-spinner size="l" v-if="reservation.state.isLoading" />
+      <div v-if="reservation.state.reservations">
+        <reservation-show
+          v-for="item in reservation.state.reservations"
+          :key="item.id"
+          :reservation="item"
+          @update="reservation.update($event)"
+          @remove="reservation.remove($event)"
+        />
+      </div>
     </b-container>
 
     <b-container size="m">
@@ -26,12 +34,12 @@
 </template>
 
 <script>
-import useReservationList from '../composables/useReservationList'
+import useReservation from '../composables/useReservation'
 import useCart from '../composables/useCart'
-import ReservationList from './../components/reservation/List'
 import ReservationCreate from './../components/reservation/Create'
 import useAuth from '@/composables/useAuth'
-import { toRefs } from '@vue/composition-api'
+import { onMounted, toRefs } from '@vue/composition-api'
+import ReservationShow from './../components/reservation/Show'
 
 export default {
   name: 'reservation-view',
@@ -39,25 +47,34 @@ export default {
     title: 'Reservation',
   },
   components: {
-    ReservationList,
     ReservationCreate,
+    ReservationShow,
   },
   setup() {
     const { getUser, state } = useAuth()
     getUser()
     const { me } = toRefs(state)
 
-    const { reservations, isLoading, getList } = useReservationList()
     const cart = useCart()
     cart.list()
 
+    const reservation = useReservation()
+
     const onCreated = () => {
-      getList()
       cart.clean()
       cart.list()
     }
 
-    return { reservations, isLoading, getList, onCreated, cart, me }
+    onMounted(() => {
+      reservation.list()
+    })
+
+    return {
+      reservation,
+      onCreated,
+      cart,
+      me,
+    }
   },
 }
 </script>
