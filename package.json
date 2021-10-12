@@ -14,7 +14,7 @@
   "dependencies": {
     "@baldeweg/components": "5.4.2",
     "@vue/composition-api": "1.2.4",
-    "axios": "0.22.0",
+    "axios": "0.23.0",
     "core-js": "3.18.2",
     "css-vars-ponyfill": "2.4.7",
     "js-cookie": "3.0.1",
