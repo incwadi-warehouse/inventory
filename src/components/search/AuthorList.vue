@@ -36,8 +36,6 @@ export default {
     edit(authorId) {
       this.$router.push({ name: 'author', params: { id: authorId } })
     },
-  },
-  filters: {
     formatAuthor(author) {
       if (author.firstname === '') {
         return author.surname
