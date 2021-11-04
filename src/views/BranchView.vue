@@ -12,6 +12,10 @@
       <branch-stats :stats="stats" />
     </b-container>
 
+    <b-container size="m" v-if="stats">
+      <p>{{ $t('storage') }}: {{ stats.storage }} MB</p>
+    </b-container>
+
     <b-divider />
 
     <b-container size="m" v-if="me">
