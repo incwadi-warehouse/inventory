@@ -34,6 +34,7 @@ export default {
           orderBy: data.orderBy,
           public: data.public,
           pricelist: data.pricelist,
+          cart: data.cart,
         })
         .then(function (response) {
           context.commit('branch', response.data)

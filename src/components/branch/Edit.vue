@@ -93,6 +93,18 @@
     </b-form-group>
     <!-- /public -->
 
+    <!-- cart -->
+    <b-form-group>
+      <b-form-item>
+        <b-form-helpline>{{ $t('activateCartHelp') }}</b-form-helpline>
+      </b-form-item>
+      <b-form-item>
+        <input type="checkbox" id="cart" v-model="cart" />
+        <b-form-label for="cart">{{ $t('activateCart') }}</b-form-label>
+      </b-form-item>
+    </b-form-group>
+    <!-- /cart -->
+
     <b-form-group buttons v-if="me && me.isAdmin">
       <b-form-group>
         <b-form-item>
@@ -122,6 +134,7 @@ export default {
       orderBy: this.branch.orderBy,
       isPublic: this.branch.public,
       pricelist: this.branch.pricelist,
+      cart: this.branch.cart,
     }
   },
   methods: {
@@ -136,6 +149,7 @@ export default {
         orderBy: this.orderBy,
         public: this.isPublic,
         pricelist: this.pricelist,
+        cart: this.cart,
       })
     },
   },

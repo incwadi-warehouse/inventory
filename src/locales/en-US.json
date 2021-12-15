@@ -214,5 +214,7 @@
   "reservate":"Reservate",
   "date": "Date",
   "time": "Time",
-  "storage": "Storage"
+  "storage": "Storage",
+  "activateCartHelp": "Here you can allow your books to be added to the public cart.",
+  "activateCart": "Activate Cart"
 }
