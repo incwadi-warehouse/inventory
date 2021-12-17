@@ -216,5 +216,6 @@
   "time": "Time",
   "storage": "Storage",
   "activateCartHelp": "Here you can allow your books to be added to the public cart.",
-  "activateCart": "Activate Cart"
+  "activateCart": "Activate Cart",
+  "current_reservations": "Current Reservations"
 }

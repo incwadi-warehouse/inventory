@@ -6,6 +6,21 @@
       </b-notification>
     </b-container>
 
+    <b-container
+      size="l"
+      v-if="
+        reservation.state.reservations &&
+        reservation.state.reservations.length >= 1
+      "
+    >
+      <b-notification type="success">
+        <router-link :to="{ name: 'reservation' }">
+          {{ $t('current_reservations') }}:
+          {{ reservation.state.reservations.length }}
+        </router-link>
+      </b-notification>
+    </b-container>
+
     <search-actionbar class="noprint" :me="me" />
 
     <b-container size="l" v-if="isLoading">
@@ -113,8 +128,9 @@ import BookCreate from '../components/book/Create'
 import BookEdit from '../components/book/Edit'
 import useCart from './../composables/useCart'
 import useAuth from '@/composables/useAuth'
-import { ref, toRefs } from '@vue/composition-api'
+import { onUnmounted, ref, toRefs } from '@vue/composition-api'
 import useInventory from '@/composables/useInventory'
+import useReservation from '@/composables/useReservation'
 import Confirm from '@/components/Confirm'
 
 export default {
@@ -160,6 +176,16 @@ export default {
 
     const showConfirm = ref(false)
 
+    const reservation = useReservation()
+    reservation.list()
+    const reservationInterval = window.setInterval(() => {
+      reservation.list()
+    }, 5000)
+
+    onUnmounted(() => {
+      window.clearInterval(reservationInterval)
+    })
+
     return {
       showCovers,
       cart,
@@ -167,6 +193,7 @@ export default {
       stateInventory,
       inventoryMode,
       showConfirm,
+      reservation,
     }
   },
   computed: {
