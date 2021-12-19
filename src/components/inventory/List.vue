@@ -42,6 +42,7 @@ export default {
   name: 'inventory-list',
   props: {
     inventories: Array,
+    me: Object,
   },
   methods: {
     formatDate,
