@@ -361,6 +361,9 @@
             </b-form>
           </div>
         </div>
+
+        <!-- directory -->
+        <directory-file-manager />
       </b-container>
     </b-modal>
   </b-form>
@@ -371,10 +374,14 @@ import formatDate from './../../util/date'
 import { mapState } from 'vuex'
 import { list } from '@/api/format'
 import { onMounted, reactive } from '@vue/composition-api'
+import DirectoryFileManager from '@/components/directory/FileManager'
 
 export default {
   name: 'edit-book',
   props: ['book', 'me'],
+  components: {
+    DirectoryFileManager,
+  },
   setup() {
     const state = reactive({
       formats: null,

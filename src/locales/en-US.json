@@ -217,5 +217,6 @@
   "storage": "Storage",
   "activateCartHelp": "Here you can allow your books to be added to the public cart.",
   "activateCart": "Activate Cart",
-  "current_reservations": "Current Reservations"
+  "current_reservations": "Current Reservations",
+  "file_manager": "File Manager"
 }

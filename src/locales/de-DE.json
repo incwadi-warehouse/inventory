@@ -230,5 +230,6 @@
   "storage": "Speicher",
   "activateCartHelp": "Hier kannst du Bücher in den Warenkorb aufnehmen lassen.",
   "activateCart": "Warenkorb aktivieren",
-  "current_reservations": "Aktuelle Reservierungen"
+  "current_reservations": "Aktuelle Reservierungen",
+  "file_manager": "Datei Manager"
 }
