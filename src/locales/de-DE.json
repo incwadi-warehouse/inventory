@@ -231,5 +231,7 @@
   "activateCartHelp": "Hier kannst du Bücher in den Warenkorb aufnehmen lassen.",
   "activateCart": "Warenkorb aktivieren",
   "current_reservations": "Aktuelle Reservierungen",
-  "file_manager": "Datei Manager"
+  "file_manager": "Datei Manager",
+  "back": "Zurück",
+  "upload": "Upload"
 }

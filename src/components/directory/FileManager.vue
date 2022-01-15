@@ -4,15 +4,27 @@
 
     <b-spinner size="m" v-if="directory.state.isLoading" />
 
-    <ul>
-      <li v-for="(element, index) in directory.state.elements" :key="index">
+    <ul v-if="directory.state.elements != null">
+      <li
+        v-if="directory.state.elements.details.current.path != ''"
+        @click="
+          directory.state.dir = directory.state.elements.details.parent.path
+        "
+      >
+        {{ $t('back') }}
+      </li>
+      <li
+        v-for="(element, index) in directory.state.elements.contents"
+        :key="index"
+      >
         <span
           v-if="element.isDir"
-          @click="directory.state.dir = element.name"
+          @click="directory.state.dir = element.path"
           >{{ element.name }}</span
         >
-        <span v-else>{{ element.name }}</span>
-        <span v-if="element.isFile"> ({{ element.size }} bytes)</span>
+        <span v-if="element.isFile"
+          >{{ element.name }} ({{ element.size }} bytes)</span
+        >
       </li>
     </ul>
   </b-container>

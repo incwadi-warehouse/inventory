@@ -273,8 +273,18 @@
         </b-form>
         <!-- /tags -->
 
+        <!-- tabs -->
+        <div class="tabs">
+          <ul>
+            <li @click="tab = 'upload'">{{ $t('upload') }}</li>
+            <li @click="tab = 'file-manager'">
+              {{ $t('file_manager') }} (Experiment)
+            </li>
+          </ul>
+        </div>
+
         <!-- cover -->
-        <div v-if="cover">
+        <div v-if="cover && tab == 'upload'">
           <!-- status -->
           <b-notification type="neutral" v-if="isUploading">
             <p>{{ $t('uploadingFile') }}</p>
@@ -363,7 +373,7 @@
         </div>
 
         <!-- directory -->
-        <directory-file-manager />
+        <directory-file-manager v-if="tab == 'file-manager'" />
       </b-container>
     </b-modal>
   </b-form>
@@ -373,7 +383,7 @@
 import formatDate from './../../util/date'
 import { mapState } from 'vuex'
 import { list } from '@/api/format'
-import { onMounted, reactive } from '@vue/composition-api'
+import { onMounted, reactive, ref } from '@vue/composition-api'
 import DirectoryFileManager from '@/components/directory/FileManager'
 
 export default {
@@ -387,13 +397,15 @@ export default {
       formats: null,
     })
 
+    const tab = ref('upload')
+
     onMounted(() => {
       list().then((response) => {
         state.formats = response.data
       })
     })
 
-    return { state }
+    return { state, tab }
   },
   data() {
     return {
@@ -495,3 +507,23 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.tabs {
+  margin: 10px 0;
+  overflow: auto;
+}
+.tabs ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.tabs li {
+  float: left;
+  background: var(--color-neutral-02);
+  border-radius: 10px;
+  padding: 10px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+</style>
