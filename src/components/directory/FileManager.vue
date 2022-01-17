@@ -24,9 +24,12 @@
         >
         <span v-if="element.isFile"
           >{{ element.name }} ({{ element.size }} {{ $t('bytes') }})
-          <b-button design="text" @click="useCover(element.path)">{{
-            $t('use_cover')
-          }}</b-button></span
+          <b-button
+            type="button"
+            design="text"
+            @click="useCover(element.path)"
+            >{{ $t('use_cover') }}</b-button
+          ></span
         >
       </li>
     </ul>
