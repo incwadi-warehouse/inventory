@@ -273,18 +273,8 @@
         </b-form>
         <!-- /tags -->
 
-        <!-- tabs -->
-        <div class="tabs">
-          <ul>
-            <li @click="tab = 'upload'">{{ $t('upload') }}</li>
-            <li @click="tab = 'file-manager'">
-              {{ $t('file_manager') }} (Experiment)
-            </li>
-          </ul>
-        </div>
-
         <!-- cover -->
-        <div v-if="cover && tab == 'upload'">
+        <div v-if="cover">
           <!-- status -->
           <b-notification type="neutral" v-if="isUploading">
             <p>{{ $t('uploadingFile') }}</p>
@@ -308,12 +298,22 @@
             <img :src="cover.cover_m" alt="Cover" />
           </div>
 
-          <!-- upload -->
           <div v-else>
+            <!-- tabs -->
+            <div class="tabs">
+              <ul>
+                <li @click="tab = 'upload'">{{ $t('upload') }}</li>
+                <li @click="tab = 'file-manager'">
+                  {{ $t('file_manager') }} (Experiment)
+                </li>
+              </ul>
+            </div>
+
+            <!-- upload -->
             <b-form
               enctype="multipart/form-data"
               @submit.prevent
-              v-if="!isUploading"
+              v-if="!isUploading && tab == 'upload'"
             >
               <b-form-group>
                 <b-form-item>
@@ -369,11 +369,15 @@
                 </b-form-item>
               </b-form-group>
             </b-form>
+
+            <!-- directory -->
+            <directory-file-manager
+              :id="book.id"
+              @update="setCover"
+              v-if="tab == 'file-manager'"
+            />
           </div>
         </div>
-
-        <!-- directory -->
-        <directory-file-manager v-if="tab == 'file-manager'" />
       </b-container>
     </b-modal>
   </b-form>
@@ -491,6 +495,9 @@ export default {
         .finally(() => {
           this.isUploading = false
         })
+    },
+    setCover() {
+      this.$store.dispatch('book/getCover', this.book)
     },
     removeCover() {
       this.$store.dispatch('book/removeCover', this.book)

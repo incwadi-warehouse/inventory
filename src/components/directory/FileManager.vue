@@ -23,7 +23,10 @@
           >{{ element.name }}</span
         >
         <span v-if="element.isFile"
-          >{{ element.name }} ({{ element.size }} bytes)</span
+          >{{ element.name }} ({{ element.size }} {{ $t('bytes') }})
+          <b-button design="text" @click="useCover(element.path)">{{
+            $t('use_cover')
+          }}</b-button></span
         >
       </li>
     </ul>
@@ -35,10 +38,19 @@ import useDirectory from '@/composables/useDirectory'
 
 export default {
   name: 'directory-file-manager',
-  setup() {
+  props: {
+    id: String,
+  },
+  setup(props, { emit }) {
     const directory = useDirectory()
 
-    return { directory }
+    const useCover = (url) => {
+      directory.useCover(props.id, url).then(() => {
+        emit('update')
+      })
+    }
+
+    return { directory, useCover }
   },
 }
 </script>

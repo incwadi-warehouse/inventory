@@ -20,6 +20,10 @@ export default function useDirectory() {
       })
   }
 
+  const useCover = (id, url) => {
+    return api.cover(id, url)
+  }
+
   onMounted(list)
 
   watch(() => state.dir, list)
@@ -27,5 +31,6 @@ export default function useDirectory() {
   return {
     state,
     list,
+    useCover,
   }
 }

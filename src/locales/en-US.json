@@ -220,5 +220,7 @@
   "current_reservations": "Current Reservations",
   "file_manager": "File Manager",
   "back": "Back",
-  "upload": "Upload"
+  "upload": "Upload",
+  "use_cover": "Use Cover",
+  "bytes": "Bytes"
 }
