@@ -31,6 +31,9 @@
             >{{ $t('use_cover') }}</b-button
           ></span
         >
+        <p v-if="element.doc" :style="{ fontSize: '0.8rem' }">
+          {{ element.doc }}
+        </p>
       </li>
     </ul>
   </b-container>
