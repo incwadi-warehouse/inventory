@@ -62,7 +62,7 @@
         :style="{ float: 'right' }"
         design="outline"
         @click.prevent="createInventory"
-        v-if="!inventoryState.hasActiveInventory && me.isAdmin"
+        v-if="!inventoryState.hasActiveInventory && me && me.isAdmin"
       >
         {{ $t('createInventory') }}
       </b-button>
