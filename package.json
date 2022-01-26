@@ -1,6 +1,6 @@
 {
   "name": "inventory",
-  "version": "34.0.1",
+  "version": "34.0.2",
   "author": "Andre Baldeweg <a@baldeweg.org>",
   "scripts": {
     "serve": "vue-cli-service serve",
