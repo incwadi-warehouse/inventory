@@ -281,7 +281,7 @@ export default {
     stats(context) {
       context.commit('isStatsLoading', true)
       api()
-        .get('/api/book/stats/')
+        .get('/api/book/stats')
         .then(function (response) {
           context.commit('stats', response.data)
         })
