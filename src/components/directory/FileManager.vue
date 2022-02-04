@@ -17,13 +17,11 @@
         v-for="(element, index) in directory.state.elements.contents"
         :key="index"
       >
-        <span
-          v-if="element.isDir"
-          @click="directory.state.dir = element.path"
-          >{{ element.name }}</span
+        <span v-if="element.isDir" @click="directory.state.dir = element.path"
+          >&#128193; {{ element.name }}</span
         >
         <span v-if="element.isFile"
-          >{{ element.name }} ({{ element.size }} {{ $t('bytes') }})
+          >&#128196; {{ element.name }} ({{ element.size }} {{ $t('bytes') }})
           <b-button
             type="button"
             design="text"
