@@ -13,7 +13,7 @@
     </b-container>
 
     <b-container size="m" v-if="stats">
-      <p>{{ $t('storage') }}: {{ stats.storage }} MB</p>
+      <p>{{ $t('storage') }}: {{ round(stats.storage) }} MB</p>
     </b-container>
 
     <b-divider />
@@ -135,6 +135,10 @@ export default {
       formatList.value.listFormats()
     }
 
+    const round = (value) => {
+      return parseFloat(value).toFixed(2)
+    }
+
     return {
       me,
       inventoryState,
@@ -142,6 +146,7 @@ export default {
       endInventory,
       formatList,
       createdFormat,
+      round,
     }
   },
   computed: {
