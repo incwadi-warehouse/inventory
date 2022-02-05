@@ -4,8 +4,9 @@
 
     <b-spinner size="m" v-if="directory.state.isLoading" />
 
-    <ul v-if="directory.state.elements != null">
+    <ul :style="{ padding: '0' }" v-if="directory.state.elements != null">
       <li
+        :style="{ listStyle: 'none', cursor: 'pointer' }"
         v-if="directory.state.elements.details.current.path != ''"
         @click="
           directory.state.dir = directory.state.elements.details.parent.path
@@ -14,6 +15,7 @@
         {{ $t('back') }}
       </li>
       <li
+        :style="{ listStyle: 'none', cursor: 'pointer' }"
         v-for="(element, index) in directory.state.elements.contents"
         :key="index"
       >
