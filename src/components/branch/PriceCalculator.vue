@@ -155,6 +155,7 @@ export default {
         orderBy: this.orderBy,
         public: this.isPublic,
         pricelist: JSON.stringify(this.state.pricelist),
+        cart: this.branch.cart,
       })
     },
   },
