@@ -4,8 +4,9 @@
 
     <b-spinner size="m" v-if="directory.state.isLoading" />
 
-    <ul v-if="directory.state.elements != null">
+    <ul :style="{ padding: '0' }" v-if="directory.state.elements != null">
       <li
+        :style="{ listStyle: 'none', cursor: 'pointer' }"
         v-if="directory.state.elements.details.current.path != ''"
         @click="
           directory.state.dir = directory.state.elements.details.parent.path
@@ -14,16 +15,15 @@
         {{ $t('back') }}
       </li>
       <li
+        :style="{ listStyle: 'none', cursor: 'pointer' }"
         v-for="(element, index) in directory.state.elements.contents"
         :key="index"
       >
-        <span
-          v-if="element.isDir"
-          @click="directory.state.dir = element.path"
-          >{{ element.name }}</span
+        <span v-if="element.isDir" @click="directory.state.dir = element.path"
+          >&#128193; {{ element.name }}</span
         >
         <span v-if="element.isFile"
-          >{{ element.name }} ({{ element.size }} {{ $t('bytes') }})
+          >&#128196; {{ element.name }} ({{ element.size }} {{ $t('bytes') }})
           <b-button
             type="button"
             design="text"
