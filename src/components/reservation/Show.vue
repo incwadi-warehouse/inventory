@@ -50,6 +50,9 @@
 
       <b-form-group buttons>
         <b-form-item>
+          <b-button design="text" type="button" @click="shareByMail"
+            >Mail (experiment)</b-button
+          >
           <b-button
             type="button"
             design="outline_danger"
@@ -67,6 +70,7 @@
 
 <script>
 import { computed, onMounted, reactive } from '@vue/composition-api'
+import i18n from '@/i18n'
 
 export default {
   name: 'reservation-show',
@@ -130,10 +134,34 @@ export default {
       return date.toLocaleString()
     }
 
+    const shareByMail = () => {
+      let content =
+        'mailto:' +
+        '?subject=' +
+        i18n.t('your_reservation') +
+        '&body=' +
+        state.notes +
+        '%0d%0a'
+
+      props.reservation.books.forEach((element) => {
+        content +=
+          '%0d%0a' +
+          element.title +
+          ' - ' +
+          element.author.surname +
+          ', ' +
+          element.author.firstname +
+          '%0d%0a'
+      })
+
+      window.open(content)
+    }
+
     return {
       state,
       update,
       toLocaleDateString,
+      shareByMail,
     }
   },
 }
