@@ -1742,10 +1742,10 @@
   optionalDependencies:
     prettier "^1.18.2"
 
-"@vue/composition-api@1.4.6":
-  version "1.4.6"
-  resolved "https://registry.yarnpkg.com/@vue/composition-api/-/composition-api-1.4.6.tgz#886c35221cd7c6f55272543a121240e8d3a1306c"
-  integrity sha512-UP359OJ0G0Zli603/i9fhXFmNtZUSrypSFyqClMxizp8ezlaMK2GCmHgy3qyrRnO/xjcDAx09vvXPwNFtxHPtQ==
+"@vue/composition-api@1.4.9":
+  version "1.4.9"
+  resolved "https://registry.yarnpkg.com/@vue/composition-api/-/composition-api-1.4.9.tgz#6fa65284f545887b52d421f23b4fa1c41bc0ad4b"
+  integrity sha512-l6YOeg5LEXmfPqyxAnBaCv1FMRw0OGKJ4m6nOWRm6ngt5TuHcj5ZoBRN+LXh3J0u6Ur3C4VA+RiKT+M0eItr/g==
 
 "@vue/eslint-config-prettier@7.0.0":
   version "7.0.0"
@@ -3448,10 +3448,10 @@ core-js-compat@^3.16.0, core-js-compat@^3.16.2, core-js-compat@^3.6.5:
     browserslist "^4.17.5"
     semver "7.0.0"
 
-core-js@3.21.0:
-  version "3.21.0"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.21.0.tgz#f479dbfc3dffb035a0827602dd056839a774aa71"
-  integrity sha512-YUdI3fFu4TF/2WykQ2xzSiTQdldLB4KVuL9WeAy5XONZYt5Cun/fpQvctoKbCgvPhmzADeesTk/j2Rdx77AcKQ==
+core-js@3.21.1:
+  version "3.21.1"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.21.1.tgz#f2e0ddc1fc43da6f904706e8e955bc19d06a0d94"
+  integrity sha512-FRq5b/VMrWlrmCzwRrpDYNxyHP9BcAZC+xHJaqTgIE5091ZV1NTmyh0sGOg5XqpnHvR0svdy0sv1gWA1zmhxig==
 
 core-js@^2.4.0:
   version "2.6.12"
@@ -10632,9 +10632,9 @@ url-loader@^2.2.0:
     schema-utils "^2.5.0"
 
 url-parse@^1.4.3, url-parse@^1.5.3:
-  version "1.5.3"
-  resolved "https://registry.yarnpkg.com/url-parse/-/url-parse-1.5.3.tgz#71c1303d38fb6639ade183c2992c8cc0686df862"
-  integrity sha512-IIORyIQD9rvj0A4CLWsHkBBJuNqWpFQe224b6j9t/ABmquIS0qDU2pY6kl6AuOrL5OkCXHMCFNe1jBcuAggjvQ==
+  version "1.5.10"
+  resolved "https://registry.yarnpkg.com/url-parse/-/url-parse-1.5.10.tgz#9d3c2f736c1d75dd3bd2be507dcc111f1e2ea9c1"
+  integrity sha512-WypcfiRhfeUP9vvF0j6rw0J3hrWrw6iZv3+22h6iRMJ/8z1Tj6XfLP4DsUix5MhMPnXpiHDoKyoZ/bdCkwBCiQ==
   dependencies:
     querystringify "^2.1.1"
     requires-port "^1.0.0"
