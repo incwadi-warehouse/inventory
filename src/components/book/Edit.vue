@@ -165,6 +165,15 @@
             />
           </b-form-item>
         </b-form-group>
+
+        <details v-if="me">
+          <summary>{{ $t('pricelist') }}</summary>
+          <book-price-calculator
+            :list="pricelist"
+            :currency="me.branch.currency"
+          />
+        </details>
+
         <b-form-group>
           <b-form-item>
             <input type="checkbox" name="sold" id="sold" v-model="sold" />
@@ -387,16 +396,24 @@
 import formatDate from './../../util/date'
 import { mapState } from 'vuex'
 import { list } from '@/api/format'
-import { onMounted, reactive, ref } from '@vue/composition-api'
+import {
+  onMounted,
+  reactive,
+  ref,
+  computed,
+  toRefs,
+} from '@vue/composition-api'
 import DirectoryFileManager from '@/components/directory/FileManager'
+import BookPriceCalculator from '@/components/book/PriceCalculator'
 
 export default {
   name: 'edit-book',
   props: ['book', 'me'],
   components: {
     DirectoryFileManager,
+    BookPriceCalculator,
   },
-  setup() {
+  setup(props) {
     const state = reactive({
       formats: null,
     })
@@ -409,7 +426,12 @@ export default {
       })
     })
 
-    return { state, tab }
+    const { me } = toRefs(props)
+    const pricelist = computed(() => {
+      return me.value ? JSON.parse(me.value.branch.pricelist) : null
+    })
+
+    return { state, tab, pricelist }
   },
   data() {
     return {
