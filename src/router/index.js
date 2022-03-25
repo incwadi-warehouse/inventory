@@ -78,7 +78,8 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes,
-  scrollBehavior() {
+  scrollBehavior(to, from) {
+    if (to.name === 'book' || from.name === 'book') return
     return { x: 0, y: 0 }
   },
 })
